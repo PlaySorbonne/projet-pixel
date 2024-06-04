@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://coooilpqwhd7p"]
+
+[ext_resource type="Script" path="res://scripts/GameSessionCreator.gd" id="1_dew6n"]
+
+[node name="GameSessionCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dew6n")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.249
+anchor_top = 0.373
+anchor_right = 0.47
+anchor_bottom = 0.475
+offset_left = 0.151978
+offset_top = 0.29599
+offset_right = 0.559937
+offset_bottom = 0.199982
+text = "Play game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

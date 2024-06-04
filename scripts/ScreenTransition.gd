@@ -1,4 +1,5 @@
 @tool
+class_name ScreenTransition
 extends Control
 
 signal HalfScreenTransitionFinished
@@ -25,20 +26,22 @@ func _set_default_color(new_color : Color):
 func _ready():
 	tween = get_tree().create_tween()
 
-func screen_transition(duration : float = default_duration, color : Color = default_color):
+func new_screen_transition(duration : float = default_duration, color : Color = default_color):
 	if $ColorRect.modulate.a > 0.0:
 		start_screen_transition(duration/2.0, color)
 		await self.HalfScreenTransitionFinished
 	end_screen_transition(duration/2.0, color)
 
-func start_screen_transition(duration : float, color : Color):
+func start_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
 	$ColorRect.color = color
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	tween.tween_property($ColorRect, "modulate", Color.WHITE, duration)
 	await get_tree().create_timer(duration).timeout
 	emit_signal("HalfScreenTransitionFinished")
 
-func end_screen_transition(duration : float, color : Color):
+func end_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
 	$ColorRect.color = color
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, duration)
 	await get_tree().create_timer(duration).timeout
 	emit_signal("ScreenTransitionFinished")

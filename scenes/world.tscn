@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=6 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/player.tscn" id="1_ig40o"]
+[ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kgqe"]
 size = Vector2(883, 66)
@@ -26,3 +27,7 @@ shape = SubResource("RectangleShape2D_1kgqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
 texture = SubResource("GradientTexture2D_p2ea0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
