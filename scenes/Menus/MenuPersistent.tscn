@@ -16,6 +16,7 @@ script = ExtResource("1_jtr7k")
 visible = false
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("1_donq7")]
+default_duration = 1.0
 
 [connection signal="ButtonStartPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_start_pressed"]
 [connection signal="StartGame" from="CanvasLayer/GameSessionCreator" to="." method="_on_game_session_creator_start_game"]

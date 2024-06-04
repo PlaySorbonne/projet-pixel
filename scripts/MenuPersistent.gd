@@ -8,8 +8,10 @@ var screen_transition : ScreenTransition
 
 func _ready():
 	screen_transition = $CanvasLayer/ScreenTransition
+	screen_transition.end_screen_transition()
 
 func _on_title_screen_button_start_pressed():
+	print("yolow")
 	screen_transition.new_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	title_screen.visible = false

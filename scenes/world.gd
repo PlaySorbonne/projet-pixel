@@ -4,10 +4,12 @@ extends Node2D
 
 var keyboards = []
 var controllers = []
+var screen_transition : ScreenTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	screen_transition = $CanvasLayer/ScreenTransition
+	screen_transition.end_screen_transition()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
