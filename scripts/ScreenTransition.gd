@@ -10,10 +10,10 @@ signal ScreenTransitionFinished
 @export var default_is_opaque : bool = true : set=_set_is_opaque
 
 
-var tween : Tween
-
 func _process(_delta):
-	print("color: " + str($ColorRect.modulate))
+	if not Engine.is_editor_hint():
+		pass
+		#print("color: " + str($ColorRect.modulate))
 
 func _set_is_opaque(new_opaque : bool):
 	default_is_opaque = new_opaque
@@ -26,9 +26,6 @@ func _set_default_color(new_color : Color):
 	default_color = new_color
 	$ColorRect.color = new_color
 
-func _ready():
-	tween = get_tree().create_tween()
-
 func new_screen_transition(duration : float = default_duration, color : Color = default_color):
 	if $ColorRect.modulate.a <= 0.0:
 		start_screen_transition(duration/2.0, color)
@@ -36,18 +33,17 @@ func new_screen_transition(duration : float = default_duration, color : Color = 
 	end_screen_transition(duration/2.0, color)
 
 func start_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
-	print("starting screen transition with tween:" + str(tween) + " and duration="+str(duration))
 	$ColorRect.color = color
-	tween.stop()
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	tween.tween_property($ColorRect, "modulate", Color(1.0, 1.0, 0.9, 1.0), duration)
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property($ColorRect, "modulate", Color.WHITE, duration)
 	await get_tree().create_timer(duration).timeout
 	emit_signal("HalfScreenTransitionFinished")
 
 func end_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
-	print("ending screen transition with tween:" + str(tween))
 	$ColorRect.color = color
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var tween : Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, duration)
 	await get_tree().create_timer(duration).timeout
 	emit_signal("ScreenTransitionFinished")
