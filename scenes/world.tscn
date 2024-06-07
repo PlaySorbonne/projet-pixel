@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxfrc0btquk6a"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_531vb"]
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/player.tscn" id="1_ig40o"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_mait2"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kgqe"]
@@ -15,7 +15,7 @@ gradient = SubResource("Gradient_k4vqh")
 width = 880
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_531vb")
+script = ExtResource("1_mait2")
 player_scene = ExtResource("1_ig40o")
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -28,8 +28,17 @@ shape = SubResource("RectangleShape2D_1kgqe")
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
 texture = SubResource("GradientTexture2D_p2ea0")
 
-[node name="SpawnLocation" type="Node2D" parent="."]
-position = Vector2(571, 139)
+[node name="SpawnLocation1" type="Node2D" parent="."]
+position = Vector2(245, 139)
+
+[node name="SpawnLocation2" type="Node2D" parent="."]
+position = Vector2(413, 139)
+
+[node name="SpawnLocation3" type="Node2D" parent="."]
+position = Vector2(634, 139)
+
+[node name="SpawnLocation4" type="Node2D" parent="."]
+position = Vector2(835, 141)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

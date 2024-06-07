@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var level_scene: PackedScene
 @onready var title_screen = $CanvasLayer/TitleScreen
 @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 var screen_transition : ScreenTransition
@@ -17,7 +17,10 @@ func _on_title_screen_button_start_pressed():
 	title_screen.visible = false
 	game_session_creator.visible = true
 
-func _on_game_session_creator_start_game():
+func _on_game_session_creator_start_game(players):
+	var level = level_scene.instantiate()
+	level.players = players
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	get_tree().get_root().add_child(level)
+	get_tree().get_root().remove_child(self)

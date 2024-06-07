@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://coooilpqwhd7p"]
+[gd_scene load_steps=5 format=3 uid="uid://coooilpqwhd7p"]
 
 [ext_resource type="Script" path="res://scripts/GameSessionCreator.gd" id="1_dew6n"]
+[ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/player.tscn" id="2_5vqkf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_keads"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_vfewy"]
 
 [node name="GameSessionCreator" type="Control"]
 layout_mode = 3
@@ -10,18 +16,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dew6n")
+player_scene = ExtResource("2_5vqkf")
 
 [node name="Button" type="Button" parent="."]
+layout_direction = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.249
-anchor_top = 0.373
-anchor_right = 0.47
-anchor_bottom = 0.475
-offset_left = 0.151978
-offset_top = 0.29599
-offset_right = 0.559937
-offset_bottom = 0.199982
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -160.0
+offset_right = 200.0
+offset_bottom = -85.0
+grow_horizontal = 2
 text = "Play game"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+text = "press any key to join"
+label_settings = SubResource("LabelSettings_keads")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoinedPlayers" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 475.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_vfewy")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
