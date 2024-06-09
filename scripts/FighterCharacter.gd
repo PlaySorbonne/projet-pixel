@@ -11,6 +11,7 @@ var team := 0
 var hitpoints := max_hitpoints
 var alive := false
 var active := false
+var in_invincibility_time := false
 
 static var number_of_characters := 0
 
@@ -27,6 +28,7 @@ func _ready():
 	team = character_id # to remove if we decide to do team battles
 
 func spawn(location : Vector2):
+	hitpoints = max_hitpoints
 	position = location
 	scale = Vector2.ZERO
 	visible = true
@@ -43,11 +45,18 @@ func set_player_active(new_activity : bool):
 	set_process_input(new_activity)
 
 func hit(damage : int):
-	if not alive:
+	if in_invincibility_time or not alive:
 		return
 	hitpoints -= damage
+	$HitEffect.trigger_hit_effect()
 	if hitpoints < 0:
 		death()
+	else:
+		in_invincibility_time = true
+		$InvincibilityTimer.start(invincibility_time)
+
+func _on_invincibility_timer_timeout():
+	in_invincibility_time = false
 
 func death():
 	if not alive:

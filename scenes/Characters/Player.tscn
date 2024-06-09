@@ -7,4 +7,6 @@
 script = ExtResource("2_7jbn1")
 attack_damage = 1
 attack_intensity = 1
-attack_duration = 0.4
+attack_duration = 0.125
+attack_wind_up = 0.0
+attack_recovery = 0.3
