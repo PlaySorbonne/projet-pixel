@@ -1,5 +1,6 @@
 extends Node
 
+var world : Node2D
 var players : Array = []
 var players_order : Array = []
 
