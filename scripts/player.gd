@@ -24,28 +24,28 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	move_and_slide()
 
-func _input(event):
-	var condition = false
+func _input(event : InputEvent):
+	var is_correct_control_type = false
 	if control_type == 0:
-		condition = event is InputEventKey
+		is_correct_control_type = event is InputEventKey
 	elif control_type == 1:
-		condition = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
+		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
 		
-	if condition:
+	if is_correct_control_type && event.device == control_device:
 		# Handle jump.
-		if Input.is_action_just_pressed("jump") and is_on_floor():
+		if event.is_action_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		
-		if Input.is_action_just_pressed("attack"):
+		if event.is_action_pressed("attack"):
 			print("character [" + str(character_id) + "] attack !")
 		
-		if Input.is_action_just_pressed("special"):
+		elif event.is_action_pressed("special"):
 			print("character [" + str(character_id) + "] special !")
 		
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		var direction = Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		elif event.is_action_pressed("right"):
+			velocity.x = SPEED
+		elif event.is_action_pressed("left"):
+			velocity.x = -SPEED
+		elif (event.is_action_released("right") && velocity.x > 0) || (
+		event.is_action_released("left") && velocity.x < 0):
+			velocity.x = 0
