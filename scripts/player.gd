@@ -1,12 +1,14 @@
 extends CharacterBody2D
+class_name PlayerCharacter
 
 enum Controls {KEYBOARD, CONTROLLER}
 
-@export var control_device: int = 0
-@export var control_type: Controls
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+@export var control_device: int = 0
+@export var control_type: Controls
+@export var player_team := 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,7 +27,6 @@ func _physics_process(delta):
 
 func _input(event):
 	var condition = false
-
 	if control_type == 0:
 		condition = event is InputEventKey
 	elif control_type == 1:
