@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ofdotmbw4jkx"]
+
+[ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
+
+[node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
+script = ExtResource("2_7jbn1")
+attack_damage = 1
+attack_intensity = 1
+attack_duration = 0.4

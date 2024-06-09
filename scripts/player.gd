@@ -6,11 +6,15 @@ enum Controls {KEYBOARD, CONTROLLER}
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-@export var control_device: int = 0
-@export var control_type: Controls
+@export var attack_damage := 1
+@export var attack_intensity := 1 #for breaking super armor and flying velocity
+@export var attack_duration := 0.4
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+
+var control_device: int = 0
+var control_type: Controls
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var AttackLocation = $AttackLocation
 
 func set_control_device(device: int):
 	control_device = device
@@ -22,6 +26,10 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	if velocity.x > 0:
+		scale.x = 1.0
+	elif velocity.x < 0:
+		scale.x = -1.0
 	move_and_slide()
 
 func _input(event : InputEvent):
@@ -37,7 +45,8 @@ func _input(event : InputEvent):
 			velocity.y = JUMP_VELOCITY
 		
 		if event.is_action_pressed("attack"):
-			print("character [" + str(character_id) + "] attack !")
+			Hitbox.spawn_hitbox(self, attack_damage, AttackLocation.position, 0.3, true, 
+				attack_intensity, Vector2.ONE)
 		
 		elif event.is_action_pressed("special"):
 			print("character [" + str(character_id) + "] special !")

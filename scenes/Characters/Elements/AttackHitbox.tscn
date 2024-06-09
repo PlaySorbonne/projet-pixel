@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="2_idmsv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u0yq"]
+size = Vector2(60, 60)
 
 [node name="Hitbox" type="Area2D"]
 script = ExtResource("1_tt78l")
@@ -13,7 +14,7 @@ shape = SubResource("RectangleShape2D_8u0yq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(100, 0, 0, 1)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_idmsv")
 
 [node name="Timer" type="Timer" parent="."]

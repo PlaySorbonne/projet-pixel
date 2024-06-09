@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlo5qcfkkb5ti"]
+
+[ext_resource type="Script" path="res://scripts/FighterCharacter.gd" id="1_phwhv"]
+[ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="2_7jhj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_re781"]
+size = Vector2(90, 100)
+
+[node name="Fighter" type="CharacterBody2D"]
+script = ExtResource("1_phwhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_7jhj1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_re781")
+
+[node name="AttackLocation" type="Marker2D" parent="."]
+position = Vector2(90, 0)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true

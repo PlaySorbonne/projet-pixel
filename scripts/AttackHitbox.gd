@@ -7,10 +7,10 @@ var team := 0
 var can_multi_hit := false
 var delay_between_hits := 0.4
 
-static func new_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
+static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
 duration : float, attached_to_character := true, hit_intensity := 1, size := Vector2.ONE,
 can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
-	var my_scene: PackedScene = load("res://scripts/AttackHitbox.gd")
+	var my_scene: PackedScene = load("res://scenes/Characters/Elements/AttackHitbox.tscn")
 	var hitbox : Hitbox = my_scene.instantiate()
 	hitbox.team = parent.team
 	hitbox.damage = hit_damage
