@@ -26,10 +26,6 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	if velocity.x > 0:
-		scale.x = 1.0
-	elif velocity.x < 0:
-		scale.x = -1.0
 	move_and_slide()
 
 func _input(event : InputEvent):
@@ -53,8 +49,15 @@ func _input(event : InputEvent):
 		
 		elif event.is_action_pressed("right"):
 			velocity.x = SPEED
+			check_turn(true)
 		elif event.is_action_pressed("left"):
 			velocity.x = -SPEED
+			check_turn(false)
 		elif (event.is_action_released("right") && velocity.x > 0) || (
 		event.is_action_released("left") && velocity.x < 0):
 			velocity.x = 0
+
+func check_turn(right  : bool):
+	if right != facing_right:
+		facing_right = right
+		scale.x *= -1
