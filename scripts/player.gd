@@ -15,6 +15,7 @@ var control_device: int = 0
 var control_type: Controls
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var AttackLocation = $AttackLocation
+var facing_right := true
 
 func set_control_device(device: int):
 	control_device = device
@@ -23,7 +24,6 @@ func set_control_type(type: int):
 	control_type = type
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	move_and_slide()

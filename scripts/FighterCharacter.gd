@@ -1,13 +1,16 @@
 extends CharacterBody2D
 class_name FighterCharacter
 
+signal fighter_died
+
 @export var max_hitpoints := 3
 @export var invincibility_time := 0.2
 
 var character_id := 0
 var team := 0
-var facing_right := true
 var hitpoints := max_hitpoints
+var alive := false
+var active := false
 
 static var number_of_characters := 0
 
@@ -19,12 +22,40 @@ static func reset_character_ids() -> void:
 	number_of_characters = 0
 
 func _ready():
-	print("hullo !")
+	visible = false
 	character_id = add_new_character()
 	team = character_id # to remove if we decide to do team battles
 
+func spawn(location : Vector2):
+	position = location
+	scale = Vector2.ZERO
+	visible = true
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "scale", Vector2.ONE, 1.0)
+	await tween.finished
+	set_player_active(true)
+
+func set_player_active(new_activity : bool):
+	$CollisionShape2D.disabled = not new_activity
+	active = new_activity
+	alive = new_activity
+	set_physics_process(new_activity)
+	set_process_input(new_activity)
+
 func hit(damage : int):
+	if not alive:
+		return
 	hitpoints -= damage
 	if hitpoints < 0:
-		pass
-	#print("fighter " + str(character_id) + " got hit : " + str(hitpoints) + "/" + str(max_hitpoints))
+		death()
+
+func death():
+	if not alive:
+		return
+	set_player_active(false)
+	var tween = create_tween().set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
+	await tween.finished
+	emit_signal("fighter_died", self)
+	position = Vector2(-9999, -9999)
+	visible = false
