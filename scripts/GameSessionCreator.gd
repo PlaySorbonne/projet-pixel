@@ -25,8 +25,9 @@ func _input(event):
 			player.control_type = 1
 			players.append(player)
 			$JoinedPlayers.text += "Player" + str(len(players)) + "(controller)\n"
-	
-	
+	if len(players) > 0:
+		$Button.disabled = false
+
 func _on_button_pressed():
 	emit_signal("StartGame", players)
 	$Button.disabled = true

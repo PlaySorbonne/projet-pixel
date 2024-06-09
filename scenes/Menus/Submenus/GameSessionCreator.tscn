@@ -31,6 +31,7 @@ offset_top = -160.0
 offset_right = 200.0
 offset_bottom = -85.0
 grow_horizontal = 2
+disabled = true
 text = "Play game"
 
 [node name="Label" type="Label" parent="."]

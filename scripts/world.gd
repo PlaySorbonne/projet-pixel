@@ -14,3 +14,6 @@ func _ready():
 		player.position = spawn_locations[player_number].position
 		player_number += 1
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
