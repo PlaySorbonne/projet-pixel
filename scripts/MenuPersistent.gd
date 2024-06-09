@@ -11,7 +11,6 @@ func _ready():
 	screen_transition.end_screen_transition()
 
 func _on_title_screen_button_start_pressed():
-	print("yolow")
 	screen_transition.new_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	title_screen.visible = false
@@ -19,8 +18,7 @@ func _on_title_screen_button_start_pressed():
 
 func _on_game_session_creator_start_game(players):
 	var level = level_scene.instantiate()
-	level.players = players
+	GameInfos.players = players
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
-	get_tree().get_root().add_child(level)
-	get_tree().get_root().remove_child(self)
+	get_tree().change_scene_to_packed(level_scene)
