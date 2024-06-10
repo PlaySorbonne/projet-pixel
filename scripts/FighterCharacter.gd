@@ -55,7 +55,8 @@ func hit(damage : int, attacker : FighterCharacter = null):
 	hitpoints -= damage
 	$HitEffect.trigger_hit_effect()
 	if hitpoints <= 0:
-		attacker.emit_signal("fighter_killed_opponent")
+		if attacker != null:
+			attacker.emit_signal("fighter_killed_opponent")
 		death()
 	else:
 		in_invincibility_time = true

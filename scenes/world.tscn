@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=7 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
+[ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/HentaiBox.tscn" id="3_584cy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kgqe"]
 size = Vector2(883, 66)
@@ -43,3 +44,13 @@ position = Vector2(835, 141)
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 visible = false
 default_duration = 1.0
+
+[node name="HentaiBox" parent="." instance=ExtResource("3_584cy")]
+position = Vector2(571, 372)
+
+[node name="Label" type="Label" parent="HentaiBox"]
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 25.0
+offset_bottom = -26.0
+text = "Hentai"
