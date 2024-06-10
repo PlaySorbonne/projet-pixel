@@ -5,6 +5,9 @@
 
 [node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
+speed = 300.0
+jump_velocity = -700.0
+weight_multiplier = 1.0
 attack_damage = 1
 attack_intensity = 1
 attack_duration = 0.125

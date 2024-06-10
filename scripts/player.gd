@@ -3,9 +3,9 @@ class_name PlayerCharacter
 
 enum Controls {KEYBOARD, CONTROLLER}
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -700.0
-
+@export var speed := 300.0
+@export var jump_velocity := -700.0
+@export var weight_multiplier := 1.0
 @export var attack_damage := 1
 @export var attack_intensity := 1 #for breaking super armor and flying velocity
 @export var attack_duration := 0.125
@@ -28,7 +28,7 @@ func set_control_type(type: int):
 
 func _physics_process(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity * delta * weight_multiplier
 	move_and_slide()
 
 func _input(event : InputEvent):
@@ -41,19 +41,24 @@ func _input(event : InputEvent):
 	if is_correct_control_type && event.device == control_device:
 		# Handle jump.
 		if event.is_action_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+			velocity.y = jump_velocity * weight_multiplier / 1.5
+		elif event.is_action_released("jump") and velocity.y < -50.0:
+			velocity.y = -50.0
 		
+		# Handle normal attack
 		if event.is_action_pressed("attack"):
 			attack()
 		
+		# Handle special 
 		elif event.is_action_pressed("special"):
 			print("character [" + str(character_id) + "] special !")
 		
+		# Handle movement
 		elif event.is_action_pressed("right"):
-			velocity.x = SPEED
+			velocity.x = speed
 			check_turn(true)
 		elif event.is_action_pressed("left"):
-			velocity.x = -SPEED
+			velocity.x = -speed
 			check_turn(false)
 		elif (event.is_action_released("right") && velocity.x > 0) || (
 		event.is_action_released("left") && velocity.x < 0):
