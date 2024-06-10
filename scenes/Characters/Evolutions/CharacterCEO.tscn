@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_i2eyq"]
 
 [node name="CharacterCEO" instance=ExtResource("1_i2eyq")]
-evolution_name = "Player"
 speed = 400.0
 jump_max_duration = 0.35
 weight_multiplier = 4.0

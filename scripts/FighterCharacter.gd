@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name FighterCharacter
 
+signal fighter_killed_opponent
 signal fighter_died
 
 @export var max_hitpoints := 3
@@ -51,6 +52,7 @@ func hit(damage : int, attacker : FighterCharacter = null):
 	hitpoints -= damage
 	$HitEffect.trigger_hit_effect()
 	if hitpoints <= 0:
+		attacker.emit_signal("fighter_killed_opponent")
 		death()
 	else:
 		in_invincibility_time = true

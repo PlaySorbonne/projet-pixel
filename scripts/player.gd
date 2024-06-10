@@ -2,8 +2,10 @@ extends FighterCharacter
 class_name PlayerCharacter
 
 enum Controls {KEYBOARD, CONTROLLER}
+enum Evolutions {CEO, CryptoBro, Weeb}
 
-@export var evolution_name := "Player"
+
+@export var evolution_name : Evolutions = Evolutions.CEO
 @export var speed := 600.0
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
@@ -30,7 +32,7 @@ func _ready():
 	_update_debug_text()
 
 func _update_debug_text():
-	$EvolutionLabel.text = evolution_name + str(hitpoints) + "/" + str(max_hitpoints)
+	$EvolutionLabel.text = str(Evolutions.keys()[evolution_name]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_control_device(device: int):
 	control_device = device

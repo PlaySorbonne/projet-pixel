@@ -5,7 +5,7 @@
 
 [node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
-evolution_name = "Player"
+evolution_name = 0
 speed = 600.0
 jump_velocity = 600.0
 jump_max_duration = 0.2
