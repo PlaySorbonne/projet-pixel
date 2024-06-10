@@ -3,7 +3,11 @@ class_name PlayerCharacter
 
 enum Controls {KEYBOARD, CONTROLLER}
 enum Evolutions {CEO, CryptoBro, Weeb}
-
+const EvolutionCharacters = {
+	Evolutions.CEO : preload("res://scenes/Characters/Evolutions/CharacterCEO.tscn"),
+	Evolutions.CryptoBro : preload("res://scenes/Characters/Evolutions/CharacterCryptoBro.tscn"),
+	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/CharacterWeeb.tscn")
+}
 
 @export var evolution_name : Evolutions = Evolutions.CEO
 @export var speed := 600.0
@@ -16,7 +20,7 @@ enum Evolutions {CEO, CryptoBro, Weeb}
 @export var attack_wind_up := 0.0
 @export var attack_recovery := 0.3
 
-
+const EvolutionParticles = preload("res://scenes/Characters/Elements/CanEvolveParticles.tscn")
 var control_device: int = 0
 var control_type: Controls
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -26,6 +30,7 @@ var can_attack := true
 var attacking := false
 var is_jumping := false
 var can_evolve := false
+var evolution_particles : GPUParticles2D = null
 
 func _ready():
 	super._ready()
@@ -97,6 +102,13 @@ func _on_jump_timer_timeout():
 func evolve():
 	pass
 
+func death():
+	super.death()
+	if can_evolve:
+		can_evolve = false
+		evolution_particles.queue_free()
+		evolution_particles = null
+
 func hit(damage : int, attacker : FighterCharacter = null):
 	super.hit(damage, attacker)
 	_update_debug_text()
@@ -125,3 +137,8 @@ func check_turn(right  : bool):
 	if right != facing_right and not attacking:
 		facing_right = right
 		scale.x *= -1
+
+func _on_fighter_killed_opponent():
+	can_evolve = true
+	evolution_particles = EvolutionParticles.instantiate()
+	add_child(evolution_particles)

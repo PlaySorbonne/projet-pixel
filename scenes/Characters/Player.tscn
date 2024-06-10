@@ -29,4 +29,5 @@ text = "Player 9/9"
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
