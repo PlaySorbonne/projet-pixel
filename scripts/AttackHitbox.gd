@@ -6,6 +6,7 @@ var intensity = 1
 var team := 0
 var can_multi_hit := false
 var delay_between_hits := 0.4
+var attacker : FighterCharacter
 
 static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
 duration : float, attached_to_character := true, hit_intensity := 1, size := Vector2.ONE,
@@ -14,6 +15,7 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 	var hitbox : Hitbox = my_scene.instantiate()
 	hitbox.team = parent.team
 	hitbox.damage = hit_damage
+	hitbox.attacker = parent
 	hitbox.intensity = hit_intensity
 	if attached_to_character:
 		parent.add_child(hitbox)
@@ -35,7 +37,7 @@ func end_hitbox():
 
 func _on_body_entered(body):
 	if body.has_method("hit") and body.team != team:
-		body.hit(damage)
+		body.hit(damage, attacker)
 
 func _on_timer_timeout():
 	end_hitbox()

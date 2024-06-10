@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4eqmtc8af2fn"]
+
+[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_i2eyq"]
+
+[node name="CharacterCEO" instance=ExtResource("1_i2eyq")]
+evolution_name = "Player"
+speed = 400.0
+jump_max_duration = 0.35
+weight_multiplier = 4.0
+attack_damage = 3
+max_hitpoints = 9
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(0.663139, 0.000526262, 0.70538, 1)

@@ -5,9 +5,10 @@
 
 [node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
+evolution_name = "Player"
 speed = 600.0
 jump_velocity = 600.0
-jump_duration = 0.2
+jump_max_duration = 0.2
 weight_multiplier = 2.5
 attack_damage = 1
 attack_intensity = 1
@@ -17,5 +18,15 @@ attack_recovery = 0.3
 
 [node name="JumpTimer" type="Timer" parent="." index="5"]
 one_shot = true
+
+[node name="EvolutionLabel" type="Label" parent="." index="6"]
+offset_left = -100.0
+offset_top = -110.0
+offset_right = 1.0
+offset_bottom = -84.0
+scale = Vector2(2, 2)
+text = "Player 9/9"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

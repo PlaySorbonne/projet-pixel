@@ -3,9 +3,10 @@ class_name PlayerCharacter
 
 enum Controls {KEYBOARD, CONTROLLER}
 
+@export var evolution_name := "Player"
 @export var speed := 600.0
 @export var jump_velocity := 600.0
-@export var jump_duration := 0.2
+@export var jump_max_duration := 0.2
 @export var weight_multiplier := 2.5
 @export var attack_damage := 1
 @export var attack_intensity := 1 #for breaking super armor and flying velocity
@@ -23,6 +24,13 @@ var can_attack := true
 var attacking := false
 var is_jumping := false
 var can_evolve := false
+
+func _ready():
+	super._ready()
+	_update_debug_text()
+
+func _update_debug_text():
+	$EvolutionLabel.text = evolution_name + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_control_device(device: int):
 	control_device = device
@@ -79,13 +87,17 @@ func _input(event : InputEvent):
 func jump():
 	velocity.y = -jump_velocity
 	is_jumping = true
-	$JumpTimer.start(jump_duration)
+	$JumpTimer.start(jump_max_duration)
 
 func _on_jump_timer_timeout():
 	is_jumping = false
 
 func evolve():
 	pass
+
+func hit(damage : int, attacker : FighterCharacter = null):
+	super.hit(damage, attacker)
+	_update_debug_text()
 
 func special():
 	attacking = true

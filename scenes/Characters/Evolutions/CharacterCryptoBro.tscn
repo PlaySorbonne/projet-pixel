@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwrcrj5j3sw8a"]
+
+[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_d7u8s"]
+
+[node name="CharacterCryptoBro" instance=ExtResource("1_d7u8s")]
+evolution_name = "Player"
+attack_damage = 2
+max_hitpoints = 5

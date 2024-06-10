@@ -44,12 +44,13 @@ func set_player_active(new_activity : bool):
 	set_physics_process(new_activity)
 	set_process_input(new_activity)
 
-func hit(damage : int):
+func hit(damage : int, attacker : FighterCharacter = null):
 	if in_invincibility_time or not alive:
+		print("return")
 		return
 	hitpoints -= damage
 	$HitEffect.trigger_hit_effect()
-	if hitpoints < 0:
+	if hitpoints <= 0:
 		death()
 	else:
 		in_invincibility_time = true
