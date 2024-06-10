@@ -13,11 +13,14 @@ func _ready():
 	var player_number = 0
 	for player : PlayerCharacter in GameInfos.players:
 		add_child(player)
-		player.fighter_died.connect(on_player_death)
+		connect_fighter_to_world(player)
 		player_spawns[player.character_id] = spawn_locations[player_number].position
 		player.spawn(player_spawns[player.character_id])
 		player_number += 1
 
+func connect_fighter_to_world(body : PlayerCharacter):
+	body.fighter_died.connect(on_player_death)
+	body.player_evolved.connect(connect_fighter_to_world)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

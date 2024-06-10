@@ -45,7 +45,7 @@ func _ready():
 	_update_debug_text()
 
 func _update_debug_text():
-	$EvolutionLabel.text = str(current_evolution) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
+	$EvolutionLabel.text = "P" + str(character_id) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_control_device(device: int):
 	control_device = device
