@@ -1,6 +1,8 @@
 extends FighterCharacter
 class_name PlayerCharacter
 
+signal player_evolved
+
 enum Controls {KEYBOARD, CONTROLLER}
 enum Evolutions {CEO, CryptoBro, Weeb}
 const EvolutionCharacters = {
@@ -9,7 +11,7 @@ const EvolutionCharacters = {
 	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/CharacterWeeb.tscn")
 }
 
-@export var evolution_name : Evolutions = Evolutions.CEO
+@export var current_evolution : Evolutions = Evolutions.CEO
 @export var speed := 600.0
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
@@ -32,12 +34,18 @@ var is_jumping := false
 var can_evolve := false
 var evolution_particles : GPUParticles2D = null
 
+func copy_player_data(new_body : PlayerCharacter):
+	new_body.character_id = character_id
+	new_body.team = team
+	new_body.control_device = control_device
+	new_body.control_type = control_type
+
 func _ready():
 	super._ready()
 	_update_debug_text()
 
 func _update_debug_text():
-	$EvolutionLabel.text = str(Evolutions.keys()[evolution_name]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
+	$EvolutionLabel.text = str(current_evolution) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_control_device(device: int):
 	control_device = device
@@ -99,8 +107,24 @@ func jump():
 func _on_jump_timer_timeout():
 	is_jumping = false
 
+func spawn(location : Vector2):
+	super.spawn(location)
+	_update_debug_text()
+
 func evolve():
-	pass
+	if current_evolution == Evolutions.Weeb:
+		return
+	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
+	var player_index : int = GameInfos.players.find(self)
+	print("found self in GameInfos.players at " + str(player_index))
+	GameInfos.players[player_index] = new_body
+	get_parent().add_child(new_body)
+	copy_player_data(new_body)
+	new_body.spawn(position)
+	set_player_active(false)
+	emit_signal("player_evolved", new_body)
+	await get_tree().create_timer(1.0).timeout
+	queue_free()
 
 func death():
 	super.death()

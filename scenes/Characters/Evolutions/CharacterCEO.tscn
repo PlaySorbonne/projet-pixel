@@ -10,6 +10,4 @@ attack_damage = 3
 max_hitpoints = 9
 
 [node name="Sprite2D" parent="." index="0"]
-self_modulate = Color(0.663139, 0.000526262, 0.70538, 1)
-
-[connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
+self_modulate = Color(1, 1, 0, 1)
