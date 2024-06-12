@@ -6,5 +6,5 @@ func _on_area_2d_body_entered(body):
 	var player_body : PlayerCharacter = body
 	if player_body.can_evolve and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
-	else:
-		player_body.hit(1000, null)
+	#else:
+	#	player_body.hit(1000, null)
