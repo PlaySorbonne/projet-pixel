@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=10 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
+[ext_resource type="Script" path="res://scripts/EvolutionDummy.gd" id="4_lrqlo"]
+[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kgqe"]
 size = Vector2(883, 66)
@@ -13,6 +15,9 @@ colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p2ea0"]
 gradient = SubResource("Gradient_k4vqh")
 width = 880
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev64r"]
+size = Vector2(119, 123)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -48,9 +53,13 @@ default_duration = 1.0
 [node name="HentaiBox" parent="." instance=ExtResource("3_qwyn0")]
 position = Vector2(571, 372)
 
-[node name="Label" type="Label" parent="HentaiBox"]
-offset_left = -27.0
-offset_top = -49.0
-offset_right = 25.0
-offset_bottom = -26.0
-text = "Hentai"
+[node name="Dummy" type="CharacterBody2D" parent="."]
+position = Vector2(960, 529)
+script = ExtResource("4_lrqlo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummy"]
+texture = ExtResource("5_af80r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_ev64r")

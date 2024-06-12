@@ -40,6 +40,7 @@ func spawn(location : Vector2):
 	tween.tween_property(self, "scale", Vector2.ONE, 1.0)
 	await tween.finished
 	set_player_active(true)
+	velocity = Vector2.ZERO
 	scale = Vector2.ONE
 
 func set_player_active(new_activity : bool):
