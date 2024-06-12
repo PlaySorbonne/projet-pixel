@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqm2lrdfhithq"]
-
-[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_im15i"]
-
-[node name="CharacterWeeb" instance=ExtResource("1_im15i")]
-current_evolution = 2
-max_hitpoints = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt20khpmxutd1"]
+
+[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_y7qbi"]
+
+[node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
+current_evolution = 3

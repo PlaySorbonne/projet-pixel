@@ -11,6 +11,9 @@ var player_spawns = {}
 
 func _ready():
 	var player_number = 0
+	"""if len(GameInfos.players) == 1:
+		GameInfos.players.append(PlayerCharacter.EvolutionCharacters[0].instantiate())
+		GameInfos.players[1].control_device = -1"""
 	for player : PlayerCharacter in GameInfos.players:
 		add_child(player)
 		connect_fighter_to_world(player)

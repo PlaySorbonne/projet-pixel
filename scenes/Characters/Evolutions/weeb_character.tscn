@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://besjdva6q0u5y"]
+
+[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_benh8"]
+
+[node name="WeebCharacter" instance=ExtResource("1_benh8")]
+current_evolution = 4
+max_hitpoints = 1

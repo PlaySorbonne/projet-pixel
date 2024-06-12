@@ -4,11 +4,13 @@ class_name PlayerCharacter
 signal player_evolved
 
 enum Controls {KEYBOARD, CONTROLLER}
-enum Evolutions {CEO, CryptoBro, Weeb}
+enum Evolutions {CEO, CryptoBro, Employee, Mascot, Weeb}
 const EvolutionCharacters = {
-	Evolutions.CEO : preload("res://scenes/Characters/Evolutions/CharacterCEO.tscn"),
-	Evolutions.CryptoBro : preload("res://scenes/Characters/Evolutions/CharacterCryptoBro.tscn"),
-	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/CharacterWeeb.tscn")
+	Evolutions.CEO : preload("res://scenes/Characters/Evolutions/ceo_character.tscn"),
+	Evolutions.CryptoBro : preload("res://scenes/Characters/Evolutions/crypto_bro_character.tscn"),
+	Evolutions.Employee : preload("res://scenes/Characters/Evolutions/employee_character.tscn"),
+	Evolutions.Mascot : preload("res://scenes/Characters/Evolutions/mascot_character.tscn"),
+	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/weeb_character.tscn")
 }
 
 @export var current_evolution : Evolutions = Evolutions.CEO
@@ -85,10 +87,7 @@ func _input(event : InputEvent):
 			
 			# Handle special 
 			elif event.is_action_pressed("special"):
-				if can_evolve:
-					evolve()
-				else:
-					special()
+				evolve()
 		
 		# Handle movement
 		if event.is_action_pressed("right"):
@@ -115,10 +114,15 @@ func evolve():
 	if current_evolution == Evolutions.Weeb:
 		return
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
+	print("current_evolution+1=" + str(current_evolution+1))
+	print("EvolutionCharacters[current_evolution+1]=" + str(EvolutionCharacters[current_evolution+1]))
+	print("Evolutions[current_evolution+1]= " + str(str(Evolutions.keys()[current_evolution+1])))
 	var player_index : int = GameInfos.players.find(self)
 	print("found self in GameInfos.players at " + str(player_index))
 	GameInfos.players[player_index] = new_body
 	get_parent().add_child(new_body)
+	print("new_body = " + str(new_body))
+	await get_tree().create_timer(0.5).timeout
 	copy_player_data(new_body)
 	new_body.spawn(position)
 	set_player_active(false)

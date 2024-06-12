@@ -2,7 +2,7 @@ extends Control
 
 signal StartGame
 
-@export var player_scene: PackedScene
+@export var default_player: PackedScene
 
 var keyboards = []
 var controllers = []
@@ -12,7 +12,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.device not in keyboards:
 			keyboards.append(event.device)
-			var player = player_scene.instantiate()
+			var player = default_player.instantiate()
 			player.control_device = event.device
 			player.control_type = 0
 			players.append(player)
@@ -20,7 +20,7 @@ func _input(event):
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		if event.device not in controllers:
 			controllers.append(event.device)
-			var player = player_scene.instantiate()
+			var player = default_player.instantiate()
 			player.control_device = event.device
 			player.control_type = 1
 			players.append(player)

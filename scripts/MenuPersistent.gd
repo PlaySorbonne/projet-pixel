@@ -9,6 +9,7 @@ var screen_transition : ScreenTransition
 func _ready():
 	screen_transition = $CanvasLayer/ScreenTransition
 	screen_transition.end_screen_transition()
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
 func _on_title_screen_button_start_pressed():
 	screen_transition.new_screen_transition()

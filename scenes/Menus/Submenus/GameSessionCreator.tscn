@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://coooilpqwhd7p"]
 
 [ext_resource type="Script" path="res://scripts/GameSessionCreator.gd" id="1_dew6n"]
-[ext_resource type="PackedScene" uid="uid://d4eqmtc8af2fn" path="res://scenes/Characters/Evolutions/CharacterCEO.tscn" id="2_hs0yx"]
+[ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_m1mao"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_keads"]
 font_size = 28
@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dew6n")
-player_scene = ExtResource("2_hs0yx")
+default_player = ExtResource("2_m1mao")
 
 [node name="Button" type="Button" parent="."]
 layout_direction = 2

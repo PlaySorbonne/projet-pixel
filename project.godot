@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameInfos="*res://scripts/GameInfos.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 right={
