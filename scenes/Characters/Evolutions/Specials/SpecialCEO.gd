@@ -1,5 +1,31 @@
 extends BaseSpecial
 
+@export var dash_speed := 2000
+@export var dash_duration := 0.125
+@export var dash_cooldown := 0.25
+
+var can_use_special := true
+
 func special():
-	player.velocity
-	print("CEO special !")
+	if not can_use_special:
+		return
+	can_use_special = false
+	player.attacking = true
+	player.computing_movement = false
+	var dash_direction := Vector2.ZERO
+	if Input.is_action_pressed("up"):
+		dash_direction.y = -1
+	if Input.is_action_pressed("down"):
+		dash_direction.y += 1
+	if Input.is_action_pressed("left"):
+		dash_direction.x = -1
+	if Input.is_action_pressed("right"):
+		dash_direction.x += 1
+	player.velocity = dash_direction.normalized() * dash_speed
+	await get_tree().create_timer(dash_duration).timeout
+	player.movement_velocity.y = (player.velocity.y) / 20
+	player.computing_movement = true
+	player.attacking = false
+	
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_use_special = true

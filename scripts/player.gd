@@ -25,7 +25,6 @@ const EvolutionCharacters = {
 @export var attack_recovery := 0.3
 
 
-const EvolutionParticles = preload("res://scenes/Characters/Elements/CanEvolveParticles.tscn")
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
 var control_device: int = 0
@@ -35,8 +34,8 @@ var facing_right := true
 var can_attack := true
 var attacking := false
 var is_jumping := false
-var can_evolve := false
-var evolution_particles : GPUParticles2D = null
+var movement_velocity := Vector2.ZERO
+var computing_movement := true
 
 func copy_player_data(new_body : PlayerCharacter):
 	new_body.character_id = character_id
@@ -58,12 +57,14 @@ func set_control_type(type: int):
 	control_type = type
 
 func _physics_process(delta):
-	if (not is_on_floor()) and (not is_jumping):
-		velocity.y += gravity * delta * weight_multiplier
+	if computing_movement and (not is_on_floor()) and (not is_jumping):
+		movement_velocity.y += gravity * delta * weight_multiplier
 	if velocity.x > 10.0:
 		check_turn(true)
 	elif velocity.x < -10.0:
 		check_turn(false)
+	if computing_movement:
+		velocity = movement_velocity
 	move_and_slide()
 
 func _input(event : InputEvent):
@@ -78,9 +79,15 @@ func _input(event : InputEvent):
 		if event.is_action_pressed("jump") and is_on_floor():
 			jump()
 		elif event.is_action_released("jump") and velocity.y < -50.0:
-			#velocity.y = -50.0
-			is_jumping = false
-			$JumpTimer.stop()
+			stop_jump()
+		# Handle movement
+		if event.is_action_pressed("right"):
+			movement_velocity.x = speed
+		elif event.is_action_pressed("left"):
+			movement_velocity.x = -speed
+		elif (event.is_action_released("right") && movement_velocity.x > 0) || (
+		event.is_action_released("left") && movement_velocity.x < 0):
+			movement_velocity.x = 0
 		
 		if not attacking:
 			# Handle normal attack
@@ -90,18 +97,15 @@ func _input(event : InputEvent):
 			# Handle special 
 			elif event.is_action_pressed("special"):
 				special()
-		
-		# Handle movement
-		if event.is_action_pressed("right"):
-			velocity.x = speed
-		elif event.is_action_pressed("left"):
-			velocity.x = -speed
-		elif (event.is_action_released("right") && velocity.x > 0) || (
-		event.is_action_released("left") && velocity.x < 0):
-			velocity.x = 0
+
+func stop_jump():
+	if velocity.y < -50.0:
+		movement_velocity.y = -50.0
+		is_jumping = false
+		$JumpTimer.stop()
 
 func jump():
-	velocity.y = -jump_velocity
+	movement_velocity.y = -jump_velocity
 	is_jumping = true
 	$JumpTimer.start(jump_max_duration)
 
@@ -135,10 +139,6 @@ func evolve():
 
 func death():
 	super.death()
-	if can_evolve:
-		can_evolve = false
-		evolution_particles.queue_free()
-		evolution_particles = null
 
 func hit(damage : int, attacker : FighterCharacter = null):
 	super.hit(damage, attacker)
@@ -169,7 +169,4 @@ func check_turn(right: bool):
 		scale.x *= -1
 
 func _on_fighter_killed_opponent():
-	can_evolve = true
-	#evolution_particles = EvolutionParticles.instantiate()
-	#add_child(evolution_particles)
 	evolve()
