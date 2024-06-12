@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3tmfq3mncd8"]
+
+[ext_resource type="Script" path="res://scripts/BaseSpecialAttack.gd" id="1_ueqg3"]
+
+[node name="SpecialAttack" type="Node"]
+script = ExtResource("1_ueqg3")

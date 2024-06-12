@@ -24,11 +24,13 @@ const EvolutionCharacters = {
 @export var attack_wind_up := 0.0
 @export var attack_recovery := 0.3
 
+
 const EvolutionParticles = preload("res://scenes/Characters/Elements/CanEvolveParticles.tscn")
+@onready var specialObj : BaseSpecial = $SpecialAttack
+@onready var AttackLocation = $AttackLocation
 var control_device: int = 0
 var control_type: Controls
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var AttackLocation = $AttackLocation
 var facing_right := true
 var can_attack := true
 var attacking := false
@@ -87,7 +89,7 @@ func _input(event : InputEvent):
 			
 			# Handle special 
 			elif event.is_action_pressed("special"):
-				evolve()
+				special()
 		
 		# Handle movement
 		if event.is_action_pressed("right"):
@@ -144,8 +146,7 @@ func hit(damage : int, attacker : FighterCharacter = null):
 
 func special():
 	attacking = true
-	print("character [" + str(character_id) + "] special !")
-	await get_tree().create_timer(1.0).timeout
+	specialObj.special()
 	attacking = false
 
 func attack():
@@ -169,5 +170,6 @@ func check_turn(right: bool):
 
 func _on_fighter_killed_opponent():
 	can_evolve = true
-	evolution_particles = EvolutionParticles.instantiate()
-	add_child(evolution_particles)
+	#evolution_particles = EvolutionParticles.instantiate()
+	#add_child(evolution_particles)
+	evolve()

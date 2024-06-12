@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=4 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
+[ext_resource type="PackedScene" uid="uid://bq3tmfq3mncd8" path="res://scenes/Characters/Evolutions/Specials/BaseSpecialAttack.tscn" id="3_3foic"]
 
 [node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
@@ -28,6 +29,8 @@ scale = Vector2(2, 2)
 text = "Player 9/9"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="SpecialAttack" parent="." index="7" instance=ExtResource("3_3foic")]
 
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
