@@ -34,6 +34,7 @@ func spawn(location : Vector2):
 	hitpoints = max_hitpoints
 	position = location
 	scale = Vector2.ZERO
+	rotation = 0
 	visible = true
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self, "scale", Vector2.ONE, 1.0)

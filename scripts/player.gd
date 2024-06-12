@@ -108,6 +108,7 @@ func _on_jump_timer_timeout():
 
 func spawn(location : Vector2):
 	super.spawn(location)
+	facing_right = true
 	_update_debug_text()
 
 func evolve():
@@ -161,7 +162,7 @@ func attack():
 	can_attack = true
 	attacking = false
 
-func check_turn(right  : bool):
+func check_turn(right: bool):
 	if right != facing_right and not attacking:
 		facing_right = right
 		scale.x *= -1
