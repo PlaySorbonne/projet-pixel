@@ -9,7 +9,19 @@ extends Node2D
 
 var player_spawns = {}
 
+
+
+func _testing_function():
+	var freezeframe : FreezeFrame = $Camera/FreezeFrame
+	var screenshake : ScreenShake = $Camera/ScreenShake
+	while true:
+		await get_tree().create_timer(2.0).timeout
+		#freezeframe.freeze()
+		screenshake.shake()
+
+
 func _ready():
+	#_testing_function()
 	var player_number = 0
 	"""if len(GameInfos.players) == 1:
 		GameInfos.players.append(PlayerCharacter.EvolutionCharacters[0].instantiate())
