@@ -16,6 +16,7 @@ attack_intensity = 1
 attack_duration = 0.125
 attack_wind_up = 0.0
 attack_recovery = 0.3
+initial_fall_speed = 100
 
 [node name="JumpTimer" type="Timer" parent="." index="5"]
 one_shot = true

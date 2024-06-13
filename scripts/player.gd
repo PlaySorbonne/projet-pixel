@@ -23,6 +23,7 @@ const EvolutionCharacters = {
 @export var attack_duration := 0.125
 @export var attack_wind_up := 0.0
 @export var attack_recovery := 0.3
+@export var initial_fall_speed := 100
 
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
@@ -57,8 +58,12 @@ func set_control_type(type: int):
 	control_type = type
 
 func _physics_process(delta):
-	if computing_movement and (not is_on_floor()) and (not is_jumping):
-		movement_velocity.y += gravity * delta * weight_multiplier
+	if computing_movement and (not is_jumping):
+		movement_velocity 
+		if is_on_floor():
+			movement_velocity.y = initial_fall_speed
+		else:
+			movement_velocity.y += gravity * delta * weight_multiplier
 	if velocity.x > 10.0:
 		check_turn(true)
 	elif velocity.x < -10.0:
