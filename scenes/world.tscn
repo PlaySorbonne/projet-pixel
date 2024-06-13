@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=8 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
 [ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
+[ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/ScreenShake.tscn" id="5_bs5vt"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="5_yc1ep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev64r"]
@@ -46,6 +47,8 @@ shape = SubResource("RectangleShape2D_ev64r")
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 zoom = Vector2(0.6, 0.6)
+
+[node name="ScreenShake" parent="Camera" instance=ExtResource("5_bs5vt")]
 
 [node name="Wall" parent="." instance=ExtResource("5_yc1ep")]
 position = Vector2(571, 1201)
