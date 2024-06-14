@@ -50,14 +50,14 @@ func set_player_active(new_activity : bool):
 	set_physics_process(new_activity)
 	set_process_input(new_activity)
 
-func hit(damage : int, attacker : FighterCharacter = null):
+func hit(damage : int, attacker : Node2D = null):
 	if in_invincibility_time or not alive:
 		print("return")
 		return
 	hitpoints -= damage
 	$HitEffect.trigger_hit_effect()
 	if hitpoints <= 0:
-		if attacker != null:
+		if attacker != null and attacker.has_signal("fighter_killed_opponent"):
 			attacker.emit_signal("fighter_killed_opponent")
 		death()
 	else:

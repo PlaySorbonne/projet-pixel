@@ -17,13 +17,15 @@ const EvolutionCharacters = {
 @export var speed := 600.0
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
-@export var weight_multiplier := 2.5
+@export var fall_speed_multiplier := 2.5
 @export var attack_damage := 1
-@export var attack_intensity := 1 #for breaking super armor and flying velocity
+@export var attack_intensity := 1 #for breaking super armor and knockback speed
 @export var attack_duration := 0.125
 @export var attack_wind_up := 0.0
 @export var attack_recovery := 0.3
 @export var initial_fall_speed := 100
+@export var knockback_multiplier := 1.0
+@export var knockback_damage_threshold := 1
 
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
@@ -36,6 +38,7 @@ var can_attack := true
 var attacking := false
 var is_jumping := false
 var movement_velocity := Vector2.ZERO
+var knockback_velocity := Vector2.ZERO
 var computing_movement := true
 
 func copy_player_data(new_body : PlayerCharacter):
@@ -63,13 +66,14 @@ func _physics_process(delta):
 		if is_on_floor():
 			movement_velocity.y = initial_fall_speed
 		else:
-			movement_velocity.y += gravity * delta * weight_multiplier
+			movement_velocity.y += gravity * delta * fall_speed_multiplier
+	if computing_movement:
+		velocity = movement_velocity + knockback_velocity
+		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.075)
 	if velocity.x > 10.0:
 		check_turn(true)
 	elif velocity.x < -10.0:
 		check_turn(false)
-	if computing_movement:
-		velocity = movement_velocity
 	move_and_slide()
 
 func _input(event : InputEvent):
@@ -145,8 +149,11 @@ func evolve():
 func death():
 	super.death()
 
-func hit(damage : int, attacker : FighterCharacter = null):
+func hit(damage : int, attacker : Node2D = null):
 	super.hit(damage, attacker)
+	if attacker != null and damage >= knockback_damage_threshold:
+		knockback_velocity = (self.global_position - attacker.global_position
+		).normalized() * knockback_multiplier * 750.0 * damage
 	_update_debug_text()
 
 func special():
