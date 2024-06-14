@@ -13,7 +13,7 @@ var player_spawns = {}
 
 func _testing_function():
 	var freezeframe : FreezeFrame = $Camera/FreezeFrame
-	var screenshake : ScreenShake = $Camera/ScreenShake
+	var screenshake : CameraUtils = $Camera/CameraUtils
 	while true:
 		await get_tree().create_timer(2.0).timeout
 		#freezeframe.freeze()

@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
 [ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
-[ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/ScreenShake.tscn" id="5_bs5vt"]
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_th1ca"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="5_yc1ep"]
+[ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_vq42y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev64r"]
 size = Vector2(119, 123)
@@ -51,7 +51,7 @@ zoom = Vector2(0.6, 0.6)
 
 [node name="FreezeFrame" parent="Camera" instance=ExtResource("5_th1ca")]
 
-[node name="ScreenShake" parent="Camera" instance=ExtResource("5_bs5vt")]
+[node name="CameraUtils" parent="Camera" instance=ExtResource("6_vq42y")]
 
 [node name="Wall" parent="." instance=ExtResource("5_yc1ep")]
 position = Vector2(569, 1288)

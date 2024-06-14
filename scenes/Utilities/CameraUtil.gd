@@ -1,5 +1,5 @@
 extends Node
-class_name ScreenShake
+class_name CameraUtils
 
 const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
@@ -9,6 +9,8 @@ var shaking = false
 var frequency := 0.0
 @onready var camera : Camera2D = get_parent()
 
+func zoom_in():
+	pass
 
 func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0):
 	if priority_n >= priority :
