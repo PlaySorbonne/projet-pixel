@@ -4,6 +4,3 @@
 
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
-fall_speed_multiplier = 2.5
-knockback_multiplier = 1.0
-knockback_damage_threshold = 1

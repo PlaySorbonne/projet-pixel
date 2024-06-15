@@ -40,6 +40,7 @@ var is_jumping := false
 var movement_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 var computing_movement := true
+var compute_hits := true
 
 func copy_player_data(new_body : PlayerCharacter):
 	new_body.character_id = character_id
@@ -133,6 +134,10 @@ func spawn(location : Vector2):
 func evolve():
 	if current_evolution == Evolutions.Weeb:
 		return
+	compute_hits = false
+	computing_movement = false
+	velocity = Vector2.ZERO
+	GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	print("current_evolution+1=" + str(current_evolution+1))
 	print("EvolutionCharacters[current_evolution+1]=" + str(EvolutionCharacters[current_evolution+1]))
@@ -142,22 +147,33 @@ func evolve():
 	GameInfos.players[player_index] = new_body
 	get_parent().add_child(new_body)
 	print("new_body = " + str(new_body))
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	copy_player_data(new_body)
 	new_body.spawn(position)
 	set_player_active(false)
 	emit_signal("player_evolved", new_body)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func death():
+	compute_hits = false
+	set_process_input(false)
+	GameInfos.freeze_frame.freeze(0.25)
+	await get_tree().create_timer(2.0).timeout
+	compute_hits = true
+	set_process_input(true)
 	super.death()
 
 func hit(damage : int, attacker : Node2D = null):
+	if not compute_hits:
+		return
 	super.hit(damage, attacker)
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - attacker.global_position
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
+	GameInfos.camera_utils.shake()
+	if hitpoints > 0:
+		GameInfos.freeze_frame.freeze(0.05)
 	_update_debug_text()
 
 func special():
@@ -185,4 +201,6 @@ func check_turn(right: bool):
 		scale.x *= -1
 
 func _on_fighter_killed_opponent():
-	evolve()
+	await get_tree().create_timer(2.5).timeout
+	if alive:
+		evolve()

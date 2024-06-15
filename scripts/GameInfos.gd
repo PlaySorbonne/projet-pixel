@@ -1,6 +1,9 @@
 extends Node
 
 var world : Node2D
+var camera : Camera2D
+var camera_utils : CameraUtils
+var freeze_frame : FreezeFrame
 var players : Array = []
 var players_order : Array = []
 

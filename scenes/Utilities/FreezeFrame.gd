@@ -1,7 +1,8 @@
 extends Node
 class_name FreezeFrame
 
-
+func _ready():
+	GameInfos.freeze_frame = self
 
 func freeze(duration : float = 0.15):
 	var previous_time_scale := Engine.time_scale

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=10 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
 [ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
+[ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="5_d5mk4"]
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_th1ca"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="5_yc1ep"]
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_vq42y"]
@@ -48,6 +49,11 @@ shape = SubResource("RectangleShape2D_ev64r")
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 zoom = Vector2(0.6, 0.6)
+limit_left = -1200
+limit_top = -700
+limit_right = 2400
+limit_bottom = 1400
+script = ExtResource("5_d5mk4")
 
 [node name="FreezeFrame" parent="Camera" instance=ExtResource("5_th1ca")]
 
@@ -62,7 +68,11 @@ position = Vector2(574, -652)
 scale = Vector2(60, 5)
 
 [node name="Wall5" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-86, 915)
+position = Vector2(-126, 822)
+scale = Vector2(10, 1)
+
+[node name="Wall14" parent="." instance=ExtResource("5_yc1ep")]
+position = Vector2(-296, 1004)
 scale = Vector2(10, 1)
 
 [node name="Wall6" parent="." instance=ExtResource("5_yc1ep")]
@@ -70,8 +80,8 @@ position = Vector2(999, 1034)
 scale = Vector2(10, 1)
 
 [node name="Wall7" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(690, 657)
-scale = Vector2(10, 1)
+position = Vector2(573, 668)
+scale = Vector2(15, 1)
 
 [node name="Wall8" parent="." instance=ExtResource("5_yc1ep")]
 position = Vector2(1514, 496)
