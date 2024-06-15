@@ -68,8 +68,12 @@ func _physics_process(delta):
 		else:
 			movement_velocity.y += gravity * delta * fall_speed_multiplier
 	if computing_movement:
+		# need to change the formula for knockback velocity, dosn't feel right as of yet
 		velocity = movement_velocity + knockback_velocity
-		knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.075)
+		if knockback_velocity != Vector2.ZERO:
+			knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.075)
+			if knockback_velocity.length_squared() < 250:
+				knockback_velocity = Vector2.ZERO
 	if velocity.x > 10.0:
 		check_turn(true)
 	elif velocity.x < -10.0:
@@ -152,8 +156,8 @@ func death():
 func hit(damage : int, attacker : Node2D = null):
 	super.hit(damage, attacker)
 	if attacker != null and damage >= knockback_damage_threshold:
-		knockback_velocity = (self.global_position - attacker.global_position
-		).normalized() * knockback_multiplier * 750.0 * damage
+		knockback_velocity = ((self.global_position - attacker.global_position
+		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
 	_update_debug_text()
 
 func special():
