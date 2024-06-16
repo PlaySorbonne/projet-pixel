@@ -17,35 +17,148 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Adjuster"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.004
+anchor_right = 0.459
+anchor_bottom = 0.665
+offset_left = -7.68
+offset_right = -0.280029
+offset_bottom = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.407843)
+color = Color(0, 0, 0, 0.819608)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Adjuster"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.069
-anchor_right = 0.23
-anchor_bottom = 1.0
-offset_top = -0.520004
-offset_right = 0.399994
+anchor_left = 0.019
+anchor_top = 0.071
+anchor_right = 0.433
+anchor_bottom = 0.648
+offset_left = 0.519997
+offset_top = 0.32
+offset_right = -0.360046
+offset_bottom = 0.159973
 grow_vertical = 2
 
 [node name="OptionButton" type="OptionButton" parent="Adjuster/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+[node name="VariableAdjuster" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
 layout_mode = 2
+variable_name = "max_hitpoints"
+variable_description = "how many hitpoints does player have"
+is_integer = true
+
+[node name="VariableAdjuster14" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "invincibility_time"
+variable_description = "[to be implemented]"
+
+[node name="VariableAdjuster15" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "speed"
+variable_description = "general speed of the character"
+
+[node name="VariableAdjuster2" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "jump_velocity"
+variable_description = "speed (and height) of jump"
+
+[node name="VariableAdjuster3" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "jump_max_duration"
+variable_description = "jump higher if button is held"
+
+[node name="VariableAdjuster4" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "fall_speed_multiplier"
+variable_description = "fall faster"
+
+[node name="VariableAdjuster5" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "attack_damage"
+variable_description = "how much damage with attack"
+is_integer = true
+
+[node name="VariableAdjuster6" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "knockback_damage_threshold"
+variable_description = "min damage to get knocked back"
+is_integer = true
+
+[node name="VariableAdjuster7" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "attack_intensity"
+variable_description = "[unused for now]"
+is_integer = true
+
+[node name="VariableAdjuster8" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "attack_duration"
+variable_description = "how long hitbox stays"
+
+[node name="VariableAdjuster9" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "attack_wind_up"
+variable_description = "time between button press and hitbox spawn"
+
+[node name="VariableAdjuster10" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "attack_recovery"
+variable_description = "time between hitbox despawn and can_attack"
+
+[node name="VariableAdjuster11" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "initial_fall_speed"
+variable_description = "fall speed just after leaving the ground"
+
+[node name="VariableAdjuster12" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "knockback_multiplier"
+variable_description = "how far player gets knocked back"
+
+[node name="VariableAdjuster13" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "knockback_interp_factor"
+variable_description = "how quickly knockback fades (work in progress)"
+
+[node name="Control" type="Control" parent="Adjuster/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Adjuster/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="LabelLastPath" type="Label" parent="Adjuster/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "saved to: [not saved ye, click \"Save to file\" to save edited data]"
+
+[node name="Spacer1" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="ButtonSave" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Save to file"
+
+[node name="Spacer2" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="ButtonLoad" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load from file"
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = -1
-anchor_right = 0.093
-anchor_bottom = 0.063
-offset_right = 0.440002
-offset_bottom = -0.0400009
-text = "Stats adjuster"
+anchor_right = 0.104
+anchor_bottom = 0.056
+offset_right = 0.319992
+offset_bottom = 0.519997
+text = "Stats Editor"
 
+[connection signal="item_selected" from="Adjuster/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonSave" to="." method="_on_button_save_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

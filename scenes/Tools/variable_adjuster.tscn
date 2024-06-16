@@ -1,14 +1,30 @@
-[gd_scene format=3 uid="uid://djuptrxjle0ux"]
+[gd_scene load_steps=2 format=3 uid="uid://djuptrxjle0ux"]
+
+[ext_resource type="Script" path="res://scripts/variable_adjuster.gd" id="1_uby5d"]
 
 [node name="VariableAdjuster" type="HBoxContainer"]
+script = ExtResource("1_uby5d")
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelName" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 text = "VarName"
 
 [node name="SpinBox" type="SpinBox" parent="."]
 layout_mode = 2
+step = 0.001
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonReset" type="Button" parent="."]
 layout_mode = 2
 text = "Reset"
+
+[node name="Spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 2
+text = "description"
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="ButtonReset" to="." method="_on_button_reset_pressed"]
