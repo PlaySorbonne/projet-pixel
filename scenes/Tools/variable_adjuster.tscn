@@ -15,7 +15,6 @@ layout_mode = 2
 min_value = -999999.0
 max_value = 1e+07
 step = 0.001
-value = -0.000158298
 
 [node name="ButtonReset" type="Button" parent="."]
 layout_mode = 2
