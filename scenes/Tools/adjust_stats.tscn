@@ -43,6 +43,7 @@ grow_vertical = 2
 
 [node name="OptionButton" type="OptionButton" parent="Adjuster/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 
 [node name="VariableAdjuster" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
 layout_mode = 2
@@ -153,6 +154,7 @@ anchor_right = 0.104
 anchor_bottom = 0.056
 offset_right = 0.319992
 offset_bottom = 0.519997
+focus_mode = 0
 text = "Stats Editor"
 
 [node name="FileDialog" type="FileDialog" parent="."]

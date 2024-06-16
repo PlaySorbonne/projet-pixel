@@ -2,6 +2,8 @@
 extends HBoxContainer
 class_name VariableAdjuster
 
+signal var_changed
+
 @export var variable_name := "HaelthPionts" : set=_on_var_name_changed
 @export var variable_description := "descritpion" : set=_on_description_changed
 @export var is_integer := false
@@ -23,6 +25,7 @@ func _on_default_value_changed(new_val):
 func _on_value_changed(new_val):
 	$SpinBox.value = new_val
 	value = new_val
+	emit_signal("var_changed")
 
 func _on_description_changed(new_val : String):
 	variable_description = new_val
