@@ -38,4 +38,7 @@ func _on_button_save_pressed():
 	saved_path_node.text = "saved to: " + last_open_file_path
 
 func _on_option_button_item_selected(index):
-	$Adjuster/VBoxContainer/OptionButton.get_item_text(index)
+	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
+	print("key = " + k)
+	for adj : VariableAdjuster in variable_adjusters:
+		adj.value = variables_data[k][adj.variable_name]

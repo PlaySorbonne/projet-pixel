@@ -6,7 +6,7 @@ class_name VariableAdjuster
 @export var variable_description := "descritpion" : set=_on_description_changed
 @export var is_integer := false
 
-var value = -1
+var value = -1 : set=_on_value_changed
 var target_object : PlayerCharacter.Evolutions = PlayerCharacter.Evolutions.CEO
 var variable_default_value = -1 : set=_on_default_value_changed
 
@@ -19,6 +19,10 @@ func _ready():
 func _on_default_value_changed(new_val):
 	$SpinBox.value = new_val
 	variable_default_value = new_val
+
+func _on_value_changed(new_val):
+	$SpinBox.value = new_val
+	value = new_val
 
 func _on_description_changed(new_val : String):
 	variable_description = new_val
