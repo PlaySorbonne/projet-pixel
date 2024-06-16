@@ -1,11 +1,12 @@
 extends CanvasLayer
 
+var last_open_file_path : String = ""
 var is_active := false
-var last_open_file_path : String = "user://ProjetPixelGDdata.txt"
 @onready var char_selector := $Adjuster/VBoxContainer/OptionButton
 @onready var saved_path_node := $Adjuster/VBoxContainer/HBoxContainer/LabelLastPath
 var variable_adjusters : Array = []
 var variables_data : Dictionary = {}
+var is_saving_data := true
 
 func _ready():
 	for c in $Adjuster/VBoxContainer.get_children():
@@ -32,13 +33,64 @@ func set_adjuster_active(new_active : bool):
 	is_active = new_active
 	$Adjuster.visible = is_active
 
-func _on_button_save_pressed():
-	var save_game = FileAccess.open(last_open_file_path, FileAccess.WRITE)
-	save_game.store_line(JSON.stringify(variables_data))
-	saved_path_node.text = "saved to: " + last_open_file_path
+func _on_option_button_item_selected(_index):
+	update_infos()
 
-func _on_option_button_item_selected(index):
+func update_infos():
+	var index = $Adjuster/VBoxContainer/OptionButton.selected
 	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
-	print("key = " + k)
 	for adj : VariableAdjuster in variable_adjusters:
 		adj.value = variables_data[k][adj.variable_name]
+
+func update_data():
+	var index = $Adjuster/VBoxContainer/OptionButton.selected
+	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
+	for adj : VariableAdjuster in variable_adjusters:
+		variables_data[k][adj.variable_name] = adj.value
+
+func _on_button_save_pressed():
+	$FileDialog.file_mode = 4
+	$FileDialog.popup_centered()
+	is_saving_data = true
+
+func _on_button_load_pressed():
+	$FileDialog.file_mode = 0
+	$FileDialog.popup_centered()
+	is_saving_data = false
+
+func _on_file_dialog_file_selected(path):
+	if is_saving_data:
+		save_custom_data(path)
+	else:
+		load_custom_data(path)
+
+func load_custom_data(path):
+	var save_game = FileAccess.open(path, FileAccess.READ)
+	var ordered_keys := {}
+	for i in PlayerCharacter.Evolutions.values():
+		ordered_keys[i] = PlayerCharacter.Evolutions.find_key(i)
+	var line = 0
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			line += 1
+			continue
+		var ev_data = json.get_data()
+		variables_data[ordered_keys[line]] = ev_data
+		print("ev_data = " + str(ev_data))
+		line += 1
+	update_infos()
+
+func save_custom_data(path):
+	update_data()
+	var save_game = FileAccess.open(path, FileAccess.WRITE)
+	for i in PlayerCharacter.Evolutions.values():
+		print("i = " +str(i))
+		var k : String = PlayerCharacter.Evolutions.find_key(i)
+		save_game.store_line(JSON.stringify(variables_data[k]))
+
+func _on_option_button_button_down():
+	update_data()

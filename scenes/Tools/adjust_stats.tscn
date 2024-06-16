@@ -131,10 +131,6 @@ layout_mode = 2
 layout_mode = 2
 alignment = 2
 
-[node name="LabelLastPath" type="Label" parent="Adjuster/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "saved to: [not saved ye, click \"Save to file\" to save edited data]"
-
 [node name="Spacer1" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -159,6 +155,14 @@ offset_right = 0.319992
 offset_bottom = 0.519997
 text = "Stats Editor"
 
+[node name="FileDialog" type="FileDialog" parent="."]
+size = Vector2i(800, 500)
+access = 2
+
+[connection signal="button_down" from="Adjuster/VBoxContainer/OptionButton" to="." method="_on_option_button_button_down"]
 [connection signal="item_selected" from="Adjuster/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonLoad" to="." method="_on_button_load_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
