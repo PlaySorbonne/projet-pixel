@@ -18,14 +18,15 @@ const EvolutionCharacters = {
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
 @export var fall_speed_multiplier := 2.5
-@export var attack_damage := 1
+@export var attack_damage : int = 1
+@export var knockback_damage_threshold : int = 1
 @export var attack_intensity := 1 #for breaking super armor and knockback speed
 @export var attack_duration := 0.125
 @export var attack_wind_up := 0.0
 @export var attack_recovery := 0.3
-@export var initial_fall_speed := 100
+@export var initial_fall_speed := 100.0
 @export var knockback_multiplier := 1.0
-@export var knockback_damage_threshold := 1
+@export var knockback_interp_factor := 0.075
 
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
@@ -72,7 +73,7 @@ func _physics_process(delta):
 		# need to change the formula for knockback velocity, dosn't feel right as of yet
 		velocity = movement_velocity + knockback_velocity
 		if knockback_velocity != Vector2.ZERO:
-			knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, 0.075)
+			knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, knockback_interp_factor)
 			if knockback_velocity.length_squared() < 250:
 				knockback_velocity = Vector2.ZERO
 	if velocity.x > 10.0:

@@ -4,3 +4,5 @@
 
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
+initial_fall_speed = 100.0
+knockback_interp_factor = 0.075

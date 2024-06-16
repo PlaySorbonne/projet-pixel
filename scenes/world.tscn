@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=11 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
+[ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_7bqa4"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
 [ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
@@ -14,6 +15,8 @@ size = Vector2(119, 123)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
+
+[node name="AdjustStats" parent="." instance=ExtResource("2_7bqa4")]
 
 [node name="SpawnLocation1" type="Node2D" parent="."]
 position = Vector2(245, 139)
