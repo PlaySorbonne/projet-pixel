@@ -9,9 +9,6 @@ var can_use_special := true
 func special():
 	if not can_use_special:
 		return
-	can_use_special = false
-	player.attacking = true
-	player.computing_movement = false
 	var dash_direction := Vector2.ZERO
 	if Input.is_action_pressed("up"):
 		dash_direction.y = -1
@@ -21,6 +18,11 @@ func special():
 		dash_direction.x = -1
 	if Input.is_action_pressed("right"):
 		dash_direction.x += 1
+	if dash_direction == Vector2.ZERO:
+		return
+	can_use_special = false
+	player.attacking = true
+	player.computing_movement = false
 	player.velocity = dash_direction.normalized() * dash_speed
 	await get_tree().create_timer(dash_duration).timeout
 	player.movement_velocity.y = (player.velocity.y) / 20
