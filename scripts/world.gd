@@ -19,15 +19,25 @@ func _testing_function():
 
 func _ready():
 	#_testing_function()
+	spawn_players()
+	if GlobalVariables.skip_fight_intro:
+		activate_players()
+	else:
+		$StartGameScreen.countdown()
+		await $StartGameScreen.countdown_finished
+		activate_players()
+
+func activate_players():
+	for player : PlayerCharacter in GameInfos.players:
+		player.set_player_active(true)
+
+func spawn_players():
 	var player_number = 0
-	"""if len(GameInfos.players) == 1:
-		GameInfos.players.append(PlayerCharacter.EvolutionCharacters[0].instantiate())
-		GameInfos.players[1].control_device = -1"""
 	for player : PlayerCharacter in GameInfos.players:
 		add_child(player)
 		connect_fighter_to_world(player)
 		player_spawns[player.character_id] = spawn_locations[player_number].position
-		player.spawn(player_spawns[player.character_id])
+		player.spawn(player_spawns[player.character_id], false)
 		player_number += 1
 
 func connect_fighter_to_world(body : PlayerCharacter):

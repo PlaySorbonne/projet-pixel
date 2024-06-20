@@ -63,8 +63,7 @@ func set_control_type(type: int):
 	control_type = type
 
 func _physics_process(delta):
-	if computing_movement and (not is_jumping):
-		movement_velocity 
+	if computing_movement and (not is_jumping): 
 		if is_on_floor():
 			movement_velocity.y = initial_fall_speed
 		else:
@@ -127,8 +126,8 @@ func jump():
 func _on_jump_timer_timeout():
 	is_jumping = false
 
-func spawn(location : Vector2):
-	super.spawn(location)
+func spawn(location : Vector2, activate := true):
+	super.spawn(location, activate)
 	facing_right = true
 	_update_debug_text()
 
