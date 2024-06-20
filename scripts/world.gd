@@ -9,8 +9,6 @@ extends Node2D
 
 var player_spawns = {}
 
-
-
 func _testing_function():
 	var freezeframe : FreezeFrame = $Camera/FreezeFrame
 	var screenshake : CameraUtils = $Camera/CameraUtils
@@ -18,7 +16,6 @@ func _testing_function():
 		await get_tree().create_timer(2.0).timeout
 		#freezeframe.freeze()
 		screenshake.shake()
-
 
 func _ready():
 	#_testing_function()
@@ -46,4 +43,3 @@ func on_player_death(player : FighterCharacter):
 	print("respawn points: " + str(player_spawns) + " char_id = " + str(player.character_id))
 	await get_tree().create_timer(3.0).timeout
 	player.spawn(player_spawns[player.character_id])
-

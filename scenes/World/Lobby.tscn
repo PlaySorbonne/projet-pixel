@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw6ararr3s0li"]
+
+[ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="1_etonq"]
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_iskvi"]
+[ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="2_4d2yk"]
+[ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_ehom0"]
+[ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="3_t32lq"]
+[ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="4_nol33"]
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource("1_iskvi")
+default_player = ExtResource("2_ehom0")
+
+[node name="Wall" parent="." instance=ExtResource("1_etonq")]
+position = Vector2(569, 1288)
+scale = Vector2(60, 5)
+
+[node name="Wall2" parent="." instance=ExtResource("1_etonq")]
+position = Vector2(574, -652)
+scale = Vector2(60, 5)
+
+[node name="Wall3" parent="." instance=ExtResource("1_etonq")]
+position = Vector2(-1154, 310)
+scale = Vector2(5, 30)
+
+[node name="Wall4" parent="." instance=ExtResource("1_etonq")]
+position = Vector2(2323, 331)
+scale = Vector2(5, 30)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.6, 0.6)
+limit_left = -1200
+limit_top = -700
+limit_right = 2400
+limit_bottom = 1400
+script = ExtResource("2_4d2yk")
+
+[node name="FreezeFrame" parent="Camera" instance=ExtResource("3_t32lq")]
+
+[node name="CameraUtils" parent="Camera" instance=ExtResource("4_nol33")]
+
+[node name="SpawnPoint" type="Node2D" parent="."]

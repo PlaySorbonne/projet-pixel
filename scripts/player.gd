@@ -145,6 +145,7 @@ func evolve():
 	print("Evolutions[current_evolution+1]= " + str(str(Evolutions.keys()[current_evolution+1])))
 	var player_index : int = GameInfos.players.find(self)
 	print("found self in GameInfos.players at " + str(player_index))
+
 	GameInfos.players[player_index] = new_body
 	get_parent().add_child(new_body)
 	print("new_body = " + str(new_body))
