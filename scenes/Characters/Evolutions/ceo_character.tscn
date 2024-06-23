@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://gxorr7jk1k24"]
+[gd_scene load_steps=2 format=3 uid="uid://gxorr7jk1k24"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_dytvo"]
-[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialCEO.gd" id="2_vlqeh"]
 
 [node name="CEOCharacter" instance=ExtResource("1_dytvo")]
 attack_damage = 3
@@ -9,9 +8,3 @@ max_hitpoints = 9
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(1, 0, 1, 1)
-
-[node name="SpecialAttack" parent="." index="7"]
-script = ExtResource("2_vlqeh")
-dash_speed = 2000
-dash_duration = 0.125
-dash_cooldown = 0.25
