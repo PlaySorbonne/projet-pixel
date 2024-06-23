@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://42uill6wcnlo"]
+
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/Uni Sans Heavy Italic.otf" id="1_6wjxv"]
+
+[resource]
+font = ExtResource("1_6wjxv")
+font_size = 125
+font_color = Color(0, 0, 0, 1)
+outline_size = 50
+outline_color = Color(0.662745, 0, 0, 1)
+shadow_size = 60
+shadow_color = Color(0, 0, 0, 0.513726)
+shadow_offset = Vector2(20, 20)
