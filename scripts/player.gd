@@ -137,7 +137,7 @@ func evolve():
 	compute_hits = false
 	computing_movement = false
 	velocity = Vector2.ZERO
-	GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
+	#GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	print("current_evolution+1=" + str(current_evolution+1))
 	print("EvolutionCharacters[current_evolution+1]=" + str(EvolutionCharacters[current_evolution+1]))

@@ -34,6 +34,8 @@ func new_screen_transition(duration : float = default_duration, color : Color = 
 
 func start_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
 	$ColorRect.color = color
+	$ColorRect.modulate = Color.TRANSPARENT
+	visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect, "modulate", Color.WHITE, duration)
@@ -42,6 +44,7 @@ func start_screen_transition(duration : float = default_duration/2.0, color : Co
 
 func end_screen_transition(duration : float = default_duration/2.0, color : Color = default_color):
 	$ColorRect.color = color
+	visible = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property($ColorRect, "modulate", Color.TRANSPARENT, duration)

@@ -1,5 +1,7 @@
 extends Node2D
 
+const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
+
 @onready var spawn_locations : Array = [
 	$SpawnLocation1,
 	$SpawnLocation2,
@@ -19,6 +21,8 @@ func _testing_function():
 
 func _ready():
 	#_testing_function()
+	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)
+	await $CanvasLayer/ScreenTransition.ScreenTransitionFinished
 	spawn_players()
 	if GlobalVariables.skip_fight_intro:
 		activate_players()
@@ -26,6 +30,17 @@ func _ready():
 		$StartGameScreen.countdown()
 		await $StartGameScreen.countdown_finished
 		activate_players()
+
+func end_game():
+	for p : PlayerCharacter in GameInfos.players:
+		p.set_player_active(false)
+	add_child(VICTORY_MESSAGE.instantiate())
+	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
+	GameInfos.camera_utils.interp_zoom($Camera.zoom + Vector2(0.1, 0.1), 0.15)
+	await get_tree().create_timer(1.5).timeout
+	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
+	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
+	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
 func activate_players():
 	for player : PlayerCharacter in GameInfos.players:

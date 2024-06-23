@@ -28,12 +28,12 @@ position = Vector2(634, 139)
 position = Vector2(835, 141)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
-visible = false
 default_duration = 1.0
 
-[node name="HentaiBox" parent="." instance=ExtResource("3_qwyn0")]
+[node name="ObjectiveBox" parent="." instance=ExtResource("3_qwyn0")]
 position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -106,3 +106,5 @@ position = Vector2(2323, 331)
 scale = Vector2(5, 30)
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
+
+[connection signal="game_won" from="ObjectiveBox" to="." method="end_game"]
