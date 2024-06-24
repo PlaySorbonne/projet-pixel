@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://mnxpr1v86nro"]
+[gd_scene load_steps=3 format=3 uid="uid://mnxpr1v86nro"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_v7wok"]
+[ext_resource type="Texture2D" uid="uid://xsato445ivdm" path="res://resources/images/champnaked.png" id="2_p6fdm"]
 
 [node name="CryptoBroCharacter" instance=ExtResource("1_v7wok")]
 current_evolution = 1
 max_hitpoints = 5
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.191489, 0.191489)
+texture = ExtResource("2_p6fdm")

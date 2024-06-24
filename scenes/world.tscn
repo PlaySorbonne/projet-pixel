@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_7bqa4"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="3_qwyn0"]
-[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="5_af80r"]
 [ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="5_d5mk4"]
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_th1ca"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="5_yc1ep"]
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_vq42y"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ev64r"]
-size = Vector2(119, 123)
+[ext_resource type="PackedScene" uid="uid://4cf0hnddgr1l" path="res://scenes/Menus/GameUI/game_hud.tscn" id="10_kpnks"]
+[ext_resource type="PackedScene" uid="uid://b8swqp82uj8tl" path="res://scenes/Menus/GameUI/start_game_screen.tscn" id="10_y5qku"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -31,23 +29,13 @@ position = Vector2(634, 139)
 position = Vector2(835, 141)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
-visible = false
 default_duration = 1.0
 
-[node name="HentaiBox" parent="." instance=ExtResource("3_qwyn0")]
+[node name="ObjectiveBox" parent="." instance=ExtResource("3_qwyn0")]
 position = Vector2(571, 372)
-
-[node name="Dummy" type="CharacterBody2D" parent="."]
-position = Vector2(960, 529)
-
-[node name="Sprite2D" type="Sprite2D" parent="Dummy"]
-texture = ExtResource("5_af80r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
-position = Vector2(1, -4)
-shape = SubResource("RectangleShape2D_ev64r")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -117,3 +105,9 @@ scale = Vector2(5, 30)
 [node name="Wall4" parent="." instance=ExtResource("5_yc1ep")]
 position = Vector2(2323, 331)
 scale = Vector2(5, 30)
+
+[node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
+
+[node name="GameHUD" parent="." instance=ExtResource("10_kpnks")]
+
+[connection signal="game_won" from="ObjectiveBox" to="." method="end_game"]
