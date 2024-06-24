@@ -4,21 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
 
 [node name="PlayerPortrait" type="Control"]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 3
-anchor_right = 0.077
-anchor_bottom = 0.139
-offset_right = -0.840012
-offset_bottom = -0.12001
+anchor_right = 0.078
+anchor_bottom = 0.185
+offset_right = 0.23999
+offset_bottom = 0.199997
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c3oa0")
 
 [node name="TexturePortrait" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 69.0
-offset_bottom = 69.0
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -75.0
+offset_right = 75.0
+offset_bottom = -1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_o1d5x")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="."]
 layout_mode = 0
