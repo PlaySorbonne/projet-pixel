@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bq3tmfq3mncd8" path="res://scenes/Characters/Evolutions/Specials/BaseSpecialAttack.tscn" id="3_3foic"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialCEO.gd" id="4_cs6um"]
 
-[node name="PlayerCharacter" instance=ExtResource("1_cukm7")]
+[node name="PlayerCharacter" groups=["player"] instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
 current_evolution = 0
 speed = 600.0
