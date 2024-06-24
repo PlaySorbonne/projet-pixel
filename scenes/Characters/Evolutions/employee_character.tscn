@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4soj6q40wgus"]
+[gd_scene load_steps=3 format=3 uid="uid://c4soj6q40wgus"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_w8fjf"]
+[ext_resource type="Texture2D" uid="uid://bb1tfwbumw1sr" path="res://resources/images/champweird.png" id="2_do4hd"]
 
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.195745, 0.195745)
+texture = ExtResource("2_do4hd")

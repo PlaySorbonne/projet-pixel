@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://gxorr7jk1k24"]
+[gd_scene load_steps=4 format=3 uid="uid://gxorr7jk1k24"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_dytvo"]
+[ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_or0jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8pk"]
+size = Vector2(105, 118)
 
 [node name="CEOCharacter" instance=ExtResource("1_dytvo")]
 attack_damage = 3
 max_hitpoints = 9
 
 [node name="Sprite2D" parent="." index="0"]
-self_modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.356234, 0.356234)
+texture = ExtResource("2_or0jn")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-7.5, -9)
+shape = SubResource("RectangleShape2D_vk8pk")

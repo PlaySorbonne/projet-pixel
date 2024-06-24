@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4b8krq7nd1vw"]
+
+[ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
+[ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
+
+[node name="PlayerPortrait" type="Control"]
+layout_mode = 3
+anchor_right = 0.077
+anchor_bottom = 0.139
+offset_right = -0.840012
+offset_bottom = -0.12001
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3oa0")
+
+[node name="TexturePortrait" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 69.0
+texture = ExtResource("2_o1d5x")
+expand_mode = 1
+
+[node name="LabelName" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Player1"
+
+[node name="LabelEvolution" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "C.E.O."
+
+[node name="LabelHealth" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "9/9"
