@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://cw6ararr3s0li"]
+
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_e0kiy"]
+[ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_t0ou6"]
+[ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="3_foy2r"]
+[ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="4_26wmt"]
+[ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_qy4li"]
+[ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_kmfif"]
+[ext_resource type="PackedScene" uid="uid://cecgvfhb8emqw" path="res://scenes/World/Lobby/StartGameBox.tscn" id="7_oxrwl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fw6dy"]
+font_size = 41
+
+[sub_resource type="Gradient" id="Gradient_agntq"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxkae"]
+gradient = SubResource("Gradient_agntq")
+width = 1000
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource("1_e0kiy")
+default_player = ExtResource("2_t0ou6")
+
+[node name="Wall" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(569, 1288)
+scale = Vector2(60, 5)
+
+[node name="Wall2" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(574, -652)
+scale = Vector2(60, 5)
+
+[node name="Wall3" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(-1154, 310)
+scale = Vector2(5, 30)
+
+[node name="Wall4" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(2323, 331)
+scale = Vector2(5, 30)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+zoom = Vector2(0.6, 0.6)
+limit_left = -1200
+limit_top = -700
+limit_right = 2400
+limit_bottom = 1400
+script = ExtResource("4_26wmt")
+
+[node name="FreezeFrame" parent="Camera" instance=ExtResource("5_qy4li")]
+
+[node name="CameraUtils" parent="Camera" instance=ExtResource("6_kmfif")]
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(485, 198)
+
+[node name="StartGameBox1" parent="." instance=ExtResource("7_oxrwl")]
+position = Vector2(-538, 785)
+
+[node name="StartGameBox2" parent="." instance=ExtResource("7_oxrwl")]
+position = Vector2(111, 785)
+
+[node name="StartGameBox3" parent="." instance=ExtResource("7_oxrwl")]
+position = Vector2(821, 773)
+
+[node name="StartGameBox4" parent="." instance=ExtResource("7_oxrwl")]
+position = Vector2(1508, 777)
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -20.0
+offset_right = 205.0
+offset_bottom = 47.0
+text = "Gardez une touche appuyée pour rejoindre la partie"
+label_settings = SubResource("LabelSettings_fw6dy")
+
+[node name="PressKeyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LoadingBar" type="TextureRect" parent="."]
+offset_left = 10.0
+offset_top = 67.0
+offset_right = 266.0
+offset_bottom = 94.0
+texture = SubResource("GradientTexture1D_nxkae")
+
+[connection signal="timeout" from="PressKeyTimer" to="." method="_on_press_key_timer_timeout"]

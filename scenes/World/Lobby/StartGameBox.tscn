@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cecgvfhb8emqw"]
+
+[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="1_u1urw"]
+[ext_resource type="Script" path="res://scripts/StartGameBox.gd" id="1_u1xky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf111"]
+size = Vector2(171, 401)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ehy7"]
+font_size = 31
+
+[node name="StartGameBox" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_u1xky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21.5, 137.5)
+shape = SubResource("RectangleShape2D_sf111")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21.5, 137)
+scale = Vector2(1.33594, 3.14062)
+texture = ExtResource("1_u1urw")
+
+[node name="Label" type="Label" parent="."]
+offset_top = -109.0
+offset_right = 45.0
+offset_bottom = -65.0
+label_settings = SubResource("LabelSettings_6ehy7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
