@@ -54,17 +54,8 @@ script = ExtResource("4_26wmt")
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(485, 198)
 
-[node name="StartGameBox1" parent="." instance=ExtResource("7_oxrwl")]
-position = Vector2(-538, 785)
-
-[node name="StartGameBox2" parent="." instance=ExtResource("7_oxrwl")]
-position = Vector2(111, 785)
-
-[node name="StartGameBox3" parent="." instance=ExtResource("7_oxrwl")]
-position = Vector2(821, 773)
-
-[node name="StartGameBox4" parent="." instance=ExtResource("7_oxrwl")]
-position = Vector2(1508, 777)
+[node name="StartGameBox" parent="." instance=ExtResource("7_oxrwl")]
+position = Vector2(-949, 805)
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -7.0
@@ -84,4 +75,8 @@ offset_right = 266.0
 offset_bottom = 94.0
 texture = SubResource("GradientTexture1D_nxkae")
 
+[connection signal="PlayerExited" from="." to="StartGameBox" method="_on_player_exited"]
+[connection signal="PlayerJoined" from="." to="StartGameBox" method="_on_player_joined"]
+[connection signal="body_entered" from="StartGameBox" to="." method="_on_start_game_box_body_entered"]
+[connection signal="body_exited" from="StartGameBox" to="." method="_on_start_game_box_body_exited"]
 [connection signal="timeout" from="PressKeyTimer" to="." method="_on_press_key_timer_timeout"]

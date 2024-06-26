@@ -4,29 +4,32 @@
 [ext_resource type="Script" path="res://scripts/StartGameBox.gd" id="1_u1xky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sf111"]
-size = Vector2(171, 401)
+size = Vector2(850, 402)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ehy7"]
 font_size = 31
 
 [node name="StartGameBox" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_u1xky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21.5, 137.5)
+position = Vector2(361, 137)
 shape = SubResource("RectangleShape2D_sf111")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(21.5, 137)
-scale = Vector2(1.33594, 3.14062)
+position = Vector2(362.5, 137)
+scale = Vector2(6.66406, 3.14062)
 texture = ExtResource("1_u1urw")
 
 [node name="Label" type="Label" parent="."]
-offset_top = -109.0
-offset_right = 45.0
-offset_bottom = -65.0
+offset_left = 120.0
+offset_top = -113.0
+offset_right = 575.0
+offset_bottom = -69.0
 label_settings = SubResource("LabelSettings_6ehy7")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
