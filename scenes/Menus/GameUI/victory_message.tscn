@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://drfk3gw4af7i0"]
 
 [ext_resource type="Script" path="res://scripts/victory_message.gd" id="1_oycss"]
-[ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://scenes/Menus/GameUI/gameMessageLabel.tres" id="1_v06bv"]
+[ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://resources/fonts/gameMessageLabel.tres" id="1_v06bv"]
 [ext_resource type="Shader" path="res://scenes/Menus/GameUI/gameMessageShader.gdshader" id="1_yfc7k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_el8f3"]

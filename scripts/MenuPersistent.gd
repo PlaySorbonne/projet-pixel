@@ -8,6 +8,7 @@ var screen_transition : ScreenTransition
 
 
 func _ready():
+	GameInfos.reset_game_infos()
 	screen_transition = $CanvasLayer/ScreenTransition
 	screen_transition.end_screen_transition()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)

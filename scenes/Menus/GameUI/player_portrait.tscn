@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=5 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
+[ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
+[ext_resource type="LabelSettings" uid="uid://iu6ob7xdc80l" path="res://resources/fonts/player_portraitLabel.tres" id="3_hssq3"]
 
 [node name="PlayerPortrait" type="Control"]
 custom_minimum_size = Vector2(250, 200)
@@ -13,6 +15,41 @@ offset_bottom = 0.199997
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c3oa0")
+
+[node name="TextureBackground" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -80.0
+offset_top = 6.0
+offset_right = 106.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lyqqt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TexturePortraitBackground" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -93.0
+offset_top = -18.0
+offset_right = 93.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o1d5x")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TexturePortrait" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(150, 150)
@@ -32,18 +69,28 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 49.0
+offset_top = 158.0
+offset_right = 149.0
+offset_bottom = 181.0
 text = "Player1"
+label_settings = ExtResource("3_hssq3")
 
 [node name="LabelEvolution" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "C.E.O."
+offset_left = 147.0
+offset_top = 141.0
+offset_right = 254.0
+offset_bottom = 164.0
+text = "EMPLOYE"
+label_settings = ExtResource("3_hssq3")
 
 [node name="LabelHealth" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 149.0
+offset_top = 169.0
+offset_right = 219.0
+offset_bottom = 192.0
 text = "9/9"
+label_settings = ExtResource("3_hssq3")
+horizontal_alignment = 1

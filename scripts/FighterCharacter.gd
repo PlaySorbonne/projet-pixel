@@ -2,7 +2,9 @@ extends CharacterBody2D
 class_name FighterCharacter
 
 signal fighter_killed_opponent
+signal fighter_hit
 signal fighter_died
+signal player_spawned
 
 @export var max_hitpoints := 3
 @export var invincibility_time := 0.2
@@ -45,6 +47,7 @@ func spawn(location : Vector2, activate := true):
 		set_player_active(true)
 	velocity = Vector2.ZERO
 	scale = Vector2.ONE
+	emit_signal("player_spawned")
 
 func set_player_active(new_activity : bool):
 	$CollisionShape2D.disabled = not new_activity
@@ -58,6 +61,7 @@ func hit(damage : int, attacker : Node2D = null):
 		print("return")
 		return
 	hitpoints -= damage
+	emit_signal("fighter_hit")
 	$HitEffect.trigger_hit_effect()
 	if hitpoints <= 0:
 		if attacker != null and attacker.has_signal("fighter_killed_opponent"):

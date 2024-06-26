@@ -21,6 +21,8 @@ func _testing_function():
 
 func _ready():
 	#_testing_function()
+	GameInfos.game_started = true
+	var hud_objects = $GameHUD.add_players()
 	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.ScreenTransitionFinished
 	spawn_players()

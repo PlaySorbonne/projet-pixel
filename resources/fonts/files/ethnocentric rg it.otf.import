@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dcfym0h2r1yu5"
-path="res://.godot/imported/Uni Sans Heavy Italic.otf-38a25d26d5cf46b1b55a9566fe845541.fontdata"
+uid="uid://cgtlocqyr0n85"
+path="res://.godot/imported/ethnocentric rg it.otf-f7217b2ed95924b864794b7a55b95acf.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Uni Sans Heavy Italic.otf"
-dest_files=["res://.godot/imported/Uni Sans Heavy Italic.otf-38a25d26d5cf46b1b55a9566fe845541.fontdata"]
+source_file="res://resources/fonts/files/ethnocentric rg it.otf"
+dest_files=["res://.godot/imported/ethnocentric rg it.otf-f7217b2ed95924b864794b7a55b95acf.fontdata"]
 
 [params]
 

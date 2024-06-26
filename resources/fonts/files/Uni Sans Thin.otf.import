@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cdygprvkwr4xm"
-path="res://.godot/imported/Uni Sans Thin.otf-5970af236b0bd02607b1f78b99f38306.fontdata"
+path="res://.godot/imported/Uni Sans Thin.otf-a5c0e5ca526fbb4c75952f581ac28b99.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Uni Sans Thin.otf"
-dest_files=["res://.godot/imported/Uni Sans Thin.otf-5970af236b0bd02607b1f78b99f38306.fontdata"]
+source_file="res://resources/fonts/files/Uni Sans Thin.otf"
+dest_files=["res://.godot/imported/Uni Sans Thin.otf-a5c0e5ca526fbb4c75952f581ac28b99.fontdata"]
 
 [params]
 

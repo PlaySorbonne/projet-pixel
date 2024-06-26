@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://42uill6wcnlo"]
 
-[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/Uni Sans Heavy Italic.otf" id="1_6wjxv"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="1_6wjxv"]
 
 [resource]
 font = ExtResource("1_6wjxv")

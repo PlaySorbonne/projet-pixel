@@ -13,6 +13,17 @@ const EvolutionCharacters = {
 	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/weeb_character.tscn")
 }
 
+const PLAYER_COLORS = [
+	Color.BLUE,
+	Color.RED,
+	Color.LIME_GREEN,
+	Color.YELLOW,
+	Color.PURPLE,
+	Color.TEAL,
+	Color.MINT_CREAM,
+	Color.WEB_GRAY
+]
+
 @export var current_evolution : Evolutions = Evolutions.CEO
 @export var speed := 600.0
 @export var jump_velocity := 600.0
@@ -42,12 +53,20 @@ var movement_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 var computing_movement := true
 var compute_hits := true
+var player_ID := 0
 
 func copy_player_data(new_body : PlayerCharacter):
 	new_body.character_id = character_id
 	new_body.team = team
 	new_body.control_device = control_device
 	new_body.control_type = control_type
+	new_body.player_ID = player_ID
+
+func _init():
+	if not GameInfos.game_started:
+		player_ID = GameInfos.number_of_players
+		GameInfos.player_colors.append(PLAYER_COLORS[player_ID])
+		GameInfos.number_of_players = player_ID + 1
 
 func _ready():
 	super._ready()

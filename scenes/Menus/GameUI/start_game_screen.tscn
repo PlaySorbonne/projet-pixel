@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8swqp82uj8tl"]
 
 [ext_resource type="Script" path="res://scripts/start_game_screen.gd" id="1_pv6x1"]
-[ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://scenes/Menus/GameUI/gameMessageLabel.tres" id="2_atlvv"]
+[ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://resources/fonts/gameMessageLabel.tres" id="2_atlvv"]
 
 [sub_resource type="Animation" id="Animation_djubf"]
 resource_name = "start_anim"
