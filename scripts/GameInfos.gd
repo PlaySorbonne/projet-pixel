@@ -16,9 +16,6 @@ func reset_game_infos():
 	players = []
 	player_colors = []
 	number_of_players = 0
-	
-func add_player(default_player: PackedScene):
-	
 
 # add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
 # accuracy, evolution...)
