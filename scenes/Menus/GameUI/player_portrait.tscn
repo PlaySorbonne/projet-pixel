@@ -69,7 +69,7 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 62.0
+offset_left = 49.0
 offset_top = 158.0
 offset_right = 149.0
 offset_bottom = 181.0
@@ -78,20 +78,19 @@ label_settings = ExtResource("3_hssq3")
 
 [node name="LabelEvolution" type="Label" parent="."]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 136.0
-offset_right = 227.0
-offset_bottom = 159.0
+offset_left = 147.0
+offset_top = 141.0
+offset_right = 254.0
+offset_bottom = 164.0
 text = "EMPLOYE"
 label_settings = ExtResource("3_hssq3")
-horizontal_alignment = 1
 
 [node name="LabelHealth" type="Label" parent="."]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 166.0
-offset_right = 204.0
-offset_bottom = 189.0
+offset_left = 149.0
+offset_top = 169.0
+offset_right = 219.0
+offset_bottom = 192.0
 text = "9/9"
 label_settings = ExtResource("3_hssq3")
 horizontal_alignment = 1

@@ -11,13 +11,15 @@ var players: Array[PlayerCharacter] = []
 var player_joining: bool = false
 var current_device = 0
 var current_device_type = 0
-		
+
+
 func _process(delta):
 	if player_joining:
 		$LoadingBar.scale.x = (1 - $PressKeyTimer.time_left)
 	else:
 		$LoadingBar.scale.x = 0
 	if check_start_game_conditions():
+		print("start game")
 		start_game()
 		
 func _input(event):

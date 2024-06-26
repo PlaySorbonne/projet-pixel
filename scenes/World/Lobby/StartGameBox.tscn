@@ -10,7 +10,8 @@ size = Vector2(171, 401)
 font_size = 31
 
 [node name="StartGameBox" type="Area2D"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_u1xky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
