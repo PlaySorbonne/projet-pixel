@@ -175,9 +175,14 @@ func evolve():
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
+func remove_player():
+	compute_hits = true
+	movement_velocity = Vector2.ZERO
+
 func death():
 	compute_hits = false
 	set_process_input(false)
+	movement_velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.25)
 	await get_tree().create_timer(2.0).timeout
 	compute_hits = true
