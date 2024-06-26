@@ -6,9 +6,9 @@ signal PlayerExited
 
 @export var default_player: PackedScene
 
+@onready var initial_time_left = $PressKeyTimer.wait_time
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
-
 var player_joining: bool = false
 var current_device: int = 0
 var current_device_type: int = 0
@@ -17,7 +17,7 @@ var ready_players_count: int = 0
 		
 func _process(delta):
 	if player_joining:
-		$LoadingBar.scale.x = (1 - $PressKeyTimer.time_left)
+		$LoadingBar.scale.x = (initial_time_left - $PressKeyTimer.time_left) / initial_time_left
 	else:
 		$LoadingBar.scale.x = 0
 		
@@ -86,7 +86,13 @@ func check_start_game_conditions():
 func _on_start_game_box_body_entered(body):
 	ready_players_count += 1
 	if ready_players_count == len(GameInfos.players) and ready_players_count > 1:
+		remove_players()
 		start_game()
+
+func remove_players():
+	for p : PlayerCharacter in GameInfos.players:
+		p.remove_player()
+		remove_child(p)
 
 func _on_start_game_box_body_exited(body):
 	ready_players_count -= 1

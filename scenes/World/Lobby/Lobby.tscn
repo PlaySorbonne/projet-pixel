@@ -66,6 +66,7 @@ text = "Gardez une touche appuyée pour rejoindre la partie"
 label_settings = SubResource("LabelSettings_fw6dy")
 
 [node name="PressKeyTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="LoadingBar" type="TextureRect" parent="."]
