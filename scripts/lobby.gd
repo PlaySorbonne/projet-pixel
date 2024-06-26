@@ -48,11 +48,11 @@ func add_player(device: int, device_type: int):
 		keyboards.append(device)
 	else:
 		controllers.append(device)
-	GameInfos.add_player(default_player.duplicate())
-	var player = GameInfos.players[len(GameInfos.players) - 1]
+	var player = default_player.instantiate()
 	player.control_device = device
 	player.control_type = device_type
 	player.compute_hits = false
+	GameInfos.players.append(player)
 	
 	add_child(player)
 	connect_fighter_to_world(player)

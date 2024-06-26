@@ -18,8 +18,7 @@ func reset_game_infos():
 	number_of_players = 0
 	
 func add_player(default_player: PackedScene):
-	var player = default_player.instantiate()
-	players.append(player)
+	
 
 # add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
 # accuracy, evolution...)
