@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4soj6q40wgus"]
+[gd_scene load_steps=4 format=3 uid="uid://c4soj6q40wgus"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_w8fjf"]
 [ext_resource type="Texture2D" uid="uid://ci6ttr2ennk5l" path="res://resources/images/characters/Sheep/mouton.png" id="2_o0ghd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rnvo"]
+size = Vector2(60, 100)
 
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
@@ -9,3 +12,6 @@ current_evolution = 2
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.0760719, 0.0760719)
 texture = ExtResource("2_o0ghd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_5rnvo")
