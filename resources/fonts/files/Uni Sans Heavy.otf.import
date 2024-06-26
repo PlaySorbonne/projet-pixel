@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b52bgxkygjcjv"
-path="res://.godot/imported/Uni Sans Heavy.otf-7753a0837156ccad577a9cffb9598095.fontdata"
+path="res://.godot/imported/Uni Sans Heavy.otf-036115e8d4f326116aa3bc889a77a8a3.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Uni Sans Heavy.otf"
-dest_files=["res://.godot/imported/Uni Sans Heavy.otf-7753a0837156ccad577a9cffb9598095.fontdata"]
+source_file="res://resources/fonts/files/Uni Sans Heavy.otf"
+dest_files=["res://.godot/imported/Uni Sans Heavy.otf-036115e8d4f326116aa3bc889a77a8a3.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dj85y8jkfjftd"
-path="res://.godot/imported/Uni Sans Thin Italic.otf-583467a2cb3e4011a34117c0e97b2e07.fontdata"
+uid="uid://dcfym0h2r1yu5"
+path="res://.godot/imported/Uni Sans Heavy Italic.otf-67fbb3c77bf054eba03ee722c38c0079.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Uni Sans Thin Italic.otf"
-dest_files=["res://.godot/imported/Uni Sans Thin Italic.otf-583467a2cb3e4011a34117c0e97b2e07.fontdata"]
+source_file="res://resources/fonts/files/Uni Sans Heavy Italic.otf"
+dest_files=["res://.godot/imported/Uni Sans Heavy Italic.otf-67fbb3c77bf054eba03ee722c38c0079.fontdata"]
 
 [params]
 
