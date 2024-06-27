@@ -14,13 +14,13 @@ var current_device: int = 0
 var current_device_type: int = 0
 
 var ready_players_count: int = 0
-		
+
 func _process(delta):
 	if player_joining:
 		$LoadingBar.scale.x = (initial_time_left - $PressKeyTimer.time_left) / initial_time_left
 	else:
 		$LoadingBar.scale.x = 0
-		
+
 func _input(event):
 	if event is InputEventKey:
 		if event.device not in keyboards:
@@ -84,10 +84,18 @@ func check_start_game_conditions():
 	return ready_start_boxes_nbr == len(GameInfos.players.values()) and ready_start_boxes_nbr != 0
 
 func _on_start_game_box_body_entered(body):
+	if not body.is_in_group("player"): # check if thasaplayer
+		return
 	ready_players_count += 1
+	print("ready_players_count="+str(ready_players_count)+"/"+str(len(GameInfos.players.values())))
 	if ready_players_count == len(GameInfos.players.values()) and ready_players_count > 1:
 		remove_players()
 		start_game()
+
+func _on_start_game_box_body_exited(body: Node2D):
+	if not body.is_in_group("player"): # check if thasaplayer
+		return
+	ready_players_count -= 1
 
 func remove_players():
 	for p : PlayerCharacter in GameInfos.players.values():
@@ -101,9 +109,6 @@ func remove_player(player: PlayerCharacter):
 		controllers.erase(player.control_device)
 	GameInfos.remove_player(player)
 	remove_child(player)
-
-func _on_start_game_box_body_exited(body: Node2D):
-	ready_players_count -= 1
 
 func _on_exit_zone_body_entered(body: Node2D):
 	if body is PlayerCharacter:

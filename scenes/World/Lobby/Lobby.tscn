@@ -67,7 +67,15 @@ script = ExtResource("4_26wmt")
 position = Vector2(485, 198)
 
 [node name="StartGameBox" parent="." instance=ExtResource("7_oxrwl")]
-position = Vector2(-949, 805)
+position = Vector2(-683, 873)
+
+[node name="Label2" type="Label" parent="StartGameBox"]
+offset_left = -23.0
+offset_top = -179.0
+offset_right = 65.0
+offset_bottom = -156.0
+scale = Vector2(3, 3)
+text = "Start Game"
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -7.0
