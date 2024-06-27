@@ -183,7 +183,7 @@ func death():
 	set_process_input(true)
 	super.death()
 
-func hit(damage : int, attacker : Node2D = null):
+func hit(damage : int, attacker : Node2D = null, hit_power := 1.0):
 	if not compute_hits:
 		return
 	var hit_owner : Node2D

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="2_4wnuf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d24b6"]
-bounce = 0.2
+bounce = 0.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3lgd"]
 size = Vector2(160, 200)

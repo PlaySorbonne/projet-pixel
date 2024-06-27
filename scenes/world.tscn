@@ -39,7 +39,7 @@ position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.7, 0.7)
 limit_left = -1200
 limit_top = -700
 limit_right = 2400
@@ -51,20 +51,12 @@ script = ExtResource("5_d5mk4")
 [node name="CameraUtils" parent="Camera" instance=ExtResource("6_vq42y")]
 
 [node name="Wall" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(569, 1288)
+position = Vector2(542, 1115)
 scale = Vector2(60, 5)
 
 [node name="Wall2" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(574, -652)
+position = Vector2(590, -556)
 scale = Vector2(60, 5)
-
-[node name="Wall5" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-64, 784)
-scale = Vector2(10, 1)
-
-[node name="Wall14" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-318, 964)
-scale = Vector2(10, 1)
 
 [node name="Wall6" parent="." instance=ExtResource("5_yc1ep")]
 position = Vector2(999, 1034)
@@ -79,7 +71,7 @@ position = Vector2(1514, 496)
 scale = Vector2(10, 1)
 
 [node name="Wall9" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-270, 420)
+position = Vector2(-433, 511)
 scale = Vector2(10, 1)
 
 [node name="Wall10" parent="." instance=ExtResource("5_yc1ep")]
@@ -91,7 +83,7 @@ position = Vector2(50, -104)
 scale = Vector2(10, 1)
 
 [node name="Wall12" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1126, -45)
+position = Vector2(1022, 8)
 scale = Vector2(10, 1)
 
 [node name="Wall13" parent="." instance=ExtResource("5_yc1ep")]
@@ -99,11 +91,11 @@ position = Vector2(1730, 127)
 scale = Vector2(10, 1)
 
 [node name="Wall3" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-1154, 310)
+position = Vector2(-930, 286)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(2323, 331)
+position = Vector2(2088, 320)
 scale = Vector2(5, 30)
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]

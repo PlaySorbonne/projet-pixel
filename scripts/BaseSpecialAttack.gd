@@ -5,3 +5,4 @@ class_name BaseSpecial
 
 func special():
 	print("Special from player " + str(player.character_id) + " ; not yet implemented!")
+
