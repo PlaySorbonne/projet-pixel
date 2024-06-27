@@ -18,16 +18,12 @@ var in_invincibility_time := false
 
 static var number_of_characters := 0
 
-static func add_new_character() -> int:
-	number_of_characters += 1
-	return number_of_characters
-
 static func reset_character_ids() -> void:
 	number_of_characters = 0
 
 func _ready():
 	visible = false
-	character_id = add_new_character()
+	character_id = GameInfos.number_of_players
 	set_physics_process(false)
 	set_process_input(false)
 	team = character_id # to remove if we decide to do team battles

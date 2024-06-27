@@ -52,7 +52,7 @@ func add_player(device: int, device_type: int):
 	player.control_device = device
 	player.control_type = device_type
 	player.compute_hits = false
-	GameInfos.players.append(player)
+	GameInfos.add_player(player)
 	
 	add_child(player)
 	connect_fighter_to_world(player)
@@ -81,18 +81,31 @@ func check_start_game_conditions():
 	for b in [$StartGameBox1, $StartGameBox2, $StartGameBox3, $StartGameBox4]:
 		if b.ready_to_play:
 			ready_start_boxes_nbr += 1
-	return ready_start_boxes_nbr == len(GameInfos.players) and ready_start_boxes_nbr != 0
+	return ready_start_boxes_nbr == len(GameInfos.players.values()) and ready_start_boxes_nbr != 0
 
 func _on_start_game_box_body_entered(body):
 	ready_players_count += 1
-	if ready_players_count == len(GameInfos.players) and ready_players_count > 1:
+	if ready_players_count == len(GameInfos.players.values()) and ready_players_count > 1:
 		remove_players()
 		start_game()
 
 func remove_players():
-	for p : PlayerCharacter in GameInfos.players:
+	for p : PlayerCharacter in GameInfos.players.values():
 		p.remove_player()
 		remove_child(p)
+		
+func remove_player(player: PlayerCharacter):
+	if player.control_type == 0:
+		keyboards.erase(player.control_device)
+	else:
+		controllers.erase(player.control_device)
+	GameInfos.remove_player(player)
+	remove_child(player)
 
-func _on_start_game_box_body_exited(body):
+func _on_start_game_box_body_exited(body: Node2D):
 	ready_players_count -= 1
+
+func _on_exit_zone_body_entered(body: Node2D):
+	if body is PlayerCharacter:
+		remove_player(body)
+		

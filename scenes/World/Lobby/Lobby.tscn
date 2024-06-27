@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw6ararr3s0li"]
+[gd_scene load_steps=13 format=3 uid="uid://cw6ararr3s0li"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_e0kiy"]
 [ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_t0ou6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_qy4li"]
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_kmfif"]
 [ext_resource type="PackedScene" uid="uid://cecgvfhb8emqw" path="res://scenes/World/Lobby/StartGameBox.tscn" id="7_oxrwl"]
+[ext_resource type="Texture2D" uid="uid://bo0jlh3k6hsie" path="res://resources/images/exit.png" id="8_s5y03"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fw6dy"]
 font_size = 41
@@ -18,13 +19,16 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_agntq")
 width = 1000
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6vcs"]
+size = Vector2(1437, 193)
+
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_e0kiy")
 default_player = ExtResource("2_t0ou6")
 
 [node name="Wall" parent="." instance=ExtResource("3_foy2r")]
 position = Vector2(569, 1288)
-scale = Vector2(60, 5)
+scale = Vector2(52.0222, 5.10909)
 
 [node name="Wall2" parent="." instance=ExtResource("3_foy2r")]
 position = Vector2(574, -652)
@@ -35,12 +39,20 @@ position = Vector2(-1154, 310)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." instance=ExtResource("3_foy2r")]
-position = Vector2(2323, 331)
-scale = Vector2(5, 30)
+position = Vector2(2323, 65)
+scale = Vector2(5, 18)
+
+[node name="Wall5" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(2194, 1206)
+scale = Vector2(2.083, 7.585)
+
+[node name="Wall10" parent="." instance=ExtResource("3_foy2r")]
+position = Vector2(1903, 995)
+scale = Vector2(10, 1)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.57, 0.57)
 limit_left = -1200
 limit_top = -700
 limit_right = 2400
@@ -76,8 +88,26 @@ offset_right = 266.0
 offset_bottom = 94.0
 texture = SubResource("GradientTexture1D_nxkae")
 
+[node name="ExitSign" type="Sprite2D" parent="."]
+position = Vector2(1923, 699)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("8_s5y03")
+
+[node name="ExitZone" type="Area2D" parent="."]
+position = Vector2(2139, 995)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
+position = Vector2(839.5, 63.5)
+shape = SubResource("RectangleShape2D_x6vcs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExitZone"]
+position = Vector2(1064, -456)
+shape = SubResource("RectangleShape2D_x6vcs")
+
 [connection signal="PlayerExited" from="." to="StartGameBox" method="_on_player_exited"]
 [connection signal="PlayerJoined" from="." to="StartGameBox" method="_on_player_joined"]
 [connection signal="body_entered" from="StartGameBox" to="." method="_on_start_game_box_body_entered"]
 [connection signal="body_exited" from="StartGameBox" to="." method="_on_start_game_box_body_exited"]
 [connection signal="timeout" from="PressKeyTimer" to="." method="_on_press_key_timer_timeout"]
+[connection signal="body_entered" from="ExitZone" to="." method="_on_exit_zone_body_entered"]

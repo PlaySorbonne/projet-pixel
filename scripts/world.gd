@@ -34,7 +34,7 @@ func _ready():
 		activate_players()
 
 func end_game():
-	for p : PlayerCharacter in GameInfos.players:
+	for p : PlayerCharacter in GameInfos.players.values():
 		p.set_player_active(false)
 	add_child(VICTORY_MESSAGE.instantiate())
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
@@ -45,12 +45,12 @@ func end_game():
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
 func activate_players():
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
 
 func spawn_players():
 	var player_number = 0
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values():
 		add_child(player)
 		connect_fighter_to_world(player)
 		player_spawns[player.character_id] = spawn_locations[player_number].position

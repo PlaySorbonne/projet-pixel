@@ -64,9 +64,10 @@ func copy_player_data(new_body : PlayerCharacter):
 
 func _init():
 	if not GameInfos.game_started:
-		player_ID = GameInfos.number_of_players
+		player_ID = GameInfos.last_used_id + 1
+		GameInfos.last_used_id += 1
 		GameInfos.player_colors.append(PLAYER_COLORS[player_ID])
-		GameInfos.number_of_players = player_ID + 1
+		
 
 func _ready():
 	super._ready()
@@ -161,10 +162,9 @@ func evolve():
 	print("current_evolution+1=" + str(current_evolution+1))
 	print("EvolutionCharacters[current_evolution+1]=" + str(EvolutionCharacters[current_evolution+1]))
 	print("Evolutions[current_evolution+1]= " + str(str(Evolutions.keys()[current_evolution+1])))
-	var player_index : int = GameInfos.players.find(self)
-	print("found self in GameInfos.players at " + str(player_index))
+	print("found self in GameInfos.players at " + str(player_ID))
 
-	GameInfos.players[player_index] = new_body
+	GameInfos.players[player_ID] = new_body
 	get_parent().add_child(new_body)
 	print("new_body = " + str(new_body))
 	await get_tree().create_timer(0.2).timeout
