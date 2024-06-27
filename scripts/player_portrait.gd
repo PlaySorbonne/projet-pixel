@@ -31,7 +31,6 @@ func update_health():
 	) + "/" + str(GameInfos.players[player_number].max_hitpoints)
 
 func update_evolution(_evolution = null):
-	print("update evolution: " + str(player_number) + " -> " + str(GameInfos.players[player_number]))
 	connect_player_object()
 	var new_evolution = GameInfos.players[player_number].current_evolution
 	var new_texture = PLAYER_PORTRAITS[new_evolution]

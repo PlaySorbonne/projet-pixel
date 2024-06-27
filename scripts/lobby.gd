@@ -64,7 +64,6 @@ func connect_fighter_to_world(body : PlayerCharacter):
 	body.player_evolved.connect(connect_fighter_to_world)
 
 func on_player_death(player : FighterCharacter):
-	print("player " + str(player.character_id) + " died !!!")
 	await get_tree().create_timer(3.0).timeout
 	player.spawn($SpawnPoint.position)
 
@@ -84,16 +83,15 @@ func check_start_game_conditions():
 	return ready_start_boxes_nbr == len(GameInfos.players.values()) and ready_start_boxes_nbr != 0
 
 func _on_start_game_box_body_entered(body):
-	if not body.is_in_group("player"): # check if thasaplayer
+	if not body.is_in_group("player"): # check if thassaplayer
 		return
 	ready_players_count += 1
-	print("ready_players_count="+str(ready_players_count)+"/"+str(len(GameInfos.players.values())))
 	if ready_players_count == len(GameInfos.players.values()) and ready_players_count > 1:
 		remove_players()
 		start_game()
 
 func _on_start_game_box_body_exited(body: Node2D):
-	if not body.is_in_group("player"): # check if thasaplayer
+	if not body.is_in_group("player"): # check if thassaplayer
 		return
 	ready_players_count -= 1
 

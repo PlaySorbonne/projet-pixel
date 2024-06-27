@@ -66,7 +66,5 @@ func _process(_delta):
 		get_tree().quit()
 
 func on_player_death(player : FighterCharacter):
-	print("player " + str(player.character_id) + " died !!!")
-	print("respawn points: " + str(player_spawns) + " char_id = " + str(player.character_id))
 	await get_tree().create_timer(3.0).timeout
 	player.spawn(player_spawns[player.character_id])

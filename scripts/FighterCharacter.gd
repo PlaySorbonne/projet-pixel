@@ -54,7 +54,6 @@ func set_player_active(new_activity : bool):
 
 func hit(damage : int, attacker : Node2D = null):
 	if in_invincibility_time or not alive:
-		print("return")
 		return
 	hitpoints -= damage
 	emit_signal("fighter_hit")

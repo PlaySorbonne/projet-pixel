@@ -10,11 +10,6 @@ signal ScreenTransitionFinished
 @export var default_is_opaque : bool = true : set=_set_is_opaque
 
 
-func _process(_delta):
-	if not Engine.is_editor_hint():
-		pass
-		#print("color: " + str($ColorRect.modulate))
-
 func _set_is_opaque(new_opaque : bool):
 	default_is_opaque = new_opaque
 	if new_opaque:

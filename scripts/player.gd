@@ -159,14 +159,8 @@ func evolve():
 	velocity = Vector2.ZERO
 	#GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
-	print("current_evolution+1=" + str(current_evolution+1))
-	print("EvolutionCharacters[current_evolution+1]=" + str(EvolutionCharacters[current_evolution+1]))
-	print("Evolutions[current_evolution+1]= " + str(str(Evolutions.keys()[current_evolution+1])))
-	print("found self in GameInfos.players at " + str(player_ID))
-
 	GameInfos.players[player_ID] = new_body
 	get_parent().add_child(new_body)
-	print("new_body = " + str(new_body))
 	await get_tree().create_timer(0.2).timeout
 	copy_player_data(new_body)
 	new_body.spawn(position)
@@ -192,7 +186,12 @@ func death():
 func hit(damage : int, attacker : Node2D = null):
 	if not compute_hits:
 		return
-	super.hit(damage, attacker)
+	var hit_owner : Node2D
+	if attacker.has_method("get_hit_owner"):
+		hit_owner = attacker.get_hit_owner()
+	else:
+		hit_owner = attacker
+	super.hit(damage, hit_owner)
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - attacker.global_position
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage

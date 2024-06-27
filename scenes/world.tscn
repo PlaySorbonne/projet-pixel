@@ -34,7 +34,7 @@ layer = 5
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 default_duration = 1.0
 
-[node name="ObjectiveBox" parent="." instance=ExtResource("3_qwyn0")]
+[node name="AnimeBox" parent="." instance=ExtResource("3_qwyn0")]
 position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -110,4 +110,4 @@ scale = Vector2(5, 30)
 
 [node name="GameHUD" parent="." instance=ExtResource("10_kpnks")]
 
-[connection signal="game_won" from="ObjectiveBox" to="." method="end_game"]
+[connection signal="game_won" from="AnimeBox" to="." method="end_game"]
