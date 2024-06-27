@@ -31,10 +31,11 @@ func remove_player(player: PlayerCharacter) -> void:
 	compute_character_ids()
 
 func compute_character_ids() -> void:
-	var id = 0
+	var id = 1
 	for player: PlayerCharacter in players.values():
 		player.character_id = id
 		id += 1
+		player._update_debug_text()
 
 # add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
 # accuracy, evolution...)
