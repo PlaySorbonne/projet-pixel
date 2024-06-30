@@ -201,9 +201,7 @@ func hit(damage : int, attacker : Node2D = null, hit_power := 1.0):
 	_update_debug_text()
 
 func special():
-	attacking = true
 	specialObj.special()
-	attacking = false
 
 func attack():
 	if not can_attack:

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
 [ext_resource type="PackedScene" uid="uid://bq3tmfq3mncd8" path="res://scenes/Characters/Evolutions/Specials/BaseSpecialAttack.tscn" id="3_3foic"]
-[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialWeeb.gd" id="4_cs6um"]
+[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialWeeb.gd" id="4_1jg0m"]
 
 [node name="PlayerCharacter" groups=["player"] instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
@@ -36,7 +36,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="SpecialAttack" parent="." index="7" instance=ExtResource("3_3foic")]
-script = ExtResource("4_cs6um")
+script = ExtResource("4_1jg0m")
 dash_speed = 2000
 dash_duration = 0.125
 dash_cooldown = 0.25

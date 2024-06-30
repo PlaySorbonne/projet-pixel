@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://gxorr7jk1k24"]
+[gd_scene load_steps=5 format=3 uid="uid://gxorr7jk1k24"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_dytvo"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_or0jn"]
+[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialCEO.gd" id="3_52ce3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8pk"]
 size = Vector2(105, 118)
@@ -17,3 +18,14 @@ texture = ExtResource("2_or0jn")
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-7.5, -9)
 shape = SubResource("RectangleShape2D_vk8pk")
+
+[node name="SpecialAttack" parent="." index="7"]
+script = ExtResource("3_52ce3")
+dash_wind_up = 0.25
+dash_speed = 1400
+wind_up_speed = 200
+dash_duration = 0.6
+dash_recovery = 0.3
+dash_cooldown = 0.3
+attack_damage = 2
+attack_intensity = 1.0
