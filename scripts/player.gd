@@ -67,7 +67,6 @@ func _init():
 		player_ID = GameInfos.last_used_id + 1
 		GameInfos.last_used_id += 1
 		GameInfos.player_colors.append(PLAYER_COLORS[player_ID])
-		
 
 func _ready():
 	super._ready()

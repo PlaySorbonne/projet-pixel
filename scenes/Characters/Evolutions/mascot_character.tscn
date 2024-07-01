@@ -13,6 +13,6 @@ texture = ExtResource("2_h58mr")
 
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("3_i1h8o")
-jump_power = 1400
+jump_power = 2500
 can_attack_cooldown = 0.25
 ability_cooldown = 0.6

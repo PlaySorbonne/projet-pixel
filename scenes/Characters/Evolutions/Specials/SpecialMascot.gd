@@ -2,7 +2,7 @@ extends BaseSpecial
 
 const EGG = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.tscn")
 
-@export var jump_power := 1400
+@export var jump_power := 2500
 @export var can_attack_cooldown := 0.25
 @export var ability_cooldown := 0.6
 

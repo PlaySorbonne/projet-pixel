@@ -27,7 +27,7 @@ func _on_area_2d_body_entered(body):
 	if explosion_triggered:
 		return
 	explosion_triggered = true
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.05).timeout
 	Hitbox.spawn_hitbox(parent_player, hit_damage, global_position, hit_duration, 
 	false, 1, Vector2(4.0, 4.0))
 	queue_free()

@@ -15,6 +15,10 @@ var current_device_type: int = 0
 
 var ready_players_count: int = 0
 
+
+func _ready():
+	GameInfos.world = self
+
 func _process(delta):
 	if player_joining:
 		$LoadingBar.scale.x = (initial_time_left - $PressKeyTimer.time_left) / initial_time_left

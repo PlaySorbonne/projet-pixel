@@ -9,7 +9,7 @@ var players : Dictionary = {}
 var players_order : Array[int] = []
 var player_colors : Array[int] = []
 var number_of_players = 0
-var last_used_id = 0
+var last_used_id = -1
 
 
 func reset_game_infos() -> void:
@@ -17,8 +17,8 @@ func reset_game_infos() -> void:
 	players = {}
 	player_colors = []
 	number_of_players = 0
-	last_used_id = 0
-	
+	last_used_id = -1
+
 func add_player(player: PlayerCharacter) -> void:
 	var id = player.player_ID
 	players[id] = player
