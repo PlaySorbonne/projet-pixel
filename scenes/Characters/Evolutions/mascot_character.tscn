@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt20khpmxutd1"]
+[gd_scene load_steps=4 format=3 uid="uid://bt20khpmxutd1"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_y7qbi"]
 [ext_resource type="Texture2D" uid="uid://mnn6xqa1sxyd" path="res://resources/images/champslay.png" id="2_h58mr"]
+[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialMascot.gd" id="3_i1h8o"]
 
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
@@ -9,3 +10,9 @@ current_evolution = 3
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.0487265, 0.0487265)
 texture = ExtResource("2_h58mr")
+
+[node name="SpecialAttack" parent="." index="7"]
+script = ExtResource("3_i1h8o")
+jump_power = 1400
+can_attack_cooldown = 0.25
+ability_cooldown = 0.6

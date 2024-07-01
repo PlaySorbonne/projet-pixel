@@ -9,8 +9,6 @@ extends BaseSpecial
 @export var attack_damage := 2
 @export var attack_intensity := 1.0
 
-var can_use_special := true
-
 func special():
 	if not can_use_special:
 		return

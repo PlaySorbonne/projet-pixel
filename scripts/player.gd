@@ -131,6 +131,9 @@ func _input(event : InputEvent):
 			# Handle special 
 			elif event.is_action_pressed("special"):
 				special()
+		
+		if event.is_action_pressed("debug_button"):
+			evolve()
 
 func stop_jump():
 	if velocity.y < -50.0:

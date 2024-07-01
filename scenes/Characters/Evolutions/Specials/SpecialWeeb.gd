@@ -4,8 +4,6 @@ extends BaseSpecial
 @export var dash_duration := 0.125
 @export var dash_cooldown := 0.25
 
-var can_use_special := true
-
 func special():
 	if not can_use_special:
 		return
