@@ -183,7 +183,7 @@ func death():
 	set_process_input(true)
 	super.death()
 
-func hit(damage : int, attacker : Node2D = null, hit_power := 1.0):
+func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
 	if not compute_hits:
 		return
 	var hit_owner : Node2D
@@ -191,9 +191,9 @@ func hit(damage : int, attacker : Node2D = null, hit_power := 1.0):
 		hit_owner = attacker.get_hit_owner()
 	else:
 		hit_owner = attacker
-	super.hit(damage, hit_owner)
+	super.hit(damage, hit_owner, hit_location)
 	if attacker != null and damage >= knockback_damage_threshold:
-		knockback_velocity = ((self.global_position - attacker.global_position
+		knockback_velocity = ((self.global_position - hit_location
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:

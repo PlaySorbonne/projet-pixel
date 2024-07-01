@@ -7,6 +7,7 @@ var team := 0
 var can_multi_hit := false
 var delay_between_hits := 0.4
 var attacker : FighterCharacter
+var attached_to_char : bool
 
 static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
 duration : float, attached_to_character := true, hit_intensity := 1, size := Vector2.ONE,
@@ -25,6 +26,7 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 	hitbox.can_multi_hit = can_multi_hit
 	hitbox.delay_between_hits = delay_between_hits
 	hitbox.scale = size
+	hitbox.attached_to_char = attached_to_character
 	if duration > 0.0:
 		hitbox.set_hitbox_lifetime(duration)
 	return hitbox
@@ -37,7 +39,10 @@ func end_hitbox():
 
 func _on_body_entered(body):
 	if body.has_method("hit") and body.team != team:
-		body.hit(damage, attacker)
+		if attached_to_char:
+			body.hit(damage, attacker, attacker.global_position)
+		else:
+			body.hit(damage, attacker, global_position)
 
 func _on_timer_timeout():
 	end_hitbox()

@@ -52,7 +52,7 @@ func set_player_active(new_activity : bool):
 	set_physics_process(new_activity)
 	set_process_input(new_activity)
 
-func hit(damage : int, attacker : Node2D = null):
+func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
 		return
 	hitpoints -= damage
