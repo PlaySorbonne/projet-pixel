@@ -138,4 +138,4 @@ func remove_player(player: PlayerCharacter):
 func _on_exit_zone_body_entered(body: Node2D):
 	if body is PlayerCharacter:
 		remove_player(body)
-		
+		$StartGameBox.players -= 1
