@@ -4,6 +4,8 @@ signal StartGame
 signal PlayerJoined
 signal PlayerExited
 
+const JOINING_UI = preload("res://scenes/World/Lobby/lobbyUI/player_joining_ui.tscn")
+
 @export var default_player: PackedScene
 
 @onready var initial_time_left = $PressKeyTimer.wait_time
@@ -16,6 +18,9 @@ var current_device_type: int = 0
 var ready_players_count: int = 0
 
 
+var joining_keyboards : Array = []
+var joining_controllers : Array = []
+
 func _ready():
 	GameInfos.world = self
 
@@ -25,27 +30,45 @@ func _process(delta):
 	else:
 		$LoadingBar.scale.x = 0
 
+func add_joining_ui(player_device : int, is_keyboard : bool):
+	if is_keyboard:
+		joining_keyboards.append(player_device)
+	else:
+		joining_controllers.append(player_device)
+	var ui_object = JOINING_UI.instantiate()
+	ui_object.player_device = player_device
+	ui_object.is_keyboard = is_keyboard
+	ui_object.player_cancelled.connect(player_join_cancelled)
+	ui_object.player_joined.connect(player_join_confirmed)
+	$VBoxContainer.add_child(ui_object)
+
+func player_join_cancelled(player_device: int, is_keyboard : bool):
+	remove_joinin_player(player_device, is_keyboard)
+
+func player_join_confirmed(player_device : int, is_keyboard : bool):
+	remove_joinin_player(player_device, is_keyboard)
+	var device_type : int
+	if is_keyboard:
+		device_type = 0
+	else:
+		device_type = 1
+	add_player(player_device, device_type)
+
+func remove_joinin_player(player_device : int, is_keyboard : bool):
+	if is_keyboard:
+		joining_keyboards.erase(player_device)
+	else:
+		joining_controllers.erase(player_device)
+
 func _input(event):
 	if event is InputEventKey:
-		if event.device not in keyboards:
-			if event.is_pressed() and not player_joining:
-				player_joining = true
-				current_device = event.device
-				current_device_type = 0
-				$PressKeyTimer.start()
-			if event.is_released():
-				player_joining = false
-				$PressKeyTimer.stop()
-	if event is InputEventJoypadButton:
+		if event.device not in keyboards and event.device not in joining_keyboards:
+			if event.is_pressed():
+				add_joining_ui(event.device, true)
+	elif event is InputEventJoypadButton:
 		if event.device not in controllers:
-			if event.is_pressed() and not player_joining:
-				player_joining = true
-				current_device = event.device
-				current_device_type = 1
-				$PressKeyTimer.start()
-			if event.is_released():
-				player_joining = false
-				$PressKeyTimer.stop()
+			if event.is_pressed():
+				add_joining_ui(event.device, false)
 
 func add_player(device: int, device_type: int):
 	if device_type == 0:

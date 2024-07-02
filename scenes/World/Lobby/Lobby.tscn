@@ -113,6 +113,11 @@ shape = SubResource("RectangleShape2D_x6vcs")
 position = Vector2(1064, -456)
 shape = SubResource("RectangleShape2D_x6vcs")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_top = 51.0
+offset_right = 1021.0
+offset_bottom = 624.0
+
 [connection signal="PlayerExited" from="." to="StartGameBox" method="_on_player_exited"]
 [connection signal="PlayerJoined" from="." to="StartGameBox" method="_on_player_joined"]
 [connection signal="body_entered" from="StartGameBox" to="." method="_on_start_game_box_body_entered"]

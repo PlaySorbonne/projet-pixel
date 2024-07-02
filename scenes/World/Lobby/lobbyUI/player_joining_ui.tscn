@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://scripts/player_joining_ui.gd" id="1_qo8xo"]
 
 [node name="PlayerJoiningUI" type="ProgressBar"]
+custom_minimum_size = Vector2(0, 30)
 offset_right = 355.0
 offset_bottom = 27.0
+max_value = 1.0
+show_percentage = false
 script = ExtResource("1_qo8xo")
 
 [node name="Timer" type="Timer" parent="."]
