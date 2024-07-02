@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://owgabgmnp07w"]
+
+[ext_resource type="Script" path="res://scripts/player_joining_ui.gd" id="1_qo8xo"]
+
+[node name="PlayerJoiningUI" type="ProgressBar"]
+offset_right = 355.0
+offset_bottom = 27.0
+script = ExtResource("1_qo8xo")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

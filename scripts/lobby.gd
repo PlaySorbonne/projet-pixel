@@ -36,7 +36,7 @@ func _input(event):
 			if event.is_released():
 				player_joining = false
 				$PressKeyTimer.stop()
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+	if event is InputEventJoypadButton:
 		if event.device not in controllers:
 			if event.is_pressed() and not player_joining:
 				player_joining = true
