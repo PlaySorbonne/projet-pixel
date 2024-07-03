@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/HitEffect.gd" id="3_p5dbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_re781"]
-size = Vector2(90, 100)
+size = Vector2(79, 90)
 
 [node name="Fighter" type="CharacterBody2D"]
 collision_layer = 2
