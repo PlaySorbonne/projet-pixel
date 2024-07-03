@@ -7,7 +7,7 @@ signal fighter_died
 signal player_spawned
 
 @export var max_hitpoints := 3
-@export var invincibility_time := 0.2
+@export var invincibility_time := 0.4
 
 var character_id := 0
 var team := 0
@@ -30,6 +30,7 @@ func _ready():
 
 func spawn(location : Vector2, activate := true):
 	set_player_active(false)
+	reset_animation()
 	velocity = Vector2.ZERO
 	hitpoints = max_hitpoints
 	position = location
@@ -66,6 +67,12 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 		in_invincibility_time = true
 		$InvincibilityTimer.start(invincibility_time)
 
+func reset_animation():
+	pass
+
+func set_animation():
+	pass
+
 func _on_invincibility_timer_timeout():
 	in_invincibility_time = false
 
@@ -73,6 +80,7 @@ func death():
 	if not alive:
 		return
 	set_player_active(false)
+	set_animation()
 	var tween = create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
 	await tween.finished

@@ -83,7 +83,7 @@ position = Vector2(50, -104)
 scale = Vector2(10, 1)
 
 [node name="Wall12" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1022, 8)
+position = Vector2(965, -19)
 scale = Vector2(10, 1)
 
 [node name="Wall13" parent="." instance=ExtResource("5_yc1ep")]
