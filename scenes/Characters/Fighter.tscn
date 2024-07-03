@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlo5qcfkkb5ti"]
 
 [ext_resource type="Script" path="res://scripts/FighterCharacter.gd" id="1_phwhv"]
-[ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="2_7jhj1"]
+[ext_resource type="SpriteFrames" uid="uid://baxxw7eq0xjug" path="res://scenes/Characters/Evolutions/Animations/template_sprite_frames.tres" id="2_s7402"]
 [ext_resource type="Script" path="res://scripts/HitEffect.gd" id="3_p5dbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_re781"]
@@ -11,9 +11,11 @@ size = Vector2(90, 100)
 collision_layer = 2
 script = ExtResource("1_phwhv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_7jhj1")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -21)
+scale = Vector2(1.07292, 1.07292)
+sprite_frames = ExtResource("2_s7402")
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_re781")
