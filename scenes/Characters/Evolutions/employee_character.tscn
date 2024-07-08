@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4soj6q40wgus"]
+[gd_scene load_steps=5 format=3 uid="uid://c4soj6q40wgus"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_w8fjf"]
+[ext_resource type="SpriteFrames" uid="uid://d18yfqex83vg3" path="res://scenes/Characters/Evolutions/Animations/employee_sprite_frames.tres" id="2_hwdps"]
+[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialEmployee.gd" id="2_m2x0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rnvo"]
 size = Vector2(60, 100)
@@ -8,5 +10,18 @@ size = Vector2(60, 100)
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
 
+[node name="Sprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_hwdps")
+animation = &"idle"
+
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_5rnvo")
+
+[node name="SpecialAttack" parent="." index="7"]
+script = ExtResource("2_m2x0l")
+fall_speed = 2000
+damage = 3
+hit_duration = 0.25
+fall_recovery = 0.65
+delay_between_jump_and_fall = 0.35
+jump_power = 3000
