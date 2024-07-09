@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mnxpr1v86nro"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
-[ext_resource type="Script" path="res://scripts/SpecialManager.gd" id="2_1umun"]
+[ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialManager.gd" id="2_ljooy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2r6n"]
 size = Vector2(79, 90)
@@ -14,6 +14,6 @@ max_hitpoints = 5
 shape = SubResource("RectangleShape2D_v2r6n")
 
 [node name="SpecialAttack" parent="." index="7"]
-script = ExtResource("2_1umun")
+script = ExtResource("2_ljooy")
 attack_damage = 1.5
 attack_intensity = 1.0
