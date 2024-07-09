@@ -4,10 +4,10 @@ class_name PlayerCharacter
 signal player_evolved
 
 enum Controls {KEYBOARD, CONTROLLER}
-enum Evolutions {CEO, CryptoBro, Employee, Mascot, Weeb}
+enum Evolutions {CEO, Manager, Employee, Mascot, Weeb}
 const EvolutionCharacters = {
 	Evolutions.CEO : preload("res://scenes/Characters/Evolutions/ceo_character.tscn"),
-	Evolutions.CryptoBro : preload("res://scenes/Characters/Evolutions/crypto_bro_character.tscn"),
+	Evolutions.Manager : preload("res://scenes/Characters/Evolutions/manager_character.tscn"),
 	Evolutions.Employee : preload("res://scenes/Characters/Evolutions/employee_character.tscn"),
 	Evolutions.Mascot : preload("res://scenes/Characters/Evolutions/mascot_character.tscn"),
 	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/weeb_character.tscn")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://mnxpr1v86nro"]
+
+[ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
+[ext_resource type="Script" path="res://scripts/SpecialManager.gd" id="2_1umun"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2r6n"]
+size = Vector2(79, 90)
+
+[node name="ManagerCharacter" instance=ExtResource("1_8g6v0")]
+current_evolution = 1
+max_hitpoints = 5
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_v2r6n")
+
+[node name="SpecialAttack" parent="." index="7"]
+script = ExtResource("2_1umun")
+attack_damage = 1.5
+attack_intensity = 1.0
