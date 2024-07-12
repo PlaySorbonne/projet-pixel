@@ -56,7 +56,6 @@ var compute_hits := true
 var player_ID := 0
 
 func copy_player_data(new_body : PlayerCharacter):
-	new_body.character_id = character_id
 	new_body.team = team
 	new_body.control_device = control_device
 	new_body.control_type = control_type
@@ -69,11 +68,12 @@ func _init():
 		GameInfos.player_colors.append(PLAYER_COLORS[player_ID])
 
 func _ready():
-	super._ready()
+	super()
+	team = player_ID
 	_update_debug_text()
 
 func _update_debug_text():
-	$EvolutionLabel.text = "P" + str(character_id) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
+	$EvolutionLabel.text = "P" + str(player_ID + 1) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_control_device(device: int):
 	control_device = device

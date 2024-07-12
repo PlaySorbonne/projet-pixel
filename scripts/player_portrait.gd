@@ -13,7 +13,7 @@ var player_number := 0
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
-	$TextureBackground.modulate = PlayerCharacter.PLAYER_COLORS[player_num]
+	$TextureBackground.modulate = GameInfos.player_colors[player_num]
 	connect_player_object()
 	update_health()
 	update_evolution()

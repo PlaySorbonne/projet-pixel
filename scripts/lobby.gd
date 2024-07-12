@@ -107,13 +107,13 @@ func check_start_game_conditions():
 	for b in [$StartGameBox1, $StartGameBox2, $StartGameBox3, $StartGameBox4]:
 		if b.ready_to_play:
 			ready_start_boxes_nbr += 1
-	return ready_start_boxes_nbr == len(GameInfos.players.values()) and ready_start_boxes_nbr != 0
+	return ready_start_boxes_nbr == len(GameInfos.players) and ready_start_boxes_nbr != 0
 
 func _on_start_game_box_body_entered(body):
 	if not body.is_in_group("player"): # check if thassaplayer
 		return
 	ready_players_count += 1
-	if ready_players_count == len(GameInfos.players.values()) and ready_players_count > 1:
+	if ready_players_count == len(GameInfos.players) and ready_players_count > 1:
 		remove_players()
 		start_game()
 
@@ -123,7 +123,7 @@ func _on_start_game_box_body_exited(body: Node2D):
 	ready_players_count -= 1
 
 func remove_players():
-	for p : PlayerCharacter in GameInfos.players.values():
+	for p : PlayerCharacter in GameInfos.players:
 		p.remove_player()
 		remove_child(p)
 		

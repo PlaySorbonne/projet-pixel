@@ -5,5 +5,5 @@ class_name BaseSpecial
 var can_use_special := true
 
 func special():
-	print("Special from player " + str(player.character_id) + " ; not yet implemented!")
+	print("Special from player " + str(player.player_ID) + " ; not yet implemented!")
 

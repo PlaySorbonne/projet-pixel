@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://hcvhyh4h668q"]
+
+[ext_resource type="Texture2D" uid="uid://c07mf4nc50gq1" path="res://resources/images/canvas.png" id="1_7swt8"]
+[ext_resource type="Script" path="res://scripts/ChangeColor.gd" id="1_qhfgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygb2a"]
+size = Vector2(180, 305)
+
+[node name="ChangeColor" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_qhfgl")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(9, 35)
+scale = Vector2(0.0889138, 0.0889139)
+texture = ExtResource("1_7swt8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 47.5)
+shape = SubResource("RectangleShape2D_ygb2a")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -82.0
+offset_top = -196.0
+offset_right = 84.0
+offset_bottom = -145.0
+text = "aa"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

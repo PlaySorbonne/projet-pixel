@@ -9,7 +9,6 @@ signal player_spawned
 @export var max_hitpoints := 3
 @export var invincibility_time := 0.4
 
-var character_id := 0
 var team := 0
 var hitpoints := max_hitpoints
 var alive := false
@@ -23,10 +22,8 @@ static func reset_character_ids() -> void:
 
 func _ready():
 	visible = false
-	character_id = GameInfos.number_of_players
 	set_physics_process(false)
 	set_process_input(false)
-	team = character_id # to remove if we decide to do team battles
 
 func spawn(location : Vector2, activate := true):
 	set_player_active(false)

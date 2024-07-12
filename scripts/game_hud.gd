@@ -6,7 +6,7 @@ const PLAYER_PORTRAIT = preload("res://scenes/Menus/GameUI/player_portrait.tscn"
 
 func add_players():
 	var hud_objects : Array = []
-	for p : PlayerCharacter in GameInfos.players.values():
+	for p : PlayerCharacter in GameInfos.players:
 		var portrait : PlayerPortrait = PLAYER_PORTRAIT.instantiate()
 		$HBox.add_child(portrait)
 		portrait.initialize_portrait(p.player_ID)
