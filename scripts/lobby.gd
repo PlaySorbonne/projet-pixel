@@ -113,7 +113,7 @@ func _on_start_game_box_body_entered(body):
 	if not body.is_in_group("player"): # check if thassaplayer
 		return
 	ready_players_count += 1
-	if ready_players_count == len(GameInfos.players) and ready_players_count > 1:
+	if ready_players_count == GameInfos.players_number() and ready_players_count > 1:
 		remove_players()
 		start_game()
 
