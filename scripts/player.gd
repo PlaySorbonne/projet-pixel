@@ -63,8 +63,7 @@ func copy_player_data(new_body : PlayerCharacter):
 
 func _init():
 	if not GameInfos.game_started:
-		player_ID = GameInfos.last_used_id + 1
-		GameInfos.last_used_id += 1
+		player_ID = len(GameInfos.players)
 		GameInfos.player_colors.append(PLAYER_COLORS[player_ID])
 
 func _ready():
