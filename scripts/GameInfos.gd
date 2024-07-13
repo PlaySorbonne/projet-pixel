@@ -32,12 +32,10 @@ func compute_ids() -> void:
 		players[i]._update_debug_text()
 		
 func available_colors() -> Array:
-	var colors = PlayerCharacter.PLAYER_COLORS.filter(func(c): return not c in player_colors)
-	print(colors)
-	return colors
+	return PlayerCharacter.PLAYER_COLORS.filter(func(c): return not c in player_colors)
 	
-func change_color(player_id: int) -> void:
-	player_colors[player_id] = available_colors()[0]
+func change_color(player_id: int, index: int) -> void:
+	player_colors[player_id] = available_colors()[index]
 	
 func players_number(): return len(players)
 
