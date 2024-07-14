@@ -6,6 +6,7 @@ var color_index = 0
 func interact(player: PlayerCharacter):
 	if len(queue) > 0 and queue[0] == player.player_ID:
 		GameInfos.change_color(player.player_ID, color_index)
+		player.set_player_color(GameInfos.player_colors[player.player_ID])
 		color_index += 1
 		if color_index == len(GameInfos.available_colors()):
 			color_index = 0

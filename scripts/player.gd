@@ -69,10 +69,14 @@ func _init():
 func _ready():
 	super()
 	team = player_ID
+	set_player_color(GameInfos.player_colors[player_ID])
 	_update_debug_text()
 
 func _update_debug_text():
 	$EvolutionLabel.text = "P" + str(player_ID + 1) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
+
+func set_player_color(new_color : Color):
+	$Sprite2D.self_modulate = new_color
 
 func set_control_device(device: int):
 	control_device = device

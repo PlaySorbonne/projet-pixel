@@ -36,7 +36,7 @@ func available_colors() -> Array:
 	
 func change_color(player_id: int, index: int) -> void:
 	player_colors[player_id] = available_colors()[index]
-	
+
 func players_number(): return len(players)
 
 # add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
