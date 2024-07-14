@@ -66,7 +66,7 @@ func _input(event):
 			if event.is_pressed():
 				add_joining_ui(event.device, true)
 	elif event is InputEventJoypadButton:
-		if event.device not in controllers:
+		if event.device not in controllers and event.device not in joining_controllers:
 			if event.is_pressed():
 				add_joining_ui(event.device, false)
 
