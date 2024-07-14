@@ -46,7 +46,8 @@ func _on_body_entered(body):
 			body.hit(damage, attacker, global_position)
 
 func _on_area_entered(area):
-	area.interact(attacker)
+	if area.has_method("interact"):
+		area.interact(attacker)
 
 func _on_timer_timeout():
 	end_hitbox()

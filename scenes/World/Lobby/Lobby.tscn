@@ -21,7 +21,7 @@ gradient = SubResource("Gradient_agntq")
 width = 1000
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6vcs"]
-size = Vector2(1437, 193)
+size = Vector2(2157.5, 193)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_e0kiy")
@@ -104,14 +104,15 @@ texture = ExtResource("8_s5y03")
 
 [node name="ExitZone" type="Area2D" parent="."]
 position = Vector2(2139, 995)
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
-position = Vector2(839.5, 63.5)
+position = Vector2(1180, 59)
 shape = SubResource("RectangleShape2D_x6vcs")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ExitZone"]
-position = Vector2(1064, -456)
+position = Vector2(1424.25, -456)
 shape = SubResource("RectangleShape2D_x6vcs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

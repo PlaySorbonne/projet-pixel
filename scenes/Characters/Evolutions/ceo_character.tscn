@@ -7,8 +7,22 @@
 size = Vector2(72, 106)
 
 [node name="CEOCharacter" instance=ExtResource("1_dytvo")]
-attack_damage = 3
 max_hitpoints = 9
+invincibility_time = null
+current_evolution = null
+speed = null
+jump_velocity = null
+jump_max_duration = null
+fall_speed_multiplier = null
+attack_damage = 3
+knockback_damage_threshold = null
+attack_intensity = null
+attack_duration = null
+attack_wind_up = null
+attack_recovery = null
+initial_fall_speed = null
+knockback_multiplier = null
+knockback_interp_factor = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, 0)

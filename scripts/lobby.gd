@@ -139,3 +139,9 @@ func _on_exit_zone_body_entered(body: Node2D):
 	if body is PlayerCharacter:
 		remove_player(body)
 		$StartGameBox.players -= 1
+
+
+func _on_exit_zone_body_exited(body):
+	if body is PlayerCharacter:
+		remove_player(body)
+		$StartGameBox.players -= 1

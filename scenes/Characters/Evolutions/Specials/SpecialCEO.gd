@@ -38,10 +38,12 @@ func special():
 	
 	player.movement_velocity.y = (player.velocity.y) / 20
 	player.computing_movement = true
-	await get_tree().create_timer(dash_recovery).timeout
+	if get_tree():
+		await get_tree().create_timer(dash_recovery).timeout
 	
 	player.attacking = false
-	await get_tree().create_timer(dash_cooldown).timeout
+	if get_tree():
+		await get_tree().create_timer(dash_cooldown).timeout
 	
 	can_use_special = true
 

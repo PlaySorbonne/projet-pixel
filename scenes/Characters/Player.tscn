@@ -1,17 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=5 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
 [ext_resource type="PackedScene" uid="uid://bq3tmfq3mncd8" path="res://scenes/Characters/Evolutions/Specials/BaseSpecialAttack.tscn" id="3_3foic"]
-[ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="3_fdig2"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialWeeb.gd" id="4_1jg0m"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdfa7"]
-resource_local_to_scene = true
-shader = ExtResource("3_fdig2")
-shader_parameter/base_color = null
-shader_parameter/replace_color = null
-shader_parameter/replace_threshold = null
 
 [node name="PlayerCharacter" groups=["player"] instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
@@ -31,7 +23,6 @@ knockback_multiplier = 1.0
 knockback_interp_factor = 0.075
 
 [node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_fdfa7")
 animation = &"death"
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -56,5 +47,4 @@ dash_speed = 2000
 dash_duration = 0.125
 dash_cooldown = 0.25
 
-[connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
