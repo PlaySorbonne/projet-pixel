@@ -3,7 +3,7 @@ extends Area2D
 var queue: Array[int] = []
 var color_index = 0
 
-func interract(player: PlayerCharacter):
+func interact(player: PlayerCharacter):
 	if len(queue) > 0 and queue[0] == player.player_ID:
 		GameInfos.change_color(player.player_ID, color_index)
 		color_index += 1
