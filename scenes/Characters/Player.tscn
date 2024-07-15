@@ -47,4 +47,5 @@ dash_speed = 2000
 dash_duration = 0.125
 dash_cooldown = 0.25
 
+[connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
