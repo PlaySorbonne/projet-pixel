@@ -77,6 +77,7 @@ func _update_debug_text():
 
 func set_player_color(new_color : Color):
 	#$Sprite2D.self_modulate = new_color
+	$CharacterPointer.self_modulate = new_color
 	$Sprite2D.material.set_shader_parameter("replace_color", new_color);
 
 func set_control_device(device: int):
@@ -108,10 +109,11 @@ func _physics_process(delta):
 func reset_animation():
 	$Sprite2D.play("evolve")
 
-func set_animation():
-	if not computing_movement:
+func set_animation(force := false):
+	if not computing_movement and not force:
 		return
 	if not alive:
+		print("deaht")
 		$Sprite2D.play("death")
 	elif in_invincibility_time:
 		$Sprite2D.play("hit")
@@ -200,7 +202,9 @@ func remove_player():
 	compute_hits = true
 	movement_velocity = Vector2.ZERO
 
-func death():
+func death(force := false):
+	alive = false
+	set_animation(true)
 	compute_hits = false
 	set_process_input(false)
 	movement_velocity = Vector2.ZERO
@@ -208,7 +212,7 @@ func death():
 	await get_tree().create_timer(2.0).timeout
 	compute_hits = true
 	set_process_input(true)
-	super.death()
+	super.death(true)
 
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
 	if not compute_hits:

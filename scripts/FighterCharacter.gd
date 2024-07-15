@@ -59,6 +59,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 	if hitpoints <= 0:
 		if attacker != null and attacker.has_signal("fighter_killed_opponent"):
 			attacker.emit_signal("fighter_killed_opponent")
+		print("death called")
 		death()
 	else:
 		in_invincibility_time = true
@@ -67,17 +68,17 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 func reset_animation():
 	pass
 
-func set_animation():
+func set_animation(force := false):
 	pass
 
 func _on_invincibility_timer_timeout():
 	in_invincibility_time = false
 
-func death():
-	if not alive:
+func death(force := false):
+	if not alive and not force:
 		return
+	set_animation(true)
 	set_player_active(false)
-	set_animation()
 	var tween = create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
 	await tween.finished

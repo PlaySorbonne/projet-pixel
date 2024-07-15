@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt20khpmxutd1"]
+[gd_scene load_steps=5 format=3 uid="uid://bt20khpmxutd1"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_y7qbi"]
+[ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_aq807"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialMascot.gd" id="3_i1h8o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g55ga"]
+resource_local_to_scene = true
+shader = ExtResource("2_aq807")
+shader_parameter/base_color = Color(0.32549, 0.576471, 0.772549, 1)
+shader_parameter/replace_color = Color(1, 0, 0, 1)
+shader_parameter/replace_threshold = 0.15
 
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_g55ga")
 position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="." index="1"]

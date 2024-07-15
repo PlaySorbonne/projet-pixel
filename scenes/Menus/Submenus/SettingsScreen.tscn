@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bxo5cilexhd5g"]
+
+[node name="SettingsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1523.0
+offset_top = 951.0
+offset_right = 1712.0
+offset_bottom = 1002.0
+text = "Back"
+
+[node name="ButtonFullscreen" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 578.0
+offset_right = 593.0
+offset_bottom = 655.0
+text = "Fullscreen"

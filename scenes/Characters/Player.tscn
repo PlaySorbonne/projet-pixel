@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=8 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
 [ext_resource type="PackedScene" uid="uid://bq3tmfq3mncd8" path="res://scenes/Characters/Evolutions/Specials/BaseSpecialAttack.tscn" id="3_3foic"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="3_pu3bk"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialWeeb.gd" id="4_1jg0m"]
+[ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="6_lc1o4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72mm4"]
 resource_local_to_scene = true
@@ -44,6 +45,7 @@ position = Vector2(-5.5, -5)
 one_shot = true
 
 [node name="EvolutionLabel" type="Label" parent="." index="6"]
+visible = false
 offset_left = -100.0
 offset_top = -110.0
 offset_right = 1.0
@@ -58,6 +60,10 @@ script = ExtResource("4_1jg0m")
 dash_speed = 2000
 dash_duration = 0.125
 dash_cooldown = 0.25
+
+[node name="CharacterPointer" type="Sprite2D" parent="." index="8"]
+position = Vector2(0, -80)
+texture = ExtResource("6_lc1o4")
 
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
