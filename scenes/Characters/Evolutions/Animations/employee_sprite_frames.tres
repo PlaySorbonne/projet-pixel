@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dy2y0inpjqt0" path="res://resources/images/characters/template/robot_death.png" id="2_1c04i"]
 [ext_resource type="Texture2D" uid="uid://dpw0d8rgia3qq" path="res://resources/images/characters/template/robot_evolution.png" id="3_dflgs"]
 [ext_resource type="Texture2D" uid="uid://yw4libnmfooo" path="res://resources/images/characters/template/robot_hit.png" id="4_yobc5"]
-[ext_resource type="Texture2D" uid="uid://78g6mi2roo32" path="res://resources/images/characters/Sheep/mouton128x128.png" id="5_ujfx8"]
+[ext_resource type="Texture2D" uid="uid://dpwv7hjpqnhrg" path="res://resources/images/characters/Sheep/mouton256x192.png" id="5_dt18u"]
 [ext_resource type="Texture2D" uid="uid://vm54ho2ng8jb" path="res://resources/images/characters/template/robot_jump.png" id="6_6m0a0"]
 [ext_resource type="Texture2D" uid="uid://ryg1d2wvk0kp" path="res://resources/images/characters/template/robot_run0.png" id="7_pqnjd"]
 [ext_resource type="Texture2D" uid="uid://cd1lwrumlu8qj" path="res://resources/images/characters/template/robot_run1.png" id="8_uw373"]
@@ -45,7 +45,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ujfx8")
+"texture": ExtResource("5_dt18u")
 }],
 "loop": true,
 "name": &"idle",

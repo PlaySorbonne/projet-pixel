@@ -24,7 +24,6 @@ sprite_frames = ExtResource("2_hwdps")
 animation = &"idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 shape = SubResource("RectangleShape2D_5rnvo")
 
 [node name="SpecialAttack" parent="." index="7"]
