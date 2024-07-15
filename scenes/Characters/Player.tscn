@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialWeeb.gd" id="4_1jg0m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72mm4"]
+resource_local_to_scene = true
 shader = ExtResource("3_pu3bk")
 shader_parameter/base_color = Color(0.32549, 0.576471, 0.772549, 1)
 shader_parameter/replace_color = Color(1, 0, 0, 1)

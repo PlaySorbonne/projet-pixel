@@ -76,7 +76,8 @@ func _update_debug_text():
 	$EvolutionLabel.text = "P" + str(player_ID + 1) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
 
 func set_player_color(new_color : Color):
-	$Sprite2D.self_modulate = new_color
+	#$Sprite2D.self_modulate = new_color
+	$Sprite2D.material.set_shader_parameter("replace_color", new_color);
 
 func set_control_device(device: int):
 	control_device = device
