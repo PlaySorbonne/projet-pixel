@@ -30,6 +30,7 @@ position = Vector2(835, 141)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 default_duration = 1.0
@@ -39,7 +40,7 @@ position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(576, 324)
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.9, 0.9)
 limit_left = -1200
 limit_top = -700
 limit_right = 2400
@@ -51,51 +52,19 @@ script = ExtResource("5_d5mk4")
 [node name="CameraUtils" parent="Camera" instance=ExtResource("6_vq42y")]
 
 [node name="Wall" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(542, 1115)
+position = Vector2(646, 874)
 scale = Vector2(60, 5)
 
 [node name="Wall2" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(590, -556)
+position = Vector2(704, -404)
 scale = Vector2(60, 5)
 
-[node name="Wall6" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(999, 1034)
-scale = Vector2(10, 1)
-
-[node name="Wall7" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(573, 668)
-scale = Vector2(15, 1)
-
-[node name="Wall8" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1514, 496)
-scale = Vector2(10, 1)
-
-[node name="Wall9" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-433, 511)
-scale = Vector2(10, 1)
-
-[node name="Wall10" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-571, 174)
-scale = Vector2(10, 1)
-
-[node name="Wall11" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(50, -104)
-scale = Vector2(10, 1)
-
-[node name="Wall12" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(965, -19)
-scale = Vector2(10, 1)
-
-[node name="Wall13" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1730, 127)
-scale = Vector2(10, 1)
-
 [node name="Wall3" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-930, 286)
+position = Vector2(-637, 422)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(2088, 320)
+position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]

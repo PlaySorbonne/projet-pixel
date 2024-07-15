@@ -113,7 +113,6 @@ func set_animation(force := false):
 	if not computing_movement and not force:
 		return
 	if not alive:
-		print("deaht")
 		$Sprite2D.play("death")
 	elif in_invincibility_time:
 		$Sprite2D.play("hit")
