@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://gxqdipdbev6x"]
+
+[ext_resource type="Script" path="res://téléporteur.gd" id="1_sq7f7"]
+[ext_resource type="Texture2D" uid="uid://detrajtx17qr4" path="res://sprites/ascenseur.png" id="2_4rx2g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w2xv"]
+size = Vector2(100, 160)
+
+[node name="téléporteur" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_sq7f7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(30.5, -68.5)
+scale = Vector2(0.236328, 0.318359)
+texture = ExtResource("2_4rx2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, -70)
+shape = SubResource("RectangleShape2D_2w2xv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
