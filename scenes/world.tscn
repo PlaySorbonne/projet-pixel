@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=13 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_7bqa4"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_vq42y"]
 [ext_resource type="PackedScene" uid="uid://4cf0hnddgr1l" path="res://scenes/Menus/GameUI/game_hud.tscn" id="10_kpnks"]
 [ext_resource type="PackedScene" uid="uid://b8swqp82uj8tl" path="res://scenes/Menus/GameUI/start_game_screen.tscn" id="10_y5qku"]
+[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/poulet_copie.png" id="11_aowmv"]
+[ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="12_o61ks"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -39,8 +41,8 @@ default_duration = 1.0
 position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-zoom = Vector2(0.9, 0.9)
+position = Vector2(821, 395)
+zoom = Vector2(1.1, 1.1)
 limit_left = -1200
 limit_top = -700
 limit_right = 2400
@@ -70,5 +72,20 @@ scale = Vector2(5, 30)
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
 
 [node name="GameHUD" parent="." instance=ExtResource("10_kpnks")]
+
+[node name="PouletCopie" type="Sprite2D" parent="."]
+position = Vector2(1028, 635)
+texture = ExtResource("11_aowmv")
+
+[node name="PouletCopie2" type="Sprite2D" parent="."]
+position = Vector2(1249, 672)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_aowmv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.473253, 0.814174, 0.943103, 1)
+z_index = -100
+scale = Vector2(1000, 1000)
+texture = ExtResource("12_o61ks")
 
 [connection signal="game_won" from="AnimeBox" to="." method="end_game"]
