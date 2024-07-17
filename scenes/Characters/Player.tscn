@@ -18,6 +18,7 @@ shader_parameter/replace_threshold = 0.15
 script = ExtResource("2_7jbn1")
 current_evolution = 0
 speed = 600.0
+max_fall_speed = 1500.0
 jump_velocity = 600.0
 jump_max_duration = 0.2
 fall_speed_multiplier = 2.5

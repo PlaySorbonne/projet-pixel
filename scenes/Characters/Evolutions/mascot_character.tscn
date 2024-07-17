@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt20khpmxutd1"]
+[gd_scene load_steps=6 format=3 uid="uid://bt20khpmxutd1"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_y7qbi"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_aq807"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialMascot.gd" id="3_i1h8o"]
+[ext_resource type="SpriteFrames" uid="uid://b2sidufyhi057" path="res://scenes/Characters/Evolutions/Animations/chicken_sprite_frames.tres" id="3_mim3u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g55ga"]
 resource_local_to_scene = true
@@ -13,10 +14,13 @@ shader_parameter/replace_threshold = 0.15
 
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
+max_fall_speed = 1500.0
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")
 position = Vector2(0, 0)
+sprite_frames = ExtResource("3_mim3u")
+animation = &"idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-3, 10)

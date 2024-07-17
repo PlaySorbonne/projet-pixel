@@ -26,6 +26,7 @@ const PLAYER_COLORS = [
 
 @export var current_evolution : Evolutions = Evolutions.CEO
 @export var speed := 600.0
+@export var max_fall_speed := 1500.0
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
 @export var fall_speed_multiplier := 2.5
@@ -91,7 +92,10 @@ func _physics_process(delta):
 		if is_on_floor():
 			movement_velocity.y = initial_fall_speed
 		else:
-			movement_velocity.y += gravity * delta * fall_speed_multiplier
+			movement_velocity.y = min(
+				movement_velocity.y + gravity * delta * fall_speed_multiplier, 
+				max_fall_speed
+			)
 	if computing_movement:
 		# need to change the formula for knockback velocity, dosn't feel right as of yet
 		velocity = movement_velocity + knockback_velocity
