@@ -59,7 +59,6 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 	if hitpoints <= 0:
 		if attacker != null and attacker.has_signal("fighter_killed_opponent"):
 			attacker.emit_signal("fighter_killed_opponent")
-		print("death called")
 		death()
 	else:
 		in_invincibility_time = true
