@@ -14,7 +14,6 @@ shader_parameter/replace_threshold = 0.15
 
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
-max_fall_speed = 1500.0
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")

@@ -23,3 +23,13 @@ offset_top = 578.0
 offset_right = 593.0
 offset_bottom = 655.0
 text = "Fullscreen"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.161
+anchor_bottom = 0.126
+offset_left = 722.0
+offset_top = 593.0
+offset_right = 564.88
+offset_bottom = 480.92
