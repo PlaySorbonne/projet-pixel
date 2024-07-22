@@ -61,6 +61,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.control_device = control_device
 	new_body.control_type = control_type
 	new_body.player_ID = player_ID
+	new_body.set_player_color(GameInfos.player_colors[player_ID])
 
 func _init():
 	if not GameInfos.game_started:
