@@ -78,7 +78,7 @@ func add_player(device: int, device_type: int):
 	var player = default_player.instantiate()
 	player.control_device = device
 	player.control_type = device_type
-	player.compute_hits = false
+	player.god_mode = true
 	GameInfos.add_player(player)
 	
 	add_child(player)

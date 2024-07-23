@@ -54,6 +54,7 @@ var movement_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 var computing_movement := true
 var compute_hits := true
+var god_mode := false
 var player_ID := 0
 
 func copy_player_data(new_body : PlayerCharacter):
@@ -231,7 +232,10 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		hit_owner = attacker.get_hit_owner()
 	else:
 		hit_owner = attacker
-	super.hit(damage, hit_owner, hit_location)
+	if god_mode:
+		super.hit(0, hit_owner, hit_location)
+	else:
+		super.hit(damage, hit_owner, hit_location)
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
