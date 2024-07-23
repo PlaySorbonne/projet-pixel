@@ -95,6 +95,11 @@ func on_player_death(player : FighterCharacter):
 	player.spawn($SpawnPoint.position)
 
 func start_game():
+	# Reset players to CEO evolution
+	for player: PlayerCharacter in GameInfos.players:
+		var new_body : PlayerCharacter = PlayerCharacter.EvolutionCharacters[PlayerCharacter.Evolutions.CEO].instantiate()
+		player.copy_player_data(new_body)
+		GameInfos.players[player.player_ID] = new_body
 	emit_signal("StartGame")
 
 func _on_press_key_timer_timeout():
