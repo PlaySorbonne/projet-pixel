@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://mnxpr1v86nro"]
+[gd_scene load_steps=6 format=3 uid="uid://rlaw1umxqpak"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialManager.gd" id="2_ljooy"]
+[ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_ynyrr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmrf"]
+resource_local_to_scene = true
+shader = ExtResource("2_ynyrr")
+shader_parameter/base_color = Color(0.32549, 0.576471, 0.772549, 1)
+shader_parameter/replace_color = Color(1, 0, 0, 1)
+shader_parameter/replace_threshold = 0.15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2r6n"]
 size = Vector2(79, 90)
@@ -9,6 +17,9 @@ size = Vector2(79, 90)
 [node name="ManagerCharacter" instance=ExtResource("1_8g6v0")]
 current_evolution = 1
 max_hitpoints = 5
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_7nmrf")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_v2r6n")

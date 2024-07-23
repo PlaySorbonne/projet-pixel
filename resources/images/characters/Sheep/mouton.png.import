@@ -17,7 +17,7 @@ dest_files=["res://.godot/imported/mouton.png-17e4dbf20d9512968de9736100062922.c
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=1.0
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

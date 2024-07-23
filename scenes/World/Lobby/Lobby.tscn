@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cecgvfhb8emqw" path="res://scenes/World/Lobby/StartGameBox.tscn" id="7_oxrwl"]
 [ext_resource type="Texture2D" uid="uid://bo0jlh3k6hsie" path="res://resources/images/exit.png" id="8_s5y03"]
 [ext_resource type="PackedScene" uid="uid://b4kqremf6of1x" path="res://scenes/World/Lobby/ChangeColor.tscn" id="9_iaq7i"]
-[ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="10_vgihg"]
+[ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="10_basb8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fw6dy"]
 font_size = 41
@@ -124,8 +124,8 @@ offset_bottom = 624.0
 [node name="ChangeColor" parent="." instance=ExtResource("9_iaq7i")]
 position = Vector2(337, 916)
 
-[node name="ChangeEvolution" parent="." instance=ExtResource("10_vgihg")]
-position = Vector2(849, 907)
+[node name="ChangeEvolution" parent="." instance=ExtResource("10_basb8")]
+position = Vector2(971, 911)
 
 [connection signal="PlayerExited" from="." to="StartGameBox" method="_on_player_exited"]
 [connection signal="PlayerJoined" from="." to="StartGameBox" method="_on_player_joined"]

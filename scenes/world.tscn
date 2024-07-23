@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=15 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_7bqa4"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="6_vq42y"]
 [ext_resource type="PackedScene" uid="uid://4cf0hnddgr1l" path="res://scenes/Menus/GameUI/game_hud.tscn" id="10_kpnks"]
 [ext_resource type="PackedScene" uid="uid://b8swqp82uj8tl" path="res://scenes/Menus/GameUI/start_game_screen.tscn" id="10_y5qku"]
+[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/poulet_copie.png" id="11_aowmv"]
+[ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="12_k31tq"]
+[ext_resource type="AudioStream" uid="uid://bgf1wkvjjnkjp" path="res://resources/audio/music/Secret_Knowledge.wav" id="13_s55uu"]
+[ext_resource type="PackedScene" path="res://scenes/World/Environment/Teleporter.tscn" id="14_yh1rv"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -30,6 +34,7 @@ position = Vector2(835, 141)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 default_duration = 1.0
@@ -38,8 +43,8 @@ default_duration = 1.0
 position = Vector2(571, 372)
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-zoom = Vector2(0.7, 0.7)
+position = Vector2(818, 457)
+zoom = Vector2(1.1, 1.1)
 limit_left = -1200
 limit_top = -700
 limit_right = 2400
@@ -51,55 +56,63 @@ script = ExtResource("5_d5mk4")
 [node name="CameraUtils" parent="Camera" instance=ExtResource("6_vq42y")]
 
 [node name="Wall" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(542, 1115)
-scale = Vector2(60, 5)
+position = Vector2(775, 919)
+scale = Vector2(20, 5)
 
 [node name="Wall2" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(590, -556)
-scale = Vector2(60, 5)
-
-[node name="Wall6" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(999, 1034)
-scale = Vector2(10, 1)
-
-[node name="Wall7" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(573, 668)
-scale = Vector2(15, 1)
-
-[node name="Wall8" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1514, 496)
-scale = Vector2(10, 1)
-
-[node name="Wall9" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-433, 511)
-scale = Vector2(10, 1)
-
-[node name="Wall10" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-571, 174)
-scale = Vector2(10, 1)
-
-[node name="Wall11" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(50, -104)
-scale = Vector2(10, 1)
-
-[node name="Wall12" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1022, 8)
-scale = Vector2(10, 1)
-
-[node name="Wall13" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(1730, 127)
-scale = Vector2(10, 1)
+position = Vector2(780, -222)
+scale = Vector2(20, 5)
 
 [node name="Wall3" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(-930, 286)
+position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." instance=ExtResource("5_yc1ep")]
-position = Vector2(2088, 320)
+position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
 
 [node name="GameHUD" parent="." instance=ExtResource("10_kpnks")]
+
+[node name="PouletCopie" type="Sprite2D" parent="."]
+position = Vector2(1028, 635)
+texture = ExtResource("11_aowmv")
+
+[node name="PouletCopie2" type="Sprite2D" parent="."]
+position = Vector2(1249, 672)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_aowmv")
+
+[node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(0.473253, 0.814174, 0.943103, 1)
+z_index = -100
+position = Vector2(810, 327)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("12_k31tq")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_s55uu")
+autoplay = true
+
+[node name="TeleporterRightDown" parent="." node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("14_yh1rv")]
+position = Vector2(1518, 1235)
+scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterRightUp")
+
+[node name="TeleporterRightUp" parent="." node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("14_yh1rv")]
+position = Vector2(1522, -196)
+scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterRightDown")
+
+[node name="TeleporterLeftUp" parent="." node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("14_yh1rv")]
+position = Vector2(54, -238)
+scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterLeftDown")
+
+[node name="TeleporterLeftDown" parent="." node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("14_yh1rv")]
+position = Vector2(65, 1190)
+scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterLeftUp")
 
 [connection signal="game_won" from="AnimeBox" to="." method="end_game"]
