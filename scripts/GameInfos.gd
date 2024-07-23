@@ -8,7 +8,7 @@ var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
 var players_order : Array[int] = []
 var player_colors : Array[Color] = []
-
+var available_colors_index = 0
 
 func reset_game_infos() -> void:
 	game_started = false
@@ -34,8 +34,12 @@ func compute_ids() -> void:
 func available_colors() -> Array:
 	return PlayerCharacter.PLAYER_COLORS.filter(func(c): return not c in player_colors)
 	
-func change_color(player_id: int, index: int) -> void:
-	player_colors[player_id] = available_colors()[index]
+func change_color(player_id: int) -> void:
+	var available_colors = available_colors()
+	player_colors[player_id] = available_colors[available_colors_index]
+	available_colors_index += 1
+	if available_colors_index == len(available_colors):
+		available_colors_index = 0
 
 func players_number(): return len(players)
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtbi7vykpbxmh"]
+
+[ext_resource type="Script" path="res://scripts/ChangeEvolution.gd" id="1_1ruoj"]
+[ext_resource type="Texture2D" uid="uid://blth8jalf0p7s" path="res://resources/images/fiole.png" id="2_ya1qu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygb2a"]
+size = Vector2(180, 305)
+
+[node name="ChangeEvolution" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_1ruoj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-0.999992, 47)
+scale = Vector2(0.366722, 0.366723)
+texture = ExtResource("2_ya1qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 47.5)
+shape = SubResource("RectangleShape2D_ygb2a")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -110.0
+offset_top = -145.0
+offset_right = 112.0
+offset_bottom = -122.0
+text = "changer d'évolution (frapper)"

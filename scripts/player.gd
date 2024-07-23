@@ -184,9 +184,12 @@ func spawn(location : Vector2, activate := true):
 	facing_right = true
 	_update_debug_text()
 
-func evolve():
+func evolve(in_lobby: bool = false):
 	if current_evolution == Evolutions.Weeb:
-		return
+		if in_lobby:
+			current_evolution = -1
+		else:
+			return
 	compute_hits = false
 	computing_movement = false
 	velocity = Vector2.ZERO
@@ -194,12 +197,14 @@ func evolve():
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	GameInfos.players[player_ID] = new_body
 	get_parent().add_child(new_body)
-	await get_tree().create_timer(0.2).timeout
+	if not in_lobby:
+		await get_tree().create_timer(0.2).timeout
 	copy_player_data(new_body)
 	new_body.spawn(position)
 	set_player_active(false)
 	emit_signal("player_evolved", new_body)
-	await get_tree().create_timer(0.5).timeout
+	if not in_lobby:
+		await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func remove_player():

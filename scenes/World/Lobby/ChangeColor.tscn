@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hcvhyh4h668q"]
+[gd_scene load_steps=4 format=3 uid="uid://b4kqremf6of1x"]
 
 [ext_resource type="Texture2D" uid="uid://c07mf4nc50gq1" path="res://resources/images/canvas.png" id="1_7swt8"]
 [ext_resource type="Script" path="res://scripts/ChangeColor.gd" id="1_qhfgl"]
@@ -21,10 +21,8 @@ position = Vector2(-3, 47.5)
 shape = SubResource("RectangleShape2D_ygb2a")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -82.0
-offset_top = -196.0
-offset_right = 84.0
-offset_bottom = -145.0
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+offset_left = -110.0
+offset_top = -145.0
+offset_right = 112.0
+offset_bottom = -122.0
+text = "changer de couleur (frapper)"

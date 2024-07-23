@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci6ttr2ennk5l"
-path="res://.godot/imported/mouton.png-17e4dbf20d9512968de9736100062922.ctex"
+uid="uid://blth8jalf0p7s"
+path="res://.godot/imported/fiole.png-326677c24aee1fe3f0ad634a7e91b20e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/Sheep/mouton.png"
-dest_files=["res://.godot/imported/mouton.png-17e4dbf20d9512968de9736100062922.ctex"]
+source_file="res://resources/images/fiole.png"
+dest_files=["res://.godot/imported/fiole.png-326677c24aee1fe3f0ad634a7e91b20e.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=1.0
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
