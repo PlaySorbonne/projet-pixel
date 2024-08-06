@@ -21,8 +21,6 @@ current_evolution = 2
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj5wj")
 sprite_frames = ExtResource("2_hwdps")
-animation = &"idle"
-frame_progress = 0.754744
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_5rnvo")
