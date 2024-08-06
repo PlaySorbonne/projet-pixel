@@ -113,24 +113,31 @@ func _physics_process(delta):
 	set_animation()
 
 func reset_animation():
-	$Sprite2D.play("evolve")
+	#$Sprite2D.play("evolve")
+	$AnimationPlayer.play("evolve")
 
 func set_animation(force := false):
 	if not computing_movement and not force:
 		return
 	if not alive:
-		$Sprite2D.play("death")
+		#$Sprite2D.play("death")
+		$AnimationPlayer.play("death")
 	elif in_invincibility_time:
-		$Sprite2D.play("hit")
+		#$Sprite2D.play("hit")
+		$AnimationPlayer.play("hit")
 	elif attacking:
-		$Sprite2D.play("attack")
+		#$Sprite2D.play("attack")
+		$AnimationPlayer.play("attack")
 	elif is_on_floor():
 		if velocity.x > 10.0 or velocity.x < -10.0:
-			$Sprite2D.play("run")
+			#$Sprite2D.play("run")
+			$AnimationPlayer.play("run")
 		else:
-			$Sprite2D.play("idle")
+			#$Sprite2D.play("idle")
+			$AnimationPlayer.play("idle")
 	else:
-		$Sprite2D.play("jump")
+		$AnimationPlayer.play("jump")
+		#$Sprite2D.play("jump")
 
 func _input(event : InputEvent):
 	var is_correct_control_type = false

@@ -1,13 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://d18yfqex83vg3"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://d18yfqex83vg3"]
 
 [ext_resource type="Texture2D" uid="uid://b7qong2dk56dr" path="res://resources/images/characters/template/robot_attack.png" id="1_7xd0d"]
 [ext_resource type="Texture2D" uid="uid://dy2y0inpjqt0" path="res://resources/images/characters/template/robot_death.png" id="2_1c04i"]
 [ext_resource type="Texture2D" uid="uid://dpw0d8rgia3qq" path="res://resources/images/characters/template/robot_evolution.png" id="3_dflgs"]
 [ext_resource type="Texture2D" uid="uid://yw4libnmfooo" path="res://resources/images/characters/template/robot_hit.png" id="4_yobc5"]
-[ext_resource type="Texture2D" uid="uid://dpwv7hjpqnhrg" path="res://resources/images/characters/Sheep/mouton256x192.png" id="5_dt18u"]
 [ext_resource type="Texture2D" uid="uid://vm54ho2ng8jb" path="res://resources/images/characters/template/robot_jump.png" id="6_6m0a0"]
-[ext_resource type="Texture2D" uid="uid://ryg1d2wvk0kp" path="res://resources/images/characters/template/robot_run0.png" id="7_pqnjd"]
-[ext_resource type="Texture2D" uid="uid://cd1lwrumlu8qj" path="res://resources/images/characters/template/robot_run1.png" id="8_uw373"]
+[ext_resource type="Texture2D" uid="uid://d22lkkbax5jwo" path="res://resources/images/characters/Sheep/moutondroit.png" id="6_ly27v"]
+[ext_resource type="Texture2D" uid="uid://b26858xxtuvdj" path="res://resources/images/characters/Sheep/moutonmarche2.png" id="8_2hkke"]
 
 [resource]
 animations = [{
@@ -45,7 +44,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_dt18u")
+"texture": ExtResource("6_ly27v")
 }],
 "loop": true,
 "name": &"idle",
@@ -61,10 +60,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_pqnjd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_uw373")
+"texture": ExtResource("8_2hkke")
 }],
 "loop": true,
 "name": &"run",

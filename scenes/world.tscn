@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/poulet_copie.png" id="11_aowmv"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="12_k31tq"]
 [ext_resource type="AudioStream" uid="uid://bgf1wkvjjnkjp" path="res://resources/audio/music/Secret_Knowledge.wav" id="13_s55uu"]
-[ext_resource type="PackedScene" path="res://scenes/World/Environment/Teleporter.tscn" id="14_yh1rv"]
+[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="14_yh1rv"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
