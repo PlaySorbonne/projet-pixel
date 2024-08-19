@@ -10,6 +10,7 @@ const PLAYER_PORTRAITS = [
 ]
 
 var player_number := 0
+var current_evolution := -1
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
@@ -33,6 +34,9 @@ func update_health():
 func update_evolution(_evolution = null):
 	connect_player_object()
 	var new_evolution = GameInfos.players[player_number].current_evolution
+	if new_evolution == current_evolution:
+		return
+	current_evolution = new_evolution
 	var new_texture = PLAYER_PORTRAITS[new_evolution]
 	var new_name : String = PlayerCharacter.Evolutions.keys()[new_evolution]
 	$TexturePortrait.texture = new_texture
