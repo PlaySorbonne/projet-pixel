@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxby8t42ku636"]
 
-[ext_resource type="Texture2D" uid="uid://cqr0b8t0hidu1" path="res://sprites/pieces.png" id="1_ykqj3"]
+[ext_resource type="Texture2D" uid="uid://cqr0b8t0hidu1" path="res://sprites/pieces.png" id="1_8bfae"]
 
 [sub_resource type="Curve" id="Curve_onj06"]
 _data = [Vector2(0.015625, 1), 0.0, 0.0, 0, 0, Vector2(0.489583, 0.351648), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
@@ -15,7 +15,7 @@ one_shot = true
 preprocess = 0.03
 explosiveness = 1.0
 randomness = 0.59
-texture = ExtResource("1_ykqj3")
+texture = ExtResource("1_8bfae")
 emission_shape = 1
 emission_sphere_radius = 20.0
 spread = 120.0

@@ -245,6 +245,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		super.hit(0, hit_owner, hit_location)
 	else:
 		super.hit(damage, hit_owner, hit_location)
+	emit_hit_particles()
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
@@ -252,6 +253,11 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.05)
 	_update_debug_text()
+
+func emit_hit_particles():
+	$HitParticles.amount = randi_range(8, 12)
+	$HitParticles.speed_scale = randf_range(0.9, 1.0)
+	$HitParticles.restart()
 
 func special():
 	specialObj.special()
