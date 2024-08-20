@@ -36,6 +36,7 @@ func update_evolution(_evolution = null):
 	var new_evolution = GameInfos.players[player_number].current_evolution
 	if new_evolution == current_evolution:
 		return
+	$Shaker.shake(0.2, 15, 15)
 	current_evolution = new_evolution
 	var new_texture = PLAYER_PORTRAITS[new_evolution]
 	var new_name : String = PlayerCharacter.Evolutions.keys()[new_evolution]

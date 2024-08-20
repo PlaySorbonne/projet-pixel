@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=9 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
 [ext_resource type="LabelSettings" uid="uid://iu6ob7xdc80l" path="res://resources/fonts/player_portraitLabel.tres" id="3_hssq3"]
+[ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_oscts"]
 
 [sub_resource type="Animation" id="Animation_3h0w0"]
 resource_name = "evolve"
@@ -15,10 +16,10 @@ tracks/0/path = NodePath("TexturePortrait:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [Vector2(50, -7.62939e-06)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,10 +28,10 @@ tracks/1/path = NodePath("TexturePortrait:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -39,10 +40,10 @@ tracks/2/path = NodePath("TexturePortrait:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": []
+"values": [Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -193,7 +194,6 @@ anchor_right = 0.5
 anchor_bottom = 0.75
 offset_left = -75.0
 offset_right = 75.0
-offset_bottom = -1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_o1d5x")
@@ -232,3 +232,9 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_1x3la")
 }
+
+[node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("5_oscts")
+object = NodePath("../TexturePortrait")
+property = "position"
+reset_to_zero = false

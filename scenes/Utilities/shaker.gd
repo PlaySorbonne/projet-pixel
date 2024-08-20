@@ -1,14 +1,19 @@
 extends Node
+class_name Shaker
 
 const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
 
 
 @export var object : Node
+@export var property := "offset"
+@export var reset_to_zero := true
+var initial_value := Vector2.ZERO
 var amplitude = 0
 var priority = 0
 var shaking = false
 var frequency := 0.0
+
 
 
 func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0):
@@ -16,6 +21,11 @@ func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0)
 		priority = priority_n
 		amplitude = amplitude_n
 	shaking = true
+	if reset_to_zero:
+		initial_value = Vector2.ZERO
+	else:
+		initial_value = object.get(property)
+	print("reset_to_zero = " + str(reset_to_zero) + " ; initial = " + str(initial_value))
 	frequency = 1/float(frequency_n)
 	_new_shake()
 	await get_tree().create_timer(duration_n).timeout
@@ -32,9 +42,11 @@ func _new_shake():
 
 func _tween_shake(new_pos : Vector2) -> Tween:
 	var tween : Tween = create_tween().set_ease(EASE).set_trans(TRANS)
-	tween.tween_property(object, "offset", new_pos, frequency)
+	tween.tween_property(object, property, initial_value + new_pos, frequency)
 	return tween
 
 func _reset():
 	_tween_shake(Vector2.ZERO)
 	priority = 0
+	await get_tree().create_timer(2.0).timeout
+	print("final val = " + str(object.get(property)))
