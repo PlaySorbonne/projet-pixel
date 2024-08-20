@@ -11,6 +11,7 @@ const PLAYER_PORTRAITS = [
 
 var player_number := 0
 var current_evolution := -1
+var init_portrait := false
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
@@ -28,7 +29,7 @@ func connect_player_object():
 	player.player_evolved.connect(update_evolution)
 
 func update_health():
-	$Holder/LabelHealth.text = str(GameInfos.players[player_number].hitpoints
+	$Holder/LabelHealth.text = str(max(0, GameInfos.players[player_number].hitpoints)
 	) + "/" + str(GameInfos.players[player_number].max_hitpoints)
 
 func update_evolution(_evolution = null):
@@ -36,9 +37,13 @@ func update_evolution(_evolution = null):
 	var new_evolution = GameInfos.players[player_number].current_evolution
 	if new_evolution == current_evolution:
 		return
-	$Shaker.shake(0.35, 25, 20)
-	$AnimationPlayer.play("evolve")
-	tween_labels_color()
+	if init_portrait:
+		
+		$Shaker.shake(0.35, 25, 20)
+		$AnimationPlayer.play("evolve")
+		tween_labels_color()
+	else:
+		init_portrait = true
 	current_evolution = new_evolution
 	var new_texture = PLAYER_PORTRAITS[new_evolution]
 	var new_name : String = PlayerCharacter.Evolutions.keys()[new_evolution]
@@ -59,5 +64,4 @@ func tween_labels_color():
 		await get_tree().create_timer(0.1+anim_time).timeout
 		new_color = Color.WHITE
 		anim_time = 0.5
-		
 
