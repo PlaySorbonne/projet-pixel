@@ -4,7 +4,7 @@ signal game_won
 
 const BOUNDS = 3000
 
-@export var anime_velocity := 4000.0
+@export var anime_velocity := 2000.0
 @export var anime_damage_multiplier := 1.0
 
 var team := -1

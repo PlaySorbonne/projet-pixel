@@ -190,6 +190,8 @@ func _on_jump_timer_timeout():
 func spawn(location : Vector2, activate := true):
 	super.spawn(location, activate)
 	facing_right = true
+	movement_velocity = Vector2.ZERO
+	knockback_velocity = Vector2.ZERO
 	_update_debug_text()
 
 func evolve(in_lobby: bool = false):
