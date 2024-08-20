@@ -17,7 +17,7 @@ current_evolution = 3
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")
-position = Vector2(0, 0)
+position = Vector2(-8, 48)
 sprite_frames = ExtResource("3_mim3u")
 animation = &"idle"
 

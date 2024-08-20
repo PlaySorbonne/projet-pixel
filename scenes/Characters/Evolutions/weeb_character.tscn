@@ -16,3 +16,8 @@ max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_1qsr2")
+
+[node name="HitParticles" parent="." index="10"]
+scale_amount_min = 0.0
+scale_amount_max = 0.25
+color_ramp = null

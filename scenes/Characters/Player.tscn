@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=11 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
@@ -16,10 +16,6 @@ shader = ExtResource("3_pu3bk")
 shader_parameter/base_color = Color(0.32549, 0.576471, 0.772549, 1)
 shader_parameter/replace_color = Color(1, 0, 0, 1)
 shader_parameter/replace_threshold = 0.15
-
-[sub_resource type="Gradient" id="Gradient_ewxgu"]
-offsets = PackedFloat32Array(0, 0.818396, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="PlayerCharacter" groups=["player"] instance=ExtResource("1_cukm7")]
 script = ExtResource("2_7jbn1")
@@ -41,7 +37,7 @@ knockback_interp_factor = 0.075
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_72mm4")
-position = Vector2(2.08616e-07, 26)
+position = Vector2(8.9407e-08, 34)
 rotation = 0.174533
 scale = Vector2(0.5, 0.5)
 animation = &"attack"
@@ -83,9 +79,6 @@ texture = ExtResource("6_lc1o4")
 position = Vector2(0, 0)
 lifetime = 1.0
 texture = ExtResource("9_8u645")
-scale_amount_min = 0.18
-scale_amount_max = 0.23
-color_ramp = SubResource("Gradient_ewxgu")
 
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

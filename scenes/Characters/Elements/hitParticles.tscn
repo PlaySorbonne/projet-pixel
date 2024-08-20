@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cqr0b8t0hidu1" path="res://sprites/pieces.png" id="1_8bfae"]
 
 [sub_resource type="Curve" id="Curve_onj06"]
-_data = [Vector2(0.015625, 1), 0.0, 0.0, 0, 0, Vector2(0.489583, 0.351648), 0.0, 0.0, 0, 0, Vector2(1, 0.373626), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.213693, 0.710249), 0.0, 0.0, 0, 0, Vector2(0.732365, 0.532292), 0.0, 0.0, 0, 0, Vector2(0.821577, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
@@ -22,6 +22,6 @@ spread = 120.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 120.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
+scale_amount_min = 0.0
+scale_amount_max = 0.25
 scale_amount_curve = SubResource("Curve_onj06")

@@ -20,7 +20,7 @@ max_hitpoints = 9
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_yc06i")
-position = Vector2(0, 0)
+position = Vector2(-1.90735e-06, 56)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-5, 14)
