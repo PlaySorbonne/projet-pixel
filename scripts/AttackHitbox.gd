@@ -32,6 +32,9 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 		hitbox.set_hitbox_lifetime(duration)
 	return hitbox
 
+func _ready():
+	$GPUParticles2D.restart()
+
 func set_hitbox_lifetime(time : float):
 	$Timer.start(time)
 
