@@ -80,10 +80,10 @@ scale = Vector2(3, 3)
 text = "Start Game"
 
 [node name="DebugLabel" type="Label" parent="."]
-offset_left = -7.0
-offset_top = -20.0
-offset_right = 205.0
-offset_bottom = 47.0
+offset_left = -8.0
+offset_top = -444.0
+offset_right = 1019.0
+offset_bottom = -377.0
 text = "Gardez une touche appuyée pour rejoindre la partie"
 label_settings = SubResource("LabelSettings_fw6dy")
 
@@ -92,10 +92,10 @@ wait_time = 0.5
 one_shot = true
 
 [node name="LoadingBar" type="TextureRect" parent="."]
-offset_left = 10.0
-offset_top = 67.0
-offset_right = 266.0
-offset_bottom = 94.0
+offset_left = 9.0
+offset_top = -357.0
+offset_right = 1009.0
+offset_bottom = -330.0
 texture = SubResource("GradientTexture1D_nxkae")
 
 [node name="ExitSign" type="Sprite2D" parent="."]
@@ -117,9 +117,10 @@ position = Vector2(1424.25, -456)
 shape = SubResource("RectangleShape2D_x6vcs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_top = 51.0
-offset_right = 1021.0
-offset_bottom = 624.0
+offset_left = -1.0
+offset_top = -373.0
+offset_right = 1020.0
+offset_bottom = -108.0
 
 [node name="ChangeColor" parent="." instance=ExtResource("9_iaq7i")]
 position = Vector2(337, 916)

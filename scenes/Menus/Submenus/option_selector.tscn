@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm2is8wtrp5ox"]
+
+[ext_resource type="Texture2D" uid="uid://dh2ldvonsj06l" path="res://resources/images/interface/arrow.png" id="1_npjfe"]
+[ext_resource type="Texture2D" uid="uid://cfge7cqh4cj26" path="res://resources/images/interface/arrowLeft.png" id="1_qymbq"]
+
+[node name="OptionSelector" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PreviousButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("1_qymbq")
+flat = true
+expand_icon = true
+
+[node name="Separator1" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Option name"
+
+[node name="Separator2" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("1_npjfe")
+flat = true
+expand_icon = true
