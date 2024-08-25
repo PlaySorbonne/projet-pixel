@@ -21,5 +21,3 @@ func freeze(duration : float = 0.15):
 		var new_freeze_frame := added_freeze_frame
 		added_freeze_frame = 0.0
 		freeze(new_freeze_frame)
-
-

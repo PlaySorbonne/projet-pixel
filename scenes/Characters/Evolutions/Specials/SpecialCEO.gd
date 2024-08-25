@@ -46,4 +46,3 @@ func special():
 		await get_tree().create_timer(dash_cooldown).timeout
 	
 	can_use_special = true
-

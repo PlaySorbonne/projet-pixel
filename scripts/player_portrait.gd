@@ -64,4 +64,3 @@ func tween_labels_color():
 		await get_tree().create_timer(0.1+anim_time).timeout
 		new_color = Color.WHITE
 		anim_time = 0.5
-

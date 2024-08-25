@@ -54,6 +54,3 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	end_hitbox()
-
-
-
