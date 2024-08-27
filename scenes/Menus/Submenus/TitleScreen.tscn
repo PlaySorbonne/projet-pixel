@@ -90,15 +90,60 @@ text = "Credits"
 flat = true
 alignment = 0
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Pointer0" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 105.0
-offset_top = 133.0
+offset_top = 150.0
 offset_right = -1733.0
-offset_bottom = -848.0
+offset_bottom = -831.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pointer1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 325.0
+offset_right = -1733.0
+offset_bottom = -656.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pointer2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 515.0
+offset_right = -1733.0
+offset_bottom = -466.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pointer3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 715.0
+offset_right = -1733.0
+offset_bottom = -266.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_53g2f")
