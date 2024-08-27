@@ -18,6 +18,7 @@ visible = false
 [node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("2_j1y2d")]
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("1_donq7")]
+visible = false
 default_duration = 1.0
 
 [connection signal="StartGame" from="Lobby" to="." method="_on_lobby_start_game"]

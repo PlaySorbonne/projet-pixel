@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dfugohqtoildj"]
+
+[ext_resource type="FontFile" uid="uid://b6nnhp5bogj31" path="res://resources/fonts/files/HVD_Comic_Serif_Pro.otf" id="1_iw5jw"]
+
+[sub_resource type="FontVariation" id="FontVariation_dsf5w"]
+base_font = ExtResource("1_iw5jw")
+variation_embolden = -0.15
+variation_transform = Transform2D(1, 0, 0, 1.15, 0, 0)
+spacing_glyph = 1
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 80
+Button/font_sizes/font_size = 102
+Button/fonts/font = SubResource("FontVariation_dsf5w")

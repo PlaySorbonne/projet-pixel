@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3283guxswi41"]
+[gd_scene load_steps=4 format=3 uid="uid://d3283guxswi41"]
 
 [ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_cqi7r"]
+[ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_y6t6y"]
+[ext_resource type="Texture2D" uid="uid://s4dnnbfx1dq2" path="res://resources/images/interface/selectionTriangle.png" id="3_53g2f"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -10,20 +12,100 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cqi7r")
+metadata/_edit_vertical_guides_ = [-370.0]
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.403
-anchor_top = 0.806
-anchor_right = 0.597
-anchor_bottom = 0.884
-offset_left = -0.256042
-offset_top = -0.288025
-offset_right = 0.255981
-offset_bottom = 0.167969
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 100.0
+offset_right = -1275.0
+offset_bottom = -786.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Start"
+rotation = 0.139626
+theme = ExtResource("2_y6t6y")
+theme_override_colors/font_outline_color = Color(0.196797, 0, 0.0160453, 1)
+theme_override_font_sizes/font_size = 112
+text = "Jouer"
+flat = true
+alignment = 0
+
+[node name="Vault" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 300.0
+offset_right = -1297.01
+offset_bottom = -632.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.139626
+theme = ExtResource("2_y6t6y")
+theme_override_colors/font_outline_color = Color(0.161078, 0.159357, 9.62615e-08, 1)
+theme_override_font_sizes/font_size = 96
+text = "Coffre"
+flat = true
+alignment = 0
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 500.0
+offset_right = -1149.0
+offset_bottom = -446.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.139626
+theme = ExtResource("2_y6t6y")
+theme_override_colors/font_outline_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+theme_override_font_sizes/font_size = 80
+text = "Parametres"
+flat = true
+alignment = 0
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 700.0
+offset_right = -1282.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.139626
+theme = ExtResource("2_y6t6y")
+theme_override_colors/font_outline_color = Color(0.0140248, 0, 0.294044, 1)
+theme_override_font_sizes/font_size = 80
+text = "Credits"
+flat = true
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 133.0
+offset_right = -1733.0
+offset_bottom = -848.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Vault" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_start_button_pressed"]
