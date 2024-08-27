@@ -4,6 +4,7 @@ signal StartGame
 signal PlayerJoined
 signal PlayerExited
 
+const WORLD_PATH = "res://scenes/world.tscn"
 const JOINING_UI = preload("res://scenes/World/Lobby/lobbyUI/player_joining_ui.tscn")
 
 @export var default_player: PackedScene
@@ -100,6 +101,9 @@ func start_game():
 		player.copy_player_data(new_body)
 		GameInfos.players[player.player_ID] = new_body
 	emit_signal("StartGame")
+	screen_transition.start_screen_transition()
+	await screen_transition.HalfScreenTransitionFinished
+	get_tree().change_scene_to_file(WORLD_PATH)
 
 func _on_press_key_timer_timeout():
 	add_player(current_device, current_device_type)

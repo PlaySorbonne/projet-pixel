@@ -1,5 +1,6 @@
 extends Node2D
 
+const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
 @onready var spawn_locations : Array = [
@@ -43,7 +44,7 @@ func end_game():
 	await get_tree().create_timer(1.5).timeout
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
-	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
+	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
 	for player : PlayerCharacter in GameInfos.players:
