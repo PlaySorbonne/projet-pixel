@@ -8,7 +8,7 @@ signal ButtonSelected
 
 const position_x_normal := 250.0
 const position_x_selected := 300.0
-const button_colors := [Color.DARK_RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE]
+const button_colors := [Color.RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE]
 
 var signals := [
 	"ButtonStartPressed",
@@ -30,6 +30,7 @@ var signals := [
 ]
 var selected_button := 1
 var can_input := true
+var button_movement_val := 0.0
 
 func _ready():
 	for p : TextureRect in pointers:
@@ -56,11 +57,12 @@ func confirm_with_delay():
 	await self.ButtonSelected
 	confirm_button()
 
-func _process(_delta):
+func _process(delta : float):
 	if not can_input:
-		get_tree().create_timer(0.1).timeout
-		emit_signal("ButtonSelected")
 		return
+	var b : Button = buttons[selected_button]
+	button_movement_val += delta
+	b.anchor_left = cos(button_movement_val * 6) * 0.01 + 0.01
 	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
 		var new_button := selected_button + 1
 		if new_button >= len(buttons):
@@ -76,11 +78,14 @@ func _process(_delta):
 
 func select_button(button_number : int):
 	if selected_button == button_number:
+		get_tree().create_timer(0.1).timeout
+		emit_signal("ButtonSelected")
 		return
 	var old_button : Button = buttons[selected_button]
 	var new_button : Button = buttons[button_number]
 	var old_pointer : TextureRect = pointers[selected_button]
 	var new_pointer : TextureRect = pointers[button_number]
+	old_button.anchor_left = 0.0
 	selected_button = button_number
 	new_pointer.position.x = 45.0
 	
