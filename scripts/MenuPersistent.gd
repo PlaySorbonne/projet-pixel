@@ -1,17 +1,19 @@
 extends Node2D
 
+
 @export var lobby_scene: PackedScene
 @onready var title_screen = $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 @onready var lobby = $Lobby
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 
-
 func _ready():
 	GameInfos.reset_game_infos()
 	screen_transition.end_screen_transition()
+	$AnimationPlayer.play("idle")
 
 func _on_title_screen_button_start_pressed():
+	get_tree().create_timer(0.25).timeout
 	screen_transition.new_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	title_screen.visible = false

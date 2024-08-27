@@ -62,7 +62,7 @@ func _process(delta : float):
 		return
 	var b : Button = buttons[selected_button]
 	button_movement_val += delta
-	b.anchor_left = cos(button_movement_val * 6) * 0.01 + 0.01
+	b.anchor_left = cos(button_movement_val * 9) * 0.01 + 0.01
 	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
 		var new_button := selected_button + 1
 		if new_button >= len(buttons):
