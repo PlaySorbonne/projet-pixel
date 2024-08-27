@@ -23,6 +23,7 @@ var joining_controllers : Array = []
 
 func _ready():
 	GameInfos.world = self
+	$CanvasLayer/ScreenTransition.end_screen_transition()
 
 func _process(delta):
 	if player_joining:

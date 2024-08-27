@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvkf6l5jtinbx"]
+[gd_scene load_steps=12 format=3 uid="uid://cvkf6l5jtinbx"]
 
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="1_donq7"]
 [ext_resource type="Script" path="res://scripts/MenuPersistent.gd" id="1_jtr7k"]
 [ext_resource type="PackedScene" uid="uid://d3283guxswi41" path="res://scenes/Menus/Submenus/TitleScreen.tscn" id="2_j1y2d"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="4_52cat"]
+[ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="4_jwgc0"]
 [ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/poulet_copie.png" id="5_11yah"]
 [ext_resource type="Texture2D" uid="uid://drjf5m66m1a2" path="res://resources/images/characters/Sheep/moutonBam.png" id="6_3sjcl"]
 
@@ -159,6 +160,10 @@ script = ExtResource("1_jtr7k")
 visible = false
 default_duration = 1.0
 
+[node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("4_jwgc0")]
+offset_left = 1920.0
+offset_right = 1920.0
+
 [node name="TitleScreenDecor" type="Node2D" parent="."]
 
 [node name="DecorPlaceholder" type="Sprite2D" parent="TitleScreenDecor"]
@@ -198,4 +203,7 @@ libraries = {
 "": SubResource("AnimationLibrary_5q65t")
 }
 
+[connection signal="ButtonCreditsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_credits_pressed"]
+[connection signal="ButtonSettingsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_settings_pressed"]
 [connection signal="ButtonStartPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_start_pressed"]
+[connection signal="ButtonVaultPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_vault_pressed"]

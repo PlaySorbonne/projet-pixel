@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw6ararr3s0li"]
+[gd_scene load_steps=16 format=3 uid="uid://cw6ararr3s0li"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_e0kiy"]
 [ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_t0ou6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bo0jlh3k6hsie" path="res://resources/images/exit.png" id="8_s5y03"]
 [ext_resource type="PackedScene" uid="uid://b4kqremf6of1x" path="res://scenes/World/Lobby/ChangeColor.tscn" id="9_iaq7i"]
 [ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="10_basb8"]
+[ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="11_2ixvu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fw6dy"]
 font_size = 41
@@ -127,6 +128,10 @@ position = Vector2(337, 916)
 
 [node name="ChangeEvolution" parent="." instance=ExtResource("10_basb8")]
 position = Vector2(971, 911)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("11_2ixvu")]
 
 [connection signal="PlayerExited" from="." to="StartGameBox" method="_on_player_exited"]
 [connection signal="PlayerJoined" from="." to="StartGameBox" method="_on_player_joined"]

@@ -4,11 +4,13 @@ extends CanvasLayer
 const NEXT_SCREEN = preload("res://scenes/Menus/MenuPersistent.tscn")
 
 var transition_duration := 0.5
-var transition_started := false
+var transition_started := true
 
 func _ready():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	$Main/ScreenTransition.end_screen_transition(transition_duration)
+	get_tree().create_timer(1.00).timeout
+	transition_started = false
 
 func _input(event):
 	if transition_started:

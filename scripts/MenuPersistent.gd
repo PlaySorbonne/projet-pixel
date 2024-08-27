@@ -1,7 +1,11 @@
 extends Node2D
 
 
-@export var lobby_scene: PackedScene
+const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
+const VAULT_PATH = "res://scenes/Menus/intro_screen.tscn"
+const CREDITS_PATH = "res://scenes/Menus/intro_screen.tscn"
+
+
 @onready var title_screen = $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 @onready var lobby = $Lobby
@@ -12,15 +16,20 @@ func _ready():
 	screen_transition.end_screen_transition()
 	$AnimationPlayer.play("idle")
 
-func _on_title_screen_button_start_pressed():
+func smooth_change_to_scene(new_scene : String):
 	get_tree().create_timer(0.25).timeout
-	screen_transition.new_screen_transition()
-	await screen_transition.HalfScreenTransitionFinished
-	title_screen.visible = false
-	lobby.visible = true
-
-func _on_lobby_start_game():
-	var level = lobby_scene.instantiate()
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
-	get_tree().change_scene_to_packed(lobby_scene)
+	get_tree().change_scene_to_file(new_scene)
+
+func _on_title_screen_button_start_pressed():
+	smooth_change_to_scene(LOBBY_PATH)
+
+func _on_title_screen_button_vault_pressed():
+	smooth_change_to_scene(VAULT_PATH)
+
+func _on_title_screen_button_settings_pressed():
+	pass # Replace with function body.
+
+func _on_title_screen_button_credits_pressed():
+	smooth_change_to_scene(CREDITS_PATH)
