@@ -151,6 +151,6 @@ expand_mode = 3
 stretch_mode = 5
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Vault" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Settings" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Vault" to="." method="_on_vault_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

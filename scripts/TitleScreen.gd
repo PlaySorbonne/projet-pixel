@@ -1,11 +1,21 @@
 extends Control
 
 signal ButtonStartPressed
+signal ButtonVaultPressed
+signal ButtonSettingsPressed
+signal ButtonCreditsPressed
+signal ButtonSelected
 
 const position_x_normal := 250.0
 const position_x_selected := 300.0
 const button_colors := [Color.DARK_RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE]
 
+var signals := [
+	"ButtonStartPressed",
+	"ButtonVaultPressed",
+	"ButtonSettingsPressed",
+	"ButtonCreditsPressed"
+]
 @onready var pointers := [
 	$Pointer0,
 	$Pointer1,
@@ -19,6 +29,7 @@ const button_colors := [Color.DARK_RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL
 	$Credits
 ]
 var selected_button := 1
+var can_input := true
 
 func _ready():
 	for p : TextureRect in pointers:
@@ -26,11 +37,30 @@ func _ready():
 	select_button(0)
 
 func _on_start_button_pressed():
-	emit_signal("ButtonStartPressed")
-	$StartButton.disabled = true
+	select_button(0)
+	confirm_with_delay()
 
+func _on_vault_pressed():
+	select_button(1)
+	confirm_with_delay()
 
-func _process(delta):
+func _on_settings_pressed():
+	select_button(2)
+	confirm_with_delay()
+
+func _on_credits_pressed():
+	select_button(3)
+	confirm_with_delay()
+
+func confirm_with_delay():
+	await self.ButtonSelected
+	confirm_button()
+
+func _process(_delta):
+	if not can_input:
+		get_tree().create_timer(0.1).timeout
+		emit_signal("ButtonSelected")
+		return
 	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
 		var new_button := selected_button + 1
 		if new_button >= len(buttons):
@@ -45,6 +75,8 @@ func _process(delta):
 		confirm_button()
 
 func select_button(button_number : int):
+	if selected_button == button_number:
+		return
 	var old_button : Button = buttons[selected_button]
 	var new_button : Button = buttons[button_number]
 	var old_pointer : TextureRect = pointers[selected_button]
@@ -69,7 +101,21 @@ func select_button(button_number : int):
 	t1.tween_property(old_button, "modulate", Color.WHITE, 0.2)
 	t1.tween_property(new_pointer, "modulate", button_colors[button_number], 0.2)
 	t1.tween_property(new_pointer, "position", Vector2(105, new_pointer.position.y), 0.2)
+	
+	get_tree().create_timer(0.2).timeout
+	emit_signal("ButtonSelected")
+
+
+func button_blink(button_number : int, number_of_blinks := 3):
+	var button : Button = buttons[button_number]
+	for _i in range(number_of_blinks):
+		button.modulate = Color.WHITE
+		await get_tree().create_timer(0.1).timeout
+		button.modulate = button_colors[button_number]
+		await get_tree().create_timer(0.1).timeout
 
 func confirm_button():
-	var b : Button = buttons[selected_button]
-	
+	#var b : Button = buttons[selected_button]
+	button_blink(selected_button)
+	can_input = false
+	emit_signal(signals[selected_button])
