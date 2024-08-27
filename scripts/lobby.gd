@@ -8,22 +8,20 @@ const JOINING_UI = preload("res://scenes/World/Lobby/lobbyUI/player_joining_ui.t
 
 @export var default_player: PackedScene
 
+@onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 @onready var initial_time_left = $PressKeyTimer.wait_time
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
 var player_joining: bool = false
 var current_device: int = 0
 var current_device_type: int = 0
-
 var ready_players_count: int = 0
-
-
 var joining_keyboards : Array = []
 var joining_controllers : Array = []
 
 func _ready():
 	GameInfos.world = self
-	$CanvasLayer/ScreenTransition.end_screen_transition()
+	screen_transition.end_screen_transition()
 
 func _process(delta):
 	if player_joining:
@@ -132,7 +130,7 @@ func remove_players():
 	for p : PlayerCharacter in GameInfos.players:
 		p.remove_player()
 		remove_child(p)
-		
+
 func remove_player(player: PlayerCharacter):
 	if player.control_type == 0:
 		keyboards.erase(player.control_device)
@@ -145,7 +143,13 @@ func _on_exit_zone_body_entered(body: Node2D):
 	if body is PlayerCharacter:
 		remove_player(body)
 		$StartGameBox.players -= 1
+		if $StartGameBox.players == 0:
+			back_to_main_menu()
 
+func back_to_main_menu():
+	screen_transition.start_screen_transition()
+	await screen_transition.HalfScreenTransitionFinished
+	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
 func _on_exit_zone_body_exited(body):
 	if body is PlayerCharacter:

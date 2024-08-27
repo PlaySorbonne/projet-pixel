@@ -14,10 +14,10 @@ const CREDITS_PATH = "res://scenes/Menus/intro_screen.tscn"
 func _ready():
 	GameInfos.reset_game_infos()
 	screen_transition.end_screen_transition()
-	$AnimationPlayer.play("idle")
+	$TitleScreenDecor/AnimationPlayer.play("idle")
 
 func smooth_change_to_scene(new_scene : String):
-	get_tree().create_timer(0.25).timeout
+	get_tree().create_timer(0.75).timeout
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(new_scene)
