@@ -26,7 +26,7 @@ tracks/0/path = NodePath("TitleScreenDecor/Characters/Poulet0:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 12.8),
+"times": PackedFloat32Array(5, 17.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(988, 24), Vector2(700, -500)]
@@ -38,7 +38,7 @@ tracks/1/path = NodePath("TitleScreenDecor/Characters/Poulet0:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 12.6),
+"times": PackedFloat32Array(5, 17.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.75791, -4.71239]
