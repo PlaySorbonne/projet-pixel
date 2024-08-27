@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://chs4ob5l6o1p4"]
+
+[ext_resource type="Script" path="res://scripts/intro_screen.gd" id="1_btg6f"]
+[ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_k845t"]
+
+[node name="IntroScreen" type="CanvasLayer"]
+script = ExtResource("1_btg6f")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press any key"
+horizontal_alignment = 1
+
+[node name="ScreenTransition" parent="Main" instance=ExtResource("2_k845t")]
+layout_mode = 1
