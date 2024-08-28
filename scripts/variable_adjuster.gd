@@ -43,4 +43,3 @@ func _on_spin_box_value_changed(new_val : float):
 		value = int(new_val)
 	else:
 		value = new_val
-

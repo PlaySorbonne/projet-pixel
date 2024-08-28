@@ -28,6 +28,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.819608)
 
+[node name="SpecialsEditor" type="ColorRect" parent="Adjuster"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.459
+anchor_right = 0.889
+anchor_bottom = 0.444
+offset_left = -0.280029
+offset_right = -0.880127
+offset_bottom = -0.52005
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.819608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Adjuster/SpecialsEditor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer"]
+layout_mode = 2
+text = "Special abilities Editor"
+
+[node name="LabelAbilityName" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer"]
+layout_mode = 2
+text = "      CEO Charge"
+
+[node name="VariableAdjuster" parent="Adjuster/SpecialsEditor/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "max_hitpoints"
+variable_description = "how many hitpoints does player have"
+is_integer = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Adjuster"]
 layout_mode = 1
 anchors_preset = -1
@@ -124,6 +160,11 @@ layout_mode = 2
 variable_name = "knockback_interp_factor"
 variable_description = "how quickly knockback fades (work in progress)"
 
+[node name="VariableAdjuster16" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "max_fall_speed"
+variable_description = "the maximum fall velocity of a character"
+
 [node name="Control" type="Control" parent="Adjuster/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -155,7 +196,7 @@ anchor_bottom = 0.056
 offset_right = 0.319992
 offset_bottom = 0.519997
 focus_mode = 0
-text = "Stats Editor"
+text = "STATS EDITOR"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 size = Vector2i(800, 500)

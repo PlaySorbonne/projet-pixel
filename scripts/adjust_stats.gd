@@ -55,6 +55,10 @@ func update_infos():
 	for adj : VariableAdjuster in variable_adjusters:
 		adj.value = variables_data[k][adj.variable_name]
 	dont_update_data = false
+	rebuild_special_ability_box()
+
+func rebuild_special_ability_box():
+	print("TODO")
 
 func update_data():
 	if dont_update_data:
@@ -63,6 +67,10 @@ func update_data():
 	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
 	for adj : VariableAdjuster in variable_adjusters:
 		variables_data[k][adj.variable_name] = adj.value
+	update_special_ability_data()
+
+func update_special_ability_data():
+	print("TODO")
 
 func _on_button_save_pressed():
 	$FileDialog.file_mode = 4
@@ -83,8 +91,11 @@ func _on_file_dialog_file_selected(path):
 func load_custom_data(path):
 	var save_game = FileAccess.open(path, FileAccess.READ)
 	var ordered_keys := {}
+	var number_of_evolutions := len(PlayerCharacter.Evolutions)
 	for i in PlayerCharacter.Evolutions.values():
-		ordered_keys[i] = PlayerCharacter.Evolutions.find_key(i)
+		var key : String = PlayerCharacter.Evolutions.find_key(i)
+		ordered_keys[i] = key
+		ordered_keys[i + number_of_evolutions] = key + "_special"
 	var line = 0
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
@@ -105,6 +116,10 @@ func save_custom_data(path):
 	for i in PlayerCharacter.Evolutions.values():
 		var k : String = PlayerCharacter.Evolutions.find_key(i)
 		save_game.store_line(JSON.stringify(variables_data[k]))
+	for i in PlayerCharacter.Evolutions.values():
+		var k : String = PlayerCharacter.Evolutions.find_key(i) + "_special"
+		save_game.store_line(JSON.stringify(variables_data[k]))
+		
 
 func _on_option_button_button_down():
 	update_data()
