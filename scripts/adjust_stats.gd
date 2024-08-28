@@ -29,8 +29,6 @@ func _ready():
 		var evolution_data : Dictionary = {}
 		char_selector.add_item(ev)
 		var curr_ev = PlayerCharacter.Evolutions[ev]
-		print("curr_ev = " + str(curr_ev))
-		print("ev = " + str(ev))
 		var p : PlayerCharacter = PlayerCharacter.EvolutionCharacters[curr_ev].instantiate()
 		for adj : VariableAdjuster in variable_adjusters:
 			evolution_data[adj.variable_name] = p.get(adj.variable_name)
@@ -41,15 +39,11 @@ func _ready():
 		var special_ability_data : Dictionary = {}
 		var spe : SpecialAbilityEditor = EvolutionSpecials[ev].instantiate()
 		for adj : VariableAdjuster in spe.get_variables():
-			print("p = " + str(p))
-			print("p special attack = " + str(p.get_special_attack()))
 			special_ability_data[adj.variable_name] = p.get_special_attack().get(adj.variable_name)
-			if ev == "CEO":
-				var spe_current : SpecialAbilityEditor = CurrentSpecialBox
-				print("SPECIAL ABILITY INIT STUFF:")
-				for adj_r : VariableAdjuster in spe_current.get_variables():
-					adj_r.variable_default_value = special_ability_data[adj.variable_name]
-					print("   special_ability_data[" + adj.variable_name + "] = " + str(special_ability_data[adj.variable_name]))
+		if ev == "CEO":
+			var spe_current : SpecialAbilityEditor = CurrentSpecialBox
+			for adj_r : VariableAdjuster in spe_current.get_variables():
+				adj_r.variable_default_value = special_ability_data[adj_r.variable_name]
 		
 		spe.queue_free()
 		p.queue_free()
@@ -59,7 +53,6 @@ func _ready():
 		variables_data[ev+"_special"] = special_ability_data
 	char_selector.select(0)
 	set_adjuster_active(false)
-	print("variables_data: " + str(variables_data))
 	for c in variable_adjusters:
 		c.connect("var_changed", actualize_characters)
 
