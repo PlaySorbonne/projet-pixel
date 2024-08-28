@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxa1251wrkqg8"]
+
+[ext_resource type="PackedScene" uid="uid://saxqvglxx1rv" path="res://scenes/Menus/Submenus/AbilityEditor/special_ability_editor.tscn" id="1_vj0am"]
+[ext_resource type="PackedScene" uid="uid://djuptrxjle0ux" path="res://scenes/Tools/variable_adjuster.tscn" id="2_y5ub8"]
+
+[node name="WeebAbility" instance=ExtResource("1_vj0am")]
+
+[node name="VariableAdjuster" parent="." index="0"]
+variable_name = "dash_speed"
+variable_description = "vitesse du weeb pendant le dash"
+
+[node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_y5ub8")]
+layout_mode = 2
+variable_name = "dash_duration"
+variable_description = "durée du dash"
+
+[node name="VariableAdjuster3" parent="." index="2" instance=ExtResource("2_y5ub8")]
+layout_mode = 2
+variable_name = "dash_cooldown"
+variable_description = "durée entre la fin du dash et la réutilisation"

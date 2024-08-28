@@ -50,11 +50,11 @@ offset_top = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer"]
+[node name="Label" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer" groups=["immortal"]]
 layout_mode = 2
 text = "Special abilities Editor"
 
-[node name="LabelAbilityName" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer"]
+[node name="LabelAbilityName" type="Label" parent="Adjuster/SpecialsEditor/VBoxContainer" groups=["immortal"]]
 layout_mode = 2
 text = "      CEO Charge"
 

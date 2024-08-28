@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3a7keeqn8xv8"]
+
+[ext_resource type="PackedScene" uid="uid://saxqvglxx1rv" path="res://scenes/Menus/Submenus/AbilityEditor/special_ability_editor.tscn" id="1_senip"]
+[ext_resource type="PackedScene" uid="uid://djuptrxjle0ux" path="res://scenes/Tools/variable_adjuster.tscn" id="2_5mfpr"]
+
+[node name="DirectorAbility" instance=ExtResource("1_senip")]
+
+[node name="VariableAdjuster" parent="." index="0"]
+variable_name = "attack_damage"
+variable_description = "dégâts de l'attaque spéciale"
+is_integer = true
+
+[node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "attack_size"
+variable_description = "taille de la hitbox"
+
+[node name="VariableAdjuster3" parent="." index="2" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "attack_intensity"
+variable_description = "coeff de projection de l'attaque"
+
+[node name="VariableAdjuster4" parent="." index="3" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "dash_speed"
+variable_description = "vitesse du perso pendant le dash"
+
+[node name="VariableAdjuster5" parent="." index="4" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "dash_duration"
+variable_description = "durée du dash"
+
+[node name="VariableAdjuster6" parent="." index="5" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "dash_cooldown"
+variable_description = "durée avant de pouvoir réutiliser le dash"

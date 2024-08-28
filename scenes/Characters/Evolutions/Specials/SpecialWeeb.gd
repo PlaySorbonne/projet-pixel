@@ -1,7 +1,7 @@
 extends BaseSpecial
 
 
-@export var dash_speed := 2000
+@export var dash_speed := 2000.0
 @export var dash_duration := 0.125
 @export var dash_cooldown := 0.25
 

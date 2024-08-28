@@ -1,9 +1,18 @@
 extends CanvasLayer
 
+const SPECIAL_ABILITY_EDITORS = {
+	"CEO" : preload("res://scenes/Menus/Submenus/AbilityEditor/ceo_ability.tscn"),
+	"Manager" : preload("res://scenes/Menus/Submenus/AbilityEditor/director_ability.tscn"),
+	"Employee" : preload("res://scenes/Menus/Submenus/AbilityEditor/employee_ability.tscn"),
+	"Mascot" : preload("res://scenes/Menus/Submenus/AbilityEditor/mascot_ability.tscn"),
+	"Weeb" : preload("res://scenes/Menus/Submenus/AbilityEditor/weeb_ability.tscn")
+}
+
 var last_open_file_path : String = ""
 var is_active := false
 @onready var char_selector := $Adjuster/VBoxContainer/OptionButton
 @onready var saved_path_node := $Adjuster/VBoxContainer/HBoxContainer/LabelLastPath
+@onready var special_vbox := $Adjuster/SpecialsEditor/VBoxContainer
 var variable_adjusters : Array = []
 var variables_data : Dictionary = {}
 var is_saving_data := true
@@ -51,13 +60,17 @@ func _on_option_button_item_selected(_index):
 func update_infos():
 	dont_update_data = true
 	var index = $Adjuster/VBoxContainer/OptionButton.selected
-	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
+	var k : String = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
 	for adj : VariableAdjuster in variable_adjusters:
 		adj.value = variables_data[k][adj.variable_name]
 	dont_update_data = false
-	rebuild_special_ability_box()
+	rebuild_special_ability_box(k)
 
-func rebuild_special_ability_box():
+func rebuild_special_ability_box(current_character : String):
+	for c : Control in special_vbox.get_children():
+		if not c.is_in_group("immortal"):
+			c.queue_free()
+	var new_ability_box = SPECIAL_ABILITY_EDITORS[current_character].instantiate()
 	print("TODO")
 
 func update_data():

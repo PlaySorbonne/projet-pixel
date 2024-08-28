@@ -1,15 +1,17 @@
 extends BaseSpecial
 
 @export var dash_wind_up := 0.25
-@export var dash_speed := 1400
-@export var wind_up_speed := 200
+@export var dash_speed := 1400.0
+@export var wind_up_speed := 200.0
 @export var dash_duration := 0.6
 @export var dash_recovery := 0.3
 @export var dash_cooldown := 0.3
 @export var attack_damage := 2
 @export var attack_intensity := 1.0
+@export var attack_size := 1.0
 
 func special():
+	print("TODO : add attack_intensity and size")
 	if not can_use_special:
 		return
 	can_use_special = false

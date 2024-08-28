@@ -1,12 +1,14 @@
 extends BaseSpecial
 
-@export var attack_damage = 1.5
+@export var attack_damage := 2
+@export var attack_size := 2.0 #TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 @export var attack_intensity := 1.0
-@export var dash_speed := 2000
+@export var dash_speed := 2000.0
 @export var dash_duration := 0.3
 @export var dash_cooldown := 0.3
 
 func special():
+	print("TODO: change attack size and damage")
 	if not can_use_special:
 		return
 	var dash_direction := Vector2.ZERO

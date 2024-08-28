@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://kclwvusuaevi"]
+
+[ext_resource type="PackedScene" uid="uid://saxqvglxx1rv" path="res://scenes/Menus/Submenus/AbilityEditor/special_ability_editor.tscn" id="1_4hlir"]
+[ext_resource type="PackedScene" uid="uid://djuptrxjle0ux" path="res://scenes/Tools/variable_adjuster.tscn" id="2_fcjim"]
+
+[node name="EmployeeAbility" instance=ExtResource("1_4hlir")]
+
+[node name="VariableAdjuster" parent="." index="0"]
+variable_name = "fall_speed"
+variable_description = "vitesse de chute pendant le spécial"
+
+[node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "damage"
+variable_description = "dégâts de l'attaque"
+is_integer = true
+
+[node name="VariableAdjuster7" parent="." index="2" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "hitbox_size"
+variable_description = "taille de l'attaque"
+is_integer = true
+
+[node name="VariableAdjuster3" parent="." index="3" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "hit_duration"
+variable_description = "durée de vie de la hitbox"
+
+[node name="VariableAdjuster4" parent="." index="4" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "fall_recovery"
+variable_description = "temps avant de pouvoir rebouger"
+
+[node name="VariableAdjuster5" parent="." index="5" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "delay_between_jump_and_fall"
+variable_description = "délai avant chute"
+
+[node name="VariableAdjuster6" parent="." index="6" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "jump_power"
+variable_description = "hauteur/vitesse du saut"
+
+[node name="VariableAdjuster8" parent="." index="7" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "attack_intensity"
+variable_description = "coeff de projection de l'attaque"

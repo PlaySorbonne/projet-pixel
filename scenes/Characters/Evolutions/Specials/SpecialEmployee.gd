@@ -1,11 +1,13 @@
 extends BaseSpecial
 
-@export var fall_speed := 2000
+@export var fall_speed := 2000.0
 @export var damage := 3
+@export var hitbox_size := 3.0
 @export var hit_duration := 0.25
 @export var fall_recovery := 0.65
 @export var delay_between_jump_and_fall := 0.35
-@export var jump_power := 3000
+@export var jump_power := 3000.0
+@export var attack_intensity := 2.0
 
 func _ready():
 	set_process(false)
@@ -16,6 +18,7 @@ func _process(_delta):
 		special_end()
 
 func special():
+	print("TODO : add hitbox_size to ability and attack_intensity")
 	if not can_use_special:
 		return
 	can_use_special = false
