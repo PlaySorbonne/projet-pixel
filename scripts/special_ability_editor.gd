@@ -2,11 +2,9 @@ extends VBoxContainer
 class_name SpecialAbilityEditor
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func get_variables():
+	var childrenVariableAdjusters : Array = []
+	for c : Control in get_children():
+		if c != $Label:
+			childrenVariableAdjusters.append(c)
+	return childrenVariableAdjusters

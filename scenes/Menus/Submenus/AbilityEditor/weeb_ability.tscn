@@ -5,9 +5,8 @@
 
 [node name="WeebAbility" instance=ExtResource("1_vj0am")]
 
-[node name="VariableAdjuster" parent="." index="0"]
-variable_name = "dash_speed"
-variable_description = "vitesse du weeb pendant le dash"
+[node name="Label" parent="." index="0"]
+text = "Weeb Dash"
 
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_y5ub8")]
 layout_mode = 2
@@ -18,3 +17,7 @@ variable_description = "durée du dash"
 layout_mode = 2
 variable_name = "dash_cooldown"
 variable_description = "durée entre la fin du dash et la réutilisation"
+
+[node name="VariableAdjuster" parent="." index="3"]
+variable_name = "dash_speed"
+variable_description = "vitesse du weeb pendant le dash"

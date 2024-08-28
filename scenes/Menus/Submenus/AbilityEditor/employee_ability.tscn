@@ -5,9 +5,8 @@
 
 [node name="EmployeeAbility" instance=ExtResource("1_4hlir")]
 
-[node name="VariableAdjuster" parent="." index="0"]
-variable_name = "fall_speed"
-variable_description = "vitesse de chute pendant le spécial"
+[node name="Label" parent="." index="0"]
+text = "Employee Jump Kick"
 
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_fcjim")]
 layout_mode = 2
@@ -45,3 +44,7 @@ variable_description = "hauteur/vitesse du saut"
 layout_mode = 2
 variable_name = "attack_intensity"
 variable_description = "coeff de projection de l'attaque"
+
+[node name="VariableAdjuster" parent="." index="8"]
+variable_name = "fall_speed"
+variable_description = "vitesse de chute pendant le spécial"

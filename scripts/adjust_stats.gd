@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const SPECIAL_ABILITY_EDITORS = {
+const EvolutionSpecials = {
 	"CEO" : preload("res://scenes/Menus/Submenus/AbilityEditor/ceo_ability.tscn"),
 	"Manager" : preload("res://scenes/Menus/Submenus/AbilityEditor/director_ability.tscn"),
 	"Employee" : preload("res://scenes/Menus/Submenus/AbilityEditor/employee_ability.tscn"),
@@ -13,6 +13,7 @@ var is_active := false
 @onready var char_selector := $Adjuster/VBoxContainer/OptionButton
 @onready var saved_path_node := $Adjuster/VBoxContainer/HBoxContainer/LabelLastPath
 @onready var special_vbox := $Adjuster/SpecialsEditor/VBoxContainer
+@onready var CurrentSpecialBox : SpecialAbilityEditor = $Adjuster/SpecialsEditor/VBoxContainer/CEOability
 var variable_adjusters : Array = []
 var variables_data : Dictionary = {}
 var is_saving_data := true
@@ -22,19 +23,43 @@ func _ready():
 	for c in $Adjuster/VBoxContainer.get_children():
 		if c.has_method("_on_description_changed"):
 			variable_adjusters.append(c)
-	for ev in PlayerCharacter.Evolutions.keys():
+	var data_keys : Array = PlayerCharacter.Evolutions.keys()
+	for ev : String in data_keys:
+		# get character data
+		var evolution_data : Dictionary = {}
 		char_selector.add_item(ev)
-		var evolution_data = {}
 		var curr_ev = PlayerCharacter.Evolutions[ev]
+		print("curr_ev = " + str(curr_ev))
+		print("ev = " + str(ev))
 		var p : PlayerCharacter = PlayerCharacter.EvolutionCharacters[curr_ev].instantiate()
 		for adj : VariableAdjuster in variable_adjusters:
 			evolution_data[adj.variable_name] = p.get(adj.variable_name)
 			if ev == "CEO":
 				adj.variable_default_value = evolution_data[adj.variable_name]
+		
+		# get ability data
+		var special_ability_data : Dictionary = {}
+		var spe : SpecialAbilityEditor = EvolutionSpecials[ev].instantiate()
+		for adj : VariableAdjuster in spe.get_variables():
+			print("p = " + str(p))
+			print("p special attack = " + str(p.get_special_attack()))
+			special_ability_data[adj.variable_name] = p.get_special_attack().get(adj.variable_name)
+			if ev == "CEO":
+				var spe_current : SpecialAbilityEditor = CurrentSpecialBox
+				print("SPECIAL ABILITY INIT STUFF:")
+				for adj_r : VariableAdjuster in spe_current.get_variables():
+					adj_r.variable_default_value = special_ability_data[adj.variable_name]
+					print("   special_ability_data[" + adj.variable_name + "] = " + str(special_ability_data[adj.variable_name]))
+		
+		spe.queue_free()
 		p.queue_free()
+		
+		# add data to dict
 		variables_data[ev] = evolution_data
+		variables_data[ev+"_special"] = special_ability_data
 	char_selector.select(0)
 	set_adjuster_active(false)
+	print("variables_data: " + str(variables_data))
 	for c in variable_adjusters:
 		c.connect("var_changed", actualize_characters)
 
@@ -67,10 +92,9 @@ func update_infos():
 	rebuild_special_ability_box(k)
 
 func rebuild_special_ability_box(current_character : String):
-	for c : Control in special_vbox.get_children():
-		if not c.is_in_group("immortal"):
-			c.queue_free()
-	var new_ability_box = SPECIAL_ABILITY_EDITORS[current_character].instantiate()
+	CurrentSpecialBox.queue_free()
+	CurrentSpecialBox = EvolutionSpecials[current_character].instantiate()
+	special_vbox.add_child(CurrentSpecialBox)
 	print("TODO")
 
 func update_data():

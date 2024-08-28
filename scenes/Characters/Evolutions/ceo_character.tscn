@@ -29,10 +29,11 @@ shape = SubResource("RectangleShape2D_236vp")
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("3_52ce3")
 dash_wind_up = 0.25
-dash_speed = 1400
-wind_up_speed = 200
+dash_speed = 1400.0
+wind_up_speed = 200.0
 dash_duration = 0.6
 dash_recovery = 0.3
 dash_cooldown = 0.3
 attack_damage = 2
 attack_intensity = 1.0
+attack_size = 1.0

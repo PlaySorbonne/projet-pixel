@@ -11,5 +11,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7ua67")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Special attack name
+"
+uppercase = true
+
 [node name="VariableAdjuster" parent="." instance=ExtResource("1_8ssj7")]
 layout_mode = 2

@@ -5,10 +5,8 @@
 
 [node name="DirectorAbility" instance=ExtResource("1_senip")]
 
-[node name="VariableAdjuster" parent="." index="0"]
-variable_name = "attack_damage"
-variable_description = "dégâts de l'attaque spéciale"
-is_integer = true
+[node name="Label" parent="." index="0"]
+text = "Manager Cry"
 
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
@@ -34,3 +32,8 @@ variable_description = "durée du dash"
 layout_mode = 2
 variable_name = "dash_cooldown"
 variable_description = "durée avant de pouvoir réutiliser le dash"
+
+[node name="VariableAdjuster" parent="." index="6"]
+variable_name = "attack_damage"
+variable_description = "dégâts de l'attaque spéciale"
+is_integer = true

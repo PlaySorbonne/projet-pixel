@@ -5,9 +5,8 @@
 
 [node name="CEOability" instance=ExtResource("1_r0odl")]
 
-[node name="VariableAdjuster" parent="." index="0"]
-variable_name = "dash_wind_up"
-variable_description = "délai avant l'activation de l'attaque"
+[node name="Label" parent="." index="0"]
+text = "CEO Charge"
 
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_eseu7")]
 layout_mode = 2
@@ -49,3 +48,7 @@ variable_description = "coeff projection de l'attaque"
 layout_mode = 2
 variable_name = "attack_size"
 variable_description = "taille de la hitbox"
+
+[node name="VariableAdjuster" parent="." index="9"]
+variable_name = "dash_wind_up"
+variable_description = "délai avant l'activation de l'attaque"

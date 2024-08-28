@@ -65,7 +65,7 @@ vertical_alignment = 2
 
 [node name="SpecialAttack" parent="." index="7" instance=ExtResource("3_3foic")]
 script = ExtResource("4_1jg0m")
-dash_speed = 2000
+dash_speed = 2000.0
 dash_duration = 0.125
 dash_cooldown = 0.25
 

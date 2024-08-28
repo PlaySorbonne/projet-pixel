@@ -5,9 +5,8 @@
 
 [node name="MascotAbility" instance=ExtResource("1_0m3mx")]
 
-[node name="VariableAdjuster" parent="." index="0"]
-variable_name = "jump_power"
-variable_description = "hauteur/vitesse du saut"
+[node name="Label" parent="." index="0"]
+text = "Mascot Egg Jump"
 
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_mj3yf")]
 layout_mode = 2
@@ -44,3 +43,7 @@ variable_description = "vitesse de projection de l'oeuf"
 layout_mode = 2
 variable_name = "egg_hit_intensity"
 variable_description = "coeff de projection de l'oeuf"
+
+[node name="VariableAdjuster" parent="." index="8"]
+variable_name = "jump_power"
+variable_description = "hauteur/vitesse du saut"

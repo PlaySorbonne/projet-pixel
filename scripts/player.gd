@@ -57,6 +57,9 @@ var compute_hits := true
 var god_mode := false
 var player_ID := 0
 
+func get_special_attack():
+	return $SpecialAttack
+
 func copy_player_data(new_body : PlayerCharacter):
 	new_body.team = team
 	new_body.control_device = control_device
