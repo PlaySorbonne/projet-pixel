@@ -8,6 +8,7 @@ var transition_started := true
 
 func _ready():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	RenderingServer.set_default_clear_color(Color.BLACK)
 	$AnimationPlayer.play("idle")
 	$Main/ScreenTransition.end_screen_transition(transition_duration)
 	get_tree().create_timer(1.00).timeout
