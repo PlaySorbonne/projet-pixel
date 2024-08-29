@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://vswd272jtpg1"
+
+[deps]
+
+files=["res://resources/localization/Ascend_localization.en.translation", "res://resources/localization/Ascend_localization.fr.translation"]
+
+source_file="res://resources/localization/Ascend_localization.csv"
+dest_files=["res://resources/localization/Ascend_localization.en.translation", "res://resources/localization/Ascend_localization.fr.translation"]
+
+[params]
+
+compress=true
+delimiter=0

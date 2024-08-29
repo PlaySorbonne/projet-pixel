@@ -6,6 +6,10 @@ signal ButtonBackPressed
 enum Languages {English, Francais}
 
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
+const LANGUAGE_KEYS = [
+	"en",
+	"fr"
+]
 
 static var user_settings : Dictionary = {
 	"fullscreen" : true,
@@ -15,6 +19,7 @@ static var user_settings : Dictionary = {
 }
 
 static func apply_settings():
+	update_language()
 	update_fullscreen()
 	update_audio()
 
@@ -45,6 +50,8 @@ static func load_settings_data(reapply_settings := true):
 	save_file.close()
 	if reapply_settings:
 		apply_settings()
+	else:
+		update_language()
 
 static func update_fullscreen():
 	if user_settings["fullscreen"]:
@@ -57,6 +64,10 @@ static func update_audio():
 		linear_to_db(user_settings["music_volume"]))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), 
 		linear_to_db(user_settings["sfx_volume"]))
+
+static func update_language():
+	print("now translate to " + str(LANGUAGE_KEYS[user_settings["language"]]))
+	TranslationServer.set_locale(LANGUAGE_KEYS[user_settings["language"]])
 
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on

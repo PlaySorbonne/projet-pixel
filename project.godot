@@ -84,6 +84,14 @@ debug_button={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={
+"res://resources/localization/Ascend_localization.en.translation": PackedStringArray(),
+"res://resources/localization/Ascend_localization.fr.translation": PackedStringArray()
+}
+locale/translations=PackedStringArray("res://resources/Ascend_localization.english.translation", "res://resources/Ascend_localization.francais.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Physic"

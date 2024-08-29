@@ -90,7 +90,7 @@ grow_vertical = 2
 pivot_offset = Vector2(960, 30)
 theme = ExtResource("2_sa1s4")
 theme_override_font_sizes/font_size = 38
-text = "Press any key"
+text = "ANY_KEY"
 horizontal_alignment = 1
 
 [node name="ScreenTransition" parent="Main" instance=ExtResource("2_k845t")]
