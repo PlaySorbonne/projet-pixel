@@ -67,7 +67,7 @@ static func update_audio():
 
 static func update_language():
 	print("now translate to " + str(LANGUAGE_KEYS[user_settings["language"]]))
-	TranslationServer.set_locale(LANGUAGE_KEYS[user_settings["language"]])
+	TranslationServer.set_locale("fr")
 
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on

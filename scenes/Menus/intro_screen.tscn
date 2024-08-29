@@ -71,6 +71,7 @@ _data = {
 script = ExtResource("1_btg6f")
 
 [node name="Main" type="Control" parent="."]
+auto_translate_mode = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,6 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Main"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

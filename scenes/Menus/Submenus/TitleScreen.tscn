@@ -42,7 +42,7 @@ rotation = 0.139626
 theme = ExtResource("2_y6t6y")
 theme_override_colors/font_outline_color = Color(0.196797, 0, 0.0160453, 1)
 theme_override_font_sizes/font_size = 112
-text = "Jouer"
+text = "PLAY"
 flat = true
 alignment = 0
 
@@ -61,7 +61,7 @@ rotation = 0.139626
 theme = ExtResource("2_y6t6y")
 theme_override_colors/font_outline_color = Color(0.161078, 0.159357, 9.62615e-08, 1)
 theme_override_font_sizes/font_size = 96
-text = "Coffre"
+text = "VAULT"
 flat = true
 alignment = 0
 
@@ -80,7 +80,7 @@ rotation = 0.139626
 theme = ExtResource("2_y6t6y")
 theme_override_colors/font_outline_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
 theme_override_font_sizes/font_size = 80
-text = "Parametres"
+text = "SETTINGS"
 flat = true
 alignment = 0
 
@@ -99,7 +99,7 @@ rotation = 0.139626
 theme = ExtResource("2_y6t6y")
 theme_override_colors/font_outline_color = Color(0.0140248, 0, 0.294044, 1)
 theme_override_font_sizes/font_size = 80
-text = "Credits"
+text = "CREDITS"
 flat = true
 alignment = 0
 

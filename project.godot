@@ -91,6 +91,7 @@ locale/translation_remaps={
 "res://resources/localization/Ascend_localization.fr.translation": PackedStringArray()
 }
 locale/translations=PackedStringArray("res://resources/Ascend_localization.english.translation", "res://resources/Ascend_localization.francais.translation")
+locale/locale_filter_mode=0
 
 [layer_names]
 

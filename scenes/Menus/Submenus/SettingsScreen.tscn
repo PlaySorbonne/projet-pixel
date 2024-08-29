@@ -45,7 +45,7 @@ offset_right = 948.196
 offset_bottom = 337.419
 rotation = 0.0642744
 theme = ExtResource("1_o4weg")
-text = "Settings"
+text = "SETTINGS"
 
 [node name="LabelFullscreen" type="Label" parent="Options"]
 layout_mode = 2
@@ -58,7 +58,7 @@ offset_top = 3.05176e-05
 offset_right = 6.10352e-05
 offset_bottom = 3.05176e-05
 theme = ExtResource("1_6up3k")
-text = "Fullscreen:"
+text = "FULLSCREEN:"
 
 [node name="ButtonFullscreen" type="CheckButton" parent="Options/LabelFullscreen"]
 layout_mode = 2
@@ -77,7 +77,7 @@ anchor_top = 0.462963
 anchor_right = 0.417188
 anchor_bottom = 0.524074
 theme = ExtResource("1_6up3k")
-text = "Music volume:"
+text = "MUSIC_VOL"
 
 [node name="MusicSlider" type="HSlider" parent="Options/LabelMusic"]
 custom_minimum_size = Vector2(600, 0)
@@ -103,7 +103,7 @@ anchor_top = 0.555556
 anchor_right = 0.39375
 anchor_bottom = 0.616667
 theme = ExtResource("1_6up3k")
-text = "SFX volume:"
+text = "SFX_VOL:"
 
 [node name="SFXslider" type="HSlider" parent="Options/LabelSFX"]
 custom_minimum_size = Vector2(600, 0)
@@ -132,7 +132,7 @@ offset_left = 6.10352e-05
 offset_top = 6.10352e-05
 offset_right = 6.10352e-05
 theme = ExtResource("1_6up3k")
-text = "Language:"
+text = "LANGUAGE"
 
 [node name="LanguageButton" type="OptionButton" parent="Options/LabelLanguage"]
 layout_mode = 2
@@ -155,7 +155,7 @@ anchor_top = 0.87963
 anchor_right = 0.148438
 anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
-text = "Back"
+text = "BACK"
 
 [connection signal="toggled" from="Options/LabelFullscreen/ButtonFullscreen" to="." method="_on_button_fullscreen_toggled"]
 [connection signal="value_changed" from="Options/LabelMusic/MusicSlider" to="." method="_on_music_slider_value_changed"]

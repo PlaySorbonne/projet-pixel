@@ -44,7 +44,7 @@ offset_right = 948.196
 offset_bottom = 337.419
 rotation = 0.0642744
 theme = ExtResource("1_g840b")
-text = "Credits"
+text = "CREDITS"
 
 [node name="LabelText" type="Label" parent="Options"]
 layout_mode = 2
@@ -71,6 +71,6 @@ anchor_top = 0.87963
 anchor_right = 0.148438
 anchor_bottom = 0.948148
 theme = ExtResource("2_2hoir")
-text = "Back"
+text = "BACK"
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
