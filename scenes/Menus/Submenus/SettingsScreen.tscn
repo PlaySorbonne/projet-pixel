@@ -148,4 +148,5 @@ anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
 text = "Back"
 
+[connection signal="toggled" from="Options/LabelFullscreen/ButtonFullscreen" to="." method="_on_button_fullscreen_toggled"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

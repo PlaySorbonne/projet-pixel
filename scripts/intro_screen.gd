@@ -12,6 +12,8 @@ func _ready():
 	$Main/ScreenTransition.end_screen_transition(transition_duration)
 	get_tree().create_timer(1.00).timeout
 	transition_started = false
+	# apply user settings
+	SettingsScreen.load_settings_data()
 
 func _input(event):
 	if transition_started:

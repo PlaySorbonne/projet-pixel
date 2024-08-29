@@ -3,23 +3,34 @@ extends Node2D
 
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
 const VAULT_PATH = "res://scenes/world.tscn"
-const CREDITS_PATH = "res://scenes/Menus/intro_screen.tscn"
+const EXIT_TIME := 1.0
 
 enum Screens {Title, Settings, Credits}
 
-
-@onready var title_screen = $CanvasLayer/TitleScreen
+@onready var ExitBar := $CanvasLayer/ExitProgressBar
+@onready var title_screen := $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
-@onready var lobby = $Lobby
+@onready var lobby := $Lobby
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 
 func _ready():
 	GameInfos.reset_game_infos()
 	screen_transition.end_screen_transition()
 	$TitleScreenDecor/AnimationPlayer.play("idle")
+	ExitBar.max_value = EXIT_TIME
+
+func _process(delta : float):
+	if Input.is_action_pressed("ui_cancel"):
+		ExitBar.visible = true
+		ExitBar.value += delta
+		if ExitBar.value >= EXIT_TIME:
+			get_tree().quit()
+	else:
+		ExitBar.value = 0.0
+		ExitBar.visible = false
 
 func smooth_change_to_scene(new_scene : String):
-	get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75).timeout
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(new_scene)
