@@ -65,6 +65,9 @@ func actualize_characters(do_update_data := true):
 		for k : String in variables_data[ev].keys():
 			player.set(k, variables_data[ev][k])
 
+func actualize_specials(do_update_data := true):
+	pass
+
 func _on_button_pressed():
 	set_adjuster_active(not is_active)
 
@@ -80,7 +83,8 @@ func update_infos():
 	var index = $Adjuster/VBoxContainer/OptionButton.selected
 	var k : String = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
 	for adj : VariableAdjuster in variable_adjusters:
-		adj.value = variables_data[k][adj.variable_name]
+		if variables_data.has(k) and variables_data[k].has(adj.variable_name):
+			adj.value = variables_data[k][adj.variable_name]
 	dont_update_data = false
 	rebuild_special_ability_box(k)
 
@@ -88,20 +92,24 @@ func rebuild_special_ability_box(current_character : String):
 	CurrentSpecialBox.queue_free()
 	CurrentSpecialBox = EvolutionSpecials[current_character].instantiate()
 	special_vbox.add_child(CurrentSpecialBox)
+	var k := current_character+"_special"
 	for adj_r : VariableAdjuster in CurrentSpecialBox.get_variables():
-		adj_r.variable_default_value = variables_data[current_character+"_special"][adj_r.variable_name]
+		if variables_data.has(k) and variables_data[k].has(adj_r.variable_name):
+			adj_r.variable_default_value = variables_data[k][adj_r.variable_name]
 
 func update_data():
 	if dont_update_data:
 		return
-	var index = $Adjuster/VBoxContainer/OptionButton.selected
-	var k = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
+	var index : int = $Adjuster/VBoxContainer/OptionButton.selected
+	var k : String = $Adjuster/VBoxContainer/OptionButton.get_item_text(index)
 	for adj : VariableAdjuster in variable_adjusters:
 		variables_data[k][adj.variable_name] = adj.value
-	update_special_ability_data()
+	update_special_ability_data(k)
 
-func update_special_ability_data():
-	print("TODO")
+func update_special_ability_data(current_evolution : String):
+	var k := current_evolution + "_special"
+	for adj : VariableAdjuster in CurrentSpecialBox.get_variables():
+		variables_data[k][adj.variable_name] = adj.value
 
 func _on_button_save_pressed():
 	$FileDialog.file_mode = 4
@@ -157,3 +165,4 @@ func _on_option_button_button_down():
 
 func _on_timer_timeout():
 	actualize_characters(false)
+	actualize_specials(false)
