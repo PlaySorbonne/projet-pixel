@@ -24,7 +24,8 @@ static func apply_settings():
 	update_audio()
 
 func _ready():
-	$Options/LabelFullscreen/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
+	$Options/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
+	$Options/LanguageButton.selected = user_settings["language"]
 
 func _on_button_back_pressed():
 	$ButtonBack.release_focus()
@@ -66,10 +67,7 @@ static func update_audio():
 		linear_to_db(user_settings["sfx_volume"]))
 
 static func update_language():
-	#print("now translate to " + str(LANGUAGE_KEYS[user_settings["language"]]))
-	var trans_lg := "en"
-	print("now translate to: " + trans_lg)
-	TranslationServer.set_locale(trans_lg)
+	TranslationServer.set_locale(LANGUAGE_KEYS[user_settings["language"]])
 
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on
@@ -84,4 +82,9 @@ func _on_music_slider_value_changed(value : float):
 func _on_sf_xslider_value_changed(value : float):
 	user_settings["sfx_volume"] = value
 	update_audio()
+	save_settings_data()
+
+func _on_language_button_item_selected(index : int):
+	user_settings["language"] = index
+	update_language()
 	save_settings_data()

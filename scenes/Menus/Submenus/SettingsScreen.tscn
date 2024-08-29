@@ -39,53 +39,47 @@ rotation = -0.0474202
 
 [node name="LabelSettings" type="Label" parent="Options"]
 layout_mode = 2
-offset_left = 320.196
-offset_top = 214.419
-offset_right = 948.196
-offset_bottom = 337.419
+anchor_left = 0.166769
+anchor_top = 0.198536
+anchor_right = 0.489062
+anchor_bottom = 0.349539
+offset_right = 9.19714
+offset_bottom = -40.0826
 rotation = 0.0642744
 theme = ExtResource("1_o4weg")
 text = "SETTINGS"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonFullscreen" type="CheckButton" parent="Options"]
+layout_mode = 2
+anchor_left = 0.5625
+anchor_top = 0.37037
+anchor_right = 0.619792
+anchor_bottom = 0.425926
+offset_right = -66.0
+offset_bottom = -36.0
+scale = Vector2(2.5, 2.5)
+theme = ExtResource("1_6up3k")
+metadata/_edit_use_anchors_ = true
 
 [node name="LabelFullscreen" type="Label" parent="Options"]
 layout_mode = 2
 anchor_left = 0.234375
 anchor_top = 0.37037
-anchor_right = 0.376042
+anchor_right = 0.46875
 anchor_bottom = 0.431481
-offset_left = 6.10352e-05
-offset_top = 3.05176e-05
-offset_right = 6.10352e-05
-offset_bottom = 3.05176e-05
 theme = ExtResource("1_6up3k")
 text = "FULLSCREEN:"
+metadata/_edit_use_anchors_ = true
 
-[node name="ButtonFullscreen" type="CheckButton" parent="Options/LabelFullscreen"]
-layout_mode = 2
-anchor_left = 1.47059
-anchor_right = 1.875
-anchor_bottom = 0.909091
-offset_right = -66.0
-offset_bottom = -36.0
-scale = Vector2(2.5, 2.5)
-theme = ExtResource("1_6up3k")
-
-[node name="LabelMusic" type="Label" parent="Options"]
-layout_mode = 2
-anchor_left = 0.234375
-anchor_top = 0.462963
-anchor_right = 0.417188
-anchor_bottom = 0.524074
-theme = ExtResource("1_6up3k")
-text = "MUSICVOL"
-
-[node name="MusicSlider" type="HSlider" parent="Options/LabelMusic"]
-custom_minimum_size = Vector2(600, 0)
+[node name="MusicSlider" type="HSlider" parent="Options"]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.1396
-anchor_right = 2.849
-anchor_bottom = 1.0
+anchor_left = 0.572917
+anchor_top = 0.462963
+anchor_right = 0.807292
+anchor_bottom = 0.524074
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6up3k")
@@ -95,23 +89,26 @@ value = 1.0
 tick_count = 10
 script = ExtResource("4_72wel")
 bus_name = "music"
+metadata/_edit_use_anchors_ = true
 
-[node name="LabelSFX" type="Label" parent="Options"]
+[node name="LabelMusic" type="Label" parent="Options"]
 layout_mode = 2
 anchor_left = 0.234375
-anchor_top = 0.555556
-anchor_right = 0.39375
-anchor_bottom = 0.616667
+anchor_top = 0.462963
+anchor_right = 0.46875
+anchor_bottom = 0.524074
 theme = ExtResource("1_6up3k")
-text = "SFXVOL:"
+text = "MUSICVOL:"
+metadata/_edit_use_anchors_ = true
 
-[node name="SFXslider" type="HSlider" parent="Options/LabelSFX"]
-custom_minimum_size = Vector2(600, 0)
+[node name="SFXslider" type="HSlider" parent="Options"]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.30719
-anchor_right = 3.26797
-anchor_bottom = 1.0
+anchor_left = 0.572917
+anchor_top = 0.555556
+anchor_right = 0.807292
+anchor_bottom = 0.616667
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6up3k")
@@ -121,31 +118,44 @@ value = 1.0
 tick_count = 10
 script = ExtResource("4_72wel")
 bus_name = "sfx"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelSFX" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.555556
+anchor_right = 0.46875
+anchor_bottom = 0.616667
+theme = ExtResource("1_6up3k")
+text = "SFXVOL:"
+metadata/_edit_use_anchors_ = true
+
+[node name="LanguageButton" type="OptionButton" parent="Options"]
+layout_mode = 2
+anchor_left = 0.572917
+anchor_top = 0.648148
+anchor_right = 0.729167
+anchor_bottom = 0.716667
+offset_top = 6.10352e-05
+theme = ExtResource("1_6up3k")
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 1
+popup/item_1/text = "Français"
+metadata/_edit_use_anchors_ = true
 
 [node name="LabelLanguage" type="Label" parent="Options"]
 layout_mode = 2
 anchor_left = 0.234375
 anchor_top = 0.648148
-anchor_right = 0.366146
+anchor_right = 0.46875
 anchor_bottom = 0.709259
-offset_left = 6.10352e-05
 offset_top = 6.10352e-05
-offset_right = 6.10352e-05
 theme = ExtResource("1_6up3k")
-text = "LANGUAGE"
-
-[node name="LanguageButton" type="OptionButton" parent="Options/LabelLanguage"]
-layout_mode = 2
-anchor_left = 1.58103
-anchor_right = 2.56522
-anchor_bottom = 1.12121
-theme = ExtResource("1_6up3k")
-selected = 0
-allow_reselect = true
-item_count = 2
-popup/item_0/text = "Français"
-popup/item_1/text = "English"
-popup/item_1/id = 1
+text = "LANGUAGE:"
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
@@ -157,7 +167,8 @@ anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
 text = "BACK"
 
-[connection signal="toggled" from="Options/LabelFullscreen/ButtonFullscreen" to="." method="_on_button_fullscreen_toggled"]
-[connection signal="value_changed" from="Options/LabelMusic/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="Options/LabelSFX/SFXslider" to="." method="_on_sf_xslider_value_changed"]
+[connection signal="toggled" from="Options/ButtonFullscreen" to="." method="_on_button_fullscreen_toggled"]
+[connection signal="value_changed" from="Options/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Options/SFXslider" to="." method="_on_sf_xslider_value_changed"]
+[connection signal="item_selected" from="Options/LanguageButton" to="." method="_on_language_button_item_selected"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

@@ -2,11 +2,11 @@ key,en,fr
 ANYKEY,Press any key,Appuyez sur un bouton
 PLAY,Play,Jouer
 VAULT,Vault,Coffre
-SETTINGS,Settings,Parametres
-CREDITS,Credits,Credits
+SETTINGS,Settings,Paramètres
+CREDITS,Credits,Crédits
 BACK,Back,Retour
-FULLSCREEN,Fullscreen,Plein écran
-MUSICVOL,Music volume,Volume de la musique
-SFXVOL,SFX volume,Volume des SFX
-LANGUAGE,Language,Langue
+FULLSCREEN:,Fullscreen:,Plein écran :
+MUSICVOL:,Music volume:,Volume de la musique :
+SFXVOL:,SFX volume:,Volume des SFX :
+LANGUAGE:,Language:,Langue :
 HOLDTOJOIN,Hold any key to join the game,Appuyez longuement sur un bouton pour rejoindre la partie
