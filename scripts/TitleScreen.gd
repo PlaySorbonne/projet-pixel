@@ -57,6 +57,9 @@ func confirm_with_delay():
 	await self.ButtonSelected
 	confirm_button()
 
+func reset_state():
+	can_input = true
+
 func _process(delta : float):
 	if not can_input:
 		return

@@ -259,8 +259,8 @@ visible = false
 default_duration = 1.0
 
 [node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("4_jwgc0")]
-offset_left = 1920.0
-offset_right = 1920.0
+offset_top = 1400.0
+offset_bottom = 1400.0
 
 [node name="TitleScreenDecor" type="Node2D" parent="."]
 
@@ -317,3 +317,4 @@ libraries = {
 [connection signal="ButtonSettingsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_settings_pressed"]
 [connection signal="ButtonStartPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_start_pressed"]
 [connection signal="ButtonVaultPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_vault_pressed"]
+[connection signal="ButtonBackPressed" from="CanvasLayer/SettingsScreen" to="." method="_on_settings_screen_button_back_pressed"]
