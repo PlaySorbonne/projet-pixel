@@ -84,7 +84,7 @@ texture = ExtResource("12_k31tq")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_s55uu")
 autoplay = true
-bus = &"Music"
+bus = &"music"
 
 [node name="TeleporterRightDown" parent="." node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("14_yh1rv")]
 position = Vector2(1518, 1235)

@@ -65,7 +65,7 @@ func connect_fighter_to_world(body : PlayerCharacter):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
 func on_player_death(player : FighterCharacter):
 	await get_tree().create_timer(3.0).timeout

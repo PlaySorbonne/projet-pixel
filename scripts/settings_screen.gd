@@ -14,6 +14,10 @@ static var user_settings : Dictionary = {
 	"language" : Languages.Francais
 }
 
+static func apply_settings():
+	update_fullscreen()
+	update_audio()
+
 func _ready():
 	$Options/LabelFullscreen/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
 
@@ -42,16 +46,31 @@ static func load_settings_data(reapply_settings := true):
 	if reapply_settings:
 		apply_settings()
 
-static func apply_settings():
-	update_fullscreen()
-
 static func update_fullscreen():
 	if user_settings["fullscreen"]:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
+static func update_audio():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), 
+		linear_to_db(user_settings["music_volume"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), 
+		linear_to_db(user_settings["sfx_volume"]))
+
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on
 	update_fullscreen()
+	save_settings_data()
+
+func _on_music_slider_value_changed(value : float):
+	user_settings["music_volume"] = value
+	print("music value : " + str(value))
+	print("music db : " + str(linear_to_db(user_settings["music_volume"])))
+	update_audio()
+	save_settings_data()
+
+func _on_sf_xslider_value_changed(value : float):
+	user_settings["sfx_volume"] = value
+	update_audio()
 	save_settings_data()
