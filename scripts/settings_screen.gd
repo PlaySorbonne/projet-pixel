@@ -9,8 +9,8 @@ const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
 
 static var user_settings : Dictionary = {
 	"fullscreen" : true,
-	"music_volume" : 1.0,
-	"sfx_volume" : 1.0,
+	"music_volume" : 0.75,
+	"sfx_volume" : 0.75,
 	"language" : Languages.Francais
 }
 
