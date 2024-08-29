@@ -14,6 +14,19 @@ grow_vertical = 2
 script = ExtResource("1_cqi7r")
 metadata/_edit_vertical_guides_ = [-370.0]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -25.0
+offset_right = 217.0
+offset_bottom = -169.0
+rotation = 0.174533
+color = Color(0.70421, 0, 0.287636, 0.423529)
+metadata/_edit_use_anchors_ = true
+
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1

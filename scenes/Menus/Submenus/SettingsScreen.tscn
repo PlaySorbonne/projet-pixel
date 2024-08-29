@@ -26,7 +26,6 @@ offset_right = 35.1598
 offset_bottom = 160.4
 rotation = -0.217997
 color = Color(0, 0.433966, 0.458116, 0.423529)
-metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="Control" parent="."]
 layout_mode = 1
@@ -59,7 +58,6 @@ offset_right = 6.10352e-05
 offset_bottom = 3.05176e-05
 theme = ExtResource("1_6up3k")
 text = "Fullscreen:"
-metadata/_edit_use_anchors_ = true
 
 [node name="ButtonFullscreen" type="CheckButton" parent="Options/LabelFullscreen"]
 layout_mode = 2
@@ -70,7 +68,6 @@ offset_right = -66.0
 offset_bottom = -36.0
 scale = Vector2(2.5, 2.5)
 theme = ExtResource("1_6up3k")
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelMusic" type="Label" parent="Options"]
 layout_mode = 2
@@ -80,7 +77,6 @@ anchor_right = 0.417188
 anchor_bottom = 0.524074
 theme = ExtResource("1_6up3k")
 text = "Music volume:"
-metadata/_edit_use_anchors_ = true
 
 [node name="MusicSlider" type="HSlider" parent="Options/LabelMusic"]
 custom_minimum_size = Vector2(600, 0)
@@ -94,7 +90,6 @@ grow_vertical = 2
 theme = ExtResource("1_6up3k")
 value = 80.0
 tick_count = 10
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelSFX" type="Label" parent="Options"]
 layout_mode = 2
@@ -104,7 +99,6 @@ anchor_right = 0.39375
 anchor_bottom = 0.616667
 theme = ExtResource("1_6up3k")
 text = "SFX volume:"
-metadata/_edit_use_anchors_ = true
 
 [node name="SFXslider" type="HSlider" parent="Options/LabelSFX"]
 custom_minimum_size = Vector2(600, 0)
@@ -118,7 +112,6 @@ grow_vertical = 2
 theme = ExtResource("1_6up3k")
 value = 80.0
 tick_count = 10
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelLanguage" type="Label" parent="Options"]
 layout_mode = 2
@@ -131,7 +124,6 @@ offset_top = 6.10352e-05
 offset_right = 6.10352e-05
 theme = ExtResource("1_6up3k")
 text = "Language:"
-metadata/_edit_use_anchors_ = true
 
 [node name="LanguageButton" type="OptionButton" parent="Options/LabelLanguage"]
 layout_mode = 2
@@ -145,7 +137,6 @@ item_count = 2
 popup/item_0/text = "Français"
 popup/item_1/text = "English"
 popup/item_1/id = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
@@ -156,6 +147,5 @@ anchor_right = 0.148438
 anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
 text = "Back"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

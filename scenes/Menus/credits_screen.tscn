@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://qb3miekn7s7v"]
+[gd_scene load_steps=4 format=3 uid="uid://qb3miekn7s7v"]
+
+[ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_g840b"]
+[ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_rpv6i"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_2hoir"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +11,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rpv6i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.002
+anchor_top = 0.000222213
+anchor_right = 1.002
+anchor_bottom = 0.995
+offset_left = -171.16
+offset_top = 298.76
+offset_right = 35.1598
+offset_bottom = 160.4
+rotation = -0.217997
+color = Color(1.26343e-07, 0.264364, 0.182592, 0.423529)
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0474202
+
+[node name="LabelCredits" type="Label" parent="Options"]
+layout_mode = 2
+offset_left = 320.196
+offset_top = 214.419
+offset_right = 948.196
+offset_bottom = 337.419
+rotation = 0.0642744
+theme = ExtResource("1_g840b")
+text = "Credits"
+
+[node name="LabelText" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.201562
+anchor_top = 0.388889
+anchor_right = 0.816667
+anchor_bottom = 0.840741
+offset_bottom = -8.0
+theme = ExtResource("2_2hoir")
+text = "credits credits credits credits credits credits
+credits credits credits credits credits credits
+credits credits credits credits credits credits
+credits credits credits credits credits credits
+credits credits credits credits credits credits
+credits credits credits credits credits credits
+credits credits credits credits credits credits"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.87963
+anchor_right = 0.148438
+anchor_bottom = 0.948148
+theme = ExtResource("2_2hoir")
+text = "Back"
+
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
