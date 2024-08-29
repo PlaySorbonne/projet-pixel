@@ -180,3 +180,4 @@ func _on_timer_timeout():
 func _on_button_refresh_pressed():
 	actualize_characters(true)
 	actualize_specials(true)
+	$Adjuster/VBoxContainer/HBoxContainer/ButtonRefresh.release_focus()

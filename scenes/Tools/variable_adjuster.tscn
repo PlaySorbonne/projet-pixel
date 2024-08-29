@@ -17,8 +17,11 @@ max_value = 1e+07
 step = 0.001
 
 [node name="ButtonReset" type="Button" parent="."]
+visible = false
+modulate = Color(0.808998, 0.808998, 0.808998, 1)
 layout_mode = 2
-text = "Reset"
+text = "↩"
+flat = true
 
 [node name="Spacer" type="Control" parent="."]
 custom_minimum_size = Vector2(25, 0)
