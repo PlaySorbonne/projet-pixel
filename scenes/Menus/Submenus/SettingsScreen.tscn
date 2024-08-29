@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://bxo5cilexhd5g"]
+[gd_scene load_steps=4 format=3 uid="uid://bxo5cilexhd5g"]
+
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="1_6up3k"]
+[ext_resource type="Script" path="res://scripts/settings_screen.gd" id="1_fc4jn"]
+[ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_o4weg"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -7,29 +11,148 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fc4jn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.002
+anchor_top = 0.000222213
+anchor_right = 1.002
+anchor_bottom = 0.995
+offset_left = -171.16
+offset_top = 298.76
+offset_right = 35.1598
+offset_bottom = 160.4
+rotation = -0.217997
+color = Color(0, 0.433966, 0.458116, 0.423529)
+metadata/_edit_use_anchors_ = true
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0474202
+
+[node name="LabelSettings" type="Label" parent="Options"]
+layout_mode = 2
+offset_left = 320.196
+offset_top = 214.419
+offset_right = 948.196
+offset_bottom = 337.419
+rotation = 0.0741383
+theme = ExtResource("1_o4weg")
+text = "Settings"
+
+[node name="LabelFullscreen" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.37037
+anchor_right = 0.376042
+anchor_bottom = 0.431481
+offset_left = 6.10352e-05
+offset_top = 3.05176e-05
+offset_right = 6.10352e-05
+offset_bottom = 3.05176e-05
+theme = ExtResource("1_6up3k")
+text = "Fullscreen:"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonFullscreen" type="CheckButton" parent="Options/LabelFullscreen"]
+layout_mode = 2
+anchor_left = 1.47059
+anchor_right = 1.875
+anchor_bottom = 0.909091
+offset_right = -66.0
+offset_bottom = -36.0
+scale = Vector2(2.5, 2.5)
+theme = ExtResource("1_6up3k")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelMusic" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.462963
+anchor_right = 0.417188
+anchor_bottom = 0.524074
+theme = ExtResource("1_6up3k")
+text = "Music volume:"
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicSlider" type="HSlider" parent="Options/LabelMusic"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.1396
+anchor_right = 2.849
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6up3k")
+value = 80.0
+tick_count = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelSFX" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.555556
+anchor_right = 0.39375
+anchor_bottom = 0.616667
+theme = ExtResource("1_6up3k")
+text = "SFX volume:"
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXslider" type="HSlider" parent="Options/LabelSFX"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.30719
+anchor_right = 3.26797
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6up3k")
+value = 80.0
+tick_count = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelLanguage" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.648148
+anchor_right = 0.366146
+anchor_bottom = 0.709259
+offset_left = 6.10352e-05
+offset_top = 6.10352e-05
+offset_right = 6.10352e-05
+theme = ExtResource("1_6up3k")
+text = "Language:"
+metadata/_edit_use_anchors_ = true
+
+[node name="LanguageButton" type="OptionButton" parent="Options/LabelLanguage"]
+layout_mode = 2
+anchor_left = 1.58103
+anchor_right = 2.56522
+anchor_bottom = 1.12121
+theme = ExtResource("1_6up3k")
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Français"
+popup/item_1/text = "English"
+popup/item_1/id = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1523.0
-offset_top = 951.0
-offset_right = 1712.0
-offset_bottom = 1002.0
+anchor_left = 0.05
+anchor_top = 0.87963
+anchor_right = 0.148438
+anchor_bottom = 0.948148
+theme = ExtResource("1_6up3k")
 text = "Back"
-
-[node name="ButtonFullscreen" type="CheckButton" parent="."]
-layout_mode = 0
-offset_left = 398.0
-offset_top = 578.0
-offset_right = 593.0
-offset_bottom = 655.0
-text = "Fullscreen"
-
-[node name="OptionButton" type="OptionButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.161
-anchor_bottom = 0.126
-offset_left = 722.0
-offset_top = 593.0
-offset_right = 564.88
-offset_bottom = 480.92
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ci4c6g7i1sumn"]
+
+[ext_resource type="FontFile" uid="uid://b6nnhp5bogj31" path="res://resources/fonts/files/HVD_Comic_Serif_Pro.otf" id="1_upnpo"]
+
+[resource]
+default_font = ExtResource("1_upnpo")
+default_font_size = 48
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.862745)
+Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = -8
+Label/constants/shadow_offset_y = 8
+Label/constants/shadow_outline_size = 8
+Label/fonts/font = ExtResource("1_upnpo")
