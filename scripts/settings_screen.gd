@@ -66,8 +66,10 @@ static func update_audio():
 		linear_to_db(user_settings["sfx_volume"]))
 
 static func update_language():
-	print("now translate to " + str(LANGUAGE_KEYS[user_settings["language"]]))
-	TranslationServer.set_locale("fr")
+	#print("now translate to " + str(LANGUAGE_KEYS[user_settings["language"]]))
+	var trans_lg := "en"
+	print("now translate to: " + trans_lg)
+	TranslationServer.set_locale(trans_lg)
 
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on

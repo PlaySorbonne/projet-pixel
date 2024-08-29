@@ -83,7 +83,7 @@ offset_left = -477.0
 offset_top = -444.0
 offset_right = 1488.0
 offset_bottom = -377.0
-text = "HOLD_TO_JOIN"
+text = "HOLDTOJOIN"
 label_settings = SubResource("LabelSettings_fw6dy")
 horizontal_alignment = 1
 
