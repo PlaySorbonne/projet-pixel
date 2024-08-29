@@ -55,6 +55,11 @@ func _ready():
 	set_adjuster_active(false)
 	for c in variable_adjusters:
 		c.connect("var_changed", actualize_characters)
+	connect_special_box()
+
+func connect_special_box():
+	for c in CurrentSpecialBox.get_variables():
+		c.connect("var_changed", actualize_specials)
 
 func actualize_characters(do_update_data := true):
 	if do_update_data:
@@ -66,7 +71,11 @@ func actualize_characters(do_update_data := true):
 			player.set(k, variables_data[ev][k])
 
 func actualize_specials(do_update_data := true):
-	pass
+	for player : PlayerCharacter in GameInfos.players:
+		var ev : String = PlayerCharacter.Evolutions.find_key(player.current_evolution)
+		var ev_spe := ev+"_special"
+		for k : String in variables_data[ev_spe].keys():
+			player.get_special_attack().set(k, variables_data[ev_spe][k])
 
 func _on_button_pressed():
 	set_adjuster_active(not is_active)
@@ -96,6 +105,7 @@ func rebuild_special_ability_box(current_character : String):
 	for adj_r : VariableAdjuster in CurrentSpecialBox.get_variables():
 		if variables_data.has(k) and variables_data[k].has(adj_r.variable_name):
 			adj_r.variable_default_value = variables_data[k][adj_r.variable_name]
+	connect_special_box()
 
 func update_data():
 	if dont_update_data:
@@ -166,3 +176,7 @@ func _on_option_button_button_down():
 func _on_timer_timeout():
 	actualize_characters(false)
 	actualize_specials(false)
+
+func _on_button_refresh_pressed():
+	actualize_characters(true)
+	actualize_specials(true)

@@ -167,6 +167,10 @@ layout_mode = 2
 layout_mode = 2
 alignment = 2
 
+[node name="ButtonRefresh" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Refresh characters"
+
 [node name="Spacer1" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -202,6 +206,7 @@ autostart = true
 
 [connection signal="button_down" from="Adjuster/VBoxContainer/OptionButton" to="." method="_on_option_button_button_down"]
 [connection signal="item_selected" from="Adjuster/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonRefresh" to="." method="_on_button_refresh_pressed"]
 [connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonSave" to="." method="_on_button_save_pressed"]
 [connection signal="pressed" from="Adjuster/VBoxContainer/HBoxContainer/ButtonLoad" to="." method="_on_button_load_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
