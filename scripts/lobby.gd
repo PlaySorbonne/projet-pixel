@@ -1,4 +1,5 @@
 extends Node2D
+class_name Lobby
 
 signal StartGame
 signal PlayerJoined
@@ -6,8 +7,7 @@ signal PlayerExited
 
 const WORLD_PATH = "res://scenes/world.tscn"
 const JOINING_UI = preload("res://scenes/World/Lobby/lobbyUI/player_joining_ui.tscn")
-
-@export var default_player: PackedScene
+const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 @onready var initial_time_left = $PressKeyTimer.wait_time
@@ -75,7 +75,7 @@ func add_player(device: int, device_type: int):
 		keyboards.append(device)
 	else:
 		controllers.append(device)
-	var player = default_player.instantiate()
+	var player = DEFAULT_PLAYER.instantiate()
 	player.control_device = device
 	player.control_type = device_type
 	player.god_mode = true

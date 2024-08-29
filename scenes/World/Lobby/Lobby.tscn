@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw6ararr3s0li"]
+[gd_scene load_steps=15 format=3 uid="uid://cw6ararr3s0li"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_e0kiy"]
-[ext_resource type="PackedScene" uid="uid://gxorr7jk1k24" path="res://scenes/Characters/Evolutions/ceo_character.tscn" id="2_t0ou6"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="3_foy2r"]
 [ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="4_26wmt"]
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="5_qy4li"]
@@ -27,7 +26,6 @@ size = Vector2(2157.5, 193)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_e0kiy")
-default_player = ExtResource("2_t0ou6")
 
 [node name="Wall" parent="." instance=ExtResource("3_foy2r")]
 position = Vector2(569, 1288)

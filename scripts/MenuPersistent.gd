@@ -2,7 +2,7 @@ extends Node2D
 
 
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
-const VAULT_PATH = "res://scenes/Menus/intro_screen.tscn"
+const VAULT_PATH = "res://scenes/world.tscn"
 const CREDITS_PATH = "res://scenes/Menus/intro_screen.tscn"
 
 
@@ -26,6 +26,11 @@ func _on_title_screen_button_start_pressed():
 	smooth_change_to_scene(LOBBY_PATH)
 
 func _on_title_screen_button_vault_pressed():
+	var player = Lobby.DEFAULT_PLAYER.instantiate()
+	player.control_device = 0
+	player.control_type = 0
+	player.god_mode = true
+	GameInfos.add_player(player)
 	smooth_change_to_scene(VAULT_PATH)
 
 func _on_title_screen_button_settings_pressed():

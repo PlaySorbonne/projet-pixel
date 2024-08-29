@@ -88,7 +88,8 @@ func rebuild_special_ability_box(current_character : String):
 	CurrentSpecialBox.queue_free()
 	CurrentSpecialBox = EvolutionSpecials[current_character].instantiate()
 	special_vbox.add_child(CurrentSpecialBox)
-	print("TODO")
+	for adj_r : VariableAdjuster in CurrentSpecialBox.get_variables():
+		adj_r.variable_default_value = variables_data[current_character+"_special"][adj_r.variable_name]
 
 func update_data():
 	if dont_update_data:
