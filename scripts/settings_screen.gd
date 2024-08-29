@@ -14,6 +14,9 @@ static var user_settings : Dictionary = {
 	"language" : Languages.Francais
 }
 
+func _ready():
+	$Options/LabelFullscreen/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
+
 func _on_button_back_pressed():
 	$ButtonBack.release_focus()
 	emit_signal("ButtonBackPressed")

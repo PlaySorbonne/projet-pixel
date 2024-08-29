@@ -291,8 +291,9 @@ position = Vector2(12, -66)
 curve = SubResource("Curve2D_qf64y")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="TitleScreenDecor/Path2D"]
-position = Vector2(766, -571)
+position = Vector2(-422.374, 597.9)
 rotation = 0.150371
+progress = 3104.35
 rotates = false
 
 [node name="Camera2D" type="Camera2D" parent="TitleScreenDecor/Path2D/PathFollow2D"]
