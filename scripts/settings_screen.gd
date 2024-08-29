@@ -65,8 +65,6 @@ func _on_button_fullscreen_toggled(toggled_on : bool):
 
 func _on_music_slider_value_changed(value : float):
 	user_settings["music_volume"] = value
-	print("music value : " + str(value))
-	print("music db : " + str(linear_to_db(user_settings["music_volume"])))
 	update_audio()
 	save_settings_data()
 
