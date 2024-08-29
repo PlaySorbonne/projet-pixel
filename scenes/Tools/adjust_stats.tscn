@@ -84,7 +84,7 @@ is_integer = true
 [node name="VariableAdjuster14" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
 layout_mode = 2
 variable_name = "invincibility_time"
-variable_description = "[to be implemented]"
+variable_description = "invicibility duration after a hit"
 
 [node name="VariableAdjuster15" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
 layout_mode = 2
@@ -121,7 +121,7 @@ is_integer = true
 [node name="VariableAdjuster7" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
 layout_mode = 2
 variable_name = "attack_intensity"
-variable_description = "[unused for now]"
+variable_description = "hit launch distance multiplier"
 is_integer = true
 
 [node name="VariableAdjuster8" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
@@ -169,7 +169,7 @@ alignment = 2
 
 [node name="ButtonRefresh" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Refresh characters"
+text = "Apply changes"
 
 [node name="Spacer1" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
@@ -177,7 +177,7 @@ layout_mode = 2
 
 [node name="ButtonSave" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Save to file"
+text = "Save stats to file"
 
 [node name="Spacer2" type="Control" parent="Adjuster/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
@@ -185,7 +185,7 @@ layout_mode = 2
 
 [node name="ButtonLoad" type="Button" parent="Adjuster/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Load from file"
+text = "Load stats from file"
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = -1
@@ -197,6 +197,7 @@ focus_mode = 0
 text = "STATS EDITOR"
 
 [node name="FileDialog" type="FileDialog" parent="."]
+title = "Save a File (All evolutions are saved to a single file)"
 size = Vector2i(800, 500)
 access = 2
 
