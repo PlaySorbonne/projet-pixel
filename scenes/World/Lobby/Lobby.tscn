@@ -79,12 +79,13 @@ scale = Vector2(3, 3)
 text = "Start Game"
 
 [node name="DebugLabel" type="Label" parent="."]
-offset_left = -8.0
+offset_left = -477.0
 offset_top = -444.0
-offset_right = 1019.0
+offset_right = 1488.0
 offset_bottom = -377.0
-text = "Gardez une touche appuyée pour rejoindre la partie"
+text = "HOLD_TO_JOIN"
 label_settings = SubResource("LabelSettings_fw6dy")
+horizontal_alignment = 1
 
 [node name="PressKeyTimer" type="Timer" parent="."]
 wait_time = 0.5
