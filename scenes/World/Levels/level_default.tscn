@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://vyyffuba3t3y"]
+
+[ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_fvn86"]
+[ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_euv16"]
+
+[node name="LevelDefault" instance=ExtResource("1_fvn86")]
+
+[node name="SpawnLocation1" parent="." index="0"]
+position = Vector2(258, 594)
+
+[node name="SpawnLocation2" parent="." index="1"]
+position = Vector2(560, 589)
+
+[node name="SpawnLocation3" parent="." index="2"]
+position = Vector2(1007, 592)
+
+[node name="SpawnLocation4" parent="." index="3"]
+position = Vector2(1345, 592)
+
+[node name="Camera" parent="." index="4"]
+position = Vector2(825, 590)
+
+[node name="Background" parent="." index="5"]
+position = Vector2(806, 289)
+scale = Vector2(0.430003, 0.430003)
+
+[node name="Wall" parent="." index="6" instance=ExtResource("2_euv16")]
+position = Vector2(776, 967)
+scale = Vector2(27.24, 5)
+
+[node name="Wall2" parent="." index="7" instance=ExtResource("2_euv16")]
+position = Vector2(825, -151)
+scale = Vector2(28, 5)
+
+[node name="Wall3" parent="." index="8" instance=ExtResource("2_euv16")]
+position = Vector2(-190, 435)
+scale = Vector2(5, 30)
+
+[node name="Wall4" parent="." index="9" instance=ExtResource("2_euv16")]
+position = Vector2(1785, 393)
+scale = Vector2(5, 30)

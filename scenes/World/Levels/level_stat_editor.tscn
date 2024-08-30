@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp2lvb0g5tvhy"]
+
+[ext_resource type="PackedScene" uid="uid://cftuvb1og2wty" path="res://scenes/World/Levels/level_training.tscn" id="1_vkox6"]
+[ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_yiwb5"]
+
+[node name="LevelStatEditor" instance=ExtResource("1_vkox6")]
+
+[node name="AdjustStats" parent="." index="13" instance=ExtResource("2_yiwb5")]

@@ -30,7 +30,7 @@ script = ExtResource("1_e0kiy")
 [node name="PolygonBackground" type="Polygon2D" parent="."]
 z_index = -100
 color = Color(0.314316, 0.314316, 0.314316, 1)
-polygon = PackedVector2Array(-1315, -932, 3053, -923, 2779, 1530, -1513, 1510)
+polygon = PackedVector2Array(-1508, -937, 3053, -923, 3026, 1533, -1513, 1510)
 
 [node name="Wall" parent="." instance=ExtResource("3_foy2r")]
 position = Vector2(569, 1288)
