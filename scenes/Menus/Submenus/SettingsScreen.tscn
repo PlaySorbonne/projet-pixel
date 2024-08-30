@@ -144,6 +144,7 @@ item_count = 2
 popup/item_0/text = "English"
 popup/item_0/id = 1
 popup/item_1/text = "Français"
+popup/item_1/id = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelLanguage" type="Label" parent="Options"]

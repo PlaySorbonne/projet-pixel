@@ -1,19 +1,33 @@
 extends Node
 
+enum Levels {Default, Training, StatEditor}
+const LEVEL_PATHS = {
+	Levels.Default : "res://scenes/World/Levels/level_default.tscn",
+	Levels.Training : "res://scenes/World/Levels/level_training.tscn",
+	Levels.StatEditor : "res://scenes/World/Levels/level_stat_editor.tscn"
+}
+
 var game_started := false
 var world : Node2D
+var level := Levels.Default
 var camera : Camera2D
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
 var players_order : Array[int] = []
 var player_colors : Array[Color] = []
-var available_colors_index = 0
+var available_colors_index := 0
 
 func reset_game_infos() -> void:
 	game_started = false
 	players = []
+	players_order = []
 	player_colors = []
+	available_colors_index = 0
+	level = Levels.Default
+
+func load_game_level() -> Level:
+	return load(LEVEL_PATHS[level]).instantiate()
 
 func add_player(player: PlayerCharacter) -> void:
 	players.append(player)
