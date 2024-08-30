@@ -251,7 +251,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	emit_hit_particles()
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
-		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * 750.0 * damage
+		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.05)

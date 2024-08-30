@@ -12,7 +12,7 @@ var attacker : FighterCharacter
 var attached_to_char : bool
 
 static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
-duration : float, attached_to_character := true, hit_intensity := 1, size := Vector2.ONE,
+duration : float, attached_to_character := true, hit_intensity := 1.0, size := Vector2.ONE,
 can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 	var hitbox : Hitbox = HITBOX_SCENE.instantiate()
 	hitbox.team = parent.team
@@ -41,12 +41,14 @@ func set_hitbox_lifetime(time : float):
 func end_hitbox():
 	queue_free()
 
-func _on_body_entered(body):
+func _on_body_entered(body : Node2D):
 	if body.has_method("hit") and body.team != team:
 		if attached_to_char:
-			body.hit(damage, attacker, attacker.global_position)
+			body.hit(damage, attacker, attacker.global_position, intensity)
+			print("attacker_position : " + str(attacker.global_position) + " // body_position : " + str(body.global_position))
 		else:
-			body.hit(damage, attacker, global_position)
+			body.hit(damage, attacker, global_position, intensity)
+			print("hitbox_position : " + str(global_position) + " // body_position : " + str(body.global_position))
 
 func _on_area_entered(area):
 	if area.has_method("interact"):

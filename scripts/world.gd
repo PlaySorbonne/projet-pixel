@@ -1,27 +1,19 @@
 extends Node2D
+class_name World
 
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
-@onready var spawn_locations : Array = [
-	$SpawnLocation1,
-	$SpawnLocation2,
-	$SpawnLocation3,
-	$SpawnLocation4
-]
-
-var player_spawns = {}
-
-func _testing_function():
-	var freezeframe : FreezeFrame = $Camera/FreezeFrame
-	var screenshake : CameraUtils = $Camera/CameraUtils
-	while true:
-		await get_tree().create_timer(2.0).timeout
-		#freezeframe.freeze()
-		screenshake.shake()
+var spawn_locations : Array[Node2D]
+var player_camera : Camera2D
+var player_spawns : Dictionary = {}
+var level : Level
 
 func _ready():
-	#_testing_function()
+	level = GameInfos.load_game_level()
+	add_child(level)
+	spawn_locations = level.spawn_points
+	player_camera = level.player_camera
 	GameInfos.game_started = true
 	GameInfos.world = self
 	var hud_objects = $GameHUD.add_players()
@@ -35,12 +27,15 @@ func _ready():
 		await $StartGameScreen.countdown_finished
 		activate_players()
 
+func add_level():
+	pass
+
 func end_game():
 	for p : PlayerCharacter in GameInfos.players:
 		p.set_player_active(false)
 	add_child(VICTORY_MESSAGE.instantiate())
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
-	GameInfos.camera_utils.interp_zoom($Camera.zoom + Vector2(0.1, 0.1), 0.15)
+	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
 	await get_tree().create_timer(1.5).timeout
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
