@@ -48,11 +48,22 @@ position = Vector2(75, 1039)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../TeleporterRightUp")
 
-[node name="AnimeBox" parent="." index="12"]
-position = Vector2(1399, 755)
+[node name="LabelHits" type="Label" parent="." index="12"]
+offset_left = 1275.0
+offset_top = 555.0
+offset_right = 1399.0
+offset_bottom = 604.0
+scale = Vector2(2, 2)
+text = "hit : 0
+total : 0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimeBox" parent="." index="13"]
+position = Vector2(1400, 755)
 winning_by_weeb_touch = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="14"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="15"]
 
 [node name="ButtonBack" type="Button" parent="CanvasLayer" index="0"]
 anchors_preset = -1
@@ -63,7 +74,8 @@ anchor_bottom = 0.948148
 theme = ExtResource("4_vnmdc")
 text = "BACK"
 
-[node name="ChangeEvolution" parent="." index="15" instance=ExtResource("6_pe12c")]
+[node name="ChangeEvolution" parent="." index="16" instance=ExtResource("6_pe12c")]
 position = Vector2(267, 679)
 
+[connection signal="hentai_hit" from="AnimeBox" to="." method="_on_anime_box_hentai_hit"]
 [connection signal="pressed" from="CanvasLayer/ButtonBack" to="." method="_on_button_back_pressed"]

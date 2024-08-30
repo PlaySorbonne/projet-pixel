@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 signal game_won
+signal hentai_hit
 
 const BOUNDS = 3000
 
@@ -37,6 +38,7 @@ func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity 
 		if not (impulse_dir.length_squared() < 1.0):
 			impulse_dir = Vector2.RIGHT
 		apply_impulse( (impulse_dir + Vector2(0, -0.1)) * anime_velocity * hit_intensity)
+	emit_signal("hentai_hit", damage)
 	GameInfos.camera_utils.shake()
 	last_player_hit = attacker
 	last_hit_value = damage
