@@ -6,6 +6,7 @@ const BOUNDS = 3000
 
 @export var anime_velocity := 2000.0
 @export var anime_damage_multiplier := 1.0
+@export var winning_by_weeb_touch := true
 
 var team := -1
 var knockback_velocity := Vector2.ZERO
@@ -30,21 +31,21 @@ func _process(delta):
 func get_hit_owner():
 	return last_player_hit
 
-func hit(damage : int, attacker : Node2D, hit_position : Vector2):
+func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
 	if attacker != null:
 		var impulse_dir = (self.global_position - hit_position).normalized()
 		if not (impulse_dir.length_squared() < 1.0):
 			impulse_dir = Vector2.RIGHT
-		apply_impulse( (impulse_dir + Vector2(0, -0.1)) * anime_velocity )
+		apply_impulse( (impulse_dir + Vector2(0, -0.1)) * anime_velocity * hit_intensity)
 	GameInfos.camera_utils.shake()
 	last_player_hit = attacker
 	last_hit_value = damage
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body : Node2D):
 	if not body.has_method("hit"):
 		return
 	var player_body : PlayerCharacter = body
-	if player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
+	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		emit_signal("game_won")
 	elif linear_velocity.length() > 750 and last_player_hit != null and body != last_player_hit:
 		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)

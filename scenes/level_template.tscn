@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw0mhp762lxcu"]
+[gd_scene load_steps=8 format=3 uid="uid://cw0mhp762lxcu"]
 
 [ext_resource type="Script" path="res://scripts/level_template.gd" id="1_63kf4"]
 [ext_resource type="Script" path="res://scripts/WorldCamera.gd" id="1_ggbii"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="3_thanc"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="4_h52g1"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="6_l5qq3"]
+[ext_resource type="AudioStream" uid="uid://bgf1wkvjjnkjp" path="res://resources/audio/music/Secret_Knowledge.wav" id="7_46noc"]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_63kf4")
@@ -53,3 +54,8 @@ texture = ExtResource("4_h52g1")
 
 [node name="AnimeBox" parent="." instance=ExtResource("6_l5qq3")]
 position = Vector2(787, 734)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_46noc")
+autoplay = true
+bus = &"music"

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cftuvb1og2wty"]
+[gd_scene load_steps=7 format=3 uid="uid://cftuvb1og2wty"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
+[ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_vnmdc"]
+[ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="6_pe12c"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
+script = ExtResource("2_14xww")
 
 [node name="SpawnLocation1" parent="." index="0"]
 position = Vector2(509, 703)
@@ -23,7 +27,7 @@ position = Vector2(904, 981)
 scale = Vector2(22.6, 5)
 
 [node name="Wall2" parent="." index="7" instance=ExtResource("2_ieh35")]
-position = Vector2(695, -219)
+position = Vector2(685, -129)
 scale = Vector2(22.76, 5)
 
 [node name="Wall3" parent="." index="8" instance=ExtResource("2_ieh35")]
@@ -34,13 +38,32 @@ scale = Vector2(5, 30)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="TeleporterLeftUp" parent="." index="10" instance=ExtResource("3_7geis")]
-position = Vector2(1522, -238)
+[node name="TeleporterRightUp" parent="." index="10" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
+position = Vector2(1519, -152)
 scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterLeftDown")
 
-[node name="TeleporterLeftDown" parent="." index="11" instance=ExtResource("3_7geis")]
+[node name="TeleporterLeftDown" parent="." index="11" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
 position = Vector2(75, 1039)
 scale = Vector2(2, 2)
+otherTeleporter = NodePath("../TeleporterRightUp")
 
 [node name="AnimeBox" parent="." index="12"]
 position = Vector2(1399, 755)
+winning_by_weeb_touch = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="14"]
+
+[node name="ButtonBack" type="Button" parent="CanvasLayer" index="0"]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.87963
+anchor_right = 0.148438
+anchor_bottom = 0.948148
+theme = ExtResource("4_vnmdc")
+text = "BACK"
+
+[node name="ChangeEvolution" parent="." index="15" instance=ExtResource("6_pe12c")]
+position = Vector2(267, 679)
+
+[connection signal="pressed" from="CanvasLayer/ButtonBack" to="." method="_on_button_back_pressed"]
