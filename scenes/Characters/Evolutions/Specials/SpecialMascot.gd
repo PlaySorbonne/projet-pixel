@@ -1,4 +1,5 @@
 extends BaseSpecial
+class_name SpecialMascot
 
 const EGG = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.tscn")
 
@@ -13,13 +14,12 @@ const EGG = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.t
 
 
 func special():
-	print("TODO: change egg stats")
 	if not can_use_special:
 		return
 	can_use_special = false
 	player.attacking = true
 	player.knockback_velocity.y -= jump_power
-	EggProjectile.spawn_egg_projectile(player)
+	EggProjectile.spawn_egg_projectile(player, self)
 	
 	await get_tree().create_timer(can_attack_cooldown).timeout
 	player.attacking = false

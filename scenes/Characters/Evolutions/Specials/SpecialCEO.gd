@@ -8,10 +8,9 @@ extends BaseSpecial
 @export var dash_cooldown := 0.3
 @export var attack_damage := 2
 @export var attack_intensity := 1.0
-@export var attack_size := 1.0
+@export var attack_size := 3.3
 
 func special():
-	print("TODO : add attack_intensity and size")
 	if not can_use_special:
 		return
 	can_use_special = false
@@ -34,7 +33,7 @@ func special():
 	
 	# spawn damage hitbox
 	Hitbox.spawn_hitbox(player, attack_damage, Vector2.ZERO, dash_duration, 
-	true, attack_intensity, Vector2(3.3, 3.3))
+	true, attack_intensity, Vector2(attack_size, attack_size))
 	player.velocity = dash_direction.normalized() * dash_speed
 	await get_tree().create_timer(dash_duration).timeout
 	

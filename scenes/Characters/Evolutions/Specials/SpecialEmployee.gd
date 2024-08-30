@@ -18,7 +18,6 @@ func _process(_delta):
 		special_end()
 
 func special():
-	print("TODO : add hitbox_size to ability and attack_intensity")
 	if not can_use_special:
 		return
 	can_use_special = false
@@ -31,7 +30,8 @@ func special():
 	set_process(true)
 
 func special_end():
-	Hitbox.spawn_hitbox(player, damage, Vector2.ZERO, hit_duration, true, 1, Vector2(3.0, 3.0))
+	Hitbox.spawn_hitbox(player, damage, Vector2.ZERO, hit_duration, true, attack_intensity, 
+		Vector2(hitbox_size, hitbox_size))
 	player.movement_velocity = Vector2.ZERO
 	await get_tree().create_timer(fall_recovery).timeout
 	

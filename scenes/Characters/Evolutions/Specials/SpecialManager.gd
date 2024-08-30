@@ -1,14 +1,13 @@
 extends BaseSpecial
 
 @export var attack_damage := 2
-@export var attack_size := 2.0 #TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+@export var attack_size := 3.0
 @export var attack_intensity := 1.0
 @export var dash_speed := 2000.0
 @export var dash_duration := 0.3
 @export var dash_cooldown := 0.3
 
 func special():
-	print("TODO: change attack size and damage")
 	if not can_use_special:
 		return
 	var dash_direction := Vector2.ZERO
@@ -26,7 +25,7 @@ func special():
 	
 	# Spawn attack hitbox
 	Hitbox.spawn_hitbox(player, attack_damage, player.global_position, dash_duration, 
-	false, attack_intensity, Vector2(3.3, 3.3))
+	false, attack_intensity, Vector2(attack_size, attack_size))
 	
 	player.velocity = dash_direction.normalized() * dash_speed
 	await get_tree().create_timer(dash_duration).timeout
