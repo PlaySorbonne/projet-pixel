@@ -21,6 +21,7 @@ var joining_keyboards : Array = []
 var joining_controllers : Array = []
 
 func _ready():
+	GameInfos.reset_game_infos()
 	GameInfos.world = self
 	screen_transition.end_screen_transition()
 

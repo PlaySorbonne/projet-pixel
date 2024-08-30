@@ -19,6 +19,7 @@ var t := 0.0
 func _ready():
 	await get_tree().create_timer(0.25).timeout
 	initial_position = position
+	connect("game_won", GameInfos.world.end_game)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func _process(delta):

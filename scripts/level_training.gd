@@ -1,6 +1,7 @@
 extends Level
 
 var total_damage : int = 0
+var player_device = -1
 
 func _on_button_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
@@ -11,3 +12,9 @@ func _process(_delta):
 func _on_anime_box_hentai_hit(hit_damage : int):
 	total_damage += hit_damage
 	$LabelHits.text = "hit : " + str(hit_damage) + "\ntotal damage : " + str(total_damage)
+
+func _input(event):
+	if event.device != player_device:
+		player_device = event.device
+		for c : PlayerCharacter in GameInfos.players:
+			c.set_control_device(player_device)
