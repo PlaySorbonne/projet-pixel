@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4soj6q40wgus"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_w8fjf"]
-[ext_resource type="SpriteFrames" uid="uid://d18yfqex83vg3" path="res://scenes/Characters/Evolutions/Animations/employee_sprite_frames.tres" id="2_hwdps"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_kpswk"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialEmployee.gd" id="2_m2x0l"]
+[ext_resource type="SpriteFrames" uid="uid://fahmmhcdh55s" path="res://scenes/Characters/Evolutions/Animations/manager_sprite_frames.tres" id="3_wcuff"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xj5wj"]
 resource_local_to_scene = true
@@ -20,16 +20,19 @@ current_evolution = 2
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj5wj")
-sprite_frames = ExtResource("2_hwdps")
+position = Vector2(0, 40)
+sprite_frames = ExtResource("3_wcuff")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_5rnvo")
 
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("2_m2x0l")
-fall_speed = 2000
+fall_speed = 2000.0
 damage = 3
+hitbox_size = 3.0
 hit_duration = 0.25
 fall_recovery = 0.65
 delay_between_jump_and_fall = 0.35
-jump_power = 3000
+jump_power = 3000.0
+attack_intensity = 2.0
