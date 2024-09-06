@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c13chtun1dngq"
-path="res://.godot/imported/poulet_copie.png-4a66f78b5d74ff777dc101a9fe26d9e8.ctex"
+uid="uid://bjlsrkseld6np"
+path="res://.godot/imported/fox_portrait.png-954265a46deaef7c905e34ca1b91e072.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/poulet_copie.png"
-dest_files=["res://.godot/imported/poulet_copie.png-4a66f78b5d74ff777dc101a9fe26d9e8.ctex"]
+source_file="res://resources/images/characters/fox/fox_portrait.png"
+dest_files=["res://.godot/imported/fox_portrait.png-954265a46deaef7c905e34ca1b91e072.ctex"]
 
 [params]
 

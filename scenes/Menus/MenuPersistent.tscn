@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3283guxswi41" path="res://scenes/Menus/Submenus/TitleScreen.tscn" id="2_j1y2d"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="4_52cat"]
 [ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="4_jwgc0"]
-[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/poulet_copie.png" id="5_11yah"]
+[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="5_11yah"]
 [ext_resource type="PackedScene" uid="uid://qb3miekn7s7v" path="res://scenes/Menus/credits_screen.tscn" id="5_18jb2"]
 [ext_resource type="Texture2D" uid="uid://drjf5m66m1a2" path="res://resources/images/characters/Sheep/moutonBam.png" id="6_3sjcl"]
 [ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="8_2bw74"]
@@ -291,9 +291,8 @@ position = Vector2(12, -66)
 curve = SubResource("Curve2D_qf64y")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="TitleScreenDecor/Path2D"]
-position = Vector2(-422.374, 597.9)
+position = Vector2(766, -571)
 rotation = 0.150371
-progress = 3104.35
 rotates = false
 
 [node name="Camera2D" type="Camera2D" parent="TitleScreenDecor/Path2D/PathFollow2D"]
