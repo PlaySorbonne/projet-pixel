@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://rlaw1umxqpak"]
+[gd_scene load_steps=7 format=3 uid="uid://rlaw1umxqpak"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialManager.gd" id="2_ljooy"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_ynyrr"]
+[ext_resource type="SpriteFrames" uid="uid://fahmmhcdh55s" path="res://scenes/Characters/Evolutions/Animations/manager_sprite_frames.tres" id="3_e2v71"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmrf"]
 resource_local_to_scene = true
@@ -20,6 +21,7 @@ max_hitpoints = 5
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_7nmrf")
+sprite_frames = ExtResource("3_e2v71")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_v2r6n")
@@ -27,4 +29,5 @@ shape = SubResource("RectangleShape2D_v2r6n")
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("2_ljooy")
 attack_damage = 1.5
+attack_size = 3.0
 attack_intensity = 1.0

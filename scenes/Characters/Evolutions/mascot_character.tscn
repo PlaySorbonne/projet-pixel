@@ -17,9 +17,9 @@ current_evolution = 3
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")
-position = Vector2(0, 38.1996)
-rotation = 0.0553286
-scale = Vector2(0.511999, 0.513001)
+position = Vector2(0, 24.3709)
+rotation = 0.171441
+scale = Vector2(0.500397, 0.524603)
 sprite_frames = ExtResource("3_mim3u")
 animation = &"run"
 frame_progress = 0.88848
