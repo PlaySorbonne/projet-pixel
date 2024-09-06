@@ -5,7 +5,7 @@ signal hentai_hit
 
 const BOUNDS = 3000
 
-@export var anime_velocity := 2000.0
+@export var anime_velocity := 700.0
 @export var anime_damage_multiplier := 1.0
 @export var winning_by_weeb_touch := true
 
