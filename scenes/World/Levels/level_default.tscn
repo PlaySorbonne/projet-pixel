@@ -21,6 +21,7 @@ position = Vector2(1345, 592)
 position = Vector2(825, 590)
 
 [node name="Background" parent="." index="5"]
+self_modulate = Color(0, 0.886027, 0.725083, 1)
 position = Vector2(806, 289)
 scale = Vector2(0.430003, 0.430003)
 
@@ -39,3 +40,27 @@ scale = Vector2(5, 30)
 [node name="Wall4" parent="." index="9" instance=ExtResource("2_euv16")]
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
+
+[node name="Wall5" parent="." index="10" instance=ExtResource("2_euv16")]
+position = Vector2(1307, 665)
+scale = Vector2(3.5, 0.5)
+
+[node name="Wall7" parent="." index="11" instance=ExtResource("2_euv16")]
+position = Vector2(260, 671)
+scale = Vector2(3.5, 0.5)
+
+[node name="Wall9" parent="." index="12" instance=ExtResource("2_euv16")]
+position = Vector2(1490, 497)
+scale = Vector2(3.5, 0.5)
+
+[node name="Wall10" parent="." index="13" instance=ExtResource("2_euv16")]
+position = Vector2(92, 501)
+scale = Vector2(3.5, 0.5)
+
+[node name="Wall8" parent="." index="14" instance=ExtResource("2_euv16")]
+position = Vector2(838, 561)
+scale = Vector2(6, 0.5)
+
+[node name="Wall6" parent="." index="15" instance=ExtResource("2_euv16")]
+position = Vector2(834, 757)
+scale = Vector2(6, 0.5)

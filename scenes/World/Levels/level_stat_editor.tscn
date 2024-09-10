@@ -5,4 +5,10 @@
 
 [node name="LevelStatEditor" instance=ExtResource("1_vkox6")]
 
+[node name="Background" parent="." index="5"]
+self_modulate = Color(1, 0.659359, 0.600691, 1)
+
 [node name="AdjustStats" parent="." index="13" instance=ExtResource("2_yiwb5")]
+
+[node name="ChangeEvolution" parent="." index="17"]
+position = Vector2(-1006, 679)
