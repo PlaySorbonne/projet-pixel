@@ -1,6 +1,8 @@
 extends BaseSpecial
 class_name SpecialManager
 
+const GUN_RES = preload("res://scenes/Characters/Evolutions/Specials/ManagerGun.tscn")
+
 @export var attack_damage := 2
 @export var attack_size := 3.0
 @export var attack_intensity := 1.0
@@ -16,7 +18,14 @@ class_name SpecialManager
 @export var bullet_size := 1.0
 @export var bullet_hit_intensity := 1.0
 
+var player_gun : ManagerGun
 
+func _ready():
+	await get_tree().create_timer(0.4).timeout
+	player_gun = GUN_RES.instantiate()
+	player.add_child(player_gun)
+	player_gun.scale = Vector2.ONE
+	player_gun.position = Vector2(1.0, 0.0) * 50.0
 
 func special():
 	if not can_use_special:
@@ -30,11 +39,16 @@ func special():
 	player.attacking = true
 	player.velocity = Vector2.ZERO
 	player.computing_movement = false
+	player_gun.play_load()
 	
 	await get_tree().create_timer(dash_windup).timeout
 	
+	player_gun.play_shoot()
+	
 	# Spawn attack hitbox
 	Bullet.spawn_bullet(player, self)
+	
+	await get_tree().create_timer(0.05).timeout
 	
 	player.knockback_velocity.x = dash_direction * dash_speed
 	player.knockback_velocity.y = (player.velocity.y) / 20

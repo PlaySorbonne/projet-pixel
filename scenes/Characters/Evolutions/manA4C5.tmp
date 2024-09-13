@@ -28,11 +28,12 @@ shape = SubResource("RectangleShape2D_v2r6n")
 
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("2_ljooy")
-attack_damage = 2
-attack_size = 3.0
-attack_intensity = 1.0
-dash_windup = 0.3
-bullet_hit_damage = 1
-bullet_speed = 1400.0
-bullet_size = 1.0
-bullet_hit_intensity = 1.0
+attack_damage = null
+attack_size = null
+attack_intensity = null
+dash_speed = null
+dash_windup = null
+bullet_hit_damage = null
+bullet_speed = null
+bullet_size = null
+bullet_hit_intensity = null
