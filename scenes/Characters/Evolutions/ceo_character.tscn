@@ -37,3 +37,6 @@ dash_cooldown = 0.3
 attack_damage = 2
 attack_intensity = 1.0
 attack_size = 1.0
+
+[node name="CharacterPointer" parent="." index="8"]
+position = Vector2(1, -122)
