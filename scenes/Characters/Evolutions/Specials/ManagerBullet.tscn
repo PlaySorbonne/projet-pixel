@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpqvvbhvhi4ev"]
+
+[ext_resource type="Script" path="res://scripts/EggProjectile.gd" id="1_ypw6l"]
+[ext_resource type="Texture2D" uid="uid://bt4epucatjvaw" path="res://resources/images/characters/fox/small_bullet.png" id="2_5jvpy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wowx1"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jugr7"]
+size = Vector2(30, 30)
+
+[node name="EggProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_ypw6l")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5jvpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wowx1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jugr7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
