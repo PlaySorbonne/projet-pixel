@@ -6,15 +6,15 @@ signal ButtonBackPressed
 enum Languages {English, Francais}
 
 const DEFAULT_GAMEPLAY_FILE = "res://default_gameplay_stats.txt"
-const GAMEPLAY_FILE_NAME = "OOgameplay_stats.txt"
+const GAMEPLAY_FILE_NAME = "OtakuOverdriveGameplay_stats.txt"
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
 const LANGUAGE_KEYS = [
 	"en",
 	"fr"
 ]
 
-static var default_gameplay_file := OS.get_executable_path().get_base_dir() + "/" + GAMEPLAY_FILE_NAME
-static var default_gameplay_data : Dictionary = {}
+static var default_gameplay_file := OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP) + "/" + GAMEPLAY_FILE_NAME
+static var gameplay_data : Dictionary = {}
 static var user_settings : Dictionary = {
 	"fullscreen" : true,
 	"music_volume" : 0.75,
@@ -32,6 +32,7 @@ static func apply_settings():
 func _ready():
 	$Options/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
 	$Options/LanguageButton.selected = user_settings["language"]
+	update_stats_buttons()
 	print("user_settings = " + str(user_settings))
 	print("user_settings['stats'] = " + str(user_settings["stats"]))
 
@@ -91,6 +92,30 @@ static func update_stats_file():
 		new_gameplay_file.close()
 		default_stats_file.close()
 	var game_stats := FileAccess.open(user_gameplay_file, FileAccess.READ)
+	update_stats_data(game_stats)
+
+static func update_stats_data(save_game : FileAccess):
+	var ordered_keys := {}
+	gameplay_data = {}
+	var number_of_evolutions := len(PlayerCharacter.Evolutions)
+	for i in PlayerCharacter.Evolutions.values():
+		var key : String = PlayerCharacter.Evolutions.find_key(i)
+		ordered_keys[i] = key
+		ordered_keys[i + number_of_evolutions] = key + "_special"
+	var line = 0
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(
+			), " in ", json_string, " at line ", json.get_error_line())
+			line += 1
+			continue
+		var ev_data = json.get_data()
+		gameplay_data[ordered_keys[line]] = ev_data
+		line += 1
+	return gameplay_data
 
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on
@@ -116,4 +141,21 @@ func _on_button_stats_pressed():
 	$FileDialog.popup_centered_ratio(0.8)
 
 func _on_button_stats_reset_pressed():
-	pass # Replace with function body.
+	user_settings["stats"] = default_gameplay_file
+	$Options/ButtonStatsReset.visible = false
+	update_stats_buttons()
+	save_settings_data()
+
+func _on_file_dialog_file_selected(path : String):
+	user_settings["stats"] = path
+	update_stats_buttons()
+	save_settings_data()
+
+func update_stats_buttons():
+	var file_path : String = user_settings["stats"]
+	if file_path == default_gameplay_file:
+		$Options/ButtonStats.text = "DEFAULT"
+		$Options/ButtonStatsReset.visible = false
+	else:
+		$Options/ButtonStats.text = file_path.get_file()
+		$Options/ButtonStatsReset.visible = true

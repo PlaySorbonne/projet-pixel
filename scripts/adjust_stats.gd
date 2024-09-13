@@ -139,24 +139,7 @@ func _on_file_dialog_file_selected(path):
 
 func load_custom_data(path):
 	var save_game = FileAccess.open(path, FileAccess.READ)
-	var ordered_keys := {}
-	var number_of_evolutions := len(PlayerCharacter.Evolutions)
-	for i in PlayerCharacter.Evolutions.values():
-		var key : String = PlayerCharacter.Evolutions.find_key(i)
-		ordered_keys[i] = key
-		ordered_keys[i + number_of_evolutions] = key + "_special"
-	var line = 0
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
-		var json = JSON.new()
-		var parse_result = json.parse(json_string)
-		if not parse_result == OK:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-			line += 1
-			continue
-		var ev_data = json.get_data()
-		variables_data[ordered_keys[line]] = ev_data
-		line += 1
+	variables_data = SettingsScreen.update_stats_data(save_game)
 	update_infos()
 
 func save_custom_data(path):

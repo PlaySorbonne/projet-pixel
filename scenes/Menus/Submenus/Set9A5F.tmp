@@ -214,4 +214,3 @@ use_native_dialog = true
 [connection signal="pressed" from="Options/ButtonStats" to="." method="_on_button_stats_pressed"]
 [connection signal="pressed" from="Options/ButtonStatsReset" to="." method="_on_button_stats_reset_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
