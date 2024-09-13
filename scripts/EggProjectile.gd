@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if explosion_triggered:
+	if explosion_triggered or body == parent_player:
 		return
 	explosion_triggered = true
 	await get_tree().create_timer(0.05).timeout

@@ -11,12 +11,12 @@ text = "Manager Cry"
 [node name="VariableAdjuster2" parent="." index="1" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
 variable_name = "attack_size"
-variable_description = "taille de la hitbox"
+variable_description = "INUTILISE DEPUIS REWORK"
 
 [node name="VariableAdjuster3" parent="." index="2" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
 variable_name = "attack_intensity"
-variable_description = "coeff de projection de l'attaque"
+variable_description = "INUTILISE DEPUIS REWORK"
 
 [node name="VariableAdjuster4" parent="." index="3" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
@@ -26,14 +26,40 @@ variable_description = "vitesse du perso pendant le dash"
 [node name="VariableAdjuster5" parent="." index="4" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
 variable_name = "dash_duration"
-variable_description = "durée du dash"
+variable_description = "INUTILISE DEPUIS REWORK"
 
 [node name="VariableAdjuster6" parent="." index="5" instance=ExtResource("2_5mfpr")]
 layout_mode = 2
 variable_name = "dash_cooldown"
-variable_description = "durée avant de pouvoir réutiliser le dash"
+variable_description = "durée avant de pouvoir réutiliser l'attaque"
 
 [node name="VariableAdjuster" parent="." index="6"]
 variable_name = "attack_damage"
+variable_description = "INUTILISE DEPUIS REWORK"
+is_integer = true
+
+[node name="VariableAdjuster7" parent="." index="7" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "dash_windup"
+variable_description = "temps avant l'attaque"
+
+[node name="VariableAdjuster8" parent="." index="8" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "bullet_hit_damage"
 variable_description = "dégâts de l'attaque spéciale"
 is_integer = true
+
+[node name="VariableAdjuster9" parent="." index="9" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "bullet_speed"
+variable_description = "vitesse de la balle"
+
+[node name="VariableAdjuster10" parent="." index="10" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "bullet_size"
+variable_description = "taille de la balle"
+
+[node name="VariableAdjuster11" parent="." index="11" instance=ExtResource("2_5mfpr")]
+layout_mode = 2
+variable_name = "bullet_hit_intensity"
+variable_description = "coeff de projection de la balle"
