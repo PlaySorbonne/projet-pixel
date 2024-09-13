@@ -26,6 +26,7 @@ const PLAYER_COLORS = [
 
 @export var current_evolution : Evolutions = Evolutions.CEO
 @export var speed := 600.0
+@export var air_speed := 600.0
 @export var max_fall_speed := 1500.0
 @export var jump_velocity := 600.0
 @export var jump_max_duration := 0.2
@@ -150,16 +151,22 @@ func _input(event : InputEvent):
 		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
 		
 	if is_correct_control_type && event.device == control_device:
+		var on_floor := is_on_floor()
+		var mov_speed : float
+		if on_floor:
+			mov_speed = speed
+		else:
+			mov_speed = air_speed
 		# Handle jump.
-		if event.is_action_pressed("jump") and is_on_floor():
+		if event.is_action_pressed("jump") and on_floor:
 			jump()
 		elif event.is_action_released("jump") and velocity.y < -50.0:
 			stop_jump()
 		# Handle movement
 		if event.is_action_pressed("right"):
-			movement_velocity.x = speed
+			movement_velocity.x = mov_speed
 		elif event.is_action_pressed("left"):
-			movement_velocity.x = -speed
+			movement_velocity.x = -mov_speed
 		elif (event.is_action_released("right") && movement_velocity.x > 0) || (
 		event.is_action_released("left") && movement_velocity.x < 0):
 			movement_velocity.x = 0

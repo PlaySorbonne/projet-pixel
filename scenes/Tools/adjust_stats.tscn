@@ -21,10 +21,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.004
 anchor_right = 0.459
-anchor_bottom = 0.665
+anchor_bottom = 0.688
 offset_left = -7.68
 offset_right = -0.280029
-offset_bottom = -0.200012
+offset_bottom = -0.0400391
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.819608)
@@ -158,6 +158,11 @@ variable_description = "how quickly knockback fades (work in progress)"
 layout_mode = 2
 variable_name = "max_fall_speed"
 variable_description = "the maximum fall velocity of a character"
+
+[node name="VariableAdjuster17" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "air_speed"
+variable_description = "speed when in the air"
 
 [node name="Control" type="Control" parent="Adjuster/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
