@@ -8,6 +8,7 @@ extends BaseSpecial
 @export var delay_between_jump_and_fall := 0.35
 @export var jump_power := 3000.0
 @export var attack_intensity := 2.0
+@export var mid_air_wind_up := 0.75
 
 func _ready():
 	set_process(false)
@@ -25,6 +26,9 @@ func special():
 	if player.is_on_floor():
 		player.knockback_velocity.y -= jump_power
 		await get_tree().create_timer(delay_between_jump_and_fall).timeout
+	else:
+		player.computing_movement = false
+		await get_tree().create_timer(mid_air_wind_up).timeout
 	player.computing_movement = false
 	player.velocity = Vector2.DOWN * fall_speed
 	set_process(true)

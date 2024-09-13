@@ -48,3 +48,8 @@ variable_description = "coeff de projection de l'attaque"
 [node name="VariableAdjuster" parent="." index="8"]
 variable_name = "fall_speed"
 variable_description = "vitesse de chute pendant le spécial"
+
+[node name="VariableAdjuster9" parent="." index="9" instance=ExtResource("2_fcjim")]
+layout_mode = 2
+variable_name = "mid_air_wind_up"
+variable_description = "wind up si déclenché dans les airs"
