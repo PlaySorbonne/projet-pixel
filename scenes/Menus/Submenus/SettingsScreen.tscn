@@ -169,13 +169,25 @@ text = "STATS:"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonStats" type="Button" parent="Options"]
+auto_translate_mode = 2
 layout_mode = 0
 offset_left = 1100.0
 offset_top = 800.0
 offset_right = 1600.0
 offset_bottom = 875.0
 theme = ExtResource("1_6up3k")
-text = "stats.txt"
+text = "default"
+clip_text = true
+
+[node name="ButtonStatsReset" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 1625.0
+offset_top = 800.0
+offset_right = 1700.0
+offset_bottom = 875.0
+theme = ExtResource("1_6up3k")
+text = "↩"
+clip_text = true
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
@@ -200,4 +212,5 @@ use_native_dialog = true
 [connection signal="value_changed" from="Options/SFXslider" to="." method="_on_sf_xslider_value_changed"]
 [connection signal="item_selected" from="Options/LanguageButton" to="." method="_on_language_button_item_selected"]
 [connection signal="pressed" from="Options/ButtonStats" to="." method="_on_button_stats_pressed"]
+[connection signal="pressed" from="Options/ButtonStatsReset" to="." method="_on_button_stats_reset_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
