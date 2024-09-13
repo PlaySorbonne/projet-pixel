@@ -205,6 +205,7 @@ text = "STATS EDITOR"
 title = "Save a File (All evolutions are saved to a single file)"
 size = Vector2i(800, 500)
 access = 2
+use_native_dialog = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5

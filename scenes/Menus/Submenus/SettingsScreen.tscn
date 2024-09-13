@@ -158,6 +158,25 @@ theme = ExtResource("1_6up3k")
 text = "LANGUAGE:"
 metadata/_edit_use_anchors_ = true
 
+[node name="LabelStats" type="Label" parent="Options"]
+layout_mode = 2
+anchor_left = 0.234375
+anchor_top = 0.740741
+anchor_right = 0.46875
+anchor_bottom = 0.801852
+theme = ExtResource("1_6up3k")
+text = "STATS:"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonStats" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 800.0
+offset_right = 1600.0
+offset_bottom = 875.0
+theme = ExtResource("1_6up3k")
+text = "stats.txt"
+
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -168,8 +187,17 @@ anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
 text = "BACK"
 
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(303, 180)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
 [connection signal="toggled" from="Options/ButtonFullscreen" to="." method="_on_button_fullscreen_toggled"]
 [connection signal="value_changed" from="Options/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="Options/SFXslider" to="." method="_on_sf_xslider_value_changed"]
 [connection signal="item_selected" from="Options/LanguageButton" to="." method="_on_language_button_item_selected"]
+[connection signal="pressed" from="Options/ButtonStats" to="." method="_on_button_stats_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

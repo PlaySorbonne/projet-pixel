@@ -15,7 +15,8 @@ static var user_settings : Dictionary = {
 	"fullscreen" : true,
 	"music_volume" : 0.75,
 	"sfx_volume" : 0.75,
-	"language" : Languages.Francais
+	"language" : Languages.Francais,
+	"stats" : ""
 }
 
 static func apply_settings():
@@ -69,6 +70,9 @@ static func update_audio():
 static func update_language():
 	TranslationServer.set_locale(LANGUAGE_KEYS[user_settings["language"]])
 
+static func update_stats_file():
+	pass
+
 func _on_button_fullscreen_toggled(toggled_on : bool):
 	user_settings["fullscreen"] = toggled_on
 	update_fullscreen()
@@ -88,3 +92,6 @@ func _on_language_button_item_selected(index : int):
 	user_settings["language"] = index
 	update_language()
 	save_settings_data()
+
+func _on_button_stats_pressed():
+	$FileDialog.popup_centered_ratio(0.8)
