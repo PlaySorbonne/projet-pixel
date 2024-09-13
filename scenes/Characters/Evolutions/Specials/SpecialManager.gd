@@ -29,8 +29,6 @@ func special():
 	can_use_special = false
 	player.attacking = true
 	player.velocity = Vector2.ZERO
-	player.knockback_velocity = Vector2.ZERO
-	player.movement_velocity = Vector2.ZERO
 	player.computing_movement = false
 	
 	await get_tree().create_timer(dash_windup).timeout

@@ -11,12 +11,10 @@ var hit_intensity := 1.0
 var direction : Vector2
 var parent_player : PlayerCharacter 
 var explosion_triggered := false
-var player_parent : PlayerCharacter
 
 static func spawn_bullet(player_char : PlayerCharacter, special : SpecialManager):
 	var bullet : Bullet = BULLET_RES.instantiate()
 	bullet.hit_damage = special.bullet_hit_damage
-	bullet.player_parent = player_char
 	bullet.speed = special.bullet_speed
 	bullet.bullet_size = special.bullet_size
 	bullet.hit_intensity = special.bullet_hit_intensity
@@ -37,7 +35,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	if explosion_triggered or body == player_parent:
+	if explosion_triggered or body == parent_player:
 		return
 	explosion_triggered = true
 	await get_tree().create_timer(0.05).timeout

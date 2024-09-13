@@ -28,7 +28,6 @@ func special():
 		await get_tree().create_timer(delay_between_jump_and_fall).timeout
 	else:
 		player.computing_movement = false
-		player.movement_velocity = Vector2.ZERO
 		player.knockback_velocity = Vector2.ZERO
 		player.velocity = Vector2.ZERO
 		player.set_animation(true)
