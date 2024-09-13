@@ -5,6 +5,7 @@ signal ButtonBackPressed
 
 enum Languages {English, Francais}
 
+const DEFAULT_STATS_TXT = "DEFAULT (14/09/2024)"
 const DEFAULT_GAMEPLAY_FILE = "res://default_gameplay_stats.txt"
 const GAMEPLAY_FILE_NAME = "OtakuOverdriveGameplay_stats.txt"
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
@@ -154,7 +155,7 @@ func _on_file_dialog_file_selected(path : String):
 func update_stats_buttons():
 	var file_path : String = user_settings["stats"]
 	if file_path == default_gameplay_file:
-		$Options/ButtonStats.text = "DEFAULT"
+		$Options/ButtonStats.text = DEFAULT_STATS_TXT
 		$Options/ButtonStatsReset.visible = false
 	else:
 		$Options/ButtonStats.text = file_path.get_file()
