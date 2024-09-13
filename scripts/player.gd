@@ -57,6 +57,7 @@ var computing_movement := true
 var compute_hits := true
 var god_mode := false
 var player_ID := 0
+var evolving := false
 
 func get_special_attack():
 	return $SpecialAttack
@@ -205,11 +206,14 @@ func spawn(location : Vector2, activate := true):
 	_update_debug_text()
 
 func evolve(in_lobby: bool = false):
+	if evolving:
+		return
 	if current_evolution == Evolutions.Weeb:
 		if in_lobby:
 			current_evolution = -1
 		else:
 			return
+	evolving = true
 	compute_hits = false
 	computing_movement = false
 	velocity = Vector2.ZERO
