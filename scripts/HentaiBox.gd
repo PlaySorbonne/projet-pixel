@@ -37,8 +37,18 @@ func _process(delta : float):
 	if damaging_timer > 0.0:
 		damaging_timer -= delta
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
-		tween_disk_color(Color.DARK_CYAN, 0.45, 0.0, 1.0, 1.0)
-		damaging = false
+		set_tape_rest_mode()
+
+func set_tape_hit_mode():
+	tween_disk_color(Color.RED, 0.1, 60.0, 5.0, 1.75)
+	damaging = true
+	damaging_timer = DAMAGING_TIME_MIN
+	angular_damp = 0.0
+
+func set_tape_rest_mode():
+	tween_disk_color(Color.DARK_CYAN, 0.45, 0.0, 1.0, 1.0)
+	damaging = false
+	angular_damp = 2.0
 
 func tween_disk_color(new_color : Color, time : float, chaos : float, div_green : float, div_blue : float):
 	var tween := create_tween().set_parallel()
@@ -52,15 +62,13 @@ func get_hit_owner():
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
 	if attacker != null:
+		set_tape_hit_mode()
 		var impulse_dir : Vector2 = (global_position-hit_position).normalized()
 		apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity  )
 	emit_signal("hentai_hit", damage)
 	GameInfos.camera_utils.shake()
 	last_player_hit = attacker
 	last_hit_value = damage
-	tween_disk_color(Color.RED, 0.1, 60.0, 5.0, 1.75)
-	damaging = true
-	damaging_timer = DAMAGING_TIME_MIN
 
 func _on_area_2d_body_entered(body : Node2D):
 	if not body.has_method("hit"):

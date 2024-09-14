@@ -27,10 +27,11 @@ radius = 44.0454
 
 [node name="AnimeBox" type="RigidBody2D"]
 collision_layer = 4
-mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_d24b6")
+linear_damp = 3.0
 script = ExtResource("1_6c0xd")
 anime_velocity = 2000.0
+anime_damage_multiplier = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
