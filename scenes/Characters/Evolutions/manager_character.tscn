@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://rlaw1umxqpak"]
+[gd_scene load_steps=12 format=3 uid="uid://rlaw1umxqpak"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialManager.gd" id="2_ljooy"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_ynyrr"]
 [ext_resource type="SpriteFrames" uid="uid://fahmmhcdh55s" path="res://scenes/Characters/Evolutions/Animations/manager_sprite_frames.tres" id="3_e2v71"]
+[ext_resource type="Texture2D" uid="uid://dpwhgrmpskk23" path="res://resources/images/fx/evolution/quarter_target_weeb_evolution.png" id="5_my8n3"]
+[ext_resource type="Texture2D" uid="uid://db5ml0er6lwtp" path="res://resources/images/fx/evolution/arrow_target_weeb_evolution.png" id="6_nr72d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmrf"]
 resource_local_to_scene = true
@@ -15,6 +17,235 @@ shader_parameter/replace_threshold = 0.15
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2r6n"]
 size = Vector2(79, 90)
 
+[sub_resource type="Animation" id="Animation_ptb3p"]
+resource_name = "evolve_to_weeb"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetUpLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(-500, -500), Vector2(-25, -25), Vector2(-50, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetUpRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(500, -500), Vector2(25, -25), Vector2(50, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TargetDownLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(-500, 500), Vector2(-25, 25), Vector2(-50, 50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TargetDownRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(500, 500), Vector2(25, 25), Vector2(50, 50)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ArrowDown:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(0, 700), Vector2(0, 35), Vector2(0, 70)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ArrowUp:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(0, -700), Vector2(0, -35), Vector2(0, -70)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ArrowRight:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(700, 0), Vector2(35, 0), Vector2(70, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ArrowLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.3, 3, 1),
+"update": 0,
+"values": [Vector2(-700, 0), Vector2(-35, 0), Vector2(-70, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.366022, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_f1fpp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetUpLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetUpRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, -50)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TargetDownLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TargetDownRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 40)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ArrowDown:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 60)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ArrowUp:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -70)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ArrowRight:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, -5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ArrowLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-60, -5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfimx"]
+_data = {
+"RESET": SubResource("Animation_f1fpp"),
+"evolve_to_weeb": SubResource("Animation_ptb3p")
+}
+
 [node name="ManagerCharacter" instance=ExtResource("1_8g6v0")]
 current_evolution = 1
 max_hitpoints = 5
@@ -24,6 +255,7 @@ material = SubResource("ShaderMaterial_7nmrf")
 sprite_frames = ExtResource("3_e2v71")
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource("RectangleShape2D_v2r6n")
 
 [node name="SpecialAttack" parent="." index="7"]
@@ -36,3 +268,56 @@ bullet_hit_damage = 1
 bullet_speed = 1400.0
 bullet_size = 1.0
 bullet_hit_intensity = 1.0
+
+[node name="WeebEvolutionCrosshair" type="Node2D" parent="." index="11"]
+
+[node name="TargetUpLeft" type="Sprite2D" parent="WeebEvolutionCrosshair" index="0"]
+position = Vector2(-40, -50)
+texture = ExtResource("5_my8n3")
+
+[node name="TargetUpRight" type="Sprite2D" parent="WeebEvolutionCrosshair" index="1"]
+position = Vector2(60, -50)
+texture = ExtResource("5_my8n3")
+flip_h = true
+
+[node name="TargetDownLeft" type="Sprite2D" parent="WeebEvolutionCrosshair" index="2"]
+position = Vector2(-40, 40)
+texture = ExtResource("5_my8n3")
+flip_v = true
+
+[node name="TargetDownRight" type="Sprite2D" parent="WeebEvolutionCrosshair" index="3"]
+position = Vector2(60, 40)
+texture = ExtResource("5_my8n3")
+flip_h = true
+flip_v = true
+
+[node name="ArrowDown" type="Sprite2D" parent="WeebEvolutionCrosshair" index="4"]
+position = Vector2(10, 60)
+texture = ExtResource("6_nr72d")
+flip_h = true
+flip_v = true
+
+[node name="ArrowUp" type="Sprite2D" parent="WeebEvolutionCrosshair" index="5"]
+position = Vector2(10, -70)
+texture = ExtResource("6_nr72d")
+flip_h = true
+flip_v = true
+
+[node name="ArrowRight" type="Sprite2D" parent="WeebEvolutionCrosshair" index="6"]
+position = Vector2(80, -5)
+rotation = 1.5708
+texture = ExtResource("6_nr72d")
+flip_h = true
+flip_v = true
+
+[node name="ArrowLeft" type="Sprite2D" parent="WeebEvolutionCrosshair" index="7"]
+position = Vector2(-60, -5)
+rotation = 1.5708
+texture = ExtResource("6_nr72d")
+flip_h = true
+flip_v = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WeebEvolutionCrosshair" index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_jfimx")
+}
