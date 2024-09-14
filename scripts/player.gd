@@ -58,6 +58,7 @@ var compute_hits := true
 var god_mode := false
 var player_ID := 0
 var evolving := false
+var horizontal_input := 0.0
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -107,8 +108,10 @@ func set_control_type(type: int):
 func _physics_process(delta):
 	if computing_movement and (not is_jumping): 
 		if is_on_floor():
+			movement_velocity.x = horizontal_input * speed
 			movement_velocity.y = initial_fall_speed
 		else:
+			movement_velocity.x = horizontal_input * air_speed
 			movement_velocity.y = min(
 				movement_velocity.y + gravity * delta * fall_speed_multiplier, 
 				max_fall_speed
@@ -164,10 +167,6 @@ func _input(event : InputEvent):
 	if is_correct_control_type && event.device == control_device:
 		var on_floor := is_on_floor()
 		var mov_speed : float
-		if on_floor:
-			mov_speed = speed
-		else:
-			mov_speed = air_speed
 		# Handle jump.
 		if event.is_action_pressed("jump") and on_floor:
 			jump()
@@ -175,12 +174,12 @@ func _input(event : InputEvent):
 			stop_jump()
 		# Handle movement
 		if event.is_action_pressed("right"):
-			movement_velocity.x = mov_speed
+			horizontal_input = 1.0
 		elif event.is_action_pressed("left"):
-			movement_velocity.x = -mov_speed
+			horizontal_input = -1.0
 		elif (event.is_action_released("right") && movement_velocity.x > 0) || (
 		event.is_action_released("left") && movement_velocity.x < 0):
-			movement_velocity.x = 0
+			horizontal_input = 0.0
 		
 		if not attacking:
 			# Handle normal attack
