@@ -4,7 +4,7 @@ signal game_won
 signal hentai_hit
 
 const BOUNDS = 3000
-const LIMIT_SPEED_DAMAGE_DOWN = pow(300, 2.0)
+const LIMIT_SPEED_DAMAGE_DOWN = pow(250, 2.0)
 const DAMAGING_TIME_MIN = 0.25
 
 @export var anime_velocity := 1500.0
@@ -43,11 +43,13 @@ func set_tape_hit_mode():
 	tween_disk_color(Color.RED, 0.1, 60.0, 5.0, 1.75)
 	damaging = true
 	damaging_timer = DAMAGING_TIME_MIN
-	angular_damp = 0.0
+	linear_damp = 3.5
+	angular_damp = 0.5
 
 func set_tape_rest_mode():
 	tween_disk_color(Color.DARK_CYAN, 0.45, 0.0, 1.0, 1.0)
 	damaging = false
+	linear_damp = 0.3
 	angular_damp = 2.0
 
 func tween_disk_color(new_color : Color, time : float, chaos : float, div_green : float, div_blue : float):
