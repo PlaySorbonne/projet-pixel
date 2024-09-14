@@ -36,7 +36,6 @@ func add_player(player: PlayerCharacter) -> void:
 	
 func remove_player(player: PlayerCharacter) -> void:
 	var id = player.player_ID
-	print(players)
 	players.remove_at(id)
 	player_colors.remove_at(id)
 	compute_ids()

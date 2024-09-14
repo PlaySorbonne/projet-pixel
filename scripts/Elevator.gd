@@ -21,9 +21,7 @@ func _on_body_entered(body):
 		# Selection random
 		randomize() # pour tjrs avoir des tp aléatoires
 		var target_index = randi() % other_teleporters.size()
-		print(target_index)
 		var target_teleporter = get_node(other_teleporters[target_index])
-		print(target_teleporter)
 		body.global_position = target_teleporter.global_position
 		
 		target_teleporter.disable_teleport() #empeche de perma tp

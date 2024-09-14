@@ -4,6 +4,8 @@ signal game_won
 signal hentai_hit
 
 const BOUNDS = 3000
+const LIMIT_SPEED_DAMAGE_DOWN = pow(300, 2.0)
+const DAMAGING_TIME_MIN = 0.25
 
 @export var anime_velocity := 1500.0
 @export var anime_damage_multiplier := 1.0
@@ -17,6 +19,7 @@ var last_hit_value := 0
 var initial_position
 var t := 0.0
 var damaging := true
+var damaging_timer := 0.0
 
 func _ready():
 	await get_tree().create_timer(0.25).timeout
@@ -31,35 +34,33 @@ func _process(delta : float):
 	if not (position.x < BOUNDS and position.x > -BOUNDS and position.y < BOUNDS and position.y > -BOUNDS):
 		linear_velocity = Vector2.ZERO
 		position = initial_position
-	if linear_velocity.length() > 750:
-		if not damaging:
-			tween_trail_color(Color.RED)
-		damaging = true
-	else:
-		if damaging:
-			tween_trail_color(Color.DARK_CYAN)
+	if damaging_timer > 0.0:
+		damaging_timer -= delta
+	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
+		tween_disk_color(Color.DARK_CYAN, 0.45, 0.0, 1.0, 1.0)
 		damaging = false
 
-func tween_trail_color(new_color : Color):
-	var tween := create_tween()
-	tween.tween_property(trail_effect, "modulate", new_color, 0.15)
+func tween_disk_color(new_color : Color, time : float, chaos : float, div_green : float, div_blue : float):
+	var tween := create_tween().set_parallel()
+	tween.tween_property(trail_effect, "modulate", new_color, time)
+	tween.tween_property($Sprite2D, "material:shader_parameter/chaos", chaos, time)
+	tween.tween_property($Sprite2D, "material:shader_parameter/divider_green", div_green, time)
+	tween.tween_property($Sprite2D, "material:shader_parameter/divider_blue", div_blue, time)
 
 func get_hit_owner():
 	return last_player_hit
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
-#	hit_position += Vector2(-30., 0.0)
-	$Node/IconHit.global_position = hit_position
-	$Node/IconSelf.global_position = global_position
 	if attacker != null:
-		var impulse_dir = global_position.direction_to(hit_position)
-		if not (impulse_dir.length_squared() < 1.0):
-			impulse_dir = Vector2.RIGHT
-		apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity)
+		var impulse_dir : Vector2 = (global_position-hit_position).normalized()
+		apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity  )
 	emit_signal("hentai_hit", damage)
 	GameInfos.camera_utils.shake()
 	last_player_hit = attacker
 	last_hit_value = damage
+	tween_disk_color(Color.RED, 0.1, 60.0, 5.0, 1.75)
+	damaging = true
+	damaging_timer = DAMAGING_TIME_MIN
 
 func _on_area_2d_body_entered(body : Node2D):
 	if not body.has_method("hit"):

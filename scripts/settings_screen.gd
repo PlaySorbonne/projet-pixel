@@ -34,8 +34,6 @@ func _ready():
 	$Options/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
 	$Options/LanguageButton.selected = user_settings["language"]
 	update_stats_buttons()
-	print("user_settings = " + str(user_settings))
-	print("user_settings['stats'] = " + str(user_settings["stats"]))
 
 func _on_button_back_pressed():
 	$ButtonBack.release_focus()

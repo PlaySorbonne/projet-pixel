@@ -45,10 +45,10 @@ func _on_body_entered(body : Node2D):
 	if body.has_method("hit") and body.team != team:
 		if attached_to_char:
 			body.hit(damage, attacker, attacker.global_position, intensity)
-			print("attacker_position : " + str(attacker.global_position) + " // body_position : " + str(body.global_position))
+			#print("attacker_position : " + str(attacker.global_position) + " // body_position : " + str(body.global_position))
 		else:
 			body.hit(damage, attacker, global_position, intensity)
-			print("hitbox_position : " + str(global_position) + " // body_position : " + str(body.global_position))
+			#print("hitbox_position : " + str(global_position) + " // body_position : " + str(body.global_position))
 
 func _on_area_entered(area):
 	if area.has_method("interact"):
