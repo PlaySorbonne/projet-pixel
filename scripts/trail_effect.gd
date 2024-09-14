@@ -15,6 +15,7 @@ func _process(delta : float):
 	point_delay = 0.0
 	if last_point.distance_squared_to(parent_obj.position) > 10000.0:
 		create_duplicate()
+		curve.clear_points()
 	last_point = parent_obj.position
 	curve.add_point(last_point)
 	if curve.get_baked_points().size() > max_points:
