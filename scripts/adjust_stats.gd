@@ -24,33 +24,28 @@ func _ready():
 		if c.has_method("_on_description_changed"):
 			variable_adjusters.append(c)
 	var data_keys : Array = PlayerCharacter.Evolutions.keys()
+	variables_data = SettingsScreen.gameplay_data.duplicate()
+	
 	for ev : String in data_keys:
 		# get character data
-		var evolution_data : Dictionary = {}
 		char_selector.add_item(ev)
+		
 		var curr_ev = PlayerCharacter.Evolutions[ev]
 		var p : PlayerCharacter = PlayerCharacter.EvolutionCharacters[curr_ev].instantiate()
 		for adj : VariableAdjuster in variable_adjusters:
-			evolution_data[adj.variable_name] = p.get(adj.variable_name)
-			if ev == "CEO":
-				adj.variable_default_value = evolution_data[adj.variable_name]
+			if ev == "CEO" and variables_data[ev].has(adj.variable_name):
+				adj.variable_default_value = variables_data[ev][adj.variable_name]
 		
 		# get ability data
-		var special_ability_data : Dictionary = {}
 		var spe : SpecialAbilityEditor = EvolutionSpecials[ev].instantiate()
-		for adj : VariableAdjuster in spe.get_variables():
-			special_ability_data[adj.variable_name] = p.get_special_attack().get(adj.variable_name)
 		if ev == "CEO":
 			var spe_current : SpecialAbilityEditor = CurrentSpecialBox
 			for adj_r : VariableAdjuster in spe_current.get_variables():
-				adj_r.variable_default_value = special_ability_data[adj_r.variable_name]
+				if variables_data[ev+"_special"].has(adj_r.variable_name):
+					adj_r.variable_default_value = variables_data[ev+"_special"][adj_r.variable_name]
 		
 		spe.queue_free()
 		p.queue_free()
-		
-		# add data to dict
-		variables_data[ev] = evolution_data
-		variables_data[ev+"_special"] = special_ability_data
 	char_selector.select(0)
 	set_adjuster_active(false)
 	for c in variable_adjusters:
