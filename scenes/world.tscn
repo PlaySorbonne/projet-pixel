@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=6 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="2_r5t17"]
+[ext_resource type="PackedScene" uid="uid://bwfk3dwnwdo6g" path="res://scenes/GameMode.tscn" id="5_nfo48"]
 [ext_resource type="PackedScene" uid="uid://4cf0hnddgr1l" path="res://scenes/Menus/GameUI/game_hud.tscn" id="10_kpnks"]
 [ext_resource type="PackedScene" uid="uid://b8swqp82uj8tl" path="res://scenes/Menus/GameUI/start_game_screen.tscn" id="10_y5qku"]
 
@@ -17,3 +18,5 @@ default_duration = 1.0
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
 
 [node name="GameHUD" parent="." instance=ExtResource("10_kpnks")]
+
+[node name="GameMode" parent="." instance=ExtResource("5_nfo48")]

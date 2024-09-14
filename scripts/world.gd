@@ -4,6 +4,8 @@ class_name World
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
+@onready var game_mode : GameMode = $GameMode
+
 var spawn_locations : Array[Node2D]
 var player_camera : Camera2D
 var player_spawns : Dictionary = {}
@@ -63,5 +65,5 @@ func _process(_delta):
 		get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
 func on_player_death(player : FighterCharacter):
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(game_mode.respawn_time).timeout
 	player.spawn(player_spawns[player.player_ID])
