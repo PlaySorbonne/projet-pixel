@@ -14,6 +14,7 @@ enum Screens {Title, Settings, Credits}
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 
 func _ready():
+	GameInfos.use_special_gameplay_data = false
 	GameInfos.reset_game_infos()
 	screen_transition.end_screen_transition()
 	$TitleScreenDecor/AnimationPlayer.play("idle")

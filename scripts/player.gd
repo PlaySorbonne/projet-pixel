@@ -59,6 +59,14 @@ var god_mode := false
 var player_ID := 0
 var evolving := false
 
+func load_custom_gameplay_data():
+	var ev : String = Evolutions.find_key(current_evolution)
+	for k : String in SettingsScreen.gameplay_data[ev].keys():
+		set(k, SettingsScreen.gameplay_data[ev][k])
+	var ev_spe := ev + "_special"
+	for k : String in SettingsScreen.gameplay_data[ev_spe].keys():
+		get_special_attack().set(k, SettingsScreen.gameplay_data[ev_spe][k])
+
 func get_special_attack():
 	return $SpecialAttack
 
@@ -79,6 +87,8 @@ func _ready():
 	team = player_ID
 	set_player_color(GameInfos.player_colors[player_ID])
 	_update_debug_text()
+	if not GameInfos.use_special_gameplay_data:
+		load_custom_gameplay_data()
 
 func _update_debug_text():
 	$EvolutionLabel.text = "P" + str(player_ID + 1) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)

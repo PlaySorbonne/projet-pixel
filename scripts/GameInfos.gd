@@ -17,6 +17,7 @@ var players : Array[PlayerCharacter] = []
 var players_order : Array[int] = []
 var player_colors : Array[Color] = []
 var available_colors_index := 0
+var use_special_gameplay_data := false
 
 func reset_game_infos() -> void:
 	game_started = false

@@ -24,32 +24,30 @@ func _ready():
 	await get_tree().create_timer(0.4).timeout
 	player_gun = GUN_RES.instantiate()
 	player.add_child(player_gun)
-	player_gun.scale = Vector2.ONE * bullet_size * 1.5
 	player_gun.position = Vector2(1.0, 0.0) * 50.0
 
 func special():
 	if not can_use_special:
 		return
+	can_use_special = false
+	
+	player_gun.scale = Vector2.ONE * bullet_size * 1.5
 	var dash_direction : float
 	if player.facing_right:
 		dash_direction = -1.0
 	else:
 		dash_direction = 1.0
-	can_use_special = false
 	player.attacking = true
 	#player.velocity = Vector2.ZERO
 	#player.computing_movement = false
 	player_gun.play_load()
-	
 	await get_tree().create_timer(dash_windup).timeout
 	
 	player_gun.play_shoot()
-	
-	# Spawn attack hitbox
+	# Spawn bullet
 	Bullet.spawn_bullet(player, self)
 	
 	await get_tree().create_timer(0.05).timeout
-	
 	player.knockback_velocity = Vector2(dash_direction, -0.25) * dash_speed
 	player.attacking = false
 	

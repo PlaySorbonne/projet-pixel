@@ -123,13 +123,13 @@ func update_special_ability_data(current_evolution : String):
 
 func _on_button_save_pressed():
 	$FileDialog.file_mode = 4
-	$FileDialog.popup_centered()
 	is_saving_data = true
+	$FileDialog.popup_centered()
 
 func _on_button_load_pressed():
 	$FileDialog.file_mode = 0
-	$FileDialog.popup_centered()
 	is_saving_data = false
+	$FileDialog.popup_centered()
 
 func _on_file_dialog_file_selected(path):
 	if is_saving_data:
