@@ -6,6 +6,7 @@ var player_device_type := -1
 
 func _ready():
 	GameInfos.use_special_gameplay_data = true
+	GlobalVariables.skip_fight_intro = true
 
 func _on_button_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")

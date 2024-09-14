@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv1w5v10663nr"]
+[gd_scene load_steps=8 format=3 uid="uid://cv1w5v10663nr"]
 
 [ext_resource type="Script" path="res://scripts/HentaiBox.gd" id="1_6c0xd"]
 [ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="2_4wnuf"]
+[ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="3_387u6"]
+[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="4_e7e3j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d24b6"]
+friction = 0.6
+rough = true
 bounce = 0.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3lgd"]
@@ -14,8 +18,10 @@ radius = 44.0454
 
 [node name="AnimeBox" type="RigidBody2D"]
 collision_layer = 4
+mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_d24b6")
 script = ExtResource("1_6c0xd")
+anime_velocity = 2000.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -30,5 +36,21 @@ texture = ExtResource("2_4wnuf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_83oal")
+
+[node name="TrailEffect" parent="." instance=ExtResource("3_387u6")]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="IconHit" type="Sprite2D" parent="Node"]
+modulate = Color(100, 1, 1, 1)
+position = Vector2(-46.5, 535)
+scale = Vector2(0.148438, 1)
+texture = ExtResource("4_e7e3j")
+
+[node name="IconSelf" type="Sprite2D" parent="Node"]
+modulate = Color(0, 1, 100, 1)
+position = Vector2(224, 444)
+scale = Vector2(0.148438, 1)
+texture = ExtResource("4_e7e3j")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

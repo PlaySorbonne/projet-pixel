@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://uslvtp64xdd7"]
+
+[ext_resource type="Script" path="res://scripts/trail_effect.gd" id="1_l33b0"]
+
+[sub_resource type="Curve" id="Curve_1k5tm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_akrn0"]
+
+[node name="TrailEffect" type="Line2D"]
+top_level = true
+z_index = -1
+points = PackedVector2Array(2640, 2865, 3118, 3076)
+width = 48.0
+width_curve = SubResource("Curve_1k5tm")
+gradient = SubResource("Gradient_akrn0")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_l33b0")

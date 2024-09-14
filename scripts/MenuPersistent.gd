@@ -15,6 +15,7 @@ enum Screens {Title, Settings, Credits}
 
 func _ready():
 	GameInfos.use_special_gameplay_data = false
+	GlobalVariables.skip_fight_intro = false
 	GameInfos.reset_game_infos()
 	screen_transition.end_screen_transition()
 	$TitleScreenDecor/AnimationPlayer.play("idle")
