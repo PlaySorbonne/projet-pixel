@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctylo10l2ux5e"]
+
+[ext_resource type="Texture2D" uid="uid://csu428f5hmeu1" path="res://resources/images/objects/ducks/duck_outline_yellow.png" id="1_hohud"]
+[ext_resource type="Texture2D" uid="uid://bhepqhlreexkh" path="res://resources/images/objects/ducks/googly_eyes/0.png" id="2_aqjj6"]
+[ext_resource type="Texture2D" uid="uid://c3qjp87ymkmqd" path="res://resources/images/objects/ducks/googly_eyes/1.png" id="3_3oeje"]
+[ext_resource type="Texture2D" uid="uid://bjwqleiyl87ka" path="res://resources/images/objects/ducks/googly_eyes/2.png" id="4_jn8j4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rhnt"]
+radius = 54.231
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rpcb"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7lbw"]
+radius = 5.0
+
+[node name="EnemyDuck" type="CharacterBody2D"]
+position = Vector2(410, 194)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1rhnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hohud")
+
+[node name="Pupil" type="RigidBody2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(23, -22)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Pupil"]
+shape = SubResource("CircleShape2D_3rpcb")
+
+[node name="SpritePupil" type="Sprite2D" parent="Sprite2D/Pupil"]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("3_3oeje")
+
+[node name="GooglyEye" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(23, -27)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/GooglyEye"]
+shape = SubResource("CircleShape2D_c7lbw")
+
+[node name="SpriteBackground" type="Sprite2D" parent="Sprite2D/GooglyEye"]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_aqjj6")
+
+[node name="SpriteReflection" type="Sprite2D" parent="Sprite2D/GooglyEye/SpriteBackground"]
+z_index = 1
+texture = ExtResource("4_jn8j4")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Sprite2D"]
+position = Vector2(23, -27)
+rotation = 2.39447
+node_a = NodePath("../GooglyEye")
+node_b = NodePath("../Pupil")
+length = 10.0
