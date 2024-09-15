@@ -97,7 +97,7 @@ func _on_area_2d_body_entered(body : Node2D):
 		if weeb_touched >= 3:
 			emit_signal("game_won")
 		else:
-			GameInfos.freeze_frame.freeze(0.15)
+			GameInfos.freeze_frame.freeze(0.1)
 			GameInfos.camera_utils.shake()
 			add_impulse(body.global_position, WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched])
 			increment_weeb_touched()
