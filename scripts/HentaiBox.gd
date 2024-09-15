@@ -28,6 +28,7 @@ var damaging_timer := 0.0
 var chaos_value_at_rest := 0.0
 var blue_div_at_rest := 1.0
 var weeb_touched : int = 0
+var previous_pos : Vector2
 
 func _ready():
 	await get_tree().create_timer(0.25).timeout
@@ -40,8 +41,18 @@ func _process(delta : float):
 	if t > 1.0:
 		t = 0.0
 	if not (position.x < BOUNDS and position.x > -BOUNDS and position.y < BOUNDS and position.y > -BOUNDS):
+		print("position : " + str(global_position) + " ; linear_velocity : " + str(linear_velocity))
+		set_process(false)
+		remove_child(self)
 		linear_velocity = Vector2.ZERO
-		position = initial_position
+		position = initial_position - Vector2(0.0, 30.0)
+		await get_tree().create_timer(0.5).timeout
+		linear_velocity = Vector2.ZERO
+		position = initial_position - Vector2(0.0, 30.0)
+		GameInfos.world.level.add_child(self)
+		print("RESET POS TO : " + str(initial_position))
+	else:
+		previous_pos = position
 	if damaging_timer > 0.0:
 		damaging_timer -= delta
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
@@ -78,7 +89,10 @@ func get_hit_owner():
 
 func add_impulse(hit_position : Vector2, hit_intensity : float):
 	var impulse_dir : Vector2 = (global_position-hit_position).normalized()
-	apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity  )
+	print("impulse_dir : " + str(impulse_dir) + " ;; total impulse : " + str(
+		(impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity
+	))
+	apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity )
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
 	if attacker != null:
@@ -97,9 +111,12 @@ func _on_area_2d_body_entered(body : Node2D):
 		if weeb_touched >= 3:
 			emit_signal("game_won")
 		else:
-			GameInfos.freeze_frame.freeze(0.1)
+			GameInfos.freeze_frame.freeze(0.025)
 			GameInfos.camera_utils.shake()
-			add_impulse(body.global_position, WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched])
+			var hit_intensity : float = WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched]
+			add_impulse(body.global_position, hit_intensity)
+			var player_impulse := Vector2(body.global_position-global_position).normalized()
+			player_body.knockback_velocity += player_impulse * anime_velocity * 2.5
 			increment_weeb_touched()
 	elif damaging and last_player_hit != null and body != last_player_hit:
 		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
