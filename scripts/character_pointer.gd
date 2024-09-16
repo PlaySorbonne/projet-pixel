@@ -1,12 +1,8 @@
 extends Sprite2D
 class_name CharacterPointer
 
+@onready var default_pos = position
+@onready var parent_character : Node2D = get_parent()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	global_position = parent_character.global_position + default_pos
