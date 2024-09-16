@@ -1,4 +1,5 @@
 extends Node2D
+class_name Persistent
 
 
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
@@ -14,12 +15,16 @@ enum Screens {Title, Settings, Credits}
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
 
 func _ready():
-	GameInfos.use_special_gameplay_data = false
-	GlobalVariables.skip_fight_intro = false
-	GameInfos.reset_game_infos()
+	reset_game_data()
 	screen_transition.end_screen_transition()
 	$TitleScreenDecor/AnimationPlayer.play("idle")
 	ExitBar.max_value = EXIT_TIME
+
+static func reset_game_data():
+	GameInfos.use_special_gameplay_data = false
+	GlobalVariables.skip_fight_intro = false
+	Engine.time_scale = 1.0
+	GameInfos.reset_game_infos()
 
 func _process(delta : float):
 	if Input.is_action_pressed("ui_cancel"):

@@ -12,6 +12,7 @@ var player_camera : Camera2D
 var player_spawns : Dictionary = {}
 var level : Level
 var has_weeb_arrived := false
+var game_ended := false
 
 func _ready():
 	level = GameInfos.load_game_level()
@@ -35,12 +36,17 @@ func add_level():
 	pass
 
 func end_game():
-	for p : PlayerCharacter in GameInfos.players:
-		p.set_player_active(false)
+	if game_ended:
+		return
+	game_ended = true
+	GameInfos.freeze_frame.slow_mo(0.1, 1.0)
+	await get_tree().create_timer(1.0, true, false, true).timeout
 	add_child(VICTORY_MESSAGE.instantiate())
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(3.0, true, false, true).timeout
+	for p : PlayerCharacter in GameInfos.players:
+		p.set_player_active(false)
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(LOBBY_PATH)
@@ -69,8 +75,9 @@ func weeb_arrival(new_weeb : PlayerCharacter):
 		has_weeb_arrived = true
 		GameInfos.camera_utils.flash_constrast(1.5, 0.25, false)
 	var crosshair := WEEB_EVOLUTION_CROSSHAIR_RES.instantiate()
+	crosshair.followed_actor = new_weeb
+	add_child(crosshair)
 	GameInfos.camera_utils.shake()
-	new_weeb.add_child(crosshair)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

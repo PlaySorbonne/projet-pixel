@@ -116,6 +116,7 @@ func _on_area_2d_body_entered(body : Node2D):
 		else:
 			GameInfos.freeze_frame.freeze(0.025)
 			GameInfos.camera_utils.flash_saturation(3.0, 1.0)
+			GameInfos.freeze_frame.slow_mo(0.1, 0.3)
 			GameInfos.camera_utils.shake()
 			var hit_intensity : float = WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched]
 			add_impulse(body.global_position, hit_intensity)
