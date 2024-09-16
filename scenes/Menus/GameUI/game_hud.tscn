@@ -1,11 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://4cf0hnddgr1l"]
+[gd_scene load_steps=8 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_ros5h"]
 [ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="3_6eaw0"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_vixc7"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_6son4"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_ltyg6"]
+events = [SubResource("InputEventKey_vixc7"), SubResource("InputEventJoypadButton_6son4")]
+
 [node name="GameHUD" type="CanvasLayer"]
+layer = 6
 script = ExtResource("1_er2h7")
 
 [node name="HBox" type="HBoxContainer" parent="."]
@@ -28,6 +40,7 @@ grow_vertical = 2
 script = ExtResource("2_ros5h")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,9 +48,10 @@ anchor_bottom = 1.0
 offset_bottom = 2167.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15, 0, 0.15, 0.309)
+color = Color(0.15, 0, 0.15, 0.45)
 
 [node name="ButtonContinue" type="Button" parent="PauseMenu"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.426042
@@ -47,11 +61,13 @@ anchor_bottom = 0.3
 grow_horizontal = 2
 theme = ExtResource("2_fplfe")
 disabled = true
+shortcut = SubResource("Shortcut_ltyg6")
 text = "CONTINUE"
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSettings" type="Button" parent="PauseMenu"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.426042
@@ -66,6 +82,7 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonQuit" type="Button" parent="PauseMenu"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.426042
@@ -80,6 +97,7 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsScreen" parent="PauseMenu" instance=ExtResource("3_6eaw0")]
+process_mode = 3
 layout_mode = 1
 offset_top = 1300.0
 offset_bottom = 1300.0
