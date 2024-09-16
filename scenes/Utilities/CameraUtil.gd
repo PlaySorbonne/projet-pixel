@@ -1,6 +1,8 @@
 extends Node
 class_name CameraUtils
 
+enum PARAMS {brightness, contrast, saturation, redVal, greenVal, blueVal, tint_color, tint_effect_factor}
+
 @onready var camera : Camera2D = get_parent()
 
 
@@ -32,3 +34,6 @@ func interp_zoom(new_zoom : Vector2, duration : float, ease := Tween.EASE_OUT,
 
 func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0):
 	$Shaker.shake(duration_n, frequency_n, amplitude_n, priority_n)
+
+func set_screen_param(param : PARAMS, value : float = 0.0):
+	$CanvasLayer/ColorManipulator.material.set_shader_param(str(param), value)

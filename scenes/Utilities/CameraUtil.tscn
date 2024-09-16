@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn5yhc4hp0l7h"]
+[gd_scene load_steps=5 format=3 uid="uid://dn5yhc4hp0l7h"]
 
 [ext_resource type="Script" path="res://scenes/Utilities/CameraUtil.gd" id="1_i34aj"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="2_qi7j1"]
+[ext_resource type="Shader" path="res://resources/shaders/ScreenColorManipulator.gdshader" id="3_l73gj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu76i"]
+shader = ExtResource("3_l73gj")
+shader_parameter/brightness = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_effect_factor = 0.0
 
 [node name="CameraUtils" type="Node"]
 script = ExtResource("1_i34aj")
 
 [node name="Shaker" type="Node" parent="."]
 script = ExtResource("2_qi7j1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorManipulator" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_uu76i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
