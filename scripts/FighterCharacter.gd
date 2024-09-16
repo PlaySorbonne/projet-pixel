@@ -55,7 +55,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 		return
 	hitpoints -= damage
 	emit_signal("fighter_hit")
-	$HitEffect.trigger_hit_effect()
+	$SpriteEffect.trigger_hit_effect()
 	if hitpoints <= 0:
 		if attacker != null and attacker.has_signal("fighter_killed_opponent"):
 			attacker.emit_signal("fighter_killed_opponent")

@@ -26,7 +26,7 @@ position = Vector2(90, 0)
 [node name="InvincibilityTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="HitEffect" type="Node" parent="."]
+[node name="SpriteEffect" type="Node" parent="."]
 script = ExtResource("3_p5dbx")
 sprite_path = NodePath("../Sprite2D")
 
