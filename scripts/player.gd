@@ -125,9 +125,9 @@ func _physics_process(delta):
 			knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, knockback_interp_factor)
 			if knockback_velocity.length_squared() < 250:
 				knockback_velocity = Vector2.ZERO
-	if velocity.x > 10.0:
+	if movement_velocity.x > 10.0:
 		check_turn(true)
-	elif velocity.x < -10.0:
+	elif movement_velocity.x < -10.0:
 		check_turn(false)
 	move_and_slide()
 	set_animation()
