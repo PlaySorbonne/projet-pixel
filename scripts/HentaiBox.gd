@@ -11,6 +11,7 @@ const WEEB_TOUCHED_SHADER_VALS = {
 const BOUNDS = 3000
 const LIMIT_SPEED_DAMAGE_DOWN = pow(250, 2.0)
 const DAMAGING_TIME_MIN = 0.25
+const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn")
 
 @export var anime_velocity := 1500.0
 @export var anime_damage_multiplier := 1.0
@@ -18,37 +19,46 @@ const DAMAGING_TIME_MIN = 0.25
 
 @onready var trail_effect := $TrailEffect
 var team := -1
-var knockback_velocity := Vector2.ZERO
 var last_player_hit : PlayerCharacter = null
 var last_hit_value := 0
-var initial_position
 var damaging := true
 var damaging_timer := 0.0
 var chaos_value_at_rest := 0.0
 var blue_div_at_rest := 1.0
 var weeb_touched : int = 0
-var previous_pos : Vector2
+var last_valid_pos : Vector2
+
+func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation():
+	var new_body := OBJECTIVE_BOX_RES.instantiate()
+	new_body.freeze = true
+	new_body.weeb_touched = weeb_touched
+	new_body.damaging = damaging
+	new_body.chaos_value_at_rest = chaos_value_at_rest
+	new_body.blue_div_at_rest = blue_div_at_rest
+	new_body.position = last_valid_pos
+	new_body.last_hit_value = last_hit_value
+	new_body.last_player_hit = last_player_hit
+	new_body.damaging_timer = damaging_timer
+	if damaging:
+		new_body.set_tape_hit_mode()
+	else:
+		new_body.set_tape_rest_mode()
+	GameInfos.world.level.add_child(new_body)
+	await get_tree().create_timer(0.05).timeout
+	new_body.freeze = false
+	queue_free()
 
 func _ready():
 	await get_tree().create_timer(0.25).timeout
-	initial_position = position
 	connect("game_won", GameInfos.world.end_game)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func _process(delta : float):
 	if not (position.x < BOUNDS and position.x > -BOUNDS and position.y < BOUNDS and position.y > -BOUNDS):
-		print("position : " + str(global_position) + " ; linear_velocity : " + str(linear_velocity))
 		set_process(false)
-		remove_child(self)
-		linear_velocity = Vector2.ZERO
-		position = initial_position - Vector2(0.0, 30.0)
-		await get_tree().create_timer(0.5).timeout
-		linear_velocity = Vector2.ZERO
-		position = initial_position - Vector2(0.0, 30.0)
-		GameInfos.world.level.add_child(self)
-		print("RESET POS TO : " + str(initial_position))
+		shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation()
 	else:
-		previous_pos = position
+		last_valid_pos = position
 	if damaging_timer > 0.0:
 		damaging_timer -= delta
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
