@@ -42,11 +42,11 @@ func end_game():
 	GameInfos.freeze_frame.slow_mo(0.1, 1.0)
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	add_child(VICTORY_MESSAGE.instantiate())
+	for p : PlayerCharacter in GameInfos.players:
+		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
 	await get_tree().create_timer(3.0, true, false, true).timeout
-	for p : PlayerCharacter in GameInfos.players:
-		p.set_player_active(false)
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(LOBBY_PATH)

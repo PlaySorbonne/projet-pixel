@@ -61,6 +61,8 @@ var evolving := false
 var horizontal_input : float = 0.0
 var left_pressed := false
 var right_pressed := false
+var up_pressed := false
+var down_pressed := false
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -184,12 +186,19 @@ func _input(event : InputEvent):
 			left_pressed = true
 		elif event.is_action_released("left"):
 			left_pressed = false
+		if event.is_action_pressed("up"):
+			up_pressed = true
+		elif event.is_action_released("up"):
+			up_pressed = false
+		if event.is_action_pressed("down"):
+			down_pressed = true
+		elif event.is_action_released("down"):
+			down_pressed = false
 		horizontal_input = int(right_pressed) - int(left_pressed)
 		if not attacking:
 			# Handle normal attack
 			if event.is_action_pressed("attack"):
 				attack()
-			
 			# Handle special 
 			elif event.is_action_pressed("special"):
 				special()

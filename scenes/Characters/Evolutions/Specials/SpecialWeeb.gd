@@ -9,16 +9,19 @@ func special():
 	if not can_use_special:
 		return
 	var dash_direction := Vector2.ZERO
-	if Input.is_action_pressed("up"):
+	if player.up_pressed:
 		dash_direction.y = -1
-	if Input.is_action_pressed("down"):
+	if player.down_pressed:
 		dash_direction.y += 1
-	if Input.is_action_pressed("left"):
+	if player.left_pressed:
 		dash_direction.x = -1
-	if Input.is_action_pressed("right"):
+	if player.right_pressed:
 		dash_direction.x += 1
 	if dash_direction == Vector2.ZERO:
-		return
+		if player.facing_right:
+			dash_direction.x = 1.0
+		else:
+			dash_direction.x = -1.0
 	can_use_special = false
 	player.attacking = true
 	player.computing_movement = false
