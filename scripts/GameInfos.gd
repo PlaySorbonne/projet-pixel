@@ -10,7 +10,7 @@ const LEVEL_PATHS = {
 var game_started := false
 var world : Node2D
 var level := Levels.Default
-var camera : Camera2D
+var camera : WorldCamera
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []

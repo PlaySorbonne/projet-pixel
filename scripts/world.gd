@@ -67,6 +67,7 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
+	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)
 
