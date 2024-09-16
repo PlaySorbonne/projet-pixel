@@ -14,16 +14,20 @@ var camera : WorldCamera
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
+var objective_box : AnimeBox
 var players_order : Array[int] = []
 var player_colors : Array[Color] = []
 var available_colors_index := 0
 var use_special_gameplay_data := false
+var tracked_targets : Array[Node2D] = []
 
 func reset_game_infos() -> void:
 	game_started = false
+	tracked_targets = []
 	players = []
 	players_order = []
 	player_colors = []
+	objective_box = null
 	available_colors_index = 0
 	level = Levels.Default
 

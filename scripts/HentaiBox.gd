@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name AnimeBox
 
 signal game_won
 signal hentai_hit
@@ -62,6 +63,7 @@ func _process(delta : float):
 func _ready():
 	await get_tree().create_timer(0.25).timeout
 	connect("game_won", GameInfos.world.end_game)
+	GameInfos.objective_box = self
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func increment_weeb_touched():
