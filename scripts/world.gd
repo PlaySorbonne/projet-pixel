@@ -81,7 +81,7 @@ func weeb_arrival(new_weeb : PlayerCharacter):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
+		$GameHUD/PauseMenu.enter_pause()
 
 func on_player_death(player : FighterCharacter):
 	await get_tree().create_timer(game_mode.respawn_time).timeout

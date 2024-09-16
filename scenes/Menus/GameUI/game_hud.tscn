@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://4cf0hnddgr1l"]
+[gd_scene load_steps=5 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_ros5h"]
+[ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="3_6eaw0"]
 
 [node name="GameHUD" type="CanvasLayer"]
 script = ExtResource("1_er2h7")
@@ -13,3 +16,75 @@ offset_top = 894.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ros5h")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2167.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0, 0.15, 0.309)
+
+[node name="ButtonContinue" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426042
+anchor_top = 0.231481
+anchor_right = 0.574479
+anchor_bottom = 0.3
+grow_horizontal = 2
+theme = ExtResource("2_fplfe")
+disabled = true
+text = "CONTINUE"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSettings" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426042
+anchor_top = 0.37037
+anchor_right = 0.574479
+anchor_bottom = 0.438889
+grow_horizontal = 2
+theme = ExtResource("2_fplfe")
+disabled = true
+text = "SETTINGS"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonQuit" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.426042
+anchor_top = 0.509259
+anchor_right = 0.574479
+anchor_bottom = 0.577778
+grow_horizontal = 2
+theme = ExtResource("2_fplfe")
+disabled = true
+text = "QUIT"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsScreen" parent="PauseMenu" instance=ExtResource("3_6eaw0")]
+layout_mode = 1
+offset_top = 1300.0
+offset_bottom = 1300.0
+
+[connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/ButtonSettings" to="PauseMenu" method="_on_button_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
+[connection signal="ButtonBackPressed" from="PauseMenu/SettingsScreen" to="PauseMenu" method="_on_settings_screen_button_back_pressed"]
