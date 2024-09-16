@@ -5,7 +5,16 @@ enum PARAMS {brightness, contrast, saturation, redVal, greenVal, blueVal, tint_c
 
 @onready var camera : Camera2D = get_parent()
 @onready var color_manipulator := $CanvasLayer/ColorManipulator
-
+var default_param_values := {
+	"brightness" : 0.0,
+	"contrast" : 1.0,
+	"saturation" : 1.0,
+	"redVal" : 1.0,
+	"greenVal" : 1.0,
+	"blueVal" : 1.0,
+	"tintColor" : Color(1.0, 1.0, 1.0, 1.0),
+	"tint_effect_factor" : 1.0
+}
 
 func _ready():
 	GameInfos.camera_utils = self
@@ -39,7 +48,10 @@ func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0)
 func set_screen_param(param : PARAMS, value : float = 0.0):
 	$CanvasLayer/ColorManipulator.material.set_shader_param(str(param), value)
 
-func _flash_color_param(param : String, val : float, duration : float, go_back : bool, go_back_value : float):
+func _flash_color_param(param : String, val : float, duration : float, go_back : bool):
+	if go_back:
+		default_param_values[param] = val
+	var go_back_value : float = default_param_values[param]
 	var param_str : String = "material:shader_parameter/" + param
 	var tween := create_tween()
 	tween.tween_property(color_manipulator, param_str, val, duration)
@@ -47,7 +59,7 @@ func _flash_color_param(param : String, val : float, duration : float, go_back :
 		tween.tween_property(color_manipulator, param_str, go_back_value, duration)
 
 func flash_constrast(val : float, duration : float, go_back := true):
-	_flash_color_param("contrast", val, duration, go_back, 1.0)
+	_flash_color_param("contrast", val, duration, go_back)
 
 func flash_saturation(val : float, duration : float, go_back := true):
-	_flash_color_param("saturation", val, duration, go_back, 1.0)
+	_flash_color_param("saturation", val, duration, go_back)
