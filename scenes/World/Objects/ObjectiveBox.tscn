@@ -15,7 +15,7 @@ size = Vector2(118, 128)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7m0al"]
 shader = ExtResource("2_gkrot")
-shader_parameter/chaos = 1.0
+shader_parameter/chaos = 0.0
 shader_parameter/radius = 1.0
 shader_parameter/attenuation = 10.0
 shader_parameter/divider_green = 1.0
