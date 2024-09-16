@@ -1,6 +1,7 @@
 extends Node2D
 class_name World
 
+const WEEB_EVOLUTION_CROSSHAIR_RES := preload("res://scenes/Utilities/WeebEvolutionCrosshair.tscn")
 const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
@@ -10,6 +11,7 @@ var spawn_locations : Array[Node2D]
 var player_camera : Camera2D
 var player_spawns : Dictionary = {}
 var level : Level
+var has_weeb_arrived := false
 
 func _ready():
 	level = GameInfos.load_game_level()
@@ -59,7 +61,16 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
-	
+	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
+		weeb_arrival(body)
+
+func weeb_arrival(new_weeb : PlayerCharacter):
+	if not has_weeb_arrived:
+		has_weeb_arrived = true
+		GameInfos.camera_utils.flash_constrast(1.5, 0.25, false)
+	var crosshair := WEEB_EVOLUTION_CROSSHAIR_RES.instantiate()
+	GameInfos.camera_utils.shake()
+	new_weeb.add_child(crosshair)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

@@ -36,8 +36,8 @@ func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_sim
 	new_body.chaos_value_at_rest = chaos_value_at_rest
 	new_body.blue_div_at_rest = blue_div_at_rest
 	new_body.position = last_valid_pos
-	new_body.last_hit_value = last_hit_value
-	new_body.last_player_hit = last_player_hit
+	#new_body.last_hit_value = last_hit_value
+	#new_body.last_player_hit = last_player_hit
 	new_body.damaging_timer = damaging_timer
 	if damaging:
 		new_body.set_tape_hit_mode()
@@ -71,7 +71,7 @@ func increment_weeb_touched():
 	set_tape_hit_mode()
 
 func set_tape_hit_mode():
-	tween_disk_color(Color.RED, 0.1, 60.0, 5.0, 1.75)
+	tween_disk_color(Color.RED, 0.1, 90.0, 5.0, 1.75)
 	damaging = true
 	damaging_timer = DAMAGING_TIME_MIN
 	linear_damp = 3.5
@@ -110,7 +110,7 @@ func _on_area_2d_body_entered(body : Node2D):
 	if not body.has_method("hit"):
 		return
 	var player_body : PlayerCharacter = body
-	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
+	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
 		if weeb_touched >= 3:
 			emit_signal("game_won")
 		else:

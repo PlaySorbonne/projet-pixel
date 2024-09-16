@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_v2r6n")
 script = ExtResource("4_u028w")
 sprite_path = NodePath("../Sprite2D")
 
-[node name="SpecialAttack" parent="." index="7"]
+[node name="SpecialAttack" parent="." index="8"]
 script = ExtResource("2_ljooy")
 attack_damage = 2
 attack_size = 3.0

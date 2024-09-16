@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=12 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c1l3mcyoxc0q" path="res://resources/images/characters/playerAnimations.tscn" id="7_02yp1"]
 [ext_resource type="PackedScene" uid="uid://bxby8t42ku636" path="res://scenes/Characters/Elements/hitParticles.tscn" id="8_et6l4"]
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="9_8u645"]
+[ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="10_jt582"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72mm4"]
 resource_local_to_scene = true
@@ -80,6 +81,12 @@ texture = ExtResource("6_lc1o4")
 position = Vector2(0, 0)
 lifetime = 1.0
 texture = ExtResource("9_8u645")
+
+[node name="TrailEffect" parent="." index="11" instance=ExtResource("10_jt582")]
+self_modulate = Color(1, 1, 1, 0.2)
+width = 35.0
+joint_mode = 2
+max_points = 70
 
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

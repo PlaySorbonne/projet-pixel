@@ -49,7 +49,7 @@ func set_screen_param(param : PARAMS, value : float = 0.0):
 	$CanvasLayer/ColorManipulator.material.set_shader_param(str(param), value)
 
 func _flash_color_param(param : String, val : float, duration : float, go_back : bool):
-	if go_back:
+	if not go_back:
 		default_param_values[param] = val
 	var go_back_value : float = default_param_values[param]
 	var param_str : String = "material:shader_parameter/" + param

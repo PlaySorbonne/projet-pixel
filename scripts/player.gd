@@ -98,6 +98,7 @@ func _update_debug_text():
 
 func set_player_color(new_color : Color):
 	#$Sprite2D.self_modulate = new_color
+	$TrailEffect.modulate = new_color
 	$CharacterPointer.self_modulate = new_color
 	$Sprite2D.material.set_shader_parameter("replace_color", new_color);
 
