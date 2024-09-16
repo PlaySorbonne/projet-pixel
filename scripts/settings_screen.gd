@@ -5,7 +5,7 @@ signal ButtonBackPressed
 
 enum Languages {English, Francais}
 
-const DEFAULT_STATS_TXT = "DEFAULT (14/09/2024)"
+const DEFAULT_STATS_TXT = "DEFAULT"
 const DEFAULT_GAMEPLAY_FILE = "res://default_gameplay_stats.txt"
 const GAMEPLAY_FILE_NAME = "OtakuOverdriveGameplay_stats.txt"
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"

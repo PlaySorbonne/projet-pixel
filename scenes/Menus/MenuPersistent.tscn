@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvkf6l5jtinbx"]
+[gd_scene load_steps=16 format=3 uid="uid://cvkf6l5jtinbx"]
 
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="1_donq7"]
 [ext_resource type="Script" path="res://scripts/MenuPersistent.gd" id="1_jtr7k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://drjf5m66m1a2" path="res://resources/images/characters/Sheep/moutonBam.png" id="6_3sjcl"]
 [ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="8_2bw74"]
 [ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="9_mcwak"]
+[ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="11_4sc2c"]
 
 [sub_resource type="Curve2D" id="Curve2D_qf64y"]
 _data = {
@@ -328,6 +329,12 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_5q65t")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4sc2c")
+autoplay = true
+bus = &"music"
+parameters/looping = true
 
 [connection signal="ButtonCreditsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_credits_pressed"]
 [connection signal="ButtonSettingsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_settings_pressed"]
