@@ -95,9 +95,6 @@ func get_hit_owner():
 
 func add_impulse(hit_position : Vector2, hit_intensity : float):
 	var impulse_dir : Vector2 = (global_position-hit_position).normalized()
-	print("impulse_dir : " + str(impulse_dir) + " ;; total impulse : " + str(
-		(impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity
-	))
 	apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity )
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
