@@ -48,11 +48,6 @@ func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_sim
 	new_body.freeze = false
 	queue_free()
 
-func _ready():
-	await get_tree().create_timer(0.25).timeout
-	connect("game_won", GameInfos.world.end_game)
-	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
-
 func _process(delta : float):
 	if not (position.x < BOUNDS and position.x > -BOUNDS and position.y < BOUNDS and position.y > -BOUNDS):
 		set_process(false)
@@ -63,6 +58,11 @@ func _process(delta : float):
 		damaging_timer -= delta
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
 		set_tape_rest_mode()
+
+func _ready():
+	await get_tree().create_timer(0.25).timeout
+	connect("game_won", GameInfos.world.end_game)
+	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func increment_weeb_touched():
 	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][weeb_touched]

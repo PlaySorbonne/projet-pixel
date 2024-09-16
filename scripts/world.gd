@@ -59,6 +59,7 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
+	
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
