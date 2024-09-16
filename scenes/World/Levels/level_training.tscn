@@ -11,19 +11,19 @@
 script = ExtResource("2_14xww")
 
 [node name="SpawnLocation1" parent="." index="0"]
-position = Vector2(509, 703)
+position = Vector2(571, 626)
 
 [node name="SpawnLocation2" parent="." index="1"]
-position = Vector2(721, 703)
+position = Vector2(783, 626)
 
 [node name="SpawnLocation3" parent="." index="2"]
-position = Vector2(942, 703)
+position = Vector2(1004, 626)
 
 [node name="SpawnLocation4" parent="." index="3"]
-position = Vector2(1143, 705)
+position = Vector2(1205, 628)
 
 [node name="Wall" parent="." index="6" instance=ExtResource("2_ieh35")]
-position = Vector2(904, 981)
+position = Vector2(903, 885)
 scale = Vector2(22.6, 5)
 
 [node name="Wall2" parent="." index="7" instance=ExtResource("2_ieh35")]
@@ -49,10 +49,10 @@ scale = Vector2(2, 2)
 otherTeleporter = NodePath("../TeleporterRightUp")
 
 [node name="LabelHits" type="Label" parent="." index="12"]
-offset_left = 1275.0
-offset_top = 555.0
-offset_right = 1399.0
-offset_bottom = 604.0
+offset_left = 1353.0
+offset_top = 495.0
+offset_right = 1477.0
+offset_bottom = 544.0
 scale = Vector2(2, 2)
 text = "hit : 0
 total : 0"
@@ -60,7 +60,7 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="AnimeBox" parent="." index="13"]
-position = Vector2(1400, 755)
+position = Vector2(1467, 665)
 winning_by_weeb_touch = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="15"]
@@ -71,11 +71,15 @@ anchor_left = 0.05
 anchor_top = 0.87963
 anchor_right = 0.148438
 anchor_bottom = 0.948148
+offset_left = 121.0
+offset_top = -115.0
+offset_right = 121.0
+offset_bottom = -115.0
 theme = ExtResource("4_vnmdc")
 text = "BACK"
 
 [node name="ChangeEvolution" parent="." index="16" instance=ExtResource("6_pe12c")]
-position = Vector2(267, 679)
+position = Vector2(273, 574)
 
 [connection signal="hentai_hit" from="AnimeBox" to="." method="_on_anime_box_hentai_hit"]
 [connection signal="pressed" from="CanvasLayer/ButtonBack" to="." method="_on_button_back_pressed"]

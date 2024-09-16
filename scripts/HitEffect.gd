@@ -13,9 +13,12 @@ func trigger_hit_effect(duration := 1.0, blink_delay := 0.2):
 
 func set_special_availability(availability : bool):
 	var new_color : Color
+	var time : float
 	if availability:
 		new_color = Color.WHITE
+		time = 0.25
 	else:
 		new_color = Color.DARK_GRAY
+		time = 0.1
 	var tween := create_tween()
-	tween.tween_property(sprite_node, "self_modulate", new_color, 0.15)
+	tween.tween_property(sprite_node, "self_modulate", new_color, time)

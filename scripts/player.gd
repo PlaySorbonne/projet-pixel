@@ -58,7 +58,9 @@ var compute_hits := true
 var god_mode := false
 var player_ID := 0
 var evolving := false
-var horizontal_input := 0.0
+var horizontal_input : float = 0.0
+var left_pressed := false
+var right_pressed := false
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -174,13 +176,14 @@ func _input(event : InputEvent):
 			stop_jump()
 		# Handle movement
 		if event.is_action_pressed("right"):
-			horizontal_input = 1.0
-		elif event.is_action_pressed("left"):
-			horizontal_input = -1.0
-		elif (event.is_action_released("right") && movement_velocity.x > 0) || (
-		event.is_action_released("left") && movement_velocity.x < 0):
-			horizontal_input = 0.0
-		
+			right_pressed = true
+		elif event.is_action_released("right"):
+			right_pressed = false
+		if event.is_action_pressed("left"):
+			left_pressed = true
+		elif event.is_action_released("left"):
+			left_pressed = false
+		horizontal_input = int(right_pressed) - int(left_pressed)
 		if not attacking:
 			# Handle normal attack
 			if event.is_action_pressed("attack"):
