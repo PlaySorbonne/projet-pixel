@@ -250,7 +250,7 @@ func death(force := false):
 	compute_hits = false
 	set_process_input(false)
 	movement_velocity = Vector2.ZERO
-	GameInfos.freeze_frame.freeze(0.25)
+	GameInfos.freeze_frame.freeze(0.075)
 	await get_tree().create_timer(2.0).timeout
 	compute_hits = true
 	set_process_input(true)

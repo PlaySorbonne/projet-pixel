@@ -22,7 +22,6 @@ var knockback_velocity := Vector2.ZERO
 var last_player_hit : PlayerCharacter = null
 var last_hit_value := 0
 var initial_position
-var t := 0.0
 var damaging := true
 var damaging_timer := 0.0
 var chaos_value_at_rest := 0.0
@@ -37,9 +36,6 @@ func _ready():
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func _process(delta : float):
-	t += delta
-	if t > 1.0:
-		t = 0.0
 	if not (position.x < BOUNDS and position.x > -BOUNDS and position.y < BOUNDS and position.y > -BOUNDS):
 		print("position : " + str(global_position) + " ; linear_velocity : " + str(linear_velocity))
 		set_process(false)
@@ -112,6 +108,7 @@ func _on_area_2d_body_entered(body : Node2D):
 			emit_signal("game_won")
 		else:
 			GameInfos.freeze_frame.freeze(0.025)
+			GameInfos.camera_utils.flash_saturation(3.0, 1.0)
 			GameInfos.camera_utils.shake()
 			var hit_intensity : float = WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched]
 			add_impulse(body.global_position, hit_intensity)

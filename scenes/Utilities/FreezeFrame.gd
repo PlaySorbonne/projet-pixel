@@ -7,7 +7,7 @@ var in_freeze_frame := false
 func _ready():
 	GameInfos.freeze_frame = self
 
-func freeze(duration : float = 0.15):
+func freeze(duration : float = 0.075):
 	if in_freeze_frame:
 		added_freeze_frame += duration
 		return
