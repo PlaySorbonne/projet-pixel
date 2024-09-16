@@ -3,11 +3,8 @@ extends Node2D
 var followed_actor : PlayerCharacter
 
 func _ready():
-	$AnimationPlayer.play("init")
-	await get_tree().create_timer(0.01, true, false, true).timeout
-	visible = true
-	await get_tree().create_timer(0.1, true, false, true).timeout
 	$AnimationPlayer.play("evolve_to_weeb")
+	visible = true
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
