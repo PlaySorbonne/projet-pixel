@@ -102,6 +102,7 @@ func start_game():
 		player.copy_player_data(new_body)
 		GameInfos.players[player.player_ID] = new_body
 	emit_signal("StartGame")
+	GameInfos.tracked_targets.clear()
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(WORLD_PATH)

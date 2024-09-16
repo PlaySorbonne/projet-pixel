@@ -63,6 +63,7 @@ func spawn_players():
 		player_spawns[player.player_ID] = spawn_locations[player_number].position
 		player.spawn(player_spawns[player.player_ID], false)
 		player_number += 1
+		GameInfos.tracked_targets.append(player)
 
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)

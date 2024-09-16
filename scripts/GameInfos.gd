@@ -14,7 +14,6 @@ var camera : WorldCamera
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
-var objective_box : AnimeBox
 var players_order : Array[int] = []
 var player_colors : Array[Color] = []
 var available_colors_index := 0
@@ -27,7 +26,6 @@ func reset_game_infos() -> void:
 	players = []
 	players_order = []
 	player_colors = []
-	objective_box = null
 	available_colors_index = 0
 	level = Levels.Default
 

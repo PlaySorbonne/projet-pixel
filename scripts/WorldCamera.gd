@@ -21,6 +21,7 @@ static func remove_target(t : Node2D):
 		GameInfos.tracked_targets.erase(t)
 
 func _process(delta : float):
+	return
 	if not GameInfos.tracked_targets:
 		return
 	

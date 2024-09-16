@@ -225,6 +225,7 @@ func spawn(location : Vector2, activate := true):
 	facing_right = true
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
+	GameInfos.tracked_targets.append(self)
 	_update_debug_text()
 
 func evolve(in_lobby: bool = false):
@@ -249,6 +250,7 @@ func evolve(in_lobby: bool = false):
 	new_body.spawn(position)
 	set_player_active(false)
 	emit_signal("player_evolved", new_body)
+	GameInfos.tracked_targets.erase(self)
 	if not in_lobby:
 		await get_tree().create_timer(0.5).timeout
 	queue_free()

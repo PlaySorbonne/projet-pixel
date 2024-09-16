@@ -45,6 +45,7 @@ func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_sim
 	else:
 		new_body.set_tape_rest_mode()
 	GameInfos.world.level.add_child(new_body)
+	GameInfos.tracked_targets.erase(self)
 	await get_tree().create_timer(0.05).timeout
 	new_body.freeze = false
 	queue_free()
@@ -61,9 +62,9 @@ func _process(delta : float):
 		set_tape_rest_mode()
 
 func _ready():
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.1).timeout
 	connect("game_won", GameInfos.world.end_game)
-	GameInfos.objective_box = self
+	GameInfos.tracked_targets.append(self)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func increment_weeb_touched():
