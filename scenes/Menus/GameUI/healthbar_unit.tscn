@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://duqh0fnftklwb" path="res://resources/images/interface/healthbar_fg.png" id="2_r8dli"]
 [ext_resource type="Texture2D" uid="uid://dt1twdwelck5x" path="res://resources/images/interface/healthbar_progress.png" id="3_ay6cp"]
 [ext_resource type="Script" path="res://scripts/healthbar_unit.gd" id="4_k0ow6"]
-[ext_resource type="Texture2D" uid="uid://n2jsxwijmwxe" path="res://resources/images/interface/healthbar_end_texture.png" id="4_wlypw"]
+[ext_resource type="PackedScene" uid="uid://dffent7drnbfh" path="res://scenes/Menus/GameUI/texture_progress_tip.tscn" id="5_1n4v2"]
 
 [node name="HealthbarUnit" type="TextureProgressBar"]
 max_value = 5.0
@@ -14,13 +14,8 @@ texture_over = ExtResource("2_r8dli")
 texture_progress = ExtResource("3_ay6cp")
 script = ExtResource("4_k0ow6")
 
-[node name="TextureProgressTip" type="TextureRect" parent="."]
-modulate = Color(0.812, 0, 0, 1)
+[node name="TextureProgressTip" parent="." instance=ExtResource("5_1n4v2")]
 layout_mode = 0
-offset_left = 80.0
-offset_right = 108.0
-offset_bottom = 30.0
-texture = ExtResource("4_wlypw")
 
 [node name="ProgressBarCover" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
