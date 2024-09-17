@@ -11,14 +11,17 @@ const HEALTH_PAR_POS_COEFF = Vector2(7, -31)
 @onready var parent_character : Node2D = get_parent()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
-var healthbars : Array[HealthBarUnit] = []
+var healthbars : Array[HealthBarUnit] = [
+	$HealthBars/HealthbarUnit,
+	$HealthBars/HealthbarUnit2,
+	$HealthBars/HealthbarUnit3
+]
 
 func _ready():
 	pass
 	# TODO
 	# count total health and add how many progress bar you need, 
 	# put them on good positions and fill em up real good uwu
-
 # TODO
 # also add function to take damage
 # maybe something to shake the whole bar when taking damage
@@ -29,30 +32,33 @@ func get_current_unit() -> HealthBarUnit:
 	return null
 
 func set_max_hitpoints(hitpoints : int):
-	print("new_hitpoints = " + str(hitpoints))
-	var num_health_bars := healthbars.size()
-	var num_goal_health_bars := hitpoints / 5
-	var diff_hitpoints := hitpoints - total_hitpoints
-	print("\tdiff_hitpoints = " + str(diff_hitpoints))
-	if num_health_bars < num_goal_health_bars:
-		for i : int in range(num_health_bars, num_goal_health_bars):
-			var unit := HEALTH_BAR_UNIT.instantiate()
-			var unit_health : int = min(5, diff_hitpoints)
-			unit.set_health_value(unit_health)
-			healthbars.append(unit)
-			var array_pos := healthbars.size()-1
-			unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
-			print("\tarray_pos = " + str(array_pos) + " ; pos = "+str(unit.position))
-			$HealthBars.add_child(unit)
-			unit.add_unit()
-			total_hitpoints += unit_health
-			diff_hitpoints -= unit_health
-	elif num_health_bars > num_goal_health_bars:
-		for _i in range(num_goal_health_bars - num_health_bars):
-			var unit : HealthBarUnit = healthbars.pop_back()
-			unit.remove_unit()
-		var unit_health : int # TODO : set last bar health
+	for h : HealthBarUnit in healthbars:
+		if h != null:
+			h.queue_free()
+	healthbars.clear()
 	total_hitpoints = hitpoints
+	current_hitpoints = hitpoints
+	var num_health_bars := hitpoints / 5
+	var last_unit_health := hitpoints % 5
+	if last_unit_health > 0:
+		num_health_bars += 1
+	if last_unit_health == 0:
+		last_unit_health = 5
+	print("set max hitpoints : " + str(hitpoints) + " -> " + str(num_health_bars))
+	for i in range(num_health_bars):
+		var unit := HEALTH_BAR_UNIT.instantiate()
+		var unit_health : int
+		if i == num_health_bars - 1:
+			unit_health = last_unit_health
+		else:
+			unit_health = 5
+		unit.set_health_value(unit_health)
+		healthbars.append(unit)
+		var array_pos := healthbars.size()-1
+		print("\tarray pos = " + str(array_pos))
+		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
+		$HealthBars.add_child(unit)
+		unit.add_unit()
 
 func take_damage(damage : int, new_hitpoints : int):
 	$HealthBars.shake(0.2, 15, 20*damage, damage)
