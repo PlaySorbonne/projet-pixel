@@ -8,6 +8,9 @@ const PROGRESS_TIP_TEXTURE = preload("res://scenes/Menus/GameUI/texture_progress
 
 @export var health : int = 0
 
+func _ready():
+	visible = false
+
 func set_health_value(new_val : int):
 	health = new_val
 	_update_healthbar()
@@ -59,8 +62,7 @@ func remove_unit():
 	queue_free()
 
 func add_unit():
-	print("\tadd unit : " + str(health) + " local hp")
 	scale = Vector2(1.0, 0.0)
 	visible = true
 	var tween := create_tween().set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.5)
+	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)

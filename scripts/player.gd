@@ -223,12 +223,13 @@ func _on_jump_timer_timeout():
 	is_jumping = false
 
 func spawn(location : Vector2, activate := true, f_right := true):
-	super.spawn(location, activate)
+	super.spawn(location, activate, f_right)
 	facing_right = f_right
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
 	_update_debug_text()
+	await self.player_spawned
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func evolve(in_lobby: bool = false):

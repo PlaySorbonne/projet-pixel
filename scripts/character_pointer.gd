@@ -45,7 +45,7 @@ func set_max_hitpoints(hitpoints : int):
 	if last_unit_health == 0:
 		last_unit_health = 5
 	print("set max hitpoints : " + str(hitpoints) + " -> " + str(num_health_bars))
-	for i in range(num_health_bars):
+	for i : int in range(num_health_bars):
 		var unit := HEALTH_BAR_UNIT.instantiate()
 		var unit_health : int
 		if i == num_health_bars - 1:
@@ -58,7 +58,9 @@ func set_max_hitpoints(hitpoints : int):
 		print("\tarray pos = " + str(array_pos))
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
+	for unit : HealthBarUnit in healthbars:
 		unit.add_unit()
+		await get_tree().create_timer(0.175).timeout
 
 func take_damage(damage : int, new_hitpoints : int):
 	$HealthBars.shake(0.2, 15, 20*damage, damage)
