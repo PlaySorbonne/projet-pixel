@@ -28,6 +28,7 @@ func reset_game_infos() -> void:
 	player_colors = []
 	available_colors_index = 0
 	level = Levels.Default
+	CharacterPointer.current_z = 0
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[level]).instantiate()

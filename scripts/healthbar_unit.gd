@@ -1,7 +1,7 @@
 extends TextureProgressBar
 class_name HealthBarUnit
 
-const VAL_TO_PROGRESS = [0.0, 0.0, 1.5, 2.3, 3.3, 4.5]
+const VAL_TO_PROGRESS = [0.0, 0.0, 2.02, 2.92, 3.83, 5.0]
 const DEFAULT_TIP_COLOR = Color(0.812, 0.0, 0.0)
 const TIP_POS_COEFF := 20.0
 const PROGRESS_TIP_TEXTURE = preload("res://scenes/Menus/GameUI/texture_progress_tip.tscn")
@@ -51,7 +51,7 @@ func heal_effect(val : int, delay : float):
 
 func _update_healthbar():
 	value = VAL_TO_PROGRESS[health]
-	if health == 0:
+	if health == 0 or health == 5:
 		$TextureProgressTip.visible = false
 	else:
 		$TextureProgressTip.visible = true
