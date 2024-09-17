@@ -25,7 +25,7 @@ material = SubResource("ShaderMaterial_7nmrf")
 sprite_frames = ExtResource("3_e2v71")
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
+position = Vector2(-5, 7)
 shape = SubResource("RectangleShape2D_v2r6n")
 
 [node name="HitEffect" type="Node" parent="." index="4"]

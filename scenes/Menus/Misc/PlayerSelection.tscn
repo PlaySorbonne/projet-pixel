@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_lvdma"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_gqy2r"]
-[ext_resource type="Theme" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_homip"]
+[ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_homip"]
 [ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="5_vifbu"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="5_wa7at"]
 

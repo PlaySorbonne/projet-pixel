@@ -25,7 +25,7 @@ animation = &"run"
 frame_progress = 0.88848
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-3, 10)
+position = Vector2(-3, -22)
 
 [node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("3_i1h8o")

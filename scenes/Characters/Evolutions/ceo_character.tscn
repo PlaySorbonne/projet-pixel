@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gxorr7jk1k24"]
+[gd_scene load_steps=7 format=3 uid="uid://gxorr7jk1k24"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_dytvo"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_xesv4"]
+[ext_resource type="SpriteFrames" uid="uid://3ipk3i6kyf8i" path="res://scenes/Characters/Evolutions/Animations/ceo_sprite_frames.tres" id="3_7rnvq"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialCEO.gd" id="3_52ce3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc06i"]
@@ -21,6 +22,8 @@ max_hitpoints = 9
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_yc06i")
 position = Vector2(-1.90735e-06, 56)
+sprite_frames = ExtResource("3_7rnvq")
+animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-5, 14)
