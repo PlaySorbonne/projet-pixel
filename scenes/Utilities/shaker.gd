@@ -9,14 +9,14 @@ const EASE = Tween.EASE_IN_OUT
 @export var property := "offset"
 @export var reset_to_zero := true
 var initial_value := Vector2.ZERO
-var amplitude = 0
-var priority = 0
-var shaking = false
+var amplitude := 0
+var priority := 0
+var shaking := false
 var frequency := 0.0
 
 
 
-func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0):
+func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 30, priority_n := 0):
 	if priority_n >= priority :
 		priority = priority_n
 		amplitude = amplitude_n
@@ -32,7 +32,7 @@ func shake(duration_n = 0.2, frequency_n = 15, amplitude_n = 30, priority_n = 0)
 	_reset()
 
 func _new_shake():
-	var rand = Vector2()
+	var rand := Vector2()
 	rand.x = randf_range(-amplitude, amplitude)
 	rand.y = randf_range(-amplitude, amplitude)
 	await _tween_shake(rand).finished

@@ -28,7 +28,7 @@ func connect_player_object():
 	player.player_spawned.connect(update_health)
 	player.player_evolved.connect(update_evolution)
 
-func update_health():
+func update_health(_damage := 0, _hitpoints := 0):
 	$Holder/LabelHealth.text = str(max(0, GameInfos.players[player_number].hitpoints)
 	) + "/" + str(GameInfos.players[player_number].max_hitpoints)
 

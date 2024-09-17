@@ -5,8 +5,12 @@ signal fighter_killed_opponent
 signal fighter_hit
 signal fighter_died
 signal player_spawned
+signal changed_max_hitpoints
 
-@export var max_hitpoints := 3
+@export var max_hitpoints := 3:
+	set(val):
+		max_hitpoints = val
+		emit_signal("changed_max_hitpoints", max_hitpoints)
 @export var invincibility_time := 0.4
 
 var team := 0
@@ -54,7 +58,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
 		return
 	hitpoints -= damage
-	emit_signal("fighter_hit")
+	emit_signal("fighter_hit", damage, hitpoints)
 	$SpriteEffect.trigger_hit_effect()
 	if hitpoints <= 0:
 		if attacker != null and attacker.has_signal("fighter_killed_opponent"):

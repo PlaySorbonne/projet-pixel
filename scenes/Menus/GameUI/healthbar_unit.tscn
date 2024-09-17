@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dffent7drnbfh" path="res://scenes/Menus/GameUI/texture_progress_tip.tscn" id="5_1n4v2"]
 
 [node name="HealthbarUnit" type="TextureProgressBar"]
+pivot_offset = Vector2(55, 15)
 max_value = 5.0
 step = 0.0
 texture_under = ExtResource("1_eiff3")
@@ -15,10 +16,14 @@ texture_progress = ExtResource("3_ay6cp")
 script = ExtResource("4_k0ow6")
 
 [node name="TextureProgressTip" parent="." instance=ExtResource("5_1n4v2")]
+z_index = 0
 layout_mode = 0
+offset_left = 0.0
+offset_right = 28.0
 
 [node name="ProgressBarCover" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
+z_index = 2
 layout_mode = 0
 offset_right = 110.0
 offset_bottom = 30.0

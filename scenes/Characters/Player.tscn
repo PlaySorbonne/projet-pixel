@@ -72,6 +72,7 @@ dash_duration = 0.125
 dash_cooldown = 0.25
 
 [node name="CharacterPointer" parent="." index="8" instance=ExtResource("6_54gyb")]
+position = Vector2(0, -100)
 
 [node name="AnimationPlayer" parent="." index="9" instance=ExtResource("7_02yp1")]
 
@@ -86,5 +87,7 @@ width = 35.0
 joint_mode = 2
 max_points = 70
 
+[connection signal="changed_max_hitpoints" from="." to="CharacterPointer" method="set_max_hitpoints"]
+[connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

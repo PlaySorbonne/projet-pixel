@@ -4,6 +4,7 @@
 
 [node name="TextureProgressTip" type="TextureRect"]
 modulate = Color(0.812, 0, 0, 1)
+z_index = 1
 offset_left = 80.0
 offset_right = 108.0
 offset_bottom = 30.0
