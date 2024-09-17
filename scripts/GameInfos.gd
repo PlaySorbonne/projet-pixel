@@ -15,7 +15,7 @@ var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
 var players_order : Array[int] = []
-var player_colors : Array[Color] = []
+var player_colors : Array[Color] = [Color.RED]
 var available_colors_index := 0
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []

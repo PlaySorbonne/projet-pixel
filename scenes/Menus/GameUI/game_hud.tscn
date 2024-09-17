@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/PlayerSelectionTheme.tres" id="2_fplfe"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_ros5h"]
 [ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="3_6eaw0"]
 

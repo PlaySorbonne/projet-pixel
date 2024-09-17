@@ -242,7 +242,7 @@ func evolve(in_lobby: bool = false):
 	compute_hits = false
 	computing_movement = false
 	velocity = Vector2.ZERO
-	#GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
+	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	GameInfos.players[player_ID] = new_body
 	get_parent().add_child(new_body)

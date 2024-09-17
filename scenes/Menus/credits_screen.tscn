@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_g840b"]
 [ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_rpv6i"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_2hoir"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/PlayerSelectionTheme.tres" id="2_2hoir"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
