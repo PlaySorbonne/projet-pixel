@@ -30,7 +30,7 @@ func damage(val : int, delay := 0):
 		await get_tree().create_timer(0.15).timeout
 		s.queue_free()
 
-func heal_effect(val : int):
+func heal_effect(val : int, delay : float):
 	var new_tips : Array[TextureRect] = []
 	var new_health : int = min(health+val, 5)
 	for h in range(health, new_health):
@@ -41,6 +41,7 @@ func heal_effect(val : int):
 		new_tips.append(health_slot)
 	health = new_health
 	_update_healthbar()
+	await get_tree().create_timer(delay).timeout
 	var tween := create_tween()
 	for s : TextureRect in new_tips:
 		tween.tween_property(s, "modulate", Color.TRANSPARENT, 0.2)
@@ -62,7 +63,7 @@ func remove_unit():
 	await tween.finished
 	queue_free()
 
-func add_unit():
+func add_unit(delay := 0):
 	var h := health
 	set_health_value(0)
 	scale = Vector2(1.0, 0.0)
@@ -70,4 +71,4 @@ func add_unit():
 	var tween := create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)
 	await get_tree().create_timer(0.2).timeout
-	heal_effect(5)
+	heal_effect(h,  0.2 * delay)

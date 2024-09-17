@@ -12,11 +12,7 @@ const TIMER_TRANSPARENT := 2.0
 @onready var parent_character : Node2D = get_parent()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
-var healthbars : Array[HealthBarUnit] = [
-	$HealthBars/HealthbarUnit,
-	$HealthBars/HealthbarUnit2,
-	$HealthBars/HealthbarUnit3
-]
+@onready var healthbars : Array[HealthBarUnit] = []
 
 func _ready():
 	pass
@@ -34,8 +30,8 @@ func get_current_unit() -> HealthBarUnit:
 
 func set_max_hitpoints(hitpoints : int):
 	for h : HealthBarUnit in healthbars:
-		if h != null:
-			h.queue_free()
+		print("removed healthbar : " + str(h))
+		h.queue_free()
 	healthbars.clear()
 	total_hitpoints = hitpoints
 	current_hitpoints = hitpoints
@@ -57,22 +53,25 @@ func set_max_hitpoints(hitpoints : int):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
+	var delay := 0
 	for unit : HealthBarUnit in healthbars:
-		unit.add_unit()
+		unit.add_unit(delay)
 		await get_tree().create_timer(0.175).timeout
+		delay += 5
 	show_health_bars()
 
 func take_damage(damage : int, new_hitpoints : int):
 	var d := damage
 	var delay := 0
+	var healthbar_counter = 1
 	while d > 0:
-		var current_health_bar := healthbars[healthbars.size() - 1]
+		var current_health_bar := healthbars[healthbars.size() - healthbar_counter]
 		var unit_dmg : int = min(d, current_health_bar.health)
 		d -= unit_dmg
 		current_health_bar.damage(unit_dmg, delay)
 		if d > 0:
-			healthbars.pop_back()
-			if len(healthbars) == 0:
+			healthbar_counter += 1
+			if healthbar_counter > len(healthbars):
 				d = 0
 		delay += unit_dmg
 	current_hitpoints = new_hitpoints
