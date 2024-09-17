@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqjyjdg2uma5y"]
+[gd_scene load_steps=4 format=3 uid="uid://bqjyjdg2uma5y"]
 
 [ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="1_d6fp3"]
 [ext_resource type="Script" path="res://scripts/character_pointer.gd" id="2_fab0g"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="3_0k4en"]
-[ext_resource type="PackedScene" uid="uid://ctsnj7kxwf1bg" path="res://scenes/Menus/GameUI/healthbar_unit.tscn" id="3_nacgl"]
 
 [node name="CharacterPointer" type="Sprite2D"]
 top_level = true
@@ -18,28 +17,7 @@ script = ExtResource("3_0k4en")
 object = NodePath("..")
 property = "shake_offset"
 
-[node name="HealthbarUnit" parent="HealthBars" instance=ExtResource("3_nacgl")]
-visible = false
-layout_mode = 0
-offset_left = -40.0
-offset_top = -112.0
-offset_right = 70.0
-offset_bottom = -82.0
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
-[node name="HealthbarUnit2" parent="HealthBars" instance=ExtResource("3_nacgl")]
-visible = false
-layout_mode = 0
-offset_left = -47.0
-offset_top = -81.0
-offset_right = 63.0
-offset_bottom = -51.0
-value = 5.0
-
-[node name="HealthbarUnit3" parent="HealthBars" instance=ExtResource("3_nacgl")]
-visible = false
-layout_mode = 0
-offset_left = -54.0
-offset_top = -50.0
-offset_right = 56.0
-offset_bottom = -20.0
-value = 5.0
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

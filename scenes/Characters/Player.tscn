@@ -87,7 +87,6 @@ width = 35.0
 joint_mode = 2
 max_points = 70
 
-[connection signal="changed_max_hitpoints" from="." to="CharacterPointer" method="set_max_hitpoints"]
 [connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

@@ -31,7 +31,7 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(false)
 
-func spawn(location : Vector2, activate := true):
+func spawn(location : Vector2, activate := true, f_right := true):
 	set_player_active(false)
 	reset_animation()
 	velocity = Vector2.ZERO
@@ -40,13 +40,18 @@ func spawn(location : Vector2, activate := true):
 	scale = Vector2.ZERO
 	rotation = 0
 	visible = true
+	var x_scale : float
+	if f_right:
+		x_scale = 1.0
+	else:
+		x_scale = -1.0
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(self, "scale", Vector2.ONE, 1.0)
+	tween.tween_property(self, "scale", Vector2(x_scale, 1.0), 1.0)
 	await tween.finished
 	if activate:
 		set_player_active(true)
 	velocity = Vector2.ZERO
-	scale = Vector2.ONE
+	scale = Vector2(x_scale, 1.0)
 	emit_signal("player_spawned")
 
 func set_player_active(new_activity : bool):

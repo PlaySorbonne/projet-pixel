@@ -222,13 +222,15 @@ func jump():
 func _on_jump_timer_timeout():
 	is_jumping = false
 
-func spawn(location : Vector2, activate := true):
-	super.spawn(location, activate)
-	facing_right = true
+func spawn(location : Vector2, activate := true, f_right := true):
+	super.spawn(location, activate, f_right)
+	facing_right = f_right
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
 	_update_debug_text()
+	await self.player_spawned
+	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func evolve(in_lobby: bool = false):
 	if evolving:
@@ -249,7 +251,7 @@ func evolve(in_lobby: bool = false):
 	if not in_lobby:
 		await get_tree().create_timer(0.2).timeout
 	copy_player_data(new_body)
-	new_body.spawn(position)
+	new_body.spawn(position, true, facing_right)
 	set_player_active(false)
 	emit_signal("player_evolved", new_body)
 	GameInfos.tracked_targets.erase(self)
