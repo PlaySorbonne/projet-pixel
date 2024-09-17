@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
-[ext_resource type="PackedScene" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/PlayerSelectionTheme.tres" id="4_vnmdc"]
+[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_vnmdc"]
 [ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="6_pe12c"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]

@@ -60,7 +60,3 @@ scale = Vector2(3.5, 0.5)
 [node name="Wall8" parent="." index="14" instance=ExtResource("2_euv16")]
 position = Vector2(838, 561)
 scale = Vector2(6, 0.5)
-
-[node name="Wall6" parent="." index="15" instance=ExtResource("2_euv16")]
-position = Vector2(834, 757)
-scale = Vector2(6, 0.5)

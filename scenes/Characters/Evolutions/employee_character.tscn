@@ -20,7 +20,6 @@ current_evolution = 2
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj5wj")
-position = Vector2(0, 40)
 sprite_frames = ExtResource("2_hwdps")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -36,3 +35,4 @@ fall_recovery = 0.65
 delay_between_jump_and_fall = 0.35
 jump_power = 3000.0
 attack_intensity = 2.0
+mid_air_wind_up = 0.3
