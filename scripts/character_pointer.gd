@@ -36,12 +36,13 @@ func set_max_hitpoints(hitpoints : int):
 			unit.position = Vector2()
 			healthbars.append(unit)
 			$HealthBars.add_child(unit)
+			unit.add_unit()
 			total_hitpoints += unit_health
 			diff_hitpoints -= unit_health
 	elif num_health_bars < num_goal_health_bars:
 		for _i in range(num_goal_health_bars - num_health_bars):
 			var unit : HealthBarUnit = healthbars.pop_back()
-			unit.queue_free()
+			unit.remove_unit()
 	total_hitpoints = hitpoints
 
 func take_damage(damage : int, new_hitpoints : int):
