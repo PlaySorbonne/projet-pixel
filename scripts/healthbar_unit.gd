@@ -15,24 +15,25 @@ func set_health_value(new_val : int):
 	health = new_val
 	_update_healthbar()
 
-func damage(val : int):
+func damage(val : int, delay := 0):
 	var new_tips : Array[TextureRect] = []
 	for h in range(health, health-val, -1):
 		var health_slot := PROGRESS_TIP_TEXTURE.instantiate()
 		health_slot.modulate = Color.WHITE
-		health_slot.position = Vector2(TIP_POS_COEFF*h, 0.0)
+		health_slot.position = Vector2(TIP_POS_COEFF*(h-1), 0.0)
 		add_child(health_slot)
 		new_tips.append(health_slot)
 	health -= val
 	_update_healthbar()
+	await get_tree().create_timer(0.3 + delay * 0.15).timeout
 	for s : TextureRect in new_tips:
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.15).timeout
 		s.queue_free()
 
 func heal_effect(val : int):
 	var new_tips : Array[TextureRect] = []
 	var new_health : int = min(health+val, 5)
-	for h in range(health, new_health+1):
+	for h in range(health, new_health):
 		var health_slot := PROGRESS_TIP_TEXTURE.instantiate()
 		health_slot.modulate = Color.AQUA
 		health_slot.position = Vector2(TIP_POS_COEFF*h, 0.0)
@@ -62,7 +63,11 @@ func remove_unit():
 	queue_free()
 
 func add_unit():
+	var h := health
+	set_health_value(0)
 	scale = Vector2(1.0, 0.0)
 	visible = true
 	var tween := create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)
+	await get_tree().create_timer(0.2).timeout
+	heal_effect(5)
