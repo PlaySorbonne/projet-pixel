@@ -51,7 +51,7 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	if activate:
 		set_player_active(true)
 	velocity = Vector2.ZERO
-	scale = Vector2.ONE
+	scale = Vector2(x_scale, 1.0)
 	emit_signal("player_spawned")
 
 func set_player_active(new_activity : bool):
