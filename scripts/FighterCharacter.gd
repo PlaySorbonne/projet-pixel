@@ -9,6 +9,8 @@ signal changed_max_hitpoints
 
 @export var max_hitpoints := 3:
 	set(val):
+		if val == max_hitpoints:
+			return
 		max_hitpoints = val
 		emit_signal("changed_max_hitpoints", max_hitpoints)
 @export var invincibility_time := 0.4

@@ -122,6 +122,8 @@ func _physics_process(delta):
 				max_fall_speed
 			)
 	if computing_movement:
+		if is_jumping:
+			movement_velocity.x = horizontal_input * air_speed
 		# need to change the formula for knockback velocity, dosn't feel right as of yet
 		velocity = movement_velocity + knockback_velocity
 		if knockback_velocity != Vector2.ZERO:

@@ -16,8 +16,10 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("3_0k4en")
 object = NodePath("..")
+property = "shake_offset"
 
 [node name="HealthbarUnit" parent="HealthBars" instance=ExtResource("3_nacgl")]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = -112.0
@@ -25,6 +27,7 @@ offset_right = 70.0
 offset_bottom = -82.0
 
 [node name="HealthbarUnit2" parent="HealthBars" instance=ExtResource("3_nacgl")]
+visible = false
 layout_mode = 0
 offset_left = -47.0
 offset_top = -81.0
@@ -33,6 +36,7 @@ offset_bottom = -51.0
 value = 5.0
 
 [node name="HealthbarUnit3" parent="HealthBars" instance=ExtResource("3_nacgl")]
+visible = false
 layout_mode = 0
 offset_left = -54.0
 offset_top = -50.0

@@ -9,6 +9,7 @@
 self_modulate = Color(1, 0.659359, 0.600691, 1)
 
 [node name="AdjustStats" parent="." index="13" instance=ExtResource("2_yiwb5")]
+layer = 10
 
 [node name="ChangeEvolution" parent="." index="17"]
 position = Vector2(336, 660)
