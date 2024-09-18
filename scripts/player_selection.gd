@@ -42,10 +42,14 @@ func check_winner():
 		_on_animation_player_animation_finished("")
 
 func _on_color_button_pressed() -> void:
-	$Control/ColorPicker.visible = !$Control/ColorPicker.visible
+	if $Control/ColorPicker.visible:
+		$Control/ColorPicker.visible = false
+	else:
+		$Control/ColorPicker.visible = true
+		$Control/ColorPicker.global_position = $Control.global_position + Vector2(
+			450, -75)
 
 func _on_color_picker_color_changed(color: Color) -> void:
-	#$Control/ColorPicker.visible = false
 	GameInfos.players_data[player_index]["color"] = color
 	set_icons_color(color)
 
@@ -54,12 +58,9 @@ func set_icons_color(color : Color):
 	$Control/Icon/Icon2.material.set_shader_parameter("color", Vector3(color.r, color.g, color.b))
 
 func _on_label_text_changed(new_text : String) -> void:
-	if new_text == GameInfos.player_names[player_index]:
+	if new_text == GameInfos.players_data[player_index]["name"]:
 		return
-	if new_text == "" or new_text in GameInfos.player_names:
-		$Control/Label.text = ""
-		return
-	GameInfos.player_names[player_index] = new_text
+	GameInfos.players_data[player_index]["name"] = new_text
 
 func _on_animation_player_animation_finished(_anim_name : String):
 	var win_player : AnimationPlayer = $Control/LastWinner/texture/AnimationPlayer
