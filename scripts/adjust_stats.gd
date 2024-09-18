@@ -31,7 +31,6 @@ func _ready():
 	for ev : String in data_keys:
 		# get character data
 		char_selector.add_item(ev)
-		
 		var curr_ev = PlayerCharacter.Evolutions[ev]
 		var p : PlayerCharacter = PlayerCharacter.EvolutionCharacters[curr_ev].instantiate()
 		for adj : VariableAdjuster in variable_adjusters:

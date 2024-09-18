@@ -26,6 +26,8 @@ func _ready():
 	transition.end_screen_transition()
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
+	else:
+		$ButtonConfirm/AnimationStart.play("leave")
 
 func set_game_widgets():
 	$GameModeSelector.options = GameInfos.GAME_MODE_TITLES
@@ -57,6 +59,7 @@ func create_player_infos(index : int):
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)
+	
 	player_infos.player_index = index
 	player_infos.last_winner = (index == GameInfos.last_winner)
 	player_infos.control_type = GameInfos.players_data[index]["control_type"]
@@ -64,6 +67,15 @@ func create_player_infos(index : int):
 	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
 		player_selectors.size()-1)
 	player_infos.connect("player_removed", remove_player)
+
+func chech_start_button():
+	var not_active = $ButtonConfirm.disabled
+	if not_active and len(player_selectors) >= 2:
+		$ButtonConfirm/AnimationStart.play("start")
+		$ButtonConfirm.disabled = false
+	elif not(not_active) and len(player_selectors) < 2:
+		$ButtonConfirm/AnimationStart.play_backwards("start")
+		$ButtonConfirm.disabled = true
 
 func add_player(device_type : int, device : int):
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
@@ -145,7 +157,13 @@ func remove_player(selector : PlayerSelection, _index : int):
 		duration += 0.2
 	player_selectors.remove_at(pos_in_array)
 
+func _on_animation_start_animation_finished(anim_name : String):
+	if anim_name == "start" and not($ButtonConfirm.disabled):
+		$ButtonConfirm/AnimationStart.play("idle")
+
 func _on_button_confirm_pressed():
+	if len(player_selectors) < 2:
+		return
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(WORLD_PATH)
