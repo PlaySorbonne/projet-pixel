@@ -73,7 +73,7 @@ func _on_title_screen_button_start_pressed():
 
 func _on_title_screen_button_vault_pressed():
 	var player = Lobby.DEFAULT_PLAYER.instantiate()
-	GameInfos.level = GameInfos.Levels.StatEditor
+	GameInfos.selected_level = GameInfos.LEVEL_STAT_EDITOR
 	player.control_device = 0
 	player.control_type = 0
 	player.god_mode = true

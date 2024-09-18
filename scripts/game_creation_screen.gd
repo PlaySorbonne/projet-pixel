@@ -1,26 +1,6 @@
 extends Control
 class_name GameCreationScreen
 
-const LEVEL_TITLES : Array[String] = [
-	"DEFAULT",
-	"TRAINING",
-]
-const LEVEL_PATHS : Array[String] = [
-	"res://scenes/World/Levels/level_default.tscn",
-	"res://scenes/World/Levels/level_training.tscn"
-]
-const MUSIC_NAMES : Array[String] = [
-	"Secret Knowledge"
-]
-const GAME_MODE_TITLES : Array[String] = [
-	"BRAWL"
-]
-const GAME_MODE_DESCRIPTIONS : Array[String] = [
-	"BRAWL_DESCRIPTION"
-]
-const MUSICS_PATHS : Array[String] = [
-	"res://resources/audio/music/Secret_Knowledge.wav"
-]
 const LEVEL_OBJ_POS := Vector2(3000.0, 0.0)
 const PLAYER_INFOS_RES := preload("res://scenes/Menus/GameCreation/PlayerSelection.tscn")
 const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
@@ -48,11 +28,11 @@ func _ready():
 		reload_old_game_infos()
 
 func set_game_widgets():
-	$GameModeSelector.options = GAME_MODE_TITLES
+	$GameModeSelector.options = GameInfos.GAME_MODE_TITLES
 	$GameModeSelector.selected_option = 0
-	$LevelSelector.options = LEVEL_TITLES
+	$LevelSelector.options = GameInfos.LEVEL_TITLES
 	$LevelSelector.selected_option = 0
-	$MusicSelector.options = MUSIC_NAMES
+	$MusicSelector.options = GameInfos.MUSIC_NAMES
 	$MusicSelector.selected_option = 0
 	set_gamemode(GameInfos.selected_gamemode)
 	set_music(GameInfos.selected_music)
@@ -109,7 +89,7 @@ func set_test_music(test_music : bool):
 	if test_music:
 		music_background.stream_paused = true
 		if music_tester_music != GameInfos.selected_music:
-			music_tester.stream = load(MUSICS_PATHS[GameInfos.selected_music])
+			music_tester.stream = load(GameInfos.MUSICS_PATHS[GameInfos.selected_music])
 			music_tester.play()
 		music_tester.stream_paused = false
 	else:
@@ -120,20 +100,23 @@ func _on_button_test_music_pressed():
 	set_test_music(not music_tester.playing)
 
 func _on_music_selector_option_changed(new_option : int):
+	GameInfos.selected_music = new_option
 	set_music(new_option)
 
 func set_music(music : int):
-	$ButtonTestMusic.text = MUSIC_NAMES[music]
+	$ButtonTestMusic.text = GameInfos.MUSIC_NAMES[music]
 	GameInfos.selected_music = music
 
 func _on_game_mode_selector_option_changed(new_option : int):
+	GameInfos.selected_gamemode = new_option
 	set_gamemode(new_option)
 
 func set_gamemode(gamemode : int):
-	$LabelGameModeName.text = GAME_MODE_TITLES[gamemode]
-	$LabelGameModeDescription.text = GAME_MODE_DESCRIPTIONS[gamemode]
+	$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
+	$LabelGameModeDescription.text = GameInfos.GAME_MODE_DESCRIPTIONS[gamemode]
 
 func _on_level_selector_option_changed(new_option : int):
+	GameInfos.selected_level = new_option
 	set_level(new_option)
 
 func set_level(level : int):
@@ -143,7 +126,7 @@ func set_level(level : int):
 	var sub_viewport = $TextureLevel/SubViewport
 	if current_level != null:
 		current_level.queue_free()
-	current_level = load(LEVEL_PATHS[level]).instantiate()
+	current_level = load(GameInfos.LEVEL_PATHS[level]).instantiate()
 	current_level.position = Vector2(25.0, 25.0)
 	current_level.scale = Vector2(0.2, 0.2)
 	sub_viewport.add_child(current_level)

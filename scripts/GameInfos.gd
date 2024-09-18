@@ -1,11 +1,28 @@
 extends Node
 
-enum Levels {Default, Training, StatEditor}
-const LEVEL_PATHS = {
-	Levels.Default : "res://scenes/World/Levels/level_default.tscn",
-	Levels.Training : "res://scenes/World/Levels/level_training.tscn",
-	Levels.StatEditor : "res://scenes/World/Levels/level_stat_editor.tscn"
-}
+const LEVEL_PATHS : Array[String] = [
+	"res://scenes/World/Levels/level_default.tscn",
+	"res://scenes/World/Levels/level_training.tscn",
+	"res://scenes/World/Levels/level_stat_editor.tscn"
+]
+const LEVEL_TITLES : Array[String] = [
+	"DEFAULT",
+	"TRAINING",
+	"STAT_EDITOR"
+]
+var LEVEL_STAT_EDITOR : int = LEVEL_TITLES.find("STAT_EDITOR")
+const MUSIC_NAMES : Array[String] = [
+	"Secret Knowledge"
+]
+const GAME_MODE_TITLES : Array[String] = [
+	"BRAWL"
+]
+const GAME_MODE_DESCRIPTIONS : Array[String] = [
+	"BRAWL_DESCRIPTION"
+]
+const MUSICS_PATHS : Array[String] = [
+	"res://resources/audio/music/Secret_Knowledge.wav"
+]
 const DEFAULT_PLAYER_COLORS : Array[Color] = [
 	Color.BLUE,
 	Color.RED,
@@ -34,7 +51,6 @@ const DEFAULT_PLAYER_NAMES : Array[String] = [
 
 var game_started := false
 var world : Node2D
-var level := Levels.Default
 var camera : WorldCamera
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
@@ -54,7 +70,6 @@ func reset_game_infos(deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
 	players = {}
-	level = Levels.Default
 	CharacterPointer.current_z = 0
 	if deep_reset:
 		players_data = {}
@@ -68,7 +83,7 @@ func reset_game_infos(deep_reset := false) -> void:
 		last_winner = -1
 
 func load_game_level() -> Level:
-	return load(LEVEL_PATHS[level]).instantiate()
+	return load(LEVEL_PATHS[selected_level]).instantiate()
 
 func add_player(player: PlayerCharacter) -> void:
 	players[player.player_ID] = player
