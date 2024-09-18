@@ -80,8 +80,8 @@ func add_player(player: PlayerCharacter) -> void:
 		"color" : p_color,
 		"original_color" : p_color,
 		"last_winner" : false,
-		"device_type" : player.control_type,
-		"device_num" : player.control_device
+		"control_type" : player.control_type,
+		"control_device" : player.control_device
 	}
 
 func remove_player(id : int) -> void:

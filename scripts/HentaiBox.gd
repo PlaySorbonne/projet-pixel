@@ -115,6 +115,7 @@ func _on_area_2d_body_entered(body : Node2D):
 	var player_body : PlayerCharacter = body
 	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
 		if weeb_touched >= 3:
+			GameInfos.last_winner = player_body.player_ID
 			emit_signal("game_won")
 		else:
 			GameInfos.freeze_frame.freeze(0.025)

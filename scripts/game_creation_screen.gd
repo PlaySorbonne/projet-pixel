@@ -32,8 +32,13 @@ func _ready():
 		reload_old_game_infos()
 
 func reload_old_game_infos():
-	for i : int in GameInfos.players.keys():
-		create_player_infos(i)
+	for id: int in GameInfos.players_data.keys():
+		var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+		player.player_ID = id
+		player.control_device = GameInfos.players_data[id]["control_device"]
+		player.control_type = GameInfos.players_data[id]["control_type"]
+		GameInfos.players[id] = player
+		create_player_infos(id)
 
 func create_player_infos(index : int):
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
@@ -41,8 +46,8 @@ func create_player_infos(index : int):
 	player_selectors.append(player_infos)
 	player_infos.player_index = index
 	player_infos.last_winner = (index == GameInfos.last_winner)
-	player_infos.control_type = GameInfos.players[index].control_type
-	player_infos.control_index = GameInfos.players[index].control_device
+	player_infos.control_type = GameInfos.players_data[index]["control_type"]
+	player_infos.control_index = GameInfos.players_data[index]["control_device"]
 	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
 		player_selectors.size()-1)
 	player_infos.connect("player_removed", remove_player)
