@@ -3,6 +3,7 @@ class_name PlayerSelection
 
 signal player_removed
 
+const ANIM_NAMES = ["jump", "swell", "swing", "tilt", "rotate", "squash"]
 const MOUSE_TEXTURE = preload("res://resources/images/icons/mouse.png")
 const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
 
@@ -56,7 +57,6 @@ func _on_label_text_changed(new_text : String) -> void:
 	GameInfos.player_names[player_index] = new_text
 
 func _on_animation_player_animation_finished(anim_name : String):
-	const ANIM_NAMES = ["jump", "swell", "swing", "tilt"]
 	var win_player : AnimationPlayer = $Control/LastWinner/texture/AnimationPlayer
 	win_player.play(ANIM_NAMES.pick_random())
 

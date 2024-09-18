@@ -81,6 +81,8 @@ func _init():
 func _ready():
 	super()
 	team = player_ID
+	print("player ID = " + str(player_ID))
+	print("players_data = " + str(GameInfos.players_data))
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
@@ -236,10 +238,10 @@ func evolve(in_lobby: bool = false):
 	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	GameInfos.players[player_ID] = new_body
+	copy_player_data(new_body)
 	get_parent().add_child(new_body)
 	if not in_lobby:
 		await get_tree().create_timer(0.2).timeout
-	copy_player_data(new_body)
 	new_body.spawn(position, true, facing_right)
 	set_player_active(false)
 	emit_signal("player_evolved", new_body)

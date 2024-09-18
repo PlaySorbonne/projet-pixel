@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=24 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
@@ -22,7 +22,7 @@ shader_parameter/color = Color(0.819608, 0, 0.819608, 1)
 
 [sub_resource type="Animation" id="Animation_jy6dd"]
 resource_name = "jump"
-length = 2.0
+length = 4.2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.2, 1.7),
+"times": PackedFloat32Array(0, 0.5, 1.2, 3),
 "transitions": PackedFloat32Array(0.378929, 0.535887, 0.392292, 0.378929),
 "update": 0,
 "values": [0.0, 0.0, -6.28319, -6.28319]
@@ -55,7 +55,7 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.2, 1.7),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.2, 3),
 "transitions": PackedFloat32Array(0.378929, 0.378929, 1.7411, 0.378929, 0.378929),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -150), Vector2(0, 0), Vector2(0, 0)]
@@ -63,7 +63,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_u0ac5"]
 resource_name = "swell"
-length = 5.0
+length = 5.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -104,7 +104,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_putn4"]
 resource_name = "swing"
-length = 4.0
+length = 5.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -145,7 +145,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_u17hy"]
 resource_name = "tilt"
-length = 4.5
+length = 5.7
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -184,9 +184,93 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_aeng1"]
+resource_name = "rotate"
+length = 3.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.517632, 0.392292, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, -6.28319, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6vf5u"]
+resource_name = "squash"
+length = 7.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.5, 2.1, 3.2, 4.2, 4.7, 5.9),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(0.35, 1.5), Vector2(1, 1), Vector2(0.2, 2.6), Vector2(0.2, 2.6), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.3, 4.5, 4.7),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 2.21914, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoar"]
 _data = {
 "jump": SubResource("Animation_jy6dd"),
+"rotate": SubResource("Animation_aeng1"),
+"squash": SubResource("Animation_6vf5u"),
 "swell": SubResource("Animation_u0ac5"),
 "swing": SubResource("Animation_putn4"),
 "tilt": SubResource("Animation_u17hy")
@@ -425,18 +509,21 @@ expand_mode = 1
 
 [node name="LastWinner" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 421.0
-offset_top = -29.0301
-offset_right = 421.0
-offset_bottom = -29.0301
+offset_left = 391.0
+offset_top = -60.0
+offset_right = 391.0
+offset_bottom = -60.0
+scale = Vector2(1.5, 1.5)
 
 [node name="texture" type="TextureRect" parent="Control/LastWinner"]
 modulate = Color(0.901961, 0.792157, 0, 1)
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
 offset_right = 75.0
 offset_bottom = 75.0
 pivot_offset = Vector2(37.5, 37.5)
+mouse_filter = 2
 theme = ExtResource("2_v14l6")
 texture = ExtResource("6_mw5do")
 expand_mode = 1
