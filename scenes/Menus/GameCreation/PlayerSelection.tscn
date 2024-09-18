@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://d00vbqc5d7u4o"]
+
+[ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
+[ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="3_of4qb"]
+[ext_resource type="Shader" path="res://resources/shaders/ReplaceColors.gdshader" id="4_dq808"]
+[ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
+[ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
+
+[sub_resource type="Gradient" id="Gradient_ykewt"]
+colors = PackedColorArray(1, 0.627451, 0.917647, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3aiec"]
+gradient = SubResource("Gradient_ykewt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm3jx"]
+resource_local_to_scene = true
+shader = ExtResource("4_dq808")
+shader_parameter/color = Color(0.819608, 0, 0.819608, 1)
+
+[node name="PlayerSelection" type="Control"]
+layout_mode = 3
+script = ExtResource("1_i7nk8")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 720.0
+offset_bottom = 67.0
+texture = SubResource("GradientTexture2D_3aiec")
+
+[node name="Label" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.006
+anchor_right = -0.006
+offset_left = 31.0
+offset_top = -1.0
+offset_right = 414.0
+offset_bottom = 73.0
+theme = ExtResource("2_v14l6")
+text = "Player1"
+placeholder_text = "Enter name..."
+max_length = 10
+flat = true
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 589.0
+offset_top = -9.0
+offset_right = 689.0
+offset_bottom = 91.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("2_v14l6")
+texture = ExtResource("3_of4qb")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Icon"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_pm3jx")
+layout_mode = 1
+anchors_preset = -1
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(50, 50)
+theme = ExtResource("2_v14l6")
+texture = ExtResource("3_of4qb")
+expand_mode = 1
+
+[node name="ControlType" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 416.0
+offset_top = -1.0
+offset_right = 491.001
+offset_bottom = 74.0
+rotation = -0.106465
+theme = ExtResource("2_v14l6")
+texture = ExtResource("4_wqdiw")
+expand_mode = 1
+
+[node name="ColorButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.0100002
+anchor_bottom = -0.0100002
+offset_left = 516.0
+offset_top = 12.0
+offset_right = 563.0
+offset_bottom = 59.0
+theme = ExtResource("5_036eb")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 545.0
+offset_top = 151.0
+offset_right = 843.0
+offset_bottom = 423.0
+edit_alpha = false
+picker_shape = 2
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
+[connection signal="pressed" from="ColorButton" to="." method="_on_button_pressed"]
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://lpmug028akoj"]
+
+[ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
+[ext_resource type="PackedScene" uid="uid://d00vbqc5d7u4o" path="res://scenes/Menus/GameCreation/PlayerSelection.tscn" id="3_tomd5"]
+
+[node name="GameCreationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rxodn")
+
+[node name="LabelPlayers" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 108.0
+offset_right = 344.0
+offset_bottom = 174.0
+theme = ExtResource("2_ganm3")
+text = "Players"
+
+[node name="VBoxPlayers" type="ColorRect" parent="LabelPlayers"]
+modulate = Color(0.312487, 4.57964e-05, 0.296672, 0.541176)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.173
+anchor_right = 0.021
+anchor_bottom = 0.173
+offset_left = -422.864
+offset_top = -38.418
+offset_right = 2169.14
+offset_bottom = 575.582
+rotation = -0.0611863
+
+[node name="PlayerSelection" parent="LabelPlayers" instance=ExtResource("3_tomd5")]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 50.0
+offset_bottom = 100.0
+
+[node name="PlayerSelection2" parent="LabelPlayers" instance=ExtResource("3_tomd5")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 85.0
+offset_top = 175.0
+offset_right = 85.0
+offset_bottom = 175.0
+
+[node name="PlayerSelection3" parent="LabelPlayers" instance=ExtResource("3_tomd5")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 350.37
+offset_top = 300.0
+offset_right = 350.37
+offset_bottom = 300.0
+
+[node name="PlayerSelection4" parent="LabelPlayers" instance=ExtResource("3_tomd5")]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 500.0
+offset_top = 400.0
+offset_right = 500.0
+offset_bottom = 400.0

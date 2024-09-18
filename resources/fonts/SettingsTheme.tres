@@ -11,3 +11,6 @@ Label/constants/shadow_offset_x = -8
 Label/constants/shadow_offset_y = 8
 Label/constants/shadow_outline_size = 8
 Label/fonts/font = ExtResource("1_upnpo")
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 20
+LineEdit/fonts/font = ExtResource("1_upnpo")
