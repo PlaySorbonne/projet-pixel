@@ -59,14 +59,13 @@ func connect_special_box():
 func actualize_characters(do_update_data := true):
 	if do_update_data:
 		update_data()
-	#print(GameInfos.players)
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values():
 		var ev = PlayerCharacter.Evolutions.find_key(player.current_evolution)
 		for k : String in variables_data[ev].keys():
 			player.set(k, variables_data[ev][k])
 
 func actualize_specials(do_update_data := true):
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values:
 		var ev : String = PlayerCharacter.Evolutions.find_key(player.current_evolution)
 		var ev_spe := ev+"_special"
 		for k : String in variables_data[ev_spe].keys():

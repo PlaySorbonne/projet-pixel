@@ -6,7 +6,6 @@ signal player_removed
 const MOUSE_TEXTURE = preload("res://resources/images/icons/mouse.png")
 const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
 
-var default_player_name := ""
 var control_index : int = -1
 @export var control_type: bool:
 	set(value):
@@ -18,8 +17,8 @@ var control_index : int = -1
 @export var player_index: int:
 	set(value):
 		player_index = value
-		set_icons_color(GameInfos.player_colors[player_index])
-		$Control/Label.text = GameInfos.player_names[player_index]
+		set_icons_color(GameInfos.players_data[player_index]["color"])
+		$Control/Label.text = GameInfos.players_data[player_index]["name"]
 @export var last_winner := false:
 	set(value):
 		last_winner = value
@@ -37,7 +36,7 @@ func _on_color_button_pressed() -> void:
 
 func _on_color_picker_color_changed(color: Color) -> void:
 	#$Control/ColorPicker.visible = false
-	GameInfos.player_colors[player_index] = color
+	GameInfos.players_data[player_index]["color"] = color
 	set_icons_color(color)
 
 func set_icons_color(color : Color):

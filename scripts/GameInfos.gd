@@ -6,7 +6,7 @@ const LEVEL_PATHS = {
 	Levels.Training : "res://scenes/World/Levels/level_training.tscn",
 	Levels.StatEditor : "res://scenes/World/Levels/level_stat_editor.tscn"
 }
-const DEFAULT_PLAYER_COLORS = [
+const DEFAULT_PLAYER_COLORS : Array[Color] = [
 	Color.BLUE,
 	Color.RED,
 	Color.LIME_GREEN,
@@ -79,35 +79,27 @@ func add_player(player: PlayerCharacter) -> void:
 		"original_name" : p_name,
 		"color" : p_color,
 		"original_color" : p_color,
-		"last_winner" : false
+		"last_winner" : false,
+		"device_type" : player.control_type,
+		"device_num" : player.control_device
 	}
 
 func remove_player(id : int) -> void:
-	var player : PlayerCharacter
-	for p : PlayerCharacter in players:
-		if p.player_ID == id:
-			player = p
-			break
-	players.erase(player)
-	available_player_colors.append(players_data[id]["color"])
-	available_player_names.append(players_data[id]["name"])
+	print("id = " + str(id))
+	print("players : " + str(players))
+	var player : PlayerCharacter = players[id]
+	available_player_colors.append(players_data[id]["original_color"])
+	available_player_names.append(players_data[id]["original_name"])
+	players.erase(id)
 	players_data.erase(id)
-	player.queue_free()
-
-func get_player(id : int) -> PlayerCharacter:
-	for p : PlayerCharacter in players:
-		if p.player_ID == id:
-			return p
-	return null
-
-	#var available_colors = available_colors()
-	#player_colors[player_id] = available_colors[available_colors_index]
-	#if available_colors_index == len(available_colors):
-	#	available_colors_index = 0
+	if last_winner == id:
+		last_winner = -1
+	if player != null:
+		player.queue_free()
 
 
-
-func players_number(): return len(players)
+func players_number():
+	return len(players)
 
 # add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
 # accuracy, evolution...)

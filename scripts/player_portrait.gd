@@ -15,12 +15,12 @@ var init_portrait := false
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
-	$Holder/TextureBackground.modulate = GameInfos.player_colors[player_num]
+	$Holder/TextureBackground.modulate = GameInfos.players_data[player_num]["color"]
 	connect_player_object()
 	update_health()
 	update_evolution()
 	var player : PlayerCharacter = GameInfos.players[player_num]
-	$Holder/LabelName.text = GameInfos.player_names[player_num]
+	$Holder/LabelName.text = GameInfos.players_data[player_num]["name"]
 
 func connect_player_object():
 	var player = GameInfos.players[player_number]

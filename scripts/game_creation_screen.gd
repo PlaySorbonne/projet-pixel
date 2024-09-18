@@ -28,11 +28,11 @@ var player_selectors : Array[PlayerSelection] = []
 func _ready():
 	GameInfos.reset_game_infos()
 	transition.end_screen_transition()
-	if GameInfos.player_names.size() != 0:
+	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
 
 func reload_old_game_infos():
-	for i : int in range(len(GameInfos.player_names)):
+	for i : int in GameInfos.players.keys():
 		create_player_infos(i)
 
 func create_player_infos(index : int):
@@ -40,7 +40,6 @@ func create_player_infos(index : int):
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)
 	player_infos.player_index = index
-	player_infos.default_player_name = GameInfos.player_names[index]
 	player_infos.last_winner = (index == GameInfos.last_winner)
 	player_infos.control_type = GameInfos.players[index].control_type
 	player_infos.control_index = GameInfos.players[index].control_device
@@ -50,11 +49,10 @@ func create_player_infos(index : int):
 
 func add_player(device_type : int, device : int):
 	var is_keyboard = (device_type == 0)
-	var player_index := GameInfos.player_names.size()
-	var player = DEFAULT_PLAYER.instantiate()
+	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	var player_index := player.player_ID
 	player.control_device = device
 	player.control_type = device_type
-	player.god_mode = true
 	GameInfos.add_player(player)
 	create_player_infos(player_index)
 

@@ -2,7 +2,7 @@ extends Node2D
 class_name World
 
 const WEEB_EVOLUTION_CROSSHAIR_RES := preload("res://scenes/Utilities/WeebEvolutionCrosshair.tscn")
-const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
+const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
 @onready var game_mode : GameMode = $GameMode
