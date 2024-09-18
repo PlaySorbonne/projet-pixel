@@ -78,7 +78,7 @@ func check_start_button():
 		$ButtonConfirm/AnimationStart.play("start")
 		$ButtonConfirm.disabled = false
 	elif not(not_active) and len(player_selectors) < 2:
-		$ButtonConfirm/AnimationStart.play_backwards("start")
+		$ButtonConfirm/AnimationStart.play_backwards("start_leave")
 		$ButtonConfirm.disabled = true
 
 func add_player(device_type : int, device : int):
@@ -169,6 +169,7 @@ func _on_animation_start_animation_finished(anim_name : String):
 func _on_button_confirm_pressed():
 	if len(player_selectors) < 2:
 		return
+	$Shaker.shake(0.4, 20, 40, 1)
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(WORLD_PATH)
