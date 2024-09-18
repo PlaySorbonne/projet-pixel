@@ -24,7 +24,7 @@ func _input(event : InputEvent):
 		device_type = 0
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		device_type = 1
-	for p : PlayerCharacter in GameInfos.players:
+	for p : PlayerCharacter in GameInfos.players.values():
 		if event.device != player_device:
 			player_device = event.device
 			p.set_control_device(player_device)

@@ -99,7 +99,7 @@ func on_player_death(player : FighterCharacter):
 
 func start_game():
 	# Reset players to CEO evolution
-	for player: PlayerCharacter in GameInfos.players:
+	for player: PlayerCharacter in GameInfos.players.values():
 		var new_body : PlayerCharacter = PlayerCharacter.EvolutionCharacters[PlayerCharacter.Evolutions.CEO].instantiate()
 		player.copy_player_data(new_body)
 		GameInfos.players[player.player_ID] = new_body
@@ -144,7 +144,7 @@ func remove_player(player: PlayerCharacter):
 		keyboards.erase(player.control_device)
 	else:
 		controllers.erase(player.control_device)
-	GameInfos.remove_player(player)
+	GameInfos.remove_player(player.player_ID)
 	remove_child(player)
 
 func _on_exit_zone_body_entered(body: Node2D):

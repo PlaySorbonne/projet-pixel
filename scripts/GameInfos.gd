@@ -6,6 +6,31 @@ const LEVEL_PATHS = {
 	Levels.Training : "res://scenes/World/Levels/level_training.tscn",
 	Levels.StatEditor : "res://scenes/World/Levels/level_stat_editor.tscn"
 }
+const DEFAULT_PLAYER_COLORS = [
+	Color.BLUE,
+	Color.RED,
+	Color.LIME_GREEN,
+	Color.YELLOW,
+	Color.PURPLE,
+	Color.TEAL,
+	Color.MINT_CREAM,
+	Color.WEB_GRAY
+]
+const DEFAULT_PLAYER_NAMES : Array[String] = [
+	"Luffi",
+	"Quirito",
+	"Goko",
+	"Naroto",
+	"Ishigo",
+	"Edvard",
+	"Eran",
+	"Ligth",
+	"Gan",
+	"Tinjinro",
+	"Lelech",
+	"Satama",
+	"Ach"
+]
 
 var game_started := false
 var world : Node2D
@@ -13,62 +38,74 @@ var level := Levels.Default
 var camera : WorldCamera
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
-var players : Array[PlayerCharacter] = []
-var players_order : Array[int] = []
-var available_colors_index := 0
+var players : Dictionary = {}
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
 
+var available_player_names : Array[String] = []
+var available_player_colors : Array[Color] = []
 var selected_gamemode : int = 0
 var selected_level : int = 0
 var selected_music : int = 0
-var player_colors : Array[Color] = []
-var player_names : Array[String] = []
-var last_winner : int = -1
+var players_data : Dictionary = {}
+var last_winner := -1
 
 func reset_game_infos(deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
-	players = []
-	players_order = []
-	available_colors_index = 0
+	players = {}
 	level = Levels.Default
 	CharacterPointer.current_z = 0
 	if deep_reset:
+		players_data = {}
+		available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
+		available_player_names.shuffle()
+		available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
+		available_player_colors.shuffle()
 		selected_music = 0
 		selected_level = 0
 		selected_gamemode = 0
-		player_colors = []
-		player_names = []
 		last_winner = -1
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[level]).instantiate()
 
 func add_player(player: PlayerCharacter) -> void:
-	players.append(player)
-	player_colors.append(available_colors()[0])
-	
-func remove_player(player: PlayerCharacter) -> void:
-	var id = player.player_ID
-	players.remove_at(id)
-	player_colors.remove_at(id)
-	compute_ids()
+	players[player.player_ID] = player
+	var p_name : String = available_player_names.pop_back()
+	var p_color : Color = available_player_colors.pop_back()
+	players_data[player.player_ID] = {
+		"name": p_name,
+		"original_name" : p_name,
+		"color" : p_color,
+		"original_color" : p_color,
+		"last_winner" : false
+	}
 
-func compute_ids() -> void:
-	for i in range(len(players)):
-		players[i].player_ID = i
-		players[i]._update_debug_text()
-		
-func available_colors() -> Array:
-	return PlayerCharacter.PLAYER_COLORS.filter(func(c): return not c in player_colors)
-	
-func change_color(player_id: int) -> void:
-	var available_colors = available_colors()
-	player_colors[player_id] = available_colors[available_colors_index]
-	available_colors_index += 1
-	if available_colors_index == len(available_colors):
-		available_colors_index = 0
+func remove_player(id : int) -> void:
+	var player : PlayerCharacter
+	for p : PlayerCharacter in players:
+		if p.player_ID == id:
+			player = p
+			break
+	players.erase(player)
+	available_player_colors.append(players_data[id]["color"])
+	available_player_names.append(players_data[id]["name"])
+	players_data.erase(id)
+	player.queue_free()
+
+func get_player(id : int) -> PlayerCharacter:
+	for p : PlayerCharacter in players:
+		if p.player_ID == id:
+			return p
+	return null
+
+	#var available_colors = available_colors()
+	#player_colors[player_id] = available_colors[available_colors_index]
+	#if available_colors_index == len(available_colors):
+	#	available_colors_index = 0
+
+
 
 func players_number(): return len(players)
 

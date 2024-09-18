@@ -21,9 +21,9 @@ const WORLD_PATH = "res://scenes/world.tscn"
 @onready var music_tester := $ButtonTestMusic/AudioTestMusic
 @onready var music_background := $AudioStreamPlayer
 var music_tester_music := -1
-var num_player_infos := 0
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
+var player_selectors : Array[PlayerSelection] = []
 
 func _ready():
 	GameInfos.reset_game_infos()
@@ -37,18 +37,20 @@ func reload_old_game_infos():
 
 func create_player_infos(index : int):
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
-	player_infos.player_index = index
-	if index == GameInfos.last_winner:
-		player_infos.last_winner = true
-	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*num_player_infos
 	$PlayersContainer.add_child(player_infos)
-	num_player_infos += 1
+	player_selectors.append(player_infos)
+	player_infos.player_index = index
+	player_infos.default_player_name = GameInfos.player_names[index]
+	player_infos.last_winner = (index == GameInfos.last_winner)
+	player_infos.control_type = GameInfos.players[index].control_type
+	player_infos.control_index = GameInfos.players[index].control_device
+	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
+		player_selectors.size()-1)
+	player_infos.connect("player_removed", remove_player)
 
 func add_player(device_type : int, device : int):
 	var is_keyboard = (device_type == 0)
 	var player_index := GameInfos.player_names.size()
-	GameInfos.player_names.append("Player" + str(player_index + 1))
-	GameInfos.player_colors.append(PlayerCharacter.PLAYER_COLORS[player_index])
 	var player = DEFAULT_PLAYER.instantiate()
 	player.control_device = device
 	player.control_type = device_type
@@ -89,6 +91,22 @@ func _on_music_selector_option_changed(new_option : int):
 func _on_game_mode_selector_option_changed():
 	pass # Replace with function body.
 
+func remove_player(selector : PlayerSelection, index : int):
+	var pos_in_array := player_selectors.find(selector)
+	var duration := 0.3
+	var tween := create_tween().set_parallel()
+	if selector.control_type:
+		controllers.erase(selector.control_index)
+	else:
+		keyboards.erase(selector.control_index)
+	print("Remove Player")
+	print("\tcontrollers = " + str(controllers))
+	print("\tkeyboards = " + str(keyboards))
+	for i in range(pos_in_array+1, player_selectors.size()):
+		var s : PlayerSelection = player_selectors[i]
+		tween.tween_property(s, "position", s.position - PLAYER_INFOS_POS_OFFSET, duration)
+		duration += 0.2
+	player_selectors.remove_at(pos_in_array)
 
 func _on_button_confirm_pressed():
 	transition.start_screen_transition()

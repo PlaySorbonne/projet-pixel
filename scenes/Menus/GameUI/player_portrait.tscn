@@ -449,7 +449,6 @@ offset_top = 155.0
 offset_right = 153.0
 offset_bottom = 178.0
 pivot_offset = Vector2(50, 10)
-text = "Player1"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelEvolution" type="Label" parent="Holder"]
@@ -459,7 +458,6 @@ offset_top = 123.0
 offset_right = 232.0
 offset_bottom = 146.0
 pivot_offset = Vector2(53, 10)
-text = "EMPLOYE"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelHealth" type="Label" parent="Holder"]
@@ -470,7 +468,6 @@ offset_right = 218.0
 offset_bottom = 174.0
 rotation = 6.28319
 pivot_offset = Vector2(35, 10)
-text = "9/9"
 label_settings = ExtResource("3_hssq3")
 horizontal_alignment = 1
 

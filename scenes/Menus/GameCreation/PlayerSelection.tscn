@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=22 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
 [ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="6_mw5do"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
-[ext_resource type="Texture2D" uid="uid://cc30c753qi8ac" path="res://resources/images/interface/checkmark.png" id="8_vosra"]
 
 [sub_resource type="Gradient" id="Gradient_ykewt"]
 colors = PackedColorArray(1, 0.627451, 0.917647, 1, 1, 1, 1, 1)
@@ -193,46 +192,225 @@ _data = {
 "tilt": SubResource("Animation_u17hy")
 }
 
+[sub_resource type="Animation" id="Animation_3jx55"]
+resource_name = "pop_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(343, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [-0.349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vuycv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(343, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tjtp7"]
+resource_name = "pop_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(343, 32), Vector2(0, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [0.0, -0.349066]
+}
+
+[sub_resource type="Animation" id="Animation_vq8w8"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3, 0.420448),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.025, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3, 0.420448),
+"update": 0,
+"values": [Vector2(343, 32), Vector2(353, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3, 0.420448),
+"update": 0,
+"values": [0.0, 0.0349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i2ge"]
+_data = {
+"RESET": SubResource("Animation_vuycv"),
+"idle": SubResource("Animation_vq8w8"),
+"pop_in": SubResource("Animation_3jx55"),
+"pop_out": SubResource("Animation_tjtp7")
+}
+
 [node name="PlayerSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_i7nk8")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 343.0
+offset_top = 32.0
+offset_right = 343.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-offset_right = 720.0
-offset_bottom = 67.0
+offset_left = -344.0
+offset_top = -30.0301
+offset_right = 376.0
+offset_bottom = 36.9699
 texture = SubResource("GradientTexture2D_3aiec")
 
-[node name="Label" type="LineEdit" parent="."]
+[node name="Label" type="LineEdit" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.006
 anchor_right = -0.006
-offset_left = 69.0
-offset_top = -4.0
-offset_right = 452.0
-offset_bottom = 70.0
+offset_left = -326.0
+offset_top = -34.0
+offset_right = 108.0
+offset_bottom = 40.0
 theme = ExtResource("2_v14l6")
-text = "Player1"
 placeholder_text = "Enter name..."
-max_length = 10
+max_length = 11
 flat = true
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 597.0
-offset_top = -8.0
-offset_right = 697.0
-offset_bottom = 92.0
+offset_left = 253.0
+offset_top = -38.0301
+offset_right = 353.0
+offset_bottom = 61.9699
 scale = Vector2(0.8, 0.8)
 theme = ExtResource("2_v14l6")
 texture = ExtResource("3_of4qb")
 expand_mode = 1
 
-[node name="Icon2" type="TextureRect" parent="Icon"]
+[node name="Icon2" type="TextureRect" parent="Control/Icon"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_pm3jx")
 layout_mode = 1
@@ -245,14 +423,14 @@ theme = ExtResource("2_v14l6")
 texture = ExtResource("3_of4qb")
 expand_mode = 1
 
-[node name="LastWinner" type="Control" parent="."]
+[node name="LastWinner" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 765.0
-offset_top = 1.0
-offset_right = 765.0
-offset_bottom = 1.0
+offset_left = 421.0
+offset_top = -29.0301
+offset_right = 421.0
+offset_bottom = -29.0301
 
-[node name="texture" type="TextureRect" parent="LastWinner"]
+[node name="texture" type="TextureRect" parent="Control/LastWinner"]
 visible = false
 modulate = Color(0.901961, 0.792157, 0, 1)
 layout_mode = 1
@@ -264,36 +442,36 @@ theme = ExtResource("2_v14l6")
 texture = ExtResource("6_mw5do")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LastWinner/texture"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/LastWinner/texture"]
 libraries = {
 "": SubResource("AnimationLibrary_cpoar")
 }
 
-[node name="ControlType" type="TextureRect" parent="."]
+[node name="ControlType" type="TextureRect" parent="Control"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
-offset_left = 430.0
-offset_top = -1.0
-offset_right = 505.001
-offset_bottom = 74.0
+offset_left = 86.0
+offset_top = -31.0301
+offset_right = 161.001
+offset_bottom = 43.9699
 rotation = -0.106465
 theme = ExtResource("2_v14l6")
 texture = ExtResource("4_wqdiw")
 expand_mode = 1
 
-[node name="ColorButton" type="Button" parent="."]
+[node name="ColorButton" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.0100002
 anchor_bottom = -0.0100002
-offset_left = 527.0
-offset_top = 10.0
-offset_right = 574.0
-offset_bottom = 57.0
+offset_left = 183.0
+offset_top = -20.0301
+offset_right = 230.0
+offset_bottom = 26.9699
 theme = ExtResource("5_036eb")
 
-[node name="ColorPicker" type="ColorPicker" parent="."]
+[node name="ColorPicker" type="ColorPicker" parent="Control"]
 visible = false
 top_level = true
 layout_mode = 0
@@ -309,30 +487,25 @@ sliders_visible = false
 hex_visible = false
 presets_visible = false
 
-[node name="ButtonCancel" type="Button" parent="."]
+[node name="ButtonCancel" type="Button" parent="Control"]
 modulate = Color(1, 0, 0.0352941, 1)
 layout_mode = 0
-offset_left = 690.0
-offset_top = 3.0
-offset_right = 750.0
-offset_bottom = 63.0
+offset_left = 346.0
+offset_top = -27.0301
+offset_right = 406.0
+offset_bottom = 32.9699
 icon = ExtResource("7_f00w3")
 flat = true
 expand_icon = true
 
-[node name="ButtonConfirm" type="Button" parent="."]
-modulate = Color(0, 0.67451, 0.160784, 1)
-layout_mode = 0
-offset_left = -3.0
-offset_top = 3.0
-offset_right = 57.0
-offset_bottom = 63.0
-icon = ExtResource("8_vosra")
-flat = true
-expand_icon = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2i2ge")
+}
 
-[connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
-[connection signal="animation_finished" from="LastWinner/texture/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="ColorButton" to="." method="_on_button_pressed"]
-[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
-[connection signal="pressed" from="ButtonCancel" to="." method="_on_button_cancel_pressed"]
+[connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
+[connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
+[connection signal="animation_finished" from="Control/LastWinner/texture/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Control/ColorButton" to="." method="_on_color_button_pressed"]
+[connection signal="color_changed" from="Control/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="Control/ButtonCancel" to="." method="_on_button_cancel_pressed"]

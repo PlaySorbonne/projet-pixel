@@ -20,7 +20,7 @@ func initialize_portrait(player_num : int):
 	update_health()
 	update_evolution()
 	var player : PlayerCharacter = GameInfos.players[player_num]
-	$Holder/LabelName.text = "Player " + str(player_number)
+	$Holder/LabelName.text = GameInfos.player_names[player_num]
 
 func connect_player_object():
 	var player = GameInfos.players[player_number]
@@ -29,8 +29,9 @@ func connect_player_object():
 	player.player_evolved.connect(update_evolution)
 
 func update_health(_damage := 0, _hitpoints := 0):
-	$Holder/LabelHealth.text = str(max(0, GameInfos.players[player_number].hitpoints)
-	) + "/" + str(GameInfos.players[player_number].max_hitpoints)
+	var player : PlayerCharacter = GameInfos.players[player_number]
+	$Holder/LabelHealth.text = str(max(0, player.hitpoints)
+	) + "/" + str(player.max_hitpoints)
 
 func update_evolution(_evolution = null):
 	connect_player_object()

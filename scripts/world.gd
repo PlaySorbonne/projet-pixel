@@ -42,7 +42,7 @@ func end_game():
 	GameInfos.freeze_frame.slow_mo(0.1, 1.0)
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	add_child(VICTORY_MESSAGE.instantiate())
-	for p : PlayerCharacter in GameInfos.players:
+	for p : PlayerCharacter in GameInfos.players.values():
 		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
@@ -52,12 +52,12 @@ func end_game():
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
 
 func spawn_players():
 	var player_number = 0
-	for player : PlayerCharacter in GameInfos.players:
+	for player : PlayerCharacter in GameInfos.players.values():
 		add_child(player)
 		connect_fighter_to_world(player)
 		player_spawns[player.player_ID] = spawn_locations[player_number].position
