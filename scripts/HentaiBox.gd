@@ -118,7 +118,7 @@ func _on_area_2d_body_entered(body : Node2D):
 			emit_signal("game_won")
 		else:
 			GameInfos.freeze_frame.freeze(0.025)
-			GameInfos.camera_utils.flash_saturation(3.0, 1.0)
+			GameInfos.camera_utils.flash_saturation(3.0, 0.6)
 			GameInfos.freeze_frame.slow_mo(0.1, 0.3)
 			GameInfos.camera_utils.shake()
 			last_player_hit = body

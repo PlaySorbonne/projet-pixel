@@ -10,6 +10,9 @@ var can_multi_hit := false
 var delay_between_hits := 0.4
 var attacker : FighterCharacter
 var attached_to_char : bool
+var compute_hits := true
+var draw_particles := true
+var particles_finished := false
 
 static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
 duration : float, attached_to_character := true, hit_intensity := 1.0, size := Vector2.ONE,
@@ -33,15 +36,25 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 	return hitbox
 
 func _ready():
-	$GPUParticles2D.restart()
+	if draw_particles:
+		$GPUParticles2D.restart()
+
+func no_particles():
+	particles_finished = true
+	draw_particles = false
+	$GPUParticles2D.visible = false
 
 func set_hitbox_lifetime(time : float):
 	$Timer.start(time)
 
 func end_hitbox():
-	queue_free()
+	compute_hits = false
+	if particles_finished:
+		queue_free()
 
 func _on_body_entered(body : Node2D):
+	if not compute_hits:
+		return
 	if body.has_method("hit") and body.team != team:
 		if attached_to_char:
 			body.hit(damage, attacker, attacker.global_position, intensity)
@@ -56,3 +69,8 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	end_hitbox()
+
+func _on_gpu_particles_2d_finished():
+	particles_finished = true
+	if not compute_hits:
+		queue_free()

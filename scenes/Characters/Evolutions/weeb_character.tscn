@@ -13,6 +13,7 @@ shader_parameter/replace_threshold = null
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 current_evolution = 4
+stun_time = 0.3
 max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]
