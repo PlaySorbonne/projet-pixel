@@ -15,11 +15,11 @@ var has_weeb_arrived := false
 var game_ended := false
 
 func _ready():
+	GameInfos.game_started = true
 	level = GameInfos.load_game_level()
 	add_child(level)
 	spawn_locations = level.spawn_points
 	player_camera = level.player_camera
-	GameInfos.game_started = true
 	GameInfos.world = self
 	var hud_objects = $GameHUD.add_players()
 	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)

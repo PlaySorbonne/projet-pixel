@@ -57,6 +57,7 @@ var freeze_frame : FreezeFrame
 var players : Dictionary = {}
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
+var anime_box : AnimeBox = null
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []
@@ -70,6 +71,7 @@ func reset_game_infos(deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
 	players = {}
+	anime_box = null
 	CharacterPointer.current_z = 0
 	if deep_reset:
 		players_data = {}

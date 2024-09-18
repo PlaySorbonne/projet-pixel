@@ -11,7 +11,9 @@ func _ready():
 		set_process(false)
 
 func _process(_delta):
-	$LabelHits.global_position = $AnimeBox.global_position - Vector2(125.0, 200.0)
+	if GameInfos.anime_box != null:
+		$LabelHits.global_position = GameInfos.anime_box.global_position - Vector2(
+			125.0, 200.0)
 
 func _on_anime_box_hentai_hit(hit_damage : int):
 	total_damage += hit_damage

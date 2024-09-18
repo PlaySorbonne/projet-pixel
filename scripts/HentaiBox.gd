@@ -62,6 +62,7 @@ func _process(delta : float):
 		set_tape_rest_mode()
 
 func _ready():
+	GameInfos.anime_box = self
 	if GameInfos.game_started:
 		await get_tree().create_timer(0.1).timeout
 		connect("game_won", GameInfos.world.end_game)

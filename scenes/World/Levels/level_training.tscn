@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cftuvb1og2wty"]
+[gd_scene load_steps=5 format=3 uid="uid://cftuvb1og2wty"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
-[ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="6_pe12c"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
 script = ExtResource("2_14xww")
@@ -60,6 +59,3 @@ uppercase = true
 
 [node name="AnimeBoxHint" parent="." index="13"]
 position = Vector2(1478, 651)
-
-[node name="ChangeEvolution" parent="." index="15" instance=ExtResource("6_pe12c")]
-position = Vector2(273, 574)
