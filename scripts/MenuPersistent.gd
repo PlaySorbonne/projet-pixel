@@ -2,7 +2,7 @@ extends Node2D
 class_name Persistent
 
 
-const LOBBY_PATH = "res://scenes/World/Lobby/Lobby.tscn"
+const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VAULT_PATH = "res://scenes/world.tscn"
 const EXIT_TIME := 1.0
 
@@ -17,14 +17,13 @@ enum Screens {Title, Settings, Credits}
 func _ready():
 	reset_game_data()
 	screen_transition.end_screen_transition()
-	$TitleScreenDecor/AnimationPlayer.play("idle")
 	ExitBar.max_value = EXIT_TIME
 
 static func reset_game_data():
 	GameInfos.use_special_gameplay_data = false
 	GlobalVariables.skip_fight_intro = false
 	Engine.time_scale = 1.0
-	GameInfos.reset_game_infos()
+	GameInfos.reset_game_infos(true)
 
 func _process(delta : float):
 	if Input.is_action_pressed("ui_cancel"):

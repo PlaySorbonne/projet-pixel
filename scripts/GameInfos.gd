@@ -19,6 +19,9 @@ var available_colors_index := 0
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
 
+var selected_gamemode : int = 0
+var selected_level : int = 0
+var selected_music : int = 0
 var player_colors : Array[Color] = []
 var player_names : Array[String] = []
 var last_winner : int = -1
@@ -32,6 +35,9 @@ func reset_game_infos(deep_reset := false) -> void:
 	level = Levels.Default
 	CharacterPointer.current_z = 0
 	if deep_reset:
+		selected_music = 0
+		selected_level = 0
+		selected_gamemode = 0
 		player_colors = []
 		player_names = []
 		last_winner = -1

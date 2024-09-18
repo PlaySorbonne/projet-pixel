@@ -1,19 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm2is8wtrp5ox"]
+[gd_scene load_steps=5 format=3 uid="uid://cm2is8wtrp5ox"]
 
-[ext_resource type="Texture2D" uid="uid://dh2ldvonsj06l" path="res://resources/images/interface/arrow.png" id="1_npjfe"]
-[ext_resource type="Texture2D" uid="uid://cfge7cqh4cj26" path="res://resources/images/interface/arrowLeft.png" id="1_qymbq"]
+[ext_resource type="Script" path="res://scripts/option_selector.gd" id="1_3o7b3"]
+[ext_resource type="Texture2D" uid="uid://svmgw2owh3ex" path="res://resources/images/interface/left.png" id="1_scnia"]
+[ext_resource type="Texture2D" uid="uid://bjwkjpgtnntaw" path="res://resources/images/interface/right.png" id="2_arf1l"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_cufy3"]
 
 [node name="OptionSelector" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_3o7b3")
 
-[node name="PreviousButton" type="Button" parent="."]
+[node name="PreviousButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
-icon = ExtResource("1_qymbq")
-flat = true
-expand_icon = true
+texture_normal = ExtResource("1_scnia")
+texture_pressed = ExtResource("1_scnia")
+texture_hover = ExtResource("1_scnia")
+texture_disabled = ExtResource("1_scnia")
+texture_focused = ExtResource("1_scnia")
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="Separator1" type="Control" parent="."]
 custom_minimum_size = Vector2(20, 0)
@@ -21,16 +28,26 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "Option name"
+theme = ExtResource("2_cufy3")
+text = "Option"
 
 [node name="Separator2" type="Control" parent="."]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="NextButton" type="Button" parent="."]
+[node name="NextButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
-icon = ExtResource("1_npjfe")
-flat = true
-expand_icon = true
+texture_normal = ExtResource("2_arf1l")
+texture_pressed = ExtResource("2_arf1l")
+texture_hover = ExtResource("2_arf1l")
+texture_disabled = ExtResource("2_arf1l")
+texture_focused = ExtResource("2_arf1l")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

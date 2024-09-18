@@ -1,0 +1,297 @@
+[gd_scene load_steps=11 format=3 uid="uid://4qhtb4ydvax6"]
+
+[ext_resource type="Script" path="res://scripts/title_screen_decor.gd" id="1_hah17"]
+[ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="1_rqti6"]
+[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="2_38v0w"]
+[ext_resource type="Texture2D" uid="uid://drjf5m66m1a2" path="res://resources/images/characters/Sheep/moutonBam.png" id="3_ma0b5"]
+[ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="4_i2rcw"]
+[ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="5_b0xxe"]
+
+[sub_resource type="Curve2D" id="Curve2D_qf64y"]
+_data = {
+"points": PackedVector2Array(-395.553, -59.9323, 395.553, 59.9323, 766, -571, 269.695, -407.539, -269.695, 407.539, 1191, 460, 296.665, 89.8984, -296.665, -89.8984, 29, 802, 611.309, -275.688, -611.309, 275.688, -756, 712, 41.9526, 350.604, -41.9526, -350.604, -1203, 53, -437.506, 263.702, 437.506, -263.702, -1038, -565, -203.77, 20.9763, 203.77, -20.9763, 223, -559, 0, 0, 0, 0, 766, -571)
+}
+point_count = 8
+
+[sub_resource type="Animation" id="Animation_2p0s0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleScreenDecor/Characters/Poulet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.75791]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleScreenDecor/Characters/Mouton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1393, 354)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleScreenDecor/Characters/Mouton:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.344248]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleScreenDecor/Characters/Poulet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(988, 24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleScreenDecor/Path2D/PathFollow2D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleScreenDecor/Characters/Champsu:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-765, 805)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleScreenDecor/Characters/Champsu:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TitleScreenDecor/Characters/GodotAnime:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1976, -663)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TitleScreenDecor/Characters/GodotAnime:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j5616"]
+resource_name = "idle"
+length = 80.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleScreenDecor/Characters/Poulet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5, 17.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(988, 24), Vector2(700, -500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleScreenDecor/Characters/Poulet:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 17.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.75791, -4.71239]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleScreenDecor/Characters/Mouton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.4, 23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1393, 150), Vector2(1393, 450)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleScreenDecor/Characters/Mouton:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.9, 23.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.122173, 0.820305]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleScreenDecor/Path2D/PathFollow2D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 80),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TitleScreenDecor/Characters/Champsu:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 17.7, 36.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(215, 893), Vector2(215, 893), Vector2(1238, 763)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TitleScreenDecor/Characters/Champsu:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 17.7, 27.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.785398, 0.785398, 13.7881]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TitleScreenDecor/Characters/GodotAnime:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5.5, 13, 14.3, 26.3716, 40.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1976, -633), Vector2(414, 154), Vector2(96, -194), Vector2(351, 230), Vector2(-1247, 1279)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TitleScreenDecor/Characters/GodotAnime:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(5.5, 13.5, 14.3, 26.3716, 40.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -12.5664, -12.4267, -10.3199, 2.44346]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5q65t"]
+_data = {
+"RESET": SubResource("Animation_2p0s0"),
+"idle": SubResource("Animation_j5616")
+}
+
+[node name="TitleScreenDecor" type="Node2D"]
+script = ExtResource("1_hah17")
+play_from_start = null
+
+[node name="DecorPlaceholder" type="Sprite2D" parent="."]
+modulate = Color(1, 0.1, 0.56, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_rqti6")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(12, -66)
+curve = SubResource("Curve2D_qf64y")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(766, -571)
+rotation = 0.150371
+rotates = false
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+rotation = 0.0567572
+zoom = Vector2(1.4, 1.4)
+
+[node name="Characters" type="Node2D" parent="."]
+modulate = Color(1, 0.744102, 0.824097, 1)
+
+[node name="Poulet" type="Sprite2D" parent="Characters"]
+position = Vector2(988, 24)
+rotation = -1.75791
+texture = ExtResource("2_38v0w")
+
+[node name="Mouton" type="Sprite2D" parent="Characters"]
+position = Vector2(1393, 354)
+rotation = 0.344248
+texture = ExtResource("3_ma0b5")
+flip_h = true
+
+[node name="Champsu" type="Sprite2D" parent="Characters"]
+position = Vector2(-765, 805)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_i2rcw")
+
+[node name="GodotAnime" type="Sprite2D" parent="Characters"]
+position = Vector2(1976, -663)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_b0xxe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5q65t")
+}
