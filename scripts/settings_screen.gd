@@ -7,14 +7,14 @@ enum Languages {English, Francais}
 
 const DEFAULT_STATS_TXT = "DEFAULT"
 const DEFAULT_GAMEPLAY_FILE = "res://default_gameplay_stats.txt"
-const GAMEPLAY_FILE_NAME = "OtakuOverdriveGameplay_stats.txt"
+const GAMEPLAY_FILE_NAME = "Gameplay_stats.txt"
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
 const LANGUAGE_KEYS = [
 	"en",
 	"fr"
 ]
 
-static var default_gameplay_file := OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP) + "/" + GAMEPLAY_FILE_NAME
+static var default_gameplay_file := OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/" + GAMEPLAY_FILE_NAME
 static var gameplay_data : Dictionary = {}
 static var user_settings : Dictionary = {
 	"fullscreen" : true,

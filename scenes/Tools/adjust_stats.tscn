@@ -164,6 +164,11 @@ layout_mode = 2
 variable_name = "air_speed"
 variable_description = "speed when in the air"
 
+[node name="VariableAdjuster18" parent="Adjuster/VBoxContainer" instance=ExtResource("2_ajrgc")]
+layout_mode = 2
+variable_name = "stun_time"
+variable_description = "how long player can't attack after being hit"
+
 [node name="Control" type="Control" parent="Adjuster/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2

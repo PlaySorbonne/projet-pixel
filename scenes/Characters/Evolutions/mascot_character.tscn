@@ -8,12 +8,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g55ga"]
 resource_local_to_scene = true
 shader = ExtResource("2_aq807")
-shader_parameter/base_color = Color(0.32549, 0.576471, 0.772549, 1)
+shader_parameter/in_hit_effect = false
+shader_parameter/base_color = Color(0.8, 0.113725, 0.152941, 1)
 shader_parameter/replace_color = Color(1, 0, 0, 1)
-shader_parameter/replace_threshold = 0.15
+shader_parameter/replace_threshold = 0.18
 
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
+stun_time = 0.45
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")
@@ -25,6 +27,7 @@ animation = &"run"
 frame_progress = 0.88848
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2(-3, -22)
 
 [node name="SpecialAttack" parent="." index="7"]

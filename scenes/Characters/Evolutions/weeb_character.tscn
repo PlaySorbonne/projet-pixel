@@ -6,16 +6,22 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qsr2"]
 resource_local_to_scene = true
 shader = ExtResource("2_38lak")
+shader_parameter/in_hit_effect = false
 shader_parameter/base_color = null
 shader_parameter/replace_color = null
 shader_parameter/replace_threshold = null
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 current_evolution = 4
+stun_time = 0.45
 max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_1qsr2")
+position = Vector2(0, 34.8161)
+rotation = -0.0510032
+scale = Vector2(0.520791, 0.504209)
+animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-3, 6)

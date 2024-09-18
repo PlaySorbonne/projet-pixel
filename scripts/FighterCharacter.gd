@@ -13,7 +13,7 @@ signal changed_max_hitpoints
 			return
 		max_hitpoints = val
 		emit_signal("changed_max_hitpoints", max_hitpoints)
-@export var invincibility_time := 0.4
+@export var invincibility_time := 0.75
 
 var team := 0
 var hitpoints := max_hitpoints

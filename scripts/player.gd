@@ -40,6 +40,7 @@ const PLAYER_COLORS = [
 @export var initial_fall_speed := 100.0
 @export var knockback_multiplier := 1.0
 @export var knockback_interp_factor := 0.075
+@export var stun_time := 0.45
 
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
@@ -54,7 +55,6 @@ var is_jumping := false
 var movement_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 var computing_movement := true
-var compute_hits := true
 var god_mode := false
 var player_ID := 0
 var evolving := false
@@ -63,6 +63,8 @@ var left_pressed := false
 var right_pressed := false
 var up_pressed := false
 var down_pressed := false
+var compute_hits := true
+var in_stun_time := false
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -276,7 +278,7 @@ func death(force := false):
 	super.death(true)
 
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
-	if not compute_hits:
+	if in_invincibility_time or not compute_hits:
 		return
 	var hit_owner : Node2D
 	if attacker.has_method("get_hit_owner"):
@@ -296,16 +298,22 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		GameInfos.freeze_frame.freeze(0.05)
 	_update_debug_text()
 
+func set_stunned():
+	$StunTimer.start(stun_time)
+	in_stun_time = true
+
 func emit_hit_particles():
 	$HitParticles.amount = randi_range(8, 12)
 	$HitParticles.speed_scale = randf_range(0.9, 1.0)
 	$HitParticles.restart()
 
 func special():
+	if in_stun_time:
+		return
 	specialObj.special()
 
 func attack():
-	if not can_attack:
+	if not can_attack or in_stun_time:
 		return
 	can_attack = false
 	if attack_wind_up > 0:
@@ -327,3 +335,6 @@ func _on_fighter_killed_opponent():
 	await get_tree().create_timer(2.5).timeout
 	if alive:
 		evolve()
+
+func _on_stun_timer_timeout():
+	in_stun_time = false

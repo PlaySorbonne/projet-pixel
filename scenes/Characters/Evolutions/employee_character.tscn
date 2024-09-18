@@ -20,9 +20,13 @@ current_evolution = 2
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj5wj")
+rotation = -0.0872665
+scale = Vector2(0.525, 0.5)
 sprite_frames = ExtResource("2_hwdps")
+animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-9, -11)
 shape = SubResource("RectangleShape2D_5rnvo")
 
 [node name="SpecialAttack" parent="." index="7"]
