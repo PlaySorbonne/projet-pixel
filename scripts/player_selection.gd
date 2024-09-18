@@ -26,6 +26,9 @@ var control_index : int = -1
 		check_winner()
 
 func _ready():
+	$Control.scale = Vector2.ZERO
+	await get_tree().process_frame
+	visible = true
 	$AnimationPlayer.play("pop_in")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
@@ -34,6 +37,8 @@ func _ready():
 func check_winner():
 	$Control/LastWinner.visible = last_winner
 	if last_winner:
+		var tween := create_tween()
+		tween.tween_property($Control/LastWinner, "modulate", Color.WHITE, 0.2)
 		_on_animation_player_animation_finished("")
 
 func _on_color_button_pressed() -> void:
@@ -56,7 +61,7 @@ func _on_label_text_changed(new_text : String) -> void:
 		return
 	GameInfos.player_names[player_index] = new_text
 
-func _on_animation_player_animation_finished(anim_name : String):
+func _on_animation_player_animation_finished(_anim_name : String):
 	var win_player : AnimationPlayer = $Control/LastWinner/texture/AnimationPlayer
 	win_player.play(ANIM_NAMES.pick_random())
 

@@ -81,8 +81,6 @@ func _init():
 func _ready():
 	super()
 	team = player_ID
-	print("player ID = " + str(player_ID))
-	print("players_data = " + str(GameInfos.players_data))
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
