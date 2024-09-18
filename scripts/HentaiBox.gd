@@ -62,9 +62,12 @@ func _process(delta : float):
 		set_tape_rest_mode()
 
 func _ready():
-	await get_tree().create_timer(0.1).timeout
-	connect("game_won", GameInfos.world.end_game)
-	GameInfos.tracked_targets.append(self)
+	if GameInfos.game_started:
+		await get_tree().create_timer(0.1).timeout
+		connect("game_won", GameInfos.world.end_game)
+		GameInfos.tracked_targets.append(self)
+	else:
+		set_process(false)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func increment_weeb_touched():

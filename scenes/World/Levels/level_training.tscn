@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cftuvb1og2wty"]
+[gd_scene load_steps=6 format=3 uid="uid://cftuvb1og2wty"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_vnmdc"]
 [ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="6_pe12c"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
@@ -59,27 +58,8 @@ total : 0"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="AnimeBox" parent="." index="13"]
-position = Vector2(1467, 665)
-winning_by_weeb_touch = false
+[node name="AnimeBoxHint" parent="." index="13"]
+position = Vector2(1478, 651)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="15"]
-
-[node name="ButtonBack" type="Button" parent="CanvasLayer" index="0"]
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.87963
-anchor_right = 0.148438
-anchor_bottom = 0.948148
-offset_left = 121.0
-offset_top = -115.0
-offset_right = 121.0
-offset_bottom = -115.0
-theme = ExtResource("4_vnmdc")
-text = "BACK"
-
-[node name="ChangeEvolution" parent="." index="16" instance=ExtResource("6_pe12c")]
+[node name="ChangeEvolution" parent="." index="15" instance=ExtResource("6_pe12c")]
 position = Vector2(273, 574)
-
-[connection signal="hentai_hit" from="AnimeBox" to="." method="_on_anime_box_hentai_hit"]
-[connection signal="pressed" from="CanvasLayer/ButtonBack" to="." method="_on_button_back_pressed"]

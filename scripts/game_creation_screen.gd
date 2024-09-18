@@ -3,8 +3,11 @@ class_name GameCreationScreen
 
 const LEVEL_TITLES : Array[String] = [
 	"DEFAULT",
-	"Plat",
-	"Boucle"
+	"TRAINING",
+]
+const LEVEL_PATHS : Array[String] = [
+	"res://scenes/World/Levels/level_default.tscn",
+	"res://scenes/World/Levels/level_training.tscn"
 ]
 const MUSIC_NAMES : Array[String] = [
 	"Secret Knowledge"
@@ -18,6 +21,7 @@ const GAME_MODE_DESCRIPTIONS : Array[String] = [
 const MUSICS_PATHS : Array[String] = [
 	"res://resources/audio/music/Secret_Knowledge.wav"
 ]
+const LEVEL_OBJ_POS := Vector2(3000.0, 0.0)
 const PLAYER_INFOS_RES := preload("res://scenes/Menus/GameCreation/PlayerSelection.tscn")
 const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
 const PLAYER_INFOS_POS_INIT := Vector2(50.0, 100.0)
@@ -25,6 +29,7 @@ const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_characte
 const WORLD_PATH := "res://scenes/world.tscn"
 
 @export var transition : ScreenTransition
+@export var level_parent : SubViewport
 
 @onready var music_tester := $ButtonTestMusic/AudioTestMusic
 @onready var music_background := $AudioStreamPlayer
@@ -32,7 +37,8 @@ var music_tester_music := -1
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
 var player_selectors : Array[PlayerSelection] = []
-var level : Level = null
+var current_level : Level = null
+var level_selected := -1
 
 func _ready():
 	GameInfos.reset_game_infos()
@@ -131,7 +137,16 @@ func _on_level_selector_option_changed(new_option : int):
 	set_level(new_option)
 
 func set_level(level : int):
-	print("TODO : set level icon system in game_creation_screen")
+	if level == level_selected:
+		return
+	level_selected = level
+	var sub_viewport = $TextureLevel/SubViewport
+	if current_level != null:
+		current_level.queue_free()
+	current_level = load(LEVEL_PATHS[level]).instantiate()
+	current_level.position = Vector2(25.0, 25.0)
+	current_level.scale = Vector2(0.2, 0.2)
+	sub_viewport.add_child(current_level)
 
 func remove_player(selector : PlayerSelection, _index : int):
 	var pos_in_array := player_selectors.find(selector)

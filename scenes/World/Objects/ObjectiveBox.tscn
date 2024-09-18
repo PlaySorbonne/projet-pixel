@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv1w5v10663nr"]
+[gd_scene load_steps=7 format=3 uid="uid://cv1w5v10663nr"]
 
 [ext_resource type="Script" path="res://scripts/HentaiBox.gd" id="1_6c0xd"]
-[ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="2_4wnuf"]
-[ext_resource type="Shader" path="res://resources/shaders/ChromaticAberration.gdshader" id="2_gkrot"]
+[ext_resource type="PackedScene" uid="uid://qbg5sibnym20" path="res://scenes/World/Objects/anime_box_sprite.tscn" id="2_f2ger"]
 [ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="3_387u6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d24b6"]
@@ -12,15 +11,6 @@ bounce = 0.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3lgd"]
 size = Vector2(118, 128)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7m0al"]
-shader = ExtResource("2_gkrot")
-shader_parameter/chaos = 0.0
-shader_parameter/radius = 1.0
-shader_parameter/attenuation = 10.0
-shader_parameter/divider_green = 1.0
-shader_parameter/divider_blue = 1.0
-shader_parameter/time_divider = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83oal"]
 radius = 44.0454
@@ -41,12 +31,7 @@ collision_mask = 2
 visible = false
 shape = SubResource("RectangleShape2D_x3lgd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_7m0al")
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("2_4wnuf")
-region_enabled = true
-region_rect = Rect2(-50, -50, 550, 750)
+[node name="Sprite2D" parent="." instance=ExtResource("2_f2ger")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

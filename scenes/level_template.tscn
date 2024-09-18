@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxvlm8njmgom" path="res://scenes/Utilities/FreezeFrame.tscn" id="2_4pivb"]
 [ext_resource type="PackedScene" uid="uid://dn5yhc4hp0l7h" path="res://scenes/Utilities/CameraUtil.tscn" id="3_thanc"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="4_h52g1"]
-[ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="6_l5qq3"]
+[ext_resource type="PackedScene" uid="uid://qbg5sibnym20" path="res://scenes/World/Objects/anime_box_sprite.tscn" id="6_xh8kk"]
 [ext_resource type="AudioStream" uid="uid://bgf1wkvjjnkjp" path="res://resources/audio/music/Secret_Knowledge.wav" id="7_46noc"]
 
 [node name="LevelTemplate" type="Node2D"]
@@ -48,8 +48,8 @@ position = Vector2(818, 401)
 scale = Vector2(0.4928, 0.4928)
 texture = ExtResource("4_h52g1")
 
-[node name="AnimeBox" parent="." instance=ExtResource("6_l5qq3")]
-position = Vector2(787, 734)
+[node name="AnimeBoxHint" parent="." instance=ExtResource("6_xh8kk")]
+position = Vector2(736, 793)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_46noc")

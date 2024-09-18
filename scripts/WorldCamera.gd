@@ -11,6 +11,10 @@ class_name WorldCamera
 
 func _ready():
 	GameInfos.camera = self
+	if not GameInfos.game_started:
+		$FreezeFrame.queue_free()
+		$CameraUtils.queue_free()
+		$UI_hint_for_level_design.queue_free()
 
 static func add_target(t : Node2D):
 	if not t in GameInfos.tracked_targets:
