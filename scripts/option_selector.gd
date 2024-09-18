@@ -4,6 +4,10 @@ class_name OptionSelector
 
 signal option_changed
 
+@export var minimum_label_width := 100.0:
+	set(value):
+		minimum_label_width = value
+		$Label.custom_minimum_size.x = minimum_label_width
 @export var options : Array[String] = []
 @export var selected_option : int = 0:
 	set(value):

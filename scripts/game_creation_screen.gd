@@ -1,23 +1,28 @@
 extends Control
 class_name GameCreationScreen
 
-const MUSIC_NAMES = [
+const LEVEL_TITLES : Array[String] = [
+	"DEFAULT",
+	"Plat",
+	"Boucle"
+]
+const MUSIC_NAMES : Array[String] = [
 	"Secret Knowledge"
 ]
-const GAME_MODE_TITLES = [
+const GAME_MODE_TITLES : Array[String] = [
 	"BRAWL"
 ]
-const GAME_MODE_DESCRIPTIONS = [
+const GAME_MODE_DESCRIPTIONS : Array[String] = [
 	"BRAWL_DESCRIPTION"
 ]
-const MUSICS_PATHS = [
+const MUSICS_PATHS : Array[String] = [
 	"res://resources/audio/music/Secret_Knowledge.wav"
 ]
-const PLAYER_INFOS_RES = preload("res://scenes/Menus/GameCreation/PlayerSelection.tscn")
-const PLAYER_INFOS_POS_OFFSET = Vector2(35.0, 75.0)
-const PLAYER_INFOS_POS_INIT = Vector2(50.0, 100.0)
+const PLAYER_INFOS_RES := preload("res://scenes/Menus/GameCreation/PlayerSelection.tscn")
+const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
+const PLAYER_INFOS_POS_INIT := Vector2(50.0, 100.0)
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
-const WORLD_PATH = "res://scenes/world.tscn"
+const WORLD_PATH := "res://scenes/world.tscn"
 
 @export var transition : ScreenTransition
 
@@ -36,6 +41,12 @@ func _ready():
 		reload_old_game_infos()
 
 func set_game_widgets():
+	$GameModeSelector.options = GAME_MODE_TITLES
+	$GameModeSelector.selected_option = 0
+	$LevelSelector.options = LEVEL_TITLES
+	$LevelSelector.selected_option = 0
+	$MusicSelector.options = MUSIC_NAMES
+	$MusicSelector.selected_option = 0
 	set_gamemode(GameInfos.selected_gamemode)
 	set_music(GameInfos.selected_music)
 	set_level(GameInfos.selected_level)

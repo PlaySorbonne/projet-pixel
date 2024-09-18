@@ -1,22 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm2is8wtrp5ox"]
+[gd_scene load_steps=9 format=3 uid="uid://cm2is8wtrp5ox"]
 
 [ext_resource type="Script" path="res://scripts/option_selector.gd" id="1_3o7b3"]
 [ext_resource type="Texture2D" uid="uid://svmgw2owh3ex" path="res://resources/images/interface/left.png" id="1_scnia"]
 [ext_resource type="Texture2D" uid="uid://bjwkjpgtnntaw" path="res://resources/images/interface/right.png" id="2_arf1l"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_cufy3"]
+[ext_resource type="Texture2D" uid="uid://8faxw65gs3ut" path="res://resources/images/interface/left_big.png" id="3_7c1la"]
+[ext_resource type="Texture2D" uid="uid://bmjtmpbp7xkt7" path="res://resources/images/interface/left_big_pressed.png" id="4_pw71v"]
+[ext_resource type="Texture2D" uid="uid://dgb422ew0hew" path="res://resources/images/interface/right_big_pressed.png" id="5_rwkc2"]
+[ext_resource type="Texture2D" uid="uid://qf5s7bidrqr7" path="res://resources/images/interface/right_big.png" id="6_rbgts"]
 
 [node name="OptionSelector" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3o7b3")
+minimum_label_width = null
 
 [node name="PreviousButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("1_scnia")
-texture_pressed = ExtResource("1_scnia")
-texture_hover = ExtResource("1_scnia")
+texture_pressed = ExtResource("3_7c1la")
+texture_hover = ExtResource("4_pw71v")
 texture_disabled = ExtResource("1_scnia")
 texture_focused = ExtResource("1_scnia")
 ignore_texture_size = true
@@ -30,6 +35,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("2_cufy3")
 text = "Option"
+horizontal_alignment = 1
 
 [node name="Separator2" type="Control" parent="."]
 custom_minimum_size = Vector2(20, 0)
@@ -40,8 +46,8 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("2_arf1l")
-texture_pressed = ExtResource("2_arf1l")
-texture_hover = ExtResource("2_arf1l")
+texture_pressed = ExtResource("5_rwkc2")
+texture_hover = ExtResource("6_rbgts")
 texture_disabled = ExtResource("2_arf1l")
 texture_focused = ExtResource("2_arf1l")
 ignore_texture_size = true
