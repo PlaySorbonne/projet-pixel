@@ -198,7 +198,7 @@ anchor_bottom = 0.780556
 rotation = 0.0182909
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 40
-text = "Secret Knowledge"
+text = "music_name"
 icon = ExtResource("5_ucitn")
 flat = true
 alignment = 0
@@ -302,4 +302,5 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonTestMusic" to="CanvasLayer/GameCreationScreen" method="_on_button_test_music_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_pressed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
+[connection signal="option_changed" from="CanvasLayer/GameCreationScreen/LevelSelector" to="CanvasLayer/GameCreationScreen" method="_on_level_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/MusicSelector" to="CanvasLayer/GameCreationScreen" method="_on_music_selector_option_changed"]
