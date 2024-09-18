@@ -13,6 +13,7 @@ enum Screens {Title, Settings, Credits}
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 @onready var lobby := $Lobby
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
+var can_change_scene := true
 
 func _ready():
 	reset_game_data()
@@ -36,6 +37,9 @@ func _process(delta : float):
 		ExitBar.visible = false
 
 func smooth_change_to_scene(new_scene : String):
+	if not can_change_scene:
+		return
+	can_change_scene = true
 	await get_tree().create_timer(0.75).timeout
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
