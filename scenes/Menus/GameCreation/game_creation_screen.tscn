@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=12 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="9_3tome"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="9_5oeri"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="10_t55k5"]
+[ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="11_vkqp3"]
 
 [node name="CanvasLayer" type="Node2D"]
 
@@ -299,6 +300,9 @@ z_index = -10
 position = Vector2(-2667, 266)
 play_from_start = false
 background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
+
+[node name="LevelTemplate" parent="." instance=ExtResource("11_vkqp3")]
+position = Vector2(3216, 148)
 
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonBack" to="CanvasLayer/GameCreationScreen" method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonTestMusic" to="CanvasLayer/GameCreationScreen" method="_on_button_test_music_pressed"]

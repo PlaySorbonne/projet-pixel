@@ -32,6 +32,7 @@ var music_tester_music := -1
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
 var player_selectors : Array[PlayerSelection] = []
+var level : Level = null
 
 func _ready():
 	GameInfos.reset_game_infos()

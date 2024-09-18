@@ -27,10 +27,6 @@ position = Vector2(835, 141)
 z_index = 100
 position = Vector2(818, 457)
 zoom = Vector2(1.1, 1.1)
-limit_left = -1200
-limit_top = -700
-limit_right = 2400
-limit_bottom = 1400
 script = ExtResource("1_ggbii")
 
 [node name="FreezeFrame" parent="Camera" instance=ExtResource("2_4pivb")]

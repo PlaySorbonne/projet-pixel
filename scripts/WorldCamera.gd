@@ -20,6 +20,7 @@ static func remove_target(t : Node2D):
 	if t in GameInfos.tracked_targets:
 		GameInfos.tracked_targets.erase(t)
 
+"""
 func _process(delta : float):
 	return
 	if not GameInfos.tracked_targets:
@@ -44,3 +45,4 @@ func _process(delta : float):
 	else:
 		z = clamp(screen_size.y / r.size.y, min_zoom, max_zoom)
 	zoom = lerp(zoom, Vector2.ONE * z, zoom_speed * delta)
+"""
