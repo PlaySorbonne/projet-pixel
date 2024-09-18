@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
-[ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="3_of4qb"]
+[ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="3_xy52h"]
 [ext_resource type="Shader" path="res://resources/shaders/ReplaceColors.gdshader" id="4_dq808"]
 [ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
 [ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
@@ -454,6 +454,10 @@ script = ExtResource("1_i7nk8")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 343.0
+offset_top = 32.0
+offset_right = 343.0
+offset_bottom = 32.0
 
 [node name="ColorRect" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -487,7 +491,7 @@ offset_right = 353.0
 offset_bottom = 61.9699
 scale = Vector2(0.8, 0.8)
 theme = ExtResource("2_v14l6")
-texture = ExtResource("3_of4qb")
+texture = ExtResource("3_xy52h")
 expand_mode = 1
 
 [node name="Icon2" type="TextureRect" parent="Control/Icon"]
@@ -500,7 +504,7 @@ offset_bottom = 100.0
 scale = Vector2(1.2, 1.2)
 pivot_offset = Vector2(50, 50)
 theme = ExtResource("2_v14l6")
-texture = ExtResource("3_of4qb")
+texture = ExtResource("3_xy52h")
 expand_mode = 1
 
 [node name="LastWinner" type="Control" parent="Control"]
