@@ -22,14 +22,18 @@ var control_index : int = -1
 @export var last_winner := false:
 	set(value):
 		last_winner = value
-		$Control/LastWinner.visible = last_winner
-		if last_winner:
-			_on_animation_player_animation_finished("")
+		check_winner()
 
 func _ready():
 	$AnimationPlayer.play("pop_in")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
+	check_winner()
+
+func check_winner():
+	$Control/LastWinner.visible = last_winner
+	if last_winner:
+		_on_animation_player_animation_finished("")
 
 func _on_color_button_pressed() -> void:
 	$Control/ColorPicker.visible = !$Control/ColorPicker.visible

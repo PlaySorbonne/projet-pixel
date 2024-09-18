@@ -35,8 +35,14 @@ func reload_old_game_infos():
 	for id: int in GameInfos.players_data.keys():
 		var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 		player.player_ID = id
-		player.control_device = GameInfos.players_data[id]["control_device"]
-		player.control_type = GameInfos.players_data[id]["control_type"]
+		var control_device : int = GameInfos.players_data[id]["control_device"]
+		var control_type : int = GameInfos.players_data[id]["control_type"]
+		player.control_device = control_device
+		player.control_type = control_type
+		if control_type == 0:
+			keyboards.append(control_device)
+		else:
+			controllers.append(control_device)
 		GameInfos.players[id] = player
 		create_player_infos(id)
 

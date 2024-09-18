@@ -431,7 +431,6 @@ offset_right = 421.0
 offset_bottom = -29.0301
 
 [node name="texture" type="TextureRect" parent="Control/LastWinner"]
-visible = false
 modulate = Color(0.901961, 0.792157, 0, 1)
 layout_mode = 1
 anchors_preset = -1

@@ -85,8 +85,6 @@ func add_player(player: PlayerCharacter) -> void:
 	}
 
 func remove_player(id : int) -> void:
-	print("id = " + str(id))
-	print("players : " + str(players))
 	var player : PlayerCharacter = players[id]
 	available_player_colors.append(players_data[id]["original_color"])
 	available_player_names.append(players_data[id]["original_name"])
