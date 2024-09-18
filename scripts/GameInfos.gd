@@ -15,11 +15,13 @@ var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Array[PlayerCharacter] = []
 var players_order : Array[int] = []
-var player_colors : Array[Color] = []
-var player_names : Array[String] = []
 var available_colors_index := 0
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
+
+var player_colors : Array[Color] = []
+var player_names : Array[String] = []
+var last_winner : int = -1
 
 func reset_game_infos(deep_reset := false) -> void:
 	game_started = false
@@ -32,6 +34,7 @@ func reset_game_infos(deep_reset := false) -> void:
 	if deep_reset:
 		player_colors = []
 		player_names = []
+		last_winner = -1
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[level]).instantiate()

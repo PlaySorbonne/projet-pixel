@@ -31,17 +31,7 @@ func _process(delta):
 	else:
 		$LoadingBar.scale.x = 0
 
-func add_joining_ui(player_device : int, is_keyboard : bool):
-	if is_keyboard:
-		joining_keyboards.append(player_device)
-	else:
-		joining_controllers.append(player_device)
-	var ui_object = JOINING_UI.instantiate()
-	ui_object.player_device = player_device
-	ui_object.is_keyboard = is_keyboard
-	ui_object.player_cancelled.connect(player_join_cancelled)
-	ui_object.player_joined.connect(player_join_confirmed)
-	$VBoxContainer.add_child(ui_object)
+
 
 func player_join_cancelled(player_device: int, is_keyboard : bool):
 	remove_joinin_player(player_device, is_keyboard)
@@ -70,6 +60,18 @@ func _input(event):
 		if event.device not in controllers and event.device not in joining_controllers:
 			if event.is_pressed():
 				add_joining_ui(event.device, false)
+
+func add_joining_ui(player_device : int, is_keyboard : bool):
+	if is_keyboard:
+		joining_keyboards.append(player_device)
+	else:
+		joining_controllers.append(player_device)
+	var ui_object = JOINING_UI.instantiate()
+	ui_object.player_device = player_device
+	ui_object.is_keyboard = is_keyboard
+	ui_object.player_cancelled.connect(player_join_cancelled)
+	ui_object.player_joined.connect(player_join_confirmed)
+	$VBoxContainer.add_child(ui_object)
 
 func add_player(device: int, device_type: int):
 	if device_type == 0:
