@@ -92,18 +92,13 @@ func _ready():
 	super()
 	team = player_ID
 	set_player_color(GameInfos.player_colors[player_ID])
-	_update_debug_text()
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
 
-func _update_debug_text():
-	$EvolutionLabel.text = "P" + str(player_ID + 1) + ":" + str(Evolutions.keys()[current_evolution]) + " " + str(hitpoints) + "/" + str(max_hitpoints)
-
 func set_player_color(new_color : Color):
-	#$Sprite2D.self_modulate = new_color
 	$TrailEffect.modulate = new_color
 	$CharacterPointer.self_modulate = new_color
-	$Sprite2D.material.set_shader_parameter("replace_color", new_color);
+	$Sprite2D.material.set_shader_parameter("replace_color", new_color)
 
 func set_control_device(device: int):
 	control_device = device
@@ -229,7 +224,6 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
-	_update_debug_text()
 	await self.player_spawned
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
@@ -296,7 +290,6 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.05)
-	_update_debug_text()
 
 func set_stunned():
 	$StunTimer.start(stun_time)
