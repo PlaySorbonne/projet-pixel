@@ -38,7 +38,7 @@ func check_winner():
 	$Control/LastWinner.visible = last_winner
 	if last_winner:
 		var tween := create_tween()
-		tween.tween_property($Control/LastWinner, "modulate", Color.WHITE, 0.2)
+		tween.tween_property($Control/LastWinner, "modulate", Color.WHITE, 0.5)
 		_on_animation_player_animation_finished("")
 
 func _on_color_button_pressed() -> void:

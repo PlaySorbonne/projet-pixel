@@ -1,8 +1,8 @@
 extends Line2D
 class_name TrailEffect
 
-const MAX_POINT_DELAY = 0.025
-#const MAX_REMOVE_POINT_DELAY = 0.1
+const MAX_POINT_DELAY := 0.025
+const MAX_DISTANCE_TO_BREAK := pow(250, 2.0)
 
 @export var max_points : int = 300
 
@@ -19,7 +19,7 @@ func _process(delta : float):
 		return
 	point_delay = 0.0
 	var dist_to_new_point := last_point.distance_squared_to(parent_obj.position)
-	if dist_to_new_point > 10000.0:
+	if dist_to_new_point > MAX_DISTANCE_TO_BREAK:
 		create_duplicate()
 		curve.clear_points()
 	elif dist_to_new_point < 100:
