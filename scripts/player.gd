@@ -40,8 +40,7 @@ const PLAYER_COLORS = [
 @export var initial_fall_speed := 100.0
 @export var knockback_multiplier := 1.0
 @export var knockback_interp_factor := 0.075
-@export var stun_time := 0.45
-
+@export var stun_time := 0.3
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
@@ -289,6 +288,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		super.hit(0, hit_owner, hit_location)
 	else:
 		super.hit(damage, hit_owner, hit_location)
+	set_stunned()
 	emit_hit_particles()
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
