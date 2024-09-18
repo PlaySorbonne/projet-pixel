@@ -246,7 +246,6 @@ _data = {
 
 [node name="TitleScreenDecor" type="Node2D"]
 script = ExtResource("1_hah17")
-play_from_start = null
 
 [node name="DecorPlaceholder" type="Sprite2D" parent="."]
 modulate = Color(1, 0.1, 0.56, 1)

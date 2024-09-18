@@ -62,47 +62,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -150), Vector2(0, 0), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_u17hy"]
-resource_name = "tilt"
-length = 4.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7, 1.1, 1.7, 2.1, 2.7, 3.1, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.535887, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, 0.523599, 0.523599, -0.523599, -0.523599, 0.523599, 0.523599, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.4, 3.9, 4.5),
-"transitions": PackedFloat32Array(0.378929, 1, 0.392292, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_u0ac5"]
 resource_name = "swell"
 length = 5.0
@@ -185,6 +144,47 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(-50, 0), Vector2(200, 0), Vector2(200, 0), Vector2(0, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_u17hy"]
+resource_name = "tilt"
+length = 4.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1.1, 1.7, 2.1, 2.7, 3.1, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.535887, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, 0.523599, 0.523599, -0.523599, -0.523599, 0.523599, 0.523599, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.4, 3.9, 4.5),
+"transitions": PackedFloat32Array(0.378929, 1, 0.392292, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoar"]
 _data = {
 "jump": SubResource("Animation_jy6dd"),
@@ -195,6 +195,7 @@ _data = {
 
 [node name="PlayerSelection" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_i7nk8")
 
 [node name="ColorRect" type="TextureRect" parent="."]

@@ -293,7 +293,7 @@ stream = ExtResource("9_5oeri")
 [node name="TitleScreenDecor" parent="." instance=ExtResource("9_3tome")]
 z_index = -10
 position = Vector2(-2667, 266)
-play_from_start = null
+play_from_start = false
 background_modulate = Color(0.779992, 0.000391784, 0.761106, 1)
 
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonBack" to="CanvasLayer/GameCreationScreen" method="_on_button_back_pressed"]
