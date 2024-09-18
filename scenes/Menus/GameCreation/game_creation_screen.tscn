@@ -132,7 +132,7 @@ anchor_bottom = 0.101852
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 50
-text = "game_name:"
+text = "game_name"
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelGameModeDescription" type="Label" parent="CanvasLayer/GameCreationScreen"]
@@ -287,16 +287,19 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/GameCreationScreen"]
 stream = ExtResource("9_5oeri")
+bus = &"music"
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
+visible = false
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("9_3tome")]
 z_index = -10
 position = Vector2(-2667, 266)
 play_from_start = false
-background_modulate = Color(0.779992, 0.000391784, 0.761106, 1)
+background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonBack" to="CanvasLayer/GameCreationScreen" method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonTestMusic" to="CanvasLayer/GameCreationScreen" method="_on_button_test_music_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_pressed"]
+[connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/MusicSelector" to="CanvasLayer/GameCreationScreen" method="_on_music_selector_option_changed"]

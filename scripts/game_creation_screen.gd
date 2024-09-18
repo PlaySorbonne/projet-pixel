@@ -1,6 +1,12 @@
 extends Control
 class_name GameCreationScreen
 
+const GAME_MODE_TITLES = [
+	"BRAWL"
+]
+const GAME_MODE_DESCRIPTIONS = [
+	"BRAWL_DESCRIPTION"
+]
 const MUSICS_PATHS = [
 	"res://resources/audio/music/Secret_Knowledge.wav"
 ]
@@ -80,11 +86,16 @@ func _on_music_selector_option_changed(new_option : int):
 	$ButtonTestMusic.text = $MusicSelector.get_text()
 	GameInfos.selected_music = new_option
 
+func _on_game_mode_selector_option_changed():
+	pass # Replace with function body.
+
+
 func _on_button_confirm_pressed():
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(WORLD_PATH)
 
-
 func _on_button_back_pressed():
-	pass # Replace with function body.
+	transition.start_screen_transition()
+	await transition.HalfScreenTransitionFinished
+	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
