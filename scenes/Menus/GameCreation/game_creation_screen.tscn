@@ -14,7 +14,7 @@
 
 [sub_resource type="Animation" id="Animation_op7rc"]
 resource_name = "start"
-length = 3.2
+length = 1.9
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,10 +23,10 @@ tracks/0/path = NodePath("../ColorRectConfirm:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1, 3.2),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75)]
+"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -35,10 +35,10 @@ tracks/1/path = NodePath("../ColorRectInfos:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 1, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 1, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75)]
+"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -47,7 +47,7 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.3, 3.2),
+"times": PackedFloat32Array(0, 0.7, 1.5, 1.9),
 "transitions": PackedFloat32Array(0.307786, 0.5, 0.307786, 0.307786),
 "update": 0,
 "values": [Color(0.391007, 0, 0.162808, 1), Color(0.391007, 0, 0.162808, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -59,7 +59,7 @@ tracks/3/path = NodePath(".:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.5, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.9),
 "transitions": PackedFloat32Array(1, 1.68179, 0.5, 2.2974),
 "update": 0,
 "values": [Vector2(-500, -150), Vector2(-500, -150), Vector2(1383, 954), Vector2(1383, 954)]
@@ -71,7 +71,7 @@ tracks/4/path = NodePath(".:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.5, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.9),
 "transitions": PackedFloat32Array(1, 1.68179, 0.5, 1),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1)]
@@ -83,10 +83,10 @@ tracks/5/path = NodePath("Arrows/ArrowRight:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.4, 2.8, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -95,7 +95,7 @@ tracks/6/path = NodePath("Arrows/ArrowRight2:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.8, 3.2),
+"times": PackedFloat32Array(0, 1.7, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
@@ -107,10 +107,10 @@ tracks/7/path = NodePath("Arrows/ArrowLeft:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2.6, 3, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -119,10 +119,10 @@ tracks/8/path = NodePath("Arrows/ArrowLeft2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 2.2, 2.6, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
@@ -131,7 +131,7 @@ tracks/9/path = NodePath("../Shaker")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(0.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.3, 25, 40, 0],
@@ -298,10 +298,10 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(2.2974, 0.307786),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.307786, 2.2974),
 "update": 0,
-"values": [Color(1, 0.464498, 0.47471, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 0.464498, 0.47471, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -428,9 +428,9 @@ tracks/2/keys = {
 "values": [Vector2(3000, 3000)]
 }
 
-[sub_resource type="Animation" id="Animation_y0ejl"]
+[sub_resource type="Animation" id="Animation_johfb"]
 resource_name = "start_leave"
-length = 3.2
+length = 1.9
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -439,10 +439,10 @@ tracks/0/path = NodePath("../ColorRectConfirm:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1, 3.2),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75)]
+"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -451,10 +451,10 @@ tracks/1/path = NodePath("../ColorRectInfos:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 1, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.6, 1, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75), Color(0, 0, 0, 0.75)]
+"values": [Color(0, 0, 0, 0.635294), Color(0, 0, 0, 0.635294), Color(0.1, 0, 0, 1), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8), Color(0, 0, 0, 0.8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -463,7 +463,7 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.3, 3.2),
+"times": PackedFloat32Array(0, 0.7, 1.5, 1.9),
 "transitions": PackedFloat32Array(0.307786, 0.5, 0.307786, 0.307786),
 "update": 0,
 "values": [Color(0.391007, 0, 0.162808, 1), Color(0.391007, 0, 0.162808, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -475,7 +475,7 @@ tracks/3/path = NodePath(".:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.5, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.9),
 "transitions": PackedFloat32Array(1, 1.68179, 0.5, 2.2974),
 "update": 0,
 "values": [Vector2(-500, -150), Vector2(-500, -150), Vector2(1383, 954), Vector2(1383, 954)]
@@ -487,7 +487,7 @@ tracks/4/path = NodePath(".:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.5, 3.2),
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.9),
 "transitions": PackedFloat32Array(1, 1.68179, 0.5, 1),
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1)]
@@ -499,10 +499,10 @@ tracks/5/path = NodePath("Arrows/ArrowRight:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.4, 2.8, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -511,7 +511,7 @@ tracks/6/path = NodePath("Arrows/ArrowRight2:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.8, 3.2),
+"times": PackedFloat32Array(0, 1.7, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
@@ -523,10 +523,10 @@ tracks/7/path = NodePath("Arrows/ArrowLeft:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2.6, 3, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -535,34 +535,22 @@ tracks/8/path = NodePath("Arrows/ArrowLeft2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 2.2, 2.6, 3.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1), Color(0.485446, 0, 0.181466, 1)]
+"values": [Color(0.485, 0, 0.181, 0), Color(0.485, 0, 0.181, 0), Color(0.485446, 0, 0.181466, 1)]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
-tracks/9/enabled = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("../Shaker")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(1.5, 2.2, 2.4, 2.6, 2.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.3, 25, 40, 0],
-"method": &"shake"
-}, {
-"args": [0.1, 15, 30, 0],
-"method": &"shake"
-}, {
-"args": [0.1, 15, 30, 0],
-"method": &"shake"
-}, {
-"args": [0.1, 15, 30, 0],
-"method": &"shake"
-}, {
-"args": [0.3, 15, 30, 0],
 "method": &"shake"
 }]
 }
@@ -573,7 +561,7 @@ _data = {
 "idle": SubResource("Animation_521as"),
 "leave": SubResource("Animation_2atab"),
 "start": SubResource("Animation_op7rc"),
-"start_leave": SubResource("Animation_y0ejl")
+"start_leave": SubResource("Animation_johfb")
 }
 
 [node name="GameCreationScreen" type="Node2D"]
