@@ -10,6 +10,8 @@ extends BaseSpecial
 @export var attack_intensity := 2.0
 @export var mid_air_wind_up := 0.3
 
+var fall_hitbox : Hitbox = null
+
 func _ready():
 	set_process(false)
 
@@ -32,12 +34,18 @@ func special():
 		player.velocity = Vector2.ZERO
 		player.set_animation(true)
 		await get_tree().create_timer(mid_air_wind_up).timeout
+	fall_hitbox = Hitbox.spawn_hitbox(player, damage, player.AttackLocation.position,
+		 -1, true, attack_intensity)
+	fall_hitbox.no_particles()
 	player.computing_movement = false
 	player.velocity = Vector2.DOWN * fall_speed
 	set_process(true)
 
 func special_end():
-	Hitbox.spawn_hitbox(player, damage, Vector2.ZERO, hit_duration, true, attack_intensity, 
+	fall_hitbox.queue_free()
+	fall_hitbox = null
+	Hitbox.spawn_hitbox(player, damage, player.AttackLocation.position, hit_duration, 
+		true, attack_intensity, 
 		Vector2(hitbox_size, hitbox_size))
 	player.movement_velocity = Vector2.ZERO
 	await get_tree().create_timer(fall_recovery).timeout

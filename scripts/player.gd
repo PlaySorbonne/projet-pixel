@@ -57,7 +57,6 @@ var computing_movement := true
 var god_mode := false
 var player_ID := 0
 var evolving := false
-var horizontal_input : float = 0.0
 var left_pressed := false
 var right_pressed := false
 var up_pressed := false
@@ -107,6 +106,9 @@ func set_control_type(type: int):
 	control_type = type
 
 func _physics_process(delta):
+	var horizontal_input := 0.0
+	if alive:
+		horizontal_input = int(right_pressed) - int(left_pressed)
 	if computing_movement and (not is_jumping): 
 		if is_on_floor():
 			movement_velocity.x = horizontal_input * speed
@@ -168,13 +170,6 @@ func _input(event : InputEvent):
 		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
 		
 	if is_correct_control_type && event.device == control_device:
-		var on_floor := is_on_floor()
-		var mov_speed : float
-		# Handle jump.
-		if event.is_action_pressed("jump") and on_floor:
-			jump()
-		elif event.is_action_released("jump") and velocity.y < -50.0:
-			stop_jump()
 		# Handle movement
 		if event.is_action_pressed("right"):
 			right_pressed = true
@@ -192,7 +187,15 @@ func _input(event : InputEvent):
 			down_pressed = true
 		elif event.is_action_released("down"):
 			down_pressed = false
-		horizontal_input = int(right_pressed) - int(left_pressed)
+		if not alive:
+			return
+		
+		var on_floor := is_on_floor()
+		# Handle jump.
+		if event.is_action_pressed("jump") and on_floor:
+			jump()
+		elif event.is_action_released("jump") and velocity.y < -50.0:
+			stop_jump()
 		if not attacking:
 			# Handle normal attack
 			if event.is_action_pressed("attack"):
@@ -262,12 +265,10 @@ func death(force := false):
 	alive = false
 	set_animation(true)
 	compute_hits = false
-	set_process_input(false)
 	movement_velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.075)
 	await get_tree().create_timer(2.0).timeout
 	compute_hits = true
-	set_process_input(true)
 	super.death(true)
 
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):

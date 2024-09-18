@@ -29,7 +29,6 @@ static func reset_character_ids() -> void:
 func _ready():
 	visible = false
 	set_physics_process(false)
-	set_process_input(false)
 
 func spawn(location : Vector2, activate := true, f_right := true):
 	set_player_active(false)
@@ -59,7 +58,6 @@ func set_player_active(new_activity : bool):
 	active = new_activity
 	alive = new_activity
 	set_physics_process(new_activity)
-	set_process_input(new_activity)
 
 func hit(damage : int, attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
