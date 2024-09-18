@@ -223,6 +223,8 @@ text = "START"
 flat = true
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameCreationScreen/ButtonConfirm"]
+
 [node name="GameModeSelector" parent="CanvasLayer/GameCreationScreen" instance=ExtResource("5_0ypjy")]
 layout_mode = 1
 anchors_preset = -1
@@ -285,6 +287,7 @@ bus = &"music"
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false
+z_index = 20
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("9_3tome")]
 z_index = -10

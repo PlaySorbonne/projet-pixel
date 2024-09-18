@@ -20,6 +20,8 @@ var is_saving_data := true
 var dont_update_data := false
 
 func _ready():
+	if not GameInfos.game_started:
+		queue_free()
 	for c in $Adjuster/VBoxContainer.get_children():
 		if c.has_method("_on_description_changed"):
 			variable_adjusters.append(c)
@@ -65,7 +67,7 @@ func actualize_characters(do_update_data := true):
 			player.set(k, variables_data[ev][k])
 
 func actualize_specials(do_update_data := true):
-	for player : PlayerCharacter in GameInfos.players.values:
+	for player : PlayerCharacter in GameInfos.players.values():
 		var ev : String = PlayerCharacter.Evolutions.find_key(player.current_evolution)
 		var ev_spe := ev+"_special"
 		for k : String in variables_data[ev_spe].keys():
