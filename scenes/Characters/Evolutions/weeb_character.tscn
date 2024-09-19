@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_benh8"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_38lak"]
-[ext_resource type="AudioStream" uid="uid://dx5v53vn7ud1m" path="res://resources/audio/sfx/gameplay_sfx/dash_sfx.wav" id="3_uya2p"]
+[ext_resource type="AudioStream" uid="uid://cpehvj2g1hsd3" path="res://resources/audio/sfx/button_clicks/button_accept.wav" id="3_g123h"]
 [ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="4_njtnk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qsr2"]
@@ -31,8 +31,9 @@ position = Vector2(-3, 6)
 dash_audio = NodePath("../XYZ_AudioPitchRandomizer")
 
 [node name="XYZ_AudioPitchRandomizer" type="AudioStreamPlayer" parent="." index="14"]
-stream = ExtResource("3_uya2p")
-pitch_scale = 2.5
+stream = ExtResource("3_g123h")
+volume_db = 3.0
+pitch_scale = 2.0
 bus = &"sfx"
 script = ExtResource("4_njtnk")
-pitch_multiplier = 2.5
+pitch_multiplier = 2.0

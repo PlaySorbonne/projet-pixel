@@ -206,6 +206,7 @@ trail_lifetime = 1.0
 
 [node name="AudioAttack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_oyfb5")
+volume_db = -12.0
 bus = &"sfx"
 script = ExtResource("31_ok212")
 pitch_min = 0.8
