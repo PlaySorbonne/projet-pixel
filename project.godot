@@ -13,7 +13,7 @@ config_version=5
 config/name="Projet Pixel"
 run/main_scene="res://scenes/Menus/intro_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://resources/images/game-icon.png"
 
 [autoload]
 
