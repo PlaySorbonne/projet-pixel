@@ -72,6 +72,8 @@ func _ready():
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func increment_weeb_touched():
+	$AudioWeebTouched.pitch_scale = 1.5 - weeb_touched/4.0
+	$AudioWeebTouched.play(0.0)
 	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][weeb_touched]
 	blue_div_at_rest = WEEB_TOUCHED_SHADER_VALS["blue"][weeb_touched]
 	weeb_touched += 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv1w5v10663nr"]
+[gd_scene load_steps=8 format=3 uid="uid://cv1w5v10663nr"]
 
 [ext_resource type="Script" path="res://scripts/HentaiBox.gd" id="1_6c0xd"]
 [ext_resource type="PackedScene" uid="uid://qbg5sibnym20" path="res://scenes/World/Objects/anime_box_sprite.tscn" id="2_f2ger"]
 [ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="3_387u6"]
+[ext_resource type="AudioStream" uid="uid://du65tsacslg1i" path="res://resources/audio/sfx/gameplay_sfx/_explosion0.wav" id="4_x0imi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d24b6"]
 friction = 0.6
@@ -40,5 +41,10 @@ shape = SubResource("CircleShape2D_83oal")
 
 [node name="TrailEffect" parent="." instance=ExtResource("3_387u6")]
 max_points = 500
+
+[node name="AudioWeebTouched" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x0imi")
+pitch_scale = 1.5
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

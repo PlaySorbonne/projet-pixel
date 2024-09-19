@@ -271,7 +271,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	if in_invincibility_time or not compute_hits:
 		return
 	var hit_owner : Node2D
-	$AudioHit.play(0.0)
+	play_hit_sfx()
 	if attacker.has_method("get_hit_owner"):
 		hit_owner = attacker.get_hit_owner()
 	else:
@@ -288,6 +288,10 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.05)
+
+func play_hit_sfx():
+	await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
+	$AudioHit.play(0.0)
 
 func set_stunned():
 	$StunTimer.start(stun_time)
