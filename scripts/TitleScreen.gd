@@ -29,7 +29,7 @@ var signals := [
 	$Credits
 ]
 var selected_button := 1
-var can_input := true
+var can_input := false
 var button_movement_val := 0.0
 
 func _ready():

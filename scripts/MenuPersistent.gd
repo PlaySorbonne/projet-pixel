@@ -9,17 +9,21 @@ const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_characte
 
 enum Screens {Title, Settings, Credits}
 
+
 @onready var ExitBar := $CanvasLayer/ExitProgressBar
 @onready var title_screen := $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 @onready var lobby := $Lobby
 @onready var screen_transition : ScreenTransition = $CanvasLayer/ScreenTransition
-var can_change_scene := true
+var can_change_scene := false
 
 func _ready():
 	reset_game_data()
+	await get_tree().create_timer(0.5).timeout
 	screen_transition.end_screen_transition()
 	ExitBar.max_value = EXIT_TIME
+	can_change_scene = true
+	$CanvasLayer/TitleScreen.can_input = true
 
 static func reset_game_data():
 	GameInfos.use_special_gameplay_data = false
@@ -73,9 +77,13 @@ func go_to_screen(new_screen : int):
 	t.tween_property($CanvasLayer/CreditsScreen, "position", credits_final_pos, trans_time)
 
 func _on_title_screen_button_start_pressed():
+	if not can_change_scene:
+		return
 	smooth_change_to_scene(LOBBY_PATH)
 
 func _on_title_screen_button_vault_pressed():
+	if not can_change_scene:
+		return
 	var player = DEFAULT_PLAYER.instantiate()
 	GameInfos.selected_level = GameInfos.LEVEL_STAT_EDITOR
 	player.control_device = 0

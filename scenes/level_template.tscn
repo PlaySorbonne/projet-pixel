@@ -53,5 +53,4 @@ position = Vector2(736, 793)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_46noc")
-autoplay = true
 bus = &"music"

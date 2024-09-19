@@ -18,6 +18,7 @@ func _ready():
 	var anime : Node2D
 	if GameInfos.game_started:
 		anime = ANIME_BOX.instantiate()
+		$Music.play(0.0)
 	else:
 		anime = ANIME_IMPOSTOR.instantiate()
 		$Music.queue_free()
