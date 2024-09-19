@@ -40,7 +40,10 @@ func smooth_change_to_scene(new_scene : String):
 	if not can_change_scene:
 		return
 	can_change_scene = true
+	var tween := create_tween()
+	tween.tween_property($AudioStreamPlayer, "volume_db", -80.0, 0.9)
 	await get_tree().create_timer(0.75).timeout
+	GameInfos.menu_music_time = $AudioStreamPlayer.get_playback_position()
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(new_scene)

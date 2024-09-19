@@ -21,15 +21,19 @@ var current_level : Level = null
 var level_selected := -1
 
 func _ready():
+	$AudioStreamPlayer.play(GameInfos.menu_music_time)
+	GameInfos.menu_music_time = 0.0
 	GameInfos.reset_game_infos()
 	set_game_widgets()
 	transition.end_screen_transition()
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
+		$AudioStreamPlayer.pitch_scale = 1.1
 		if len(GameInfos.players_data.keys()) >= 2:
 			$ButtonConfirm/AnimationStart.play("idle")
 			$ButtonConfirm.disabled = false
 	else:
+		$AudioStreamPlayer.pitch_scale = 1.05
 		$ButtonConfirm/AnimationStart.play("leave")
 		$ButtonConfirm.disabled = true
 
@@ -75,11 +79,13 @@ func create_player_infos(index : int):
 func check_start_button():
 	var not_active = $ButtonConfirm.disabled
 	if not_active and len(player_selectors) >= 2:
+		$AudioStreamPlayer.pitch_scale = 1.1
 		$ButtonConfirm/AnimationStart.play("start")
 		$ButtonConfirm.disabled = false
 	elif not(not_active) and len(player_selectors) < 2:
 		$ButtonConfirm/AnimationStart.play_backwards("start_leave")
 		$ButtonConfirm.disabled = true
+		$AudioStreamPlayer.pitch_scale = 1.05
 
 func add_player(device_type : int, device : int):
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
@@ -116,6 +122,7 @@ func _on_button_test_music_pressed():
 	set_test_music(not music_tester.playing)
 
 func _on_music_selector_option_changed(new_option : int):
+	set_test_music(false)
 	GameInfos.selected_music = new_option
 	set_music(new_option)
 
@@ -169,6 +176,7 @@ func _on_animation_start_animation_finished(anim_name : String):
 func _on_button_confirm_pressed():
 	if len(player_selectors) < 2:
 		return
+	create_tween().tween_property($AudioStreamPlayer, "volume_db", -80.0, 0.25)
 	$Shaker.shake(0.4, 20, 40, 1)
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished

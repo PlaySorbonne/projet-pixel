@@ -12,16 +12,20 @@ const LEVEL_TITLES : Array[String] = [
 ]
 var LEVEL_STAT_EDITOR : int = LEVEL_TITLES.find("STAT_EDITOR")
 const MUSIC_NAMES : Array[String] = [
-	"Secret Knowledge"
+	"Secret Knowledge",
+	"Menu Theme"
 ]
 const GAME_MODE_TITLES : Array[String] = [
-	"BRAWL"
+	"BRAWL",
+	"example gamemode"
 ]
 const GAME_MODE_DESCRIPTIONS : Array[String] = [
-	"BRAWL_DESCRIPTION"
+	"BRAWL_DESCRIPTION",
+	"example description\nhey\nexample description"
 ]
 const MUSICS_PATHS : Array[String] = [
-	"res://resources/audio/music/Secret_Knowledge.wav"
+	"res://resources/audio/music/Secret_Knowledge.wav",
+	"res://resources/audio/music/Menu_Theme.mp3"
 ]
 const DEFAULT_PLAYER_COLORS : Array[Color] = [
 	Color.BLUE,
@@ -58,6 +62,7 @@ var players : Dictionary = {}
 var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
 var anime_box : AnimeBox = null
+var menu_music_time := 0.0
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []
