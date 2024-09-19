@@ -81,6 +81,10 @@ max_points = 70
 [node name="StunTimer" type="Timer" parent="." index="11"]
 one_shot = true
 
+[node name="AudioHit" type="AudioStreamPlayer" parent="." index="12"]
+
+[node name="AudioEvolve" type="AudioStreamPlayer" parent="." index="13"]
+
 [connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
