@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://nf2hem8oka3j"]
+[gd_scene load_steps=6 format=3 uid="uid://nf2hem8oka3j"]
 
 [ext_resource type="Script" path="res://scripts/EggProjectile.gd" id="1_ij2cc"]
 [ext_resource type="Texture2D" uid="uid://dgi0m8k86ntyj" path="res://resources/images/characters/chicken/egg.png" id="2_6o4hb"]
+[ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="3_xdbvj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqq64"]
 radius = 26.0192
@@ -31,5 +32,7 @@ position = Vector2(-1, -27)
 shape = SubResource("RectangleShape2D_v42o5")
 
 [node name="AudioExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xdbvj")
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

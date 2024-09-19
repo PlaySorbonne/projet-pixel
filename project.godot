@@ -95,3 +95,4 @@ locale/locale_filter_mode=0
 2d_physics/layer_1="Physic"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Anime"
+2d_physics/layer_5="SemiSolidPhysics"

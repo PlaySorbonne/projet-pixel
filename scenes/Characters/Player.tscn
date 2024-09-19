@@ -20,6 +20,7 @@ shader_parameter/replace_color = Color(1, 0, 0, 1)
 shader_parameter/replace_threshold = 0.15
 
 [node name="PlayerCharacter" groups=["player"] instance=ExtResource("1_cukm7")]
+collision_mask = 17
 script = ExtResource("2_7jbn1")
 current_evolution = 0
 speed = 600.0

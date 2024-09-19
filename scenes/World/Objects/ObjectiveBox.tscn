@@ -17,6 +17,7 @@ radius = 44.0454
 
 [node name="AnimeBox" type="RigidBody2D"]
 collision_layer = 4
+collision_mask = 17
 physics_material_override = SubResource("PhysicsMaterial_d24b6")
 continuous_cd = 2
 linear_damp = 3.0
