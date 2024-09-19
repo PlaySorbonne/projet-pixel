@@ -1,6 +1,6 @@
 @tool
-extends ButtonXYZ
-class_name ButtonRandomSoundXYZ
+extends XYZ_Button
+class_name XYZ_ButtonRandomSound
 
 static var global_sound_array : Array[AudioStream] = []
 

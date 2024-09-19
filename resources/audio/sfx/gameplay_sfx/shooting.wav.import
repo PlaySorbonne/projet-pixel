@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cpyqmgbdcpwul"
-path="res://.godot/imported/_explosion1.wav-60ef952fa80d8836cb3619430ac01697.sample"
+path="res://.godot/imported/shooting.wav-c2c109903014b6db7a66c74ee56ff30c.sample"
 
 [deps]
 
-source_file="res://resources/audio/sfx/gameplay_sfx/_explosion1.wav"
-dest_files=["res://.godot/imported/_explosion1.wav-60ef952fa80d8836cb3619430ac01697.sample"]
+source_file="res://resources/audio/sfx/gameplay_sfx/shooting.wav"
+dest_files=["res://.godot/imported/shooting.wav-c2c109903014b6db7a66c74ee56ff30c.sample"]
 
 [params]
 

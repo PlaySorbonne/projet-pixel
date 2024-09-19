@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpqvvbhvhi4ev"]
+[gd_scene load_steps=7 format=3 uid="uid://cpqvvbhvhi4ev"]
 
 [ext_resource type="Script" path="res://scripts/manager_bullet.gd" id="1_jc0kd"]
 [ext_resource type="Texture2D" uid="uid://bt4epucatjvaw" path="res://resources/images/characters/fox/small_bullet.png" id="2_5jvpy"]
+[ext_resource type="AudioStream" uid="uid://cpyqmgbdcpwul" path="res://resources/audio/sfx/gameplay_sfx/shooting.wav" id="3_ggymg"]
+[ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="3_vm53x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wowx1"]
 radius = 4.0
@@ -31,5 +33,9 @@ collision_mask = 7
 shape = SubResource("RectangleShape2D_jugr7")
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ggymg")
+script = ExtResource("3_vm53x")
+pitch_min = 1.35
+pitch_max = 1.6
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

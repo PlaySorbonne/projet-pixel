@@ -30,6 +30,7 @@ static func spawn_bullet(player_char : PlayerCharacter, special : SpecialManager
 
 func _ready():
 	velocity = direction * speed
+	$AudioShoot.play_random_pitch()
 
 func _physics_process(_delta):
 	move_and_slide()

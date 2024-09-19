@@ -1,5 +1,5 @@
 extends BaseButton
-class_name ButtonXYZ
+class_name XYZ_Button
 
 @export var audio : AudioStream
 @export var volume_db := 0.0
