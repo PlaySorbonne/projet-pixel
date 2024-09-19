@@ -40,6 +40,8 @@ func end_game():
 		return
 	game_ended = true
 	GameInfos.freeze_frame.slow_mo(0.1, 1.0)
+	var music_node : AudioStreamPlayer = level.get_node("Music")
+	create_tween().tween_property(music_node, "volume_db", -80.0, 1.5)
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	add_child(VICTORY_MESSAGE.instantiate())
 	for p : PlayerCharacter in GameInfos.players.values():

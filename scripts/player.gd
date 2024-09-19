@@ -84,7 +84,7 @@ func _ready():
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
-	var sfx_pitch_modulation : float = float(current_evolution) / 5.0
+	var sfx_pitch_modulation : float = 0.6 + float(current_evolution) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	if current_evolution != Evolutions.CEO:
