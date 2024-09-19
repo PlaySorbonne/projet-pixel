@@ -5,10 +5,14 @@ var player_device := -1
 var player_device_type := -1
 
 func _ready():
+	super._ready()
 	GameInfos.use_special_gameplay_data = true
 	GlobalVariables.skip_fight_intro = true
 	if not GameInfos.game_started:
 		set_process(false)
+	else:
+		GameInfos.anime_box.connect("hentai_hit", _on_anime_box_hentai_hit)
+		GameInfos.anime_box.winning_by_weeb_touch = false
 
 func _process(_delta):
 	if GameInfos.anime_box != null:

@@ -5,6 +5,7 @@ class_name Persistent
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VAULT_PATH = "res://scenes/world.tscn"
 const EXIT_TIME := 1.0
+const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 
 enum Screens {Title, Settings, Credits}
 
@@ -75,7 +76,7 @@ func _on_title_screen_button_start_pressed():
 	smooth_change_to_scene(LOBBY_PATH)
 
 func _on_title_screen_button_vault_pressed():
-	var player = Lobby.DEFAULT_PLAYER.instantiate()
+	var player = DEFAULT_PLAYER.instantiate()
 	GameInfos.selected_level = GameInfos.LEVEL_STAT_EDITOR
 	player.control_device = 0
 	player.control_type = 0
