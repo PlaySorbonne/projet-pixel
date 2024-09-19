@@ -782,6 +782,7 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_r72hm")
 }
+playback_default_blend_time = 0.1
 
 [node name="Arrows" type="Control" parent="CanvasLayer/GameCreationScreen/ButtonConfirm"]
 anchors_preset = 0
