@@ -6,16 +6,16 @@
 [node name="LevelDefault" instance=ExtResource("1_fvn86")]
 
 [node name="SpawnLocation1" parent="." index="0"]
-position = Vector2(258, 594)
+position = Vector2(318, 541)
 
 [node name="SpawnLocation2" parent="." index="1"]
-position = Vector2(560, 589)
+position = Vector2(1209, 533)
 
 [node name="SpawnLocation3" parent="." index="2"]
-position = Vector2(1007, 592)
+position = Vector2(116, 386)
 
 [node name="SpawnLocation4" parent="." index="3"]
-position = Vector2(1345, 592)
+position = Vector2(1497, 379)
 
 [node name="Camera" parent="." index="4"]
 position = Vector2(825, 590)
@@ -50,16 +50,16 @@ position = Vector2(260, 671)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall9" parent="." index="12" instance=ExtResource("2_euv16")]
-position = Vector2(1490, 497)
+position = Vector2(1540, 515)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall10" parent="." index="13" instance=ExtResource("2_euv16")]
-position = Vector2(92, 501)
+position = Vector2(57, 518)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall8" parent="." index="14" instance=ExtResource("2_euv16")]
 position = Vector2(838, 561)
-scale = Vector2(6, 0.5)
+scale = Vector2(5, 0.5)
 
 [node name="AnimeBoxHint" parent="." index="15"]
 position = Vector2(842, 482)
