@@ -84,6 +84,11 @@ func _ready():
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
+	var sfx_pitch_modulation : float = float(current_evolution) / 5.0
+	$AudioHit.pitch_scale = sfx_pitch_modulation
+	$AudioEvolve.pitch_scale = sfx_pitch_modulation
+	if current_evolution != Evolutions.CEO:
+		$AudioEvolve.play()
 
 func set_player_color(new_color : Color):
 	$TrailEffect.modulate = new_color
@@ -266,6 +271,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	if in_invincibility_time or not compute_hits:
 		return
 	var hit_owner : Node2D
+	$AudioHit.play(0.0)
 	if attacker.has_method("get_hit_owner"):
 		hit_owner = attacker.get_hit_owner()
 	else:

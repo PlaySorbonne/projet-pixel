@@ -7,6 +7,8 @@ const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
 const PLAYER_INFOS_POS_INIT := Vector2(50.0, 100.0)
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 const WORLD_PATH := "res://scenes/world.tscn"
+const AUDIO_PITCH_DEFAULT := 0.95
+const AUDIO_PITCH_INTENSE := 0.9
 
 @export var transition : ScreenTransition
 @export var level_parent : SubViewport
@@ -28,12 +30,12 @@ func _ready():
 	transition.end_screen_transition()
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
-		$AudioStreamPlayer.pitch_scale = 1.1
+		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_INTENSE
 		if len(GameInfos.players_data.keys()) >= 2:
 			$ButtonConfirm/AnimationStart.play("idle")
 			$ButtonConfirm.disabled = false
 	else:
-		$AudioStreamPlayer.pitch_scale = 1.05
+		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_DEFAULT
 		$ButtonConfirm/AnimationStart.play("leave")
 		$ButtonConfirm.disabled = true
 
@@ -79,13 +81,13 @@ func create_player_infos(index : int):
 func check_start_button():
 	var not_active = $ButtonConfirm.disabled
 	if not_active and len(player_selectors) >= 2:
-		$AudioStreamPlayer.pitch_scale = 1.1
+		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_INTENSE
 		$ButtonConfirm/AnimationStart.play("start")
 		$ButtonConfirm.disabled = false
 	elif not(not_active) and len(player_selectors) < 2:
 		$ButtonConfirm/AnimationStart.play_backwards("start_leave")
 		$ButtonConfirm.disabled = true
-		$AudioStreamPlayer.pitch_scale = 1.05
+		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_DEFAULT
 
 func add_player(device_type : int, device : int):
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()

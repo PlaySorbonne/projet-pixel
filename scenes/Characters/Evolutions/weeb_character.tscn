@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://besjdva6q0u5y"]
+[gd_scene load_steps=6 format=3 uid="uid://besjdva6q0u5y"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_benh8"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_38lak"]
+[ext_resource type="AudioStream" uid="uid://dx5v53vn7ud1m" path="res://resources/audio/sfx/gameplay_sfx/dash_sfx.wav" id="3_uya2p"]
+[ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="4_njtnk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qsr2"]
 resource_local_to_scene = true
@@ -13,7 +15,6 @@ shader_parameter/replace_threshold = null
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 current_evolution = 4
-stun_time = 0.3
 max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]
@@ -25,3 +26,13 @@ animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-3, 6)
+
+[node name="SpecialAttack" parent="." index="6" node_paths=PackedStringArray("dash_audio")]
+dash_audio = NodePath("../XYZ_AudioPitchRandomizer")
+
+[node name="XYZ_AudioPitchRandomizer" type="AudioStreamPlayer" parent="." index="14"]
+stream = ExtResource("3_uya2p")
+pitch_scale = 2.5
+bus = &"sfx"
+script = ExtResource("4_njtnk")
+pitch_multiplier = 2.5

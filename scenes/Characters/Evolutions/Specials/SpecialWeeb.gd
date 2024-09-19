@@ -4,6 +4,7 @@ extends BaseSpecial
 @export var dash_speed := 2000.0
 @export var dash_duration := 0.125
 @export var dash_cooldown := 0.25
+@export var dash_audio : XYZ_AudioPitchRandomizer = null 
 
 func special():
 	if not can_use_special:
@@ -23,6 +24,7 @@ func special():
 		else:
 			dash_direction.x = -1.0
 	can_use_special = false
+	dash_audio.play_random_pitch()
 	player.attacking = true
 	player.computing_movement = false
 	player.velocity = dash_direction.normalized() * dash_speed

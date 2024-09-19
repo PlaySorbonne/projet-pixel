@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dx5v53vn7ud1m"
-path="res://.godot/imported/_synth_brief_ui.wav-f427539e63609da305bbf6f6527c464c.sample"
+path="res://.godot/imported/dash_sfx.wav-cfdac03b46c1c6672d2d34660a47051b.sample"
 
 [deps]
 
-source_file="res://resources/audio/sfx/gameplay_sfx/_synth_brief_ui.wav"
-dest_files=["res://.godot/imported/_synth_brief_ui.wav-f427539e63609da305bbf6f6527c464c.sample"]
+source_file="res://resources/audio/sfx/gameplay_sfx/dash_sfx.wav"
+dest_files=["res://.godot/imported/dash_sfx.wav-cfdac03b46c1c6672d2d34660a47051b.sample"]
 
 [params]
 

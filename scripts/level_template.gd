@@ -20,6 +20,7 @@ func _ready():
 		anime = ANIME_BOX.instantiate()
 	else:
 		anime = ANIME_IMPOSTOR.instantiate()
+		$Music.queue_free()
 	anime.position = $AnimeBoxHint.position
 	anime.rotation = $AnimeBoxHint.rotation
 	add_child(anime)
