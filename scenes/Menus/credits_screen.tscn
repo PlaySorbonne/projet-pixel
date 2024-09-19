@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qb3miekn7s7v"]
+[gd_scene load_steps=6 format=3 uid="uid://qb3miekn7s7v"]
 
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_g840b"]
 [ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_rpv6i"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_2hoir"]
-[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="4_xggpf"]
-[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="5_n3o3v"]
-[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="6_c02gs"]
-[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="7_rj7m5"]
-[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="8_pcd64"]
-[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="9_klj5i"]
+[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="4_dvdpb"]
+[ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="5_2m1dx"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -79,7 +75,7 @@ anchor_bottom = 0.948148
 theme = ExtResource("2_2hoir")
 text = "BACK"
 flat = true
-script = ExtResource("4_xggpf")
-sound_array = Array[AudioStream]([ExtResource("5_n3o3v"), ExtResource("6_c02gs"), ExtResource("7_rj7m5"), ExtResource("8_pcd64"), ExtResource("9_klj5i")])
+script = ExtResource("4_dvdpb")
+audio = ExtResource("5_2m1dx")
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

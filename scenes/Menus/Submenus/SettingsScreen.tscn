@@ -1,15 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxo5cilexhd5g"]
+[gd_scene load_steps=7 format=3 uid="uid://bxo5cilexhd5g"]
 
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="1_6up3k"]
 [ext_resource type="Script" path="res://scripts/settings_screen.gd" id="1_fc4jn"]
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_o4weg"]
 [ext_resource type="Script" path="res://scripts/audio_level_slider.gd" id="4_72wel"]
-[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="5_lqik3"]
-[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="6_git6l"]
-[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="7_kxr8n"]
-[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="8_mqlh3"]
-[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="9_ir4mx"]
-[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="10_20nw6"]
+[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="5_c563b"]
+[ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="6_k26ep"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -206,8 +202,8 @@ anchor_bottom = 0.948148
 theme = ExtResource("1_6up3k")
 text = "BACK"
 flat = true
-script = ExtResource("5_lqik3")
-sound_array = Array[AudioStream]([ExtResource("6_git6l"), ExtResource("7_kxr8n"), ExtResource("8_mqlh3"), ExtResource("9_ir4mx"), ExtResource("10_20nw6")])
+script = ExtResource("5_c563b")
+audio = ExtResource("6_k26ep")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Open a File"

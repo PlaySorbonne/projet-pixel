@@ -67,11 +67,13 @@ func _process(delta : float):
 	button_movement_val += delta
 	b.anchor_left = cos(button_movement_val * 9) * 0.01 + 0.01
 	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
+		$AudioArrowDown.play(0.0)
 		var new_button : = selected_button + 1
 		if new_button >= len(buttons):
 			new_button = 0
 		select_button(new_button)
 	elif Input.is_action_just_pressed("up") or Input.is_action_just_pressed("left"):
+		$AudioArrowUp.play(0.0)
 		var new_button := selected_button - 1
 		if new_button < 0:
 			new_button = len(buttons) - 1
