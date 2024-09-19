@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_jugr7")
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ggymg")
+bus = &"sfx"
 script = ExtResource("3_vm53x")
 pitch_min = 1.35
 pitch_max = 1.6

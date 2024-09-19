@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmiqu48ouk00p"]
+[gd_scene load_steps=14 format=3 uid="uid://cmiqu48ouk00p"]
 
 [ext_resource type="Texture2D" uid="uid://ba0nssv56t4cb" path="res://resources/images/fx/explosion/Missile_3_Explosion_001.png" id="1_ocmyg"]
 [ext_resource type="Texture2D" uid="uid://br7l75bwipy1e" path="res://resources/images/fx/explosion/Missile_3_Explosion_002.png" id="2_6fsaj"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bftu6ibeppblm" path="res://resources/images/fx/explosion/Missile_3_Explosion_008.png" id="8_ytwaa"]
 [ext_resource type="Texture2D" uid="uid://kdrjm07tjnv" path="res://resources/images/transparentPixel.png" id="9_xn6f8"]
 [ext_resource type="Script" path="res://scripts/explosion_anim_sprite.gd" id="10_ca5qi"]
+[ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="11_y4p8i"]
+[ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="12_x3vkh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7vtbi"]
 animations = [{
@@ -56,4 +58,12 @@ frame = 9
 frame_progress = 1.0
 script = ExtResource("10_ca5qi")
 
+[node name="AudioExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_y4p8i")
+bus = &"sfx"
+script = ExtResource("12_x3vkh")
+pitch_min = 0.8
+pitch_max = 1.0
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="finished" from="AudioExplosion" to="." method="_on_audio_explosion_finished"]

@@ -22,6 +22,7 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 	hitbox.damage = hit_damage
 	hitbox.attacker = parent
 	hitbox.intensity = hit_intensity
+	hitbox.set_audio_pitch_multiplier(1.15 - (float(hit_damage) / 10.0))
 	if attached_to_character:
 		parent.add_child(hitbox)
 	else:
@@ -38,6 +39,10 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 func _ready():
 	if draw_particles:
 		$GPUParticles2D.restart()
+		$AudioAttack.play_random_pitch()
+
+func set_audio_pitch_multiplier(val : float):
+	$AudioAttack.pitch_multiplier = val
 
 func no_particles():
 	particles_finished = true

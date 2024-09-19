@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ced3vyroidtpi"]
+[gd_scene load_steps=38 format=3 uid="uid://ced3vyroidtpi"]
 
 [ext_resource type="Script" path="res://scripts/AttackHitbox.gd" id="1_tt78l"]
 [ext_resource type="Texture2D" uid="uid://daoa1qvs2e864" path="res://resources/images/fx/hitBig/tile066.png" id="2_f8n16"]
@@ -30,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://bkvbgwtq5a51m" path="res://resources/images/fx/impactGround/tile117.png" id="19_ku4sc"]
 [ext_resource type="Texture2D" uid="uid://ddf0yrkaxsadf" path="res://resources/images/fx/impactGround/tile118.png" id="20_coabs"]
 [ext_resource type="Texture2D" uid="uid://rhn37xie4g2a" path="res://resources/images/particles/point.png" id="30_2l321"]
+[ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="31_ok212"]
+[ext_resource type="AudioStream" uid="uid://by6cphok133yq" path="res://resources/audio/sfx/gameplay_sfx/hitHurt_atk.wav" id="31_oyfb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u0yq"]
 size = Vector2(60, 60)
@@ -203,6 +205,11 @@ local_coords = true
 trail_lifetime = 1.0
 
 [node name="AudioAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_oyfb5")
+bus = &"sfx"
+script = ExtResource("31_ok212")
+pitch_min = 0.8
+pitch_max = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
