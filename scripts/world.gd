@@ -77,6 +77,7 @@ func weeb_arrival(new_weeb : PlayerCharacter):
 		has_weeb_arrived = true
 		GameInfos.camera_utils.flash_constrast(1.5, 0.25, false)
 	var crosshair := WEEB_EVOLUTION_CROSSHAIR_RES.instantiate()
+	level.set_music_pitch(1.1)
 	crosshair.followed_actor = new_weeb
 	add_child(crosshair)
 	GameInfos.camera_utils.shake()

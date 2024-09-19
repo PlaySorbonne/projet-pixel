@@ -25,3 +25,6 @@ func _ready():
 	anime.rotation = $AnimeBoxHint.rotation
 	add_child(anime)
 	$AnimeBoxHint.queue_free()
+
+func set_music_pitch(new_pitch : float):
+	$Music.pitch_scale = new_pitch

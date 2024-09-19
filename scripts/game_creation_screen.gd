@@ -7,8 +7,8 @@ const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
 const PLAYER_INFOS_POS_INIT := Vector2(50.0, 100.0)
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 const WORLD_PATH := "res://scenes/world.tscn"
-const AUDIO_PITCH_DEFAULT := 0.95
-const AUDIO_PITCH_INTENSE := 0.9
+const AUDIO_PITCH_DEFAULT := 1.0
+const AUDIO_PITCH_INTENSE := 1.0
 
 @export var transition : ScreenTransition
 @export var level_parent : SubViewport

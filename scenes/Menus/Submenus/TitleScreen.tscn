@@ -53,8 +53,6 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
-save_as_global_array = null
-load_global_sound_array = null
 
 [node name="Vault" type="Button" parent="."]
 layout_mode = 1
@@ -76,8 +74,6 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
-save_as_global_array = null
-load_global_sound_array = null
 
 [node name="Settings" type="Button" parent="."]
 layout_mode = 1
@@ -99,8 +95,6 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
-save_as_global_array = null
-load_global_sound_array = null
 
 [node name="Credits" type="Button" parent="."]
 layout_mode = 1
@@ -182,6 +176,10 @@ grow_vertical = 2
 texture = ExtResource("3_53g2f")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="AudioArrowUp" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioArrowDown" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Vault" to="." method="_on_vault_pressed"]

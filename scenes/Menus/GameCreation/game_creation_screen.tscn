@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=25 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="9_jrm0i"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="9_jrxk5"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="10_t55k5"]
+[ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="13_kt80l"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -433,6 +434,20 @@ tracks/9/keys = {
 "method": &"shake"
 }]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../ButtonTestMusic/AudioTestMusic")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_johfb"]
 resource_name = "start_leave"
@@ -844,6 +859,10 @@ offset_bottom = 75.0
 texture = ExtResource("6_als2q")
 expand_mode = 1
 flip_h = true
+
+[node name="AudioStreamBoom" type="AudioStreamPlayer" parent="CanvasLayer/GameCreationScreen/ButtonConfirm"]
+stream = ExtResource("13_kt80l")
+bus = &"sfx"
 
 [node name="GameModeSelector" parent="CanvasLayer/GameCreationScreen" instance=ExtResource("5_0ypjy")]
 layout_mode = 1
