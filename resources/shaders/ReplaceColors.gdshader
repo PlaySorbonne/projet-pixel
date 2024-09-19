@@ -5,4 +5,3 @@ uniform vec3 color : source_color;
 void fragment() {
 	COLOR.rgb = color;
 }
-

@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3283guxswi41"]
+[gd_scene load_steps=10 format=3 uid="uid://d3283guxswi41"]
 
 [ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_cqi7r"]
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_y6t6y"]
-[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="3_6pwtc"]
+[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="3_20l1y"]
 [ext_resource type="Texture2D" uid="uid://s4dnnbfx1dq2" path="res://resources/images/interface/selectionTriangle.png" id="3_53g2f"]
+[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="4_os7m5"]
+[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="5_lvqtj"]
+[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="6_ijqgv"]
+[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="7_u8fj7"]
+[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="8_f6xvk"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -46,7 +51,10 @@ theme_override_font_sizes/font_size = 112
 text = "PLAY"
 flat = true
 alignment = 0
-script = ExtResource("3_6pwtc")
+script = ExtResource("3_20l1y")
+sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+save_as_global_array = null
+load_global_sound_array = null
 
 [node name="Vault" type="Button" parent="."]
 layout_mode = 1
@@ -66,6 +74,10 @@ theme_override_font_sizes/font_size = 96
 text = "VAULT"
 flat = true
 alignment = 0
+script = ExtResource("3_20l1y")
+sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+save_as_global_array = null
+load_global_sound_array = null
 
 [node name="Settings" type="Button" parent="."]
 layout_mode = 1
@@ -85,6 +97,10 @@ theme_override_font_sizes/font_size = 80
 text = "SETTINGS"
 flat = true
 alignment = 0
+script = ExtResource("3_20l1y")
+sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+save_as_global_array = null
+load_global_sound_array = null
 
 [node name="Credits" type="Button" parent="."]
 layout_mode = 1
@@ -104,6 +120,8 @@ theme_override_font_sizes/font_size = 80
 text = "CREDITS"
 flat = true
 alignment = 0
+script = ExtResource("3_20l1y")
+sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
 
 [node name="Pointer0" type="TextureRect" parent="."]
 layout_mode = 1

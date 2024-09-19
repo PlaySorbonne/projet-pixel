@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=30 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
@@ -8,6 +8,12 @@
 [ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
 [ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="6_mw5do"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
+[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="8_07ko8"]
+[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="9_5oqci"]
+[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="10_fpwmj"]
+[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="11_erfdq"]
+[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="12_ldtoc"]
+[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="13_k5sox"]
 
 [sub_resource type="Gradient" id="Gradient_ykewt"]
 colors = PackedColorArray(1, 0.627451, 0.917647, 1, 1, 1, 1, 1)
@@ -59,6 +65,88 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(0.378929, 0.378929, 1.7411, 0.378929, 0.378929),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -150), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aeng1"]
+resource_name = "rotate"
+length = 3.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.517632, 0.392292, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, -6.28319, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6vf5u"]
+resource_name = "squash"
+length = 7.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.5, 2.1, 3.2, 4.2, 4.7, 5.9),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(0.35, 1.5), Vector2(1, 1), Vector2(0.2, 2.6), Vector2(0.2, 2.6), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.3, 4.5, 4.7),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 2.21914, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u0ac5"]
@@ -184,88 +272,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_aeng1"]
-resource_name = "rotate"
-length = 3.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.7, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.517632, 0.392292, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, -6.28319, -6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.7, 3, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6vf5u"]
-resource_name = "squash"
-length = 7.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.5, 2.1, 3.2, 4.2, 4.7, 5.9),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(0.35, 1.5), Vector2(1, 1), Vector2(0.2, 2.6), Vector2(0.2, 2.6), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.3, 4.5, 4.7),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 2.21914, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoar"]
 _data = {
 "jump": SubResource("Animation_jy6dd"),
@@ -274,46 +280,6 @@ _data = {
 "swell": SubResource("Animation_u0ac5"),
 "swing": SubResource("Animation_putn4"),
 "tilt": SubResource("Animation_u17hy")
-}
-
-[sub_resource type="Animation" id="Animation_3jx55"]
-resource_name = "pop_in"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [Vector2(0, 32), Vector2(343, 32)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [-0.349066, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_vuycv"]
@@ -353,46 +319,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_tjtp7"]
-resource_name = "pop_out"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [Vector2(343, 32), Vector2(0, 32)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.3, 1),
-"update": 0,
-"values": [0.0, -0.349066]
 }
 
 [sub_resource type="Animation" id="Animation_vq8w8"]
@@ -436,6 +362,86 @@ tracks/2/keys = {
 "values": [0.0, 0.0349066]
 }
 
+[sub_resource type="Animation" id="Animation_3jx55"]
+resource_name = "pop_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(343, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [-0.349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tjtp7"]
+resource_name = "pop_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(343, 32), Vector2(0, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [0.0, -0.349066]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2i2ge"]
 _data = {
 "RESET": SubResource("Animation_vuycv"),
@@ -454,6 +460,10 @@ script = ExtResource("1_i7nk8")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 343.0
+offset_top = 32.0
+offset_right = 343.0
+offset_bottom = 32.0
 
 [node name="ColorRect" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -553,6 +563,8 @@ offset_top = -20.0301
 offset_right = 230.0
 offset_bottom = 26.9699
 theme = ExtResource("5_036eb")
+script = ExtResource("8_07ko8")
+sound_array = Array[AudioStream]([ExtResource("9_5oqci"), ExtResource("10_fpwmj"), ExtResource("11_erfdq"), ExtResource("12_ldtoc"), ExtResource("13_k5sox")])
 
 [node name="ColorPicker" type="ColorPicker" parent="Control"]
 visible = false
@@ -581,6 +593,8 @@ offset_bottom = 32.9699
 icon = ExtResource("7_f00w3")
 flat = true
 expand_icon = true
+script = ExtResource("8_07ko8")
+sound_array = Array[AudioStream]([ExtResource("9_5oqci"), ExtResource("10_fpwmj"), ExtResource("11_erfdq"), ExtResource("12_ldtoc"), ExtResource("13_k5sox")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

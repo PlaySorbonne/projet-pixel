@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm2is8wtrp5ox"]
+[gd_scene load_steps=15 format=3 uid="uid://cm2is8wtrp5ox"]
 
 [ext_resource type="Script" path="res://scripts/option_selector.gd" id="1_3o7b3"]
 [ext_resource type="Texture2D" uid="uid://svmgw2owh3ex" path="res://resources/images/interface/left.png" id="1_scnia"]
@@ -6,14 +6,19 @@
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_cufy3"]
 [ext_resource type="Texture2D" uid="uid://8faxw65gs3ut" path="res://resources/images/interface/left_big.png" id="3_7c1la"]
 [ext_resource type="Texture2D" uid="uid://bmjtmpbp7xkt7" path="res://resources/images/interface/left_big_pressed.png" id="4_pw71v"]
+[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="5_niod2"]
 [ext_resource type="Texture2D" uid="uid://dgb422ew0hew" path="res://resources/images/interface/right_big_pressed.png" id="5_rwkc2"]
 [ext_resource type="Texture2D" uid="uid://qf5s7bidrqr7" path="res://resources/images/interface/right_big.png" id="6_rbgts"]
+[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="6_rj7dt"]
+[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="7_5j2wy"]
+[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="8_4ej83"]
+[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="9_rfaqd"]
+[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="10_ji0ix"]
 
 [node name="OptionSelector" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3o7b3")
-minimum_label_width = null
 
 [node name="PreviousButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -26,6 +31,8 @@ texture_disabled = ExtResource("1_scnia")
 texture_focused = ExtResource("1_scnia")
 ignore_texture_size = true
 stretch_mode = 6
+script = ExtResource("5_niod2")
+sound_array = Array[AudioStream]([ExtResource("6_rj7dt"), ExtResource("7_5j2wy"), ExtResource("8_4ej83"), ExtResource("9_rfaqd"), ExtResource("10_ji0ix")])
 
 [node name="Separator1" type="Control" parent="."]
 custom_minimum_size = Vector2(20, 0)
@@ -52,6 +59,8 @@ texture_disabled = ExtResource("2_arf1l")
 texture_focused = ExtResource("2_arf1l")
 ignore_texture_size = true
 stretch_mode = 6
+script = ExtResource("5_niod2")
+sound_array = Array[AudioStream]([ExtResource("6_rj7dt"), ExtResource("7_5j2wy"), ExtResource("8_4ej83"), ExtResource("9_rfaqd"), ExtResource("10_ji0ix")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

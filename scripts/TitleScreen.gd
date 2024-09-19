@@ -67,7 +67,7 @@ func _process(delta : float):
 	button_movement_val += delta
 	b.anchor_left = cos(button_movement_val * 9) * 0.01 + 0.01
 	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
-		var new_button := selected_button + 1
+		var new_button : = selected_button + 1
 		if new_button >= len(buttons):
 			new_button = 0
 		select_button(new_button)
@@ -78,6 +78,7 @@ func _process(delta : float):
 		select_button(new_button)
 	elif Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special") or Input.is_action_just_pressed("jump"):
 		confirm_button()
+		b.emit_signal("pressed")
 
 func select_button(button_number : int):
 	if selected_button == button_number:

@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://4cf0hnddgr1l"]
+[gd_scene load_steps=14 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/PlayerSelectionTheme.tres" id="2_fplfe"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_ros5h"]
 [ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="3_6eaw0"]
+[ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="4_34g4m"]
+[ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="5_hdyq2"]
+[ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="6_65l3s"]
+[ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="7_4rgjc"]
+[ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="8_8pik0"]
+[ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="9_2olwk"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_vixc7"]
 device = -1
@@ -64,6 +70,8 @@ disabled = true
 shortcut = SubResource("Shortcut_ltyg6")
 text = "CONTINUE"
 flat = true
+script = ExtResource("4_34g4m")
+sound_array = Array[AudioStream]([ExtResource("5_hdyq2"), ExtResource("6_65l3s"), ExtResource("7_4rgjc"), ExtResource("8_8pik0"), ExtResource("9_2olwk")])
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSettings" type="Button" parent="PauseMenu"]
@@ -79,6 +87,8 @@ theme = ExtResource("2_fplfe")
 disabled = true
 text = "SETTINGS"
 flat = true
+script = ExtResource("4_34g4m")
+sound_array = Array[AudioStream]([ExtResource("5_hdyq2"), ExtResource("6_65l3s"), ExtResource("7_4rgjc"), ExtResource("8_8pik0"), ExtResource("9_2olwk")])
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonQuit" type="Button" parent="PauseMenu"]
@@ -94,6 +104,8 @@ theme = ExtResource("2_fplfe")
 disabled = true
 text = "QUIT"
 flat = true
+script = ExtResource("4_34g4m")
+sound_array = Array[AudioStream]([ExtResource("5_hdyq2"), ExtResource("6_65l3s"), ExtResource("7_4rgjc"), ExtResource("8_8pik0"), ExtResource("9_2olwk")])
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsScreen" parent="PauseMenu" instance=ExtResource("3_6eaw0")]
