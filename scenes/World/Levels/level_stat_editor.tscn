@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp2lvb0g5tvhy"]
 
-[ext_resource type="PackedScene" uid="uid://cftuvb1og2wty" path="res://scenes/World/Levels/level_training.tscn" id="1_vkox6"]
+[ext_resource type="PackedScene" uid="uid://cftuvb1og2wty" path="res://scenes/World/Levels/level_test_parent.tscn" id="1_vkox6"]
 [ext_resource type="PackedScene" uid="uid://dqii8t3231iwe" path="res://scenes/Tools/adjust_stats.tscn" id="2_yiwb5"]
 [ext_resource type="PackedScene" uid="uid://dtbi7vykpbxmh" path="res://scenes/World/Lobby/ChangeEvolution.tscn" id="3_2r114"]
 

@@ -1,61 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://cftuvb1og2wty"]
+[gd_scene load_steps=4 format=3 uid="uid://c5whvxmrxionx"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
-[ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
-script = ExtResource("2_14xww")
 
 [node name="SpawnLocation1" parent="." index="0"]
-position = Vector2(571, 626)
+position = Vector2(258, 594)
 
 [node name="SpawnLocation2" parent="." index="1"]
-position = Vector2(783, 626)
+position = Vector2(560, 589)
 
 [node name="SpawnLocation3" parent="." index="2"]
-position = Vector2(1004, 626)
+position = Vector2(1007, 592)
 
 [node name="SpawnLocation4" parent="." index="3"]
-position = Vector2(1205, 628)
+position = Vector2(1345, 592)
 
-[node name="Wall" parent="." index="6" instance=ExtResource("2_ieh35")]
+[node name="Camera" parent="." index="4"]
+position = Vector2(825, 590)
+
+[node name="Background" parent="." index="5"]
+self_modulate = Color(0.47451, 0.815686, 0.941176, 1)
+position = Vector2(806, 289)
+scale = Vector2(0.430003, 0.430003)
+
+[node name="AnimeBoxHint" parent="." index="6"]
+position = Vector2(1483, 658)
+
+[node name="Wall" parent="." index="8" instance=ExtResource("2_ieh35")]
 position = Vector2(903, 885)
 scale = Vector2(22.6, 5)
 
-[node name="Wall2" parent="." index="7" instance=ExtResource("2_ieh35")]
+[node name="Wall2" parent="." index="9" instance=ExtResource("2_ieh35")]
 position = Vector2(685, -129)
 scale = Vector2(22.76, 5)
 
-[node name="Wall3" parent="." index="8" instance=ExtResource("2_ieh35")]
+[node name="Wall3" parent="." index="10" instance=ExtResource("2_ieh35")]
 position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
-[node name="Wall4" parent="." index="9" instance=ExtResource("2_ieh35")]
+[node name="Wall4" parent="." index="11" instance=ExtResource("2_ieh35")]
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="TeleporterRightUp" parent="." index="10" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
+[node name="TeleporterRightUp" parent="." index="12" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
 position = Vector2(1519, -152)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../TeleporterLeftDown")
 
-[node name="TeleporterLeftDown" parent="." index="11" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
+[node name="TeleporterLeftDown" parent="." index="13" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
 position = Vector2(75, 1039)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../TeleporterRightUp")
-
-[node name="LabelHits" type="Label" parent="." index="12"]
-offset_left = 1353.0
-offset_top = 495.0
-offset_right = 1477.0
-offset_bottom = 544.0
-scale = Vector2(2, 2)
-text = "hit : 0
-total : 0"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="AnimeBoxHint" parent="." index="13"]
-position = Vector2(1478, 651)
