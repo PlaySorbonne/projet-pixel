@@ -1,14 +1,26 @@
 extends Sprite2D
 class_name CharacterPointer
 
-const HEALTH_BAR_UNIT = preload(("res://scenes/Menus/GameUI/healthbar_unit.tscn"))
-const HEALTH_BAR_POS_INIT = Vector2(-54, -50)
-const HEALTH_PAR_POS_COEFF = Vector2(7, -31)
+const HEALTH_BAR_UNIT := preload(("res://scenes/Menus/GameUI/healthbar_unit.tscn"))
+const HEALTH_BAR_POS_INIT := Vector2(-54, -50)
+const HEALTH_PAR_POS_COEFF := Vector2(7, -31)
 const TIMER_TRANSPARENT := 3.5
+const TEXTURE_REF := preload("res://resources/images/characters/character_pointer.png")
 
 static var current_z = 0
 
 @export var shake_offset := Vector2.ZERO
+@export var has_name := true:
+	set(value):
+		has_name = value
+		$HealthBars/LabelName.visible = has_name
+@export var has_pointer := true:
+	set(value):
+		has_pointer = value
+		if has_pointer:
+			texture = TEXTURE_REF
+		else:
+			texture = null
 
 @onready var default_pos = position
 @onready var parent_character : Node2D = get_parent()
@@ -20,7 +32,9 @@ func _ready():
 	$HealthBars.z_index = current_z * 5
 	current_z += 1
 	visible = false
-	await get_tree().create_timer(0.1).timeout
+	has_name = has_name
+	has_pointer = has_pointer
+	await get_tree().create_timer(0.15).timeout
 	visible = true
 
 func get_current_unit() -> HealthBarUnit:
@@ -50,6 +64,8 @@ func set_max_hitpoints(hitpoints : int):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
+	$HealthBars/LabelName.position = HEALTH_BAR_POS_INIT + (
+		HEALTH_PAR_POS_COEFF * healthbars.size())
 	var delay := 0
 	for unit : HealthBarUnit in healthbars:
 		unit.add_unit(delay)

@@ -14,7 +14,7 @@ shader_parameter/time_divider = 2.0
 
 [node name="Sprite2D" type="Sprite2D"]
 material = SubResource("ShaderMaterial_7m0al")
-scale = Vector2(0.18, 0.18)
+scale = Vector2(0.144, 0.144)
 texture = ExtResource("2_kdxkd")
 region_enabled = true
 region_rect = Rect2(-50, -50, 550, 750)
