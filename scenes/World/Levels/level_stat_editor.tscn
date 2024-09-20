@@ -9,10 +9,6 @@
 [node name="Background" parent="." index="5"]
 self_modulate = Color(1, 0.659359, 0.600691, 1)
 
-[node name="LabelHits" parent="." index="12"]
-text = "hit : 0
-total : 0"
-
 [node name="AdjustStats" parent="." index="13" instance=ExtResource("2_yiwb5")]
 layer = 10
 
