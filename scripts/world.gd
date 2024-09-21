@@ -5,6 +5,8 @@ const WEEB_EVOLUTION_CROSSHAIR_RES := preload("res://scenes/Utilities/WeebEvolut
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
+signal weeb_arrived
+
 @onready var game_mode : GameMode = $GameMode
 
 var spawn_locations : Array[Node2D]
@@ -80,7 +82,7 @@ func weeb_arrival(new_weeb : PlayerCharacter):
 		GameInfos.camera_utils.flash_constrast(1.5, 0.25, false)
 	var crosshair := WEEB_EVOLUTION_CROSSHAIR_RES.instantiate()
 	level.set_music_pitch(1.1)
-	
+	emit_signal("weeb_arrived")
 	crosshair.followed_actor = new_weeb
 	add_child(crosshair)
 	GameInfos.camera_utils.shake()

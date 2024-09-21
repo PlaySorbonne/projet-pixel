@@ -17,6 +17,7 @@ const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn"
 @export var anime_velocity := 1500.0
 @export var anime_damage_multiplier := 1.0
 @export var winning_by_weeb_touch := true
+@export var max_hitpoints := 4
 
 @onready var trail_effect := $TrailEffect
 var team := -1
@@ -66,10 +67,14 @@ func _ready():
 	if GameInfos.game_started:
 		await get_tree().create_timer(0.1).timeout
 		connect("game_won", GameInfos.world.end_game)
+		GameInfos.world.connect("weeb_arrived", set_hitpoints)
 		GameInfos.tracked_targets.append(self)
 	else:
 		set_process(false)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
+
+func set_hitpoints():
+	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func increment_weeb_touched():
 	$AudioWeebTouched.pitch_scale = 1.5 - weeb_touched/4.0
@@ -77,6 +82,7 @@ func increment_weeb_touched():
 	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][weeb_touched]
 	blue_div_at_rest = WEEB_TOUCHED_SHADER_VALS["blue"][weeb_touched]
 	weeb_touched += 1
+	$CharacterPointer.take_damage(1, max_hitpoints-weeb_touched)
 	set_tape_hit_mode()
 
 func set_tape_hit_mode():
@@ -120,7 +126,7 @@ func _on_area_2d_body_entered(body : Node2D):
 		return
 	var player_body : PlayerCharacter = body
 	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
-		if weeb_touched >= 3:
+		if weeb_touched >= max_hitpoints - 1:
 			GameInfos.last_winner = player_body.player_ID
 			emit_signal("game_won")
 		else:
