@@ -7,9 +7,10 @@ const TIP_POS_COEFF := 20.0
 const PROGRESS_TIP_TEXTURE = preload("res://scenes/Menus/GameUI/texture_progress_tip.tscn")
 
 @export var health : int = 0
+var visible_at_ready := false
 
 func _ready():
-	visible = false
+	visible = visible_at_ready
 
 func set_health_value(new_val : int):
 	health = new_val
@@ -76,5 +77,6 @@ func add_unit(delay := 0):
 func add_unit_no_anim():
 	scale = Vector2.ONE
 	visible = true
+	visible_at_ready = true
 	set_health_value(health)
 	print("hullo !")
