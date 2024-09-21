@@ -794,6 +794,7 @@ offset_right = -2.01904
 offset_bottom = 4.71265
 rotation = -0.0174533
 pivot_offset = Vector2(234, 59)
+focus_mode = 0
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 80
 text = "START"
