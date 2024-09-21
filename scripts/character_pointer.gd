@@ -27,7 +27,7 @@ static var current_z = 0
 @onready var parent_character : Node2D = get_parent()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
-@onready var healthbars : Array[HealthBarUnit] = []
+var healthbars : Array[HealthBarUnit] = []
 
 func _ready():
 	$HealthBars.z_index = current_z * 5
