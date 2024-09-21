@@ -64,8 +64,8 @@ func set_max_hitpoints(hitpoints : int):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
-	$HealthBars/LabelName.position = HEALTH_BAR_POS_INIT + (
-		HEALTH_PAR_POS_COEFF * healthbars.size())
+	$HealthBars/LabelName.position.y = HEALTH_BAR_POS_INIT.y + (
+		HEALTH_PAR_POS_COEFF.y * healthbars.size())
 	var delay := 0
 	for unit : HealthBarUnit in healthbars:
 		unit.add_unit(delay)
