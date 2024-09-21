@@ -52,5 +52,6 @@ bus = &"sfx"
 position = Vector2(0, -50)
 has_name = false
 has_pointer = false
+always_show_healthbars = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

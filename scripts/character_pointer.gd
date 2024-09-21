@@ -21,6 +21,7 @@ static var current_z = 0
 			texture = TEXTURE_REF
 		else:
 			texture = null
+@export var always_show_healthbars := false
 
 @onready var default_pos = position
 @onready var parent_character : Node2D = get_parent()
@@ -40,7 +41,7 @@ func _ready():
 func get_current_unit() -> HealthBarUnit:
 	return null
 
-func set_max_hitpoints(hitpoints : int):
+func set_max_hitpoints(hitpoints : int, with_anim := true):
 	for h : HealthBarUnit in healthbars:
 		h.queue_free()
 	healthbars.clear()
@@ -70,9 +71,12 @@ func set_max_hitpoints(hitpoints : int):
 	)
 	var delay := 0
 	for unit : HealthBarUnit in healthbars:
-		unit.add_unit(delay)
-		await get_tree().create_timer(0.175).timeout
-		delay += 5
+		if with_anim:
+			unit.add_unit(delay)
+			await get_tree().create_timer(0.175).timeout
+			delay += 5
+		else:
+			unit.add_unit_no_anim()
 	show_health_bars()
 
 func set_character_name(new_name : String):
@@ -101,7 +105,8 @@ func _process(_delta):
 
 func show_health_bars():
 	tween_color(Color.WHITE)
-	$Timer.start(TIMER_TRANSPARENT)
+	if not always_show_healthbars:
+		$Timer.start(TIMER_TRANSPARENT)
 
 func _on_timer_timeout():
 	tween_color(Color(1.0, 1.0, 1.0, 0.4))

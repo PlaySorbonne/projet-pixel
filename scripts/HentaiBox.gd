@@ -20,6 +20,7 @@ const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn"
 @export var max_hitpoints := 4
 
 @onready var trail_effect := $TrailEffect
+@onready var character_pointer : CharacterPointer = $CharacterPointer
 var team := -1
 var last_player_hit : PlayerCharacter = null
 var last_hit_value := 0
@@ -34,6 +35,7 @@ func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_sim
 	var new_body := OBJECTIVE_BOX_RES.instantiate()
 	new_body.freeze = true
 	new_body.weeb_touched = weeb_touched
+	new_body.set_hitpoints(max_hitpoints-weeb_touched, false)
 	new_body.damaging = damaging
 	new_body.chaos_value_at_rest = chaos_value_at_rest
 	new_body.blue_div_at_rest = blue_div_at_rest
@@ -73,8 +75,8 @@ func _ready():
 		set_process(false)
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
-func set_hitpoints():
-	$CharacterPointer.set_max_hitpoints(max_hitpoints)
+func set_hitpoints(hitpoints := max_hitpoints, with_anim := true):
+	$CharacterPointer.set_max_hitpoints(hitpoints, with_anim)
 
 func increment_weeb_touched():
 	$AudioWeebTouched.pitch_scale = 1.5 - weeb_touched/4.0
@@ -82,7 +84,7 @@ func increment_weeb_touched():
 	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][weeb_touched]
 	blue_div_at_rest = WEEB_TOUCHED_SHADER_VALS["blue"][weeb_touched]
 	weeb_touched += 1
-	$CharacterPointer.take_damage(1, max_hitpoints-weeb_touched)
+	character_pointer.take_damage(1, max_hitpoints-weeb_touched)
 	set_tape_hit_mode()
 
 func set_tape_hit_mode():

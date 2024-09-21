@@ -72,3 +72,9 @@ func add_unit(delay := 0):
 	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)
 	await get_tree().create_timer(0.2).timeout
 	heal_effect(h,  0.2 * delay)
+
+func add_unit_no_anim():
+	scale = Vector2.ONE
+	visible = true
+	set_health_value(health)
+	print("hullo !")
