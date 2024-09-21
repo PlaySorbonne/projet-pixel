@@ -73,6 +73,9 @@ func set_max_hitpoints(hitpoints : int):
 		delay += 5
 	show_health_bars()
 
+func set_character_name(new_name : String):
+	$HealthBars/LabelName.text = new_name
+
 func take_damage(damage : int, new_hitpoints : int):
 	var d := current_hitpoints - new_hitpoints
 	var delay := 0
