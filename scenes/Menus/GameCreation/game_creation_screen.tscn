@@ -755,6 +755,7 @@ offset_left = 0.879997
 offset_top = 0.0799561
 offset_right = -0.440018
 offset_bottom = -0.440063
+focus_mode = 0
 theme = ExtResource("2_ganm3")
 text = "BACK"
 flat = true
@@ -769,6 +770,7 @@ anchor_top = 0.680556
 anchor_right = 0.969792
 anchor_bottom = 0.780556
 rotation = 0.0182909
+focus_mode = 0
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 40
 text = "music_name"
@@ -776,7 +778,6 @@ icon = ExtResource("5_ucitn")
 flat = true
 alignment = 0
 expand_icon = true
-metadata/_edit_use_anchors_ = true
 
 [node name="AudioTestMusic" type="AudioStreamPlayer" parent="CanvasLayer/GameCreationScreen/ButtonTestMusic"]
 stream = ExtResource("6_ulrlk")
@@ -873,7 +874,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 minimum_label_width = 500.0
 options = Array[String](["Brawl"])
-metadata/_edit_use_anchors_ = true
 
 [node name="LevelSelector" parent="CanvasLayer/GameCreationScreen" instance=ExtResource("5_0ypjy")]
 layout_mode = 1
@@ -886,7 +886,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 minimum_label_width = 500.0
 options = Array[String](["Default"])
-metadata/_edit_use_anchors_ = true
 
 [node name="MusicSelector" parent="CanvasLayer/GameCreationScreen" instance=ExtResource("5_0ypjy")]
 layout_mode = 1
@@ -899,7 +898,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 minimum_label_width = 500.0
 options = Array[String](["Secret Knowledge"])
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureLevel" type="SubViewportContainer" parent="CanvasLayer/GameCreationScreen"]
 z_index = 12

@@ -1,7 +1,7 @@
 extends Control
 class_name PlayerMenuCursor
 
-const MOV_VELOCITY := 500.0
+const MOV_VELOCITY := 600.0
 
 @export var player_ID := 0:
 	set(value):
@@ -58,4 +58,4 @@ func _process(delta : float):
 		velocity.y -= 1
 	if down_pressed:
 		velocity.y += 1
-	position += velocity * MOV_VELOCITY * delta
+	position += velocity.normalized() * MOV_VELOCITY * delta
