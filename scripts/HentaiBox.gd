@@ -17,7 +17,7 @@ const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn"
 @export var anime_velocity := 1500.0
 @export var anime_damage_multiplier := 1.0
 @export var winning_by_weeb_touch := true
-@export var max_hitpoints := 4
+@export var max_hitpoints := 5
 
 @onready var trail_effect := $TrailEffect
 @onready var character_pointer : CharacterPointer = $CharacterPointer
@@ -81,8 +81,11 @@ func set_hitpoints(hitpoints := max_hitpoints, with_anim := true):
 func increment_weeb_touched():
 	$AudioWeebTouched.pitch_scale = 1.5 - weeb_touched/4.0
 	$AudioWeebTouched.play(0.0)
-	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][weeb_touched]
-	blue_div_at_rest = WEEB_TOUCHED_SHADER_VALS["blue"][weeb_touched]
+	var array_index : int = min(
+		weeb_touched, len(WEEB_TOUCHED_SHADER_VALS["chaos"])-1
+	)
+	chaos_value_at_rest = WEEB_TOUCHED_SHADER_VALS["chaos"][array_index]
+	blue_div_at_rest = WEEB_TOUCHED_SHADER_VALS["blue"][array_index]
 	weeb_touched += 1
 	character_pointer.take_damage(1, max_hitpoints-weeb_touched)
 	set_tape_hit_mode()
@@ -139,7 +142,10 @@ func _on_area_2d_body_entered(body : Node2D):
 			GameInfos.camera_utils.shake()
 			last_player_hit = body
 			last_hit_value = 1
-			var hit_intensity : float = WEEB_TOUCHED_SHADER_VALS["hit"][weeb_touched]
+			var array_index : int = min(
+				weeb_touched, len(WEEB_TOUCHED_SHADER_VALS["hit"])-1
+			)
+			var hit_intensity : float = WEEB_TOUCHED_SHADER_VALS["hit"][array_index]
 			add_impulse(body.global_position, hit_intensity)
 			var player_impulse := Vector2(body.global_position-global_position).normalized()
 			player_body.knockback_velocity += player_impulse * anime_velocity * 2.5
