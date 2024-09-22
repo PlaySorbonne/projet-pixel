@@ -21,12 +21,13 @@ static var current_z = 0
 			texture = TEXTURE_REF
 		else:
 			texture = null
+@export var always_show_healthbars := false
 
 @onready var default_pos = position
 @onready var parent_character : Node2D = get_parent()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
-@onready var healthbars : Array[HealthBarUnit] = []
+var healthbars : Array[HealthBarUnit] = []
 
 func _ready():
 	$HealthBars.z_index = current_z * 5
@@ -40,7 +41,7 @@ func _ready():
 func get_current_unit() -> HealthBarUnit:
 	return null
 
-func set_max_hitpoints(hitpoints : int):
+func set_max_hitpoints(hitpoints : int, with_anim := true):
 	for h : HealthBarUnit in healthbars:
 		h.queue_free()
 	healthbars.clear()
@@ -64,14 +65,22 @@ func set_max_hitpoints(hitpoints : int):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
-	$HealthBars/LabelName.position = HEALTH_BAR_POS_INIT + (
-		HEALTH_PAR_POS_COEFF * healthbars.size())
+	$HealthBars/LabelName.position = Vector2(
+		-160.0 + 7.5 * healthbars.size(),
+		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * healthbars.size() - 20.0
+	)
 	var delay := 0
 	for unit : HealthBarUnit in healthbars:
-		unit.add_unit(delay)
-		await get_tree().create_timer(0.175).timeout
-		delay += 5
+		if with_anim:
+			unit.add_unit(delay)
+			await get_tree().create_timer(0.175).timeout
+			delay += 5
+		else:
+			unit.add_unit_no_anim()
 	show_health_bars()
+
+func set_character_name(new_name : String):
+	$HealthBars/LabelName.text = new_name
 
 func take_damage(damage : int, new_hitpoints : int):
 	var d := current_hitpoints - new_hitpoints
@@ -96,7 +105,8 @@ func _process(_delta):
 
 func show_health_bars():
 	tween_color(Color.WHITE)
-	$Timer.start(TIMER_TRANSPARENT)
+	if not always_show_healthbars:
+		$Timer.start(TIMER_TRANSPARENT)
 
 func _on_timer_timeout():
 	tween_color(Color(1.0, 1.0, 1.0, 0.4))

@@ -20,6 +20,7 @@ var control_index : int = -1
 		player_index = value
 		set_icons_color(GameInfos.players_data[player_index]["color"])
 		$Control/Label.text = GameInfos.players_data[player_index]["name"]
+		$PlayerMenuCursor.player_ID = player_index
 @export var last_winner := false:
 	set(value):
 		last_winner = value
@@ -51,6 +52,7 @@ func _on_color_button_pressed() -> void:
 
 func _on_color_picker_color_changed(color: Color) -> void:
 	GameInfos.players_data[player_index]["color"] = color
+	$PlayerMenuCursor.update_color(color)
 	set_icons_color(color)
 
 func set_icons_color(color : Color):

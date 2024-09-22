@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=32 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="11_erfdq"]
 [ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="12_ldtoc"]
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="13_k5sox"]
+[ext_resource type="AudioStream" uid="uid://bm15da333kmj5" path="res://resources/audio/sfx/gameplay_sfx/_hitHurt0.wav" id="15_awc0i"]
+[ext_resource type="PackedScene" uid="uid://c8oyt5ebxrqbf" path="res://scenes/Menus/player_menu_cursor.tscn" id="16_i3sdb"]
 
 [sub_resource type="Gradient" id="Gradient_ykewt"]
 colors = PackedColorArray(1, 0.627451, 0.917647, 1, 1, 1, 1, 1)
@@ -460,6 +462,10 @@ script = ExtResource("1_i7nk8")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 343.0
+offset_top = 32.0
+offset_right = 343.0
+offset_bottom = 32.0
 
 [node name="ColorRect" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -596,6 +602,17 @@ sound_array = Array[AudioStream]([ExtResource("9_5oqci"), ExtResource("10_fpwmj"
 libraries = {
 "": SubResource("AnimationLibrary_2i2ge")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_awc0i")
+autoplay = true
+bus = &"sfx"
+
+[node name="PlayerMenuCursor" parent="." instance=ExtResource("16_i3sdb")]
+offset_left = 910.0
+offset_top = 43.0
+offset_right = 910.0
+offset_bottom = 43.0
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]

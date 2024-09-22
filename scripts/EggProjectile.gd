@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name EggProjectile
 
 const EGG_PROJECTILE = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.tscn")
-const SPAWN_OFFSET = Vector2(0.0, 50.0)
+const SPAWN_OFFSET = Vector2(0.0, 10.0)
 const EXPLOSION_RES = preload("res://resources/images/fx/explosion/explosion_anim_sprite.tscn")
 const DEFAULT_EGG_SPRITE_SCALE := Vector2(0.15, 0.15)
 
@@ -30,6 +30,8 @@ func _ready():
 	velocity = Vector2.DOWN * egg_speed
 	var tween := create_tween()
 	tween.tween_property($Sprite, "scale", DEFAULT_EGG_SPRITE_SCALE, 0.2)
+	if parent_player.is_on_floor():
+		_on_area_2d_body_entered(null)
 
 func _physics_process(_delta):
 	move_and_slide()

@@ -44,7 +44,7 @@ var attacking := false
 var is_jumping := false
 var movement_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
-var computing_movement := true
+var computing_movement := false
 var god_mode := false
 var player_ID := 0
 var evolving := false
@@ -79,7 +79,7 @@ func _init():
 		player_counter += 1
 
 func _ready():
-	super()
+	super._ready()
 	team = player_ID
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
@@ -87,6 +87,7 @@ func _ready():
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
+	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
 	if current_evolution != Evolutions.CEO:
 		$AudioEvolve.play()
 
@@ -224,6 +225,7 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
 	await self.player_spawned
+	computing_movement = true
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func evolve(in_lobby: bool = false):

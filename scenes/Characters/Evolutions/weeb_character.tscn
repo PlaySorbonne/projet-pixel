@@ -9,9 +9,9 @@
 resource_local_to_scene = true
 shader = ExtResource("2_38lak")
 shader_parameter/in_hit_effect = false
-shader_parameter/base_color = null
-shader_parameter/replace_color = null
-shader_parameter/replace_threshold = null
+shader_parameter/base_color = Color(0.74902, 0.831373, 0.898039, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/replace_threshold = 0.4
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 current_evolution = 4
@@ -25,6 +25,7 @@ scale = Vector2(0.520791, 0.504209)
 animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2(-3, 6)
 
 [node name="SpecialAttack" parent="." index="6" node_paths=PackedStringArray("dash_audio")]
