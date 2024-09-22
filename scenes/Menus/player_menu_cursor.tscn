@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8oyt5ebxrqbf"]
+
+[ext_resource type="Script" path="res://scripts/player_menu_cursor.gd" id="1_jfojy"]
+[ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="2_cwtrj"]
+
+[node name="PlayerMenuCursor" type="Control"]
+z_index = 50
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jfojy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 5.0
+texture = ExtResource("2_cwtrj")
