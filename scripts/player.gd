@@ -225,6 +225,7 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
 	await self.player_spawned
+	computing_movement = true
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func evolve(in_lobby: bool = false):
