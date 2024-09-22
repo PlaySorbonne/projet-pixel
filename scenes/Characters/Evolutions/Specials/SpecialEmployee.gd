@@ -29,16 +29,19 @@ func special():
 		player.knockback_velocity.y -= jump_power
 		await get_tree().create_timer(delay_between_jump_and_fall).timeout
 	else:
-		player.computing_movement = false
-		player.knockback_velocity = Vector2.ZERO
-		player.velocity = Vector2.ZERO
+		#player.computing_movement = false
+		player.movement_velocity.y = 0.0
+		player.knockback_velocity = Vector2(0.0, -650.0) #Vector2.ZERO
+		#player.velocity = Vector2.ZERO
 		player.set_animation(true)
 		await get_tree().create_timer(mid_air_wind_up).timeout
 	fall_hitbox = Hitbox.spawn_hitbox(player, damage, player.AttackLocation.position,
 		 -1, true, attack_intensity)
 	fall_hitbox.no_particles()
-	player.computing_movement = false
-	player.velocity = Vector2.DOWN * fall_speed
+	#player.computing_movement = false
+	#player.velocity = Vector2.DOWN * fall_speed
+	player.movement_velocity.y = 0.0
+	player.knockback_velocity = Vector2.DOWN * fall_speed
 	set_process(true)
 
 func special_end():
@@ -48,8 +51,9 @@ func special_end():
 		true, attack_intensity, 
 		Vector2(hitbox_size, hitbox_size))
 	player.movement_velocity = Vector2.ZERO
+	player.computing_movement = false
+	player.velocity = Vector2.ZERO
 	await get_tree().create_timer(fall_recovery).timeout
-	
 	player.knockback_velocity = Vector2.ZERO
 	player.computing_movement = true
 	player.attacking = false
