@@ -14,7 +14,7 @@ const LIMIT_SPEED_DAMAGE_DOWN = pow(250, 2.0)
 const DAMAGING_TIME_MIN = 0.25
 const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn")
 
-@export var anime_velocity := 1500.0
+@export var anime_velocity := 2000.0
 @export var anime_damage_multiplier := 1.0
 @export var winning_by_weeb_touch := true
 @export var max_hitpoints := 5

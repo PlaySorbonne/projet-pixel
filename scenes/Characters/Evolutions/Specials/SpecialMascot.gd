@@ -9,7 +9,7 @@ const EGG = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.t
 @export var egg_hit_damage : int = 1   
 @export var egg_hit_duration := 1.0
 @export var egg_speed := 1400.0
-@export var egg_hit_size := 3.0
+@export var egg_hit_size := 5.0
 @export var egg_hit_intensity := 1.0
 
 

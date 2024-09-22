@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvr73pwrjftsb"]
+[gd_scene load_steps=6 format=3 uid="uid://dvr73pwrjftsb"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_n2j12"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_bhkty"]
+[ext_resource type="Script" path="res://scripts/level_high_ground.gd" id="2_xtrkm"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_ji5jd"]
 
-[node name="LevelDefault" instance=ExtResource("1_n2j12")]
+[sub_resource type="Curve2D" id="Curve2D_ecp2d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 779, 378, 0, 0, 0, 0, 777, 604)
+}
+point_count = 2
+
+[node name="LevelHighGround" instance=ExtResource("1_n2j12")]
+script = ExtResource("2_xtrkm")
 
 [node name="SpawnLocation1" parent="." index="0"]
 position = Vector2(346, 520)
@@ -55,41 +63,65 @@ scale = Vector2(3.5, 0.5)
 position = Vector2(157, 317)
 scale = Vector2(6, 0.5)
 
-[node name="Wall10" parent="." index="13" instance=ExtResource("2_bhkty")]
+[node name="Wall13" parent="." index="13" instance=ExtResource("2_bhkty")]
+position = Vector2(778, -355)
+scale = Vector2(27, 0.5)
+
+[node name="Wall14" parent="." index="14" instance=ExtResource("2_bhkty")]
+position = Vector2(797, 1244)
+scale = Vector2(27, 0.5)
+
+[node name="Wall10" parent="." index="15" instance=ExtResource("2_bhkty")]
 position = Vector2(1433, 322)
 scale = Vector2(6, 0.5)
 
-[node name="Wall8" parent="." index="14" instance=ExtResource("2_bhkty")]
-position = Vector2(781, 441)
+[node name="Wall11" parent="." index="16" instance=ExtResource("2_bhkty")]
+position = Vector2(767, 189)
 scale = Vector2(8, 0.5)
 
-[node name="Wall11" parent="." index="15" instance=ExtResource("2_bhkty")]
-position = Vector2(767, 229)
-scale = Vector2(8, 0.5)
-
-[node name="Wall12" parent="." index="16" instance=ExtResource("2_bhkty")]
-position = Vector2(771, 97)
+[node name="Wall12" parent="." index="17" instance=ExtResource("2_bhkty")]
+position = Vector2(774, 60)
 scale = Vector2(0.5, 4)
 
-[node name="AnimeBoxHint" parent="." index="17"]
-position = Vector2(771, 580)
+[node name="AnimeBoxHint" parent="." index="18"]
+position = Vector2(775, 325)
 
-[node name="Teleporter" parent="." index="19" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
+[node name="Teleporter" parent="." index="20" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
 position = Vector2(71, -160)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../Teleporter2")
 
-[node name="Teleporter2" parent="." index="20" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
+[node name="Teleporter2" parent="." index="21" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
 position = Vector2(42, 1087)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../Teleporter")
 
-[node name="Teleporter3" parent="." index="21" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
+[node name="Teleporter3" parent="." index="22" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
 position = Vector2(1519, -142)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../Teleporter4")
 
-[node name="Teleporter4" parent="." index="22" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
+[node name="Teleporter4" parent="." index="23" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
 position = Vector2(1523, 1080)
 scale = Vector2(2, 2)
 otherTeleporter = NodePath("../Teleporter3")
+
+[node name="Path2D" type="Path2D" parent="." index="24"]
+curve = SubResource("Curve2D_ecp2d")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(779, 378)
+rotation = 1.57965
+rotates = false
+loop = false
+
+[node name="Wall8" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("2_bhkty")]
+position = Vector2(3.01757, 1.97336)
+rotation = -1.57965
+scale = Vector2(8, 0.5)
+
+[node name="Timer" type="Timer" parent="." index="25"]
+wait_time = 1.294
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
