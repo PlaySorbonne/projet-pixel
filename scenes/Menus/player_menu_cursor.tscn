@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8oyt5ebxrqbf"]
+[gd_scene load_steps=4 format=3 uid="uid://c8oyt5ebxrqbf"]
 
 [ext_resource type="Script" path="res://scripts/player_menu_cursor.gd" id="1_jfojy"]
 [ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="2_cwtrj"]
+[ext_resource type="AudioStream" uid="uid://dd018wynokvu3" path="res://resources/audio/sfx/button_clicks/button_move.wav" id="3_pbngr"]
 
 [node name="PlayerMenuCursor" type="Control"]
 z_index = 50
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
 script = ExtResource("1_jfojy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -15,4 +17,8 @@ offset_left = -20.0
 offset_top = -35.0
 offset_right = 20.0
 offset_bottom = 5.0
+mouse_filter = 2
 texture = ExtResource("2_cwtrj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pbngr")
