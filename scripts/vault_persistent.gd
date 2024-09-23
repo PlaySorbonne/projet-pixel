@@ -34,6 +34,14 @@ const STAND_NAMES : Array[String] = [
 
 @onready var vendor := $CanvasLayer/TextureVendor
 @onready var stand_name := $CanvasLayer/Label
+@onready var screen_nodes := [
+	$CanvasLayer/Collection,
+	$CanvasLayer/Dojo,
+	$CanvasLayer/Vault,
+	$CanvasLayer/Shop,
+	$CanvasLayer/Stats
+]
+@onready var current_screen := $CanvasLayer/Vault
 var can_input := false
 var buttons : Array[Button] = [null]
 var selected_button := 0
@@ -41,6 +49,7 @@ var current_stand := Screens.Default
 var can_quit := true
 
 func _ready():
+	set_screen_infos(Screens.Default, true)
 	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
@@ -78,24 +87,28 @@ func confirm_button():
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
 
-func set_current_screen(new_screen : Screens):
-	pass
-
 func set_screen_infos(index : int, animated_infos := false):
 	vendor.texture = VENDOR_TEXTURES[index]
 	vendor.size = VENDOR_SIZES[index]
 	stand_name.text = STAND_NAMES[index]
+	current_screen = screen_nodes[index]
 	if animated_infos:
 		vendor.position = VENDOR_POSITIONS[index]
+		for s : Control in screen_nodes:
+			if s == current_screen:
+				s.modulate = Color.WHITE
+			else:
+				s.modulate = Color.TRANSPARENT
 
 func go_to_screen(new_screen : Screens):
 	const TRANS_TIME := 1.5
 	const N_TRANS_TIME := 1.0
-	var tween := create_tween().set_parallel().set_trans(Tween.TRANS_SPRING)
+	var tween := create_tween().set_parallel().set_trans(Tween.TRANS_QUART)
 	var index : int = int(new_screen)
 	tween.tween_property(vendor, "position", Vector2(
 		2200.0, vendor.position.y), TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 1300), N_TRANS_TIME)
+	tween.tween_property(current_screen, "modulate", Color.TRANSPARENT, 0.8)
 	await tween.finished
 	set_screen_infos(index)
 	vendor.position = Vector2(
@@ -105,6 +118,7 @@ func go_to_screen(new_screen : Screens):
 	tween = create_tween().set_parallel().set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(vendor, "position", VENDOR_POSITIONS[index], TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 897), N_TRANS_TIME)
+	tween.tween_property(current_screen, "modulate", Color.WHITE, 0.8)
 
 func quit_to_menu():
 	if not can_quit:

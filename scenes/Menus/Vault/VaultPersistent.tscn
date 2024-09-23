@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=12 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
 [ext_resource type="Texture2D" uid="uid://3wxrwaur6yx5" path="res://resources/images/environments/booth.png" id="3_8fcgu"]
-[ext_resource type="Texture2D" uid="uid://btfcuimn61xf1" path="res://resources/images/environments/tv.png" id="4_sp8dj"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="5_2utj3"]
 [ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="5_icwyv"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="5_u3c63"]
@@ -51,7 +50,7 @@ show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.12626
-anchor_top = 0.939819
+anchor_top = 0.801404
 anchor_right = 1.12389
 anchor_bottom = 1.04614
 offset_left = 1.52588e-05
@@ -59,14 +58,16 @@ offset_right = -0.00012207
 color = Color(0.199732, 0.199732, 0.199732, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureTV" type="TextureRect" parent="CanvasLayer/TextureBooth"]
-layout_mode = 0
-anchor_left = 0.170717
-anchor_top = 0.317954
-anchor_right = 0.526378
+[node name="ColorRectBoard" type="ColorRect" parent="CanvasLayer/TextureBooth"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.078
+anchor_top = 0.035
+anchor_right = 0.536455
 anchor_bottom = 0.712136
-offset_right = -6.10352e-05
-texture = ExtResource("4_sp8dj")
+offset_left = -0.585999
+offset_top = 0.105
+offset_right = -0.00012207
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
@@ -99,63 +100,6 @@ text = "VAULT"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="CanvasLayer"]
-z_index = 2
-anchors_preset = -1
-anchor_left = 0.26875
-anchor_top = 0.830556
-anchor_right = 0.731771
-anchor_bottom = 0.941667
-offset_left = -303.0
-offset_top = -432.0
-offset_right = -303.0
-offset_bottom = -432.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("5_2utj3")
-theme_override_font_sizes/font_size = 80
-text = "VAULT"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="CanvasLayer"]
-z_index = 2
-anchors_preset = -1
-anchor_left = 0.26875
-anchor_top = 0.830556
-anchor_right = 0.731771
-anchor_bottom = 0.941667
-offset_left = -316.0
-offset_top = -336.0
-offset_right = -316.0
-offset_bottom = -336.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("5_2utj3")
-theme_override_font_sizes/font_size = 80
-text = "VAULT"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Label4" type="Label" parent="CanvasLayer"]
-z_index = 2
-anchors_preset = -1
-anchor_left = 0.26875
-anchor_top = 0.830556
-anchor_right = 0.731771
-anchor_bottom = 0.941667
-offset_left = -292.0
-offset_top = -270.0
-offset_right = -292.0
-offset_bottom = -270.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("5_2utj3")
-theme_override_font_sizes/font_size = 80
-text = "VAULT"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="ButtonBack" type="Button" parent="CanvasLayer"]
 z_index = 4
 anchors_preset = -1
@@ -174,6 +118,164 @@ metadata/_edit_use_anchors_ = true
 visible = false
 z_index = 99
 default_duration = 1.0
+
+[node name="Vault" type="Control" parent="CanvasLayer"]
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Vault"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("5_2utj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Vault/VBox"]
+layout_mode = 2
+theme = ExtResource("5_2utj3")
+text = "Help
+Stat Editor
+Description des persos,
+de leurs attaques
+idk ce qu'on pourrait 
+mettre ici
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shop" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Shop"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("5_2utj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Shop/VBox"]
+layout_mode = 2
+theme = ExtResource("5_2utj3")
+text = "GAMEMODES:
+   Shonen Battle
+   Otaku Outbreak
+   Otaku Overdrive
+   Corporate Chaos
+ARTWORK
+LEVELS
+MUSICS
+MINIGAMES"
+metadata/_edit_use_anchors_ = true
+
+[node name="Collection" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Collection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("5_2utj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Collection/VBox"]
+layout_mode = 2
+theme = ExtResource("5_2utj3")
+text = "tout ce qui a été acheté
+dans le shop:
+gamemodes, musiques,
+artwork, etc"
+metadata/_edit_use_anchors_ = true
+
+[node name="Stats" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("5_2utj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Stats/VBox"]
+layout_mode = 2
+theme = ExtResource("5_2utj3")
+text = "Visionnage des stats de 
+gameplay: cmb de morts
+au total, combien de 
+parties jouées, combien
+de joueurs différents, 
+cmb dégâts infligés, etc"
+metadata/_edit_use_anchors_ = true
+
+[node name="Dojo" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Dojo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("5_2utj3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Dojo/VBox"]
+layout_mode = 2
+theme = ExtResource("5_2utj3")
+text = "PEUT ETRE (gros peut 
+etre) des mini jeux ici 
+(genre game modes solo)"
+metadata/_edit_use_anchors_ = true
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_2w30w")]
 position = Vector2(-3062, -400)
