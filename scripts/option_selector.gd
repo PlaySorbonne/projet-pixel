@@ -24,7 +24,8 @@ signal option_changed
 		emit_signal("option_changed", selected_option)
 
 func _ready():
-	$Label.text = options[selected_option]
+	if options.size() > 0:
+		$Label.text = options[selected_option]
 
 func get_text() -> String:
 	return $Label.text
