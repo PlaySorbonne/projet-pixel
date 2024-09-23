@@ -43,7 +43,10 @@ func smooth_change_to_scene(new_scene : String):
 	GameInfos.menu_music_time = $AudioStreamPlayer.get_playback_position()
 	screen_transition.start_screen_transition()
 	await screen_transition.HalfScreenTransitionFinished
-	get_tree().change_scene_to_file(new_scene)
+	if get_tree() != null:
+		get_tree().change_scene_to_file(new_scene)
+	else:
+		print("whaaaaaaaat ?")
 
 func go_to_screen(new_screen : int):
 	var title_final_pos : Vector2
@@ -70,8 +73,6 @@ func go_to_screen(new_screen : int):
 	delay_change_scene(trans_time+0.2)
 
 func _on_title_screen_button_start_pressed():
-	if not can_change_scene:
-		return
 	smooth_change_to_scene(LOBBY_PATH)
 
 func _on_title_screen_button_vault_pressed():

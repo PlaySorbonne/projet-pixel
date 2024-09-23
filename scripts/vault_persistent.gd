@@ -38,8 +38,10 @@ var can_input := false
 var buttons : Array[Button] = [null]
 var selected_button := 0
 var current_stand := Screens.Default
+var can_quit := true
 
 func _ready():
+	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 
@@ -74,7 +76,7 @@ func confirm_button():
 	go_to_screen(current_stand)
 
 func _on_exit_progress_bar_bar_filled():
-	get_tree().change_scene_to_file(MAIN_MENU)
+	quit_to_menu()
 
 func set_current_screen(new_screen : Screens):
 	pass
@@ -103,3 +105,17 @@ func go_to_screen(new_screen : Screens):
 	tween = create_tween().set_parallel().set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(vendor, "position", VENDOR_POSITIONS[index], TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 897), N_TRANS_TIME)
+
+func quit_to_menu():
+	if not can_quit:
+		return
+	can_quit = false
+	$CanvasLayer/ScreenTransition.start_screen_transition()
+	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
+	if get_tree() != null:
+		get_tree().change_scene_to_file(MAIN_MENU)
+	else:
+		print("whaaaaaaaat ?")
+
+func _on_button_back_pressed():
+	quit_to_menu()
