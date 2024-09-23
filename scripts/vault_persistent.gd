@@ -119,7 +119,7 @@ func go_to_screen(new_screen : Screens):
 	)
 	tween = create_tween().set_parallel().set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(vendor, "position", VENDOR_POSITIONS[index], TRANS_TIME)
-	tween.tween_property(stand_name, "position", Vector2(516, 897), N_TRANS_TIME)
+	tween.tween_property(stand_name, "position", Vector2(516, 855), N_TRANS_TIME)
 	tween.tween_property(current_screen, "modulate", Color.WHITE, 0.8)
 
 func quit_to_menu():
