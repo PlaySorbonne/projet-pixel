@@ -3,6 +3,13 @@ extends Node2D
 enum Screens {Collection, Dojo, Default, Shop, Stats}
 
 const MAIN_MENU := "res://scenes/Menus/MenuPersistent.tscn"
+const SCREENS_ORDER := [
+	Screens.Collection,
+	Screens.Dojo,
+	Screens.Default,
+	Screens.Shop,
+	Screens.Stats
+]
 const VENDOR_TEXTURES : Array[Texture] = [
 	preload("res://resources/images/characters/CEO/IMG_5862.png"),
 	preload("res://resources/images/characters/fox/fox_idle.png"),
@@ -42,7 +49,7 @@ const STAND_NAMES : Array[String] = [
 	$CanvasLayer/Stats
 ]
 @onready var current_screen := $CanvasLayer/Vault
-@onready var navigation_icons : Array[TextureRect] = [
+@onready var navigation_icons : Array[Button] = [
 	$CanvasLayer/TextureBooth/HBoxContainer/IconCollection,
 	$CanvasLayer/TextureBooth/HBoxContainer/IconDojo,
 	$CanvasLayer/TextureBooth/HBoxContainer/IconVault,
@@ -59,41 +66,23 @@ var can_quit := true
 func _ready():
 	for s : Control in screen_nodes:
 		s.visible = true
+	var i := 0
+	for b : Button in navigation_icons:
+		b.connect("pressed", go_to_screen.bind(SCREENS_ORDER[i]))
+		i += 1
 	current_nav_icon.is_current_screen = true
 	set_screen_infos(Screens.Default, true)
 	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 
-func _process(delta : float):
-	if not can_input:
-		return
-	var b : Button = buttons[selected_button]
-	if Input.is_action_just_pressed("down") or Input.is_action_just_pressed("right"):
-		$AudioArrowDown.play(0.0)
-		var new_button := selected_button + 1
-		if new_button >= len(buttons):
-			new_button = 0
-		select_button(new_button)
-	elif Input.is_action_just_pressed("up") or Input.is_action_just_pressed("left"):
-		$AudioArrowUp.play(0.0)
-		var new_button := selected_button - 1
-		if new_button < 0:
-			new_button = len(buttons) - 1
-		select_button(new_button)
-	elif Input.is_action_just_pressed("attack") or Input.is_action_just_pressed(
-		"special") or Input.is_action_just_pressed("jump"):
-		confirm_button()
-		#b.emit_signal("pressed")
-
-func select_button(button : int):
-	pass
-
-func confirm_button():
-	current_stand += 1
-	if current_stand > int(Screens.Stats):
-		current_stand = 0
-	
+func _process(_delta):
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+		pass
+	elif Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
+		pass
+	elif Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special") or Input.is_action_just_pressed("jump"):
+		pass
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
@@ -104,9 +93,6 @@ func set_screen_infos(index : int, animated_infos := false):
 	vendor.size = VENDOR_SIZES[index]
 	stand_name.text = STAND_NAMES[index]
 	current_screen = screen_nodes[index]
-	current_nav_icon.is_current_screen = false
-	current_nav_icon = navigation_icons[index]
-	current_nav_icon.is_current_screen = true
 	if animated_infos:
 		vendor.position = VENDOR_POSITIONS[index]
 		for s : Control in screen_nodes:
@@ -120,6 +106,9 @@ func go_to_screen(new_screen : Screens):
 	const N_TRANS_TIME := 1.0
 	var tween := create_tween().set_parallel().set_trans(Tween.TRANS_QUART)
 	var index : int = int(new_screen)
+	current_nav_icon.is_current_screen = false
+	current_nav_icon = navigation_icons[index]
+	current_nav_icon.is_current_screen = true
 	tween.tween_property(vendor, "position", Vector2(
 		2200.0, vendor.position.y), TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 1300), N_TRANS_TIME)

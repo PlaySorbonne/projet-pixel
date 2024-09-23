@@ -89,21 +89,31 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="IconVault" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
 layout_mode = 2
 
 [node name="IconShop" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
 layout_mode = 2
 icon = ExtResource("5_q3jbu")
 
 [node name="IconCollection" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
 layout_mode = 2
 icon = ExtResource("6_tdv2n")
 
 [node name="IconDojo" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
 layout_mode = 2
 icon = ExtResource("7_tevxp")
 
 [node name="IconStats" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
 layout_mode = 2
 icon = ExtResource("8_xtdao")
 
@@ -157,7 +167,6 @@ z_index = 99
 default_duration = 1.0
 
 [node name="Vault" type="Control" parent="CanvasLayer"]
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -165,6 +174,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Vault"]
 layout_mode = 1
@@ -189,7 +199,6 @@ mettre ici
 metadata/_edit_use_anchors_ = true
 
 [node name="Shop" type="Control" parent="CanvasLayer"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
@@ -198,6 +207,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Shop"]
 layout_mode = 1
@@ -224,7 +234,6 @@ MINIGAMES"
 metadata/_edit_use_anchors_ = true
 
 [node name="Collection" type="Control" parent="CanvasLayer"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
@@ -233,6 +242,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Collection"]
 layout_mode = 1
@@ -254,7 +264,6 @@ artwork, etc"
 metadata/_edit_use_anchors_ = true
 
 [node name="Stats" type="Control" parent="CanvasLayer"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
@@ -263,6 +272,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Stats"]
 layout_mode = 1
@@ -295,6 +305,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="CanvasLayer/Dojo"]
 layout_mode = 1

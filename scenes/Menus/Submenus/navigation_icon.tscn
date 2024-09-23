@@ -33,4 +33,3 @@ stretch_mode = 5
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]

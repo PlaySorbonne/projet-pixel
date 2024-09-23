@@ -26,6 +26,3 @@ func _on_focus_entered():
 
 func _on_focus_exited():
 	_tween_scale(Vector2.ONE)
-
-func _on_pressed():
-	pass # Replace with function body.
