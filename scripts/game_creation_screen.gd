@@ -97,7 +97,7 @@ func add_player(device_type : int, device : int):
 	GameInfos.add_player(player)
 	create_player_infos(player_index)
 
-func _input(event):
+func _unhandled_input(event : InputEvent):
 	if event is InputEventKey:
 		if event.device not in keyboards:
 			if event.is_pressed():
