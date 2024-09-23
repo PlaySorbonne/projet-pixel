@@ -30,12 +30,14 @@ var chaos_value_at_rest := 0.0
 var blue_div_at_rest := 1.0
 var weeb_touched : int = 0
 var last_valid_pos : Vector2
+var hitpoints_updated := false
 
 func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation():
 	var new_body := OBJECTIVE_BOX_RES.instantiate()
 	new_body.freeze = true
 	new_body.weeb_touched = weeb_touched
-	new_body.set_hitpoints(max_hitpoints-weeb_touched, false)
+	if hitpoints_updated:
+		new_body.set_hitpoints(max_hitpoints-weeb_touched, false)
 	new_body.damaging = damaging
 	new_body.chaos_value_at_rest = chaos_value_at_rest
 	new_body.blue_div_at_rest = blue_div_at_rest
@@ -76,6 +78,7 @@ func _ready():
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func set_hitpoints(hitpoints := max_hitpoints, with_anim := true):
+	hitpoints_updated = true
 	$CharacterPointer.set_max_hitpoints(hitpoints, with_anim)
 
 func increment_weeb_touched():
