@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=9 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
 [ext_resource type="Texture2D" uid="uid://3wxrwaur6yx5" path="res://resources/images/environments/booth.png" id="3_8fcgu"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="5_2utj3"]
 [ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="5_icwyv"]
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="6_2w30w"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="7_c4et4"]
@@ -41,6 +42,19 @@ offset_bottom = 5.0
 texture = ExtResource("3_8fcgu")
 expand_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TextureBooth"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.12626
+anchor_top = 0.939819
+anchor_right = 1.12389
+anchor_bottom = 1.04614
+offset_left = 1.52588e-05
+offset_right = -0.00012207
+color = Color(0.199732, 0.199732, 0.199732, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.507
@@ -55,6 +69,21 @@ texture = ExtResource("5_icwyv")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+z_index = 2
+anchors_preset = -1
+anchor_left = 0.26875
+anchor_top = 0.830556
+anchor_right = 0.731771
+anchor_bottom = 0.941667
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_2utj3")
+theme_override_font_sizes/font_size = 80
+text = "VAULT"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_2w30w")]
 position = Vector2(-3062, -400)

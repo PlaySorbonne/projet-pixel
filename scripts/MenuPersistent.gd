@@ -3,7 +3,8 @@ class_name Persistent
 
 
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
-const VAULT_PATH = "res://scenes/world.tscn"
+const VAULT_PATH =  "res://scenes/Menus/Vault/VaultPersistent.tscn" 
+# previous vault path:  "res://scenes/world.tscn"
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 
 enum Screens {Title, Settings, Credits}
