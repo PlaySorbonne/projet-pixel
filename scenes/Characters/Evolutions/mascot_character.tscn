@@ -30,7 +30,7 @@ frame_progress = 0.88848
 visible = false
 position = Vector2(-3, -22)
 
-[node name="SpecialAttack" parent="." index="7"]
+[node name="SpecialAttack" parent="." index="6"]
 script = ExtResource("3_i1h8o")
 jump_power = 2500.0
 can_attack_cooldown = 0.25
@@ -38,5 +38,5 @@ ability_cooldown = 0.6
 egg_hit_damage = 1
 egg_hit_duration = 1.0
 egg_speed = 1400.0
-egg_hit_size = 3.0
+egg_hit_size = 5.0
 egg_hit_intensity = 1.0

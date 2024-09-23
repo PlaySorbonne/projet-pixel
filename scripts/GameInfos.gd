@@ -2,11 +2,13 @@ extends Node
 
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
+	"res://scenes/World/Levels/level_high_ground.tscn",
 	"res://scenes/World/Levels/level_training.tscn",
 	"res://scenes/World/Levels/level_stat_editor.tscn"
 ]
 const LEVEL_TITLES : Array[String] = [
 	"DEFAULT",
+	"HIGH GROUND",
 	"TRAINING",
 	"STAT_EDITOR"
 ]
@@ -40,12 +42,16 @@ const DEFAULT_PLAYER_COLORS : Array[Color] = [
 const DEFAULT_PLAYER_NAMES : Array[String] = [
 	"Luffi",
 	"Quirito",
-	"Goko",
+	"Gocou",
 	"Naroto",
+	"Saské",
+	"Yu-gai",
 	"Ishigo",
 	"Edvard",
 	"Eran",
-	"Ligth",
+	"Lite",
+	"Découp",
+	"Hasagi",
 	"Gan",
 	"Tinjinro",
 	"Lelech",
