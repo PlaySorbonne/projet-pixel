@@ -57,9 +57,10 @@ func _input(event : InputEvent):
 func simulate_click():
 	var mouse := InputEventMouseButton.new()
 	mouse.global_position = global_position
-	mouse.button_index = MOUSE_BUTTON_LEFT
-	mouse.button_mask = MOUSE_BUTTON_MASK_LEFT
+#	mouse.button_index = MOUSE_BUTTON_LEFT
+#	mouse.button_mask = MOUSE_BUTTON_MASK_LEFT
 	mouse.pressed = true
+	await get_tree().process_frame
 	Input.parse_input_event(mouse)
 	await get_tree().process_frame
 	mouse.pressed = false

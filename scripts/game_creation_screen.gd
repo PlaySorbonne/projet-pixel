@@ -188,3 +188,7 @@ func _on_button_back_pressed():
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
+
+
+func _on_button_confirm_button_down():
+	print("ALSMOT PRESSED START")

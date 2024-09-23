@@ -938,6 +938,7 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonBack" to="CanvasLayer/GameCreationScreen" method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonTestMusic" to="CanvasLayer/GameCreationScreen" method="_on_button_test_music_pressed"]
+[connection signal="button_down" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_button_down"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/GameCreationScreen/ButtonConfirm/AnimationStart" to="CanvasLayer/GameCreationScreen" method="_on_animation_start_animation_finished"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]

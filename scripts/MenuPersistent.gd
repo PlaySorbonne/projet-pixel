@@ -25,6 +25,11 @@ func _ready():
 	can_change_scene = true
 	$CanvasLayer/TitleScreen.can_input = true
 
+func delay_change_scene(delay : float):
+	can_change_scene = false
+	await get_tree().create_timer(delay).timeout
+	can_change_scene = true
+
 static func reset_game_data():
 	GameInfos.use_special_gameplay_data = false
 	GlobalVariables.skip_fight_intro = false
@@ -75,6 +80,7 @@ func go_to_screen(new_screen : int):
 	t.set_parallel()
 	t.tween_property($CanvasLayer/SettingsScreen, "position", settings_final_pos, trans_time)
 	t.tween_property($CanvasLayer/CreditsScreen, "position", credits_final_pos, trans_time)
+	delay_change_scene(trans_time+0.2)
 
 func _on_title_screen_button_start_pressed():
 	if not can_change_scene:
