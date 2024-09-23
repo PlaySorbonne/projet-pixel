@@ -30,7 +30,7 @@ func get_text() -> String:
 	return $Label.text
 
 func _on_previous_button_pressed():
-	selected_option += 1
+	selected_option -= 1
 
 func _on_next_button_pressed():
-	selected_option -= 1
+	selected_option += 1
