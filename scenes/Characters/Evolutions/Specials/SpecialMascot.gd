@@ -18,7 +18,13 @@ func special():
 		return
 	can_use_special = false
 	player.attacking = true
-	player.knockback_velocity.y -= jump_power
+	if player.is_on_floor():
+		player.knockback_velocity.y = -jump_power * 1.5
+	else:
+		player.knockback_velocity.y = min(
+			player.knockback_velocity.y-jump_power, 
+			-jump_power
+		)
 	EggProjectile.spawn_egg_projectile(player, self)
 	
 	await get_tree().create_timer(can_attack_cooldown).timeout

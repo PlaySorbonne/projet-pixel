@@ -6,5 +6,5 @@
 {"attack_damage":3,"attack_intensity":2,"attack_size":1,"dash_cooldown":1,"dash_duration":0.599999999976717,"dash_recovery":0.5,"dash_speed":1400,"dash_wind_up":0.5,"wind_up_speed":200}
 {"attack_damage":2,"attack_intensity":2,"attack_size":2,"bullet_hit_damage":2,"bullet_hit_intensity":1,"bullet_size":1,"bullet_speed":1400,"dash_cooldown":0.900000000023283,"dash_duration":0.5,"dash_speed":2000,"dash_windup":0.300000000046566}
 {"attack_intensity":2,"damage":3,"delay_between_jump_and_fall":0.349999999976717,"fall_recovery":0.800000000046566,"fall_speed":2000,"hit_duration":0.25,"hitbox_size":2,"jump_power":3000}
-{"ability_cooldown":2,"can_attack_cooldown":0.25,"egg_hit_damage":1,"egg_hit_duration":0.5,"egg_hit_intensity":1,"egg_hit_size":1,"egg_speed":1000,"jump_power":1700}
+{"ability_cooldown":1,"can_attack_cooldown":0.25,"egg_hit_damage":1,"egg_hit_duration":0.5,"egg_hit_intensity":1,"egg_hit_size":1,"egg_speed":1000,"jump_power":1700}
 {"dash_cooldown":0.800000000046566,"dash_duration":0.125,"dash_speed":2000}

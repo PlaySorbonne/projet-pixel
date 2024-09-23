@@ -9,6 +9,8 @@ const TEXTURE_REF := preload("res://resources/images/characters/character_pointe
 
 static var current_z = 0
 
+signal healthbars_displayed
+
 @export var shake_offset := Vector2.ZERO
 @export var has_name := true:
 	set(value):
@@ -29,6 +31,7 @@ static var current_z = 0
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
+var healthbar_anim_in_progress := false
 
 func set_star(new_vis : bool):
 	var tween := create_tween().set_parallel()
@@ -57,6 +60,7 @@ func get_current_unit() -> HealthBarUnit:
 	return null
 
 func set_max_hitpoints(hitpoints : int, with_anim := true):
+	healthbar_anim_in_progress = true
 	for h : HealthBarUnit in healthbars:
 		h.queue_free()
 	healthbars.clear()
@@ -100,11 +104,15 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		else:
 			unit.add_unit_no_anim()
 	show_health_bars()
+	healthbar_anim_in_progress = false
+	emit_signal("healthbars_displayed")
 
 func set_character_name(new_name : String):
 	$HealthBars/LabelName.text = new_name
 
 func take_damage(damage : int, new_hitpoints : int):
+	if healthbar_anim_in_progress:
+		await self.healthbars_displayed
 	var d := current_hitpoints - new_hitpoints
 	var delay := 0
 	var healthbar_counter = 1
