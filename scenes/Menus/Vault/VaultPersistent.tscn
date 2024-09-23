@@ -1,16 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=17 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
 [ext_resource type="Texture2D" uid="uid://3wxrwaur6yx5" path="res://resources/images/environments/booth.png" id="3_8fcgu"]
+[ext_resource type="PackedScene" uid="uid://bdi2ce163x8a" path="res://scenes/Menus/Submenus/navigation_icon.tscn" id="4_y3rmr"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="5_2utj3"]
 [ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="5_icwyv"]
+[ext_resource type="Texture2D" uid="uid://b7a2gomyikqy4" path="res://resources/images/icons/samurai-helmet.png" id="5_q3jbu"]
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="5_u3c63"]
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="6_2w30w"]
+[ext_resource type="Texture2D" uid="uid://daykvp02oodd1" path="res://resources/images/icons/compact-disc.png" id="6_tdv2n"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="7_c4et4"]
 [ext_resource type="Script" path="res://scripts/button_xyz.gd" id="7_l557a"]
 [ext_resource type="Texture2D" uid="uid://cq70tdval5880" path="res://resources/images/environments/sky.png" id="7_ov4nw"]
+[ext_resource type="Texture2D" uid="uid://coo0fn6fgl1gd" path="res://resources/images/icons/ninja-heroic-stance.png" id="7_tevxp"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="8_deca0"]
+[ext_resource type="Texture2D" uid="uid://6xhiob8txsm4" path="res://resources/images/icons/ninja-velociraptor.png" id="8_xtdao"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -69,6 +74,38 @@ offset_left = -0.585999
 offset_top = 0.105
 offset_right = -0.00012207
 metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureBooth"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28275
+anchor_top = 0.890672
+anchor_right = 0.71725
+anchor_bottom = 0.965898
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="IconVault" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+layout_mode = 2
+
+[node name="IconShop" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+layout_mode = 2
+texture = ExtResource("5_q3jbu")
+
+[node name="IconCollection" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+layout_mode = 2
+texture = ExtResource("6_tdv2n")
+
+[node name="IconDojo" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+layout_mode = 2
+texture = ExtResource("7_tevxp")
+
+[node name="IconStats" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+layout_mode = 2
+texture = ExtResource("8_xtdao")
 
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
