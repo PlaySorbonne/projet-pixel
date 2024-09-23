@@ -1,32 +1,20 @@
 [gd_scene load_steps=8 format=3 uid="uid://biu7fdium6esd"]
 
-[ext_resource type="Script" path="res://scripts/MenuPersistent.gd" id="1_d5cl3"]
-[ext_resource type="PackedScene" uid="uid://d3283guxswi41" path="res://scenes/Menus/Submenus/TitleScreen.tscn" id="2_nn5xy"]
-[ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="3_w4sl5"]
-[ext_resource type="PackedScene" uid="uid://qb3miekn7s7v" path="res://scenes/Menus/credits_screen.tscn" id="4_gv5x2"]
-[ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="5_u3c63"]
+[ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
+[ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
+[ext_resource type="Texture2D" uid="uid://3wxrwaur6yx5" path="res://resources/images/environments/booth.png" id="3_8fcgu"]
+[ext_resource type="Texture2D" uid="uid://c13chtun1dngq" path="res://resources/images/characters/chicken/poulet_copie.png" id="5_icwyv"]
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="6_2w30w"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="7_c4et4"]
+[ext_resource type="Texture2D" uid="uid://cq70tdval5880" path="res://resources/images/environments/sky.png" id="7_ov4nw"]
 
 [node name="VaultPersistent" type="Node2D"]
-script = ExtResource("1_d5cl3")
+script = ExtResource("1_8y8af")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TitleScreen" parent="CanvasLayer" instance=ExtResource("2_nn5xy")]
-
-[node name="SettingsScreen" parent="CanvasLayer" instance=ExtResource("3_w4sl5")]
-offset_top = 1400.0
-offset_bottom = 1400.0
-
-[node name="CreditsScreen" parent="CanvasLayer" instance=ExtResource("4_gv5x2")]
-offset_top = -1400.0
-offset_bottom = -1400.0
-
-[node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("5_u3c63")]
-default_duration = 1.0
-
 [node name="ExitProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 99
 anchors_preset = -1
 anchor_left = 0.846875
 anchor_top = 0.937963
@@ -36,11 +24,49 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 2.0
 show_percentage = false
+script = ExtResource("2_t7unr")
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureBooth" type="TextureRect" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.081
+anchor_right = 0.928
+anchor_bottom = 1.0
+offset_left = 0.919998
+offset_top = 0.519997
+offset_right = 0.23999
+offset_bottom = 5.0
+texture = ExtResource("3_8fcgu")
+expand_mode = 1
+
+[node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.507
+anchor_top = 0.453
+anchor_right = 0.805
+anchor_bottom = 0.929
+offset_left = 0.559937
+offset_top = -0.240021
+offset_right = -0.600098
+offset_bottom = -0.320007
+texture = ExtResource("5_icwyv")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_2w30w")]
+position = Vector2(-3062, -400)
 play_from_start = false
-background_modulate = Color(2.11775e-06, 0.64898, 0.649814, 1)
+background_modulate = Color(1.82897e-06, 0.590591, 0.64235, 1)
+
+[node name="DecorPlaceholder" parent="TitleScreenDecor" index="0"]
+modulate = Color(0, 0.592157, 0.643137, 1)
+texture = ExtResource("7_ov4nw")
+
+[node name="Characters" parent="TitleScreenDecor" index="2"]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_c4et4")
@@ -48,9 +74,6 @@ autoplay = true
 bus = &"music"
 parameters/looping = true
 
-[connection signal="ButtonCreditsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_credits_pressed"]
-[connection signal="ButtonSettingsPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_settings_pressed"]
-[connection signal="ButtonStartPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_start_pressed"]
-[connection signal="ButtonVaultPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_vault_pressed"]
-[connection signal="ButtonBackPressed" from="CanvasLayer/SettingsScreen" to="." method="_on_settings_screen_button_back_pressed"]
-[connection signal="ButtonBackPressed" from="CanvasLayer/CreditsScreen" to="." method="_on_credits_screen_button_back_pressed"]
+[connection signal="bar_filled" from="CanvasLayer/ExitProgressBar" to="." method="_on_exit_progress_bar_bar_filled"]
+
+[editable path="TitleScreenDecor"]

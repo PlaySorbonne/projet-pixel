@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvkf6l5jtinbx"]
+[gd_scene load_steps=9 format=3 uid="uid://cvkf6l5jtinbx"]
 
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="1_donq7"]
 [ext_resource type="Script" path="res://scripts/MenuPersistent.gd" id="1_jtr7k"]
 [ext_resource type="PackedScene" uid="uid://d3283guxswi41" path="res://scenes/Menus/Submenus/TitleScreen.tscn" id="2_j1y2d"]
 [ext_resource type="PackedScene" uid="uid://bxo5cilexhd5g" path="res://scenes/Menus/Submenus/SettingsScreen.tscn" id="4_jwgc0"]
 [ext_resource type="PackedScene" uid="uid://qb3miekn7s7v" path="res://scenes/Menus/credits_screen.tscn" id="5_18jb2"]
+[ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="6_5nd8i"]
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="6_7sa4o"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="11_4sc2c"]
 
@@ -36,6 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 2.0
 show_percentage = false
+script = ExtResource("6_5nd8i")
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_7sa4o")]
@@ -52,3 +54,4 @@ parameters/looping = true
 [connection signal="ButtonVaultPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_vault_pressed"]
 [connection signal="ButtonBackPressed" from="CanvasLayer/SettingsScreen" to="." method="_on_settings_screen_button_back_pressed"]
 [connection signal="ButtonBackPressed" from="CanvasLayer/CreditsScreen" to="." method="_on_credits_screen_button_back_pressed"]
+[connection signal="bar_filled" from="CanvasLayer/ExitProgressBar" to="." method="_on_exit_progress_bar_bar_filled"]

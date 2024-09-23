@@ -4,13 +4,10 @@ class_name Persistent
 
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VAULT_PATH = "res://scenes/world.tscn"
-const EXIT_TIME := 1.0
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 
 enum Screens {Title, Settings, Credits}
 
-
-@onready var ExitBar := $CanvasLayer/ExitProgressBar
 @onready var title_screen := $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
 @onready var lobby := $Lobby
@@ -21,7 +18,6 @@ func _ready():
 	reset_game_data()
 	await get_tree().create_timer(0.5).timeout
 	screen_transition.end_screen_transition()
-	ExitBar.max_value = EXIT_TIME
 	can_change_scene = true
 	$CanvasLayer/TitleScreen.can_input = true
 
@@ -35,16 +31,6 @@ static func reset_game_data():
 	GlobalVariables.skip_fight_intro = false
 	Engine.time_scale = 1.0
 	GameInfos.reset_game_infos(true)
-
-func _process(delta : float):
-	if Input.is_action_pressed("ui_cancel"):
-		ExitBar.visible = true
-		ExitBar.value += delta
-		if ExitBar.value >= EXIT_TIME:
-			get_tree().quit()
-	else:
-		ExitBar.value = 0.0
-		ExitBar.visible = false
 
 func smooth_change_to_scene(new_scene : String):
 	if not can_change_scene:
@@ -113,3 +99,6 @@ func _on_credits_screen_button_back_pressed():
 func back_to_title_screen():
 	go_to_screen(Screens.Title)
 	$CanvasLayer/TitleScreen.reset_state()
+
+func _on_exit_progress_bar_bar_filled():
+	get_tree().quit()
