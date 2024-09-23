@@ -133,6 +133,8 @@ func _on_area_2d_body_entered(body : Node2D):
 	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
 		if weeb_touched >= max_hitpoints - 1:
 			GameInfos.last_winner = player_body.player_ID
+			$AudioWeebTouched.pitch_scale = 0.25
+			$AudioWeebTouched.play()
 			character_pointer.take_damage(1, 0)
 			emit_signal("game_won")
 		else:

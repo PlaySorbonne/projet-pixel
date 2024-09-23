@@ -30,14 +30,14 @@ const MUSICS_PATHS : Array[String] = [
 	"res://resources/audio/music/Menu_Theme.mp3"
 ]
 const DEFAULT_PLAYER_COLORS : Array[Color] = [
-	Color.BLUE,
-	Color.RED,
-	Color.LIME_GREEN,
-	Color.YELLOW,
-	Color.PURPLE,
+	Color.DARK_GREEN,
+	Color.GOLDENROD,
 	Color.TEAL,
-	Color.MINT_CREAM,
-	Color.WEB_GRAY
+	Color.PURPLE,
+	Color.YELLOW,
+	Color.LIME_GREEN,
+	Color.RED,
+	Color.CORNFLOWER_BLUE
 ]
 const DEFAULT_PLAYER_NAMES : Array[String] = [
 	"Luffi",
@@ -89,7 +89,6 @@ func reset_game_infos(deep_reset := false) -> void:
 		available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
 		available_player_names.shuffle()
 		available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
-		available_player_colors.shuffle()
 		selected_music = 0
 		selected_level = 0
 		selected_gamemode = 0
