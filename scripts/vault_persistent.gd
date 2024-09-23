@@ -42,6 +42,14 @@ const STAND_NAMES : Array[String] = [
 	$CanvasLayer/Stats
 ]
 @onready var current_screen := $CanvasLayer/Vault
+@onready var navigation_icons : Array[TextureRect] = [
+	$CanvasLayer/TextureBooth/HBoxContainer/IconCollection,
+	$CanvasLayer/TextureBooth/HBoxContainer/IconDojo,
+	$CanvasLayer/TextureBooth/HBoxContainer/IconVault,
+	$CanvasLayer/TextureBooth/HBoxContainer/IconShop,
+	$CanvasLayer/TextureBooth/HBoxContainer/IconStats
+]
+@onready var current_nav_icon := $CanvasLayer/TextureBooth/HBoxContainer/IconVault
 var can_input := false
 var buttons : Array[Button] = [null]
 var selected_button := 0
@@ -51,6 +59,7 @@ var can_quit := true
 func _ready():
 	for s : Control in screen_nodes:
 		s.visible = true
+	current_nav_icon.is_current_screen = true
 	set_screen_infos(Screens.Default, true)
 	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
@@ -84,16 +93,20 @@ func confirm_button():
 	current_stand += 1
 	if current_stand > int(Screens.Stats):
 		current_stand = 0
-	go_to_screen(current_stand)
+	
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
 
 func set_screen_infos(index : int, animated_infos := false):
+	current_stand = index
 	vendor.texture = VENDOR_TEXTURES[index]
 	vendor.size = VENDOR_SIZES[index]
 	stand_name.text = STAND_NAMES[index]
 	current_screen = screen_nodes[index]
+	current_nav_icon.is_current_screen = false
+	current_nav_icon = navigation_icons[index]
+	current_nav_icon.is_current_screen = true
 	if animated_infos:
 		vendor.position = VENDOR_POSITIONS[index]
 		for s : Control in screen_nodes:

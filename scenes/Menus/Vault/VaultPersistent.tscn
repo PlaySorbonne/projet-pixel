@@ -93,19 +93,19 @@ layout_mode = 2
 
 [node name="IconShop" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
 layout_mode = 2
-texture = ExtResource("5_q3jbu")
+icon = ExtResource("5_q3jbu")
 
 [node name="IconCollection" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
 layout_mode = 2
-texture = ExtResource("6_tdv2n")
+icon = ExtResource("6_tdv2n")
 
 [node name="IconDojo" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
 layout_mode = 2
-texture = ExtResource("7_tevxp")
+icon = ExtResource("7_tevxp")
 
 [node name="IconStats" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
 layout_mode = 2
-texture = ExtResource("8_xtdao")
+icon = ExtResource("8_xtdao")
 
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1

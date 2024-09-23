@@ -1,4 +1,4 @@
-extends TextureRect
+extends Button
 
 @export var is_current_screen := false:
 	set(value):
@@ -15,7 +15,7 @@ extends TextureRect
 
 
 func _ready():
-	$TextureRect.texture = texture
+	$TextureRect.texture = icon
 
 func _tween_scale(new_scale : Vector2):
 	var tween := create_tween()
@@ -26,3 +26,6 @@ func _on_focus_entered():
 
 func _on_focus_exited():
 	_tween_scale(Vector2.ONE)
+
+func _on_pressed():
+	pass # Replace with function body.

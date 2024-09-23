@@ -3,16 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://bl6pclufgh80s" path="res://resources/images/icons/asian-lantern.png" id="1_q2f4x"]
 [ext_resource type="Script" path="res://scripts/navigation_icon.gd" id="2_4cyeo"]
 
-[node name="NavigationIcon" type="TextureRect"]
+[node name="NavigationIcon" type="Button"]
 custom_minimum_size = Vector2(75, 75)
 offset_left = -37.5
 offset_top = -37.5
 offset_right = 37.5
 offset_bottom = 37.5
 pivot_offset = Vector2(37.5, 37.5)
-texture = ExtResource("1_q2f4x")
-expand_mode = 1
-stretch_mode = 5
+icon = ExtResource("1_q2f4x")
+flat = true
+expand_icon = true
 script = ExtResource("2_4cyeo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -26,9 +26,11 @@ offset_right = 85.0
 offset_bottom = 85.0
 scale = Vector2(1.25, 1.25)
 pivot_offset = Vector2(37.5, 37.5)
+mouse_filter = 2
 texture = ExtResource("1_q2f4x")
 expand_mode = 1
 stretch_mode = 5
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
