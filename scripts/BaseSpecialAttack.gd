@@ -7,6 +7,7 @@ var can_use_special := true :
 	set(value):
 		sprite_effect.set_special_availability(value)
 		can_use_special = value
+		player.emit_signal("has_special", value)
 
 func special():
 	print("Special from player " + str(player.player_ID) + " ; not yet implemented!")

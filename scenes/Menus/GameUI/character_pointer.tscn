@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqjyjdg2uma5y"]
+[gd_scene load_steps=6 format=3 uid="uid://bqjyjdg2uma5y"]
 
 [ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="1_d6fp3"]
 [ext_resource type="Script" path="res://scripts/character_pointer.gd" id="2_fab0g"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="3_0k4en"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_kil8r"]
+[ext_resource type="Texture2D" uid="uid://ddty1alocf58g" path="res://resources/images/particles/star5p.png" id="4_mkpwd"]
 
 [node name="CharacterPointer" type="Sprite2D"]
 top_level = true
 position = Vector2(0, -140)
 texture = ExtResource("1_d6fp3")
 script = ExtResource("2_fab0g")
+
+[node name="StarRect" type="TextureRect" parent="."]
+offset_left = -95.0
+offset_top = -85.0
+offset_right = -62.0
+offset_bottom = -52.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(16.5, 16.5)
+texture = ExtResource("4_mkpwd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StarRect2" type="TextureRect" parent="StarRect"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 33.0
+offset_bottom = 33.0
+scale = Vector2(1.35, 1.35)
+pivot_offset = Vector2(16.5, 16.5)
+texture = ExtResource("4_mkpwd")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HealthBars" type="Control" parent="." node_paths=PackedStringArray("object")]
 layout_mode = 3
@@ -27,7 +51,7 @@ offset_bottom = -75.13
 pivot_offset = Vector2(160, 18)
 theme = ExtResource("4_kil8r")
 theme_override_font_sizes/font_size = 25
-text = "NAME OF CHARACTER"
+text = "character name"
 horizontal_alignment = 1
 clip_text = true
 

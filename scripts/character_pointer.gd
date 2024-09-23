@@ -14,6 +14,7 @@ static var current_z = 0
 	set(value):
 		has_name = value
 		$HealthBars/LabelName.visible = has_name
+		$StarRect.visible = has_name
 @export var has_pointer := true:
 	set(value):
 		has_pointer = value
@@ -29,6 +30,19 @@ var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
 
+func set_star(new_vis : bool):
+	var tween := create_tween().set_parallel()
+	var new_mod : Color
+	var new_bg : Color
+	if new_vis:
+		new_mod = Color.WHITE
+		new_bg = Color.BLACK
+	else:
+		new_mod = Color.BLACK
+		new_bg = Color.TRANSPARENT
+	tween.tween_property($StarRect, "self_modulate", new_mod, 0.15)
+	tween.tween_property($StarRect/StarRect2, "self_modulate", new_bg, 0.2)
+
 func _ready():
 	$HealthBars.z_index = current_z * 5
 	current_z += 1
@@ -36,6 +50,7 @@ func _ready():
 	has_name = has_name
 	has_pointer = has_pointer
 	await get_tree().create_timer(0.15).timeout
+	$StarRect.modulate = self_modulate
 	visible = true
 
 func get_current_unit() -> HealthBarUnit:
@@ -65,10 +80,17 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
-	$HealthBars/LabelName.position = Vector2(
+	var new_name_pos := Vector2(
 		-160.0 + 7.5 * healthbars.size(),
 		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * healthbars.size() - 20.0
 	)
+	$HealthBars/LabelName.position = new_name_pos
+	$StarRect.position = Vector2(
+		-95.0,
+		new_name_pos.y / 2.0 - 5.0
+	)
+	var tween := create_tween()
+	tween.tween_property($StarRect, "scale", Vector2.ONE, 0.4)
 	var delay := 0
 	for unit : HealthBarUnit in healthbars:
 		if with_anim:

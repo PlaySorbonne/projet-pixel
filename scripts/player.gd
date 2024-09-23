@@ -1,6 +1,7 @@
 extends FighterCharacter
 class_name PlayerCharacter
 
+signal has_special(new_special : bool)
 signal player_evolved
 
 enum Controls {KEYBOARD, CONTROLLER}
