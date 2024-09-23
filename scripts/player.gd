@@ -63,6 +63,8 @@ func load_custom_gameplay_data():
 	var ev_spe := ev + "_special"
 	for k : String in SettingsScreen.gameplay_data[ev_spe].keys():
 		get_special_attack().set(k, SettingsScreen.gameplay_data[ev_spe][k])
+	if air_speed <= 1.0:
+		air_speed = speed
 
 func get_special_attack():
 	return $SpecialAttack

@@ -200,10 +200,6 @@ dash_cooldown = 0.25
 
 [node name="CharacterPointer" parent="." index="7" instance=ExtResource("6_54gyb")]
 position = Vector2(0, -100)
-shake_offset = Vector2(0, 0)
-has_name = true
-has_pointer = true
-always_show_healthbars = false
 
 [node name="AnimationPlayer" parent="." index="8" instance=ExtResource("7_02yp1")]
 
