@@ -49,6 +49,8 @@ var current_stand := Screens.Default
 var can_quit := true
 
 func _ready():
+	for s : Control in screen_nodes:
+		s.visible = true
 	set_screen_infos(Screens.Default, true)
 	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
@@ -128,8 +130,6 @@ func quit_to_menu():
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	if get_tree() != null:
 		get_tree().change_scene_to_file(MAIN_MENU)
-	else:
-		print("whaaaaaaaat ?")
 
 func _on_button_back_pressed():
 	quit_to_menu()

@@ -45,8 +45,6 @@ func smooth_change_to_scene(new_scene : String):
 	await screen_transition.HalfScreenTransitionFinished
 	if get_tree() != null:
 		get_tree().change_scene_to_file(new_scene)
-	else:
-		print("whaaaaaaaat ?")
 
 func go_to_screen(new_screen : int):
 	var title_final_pos : Vector2
