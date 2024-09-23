@@ -28,7 +28,6 @@ func _process(delta):
 		if platform.progress_ratio == 1 or platform.progress_ratio == 0:
 			paused_platform = true
 			timer_pause.start()
-			print("reverse")
 
 func _on_timer_timeout():
 	direction = -direction
