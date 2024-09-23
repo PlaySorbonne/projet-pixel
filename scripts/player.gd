@@ -17,6 +17,7 @@ const EvolutionCharacters = {
 static var player_counter := 0
 
 @export var current_evolution : Evolutions = Evolutions.CEO
+@export var attack_size := Vector2.ONE
 @export var speed := 600.0
 @export var air_speed := 600.0
 @export var max_fall_speed := 1500.0
@@ -321,7 +322,7 @@ func attack():
 	if attack_wind_up > 0:
 		await get_tree().create_timer(attack_wind_up).timeout
 	Hitbox.spawn_hitbox(self, attack_damage, AttackLocation.position, 0.3, true, 
-	attack_intensity, Vector2.ONE)
+	attack_intensity, attack_size)
 	attacking = true
 	if attack_recovery > 0:
 		await get_tree().create_timer(attack_duration+attack_recovery).timeout

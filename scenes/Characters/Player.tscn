@@ -159,6 +159,7 @@ _data = {
 collision_mask = 17
 script = ExtResource("2_7jbn1")
 current_evolution = 0
+attack_size = Vector2(1, 1)
 speed = 600.0
 air_speed = 600.0
 max_fall_speed = 1500.0
