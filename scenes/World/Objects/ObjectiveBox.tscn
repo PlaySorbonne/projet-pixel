@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv1w5v10663nr"]
+[gd_scene load_steps=10 format=3 uid="uid://cv1w5v10663nr"]
 
 [ext_resource type="Script" path="res://scripts/HentaiBox.gd" id="1_6c0xd"]
 [ext_resource type="PackedScene" uid="uid://qbg5sibnym20" path="res://scenes/World/Objects/anime_box_sprite.tscn" id="2_f2ger"]
 [ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="3_387u6"]
+[ext_resource type="Texture2D" uid="uid://busp52ycm5cjf" path="res://resources/images/objects/anime/anime_one_champsu.png" id="3_hvl42"]
 [ext_resource type="AudioStream" uid="uid://du65tsacslg1i" path="res://resources/audio/sfx/gameplay_sfx/_explosion0.wav" id="4_x0imi"]
 [ext_resource type="PackedScene" uid="uid://bqjyjdg2uma5y" path="res://scenes/Menus/GameUI/character_pointer.tscn" id="5_1a4qb"]
 
@@ -34,6 +35,7 @@ visible = false
 shape = SubResource("RectangleShape2D_x3lgd")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_f2ger")]
+texture = ExtResource("3_hvl42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
