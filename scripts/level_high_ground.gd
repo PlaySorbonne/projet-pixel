@@ -22,9 +22,6 @@ func _ready():
 	add_child(anime)
 	$AnimeBoxHint.queue_free()
 
-func set_music_pitch(new_pitch : float):
-	$Music.pitch_scale = new_pitch
-
 func _process(delta):
 	if not paused_platform :
 		platform.progress_ratio += delta * speed * direction

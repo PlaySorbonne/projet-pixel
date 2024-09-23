@@ -65,8 +65,8 @@ func simulate_click():
 	await get_tree().process_frame
 	mouse.pressed = false
 	Input.parse_input_event(mouse)
-	print("click : global_position = " + str(mouse.global_position))
-	print("click : mouse_position = " + str(get_global_mouse_position()))
+	#print("click : global_position = " + str(mouse.global_position))
+	#print("click : mouse_position = " + str(get_global_mouse_position()))
 
 func _process(delta : float):
 	var velocity := Vector2.ZERO

@@ -239,20 +239,22 @@ func evolve(in_lobby: bool = false):
 	evolving = true
 	compute_hits = false
 	computing_movement = false
+	$AnimationPlayer.stop()
+	$EvolveAnimation.play("evolve")
+	var tween := create_tween()
+	tween.tween_property($CharacterPointer, "modulate", Color.TRANSPARENT, 0.5)
 	velocity = Vector2.ZERO
 	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
 	GameInfos.players[player_ID] = new_body
 	copy_player_data(new_body)
 	get_parent().add_child(new_body)
-	if not in_lobby:
-		await get_tree().create_timer(0.2).timeout
-	new_body.spawn(position, true, facing_right)
 	set_player_active(false)
+	await get_tree().create_timer(1.1).timeout
+	new_body.spawn(position, true, facing_right)
 	emit_signal("player_evolved", new_body)
 	GameInfos.tracked_targets.erase(self)
-	if not in_lobby:
-		await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 func remove_player():
