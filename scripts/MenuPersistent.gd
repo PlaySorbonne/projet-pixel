@@ -76,12 +76,6 @@ func _on_title_screen_button_start_pressed():
 func _on_title_screen_button_vault_pressed():
 	if not can_change_scene:
 		return
-	var player = DEFAULT_PLAYER.instantiate()
-	GameInfos.selected_level = GameInfos.LEVEL_STAT_EDITOR
-	player.control_device = 0
-	player.control_type = 0
-	player.god_mode = true
-	GameInfos.add_player(player)
 	smooth_change_to_scene(VAULT_PATH)
 
 func _on_title_screen_button_settings_pressed():

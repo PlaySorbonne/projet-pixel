@@ -1,6 +1,7 @@
 extends Node2D
 
 enum Screens {Collection, Dojo, Default, Shop, Stats}
+enum FocusType {Screens, ScreenOptions}
 
 const MAIN_MENU := "res://scenes/Menus/MenuPersistent.tscn"
 const SCREENS_ORDER := [
@@ -62,6 +63,7 @@ var buttons : Array[Button] = [null]
 var selected_button := 0
 var current_stand := Screens.Default
 var can_quit := true
+var current_focus : FocusType = FocusType.Screens
 
 func _ready():
 	for s : Control in screen_nodes:
@@ -72,17 +74,24 @@ func _ready():
 		i += 1
 	current_nav_icon.is_current_screen = true
 	set_screen_infos(Screens.Default, true)
+	set_focus_to(FocusType.Screens)
 	$CanvasLayer/ScreenTransition.end_screen_transition()
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 
 func _process(_delta):
-	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
-		pass
-	elif Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down"):
-		pass
-	elif Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special") or Input.is_action_just_pressed("jump"):
-		pass
+	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special"):
+		if current_focus == FocusType.ScreenOptions:
+			set_focus_to(FocusType.Screens) 
+		elif current_focus == FocusType.Screens:
+			quit_to_menu()
+
+func set_focus_to(new_focus : FocusType):
+	current_focus = new_focus
+	if new_focus == FocusType.Screens:
+		current_nav_icon.grab_focus()
+	elif new_focus == FocusType.ScreenOptions:
+		current_screen.grab_focus()
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
@@ -102,6 +111,8 @@ func set_screen_infos(index : int, animated_infos := false):
 				s.modulate = Color.TRANSPARENT
 
 func go_to_screen(new_screen : Screens):
+	if current_stand == new_screen:
+		return
 	const TRANS_TIME := 1.5
 	const N_TRANS_TIME := 1.0
 	var tween := create_tween().set_parallel().set_trans(Tween.TRANS_QUART)
@@ -123,6 +134,7 @@ func go_to_screen(new_screen : Screens):
 	tween.tween_property(vendor, "position", VENDOR_POSITIONS[index], TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 855), N_TRANS_TIME)
 	tween.tween_property(current_screen, "modulate", Color.WHITE, 0.8)
+	set_focus_to(FocusType.ScreenOptions)
 
 func quit_to_menu():
 	if not can_quit:
