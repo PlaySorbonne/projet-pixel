@@ -42,23 +42,23 @@ position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="Wall5" parent="." index="10" instance=ExtResource("2_euv16")]
-position = Vector2(1245, 665)
+position = Vector2(1207, 593)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall7" parent="." index="11" instance=ExtResource("2_euv16")]
-position = Vector2(384, 655)
+position = Vector2(392, 587)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall9" parent="." index="12" instance=ExtResource("2_euv16")]
-position = Vector2(1540, 515)
+position = Vector2(1570, 515)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall10" parent="." index="13" instance=ExtResource("2_euv16")]
-position = Vector2(57, 518)
+position = Vector2(34, 522)
 scale = Vector2(3.5, 0.5)
 
 [node name="Wall8" parent="." index="14" instance=ExtResource("2_euv16")]
-position = Vector2(838, 561)
+position = Vector2(812, 675)
 scale = Vector2(5, 0.5)
 
 [node name="AnimeBoxHint" parent="." index="15"]

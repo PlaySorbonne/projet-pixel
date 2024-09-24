@@ -7,6 +7,9 @@ class_name WorldCamera
 @export var max_zoom := 1.1
 @export var margin := Vector2(400.0, 200.0)
 
+var min_distance = 300 # Distance minimale avant de commencer à zoomer
+var max_distance = 1000 # Distance maximale pour le dézoom
+
 @onready var screen_size := get_viewport_rect().size
 
 func _ready():
@@ -23,7 +26,7 @@ static func add_target(t : Node2D):
 static func remove_target(t : Node2D):
 	if t in GameInfos.tracked_targets:
 		GameInfos.tracked_targets.erase(t)
-
+	
 """
 func _process(delta : float):
 	return

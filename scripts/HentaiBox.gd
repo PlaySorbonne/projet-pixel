@@ -21,6 +21,7 @@ const OBJECTIVE_BOX_RES = preload("res://scenes/World/Objects/ObjectiveBox.tscn"
 
 @onready var trail_effect := $TrailEffect
 @onready var character_pointer : CharacterPointer = $CharacterPointer
+@onready var timer_combo = $Timer
 var team := -1
 var last_player_hit : PlayerCharacter = null
 var last_hit_value := 0
@@ -31,6 +32,7 @@ var blue_div_at_rest := 1.0
 var weeb_touched : int = 0
 var last_valid_pos : Vector2
 var hitpoints_updated := false
+var combo = 1
 
 func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation():
 	var new_body := OBJECTIVE_BOX_RES.instantiate()
@@ -65,6 +67,7 @@ func _process(delta : float):
 		damaging_timer -= delta
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
 		set_tape_rest_mode()
+		timer_combo.start()
 
 func _ready():
 	GameInfos.anime_box = self
@@ -118,12 +121,16 @@ func get_hit_owner():
 
 func add_impulse(hit_position : Vector2, hit_intensity : float):
 	var impulse_dir : Vector2 = (global_position-hit_position).normalized()
-	apply_impulse( (impulse_dir + Vector2(0, -0.175)) * anime_velocity * hit_intensity )
+	apply_impulse( (impulse_dir + Vector2(0, -0.075)) * anime_velocity * hit_intensity*combo )
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
 	if attacker != null:
+		timer_combo.stop()
 		set_tape_hit_mode()
 		add_impulse(hit_position, hit_intensity)
+		combo = combo * 1.4
+		if combo > 7.5:
+			combo = 7.5
 	emit_signal("hentai_hit", damage)
 	GameInfos.camera_utils.shake()
 	last_player_hit = attacker
@@ -157,3 +164,7 @@ func _on_area_2d_body_entered(body : Node2D):
 			increment_weeb_touched()
 	elif damaging and last_player_hit != null and body != last_player_hit:
 		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
+
+
+func _on_timer_timeout():
+	combo = 1
