@@ -42,14 +42,14 @@ const STAND_NAMES : Array[String] = [
 
 @onready var vendor := $CanvasLayer/TextureVendor
 @onready var stand_name := $CanvasLayer/Label
-@onready var screen_nodes := [
+@onready var screen_nodes : Array[VaultSubScreen] = [
 	$CanvasLayer/Collection,
 	$CanvasLayer/Dojo,
 	$CanvasLayer/Vault,
 	$CanvasLayer/Shop,
 	$CanvasLayer/Stats
 ]
-@onready var current_screen := $CanvasLayer/Vault
+@onready var current_screen : VaultSubScreen = $CanvasLayer/Vault
 @onready var navigation_icons : Array[Button] = [
 	$CanvasLayer/TextureBooth/HBoxContainer/IconCollection,
 	$CanvasLayer/TextureBooth/HBoxContainer/IconDojo,
@@ -91,7 +91,8 @@ func set_focus_to(new_focus : FocusType):
 	if new_focus == FocusType.Screens:
 		current_nav_icon.grab_focus()
 	elif new_focus == FocusType.ScreenOptions:
-		current_screen.grab_focus()
+		pass
+		#current_screen.grab_control_node.grab_focus()
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
