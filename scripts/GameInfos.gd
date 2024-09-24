@@ -78,13 +78,13 @@ var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winner := -1
 
-func reset_game_infos(deep_reset := false) -> void:
+func reset_game_infos(_deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
 	players = {}
 	anime_box = null
 	CharacterPointer.current_z = 0
-	if deep_reset:
+	"""if deep_reset:
 		players_data = {}
 		available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
 		available_player_names.shuffle()
@@ -92,7 +92,7 @@ func reset_game_infos(deep_reset := false) -> void:
 		selected_music = 0
 		selected_level = 0
 		selected_gamemode = 0
-		last_winner = -1
+		last_winner = -1"""
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
