@@ -84,15 +84,16 @@ func reset_game_infos(_deep_reset := false) -> void:
 	players = {}
 	anime_box = null
 	CharacterPointer.current_z = 0
-	"""if deep_reset:
-		players_data = {}
-		available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
-		available_player_names.shuffle()
-		available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
-		selected_music = 0
-		selected_level = 0
-		selected_gamemode = 0
-		last_winner = -1"""
+
+func perform_deep_reset():
+	players_data = {}
+	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
+	available_player_names.shuffle()
+	available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
+	selected_music = 0
+	selected_level = 0
+	selected_gamemode = 0
+	last_winner = -1
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
