@@ -76,47 +76,94 @@ offset_top = 0.105
 offset_right = -0.00012207
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TextureBooth"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.28275
+[node name="IconVault" parent="CanvasLayer/TextureBooth" instance=ExtResource("4_y3rmr")]
+z_index = 10
+z_as_relative = false
+layout_mode = 2
+anchor_left = 0.329579
 anchor_top = 0.890672
-anchor_right = 0.71725
+anchor_right = 0.374036
 anchor_bottom = 0.965898
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 50
-alignment = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="IconVault" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+[node name="IconShop" parent="CanvasLayer/TextureBooth" instance=ExtResource("4_y3rmr")]
 z_index = 10
 z_as_relative = false
 layout_mode = 2
-
-[node name="IconShop" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
-z_index = 10
-z_as_relative = false
-layout_mode = 2
+anchor_left = 0.403675
+anchor_top = 0.890672
+anchor_right = 0.448132
+anchor_bottom = 0.965898
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 icon = ExtResource("5_q3jbu")
+metadata/_edit_use_anchors_ = true
 
-[node name="IconCollection" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+[node name="IconCollection" parent="CanvasLayer/TextureBooth" instance=ExtResource("4_y3rmr")]
 z_index = 10
 z_as_relative = false
 layout_mode = 2
+anchor_left = 0.477771
+anchor_top = 0.890672
+anchor_right = 0.522228
+anchor_bottom = 0.965898
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 icon = ExtResource("6_tdv2n")
+metadata/_edit_use_anchors_ = true
 
-[node name="IconDojo" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+[node name="IconDojo" parent="CanvasLayer/TextureBooth" instance=ExtResource("4_y3rmr")]
 z_index = 10
 z_as_relative = false
 layout_mode = 2
+anchor_left = 0.551867
+anchor_top = 0.890672
+anchor_right = 0.596324
+anchor_bottom = 0.965898
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 6.10352e-05
+offset_bottom = 0.0
 icon = ExtResource("7_tevxp")
+metadata/_edit_use_anchors_ = true
 
-[node name="IconStats" parent="CanvasLayer/TextureBooth/HBoxContainer" instance=ExtResource("4_y3rmr")]
+[node name="IconStats" parent="CanvasLayer/TextureBooth" instance=ExtResource("4_y3rmr")]
 z_index = 10
 z_as_relative = false
 layout_mode = 2
+anchor_left = 0.625963
+anchor_top = 0.890672
+anchor_right = 0.67042
+anchor_bottom = 0.965898
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 icon = ExtResource("8_xtdao")
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonBack" type="Button" parent="CanvasLayer/TextureBooth"]
+z_index = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0740957
+anchor_top = 0.879639
+anchor_right = 0.172534
+anchor_bottom = 0.953862
+theme = ExtResource("5_2utj3")
+text = "BACK"
+flat = true
+script = ExtResource("7_l557a")
+audio = ExtResource("8_deca0")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -146,20 +193,6 @@ theme = ExtResource("5_2utj3")
 theme_override_font_sizes/font_size = 80
 text = "VAULT"
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="ButtonBack" type="Button" parent="CanvasLayer"]
-z_index = 4
-anchors_preset = -1
-anchor_left = 0.114583
-anchor_top = 0.893519
-anchor_right = 0.213021
-anchor_bottom = 0.962037
-theme = ExtResource("5_2utj3")
-text = "BACK"
-flat = true
-script = ExtResource("7_l557a")
-audio = ExtResource("8_deca0")
 metadata/_edit_use_anchors_ = true
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("5_u3c63")]
@@ -350,6 +383,6 @@ bus = &"music"
 parameters/looping = true
 
 [connection signal="bar_filled" from="CanvasLayer/ExitProgressBar" to="." method="_on_exit_progress_bar_bar_filled"]
-[connection signal="pressed" from="CanvasLayer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureBooth/ButtonBack" to="." method="_on_button_back_pressed"]
 
 [editable path="TitleScreenDecor"]
