@@ -1,10 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://rlaw1umxqpak"]
+[gd_scene load_steps=32 format=3 uid="uid://rlaw1umxqpak"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_8g6v0"]
+[ext_resource type="AudioStream" uid="uid://dgadwlj2d6wam" path="res://resources/audio/voices/manager/evolve_haha.wav" id="2_3waai"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialManager.gd" id="2_ljooy"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_ynyrr"]
 [ext_resource type="SpriteFrames" uid="uid://fahmmhcdh55s" path="res://scenes/Characters/Evolutions/Animations/manager_sprite_frames.tres" id="3_e2v71"]
+[ext_resource type="AudioStream" uid="uid://vmmjvtrnhuuf" path="res://resources/audio/voices/manager/evolve_its_payday.wav" id="3_ic2ms"]
+[ext_resource type="AudioStream" uid="uid://1i28hw0vj78g" path="res://resources/audio/voices/manager/evolve_lets_go.wav" id="4_16aqm"]
 [ext_resource type="Script" path="res://scripts/HitEffect.gd" id="4_u028w"]
+[ext_resource type="AudioStream" uid="uid://duebvwko3dd1o" path="res://resources/audio/voices/manager/evolve_show_em_boss.wav" id="5_hantr"]
+[ext_resource type="AudioStream" uid="uid://cayfph7nr73hf" path="res://resources/audio/voices/manager/evolve_time_for_overtime.wav" id="6_ydpmu"]
+[ext_resource type="AudioStream" uid="uid://cgee6145pdr57" path="res://resources/audio/voices/manager/evolve_what_fox_say.wav" id="7_i5qn8"]
+[ext_resource type="AudioStream" uid="uid://c12i5ccipgqj1" path="res://resources/audio/voices/manager/death_0.wav" id="8_i1amb"]
+[ext_resource type="AudioStream" uid="uid://ca4xtqstlfudg" path="res://resources/audio/voices/manager/death_1.wav" id="9_kh337"]
+[ext_resource type="AudioStream" uid="uid://djrwjfq1o3k1h" path="res://resources/audio/voices/manager/death_2.wav" id="10_uw5o1"]
+[ext_resource type="AudioStream" uid="uid://coooejxuvdo7y" path="res://resources/audio/voices/manager/death_3.wav" id="11_bjhbm"]
+[ext_resource type="AudioStream" uid="uid://bvpia6vyjki0x" path="res://resources/audio/voices/manager/death_4.wav" id="12_u5rjt"]
+[ext_resource type="AudioStream" uid="uid://rigmkn13tala" path="res://resources/audio/voices/manager/death_5.wav" id="13_tujml"]
+[ext_resource type="AudioStream" uid="uid://b3nfj64yqcedk" path="res://resources/audio/voices/manager/special_bang.wav" id="14_bjyi0"]
+[ext_resource type="AudioStream" uid="uid://boy6fcuxyjgu6" path="res://resources/audio/voices/manager/special_pew0.wav" id="15_y860j"]
+[ext_resource type="AudioStream" uid="uid://kwovd7jp2esr" path="res://resources/audio/voices/manager/special_pew1.wav" id="16_ynmm2"]
+[ext_resource type="AudioStream" uid="uid://bx8gnkc1j1acc" path="res://resources/audio/voices/manager/special_pew2.wav" id="17_84nxk"]
+[ext_resource type="AudioStream" uid="uid://dsnfds8ryt8cr" path="res://resources/audio/voices/manager/special_pewpew.wav" id="18_bbnds"]
+[ext_resource type="AudioStream" uid="uid://evy1hio0xxeu" path="res://resources/audio/voices/manager/special_take_this.wav" id="19_vjq56"]
+[ext_resource type="AudioStream" uid="uid://dvx7afvykw3aj" path="res://resources/audio/voices/manager/hurt_0.wav" id="20_u33x0"]
+[ext_resource type="AudioStream" uid="uid://b1vvllf5xmoym" path="res://resources/audio/voices/manager/hurt_1.wav" id="21_ounik"]
+[ext_resource type="AudioStream" uid="uid://bcgpd5ckvh334" path="res://resources/audio/voices/manager/hurt_2.wav" id="22_b2wgo"]
+[ext_resource type="AudioStream" uid="uid://dsgs40qrn1btw" path="res://resources/audio/voices/manager/hurt_3.wav" id="23_gx13a"]
+[ext_resource type="AudioStream" uid="uid://cpjokw33wdsdu" path="res://resources/audio/voices/manager/hurt_4.wav" id="24_27kn8"]
+[ext_resource type="AudioStream" uid="uid://b7jpgvur15ls5" path="res://resources/audio/voices/manager/hurt_5.wav" id="25_xevsv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nmrf"]
 resource_local_to_scene = true
@@ -20,15 +44,15 @@ size = Vector2(79, 90)
 [node name="ManagerCharacter" instance=ExtResource("1_8g6v0")]
 current_evolution = 1
 stun_time = 0.45
+audio_evolve = Array[AudioStream]([ExtResource("2_3waai"), ExtResource("3_ic2ms"), ExtResource("4_16aqm"), ExtResource("5_hantr"), ExtResource("6_ydpmu"), ExtResource("7_i5qn8")])
+audio_death = Array[AudioStream]([ExtResource("8_i1amb"), ExtResource("9_kh337"), ExtResource("10_uw5o1"), ExtResource("11_bjhbm"), ExtResource("12_u5rjt"), ExtResource("13_tujml")])
+audio_special = Array[AudioStream]([ExtResource("14_bjyi0"), ExtResource("15_y860j"), ExtResource("16_ynmm2"), ExtResource("17_84nxk"), ExtResource("18_bbnds"), ExtResource("19_vjq56")])
+audio_hurt = Array[AudioStream]([ExtResource("20_u33x0"), ExtResource("21_ounik"), ExtResource("22_b2wgo"), ExtResource("23_gx13a"), ExtResource("24_27kn8"), ExtResource("25_xevsv")])
 max_hitpoints = 5
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_7nmrf")
-position = Vector2(0, 38.7041)
-rotation = 0.0384295
-scale = Vector2(0.513579, 0.511421)
 sprite_frames = ExtResource("3_e2v71")
-animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-5, 7)
@@ -38,7 +62,7 @@ shape = SubResource("RectangleShape2D_v2r6n")
 script = ExtResource("4_u028w")
 sprite_path = NodePath("../Sprite2D")
 
-[node name="SpecialAttack" parent="." index="8"]
+[node name="SpecialAttack" parent="." index="7"]
 script = ExtResource("2_ljooy")
 attack_damage = 2
 attack_size = 3.0

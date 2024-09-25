@@ -6,6 +6,8 @@ const SPAWN_OFFSET = Vector2(0.0, 10.0)
 const EXPLOSION_RES = preload("res://resources/images/fx/explosion/explosion_anim_sprite.tscn")
 const DEFAULT_EGG_SPRITE_SCALE := Vector2(0.15, 0.15)
 
+@export var audios_egg : Array[AudioStream] = []
+
 var hit_damage := 3
 var hit_duration := 1.0
 var egg_speed := 1400.0
@@ -28,6 +30,8 @@ static func spawn_egg_projectile(player_char : PlayerCharacter, special : Specia
 
 func _ready():
 	velocity = Vector2.DOWN * egg_speed
+	$AudioPop.stream = audios_egg.pick_random()
+	$AudioPop.play()
 	var tween := create_tween()
 	tween.tween_property($Sprite, "scale", DEFAULT_EGG_SPRITE_SCALE, 0.2)
 	if parent_player.is_on_floor():

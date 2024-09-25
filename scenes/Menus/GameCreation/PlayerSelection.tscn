@@ -1,13 +1,19 @@
-[gd_scene load_steps=32 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=38 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
+[ext_resource type="AudioStream" uid="uid://dl32c66a8b8hv" path="res://resources/audio/voices/ceo/evolve_crunch_the_numbers.wav" id="2_85r2c"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_v14l6"]
+[ext_resource type="AudioStream" uid="uid://ort6v0o68yv" path="res://resources/audio/voices/ceo/evolve_go_kill_nerds.wav" id="3_ubec0"]
 [ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="3_xy52h"]
+[ext_resource type="AudioStream" uid="uid://dahanasq017hk" path="res://resources/audio/voices/ceo/evolve_hmmmyes.wav" id="4_b4h4l"]
 [ext_resource type="Shader" path="res://resources/shaders/ReplaceColors.gdshader" id="4_dq808"]
 [ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
 [ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
+[ext_resource type="AudioStream" uid="uid://jo0sssk2ypuo" path="res://resources/audio/voices/ceo/evolve_mwahahahah.wav" id="5_jiuuj"]
 [ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="6_mw5do"]
+[ext_resource type="AudioStream" uid="uid://njayaiydgx6w" path="res://resources/audio/voices/ceo/evolve_the_anime.wav" id="6_tp1gi"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
+[ext_resource type="AudioStream" uid="uid://8w07yredhnia" path="res://resources/audio/voices/ceo/evolve_time_to_fire_nerds.wav" id="7_i8urp"]
 [ext_resource type="Script" path="res://scripts/button_random_sound_xyz.gd" id="8_07ko8"]
 [ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="9_5oqci"]
 [ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="10_fpwmj"]
@@ -458,6 +464,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_i7nk8")
+CEO_lines = Array[AudioStream]([ExtResource("2_85r2c"), ExtResource("3_ubec0"), ExtResource("4_b4h4l"), ExtResource("5_jiuuj"), ExtResource("6_tp1gi"), ExtResource("7_i8urp")])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -613,6 +620,9 @@ offset_left = 910.0
 offset_top = 43.0
 offset_right = 910.0
 offset_bottom = 43.0
+
+[node name="AudioCEOVoice" type="AudioStreamPlayer" parent="."]
+bus = &"voices"
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]

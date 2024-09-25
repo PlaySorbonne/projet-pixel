@@ -1,9 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://gxorr7jk1k24"]
+[gd_scene load_steps=22 format=3 uid="uid://gxorr7jk1k24"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_dytvo"]
+[ext_resource type="AudioStream" uid="uid://dl32c66a8b8hv" path="res://resources/audio/voices/ceo/evolve_crunch_the_numbers.wav" id="2_p0rcx"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_xesv4"]
+[ext_resource type="AudioStream" uid="uid://ort6v0o68yv" path="res://resources/audio/voices/ceo/evolve_go_kill_nerds.wav" id="3_2nva0"]
 [ext_resource type="SpriteFrames" uid="uid://3ipk3i6kyf8i" path="res://scenes/Characters/Evolutions/Animations/ceo_sprite_frames.tres" id="3_7rnvq"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialCEO.gd" id="3_52ce3"]
+[ext_resource type="AudioStream" uid="uid://dahanasq017hk" path="res://resources/audio/voices/ceo/evolve_hmmmyes.wav" id="4_dovv0"]
+[ext_resource type="AudioStream" uid="uid://jo0sssk2ypuo" path="res://resources/audio/voices/ceo/evolve_mwahahahah.wav" id="5_cfse7"]
+[ext_resource type="AudioStream" uid="uid://njayaiydgx6w" path="res://resources/audio/voices/ceo/evolve_the_anime.wav" id="6_vy8av"]
+[ext_resource type="AudioStream" uid="uid://8w07yredhnia" path="res://resources/audio/voices/ceo/evolve_time_to_fire_nerds.wav" id="7_jgde6"]
+[ext_resource type="AudioStream" uid="uid://opdv0byg8nu" path="res://resources/audio/voices/ceo/death_0.wav" id="8_sqs74"]
+[ext_resource type="AudioStream" uid="uid://dtsmroesnw55q" path="res://resources/audio/voices/ceo/death_1.wav" id="9_ustyl"]
+[ext_resource type="AudioStream" uid="uid://c2ync550qnrdi" path="res://resources/audio/voices/ceo/special.wav" id="10_dn22y"]
+[ext_resource type="AudioStream" uid="uid://d1dar3iocc7yr" path="res://resources/audio/voices/ceo/hurt_0.wav" id="11_qsi7i"]
+[ext_resource type="AudioStream" uid="uid://bdv22ph6yh6mb" path="res://resources/audio/voices/ceo/hurt_1.wav" id="12_7mfph"]
+[ext_resource type="AudioStream" uid="uid://c6mri62j7h6rp" path="res://resources/audio/voices/ceo/hurt_2.wav" id="13_ievh7"]
+[ext_resource type="AudioStream" uid="uid://ciywycbgvc6r4" path="res://resources/audio/voices/ceo/hurt_3.wav" id="14_rn6or"]
+[ext_resource type="AudioStream" uid="uid://d76j5yq2xvrn" path="res://resources/audio/voices/ceo/hurt_4.wav" id="15_g8860"]
+[ext_resource type="AudioStream" uid="uid://d0obtymrqvgur" path="res://resources/audio/voices/ceo/hurt_surprise.wav" id="16_ifnpq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc06i"]
 resource_local_to_scene = true
@@ -20,6 +35,10 @@ size = Vector2(127, 149)
 attack_size = Vector2(1.3, 1.3)
 attack_damage = 3
 stun_time = 0.45
+audio_evolve = Array[AudioStream]([ExtResource("2_p0rcx"), ExtResource("3_2nva0"), ExtResource("4_dovv0"), ExtResource("5_cfse7"), ExtResource("6_vy8av"), ExtResource("7_jgde6")])
+audio_death = Array[AudioStream]([ExtResource("8_sqs74"), ExtResource("9_ustyl")])
+audio_special = Array[AudioStream]([ExtResource("10_dn22y")])
+audio_hurt = Array[AudioStream]([ExtResource("11_qsi7i"), ExtResource("12_7mfph"), ExtResource("13_ievh7"), ExtResource("14_rn6or"), ExtResource("15_g8860"), ExtResource("16_ifnpq")])
 max_hitpoints = 9
 
 [node name="Sprite2D" parent="." index="0"]

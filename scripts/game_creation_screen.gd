@@ -51,6 +51,7 @@ func set_game_widgets():
 	set_level(GameInfos.selected_level)
 
 func reload_old_game_infos():
+	var delay := 0.0
 	for id: int in GameInfos.players_data.keys():
 		var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 		player.player_ID = id
@@ -63,9 +64,12 @@ func reload_old_game_infos():
 		else:
 			controllers.append(control_device)
 		GameInfos.players[id] = player
-		create_player_infos(id)
+		create_player_infos(id, delay)
+		delay += 0.5
 
-func create_player_infos(index : int):
+func create_player_infos(index : int, delay := 0.0):
+	if delay > 0:
+		await get_tree().create_timer(delay).timeout
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)

@@ -16,6 +16,7 @@ const EvolutionCharacters = {
 
 static var player_counter := 0
 
+@export_group("Gameplay Stats")
 @export var current_evolution : Evolutions = Evolutions.CEO
 @export var attack_size := Vector2.ONE
 @export var speed := 600.0
@@ -34,6 +35,12 @@ static var player_counter := 0
 @export var knockback_multiplier := 1.0
 @export var knockback_interp_factor := 0.075
 @export var stun_time := 0.3
+
+@export_group("Audio lines")
+@export var audio_evolve : Array[AudioStream] = []
+@export var audio_death : Array[AudioStream] = []
+@export var audio_special : Array[AudioStream] = []
+@export var audio_hurt : Array[AudioStream] = []
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
@@ -93,7 +100,10 @@ func _ready():
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
 	if current_evolution != Evolutions.CEO:
+		await get_tree().create_timer(1.2).timeout
 		$AudioEvolve.play()
+		$AudioLineEvolve.stream = audio_evolve.pick_random()
+		$AudioLineEvolve.play()
 
 func set_player_color(new_color : Color):
 	$TrailEffect.modulate = new_color
@@ -296,6 +306,10 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.05)
+		$AudioLineHurt.stream = audio_hurt.pick_random()
+	else:
+		$AudioLineHurt.stream = audio_death.pick_random()
+	$AudioLineHurt.play()
 
 func play_hit_sfx():
 	await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
@@ -311,9 +325,11 @@ func emit_hit_particles():
 	$HitParticles.restart()
 
 func special():
-	if in_stun_time:
+	if in_stun_time or not specialObj.can_use_special:
 		return
 	specialObj.special()
+	$AudioLineSpecial.stream = audio_special.pick_random()
+	$AudioLineSpecial.play()
 
 func attack():
 	if not can_attack or in_stun_time:

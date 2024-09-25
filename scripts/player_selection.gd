@@ -7,6 +7,8 @@ const ANIM_NAMES = ["jump", "swell", "swing", "tilt", "rotate", "squash"]
 const MOUSE_TEXTURE = preload("res://resources/images/icons/mouse.png")
 const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
 
+@export var CEO_lines : Array[AudioStream] = []
+
 var control_index : int = -1
 @export var control_type: bool:
 	set(value):
@@ -34,6 +36,8 @@ func _ready():
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
 	check_winner()
+	$AudioCEOVoice.stream = CEO_lines.pick_random()
+	$AudioCEOVoice.play()
 
 func check_winner():
 	$Control/LastWinner.visible = last_winner

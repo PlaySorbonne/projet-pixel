@@ -176,6 +176,10 @@ initial_fall_speed = 100.0
 knockback_multiplier = 1.0
 knockback_interp_factor = 0.075
 stun_time = 0.3
+audio_evolve = Array[AudioStream]([])
+audio_death = Array[AudioStream]([])
+audio_special = Array[AudioStream]([])
+audio_hurt = Array[AudioStream]([])
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_72mm4")
@@ -224,6 +228,7 @@ bus = &"sfx"
 
 [node name="AudioEvolve" type="AudioStreamPlayer" parent="." index="13"]
 stream = ExtResource("11_5xxhp")
+volume_db = -10.0
 bus = &"sfx"
 
 [node name="EvolveAnimation" type="AnimationPlayer" parent="." index="14"]
@@ -231,6 +236,15 @@ libraries = {
 "": SubResource("AnimationLibrary_0vlc0")
 }
 speed_scale = 1.5
+
+[node name="AudioLineEvolve" type="AudioStreamPlayer" parent="." index="15"]
+bus = &"voices"
+
+[node name="AudioLineHurt" type="AudioStreamPlayer" parent="." index="16"]
+bus = &"voices"
+
+[node name="AudioLineSpecial" type="AudioStreamPlayer" parent="." index="17"]
+bus = &"voices"
 
 [connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]

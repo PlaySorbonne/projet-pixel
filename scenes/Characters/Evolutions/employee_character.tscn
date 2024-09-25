@@ -1,13 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4soj6q40wgus"]
+[gd_scene load_steps=34 format=3 uid="uid://c4soj6q40wgus"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_w8fjf"]
+[ext_resource type="AudioStream" uid="uid://d0d0pnvv8qwh2" path="res://resources/audio/voices/employee/evolve_hi_how_help_you.wav" id="2_7nybr"]
 [ext_resource type="SpriteFrames" uid="uid://d18yfqex83vg3" path="res://scenes/Characters/Evolutions/Animations/employee_sprite_frames.tres" id="2_hwdps"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_kpswk"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialEmployee.gd" id="2_m2x0l"]
+[ext_resource type="AudioStream" uid="uid://b1ersfrky4wi2" path="res://resources/audio/voices/employee/evolve_ill_do_my_beeest.wav" id="3_r433v"]
+[ext_resource type="AudioStream" uid="uid://dj774hlhdo5qg" path="res://resources/audio/voices/employee/evolve_ill_do_my_best.wav" id="4_pdi77"]
+[ext_resource type="AudioStream" uid="uid://ba5bencx1efw5" path="res://resources/audio/voices/employee/evolve_oh_no_im_laaaaaate.wav" id="5_rcex0"]
+[ext_resource type="AudioStream" uid="uid://cs2wffij1d78u" path="res://resources/audio/voices/employee/evolve_oh_no_im_late.wav" id="6_gik1j"]
+[ext_resource type="AudioStream" uid="uid://01swywn5lxkd" path="res://resources/audio/voices/employee/evolve_oh_no_i_cant_be_late.wav" id="7_tnrpo"]
+[ext_resource type="AudioStream" uid="uid://cuwwy6ktd8e26" path="res://resources/audio/voices/employee/evolve_thats_my_shift.wav" id="8_uinq8"]
+[ext_resource type="AudioStream" uid="uid://bdoduqaxx3d68" path="res://resources/audio/voices/employee/evolve_tired.wav" id="9_gahnv"]
+[ext_resource type="AudioStream" uid="uid://xh4irrgopjno" path="res://resources/audio/voices/employee/death_0.wav" id="10_6tbwq"]
+[ext_resource type="AudioStream" uid="uid://ymk1il7hhwrm" path="res://resources/audio/voices/employee/death_1.wav" id="11_eldbs"]
+[ext_resource type="AudioStream" uid="uid://igvqw6x8j7du" path="res://resources/audio/voices/employee/death_2.wav" id="12_jayix"]
+[ext_resource type="AudioStream" uid="uid://nxqoqn1nv4wk" path="res://resources/audio/voices/employee/death_3.wav" id="13_5kg26"]
+[ext_resource type="AudioStream" uid="uid://b520nxon5q7bx" path="res://resources/audio/voices/employee/special_lets_bounce.wav" id="14_1qf04"]
+[ext_resource type="AudioStream" uid="uid://b38rc1c22j7pi" path="res://resources/audio/voices/employee/special_nyaah.wav" id="15_svck8"]
+[ext_resource type="AudioStream" uid="uid://crkg8r37y665k" path="res://resources/audio/voices/employee/special_oopsie.wav" id="16_y5wfb"]
+[ext_resource type="AudioStream" uid="uid://dyy4h17dhjhb7" path="res://resources/audio/voices/employee/special_oopsie_daisy2.wav" id="17_xak6b"]
+[ext_resource type="AudioStream" uid="uid://b21ve0pflnmos" path="res://resources/audio/voices/employee/special_oopsie_daisy.wav" id="18_hnlks"]
+[ext_resource type="AudioStream" uid="uid://bayrq2m7aw0n7" path="res://resources/audio/voices/employee/special_oopsie_sorry.wav" id="19_80rxe"]
+[ext_resource type="AudioStream" uid="uid://4wyd04utn2q8" path="res://resources/audio/voices/employee/special_oops_sorry.wav" id="20_16skf"]
+[ext_resource type="AudioStream" uid="uid://btvkc5qlcuki4" path="res://resources/audio/voices/employee/special_sorry.wav" id="21_qcc4u"]
+[ext_resource type="AudioStream" uid="uid://ciclh8id3v48n" path="res://resources/audio/voices/employee/special_whaaa_shpoum.wav" id="22_d25lm"]
+[ext_resource type="AudioStream" uid="uid://gkyde8kx1oo3" path="res://resources/audio/voices/employee/hurt_0.wav" id="23_m6q8v"]
+[ext_resource type="AudioStream" uid="uid://w3buve64vrpp" path="res://resources/audio/voices/employee/hurt_1.wav" id="24_q1mkj"]
+[ext_resource type="AudioStream" uid="uid://bh0m5t71csqda" path="res://resources/audio/voices/employee/hurt_2.wav" id="25_2ffbf"]
+[ext_resource type="AudioStream" uid="uid://c6pj0onxte1qu" path="res://resources/audio/voices/employee/hurt_big.wav" id="26_4iryi"]
+[ext_resource type="AudioStream" uid="uid://daytkqnaqm18w" path="res://resources/audio/voices/employee/hurt_ouch.wav" id="27_u27ao"]
+[ext_resource type="AudioStream" uid="uid://cqty08w43tsjv" path="res://resources/audio/voices/employee/hurt_ow.wav" id="28_1ahhe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xj5wj"]
 resource_local_to_scene = true
 shader = ExtResource("2_kpswk")
+shader_parameter/in_hit_effect = false
 shader_parameter/base_color = Color(0.247059, 0.247059, 0.247059, 1)
 shader_parameter/replace_color = Color(0, 0, 1, 1)
 shader_parameter/replace_threshold = 0.1
@@ -17,19 +45,20 @@ size = Vector2(60, 100)
 
 [node name="EmployeeCharacter" instance=ExtResource("1_w8fjf")]
 current_evolution = 2
+audio_evolve = Array[AudioStream]([ExtResource("2_7nybr"), ExtResource("3_r433v"), ExtResource("4_pdi77"), ExtResource("5_rcex0"), ExtResource("6_gik1j"), ExtResource("7_tnrpo"), ExtResource("8_uinq8"), ExtResource("9_gahnv")])
+audio_death = Array[AudioStream]([ExtResource("10_6tbwq"), ExtResource("11_eldbs"), ExtResource("12_jayix"), ExtResource("13_5kg26")])
+audio_special = Array[AudioStream]([ExtResource("14_1qf04"), ExtResource("15_svck8"), ExtResource("16_y5wfb"), ExtResource("17_xak6b"), ExtResource("18_hnlks"), ExtResource("19_80rxe"), ExtResource("20_16skf"), ExtResource("21_qcc4u"), ExtResource("22_d25lm")])
+audio_hurt = Array[AudioStream]([ExtResource("23_m6q8v"), ExtResource("24_q1mkj"), ExtResource("25_2ffbf"), ExtResource("26_4iryi"), ExtResource("27_u27ao"), ExtResource("28_1ahhe")])
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj5wj")
-rotation = -0.0872665
-scale = Vector2(0.525, 0.5)
 sprite_frames = ExtResource("2_hwdps")
-animation = &"run"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-9, -11)
 shape = SubResource("RectangleShape2D_5rnvo")
 
-[node name="SpecialAttack" parent="." index="7"]
+[node name="SpecialAttack" parent="." index="6"]
 script = ExtResource("2_m2x0l")
 fall_speed = 2000.0
 damage = 3

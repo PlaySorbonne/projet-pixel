@@ -1,9 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt20khpmxutd1"]
+[gd_scene load_steps=41 format=3 uid="uid://bt20khpmxutd1"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_y7qbi"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_aq807"]
+[ext_resource type="AudioStream" uid="uid://ce1t8bqrj7h6v" path="res://resources/audio/voices/poulet/evolve_0.wav" id="2_q02yw"]
 [ext_resource type="Script" path="res://scenes/Characters/Evolutions/Specials/SpecialMascot.gd" id="3_i1h8o"]
 [ext_resource type="SpriteFrames" uid="uid://b2sidufyhi057" path="res://scenes/Characters/Evolutions/Animations/chicken_sprite_frames.tres" id="3_mim3u"]
+[ext_resource type="AudioStream" uid="uid://bg8jlg0kfj3so" path="res://resources/audio/voices/poulet/evolve_1.wav" id="3_xs52l"]
+[ext_resource type="AudioStream" uid="uid://lim0aqh6rpd" path="res://resources/audio/voices/poulet/evolve_2.wav" id="4_ulpkv"]
+[ext_resource type="AudioStream" uid="uid://raplpxjmig73" path="res://resources/audio/voices/poulet/evolve_angry1.wav" id="5_w8epo"]
+[ext_resource type="AudioStream" uid="uid://bwjh0g1wkqfy5" path="res://resources/audio/voices/poulet/evolve_angry.wav" id="6_46j7v"]
+[ext_resource type="AudioStream" uid="uid://b3bo4u588sv7u" path="res://resources/audio/voices/poulet/evolve_bitch1.wav" id="7_tevj4"]
+[ext_resource type="AudioStream" uid="uid://dibhtbkh8i517" path="res://resources/audio/voices/poulet/evolve_bitch.wav" id="8_47tmh"]
+[ext_resource type="AudioStream" uid="uid://cxb1fkb3fq4b" path="res://resources/audio/voices/poulet/evolve_buco_chilis1.wav" id="9_1ina4"]
+[ext_resource type="AudioStream" uid="uid://xcsijr2sktcg" path="res://resources/audio/voices/poulet/evolve_buco_chilis.wav" id="10_mxeb7"]
+[ext_resource type="AudioStream" uid="uid://ca2kuucwbwrtf" path="res://resources/audio/voices/poulet/evolve_chilis1.wav" id="11_yx0h8"]
+[ext_resource type="AudioStream" uid="uid://b0laaiel24gh0" path="res://resources/audio/voices/poulet/evolve_chilis.wav" id="12_y1rt3"]
+[ext_resource type="AudioStream" uid="uid://ymyq0xcg6g4r" path="res://resources/audio/voices/poulet/evolve_cock_a_doodle_doo.wav" id="13_j7wsa"]
+[ext_resource type="AudioStream" uid="uid://c2nf6cmd8ndb7" path="res://resources/audio/voices/poulet/evolve_mult.wav" id="14_u5wgo"]
+[ext_resource type="AudioStream" uid="uid://dr0tyhbhdrctq" path="res://resources/audio/voices/poulet/evolve_twice1.wav" id="15_i214m"]
+[ext_resource type="AudioStream" uid="uid://cjxj0b7panphd" path="res://resources/audio/voices/poulet/evolve_twice2.wav" id="16_qaa24"]
+[ext_resource type="AudioStream" uid="uid://cnr572u1pqnm4" path="res://resources/audio/voices/poulet/evolve_twice3.wav" id="17_rf574"]
+[ext_resource type="AudioStream" uid="uid://cdii657k7ljr" path="res://resources/audio/voices/poulet/evolve_twice.wav" id="18_25uvl"]
+[ext_resource type="AudioStream" uid="uid://dey6xu18gi2t3" path="res://resources/audio/voices/poulet/evolve_welcome_to_chilis.wav" id="19_u8smi"]
+[ext_resource type="AudioStream" uid="uid://5j8tgjhkb5o8" path="res://resources/audio/voices/poulet/evolve_what.wav" id="20_5m3a8"]
+[ext_resource type="AudioStream" uid="uid://cy4dcd8lbbqdf" path="res://resources/audio/voices/poulet/death_0.wav" id="21_icftj"]
+[ext_resource type="AudioStream" uid="uid://cfdf1aaoqt6b5" path="res://resources/audio/voices/poulet/death_1.wav" id="22_a6u5x"]
+[ext_resource type="AudioStream" uid="uid://c2kgx2eluywxu" path="res://resources/audio/voices/poulet/death_2.wav" id="23_quwra"]
+[ext_resource type="AudioStream" uid="uid://b25woh5q1rn45" path="res://resources/audio/voices/poulet/death_3.wav" id="24_rgwu6"]
+[ext_resource type="AudioStream" uid="uid://gqleypcemk4v" path="res://resources/audio/voices/poulet/death_4.wav" id="25_vtwks"]
+[ext_resource type="AudioStream" uid="uid://3pquu7wwi1p7" path="res://resources/audio/voices/poulet/death_5.wav" id="26_0dlqd"]
+[ext_resource type="AudioStream" uid="uid://bhawri3iqijmo" path="res://resources/audio/voices/poulet/death_6.wav" id="27_iwfyy"]
+[ext_resource type="AudioStream" uid="uid://dl52wgh5dic0j" path="res://resources/audio/voices/poulet/death_7.wav" id="28_slpom"]
+[ext_resource type="AudioStream" uid="uid://djelvqsl7gn1j" path="res://resources/audio/voices/poulet/special_0.wav" id="29_2rx4l"]
+[ext_resource type="AudioStream" uid="uid://cr408kcnyokfc" path="res://resources/audio/voices/poulet/special_1.wav" id="30_ujaxw"]
+[ext_resource type="AudioStream" uid="uid://bocca81optff0" path="res://resources/audio/voices/poulet/special_2.wav" id="31_hgq86"]
+[ext_resource type="AudioStream" uid="uid://3phdaluxk2pg" path="res://resources/audio/voices/poulet/special_3.wav" id="32_l5vfr"]
+[ext_resource type="AudioStream" uid="uid://cil2hr6af2nny" path="res://resources/audio/voices/poulet/hurt_0.wav" id="33_83kar"]
+[ext_resource type="AudioStream" uid="uid://crcgl15wwcm05" path="res://resources/audio/voices/poulet/hurt_1.wav" id="34_khypb"]
+[ext_resource type="AudioStream" uid="uid://orokp0rgxsyl" path="res://resources/audio/voices/poulet/hurt_2.wav" id="35_ct8yn"]
+[ext_resource type="AudioStream" uid="uid://t44px32tk7ho" path="res://resources/audio/voices/poulet/hurt_3.wav" id="36_w1pwp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g55ga"]
 resource_local_to_scene = true
@@ -16,6 +51,10 @@ shader_parameter/replace_threshold = 0.18
 [node name="MascotCharacter" instance=ExtResource("1_y7qbi")]
 current_evolution = 3
 stun_time = 0.45
+audio_evolve = Array[AudioStream]([ExtResource("2_q02yw"), ExtResource("3_xs52l"), ExtResource("4_ulpkv"), ExtResource("5_w8epo"), ExtResource("6_46j7v"), ExtResource("7_tevj4"), ExtResource("8_47tmh"), ExtResource("9_1ina4"), ExtResource("10_mxeb7"), ExtResource("11_yx0h8"), ExtResource("12_y1rt3"), ExtResource("13_j7wsa"), ExtResource("14_u5wgo"), ExtResource("15_i214m"), ExtResource("16_qaa24"), ExtResource("17_rf574"), ExtResource("18_25uvl"), ExtResource("19_u8smi"), ExtResource("20_5m3a8")])
+audio_death = Array[AudioStream]([ExtResource("21_icftj"), ExtResource("22_a6u5x"), ExtResource("23_quwra"), ExtResource("24_rgwu6"), ExtResource("25_vtwks"), ExtResource("26_0dlqd"), ExtResource("27_iwfyy"), ExtResource("28_slpom")])
+audio_special = Array[AudioStream]([ExtResource("29_2rx4l"), ExtResource("30_ujaxw"), ExtResource("31_hgq86"), ExtResource("32_l5vfr")])
+audio_hurt = Array[AudioStream]([ExtResource("33_83kar"), ExtResource("34_khypb"), ExtResource("35_ct8yn"), ExtResource("36_w1pwp")])
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")

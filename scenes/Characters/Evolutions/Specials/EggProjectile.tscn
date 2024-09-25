@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://nf2hem8oka3j"]
+[gd_scene load_steps=8 format=3 uid="uid://nf2hem8oka3j"]
 
 [ext_resource type="Script" path="res://scripts/EggProjectile.gd" id="1_ij2cc"]
+[ext_resource type="AudioStream" uid="uid://g5f15k8dkoen" path="res://resources/audio/voices/poulet/special_pop0.wav" id="2_1sxhs"]
 [ext_resource type="Texture2D" uid="uid://dgi0m8k86ntyj" path="res://resources/images/characters/chicken/egg.png" id="2_6o4hb"]
+[ext_resource type="AudioStream" uid="uid://dshh636henndu" path="res://resources/audio/voices/poulet/special_pop1.wav" id="3_ttjsy"]
+[ext_resource type="AudioStream" uid="uid://i8r8oaltglt8" path="res://resources/audio/voices/poulet/special_pop2.wav" id="4_01bsw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqq64"]
 radius = 26.0192
@@ -13,6 +16,7 @@ size = Vector2(64, 74)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_ij2cc")
+audios_egg = Array[AudioStream]([ExtResource("2_1sxhs"), ExtResource("3_ttjsy"), ExtResource("4_01bsw")])
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
@@ -29,5 +33,9 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -27)
 shape = SubResource("RectangleShape2D_v42o5")
+
+[node name="AudioPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ttjsy")
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
