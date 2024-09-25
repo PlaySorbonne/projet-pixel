@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://erybyms5udjn"]
 
 [ext_resource type="Script" path="res://scripts/shop_item.gd" id="1_2ls65"]
-[ext_resource type="Texture2D" uid="uid://c66wxi0l7fvro" path="res://resources/images/interface/vault_items_icons/flask_half.png" id="1_ht3pl"]
+[ext_resource type="Texture2D" uid="uid://cnha2didf6nem" path="res://resources/images/interface/vault_items_icons/massiveMultiplayer.png" id="2_2cijt"]
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="2_b444j"]
 [ext_resource type="Texture2D" uid="uid://c4rdv41v8ec6c" path="res://resources/images/interface/bar_square_gloss_large_square.png" id="3_4up3n"]
 [ext_resource type="Theme" uid="uid://bg5qeqqxwg3xd" path="res://resources/fonts/vault_shop_prices.tres" id="4_66jwg"]
@@ -13,7 +13,7 @@ script = ExtResource("1_2ls65")
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
-texture = ExtResource("1_ht3pl")
+texture = ExtResource("2_2cijt")
 expand_mode = 1
 stretch_mode = 5
 
@@ -29,7 +29,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-text = "Otaku Outbreak"
+text = "item_name"
 
 [node name="SpacerMid" type="Control" parent="."]
 layout_mode = 2
@@ -58,6 +58,6 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_66jwg")
-text = "1000"
+text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1

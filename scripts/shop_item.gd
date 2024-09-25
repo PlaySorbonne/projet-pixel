@@ -30,4 +30,4 @@ const ITEM_ICONS : Dictionary = {
 @export var price : int = 100:
 	set(value):
 		price = value
-		$PricePanel.text = str(value)
+		$PricePanel/PriceLabel.text = str(value)

@@ -24,16 +24,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.298039, 0.266667, 0, 0.2)
+color = Color(0, 0, 0, 0.2)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.135937
-anchor_top = 0.132407
-anchor_right = 0.626042
-anchor_bottom = 0.79537
-offset_bottom = -6.10352e-05
+anchor_left = 0.168813
+anchor_top = 0.393519
+anchor_right = 0.560667
+anchor_bottom = 0.685
+offset_left = -0.120026
+offset_right = 208.52
+offset_bottom = 79.2
+scale = Vector2(0.8, 0.8)
 metadata/_edit_use_anchors_ = true
 
 [node name="VBox" type="VBoxContainer" parent="ScrollContainer"]
@@ -42,23 +45,22 @@ size_flags_horizontal = 3
 theme = ExtResource("2_slami")
 metadata/_edit_use_anchors_ = true
 
-[node name="ShopItem" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
+[node name="ShopItemOutbreak" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
 layout_mode = 2
 item_name = "Otaku Outbreak"
 
-[node name="ShopItem2" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
+[node name="ShopItemOverdrive" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
 layout_mode = 2
+item_name = "Otaku Overdrive"
 
-[node name="Label" type="Label" parent="ScrollContainer/VBox"]
+[node name="ShopItemMainTheme" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
 layout_mode = 2
-theme = ExtResource("2_slami")
-text = "GAMEMODES:
-   Shonen Battle
-   Otaku Outbreak
-   Otaku Overdrive
-   Corporate Chaos
-ARTWORK
-LEVELS
-MUSICS
-MINIGAMES"
-metadata/_edit_use_anchors_ = true
+item_name = "Secret Knowledge"
+item_type = 4
+price = 700
+
+[node name="ShopItemStatEditor" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
