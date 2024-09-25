@@ -81,6 +81,8 @@ func _ready():
 	#physics_material_override.bounce = 1.0 # maybe put bounciness, etc as parameters
 
 func set_hitpoints(hitpoints := max_hitpoints, with_anim := true):
+	if hitpoints_updated:
+		return
 	hitpoints_updated = true
 	$CharacterPointer.set_max_hitpoints(hitpoints, with_anim)
 
