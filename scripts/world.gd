@@ -17,6 +17,7 @@ signal weeb_arrived
 	preload("res://resources/audio/voices/narrator/victory.wav"),
 	preload("res://resources/audio/voices/narrator/weebtory.wav")
 ]
+@export var weeb_victory_audios : Array[AudioStream] = []
 
 @onready var game_mode : GameMode = $GameMode
 var spawn_locations : Array[Node2D]
@@ -51,6 +52,8 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
+	$AudioWeebVictory.stream = weeb_victory_audios.pick_random()
+	$AudioWeebVictory.play()
 	GameInfos.freeze_frame.slow_mo(0.1, 1.0)
 	var music_node : AudioStreamPlayer = level.get_node("Music")
 	create_tween().tween_property(music_node, "volume_db", -80.0, 1.5)
