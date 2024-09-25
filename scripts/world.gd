@@ -7,8 +7,18 @@ const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn"
 
 signal weeb_arrived
 
-@onready var game_mode : GameMode = $GameMode
+@export var victory_audios : Array[AudioStream] = [
+	preload("res://resources/audio/voices/narrator/anime_ascend.wav"),
+	preload("res://resources/audio/voices/narrator/anime_ascension.wav"),
+	preload("res://resources/audio/voices/narrator/anime_unlocked.wav"),
+	preload("res://resources/audio/voices/narrator/decorporated.wav"),
+	preload("res://resources/audio/voices/narrator/game.wav"),
+	preload("res://resources/audio/voices/narrator/game_set.wav"),
+	preload("res://resources/audio/voices/narrator/victory.wav"),
+	preload("res://resources/audio/voices/narrator/weebtory.wav")
+]
 
+@onready var game_mode : GameMode = $GameMode
 var spawn_locations : Array[Node2D]
 var player_camera : Camera2D
 var player_spawns : Dictionary = {}
@@ -50,7 +60,10 @@ func end_game():
 		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
-	await get_tree().create_timer(3.0, true, false, true).timeout
+	await get_tree().create_timer(1.0, true, false, true).timeout
+	$AudioVictory.stream = victory_audios.pick_random()
+	$AudioVictory.play()
+	await get_tree().create_timer(3.5, true, false, true).timeout
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(LOBBY_PATH)

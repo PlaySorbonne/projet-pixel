@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=19 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="8_deca0"]
 [ext_resource type="Texture2D" uid="uid://6xhiob8txsm4" path="res://resources/images/icons/ninja-velociraptor.png" id="8_xtdao"]
 [ext_resource type="Script" path="res://scripts/vault_stand.gd" id="14_unbdt"]
+[ext_resource type="PackedScene" uid="uid://c3ygeiikt484p" path="res://scenes/Menus/Vault/vault_shop.tscn" id="15_ajxbq"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -233,41 +234,7 @@ mettre ici
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Shop" type="Control" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-z_index = 10
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("14_unbdt")
-
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Shop"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
-theme = ExtResource("5_2utj3")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer/Shop/VBox"]
-layout_mode = 2
-theme = ExtResource("5_2utj3")
-text = "GAMEMODES:
-   Shonen Battle
-   Otaku Outbreak
-   Otaku Overdrive
-   Corporate Chaos
-ARTWORK
-LEVELS
-MUSICS
-MINIGAMES"
-metadata/_edit_use_anchors_ = true
+[node name="Shop" parent="CanvasLayer" instance=ExtResource("15_ajxbq")]
 
 [node name="Collection" type="Control" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)

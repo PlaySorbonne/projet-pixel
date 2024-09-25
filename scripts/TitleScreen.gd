@@ -10,6 +10,13 @@ const position_x_normal := 250.0
 const position_x_selected := 300.0
 const button_colors := [Color.RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE]
 
+@export var buttons_sfx : Array[AudioStream] = [
+	preload("res://resources/audio/voices/narrator/play.wav"),
+	preload("res://resources/audio/voices/narrator/vault.wav"),
+	preload("res://resources/audio/voices/narrator/settings.wav"),
+	preload("res://resources/audio/voices/narrator/credits.wav")
+]
+
 var signals := [
 	"ButtonStartPressed",
 	"ButtonVaultPressed",
@@ -37,24 +44,32 @@ func _ready():
 		p.modulate = Color.TRANSPARENT
 	select_button(0)
 
+func set_narrator_sound(stream : AudioStream):
+	$AudioNarrator.stream = stream
+	$AudioNarrator.play()
+
 func _on_start_button_pressed():
 	select_button(0)
 	confirm_with_delay()
+	set_narrator_sound(buttons_sfx[0])
 
 func _on_vault_pressed():
 	select_button(1)
 	confirm_with_delay()
+	set_narrator_sound(buttons_sfx[1])
 
 func _on_settings_pressed():
 	select_button(2)
 	confirm_with_delay()
+	set_narrator_sound(buttons_sfx[2])
 
 func _on_credits_pressed():
 	select_button(3)
 	confirm_with_delay()
+	set_narrator_sound(buttons_sfx[3])
 
 func confirm_with_delay():
-	await self.ButtonSelected
+	await get_tree().create_timer(0.2).timeout
 	confirm_button()
 
 func reset_state():

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ygeiikt484p"]
+
+[ext_resource type="Script" path="res://scripts/vault_stand.gd" id="1_wo2hg"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_slami"]
+
+[node name="Shop" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wo2hg")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.150926
+anchor_right = 0.49375
+anchor_bottom = 0.738889
+theme = ExtResource("2_slami")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBox"]
+layout_mode = 2
+theme = ExtResource("2_slami")
+text = "GAMEMODES:
+   Shonen Battle
+   Otaku Outbreak
+   Otaku Overdrive
+   Corporate Chaos
+ARTWORK
+LEVELS
+MUSICS
+MINIGAMES"
+metadata/_edit_use_anchors_ = true

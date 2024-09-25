@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3283guxswi41"]
+[gd_scene load_steps=12 format=3 uid="uid://d3283guxswi41"]
 
 [ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="1_cqi7r"]
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_y6t6y"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="7_u8fj7"]
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="8_f6xvk"]
 [ext_resource type="AudioStream" uid="uid://dd018wynokvu3" path="res://resources/audio/sfx/button_clicks/button_move.wav" id="10_evnhp"]
+[ext_resource type="AudioStream" uid="uid://drkudp4hx8avc" path="res://resources/audio/voices/narrator/play.wav" id="11_1ytui"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -185,6 +186,10 @@ pitch_scale = 1.1
 [node name="AudioArrowDown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_evnhp")
 pitch_scale = 0.9
+
+[node name="AudioNarrator" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1ytui")
+bus = &"narrator"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Vault" to="." method="_on_vault_pressed"]

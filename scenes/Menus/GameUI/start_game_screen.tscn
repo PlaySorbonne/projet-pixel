@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8swqp82uj8tl"]
+[gd_scene load_steps=6 format=3 uid="uid://b8swqp82uj8tl"]
 
 [ext_resource type="Script" path="res://scripts/start_game_screen.gd" id="1_pv6x1"]
 [ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://resources/fonts/gameMessageLabel.tres" id="2_atlvv"]
+[ext_resource type="AudioStream" uid="uid://cjhjul0x8booh" path="res://resources/audio/voices/narrator/321fight.wav" id="3_al7tk"]
 
 [sub_resource type="Animation" id="Animation_djubf"]
 resource_name = "start_anim"
@@ -96,3 +97,7 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_w6uyf")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_al7tk")
+bus = &"narrator"

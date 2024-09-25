@@ -8,6 +8,7 @@ func _ready():
 
 func countdown():
 	$AnimationPlayer.play("start_anim")
+	$AudioStreamPlayer.play()
 	visible = true
 	await $AnimationPlayer.animation_finished
 	queue_free()

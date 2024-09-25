@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=23 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/button_xyz.gd" id="12_prlsk"]
 [ext_resource type="AudioStream" uid="uid://cpyqmgbdcpwul" path="res://resources/audio/sfx/gameplay_sfx/shooting.wav" id="13_2pb0v"]
 [ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="13_kt80l"]
+[ext_resource type="AudioStream" uid="uid://dt3xmcippucnr" path="res://resources/audio/voices/narrator/start.wav" id="14_ye286"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -926,6 +927,10 @@ script = ExtResource("9_jrxk5")
 object = NodePath("..")
 property = "position"
 
+[node name="AudioNarratorStart" type="AudioStreamPlayer" parent="CanvasLayer/GameCreationScreen"]
+stream = ExtResource("14_ye286")
+bus = &"narrator"
+
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false
 z_index = 20
@@ -938,7 +943,6 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonBack" to="CanvasLayer/GameCreationScreen" method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonTestMusic" to="CanvasLayer/GameCreationScreen" method="_on_button_test_music_pressed"]
-[connection signal="button_down" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_button_down"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonConfirm" to="CanvasLayer/GameCreationScreen" method="_on_button_confirm_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/GameCreationScreen/ButtonConfirm/AnimationStart" to="CanvasLayer/GameCreationScreen" method="_on_animation_start_animation_finished"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
