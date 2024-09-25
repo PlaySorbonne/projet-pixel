@@ -155,6 +155,22 @@ script = ExtResource("7_l557a")
 audio = ExtResource("8_deca0")
 metadata/_edit_use_anchors_ = true
 
+[node name="LabelMoney" type="Label" parent="CanvasLayer/TextureBooth"]
+z_index = 50
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.889152
+anchor_top = -0.0290873
+anchor_right = 1.0492
+anchor_bottom = 0.0320963
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 50
+text = "999999$"
+horizontal_alignment = 2
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.507
@@ -239,12 +255,12 @@ grab_control_node = NodePath("ScrollContainer/VBoxItems")
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Shop"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.134896
-anchor_top = 0.112037
-anchor_right = 0.519
-anchor_bottom = 0.425
-offset_right = 396.52
-offset_bottom = 182.0
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
 scale = Vector2(0.65, 0.65)
 metadata/_edit_use_anchors_ = true
 
@@ -302,10 +318,10 @@ price = 9000
 z_index = -15
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0859375
-anchor_top = 0.100926
-anchor_right = 1.02459
-anchor_bottom = 0.34837
+anchor_left = -0.0708333
+anchor_top = 0.235185
+anchor_right = 1.03969
+anchor_bottom = 0.581703
 offset_right = -18.2072
 offset_bottom = 140.761
 grow_horizontal = 2
@@ -315,30 +331,13 @@ mouse_filter = 2
 color = Color(0.498, 0, 0.161, 0.4)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorShopDescription" type="ColorRect" parent="CanvasLayer/Shop"]
-z_index = -15
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0526042
-anchor_top = 0.498148
-anchor_right = 1.05792
-anchor_bottom = 0.627073
-offset_right = -18.2072
-offset_bottom = 140.761
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0167247
-mouse_filter = 2
-color = Color(0.498, 0, 0.161, 0.4)
-metadata/_edit_use_anchors_ = true
-
 [node name="LabelItemDescription" type="Label" parent="CanvasLayer/Shop"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.141667
-anchor_top = 0.581481
-anchor_right = 0.55
-anchor_bottom = 0.715741
+anchor_left = 0.608333
+anchor_top = 0.352572
+anchor_right = 0.983333
+anchor_bottom = 0.518313
 rotation = -0.020944
 theme = ExtResource("16_ntfuj")
 theme_override_constants/outline_size = 12
@@ -350,10 +349,10 @@ metadata/_edit_use_anchors_ = true
 [node name="LabelItemTitle" type="Label" parent="CanvasLayer/Shop"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1125
-anchor_top = 0.530556
-anchor_right = 0.55
-anchor_bottom = 0.57037
+anchor_left = 0.579167
+anchor_top = 0.288305
+anchor_right = 1.01667
+anchor_bottom = 0.32812
 rotation = -0.020944
 theme = ExtResource("16_ntfuj")
 theme_override_constants/outline_size = 25
