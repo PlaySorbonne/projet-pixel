@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://erybyms5udjn"]
+
+[ext_resource type="Script" path="res://scripts/shop_item.gd" id="1_2ls65"]
+[ext_resource type="Texture2D" uid="uid://c66wxi0l7fvro" path="res://resources/images/interface/vault_items_icons/flask_half.png" id="1_ht3pl"]
+[ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="2_b444j"]
+[ext_resource type="Texture2D" uid="uid://c4rdv41v8ec6c" path="res://resources/images/interface/bar_square_gloss_large_square.png" id="3_4up3n"]
+[ext_resource type="Theme" uid="uid://bg5qeqqxwg3xd" path="res://resources/fonts/vault_shop_prices.tres" id="4_66jwg"]
+
+[node name="ShopItem" type="HBoxContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_2ls65")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("1_ht3pl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpacerL" type="Control" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_b444j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+text = "Otaku Outbreak"
+
+[node name="SpacerMid" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PricePanel" type="NinePatchRect" parent="."]
+z_index = -15
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("2_b444j")
+texture = ExtResource("3_4up3n")
+region_rect = Rect2(0, 1, 48, 47)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="PriceLabel" type="Label" parent="PricePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+offset_right = -23.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_66jwg")
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bg5qeqqxwg3xd"]
+
+[ext_resource type="FontFile" uid="uid://cnxxja6tq45tu" path="res://resources/fonts/files/Unispace Bd.otf" id="1_5q3su"]
+
+[sub_resource type="FontVariation" id="FontVariation_cql2n"]
+base_font = ExtResource("1_5q3su")
+variation_transform = Transform2D(1, 0, 0, 0.9, 0, 0)
+spacing_glyph = 4
+
+[resource]
+Label/constants/outline_size = 25
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/font_sizes/font_size = 47
+Label/fonts/font = SubResource("FontVariation_cql2n")

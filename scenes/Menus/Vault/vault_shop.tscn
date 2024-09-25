@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ygeiikt484p"]
+[gd_scene load_steps=4 format=3 uid="uid://c3ygeiikt484p"]
 
 [ext_resource type="Script" path="res://scripts/vault_stand.gd" id="1_wo2hg"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_slami"]
+[ext_resource type="PackedScene" uid="uid://erybyms5udjn" path="res://scenes/Menus/Vault/shop_item.tscn" id="3_df1f5"]
 
 [node name="Shop" type="Control"]
 z_index = 10
@@ -14,17 +15,41 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wo2hg")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -15
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.298039, 0.266667, 0, 0.2)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
+anchor_left = 0.135937
+anchor_top = 0.132407
+anchor_right = 0.626042
+anchor_bottom = 0.79537
+offset_bottom = -6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_slami")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBox"]
+[node name="ShopItem" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
+layout_mode = 2
+item_name = "Otaku Outbreak"
+
+[node name="ShopItem2" parent="ScrollContainer/VBox" instance=ExtResource("3_df1f5")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBox"]
 layout_mode = 2
 theme = ExtResource("2_slami")
 text = "GAMEMODES:
