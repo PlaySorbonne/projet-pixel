@@ -81,20 +81,19 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	can_input = true
 
-"""func _process(_delta):
-	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special"):
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
 		if current_focus == FocusType.ScreenOptions:
-			set_focus_to(FocusType.Screens) 
-		elif current_focus == FocusType.Screens:
-			quit_to_menu()"""
+			set_focus_to(FocusType.Screens)
+		else:
+			set_focus_to(FocusType.ScreenOptions)
 
 func set_focus_to(new_focus : FocusType):
 	current_focus = new_focus
 	if new_focus == FocusType.Screens:
 		current_nav_icon.grab_focus()
 	elif new_focus == FocusType.ScreenOptions:
-		pass
-		#current_screen.grab_control_node.grab_focus()
+		current_screen.grab_control_node.grab_focus()
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=25 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
@@ -22,6 +22,8 @@
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="16_ntfuj"]
 [ext_resource type="Script" path="res://scripts/vault_infos.gd" id="16_uyyl4"]
 [ext_resource type="PackedScene" uid="uid://uyvedned865f" path="res://scenes/Menus/Vault/infos_tagline.tscn" id="17_1tq7o"]
+[ext_resource type="Script" path="res://scripts/scroll_focused_children_xyz.gd" id="17_y6b5d"]
+[ext_resource type="Script" path="res://scripts/vault_collection.gd" id="21_6vgbw"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -291,7 +293,7 @@ theme_override_font_sizes/font_size = 35
 text = "INFOS:"
 autowrap_mode = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Vault"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Vault" node_paths=PackedStringArray("parent_container")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.149479
@@ -301,6 +303,8 @@ anchor_bottom = 0.619
 offset_right = 397.64
 offset_bottom = 202.48
 scale = Vector2(0.65, 0.65)
+script = ExtResource("17_y6b5d")
+parent_container = NodePath("VBoxItems")
 
 [node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Vault/ScrollContainer"]
 custom_minimum_size = Vector2(1134, 578)
@@ -371,6 +375,7 @@ item_name = "About"
 item_description = "Game made for the 2023-2024 Projet Pixel, Club Lux Ludi, Play Sorbonne, Sorbonne Université."
 
 [node name="Shop" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -426,7 +431,7 @@ theme_override_font_sizes/font_size = 35
 text = "STAT EDITOR:"
 autowrap_mode = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Shop"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Shop" node_paths=PackedStringArray("parent_container")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.149479
@@ -436,6 +441,9 @@ anchor_bottom = 0.619
 offset_right = 397.64
 offset_bottom = 202.48
 scale = Vector2(0.65, 0.65)
+scroll_vertical_custom_step = 250.0
+script = ExtResource("17_y6b5d")
+parent_container = NodePath("VBoxItems")
 
 [node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Shop/ScrollContainer"]
 custom_minimum_size = Vector2(1134, 578)
@@ -468,7 +476,7 @@ layout_mode = 2
 [node name="ShopItemStatEditor5" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
 
-[node name="Collection" type="Control" parent="CanvasLayer"]
+[node name="Collection" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
 visible = false
 z_index = 10
 layout_mode = 3
@@ -478,28 +486,80 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("14_unbdt")
+script = ExtResource("21_6vgbw")
+grab_control_node = NodePath("ScrollContainer/VBoxItems/InfosCollection")
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Collection"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Collection"]
+z_index = -16
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
-theme = ExtResource("5_2utj3")
+anchor_left = -0.0609375
+anchor_top = 0.187963
+anchor_right = 1.03525
+anchor_bottom = 0.698904
+offset_right = 9.31006
+offset_bottom = -36.8159
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0174533
+mouse_filter = 2
+color = Color(0.394923, 4.67109e-05, 0.352899, 0.4)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Collection/VBox"]
+[node name="LabelItemDescription" type="Label" parent="CanvasLayer/Collection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.608333
+anchor_top = 0.352572
+anchor_right = 0.983333
+anchor_bottom = 0.518313
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "everything that you can buy in the shop: animes (gamemodes), music, artworks, etc"
+autowrap_mode = 3
+
+[node name="LabelItemTitle" type="Label" parent="CanvasLayer/Collection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.579167
+anchor_top = 0.288305
+anchor_right = 1.01667
+anchor_bottom = 0.32812
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 35
+text = "INFOS:"
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Collection" node_paths=PackedStringArray("parent_container")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
+scale = Vector2(0.65, 0.65)
+script = ExtResource("17_y6b5d")
+parent_container = NodePath("VBoxItems")
+
+[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Collection/ScrollContainer"]
+custom_minimum_size = Vector2(1134, 578)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
-text = "tout ce qui a été acheté
-dans le shop:
-gamemodes, musiques,
-artwork, etc"
 metadata/_edit_use_anchors_ = true
 
-[node name="Stats" type="Control" parent="CanvasLayer"]
+[node name="InfosCollection" parent="CanvasLayer/Collection/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "Infos collection"
+item_description = "everything that you can buy in the shop: animes (gamemodes), music, artworks, etc"
+
+[node name="Stats" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
 visible = false
 z_index = 10
 layout_mode = 3
@@ -509,30 +569,91 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("14_unbdt")
+script = ExtResource("16_uyyl4")
+overwrite_infos_title = false
+grab_control_node = NodePath("ScrollContainer/VBoxItems/InfosGamesPlayed")
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Stats"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Stats"]
+z_index = -16
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
-theme = ExtResource("5_2utj3")
+anchor_left = -0.0609375
+anchor_top = 0.187963
+anchor_right = 1.03525
+anchor_bottom = 0.698904
+offset_right = 9.31006
+offset_bottom = -36.8159
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0174533
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Stats/VBox"]
+[node name="LabelItemDescription" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.608333
+anchor_top = 0.352572
+anchor_right = 0.983333
+anchor_bottom = 0.518313
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "number of games, deaths, players, damages, etc"
+autowrap_mode = 3
+
+[node name="LabelItemTitle" type="Label" parent="CanvasLayer/Stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.579167
+anchor_top = 0.288305
+anchor_right = 1.01667
+anchor_bottom = 0.32812
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 35
+text = "INFOS:"
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Stats" node_paths=PackedStringArray("parent_container")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
+scale = Vector2(0.65, 0.65)
+script = ExtResource("17_y6b5d")
+parent_container = NodePath("VBoxItems")
+
+[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Stats/ScrollContainer"]
+custom_minimum_size = Vector2(1134, 578)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
-text = "Visionnage des stats de 
-gameplay: cmb de morts
-au total, combien de 
-parties jouées, combien
-de joueurs différents, 
-cmb dégâts infligés, etc"
 metadata/_edit_use_anchors_ = true
 
-[node name="Dojo" type="Control" parent="CanvasLayer"]
+[node name="InfosGamesPlayed" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "20 games played"
+item_description = "number of games, deaths, players, damages, etc"
+
+[node name="InfosDeaths" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "35 deaths"
+item_description = "number of games, deaths, players, damages, etc"
+
+[node name="InfosDamages" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "740 damage"
+item_description = "number of games, deaths, players, damages, etc"
+
+[node name="Dojo" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
 visible = false
 z_index = 10
 layout_mode = 3
@@ -542,25 +663,79 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("14_unbdt")
+script = ExtResource("16_uyyl4")
+grab_control_node = NodePath("ScrollContainer/VBoxItems/InfosControls")
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Dojo"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Dojo"]
+z_index = -16
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
+anchor_left = -0.0614583
+anchor_top = 0.194444
+anchor_right = 1.03473
+anchor_bottom = 0.705386
+offset_right = 9.31006
+offset_bottom = -36.8159
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0174533
+mouse_filter = 2
+color = Color(9.8668e-07, 0.307871, 0.24582, 0.4)
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelItemDescription" type="Label" parent="CanvasLayer/Dojo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.608333
+anchor_top = 0.352572
+anchor_right = 0.983333
+anchor_bottom = 0.518313
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "solo gamemodes / challenges / minigames"
+autowrap_mode = 3
+
+[node name="LabelItemTitle" type="Label" parent="CanvasLayer/Dojo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.579167
+anchor_top = 0.288305
+anchor_right = 1.01667
+anchor_bottom = 0.32812
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 35
+text = "INFOS:"
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Dojo" node_paths=PackedStringArray("parent_container")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
+scale = Vector2(0.65, 0.65)
+script = ExtResource("17_y6b5d")
+parent_container = NodePath("VBoxItems")
+
+[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Dojo/ScrollContainer"]
+custom_minimum_size = Vector2(1134, 578)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Dojo/VBox"]
+[node name="InfosControls" parent="CanvasLayer/Dojo/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
-theme = ExtResource("5_2utj3")
-text = "PEUT ETRE (gros peut 
-etre) des mini jeux ici 
-(genre game modes solo)"
-metadata/_edit_use_anchors_ = true
+item_name = "Zombie Weebs"
+item_type = 0
+item_description = "solo gamemodes / challenges / minigames"
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_2w30w")]
 position = Vector2(-3062, -400)

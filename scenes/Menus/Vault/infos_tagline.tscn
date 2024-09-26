@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cniuokie48kwl" path="res://resources/images/interface/vault_items_icons/question.png" id="2_w8g2j"]
 
 [node name="InfosTagline" type="HBoxContainer"]
+custom_minimum_size = Vector2(50, 75)
 focus_mode = 2
 script = ExtResource("1_503yt")
 

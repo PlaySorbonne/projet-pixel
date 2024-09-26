@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://bg5qeqqxwg3xd" path="res://resources/fonts/vault_shop_prices.tres" id="4_66jwg"]
 
 [node name="ShopItem" type="HBoxContainer"]
+custom_minimum_size = Vector2(50, 75)
 size_flags_vertical = 3
 focus_mode = 2
 script = ExtResource("1_2ls65")
