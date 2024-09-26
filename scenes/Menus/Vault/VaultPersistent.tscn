@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=23 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scripts/vault_stand.gd" id="14_unbdt"]
 [ext_resource type="PackedScene" uid="uid://erybyms5udjn" path="res://scenes/Menus/Vault/shop_item.tscn" id="15_h2mcj"]
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="16_ntfuj"]
+[ext_resource type="Script" path="res://scripts/vault_infos.gd" id="16_uyyl4"]
 [ext_resource type="PackedScene" uid="uid://uyvedned865f" path="res://scenes/Menus/Vault/infos_tagline.tscn" id="17_1tq7o"]
 
 [node name="VaultPersistent" type="Node2D"]
@@ -228,7 +229,8 @@ visible = false
 z_index = 99
 default_duration = 1.0
 
-[node name="Vault" type="Control" parent="CanvasLayer"]
+[node name="Vault" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -237,7 +239,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("14_unbdt")
+script = ExtResource("16_uyyl4")
+grab_control_node = NodePath("ScrollContainer/VBoxItems/InfosControls")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Vault"]
 z_index = -16
@@ -300,6 +303,7 @@ offset_bottom = 202.48
 scale = Vector2(0.65, 0.65)
 
 [node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Vault/ScrollContainer"]
+custom_minimum_size = Vector2(1134, 578)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
@@ -308,52 +312,65 @@ metadata/_edit_use_anchors_ = true
 [node name="InfosControls" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Controls"
+item_description = "WASD/ZQSD/Left Joystick: Move
+Space/Down Button: Jump
+Enter/Left Button: Attack
+Right Shift/Right Button: Special
+Evolve automatically when you kill another player."
 
 [node name="InfosGameplay" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Gameplay"
+item_description = "Kill the other players to evolve. When you become a Weeb, detroy the cassette and become one with the Anime."
 
 [node name="InfosCEO" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "C.E.O."
 item_type = 0
+item_description = "Big, rich, angry and going kick your ass to get what they want."
 
 [node name="InfosManager" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Manager"
 item_type = 0
+item_description = "Never worked a day in their life and are not going to start now. You're doing overtime though."
 
 [node name="InfosEmployee" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Employee"
 item_type = 0
+item_description = "Too tired for this bullshit. Not paid enough for it either. Still coming to work."
 
 [node name="InfosPoulet" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Poulet"
 item_type = 0
+item_description = "Went insane a good while ago. Did not seem to impact their work performance, so no one really cared. "
 
 [node name="InfosWeeb" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Weeb"
 item_type = 0
+item_description = "The ultimate life form."
 
 [node name="InfosAnime" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Anime"
 item_type = 1
+item_description = "An artefact of great possibility, great mystery and great plot... Seize it, and its power will be yours."
 
 [node name="InfosWorld" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "World"
 item_type = 1
+item_description = "The world is dead, anime is eternal and society has lost all meaning."
 
 [node name="InfosAbout" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "About"
+item_description = "Game made for the 2023-2024 Projet Pixel, Club Lux Ludi, Play Sorbonne, Sorbonne Université."
 
 [node name="Shop" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -363,7 +380,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("14_unbdt")
-grab_control_node = NodePath("ScrollContainer/VBoxItems")
+grab_control_node = NodePath("ScrollContainer/VBoxItems/ShopItemOutbreak")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Shop"]
 z_index = -16
@@ -421,6 +438,7 @@ offset_bottom = 202.48
 scale = Vector2(0.65, 0.65)
 
 [node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Shop/ScrollContainer"]
+custom_minimum_size = Vector2(1134, 578)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
@@ -428,55 +446,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShopItemOutbreak" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Otaku Outbreak"
-item_description = ""
 
 [node name="ShopItemOverdrive" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Otaku Overdrive"
-item_description = ""
 
 [node name="ShopItemMainTheme" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Secret Knowledge"
-item_type = 4
-price = 700
-item_description = ""
 
 [node name="ShopItemStatEditor" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-item_description = ""
 
 [node name="ShopItemStatEditor2" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-item_description = ""
 
 [node name="ShopItemStatEditor3" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-item_description = ""
 
 [node name="ShopItemStatEditor4" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-item_description = ""
 
 [node name="ShopItemStatEditor5" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
 layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-item_description = ""
 
 [node name="Collection" type="Control" parent="CanvasLayer"]
 visible = false

@@ -66,8 +66,10 @@ var can_quit := true
 var current_focus : FocusType = FocusType.Screens
 
 func _ready():
-	for s : Control in screen_nodes:
+	for s : VaultSubScreen in screen_nodes:
 		s.visible = true
+		if s != current_screen:
+			s.position = Vector2(0.0, -1080)
 	var i := 0
 	for b : Button in navigation_icons:
 		b.connect("pressed", go_to_screen.bind(SCREENS_ORDER[i]))
@@ -107,9 +109,9 @@ func set_screen_infos(index : int, animated_infos := false):
 		vendor.position = VENDOR_POSITIONS[index]
 		for s : Control in screen_nodes:
 			if s == current_screen:
-				s.modulate = Color.WHITE
+				s.position = Vector2.ZERO
 			else:
-				s.modulate = Color.TRANSPARENT
+				s.position = Vector2(0.0, -1080.0)
 
 func go_to_screen(new_screen : Screens):
 	if current_stand == new_screen:
@@ -125,7 +127,8 @@ func go_to_screen(new_screen : Screens):
 	tween.tween_property(vendor, "position", Vector2(
 		2200.0, vendor.position.y), TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 1300), N_TRANS_TIME)
-	tween.tween_property(current_screen, "modulate", Color.TRANSPARENT, B_TRANS_TIME)
+	tween.tween_property(current_screen, "position", Vector2(0.0, -1080.0), 
+		B_TRANS_TIME)
 	await tween.finished
 	set_screen_infos(index)
 	vendor.position = Vector2(
@@ -135,7 +138,7 @@ func go_to_screen(new_screen : Screens):
 	tween = create_tween().set_parallel().set_trans(Tween.TRANS_SPRING)
 	tween.tween_property(vendor, "position", VENDOR_POSITIONS[index], TRANS_TIME)
 	tween.tween_property(stand_name, "position", Vector2(516, 855), N_TRANS_TIME)
-	tween.tween_property(current_screen, "modulate", Color.WHITE, B_TRANS_TIME)
+	tween.tween_property(current_screen, "position", Vector2.ZERO, B_TRANS_TIME)
 	set_focus_to(FocusType.ScreenOptions)
 
 func quit_to_menu():
