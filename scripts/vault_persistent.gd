@@ -16,7 +16,7 @@ const VENDOR_TEXTURES : Array[Texture] = [
 	preload("res://resources/images/characters/fox/fox_idle.png"),
 	preload("res://resources/images/characters/Sheep/moutondroit.png"),
 	preload("res://resources/images/characters/chicken/poulet_copie.png"),
-	preload("res://resources/images/characters/template/robot_hit.png")
+	preload("res://resources/images/characters/weeb/weeb_idle.png")
 ]
 const VENDOR_SIZES : Array[Vector2] = [
 	Vector2(749, 675),

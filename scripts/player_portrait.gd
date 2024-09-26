@@ -6,7 +6,7 @@ const PLAYER_PORTRAITS = [
 	preload("res://resources/images/characters/fox/fox_portrait.png"),
 	preload("res://resources/images/characters/Sheep/mouton_portrait.png"),
 	preload("res://resources/images/characters/chicken/chicken_portrait.png"),
-	preload("res://sprites/champsu_only.svg")
+	preload("res://resources/images/characters/weeb/weeb_portrait.png")
 ]
 
 var player_number := 0

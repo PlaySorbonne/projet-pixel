@@ -1,0 +1,62 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dhvjymumdal80"]
+
+[ext_resource type="Texture2D" uid="uid://c4gci6l84nu4k" path="res://resources/images/characters/weeb/weeb_idle.png" id="1_ou4sw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"evolve",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ou4sw")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

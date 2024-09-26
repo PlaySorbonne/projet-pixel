@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://besjdva6q0u5y"]
+[gd_scene load_steps=31 format=3 uid="uid://besjdva6q0u5y"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_benh8"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_38lak"]
@@ -28,14 +28,15 @@
 [ext_resource type="AudioStream" uid="uid://bojav7c25e0tg" path="res://resources/audio/voices/weeb/hurt_0.wav" id="23_ewnbv"]
 [ext_resource type="AudioStream" uid="uid://bh0miisgj7833" path="res://resources/audio/voices/weeb/hurt_1.wav" id="24_6vq54"]
 [ext_resource type="AudioStream" uid="uid://btwg573plhdky" path="res://resources/audio/voices/weeb/hurt_2.wav" id="25_ods64"]
+[ext_resource type="SpriteFrames" uid="uid://dhvjymumdal80" path="res://scenes/Characters/Evolutions/Animations/weeb_sprite_frames.tres" id="27_2f081"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qsr2"]
 resource_local_to_scene = true
 shader = ExtResource("2_38lak")
 shader_parameter/in_hit_effect = false
-shader_parameter/base_color = Color(0.74902, 0.831373, 0.898039, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/replace_threshold = 0.4
+shader_parameter/base_color = Color(0.258824, 0.317647, 0.407843, 1)
+shader_parameter/replace_color = Color(0.804333, 0.170805, 0, 1)
+shader_parameter/replace_threshold = 0.153
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 current_evolution = 4
@@ -47,10 +48,11 @@ max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_1qsr2")
+sprite_frames = ExtResource("27_2f081")
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
-position = Vector2(-3, 6)
+position = Vector2(-3, -5.25)
 
 [node name="SpecialAttack" parent="." index="6" node_paths=PackedStringArray("dash_audio")]
 dash_audio = NodePath("../XYZ_AudioPitchRandomizer")
