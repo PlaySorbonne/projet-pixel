@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://uyvedned865f"]
 
 [ext_resource type="Script" path="res://scripts/infos_tagline.gd" id="1_503yt"]
-[ext_resource type="Texture2D" uid="uid://cj7uuyehc3yn4" path="res://resources/images/interface/vault_items_icons/singleplayer.png" id="1_as2w1"]
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="2_pwe8k"]
+[ext_resource type="Texture2D" uid="uid://cniuokie48kwl" path="res://resources/images/interface/vault_items_icons/question.png" id="2_w8g2j"]
 
 [node name="InfosTagline" type="HBoxContainer"]
 script = ExtResource("1_503yt")
@@ -10,7 +10,7 @@ script = ExtResource("1_503yt")
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
-texture = ExtResource("1_as2w1")
+texture = ExtResource("2_w8g2j")
 expand_mode = 1
 stretch_mode = 5
 
@@ -26,4 +26,4 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-text = "C.E.O."
+text = "item_name"

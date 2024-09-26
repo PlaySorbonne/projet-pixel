@@ -1,5 +1,5 @@
 @tool
-extends HBoxContainer
+extends XYZ_ClickableHBox
 class_name InfosTagline
 
 enum ItemTypes {Character, Lore, Infos}
@@ -21,5 +21,5 @@ const ITEM_ICONS : Dictionary = {
 	set(value):
 		item_type = value
 		$Icon.texture = ITEM_ICONS[value]
-@export var item_description := ""
+@export_multiline var item_description := ""
 @export var item_sprite : Texture

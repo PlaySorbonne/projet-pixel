@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=22 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://erybyms5udjn" path="res://scenes/Menus/Vault/shop_item.tscn" id="15_h2mcj"]
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="16_ntfuj"]
 [ext_resource type="PackedScene" uid="uid://uyvedned865f" path="res://scenes/Menus/Vault/infos_tagline.tscn" id="17_1tq7o"]
-[ext_resource type="Texture2D" uid="uid://cniuokie48kwl" path="res://resources/images/interface/vault_items_icons/question.png" id="18_f0nuu"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -306,32 +305,52 @@ size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
 metadata/_edit_use_anchors_ = true
 
-[node name="InfosTagline" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+[node name="InfosControls" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
+item_name = "Controls"
 
-[node name="InfosTagline2" type="HBoxContainer" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems"]
+[node name="InfosGameplay" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
+item_name = "Gameplay"
 
-[node name="Icon" type="TextureRect" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
-custom_minimum_size = Vector2(70, 70)
+[node name="InfosCEO" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
-texture = ExtResource("18_f0nuu")
-expand_mode = 1
-stretch_mode = 5
+item_name = "C.E.O."
+item_type = 0
 
-[node name="SpacerL" type="Control" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
-custom_minimum_size = Vector2(25, 0)
+[node name="InfosManager" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
+item_name = "Manager"
+item_type = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
+[node name="InfosEmployee" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
-theme = ExtResource("16_ntfuj")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 3
-text = "Infos Game"
+item_name = "Employee"
+item_type = 0
+
+[node name="InfosPoulet" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "Poulet"
+item_type = 0
+
+[node name="InfosWeeb" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "Weeb"
+item_type = 0
+
+[node name="InfosAnime" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "Anime"
+item_type = 1
+
+[node name="InfosWorld" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "World"
+item_type = 1
+
+[node name="InfosAbout" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
+layout_mode = 2
+item_name = "About"
 
 [node name="Shop" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
 visible = false

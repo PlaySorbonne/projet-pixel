@@ -1,5 +1,5 @@
 @tool
-extends HBoxContainer
+extends XYZ_ClickableHBox
 class_name ShopItem
 
 enum ItemTypes {GameMode, Minigame, Level, Art, Music, StatEditor}
@@ -31,4 +31,11 @@ const ITEM_ICONS : Dictionary = {
 	set(value):
 		price = value
 		$PricePanel/PriceLabel.text = str(value)
-@export var item_description := ""
+@export_multiline var item_description := ""
+
+
+func _on_pressed():
+	buy_item()
+
+func buy_item():
+	print("buying " + item_name + " for " + str(price) + "$")
