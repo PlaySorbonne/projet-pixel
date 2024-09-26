@@ -9,6 +9,7 @@
 [node name="ShopItem" type="HBoxContainer"]
 size_flags_vertical = 3
 script = ExtResource("1_2ls65")
+item_description = null
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(70, 70)
@@ -36,6 +37,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PricePanel" type="NinePatchRect" parent="."]
+self_modulate = Color(0.687833, 0, 0.222559, 1)
 z_index = -15
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2

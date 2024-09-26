@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://biu7fdium6esd"]
+[gd_scene load_steps=23 format=3 uid="uid://biu7fdium6esd"]
 
 [ext_resource type="Script" path="res://scripts/vault_persistent.gd" id="1_8y8af"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="2_t7unr"]
@@ -16,9 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://coo0fn6fgl1gd" path="res://resources/images/icons/ninja-heroic-stance.png" id="7_tevxp"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="8_deca0"]
 [ext_resource type="Texture2D" uid="uid://6xhiob8txsm4" path="res://resources/images/icons/ninja-velociraptor.png" id="8_xtdao"]
+[ext_resource type="Texture2D" uid="uid://c4rdv41v8ec6c" path="res://resources/images/interface/bar_square_gloss_large_square.png" id="13_1ap1r"]
 [ext_resource type="Script" path="res://scripts/vault_stand.gd" id="14_unbdt"]
 [ext_resource type="PackedScene" uid="uid://erybyms5udjn" path="res://scenes/Menus/Vault/shop_item.tscn" id="15_h2mcj"]
 [ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="16_ntfuj"]
+[ext_resource type="Texture2D" uid="uid://cj7uuyehc3yn4" path="res://resources/images/interface/vault_items_icons/singleplayer.png" id="17_rq3wd"]
+[ext_resource type="Texture2D" uid="uid://cniuokie48kwl" path="res://resources/images/interface/vault_items_icons/question.png" id="18_f0nuu"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -171,6 +174,26 @@ horizontal_alignment = 2
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="PricePanel" type="NinePatchRect" parent="CanvasLayer/TextureBooth"]
+modulate = Color(0.640325, 0, 0.273464, 1)
+z_index = -15
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.902786
+anchor_top = -0.0431294
+anchor_right = 1.06698
+anchor_bottom = 0.0451354
+offset_right = -0.00012207
+theme = ExtResource("16_ntfuj")
+texture = ExtResource("13_1ap1r")
+region_rect = Rect2(0, 1, 48, 47)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
 [node name="TextureVendor" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.507
@@ -207,7 +230,6 @@ z_index = 99
 default_duration = 1.0
 
 [node name="Vault" type="Control" parent="CanvasLayer"]
-visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -218,29 +240,122 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("14_unbdt")
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Vault"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Vault"]
+z_index = -16
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.148438
-anchor_top = 0.150926
-anchor_right = 0.49375
-anchor_bottom = 0.738889
+anchor_left = -0.0609375
+anchor_top = 0.187963
+anchor_right = 1.03525
+anchor_bottom = 0.698904
+offset_right = 9.31006
+offset_bottom = -36.8159
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0174533
+mouse_filter = 2
+color = Color(0.12781, 0, 0.766066, 0.4)
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelItemDescription" type="Label" parent="CanvasLayer/Vault"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.608333
+anchor_top = 0.352572
+anchor_right = 0.983333
+anchor_bottom = 0.518313
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "Infos CEO
+Infos Manager...
+Infos lore
+Infos Gameplay-Controls
+Infos Game (dev?)"
+autowrap_mode = 3
+
+[node name="LabelItemTitle" type="Label" parent="CanvasLayer/Vault"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.579167
+anchor_top = 0.288305
+anchor_right = 1.01667
+anchor_bottom = 0.32812
+rotation = -0.020944
+theme = ExtResource("16_ntfuj")
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 35
+text = "INFOS:"
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Vault"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
+scale = Vector2(0.65, 0.65)
+
+[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Vault/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Vault/VBox"]
+[node name="InfosTagline" type="HBoxContainer" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems"]
 layout_mode = 2
-theme = ExtResource("5_2utj3")
-text = "Help
-Stat Editor
-Description des persos,
-de leurs attaques
-idk ce qu'on pourrait 
-mettre ici
-"
-metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("17_rq3wd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpacerL" type="Control" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline"]
+layout_mode = 2
+theme = ExtResource("16_ntfuj")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+text = "C.E.O."
+
+[node name="InfosTagline2" type="HBoxContainer" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("18_f0nuu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpacerL" type="Control" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems/InfosTagline2"]
+layout_mode = 2
+theme = ExtResource("16_ntfuj")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+text = "Infos Game"
 
 [node name="Shop" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -252,84 +367,21 @@ mouse_filter = 2
 script = ExtResource("14_unbdt")
 grab_control_node = NodePath("ScrollContainer/VBoxItems")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Shop"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.149479
-anchor_top = 0.271296
-anchor_right = 0.533
-anchor_bottom = 0.619
-offset_right = 397.64
-offset_bottom = 202.48
-scale = Vector2(0.65, 0.65)
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Shop/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("5_2utj3")
-metadata/_edit_use_anchors_ = true
-
-[node name="ShopItemOutbreak" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Otaku Outbreak"
-
-[node name="ShopItemOverdrive" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Otaku Overdrive"
-
-[node name="ShopItemMainTheme" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Secret Knowledge"
-item_type = 4
-price = 700
-
-[node name="ShopItemStatEditor" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-
-[node name="ShopItemStatEditor2" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-
-[node name="ShopItemStatEditor3" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-
-[node name="ShopItemStatEditor4" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-
-[node name="ShopItemStatEditor5" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
-layout_mode = 2
-item_name = "Stat Editor"
-item_type = 5
-price = 9000
-
-[node name="ColorShopItems" type="ColorRect" parent="CanvasLayer/Shop"]
-z_index = -15
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Shop"]
+z_index = -16
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0708333
 anchor_top = 0.235185
 anchor_right = 1.03969
 anchor_bottom = 0.581703
-offset_right = -18.2072
+offset_right = -18.2073
 offset_bottom = 140.761
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0349066
 mouse_filter = 2
 color = Color(0.498, 0, 0.161, 0.4)
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelItemDescription" type="Label" parent="CanvasLayer/Shop"]
 layout_mode = 1
@@ -344,7 +396,6 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 28
 text = "L'éditeur de stats. Permet d'éditer les stats. Et d'exporter un fichier de stats éditées."
 autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelItemTitle" type="Label" parent="CanvasLayer/Shop"]
 layout_mode = 1
@@ -359,11 +410,78 @@ theme_override_constants/outline_size = 25
 theme_override_font_sizes/font_size = 35
 text = "STAT EDITOR:"
 autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Shop"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149479
+anchor_top = 0.271296
+anchor_right = 0.533
+anchor_bottom = 0.619
+offset_right = 397.64
+offset_bottom = 202.48
+scale = Vector2(0.65, 0.65)
+
+[node name="VBoxItems" type="VBoxContainer" parent="CanvasLayer/Shop/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_2utj3")
 metadata/_edit_use_anchors_ = true
+
+[node name="ShopItemOutbreak" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Otaku Outbreak"
+item_description = ""
+
+[node name="ShopItemOverdrive" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Otaku Overdrive"
+item_description = ""
+
+[node name="ShopItemMainTheme" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Secret Knowledge"
+item_type = 4
+price = 700
+item_description = ""
+
+[node name="ShopItemStatEditor" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
+item_description = ""
+
+[node name="ShopItemStatEditor2" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
+item_description = ""
+
+[node name="ShopItemStatEditor3" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
+item_description = ""
+
+[node name="ShopItemStatEditor4" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
+item_description = ""
+
+[node name="ShopItemStatEditor5" parent="CanvasLayer/Shop/ScrollContainer/VBoxItems" instance=ExtResource("15_h2mcj")]
+layout_mode = 2
+item_name = "Stat Editor"
+item_type = 5
+price = 9000
+item_description = ""
 
 [node name="Collection" type="Control" parent="CanvasLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -395,7 +513,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Stats" type="Control" parent="CanvasLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -429,7 +546,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Dojo" type="Control" parent="CanvasLayer"]
 visible = false
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 3
 anchors_preset = 15

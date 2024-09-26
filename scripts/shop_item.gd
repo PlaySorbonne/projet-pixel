@@ -31,3 +31,4 @@ const ITEM_ICONS : Dictionary = {
 	set(value):
 		price = value
 		$PricePanel/PriceLabel.text = str(value)
+@export var item_description := ""
