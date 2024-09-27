@@ -19,7 +19,7 @@ func start_hovering_with_delay(c : TextureRect):
 		offset_vector = Vector2(0.0, -OFFSET)
 	else:
 		offset_vector = Vector2(0.0,  OFFSET)
-	var mult = randf_range(0.75, 2.0)
+	var mult = randf_range(0.75, 1.5)
 	var duration := randf_range(2.0, 3.0)
 	tween.tween_property(c, "position", current_pos+offset_vector*mult, duration*mult)
 	tween.tween_property(c, "position", current_pos, duration*mult)
