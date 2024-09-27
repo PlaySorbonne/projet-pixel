@@ -11,7 +11,8 @@ const VAULT_TO_SHOP_TYPE : Dictionary = {
 var shop_items : Array[VaultData.VaultItem] = []
 
 func _ready():
-	add_shop_items()
+	var first_item : Control = add_shop_items()
+	grab_control_node = first_item
 
 func add_shop_items() -> ShopItem:
 	shop_items = []

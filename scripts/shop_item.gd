@@ -19,6 +19,9 @@ const ITEM_ICONS : Dictionary = {
 		"res://resources/images/interface/vault_items_icons/flask_half.png")
 }
 
+const BROKE_AUDIO := preload("res://resources/audio/voices/poulet/shop_broke.wav")
+const MONEY_AUDIO := preload("res://resources/audio/voices/poulet/shop_money.wav")
+
 @export var item_name := "item_name":
 	set(value):
 		item_name = value
@@ -32,10 +35,23 @@ const ITEM_ICONS : Dictionary = {
 		price = value
 		$PricePanel/PriceLabel.text = str(value)
 @export_multiline var item_description := ""
-
+var item_bought := false
 
 func _on_pressed():
+	if item_bought:
+		return
 	buy_item()
 
 func buy_item():
-	print("buying " + item_name + " for " + str(price) + "$")
+	if VaultData.vault_data["money"] >= price:
+		item_bought = true
+		VaultData.vault_data["money"] -= price
+		VaultData.vault_data["unlocked_items"].append(item_name)
+		VaultData.save_vault_data()
+		$Audio.stream = MONEY_AUDIO
+		$Audio.play()
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
+	else:
+		$Audio.stream = BROKE_AUDIO
+		$Audio.play()

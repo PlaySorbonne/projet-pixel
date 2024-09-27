@@ -87,9 +87,9 @@ var vault_minigames : Array[VaultItem] = [
 
 var vault_levels : Array[VaultItem] = [
 	VaultItem.new(
-		"Wild West Shootout",
-		"WILD_WEST_DESC",
-		"",
+		"High Ground",
+		"HIGH_GROUND_DESC",
+		"res://scenes/World/Levels/level_high_ground.tscn",
 		null,
 		ItemTypes.Map,
 		800
@@ -151,7 +151,7 @@ class VaultItem:
 		item_type = _type
 		item_price = _price
 
-const VAULT_FILE_NAME := "user://ascend_settings.txt"
+const VAULT_FILE_NAME := "user://ascend_vault_data.txt"
 
 var vault_data : Dictionary = {
 	"money" : 0,
@@ -171,6 +171,7 @@ func load_vault_data():
 		return
 	vault_data = json.get_data()
 	save_file.close()
+	print("vault data = " + str(vault_data))
 
 func save_vault_data():
 	var save_file := FileAccess.open(VAULT_FILE_NAME, FileAccess.WRITE)

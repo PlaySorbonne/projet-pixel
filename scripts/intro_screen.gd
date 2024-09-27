@@ -10,6 +10,7 @@ func _ready():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	GameInfos.perform_deep_reset()
+	VaultData.load_vault_data()
 	$AnimationPlayer.play("idle")
 	$Main/ScreenTransition.end_screen_transition(transition_duration)
 	get_tree().create_timer(1.00).timeout
