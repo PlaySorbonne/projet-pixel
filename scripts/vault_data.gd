@@ -155,7 +155,7 @@ const VAULT_FILE_NAME := "user://ascend_vault_data.txt"
 
 var vault_data : Dictionary = {
 	"money" : 0,
-	"unlocked_items" : []
+	"unlocked_items" : ["CEO_TO_WEEB_ARTWORK"]
 }
 
 func load_vault_data():

@@ -1,13 +1,6 @@
 extends VaultSubScreen
 
 const SHOP_ITEM_PATH := preload("res://scenes/Menus/Vault/shop_item.tscn")
-const VAULT_TO_SHOP_TYPE : Dictionary = {
-	VaultData.ItemTypes.MultGameMode : ShopItem.ItemTypes.GameMode,
-	VaultData.ItemTypes.Map : ShopItem.ItemTypes.Level, 
-	VaultData.ItemTypes.Minigame : ShopItem.ItemTypes.Minigame, 
-	VaultData.ItemTypes.Artwork : ShopItem.ItemTypes.Art, 
-	VaultData.ItemTypes.Music : ShopItem.ItemTypes.Music 
-}
 var shop_items : Array[VaultData.VaultItem] = []
 
 func _ready():

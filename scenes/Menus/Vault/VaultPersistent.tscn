@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://uyvedned865f" path="res://scenes/Menus/Vault/infos_tagline.tscn" id="17_1tq7o"]
 [ext_resource type="Script" path="res://scripts/scroll_focused_children_xyz.gd" id="17_y6b5d"]
 [ext_resource type="Script" path="res://scripts/vault_stand_shop.gd" id="19_j2jet"]
-[ext_resource type="Script" path="res://scripts/vault_collection.gd" id="21_6vgbw"]
+[ext_resource type="Script" path="res://scripts/vault_subscreen_collection.gd" id="20_wobaw"]
 
 [node name="VaultPersistent" type="Node2D"]
 script = ExtResource("1_8y8af")
@@ -374,6 +374,7 @@ item_name = "About"
 item_description = "Game made for the 2023-2024 Projet Pixel, Club Lux Ludi, Play Sorbonne, Sorbonne Université."
 
 [node name="Shop" type="Control" parent="CanvasLayer"]
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -449,8 +450,7 @@ size_flags_horizontal = 3
 theme = ExtResource("5_2utj3")
 metadata/_edit_use_anchors_ = true
 
-[node name="Collection" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
-visible = false
+[node name="Collection" type="Control" parent="CanvasLayer"]
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -459,8 +459,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("21_6vgbw")
-grab_control_node = NodePath("ScrollContainer/VBoxItems/InfosCollection")
+script = ExtResource("20_wobaw")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Collection"]
 z_index = -16
