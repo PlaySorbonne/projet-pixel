@@ -85,25 +85,33 @@ var VAULT_LEVELS : Array[VaultItem] = [
 
 var VAULT_ARTWORK : Array[VaultItem] = [
 	VaultItem.new(
-		"",
-		"",
-		"",
+		"INITIAL_ARTWORK",
+		"INITIAL_ARTWORK_DESC",
+		"res://resources/images/artworks/initial_artworks.tscn",
+		null
+	),
+	VaultItem.new(
+		"OCEAN_ARTWORK",
+		"OCEAN_ARTWORK_DESC",
+		"res://resources/images/artworks/ocean_artworks.tscn",
+		null
+	),
+	VaultItem.new(
+		"CEO_TO_WEEB_ARTWORK",
+		"CEO_TO_WEEB_ARTWORK_DESC",
+		"res://resources/images/artworks/ceo_to_weeb_artworks.tscn",
 		null
 	)
 ]
 
 var VAULT_MUSIC : Array[VaultItem] = [
 	VaultItem.new(
-		"",
-		"",
-		"",
+		"VOICE_OVER_SHITPOST",
+		"VOICE_OVER_SHITPOST_DESC",
+		"res://resources/audio/voice_over_shitpost.tscn",
 		null
 	)
 ]
-
-
-
-var unlocked_items : Array[String] = []
 
 class VaultItem:
 	var item_name := ""
@@ -117,3 +125,29 @@ class VaultItem:
 		item_description = _item_description
 		item_path = _item_path
 		item_texture = _texture
+
+const VAULT_FILE_NAME := "user://ascend_settings.txt"
+
+var vault_data : Dictionary = {
+	"money" : 0,
+	"unlocked_items" : []
+}
+
+func load_vault_data():
+	if not FileAccess.file_exists(VAULT_FILE_NAME):
+		# no settings file exist on this computer
+		return 
+	var save_file := FileAccess.open(VAULT_FILE_NAME, FileAccess.READ)
+	var json_string := save_file.get_line()
+	var json := JSON.new()
+	var parse_result := json.parse(json_string)
+	if not parse_result == OK:
+		print("JSON parse error in loading settings file")
+		return
+	vault_data = json.get_data()
+	save_file.close()
+
+func save_vault_data():
+	var save_file := FileAccess.open(VAULT_FILE_NAME, FileAccess.WRITE)
+	save_file.store_line(JSON.stringify(vault_data))
+	save_file.close()
