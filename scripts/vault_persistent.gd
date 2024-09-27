@@ -66,6 +66,7 @@ var can_quit := true
 var current_focus : FocusType = FocusType.Screens
 
 func _ready():
+	VaultData.load_vault_data()
 	for s : VaultSubScreen in screen_nodes:
 		s.visible = true
 		if s != current_screen:
@@ -75,6 +76,7 @@ func _ready():
 		b.connect("pressed", go_to_screen.bind(SCREENS_ORDER[i]))
 		i += 1
 	current_nav_icon.is_current_screen = true
+	$CanvasLayer/TextureBooth/LabelMoney.text = str(VaultData.vault_data["money"])
 	set_screen_infos(Screens.Default, true)
 	set_focus_to(FocusType.Screens)
 	$CanvasLayer/ScreenTransition.end_screen_transition()

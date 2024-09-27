@@ -2,114 +2,135 @@ extends Node
 
 enum ItemTypes {MultGameMode, Map, Minigame, Artwork, Music}
 
-var VAULT_GAMEMODES : Array[VaultItem] = [
+var vault_gamemodes : Array[VaultItem] = [
 	VaultItem.new(
 		"Brawl",
 		"BRAWL_DESC",
 		"",
-		null
+		null,
+		ItemTypes.MultGameMode
 	),
 	VaultItem.new(
 		"Shonen Battle",
 		"SHONEN_BATTLE_DESC",
 		"",
-		null
+		null,
+		ItemTypes.MultGameMode
 	),
 	VaultItem.new(
 		"Corporate Chaos",
 		"CORPORATE_CHAOS_DESC",
 		"",
-		null
+		null,
+		ItemTypes.MultGameMode
 	),
 	VaultItem.new(
 		"Otaku Outbreak", 
 		"OTAKU_OUTBREAK_DESC", 
 		"", 
-		load("res://resources/images/objects/anime/anime_one_champsu.png")
+		load("res://resources/images/objects/anime/anime_one_champsu.png"),
+		ItemTypes.MultGameMode
 	),
 	VaultItem.new(
 		"Otaku Overdrive",
 		"OTAKU_OVERDRIVE_DESC",
 		"",
-		null
+		null,
+		ItemTypes.MultGameMode
 	)
 ]
 
-var VAULT_MINIGAMES : Array[VaultItem] = [
+var vault_minigames : Array[VaultItem] = [
 	VaultItem.new(
 		"Training",
 		"TRAINING_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	),
 	VaultItem.new(
 		"Stat Editor",
 		"STAT_EDITOR_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	),
 	VaultItem.new(
 		"Wild West Shootout",
 		"WILD_WEST_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	),
 	VaultItem.new(
 		"Weebocalypse",
 		"WEEBOCALYPSE_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	),
 	VaultItem.new(
 		"Retail Relaxation",
 		"RETAIL_RELAXATION_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	),
 	VaultItem.new(
 		"Rooster's",
 		"ROOSTER_S_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Minigame
 	)
 ]
 
-var VAULT_LEVELS : Array[VaultItem] = [
+var vault_levels : Array[VaultItem] = [
 	VaultItem.new(
 		"Wild West Shootout",
 		"WILD_WEST_DESC",
 		"",
-		null
+		null,
+		ItemTypes.Map,
+		800
 	)
 ]
 
-var VAULT_ARTWORK : Array[VaultItem] = [
+var vault_artwork : Array[VaultItem] = [
 	VaultItem.new(
 		"INITIAL_ARTWORK",
 		"INITIAL_ARTWORK_DESC",
 		"res://resources/images/artworks/initial_artworks.tscn",
-		null
+		null,
+		ItemTypes.Artwork,
+		400
 	),
 	VaultItem.new(
 		"OCEAN_ARTWORK",
 		"OCEAN_ARTWORK_DESC",
 		"res://resources/images/artworks/ocean_artworks.tscn",
-		null
+		null,
+		ItemTypes.Artwork,
+		400
 	),
 	VaultItem.new(
 		"CEO_TO_WEEB_ARTWORK",
 		"CEO_TO_WEEB_ARTWORK_DESC",
 		"res://resources/images/artworks/ceo_to_weeb_artworks.tscn",
-		null
+		null,
+		ItemTypes.Artwork,
+		600
 	)
 ]
 
-var VAULT_MUSIC : Array[VaultItem] = [
+var vault_music : Array[VaultItem] = [
 	VaultItem.new(
 		"VOICE_OVER_SHITPOST",
 		"VOICE_OVER_SHITPOST_DESC",
 		"res://resources/audio/voice_over_shitpost.tscn",
-		null
+		null,
+		ItemTypes.Music,
+		750
 	)
 ]
 
@@ -118,13 +139,17 @@ class VaultItem:
 	var item_description := ""
 	var item_texture : Texture
 	var item_path : String
+	var item_type : ItemTypes
+	var item_price : int
 	
-	func _init(_item_name : String, _item_description : String,
-	 _item_path : String, _texture : Texture):
+	func _init(_item_name : String, _item_description : String, _item_path : String, 
+	_texture : Texture, _type : ItemTypes, _price : int = 500):
 		item_name = _item_name
 		item_description = _item_description
 		item_path = _item_path
 		item_texture = _texture
+		item_type = _type
+		item_price = _price
 
 const VAULT_FILE_NAME := "user://ascend_settings.txt"
 
@@ -142,7 +167,7 @@ func load_vault_data():
 	var json := JSON.new()
 	var parse_result := json.parse(json_string)
 	if not parse_result == OK:
-		print("JSON parse error in loading settings file")
+		print("JSON parse error in loading vault data file")
 		return
 	vault_data = json.get_data()
 	save_file.close()
