@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://x76whljr776v"]
+[gd_scene load_steps=11 format=3 uid="uid://x76whljr776v"]
 
 [ext_resource type="Script" path="res://scripts/artwork_ensemble.gd" id="1_pfchl"]
 [ext_resource type="Texture2D" uid="uid://cqsh0i6mdkkox" path="res://resources/images/artworks/artwork_images/artwork_crabs.png" id="2_mgnf5"]
+[ext_resource type="PackedScene" uid="uid://v45o6b020inq" path="res://scenes/Menus/Vault/vault_item_button_quit.tscn" id="2_vmyf5"]
 [ext_resource type="Texture2D" uid="uid://cle014wq5gfi" path="res://resources/images/artworks/artwork_images/artwork_sea.jpg" id="3_svvks"]
 [ext_resource type="Texture2D" uid="uid://j7w3wm6xnh5u" path="res://resources/images/artworks/artwork_images/artwork_sea_1.jpg" id="4_tcm3l"]
 [ext_resource type="Texture2D" uid="uid://rk5a4nhm6765" path="res://resources/images/artworks/artwork_images/artwork_sea_2.jpg" id="5_eoci8"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://be21v5ghkixrs" path="res://resources/images/artworks/artwork_images/artwork_squid_2.png" id="9_vhudq"]
 
 [node name="OceanArtworks" type="Control"]
+z_index = 70
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +21,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pfchl")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.351567, 0, 0.0241703, 0.704)
+
+[node name="ButtonQuit" parent="." instance=ExtResource("2_vmyf5")]
+layout_mode = 1
+anchor_left = 0.0182292
+anchor_top = 0.90463
+anchor_right = 0.123958
+anchor_bottom = 0.973148
+
+[node name="TextureRect" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 0
 anchor_left = 0.0286458
 anchor_top = 0.112037
@@ -30,40 +48,43 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 0
-anchor_left = 0.660417
-anchor_top = 0.537037
-anchor_right = 0.960417
-anchor_bottom = 0.913889
+[node name="TextureRect2" type="TextureRect" parent="." groups=["hover"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.683854
+anchor_top = 0.577778
+anchor_right = 0.983854
+anchor_bottom = 0.95463
 texture = ExtResource("3_svvks")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-layout_mode = 0
-anchor_left = 0.216667
-anchor_top = 0.415741
-anchor_right = 0.435937
-anchor_bottom = 0.965741
+[node name="TextureRect3" type="TextureRect" parent="." groups=["hover"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.256771
+anchor_top = 0.364815
+anchor_right = 0.476041
+anchor_bottom = 0.914815
 texture = ExtResource("4_tcm3l")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect4" type="TextureRect" parent="."]
-layout_mode = 0
-anchor_left = 0.03125
-anchor_top = 0.415741
-anchor_right = 0.223438
-anchor_bottom = 0.962963
+[node name="TextureRect4" type="TextureRect" parent="." groups=["hover"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.065625
+anchor_top = 0.350926
+anchor_right = 0.257813
+anchor_bottom = 0.898148
 texture = ExtResource("5_eoci8")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect5" type="TextureRect" parent="."]
+[node name="TextureRect5" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 0
 anchor_left = 0.741146
 anchor_top = 0.0518519
@@ -74,7 +95,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect6" type="TextureRect" parent="."]
+[node name="TextureRect6" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 0
 anchor_left = 0.241667
 anchor_top = 0.0833333
@@ -85,18 +106,19 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect7" type="TextureRect" parent="."]
-layout_mode = 0
-anchor_left = 0.423958
-anchor_top = 0.503704
-anchor_right = 0.675
-anchor_bottom = 0.808333
+[node name="TextureRect7" type="TextureRect" parent="." groups=["hover"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.461458
+anchor_top = 0.368519
+anchor_right = 0.7125
+anchor_bottom = 0.673147
 texture = ExtResource("8_2k054")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect8" type="TextureRect" parent="."]
+[node name="TextureRect8" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 0
 anchor_left = 0.583333
 anchor_top = 0.0638889

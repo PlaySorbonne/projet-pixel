@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjbp1o28xy6av"]
+[gd_scene load_steps=15 format=3 uid="uid://bjbp1o28xy6av"]
 
+[ext_resource type="PackedScene" uid="uid://v45o6b020inq" path="res://scenes/Menus/Vault/vault_item_button_quit.tscn" id="1_mnnmq"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="1_xibkh"]
 [ext_resource type="Texture2D" uid="uid://k5568jqgbyyv" path="res://resources/images/interface/vault_items_icons/musicOn.png" id="2_bonof"]
 [ext_resource type="Script" path="res://scripts/button_xyz.gd" id="3_mreit"]
@@ -15,12 +16,28 @@
 [ext_resource type="AudioStream" uid="uid://60iovg2c3wt3" path="res://resources/audio/voices/shitpost/manager_what_does_the_fox_say.mp3" id="13_tymto"]
 
 [node name="VoiceOverShitpost" type="Control"]
+z_index = 70
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.297553, 0.0637814, 0.0759634, 0.605)
+
+[node name="ButtonQuit" parent="." instance=ExtResource("1_mnnmq")]
+layout_mode = 1
+anchor_left = 0.0192708
+anchor_right = 0.125521
+anchor_bottom = 0.962037
 
 [node name="AudioButton0" type="Button" parent="."]
 layout_mode = 1

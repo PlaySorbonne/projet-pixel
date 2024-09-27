@@ -315,7 +315,7 @@ metadata/_edit_use_anchors_ = true
 [node name="InfosControls" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Controls"
-item_type = 2
+item_type = 7
 item_description = "WASD/ZQSD/Left Joystick: Move
 Space/Down Button: Jump
 Enter/Left Button: Attack
@@ -325,7 +325,7 @@ Evolve automatically when you kill another player."
 [node name="InfosGameplay" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Gameplay"
-item_type = 2
+item_type = 7
 item_description = "Kill the other players to evolve. When you become a Weeb, detroy the cassette and become one with the Anime."
 
 [node name="InfosCEO" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
@@ -361,19 +361,19 @@ item_description = "The ultimate life form."
 [node name="InfosAnime" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Anime"
-item_type = 1
+item_type = 7
 item_description = "An artefact of great possibility, great mystery and great plot... Seize it, and its power will be yours."
 
 [node name="InfosWorld" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "World"
-item_type = 1
+item_type = 7
 item_description = "The world is dead, anime is eternal and society has lost all meaning."
 
 [node name="InfosAbout" parent="CanvasLayer/Vault/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "About"
-item_type = 2
+item_type = 8
 item_description = "Game made for the 2023-2024 Projet Pixel, Club Lux Ludi, Play Sorbonne, Sorbonne Université."
 
 [node name="Shop" type="Control" parent="CanvasLayer"]
@@ -532,7 +532,7 @@ metadata/_edit_use_anchors_ = true
 [node name="InfosCollection" parent="CanvasLayer/Collection/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Infos collection"
-item_type = 2
+item_type = 8
 item_description = "everything that you can buy in the shop: animes (gamemodes), music, artworks, etc"
 
 [node name="Stats" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
@@ -617,19 +617,19 @@ metadata/_edit_use_anchors_ = true
 [node name="InfosGamesPlayed" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "20 games played"
-item_type = 2
+item_type = 8
 item_description = "number of games, deaths, players, damages, etc"
 
 [node name="InfosDeaths" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "35 deaths"
-item_type = 2
+item_type = 8
 item_description = "number of games, deaths, players, damages, etc"
 
 [node name="InfosDamages" parent="CanvasLayer/Stats/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "740 damage"
-item_type = 2
+item_type = 8
 item_description = "number of games, deaths, players, damages, etc"
 
 [node name="Dojo" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("grab_control_node")]
@@ -713,7 +713,7 @@ metadata/_edit_use_anchors_ = true
 [node name="InfosControls" parent="CanvasLayer/Dojo/ScrollContainer/VBoxItems" instance=ExtResource("17_1tq7o")]
 layout_mode = 2
 item_name = "Zombie Weebs"
-item_type = 0
+item_type = 1
 item_description = "solo gamemodes / challenges / minigames"
 
 [node name="TitleScreenDecor" parent="." instance=ExtResource("6_2w30w")]

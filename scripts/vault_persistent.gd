@@ -1,4 +1,5 @@
 extends Node2D
+class_name Vault
 
 enum Screens {Collection, Dojo, Default, Shop, Stats}
 enum FocusType {Screens, ScreenOptions}
@@ -65,7 +66,10 @@ var current_stand := Screens.Default
 var can_quit := true
 var current_focus : FocusType = FocusType.Screens
 
+static var vault_canvas_layer : CanvasLayer = null
+
 func _ready():
+	vault_canvas_layer = $CanvasLayer
 	VaultData.load_vault_data()
 	for s : VaultSubScreen in screen_nodes:
 		s.visible = true

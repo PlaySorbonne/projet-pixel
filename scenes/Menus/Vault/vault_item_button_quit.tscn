@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://v45o6b020inq"]
+
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="1_schue"]
+[ext_resource type="Script" path="res://scripts/button_quit_vault_item.gd" id="2_qffvm"]
+
+[node name="ButtonQuit" type="Button"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.0208333
+anchor_top = 0.893519
+anchor_right = 0.134375
+anchor_bottom = 0.967593
+theme = ExtResource("1_schue")
+text = "BACK"
+script = ExtResource("2_qffvm")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

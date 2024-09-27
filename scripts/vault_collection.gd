@@ -13,12 +13,18 @@ func tagline_focused(tagline : InfosTagline):
 	$LabelItemTitle.text = tagline.item_name
 	$LabelItemDescription.text = tagline.item_description
 
-func add_objects(screen_items : Array[VaultData.VaultItem]):
+func add_objects(screen_items : Array[VaultData.VaultItem]) -> InfosTagline:
 	for c : Control in $ScrollContainer/VBoxItems.get_children():
 		c.queue_free()
+	var first_object : InfosTagline = null
 	for item : VaultData.VaultItem in screen_items:
 		var tagline := TAGLINE_RES.instantiate()
 		tagline.item_name = item.item_name
 		tagline.item_description = item.item_description
 		tagline.item_type = VAULT_TO_SHOP_TYPE[item.item_type]
 		$ScrollContainer/VBoxItems.add_child(tagline)
+		tagline.connect("focus_entered", tagline_focused.bind(tagline))
+		if first_object == null:
+			first_object = tagline
+	return first_object
+	

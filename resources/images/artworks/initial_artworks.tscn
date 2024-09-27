@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://du5ec84vku8hg"]
+[gd_scene load_steps=9 format=3 uid="uid://du5ec84vku8hg"]
 
 [ext_resource type="Script" path="res://scripts/artwork_ensemble.gd" id="1_jwly5"]
 [ext_resource type="Texture2D" uid="uid://ck8v2r0nx8vo6" path="res://resources/images/artworks/artwork_images/artwork_animals.jpg" id="2_rm4xy"]
+[ext_resource type="PackedScene" uid="uid://v45o6b020inq" path="res://scenes/Menus/Vault/vault_item_button_quit.tscn" id="2_u27xp"]
 [ext_resource type="Texture2D" uid="uid://2vk4gds6h83y" path="res://resources/images/artworks/artwork_images/artwork_initial.jpg" id="3_iby4k"]
 [ext_resource type="Texture2D" uid="uid://dioq64cxevw0d" path="res://resources/images/artworks/artwork_images/screenshot_init_1.png" id="4_tooyx"]
 [ext_resource type="Texture2D" uid="uid://cs0lirhimytvl" path="res://resources/images/artworks/artwork_images/projet_pixel_artwork_3.jpg" id="4_ymsgg"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cf4fcapp7cnar" path="res://resources/images/artworks/artwork_images/screenshot_init_2.png" id="5_xa4tj"]
 
 [node name="InitialArtworks" type="Control"]
+z_index = 70
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +19,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jwly5")
 
-[node name="TextureRect4" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.351567, 0, 0.0241703, 0.704)
+
+[node name="ButtonQuit" parent="." instance=ExtResource("2_u27xp")]
+layout_mode = 1
+anchor_left = 0.015625
+anchor_top = 0.901852
+anchor_right = 0.113542
+anchor_bottom = 0.97037
+
+[node name="TextureRect4" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.506771
@@ -29,19 +47,19 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect5" type="TextureRect" parent="."]
+[node name="TextureRect5" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.040625
-anchor_top = 0.609259
-anchor_right = 0.3875
-anchor_bottom = 0.968518
+anchor_left = 0.132292
+anchor_top = 0.559259
+anchor_right = 0.479167
+anchor_bottom = 0.918518
 texture = ExtResource("5_dwdah")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect6" type="TextureRect" parent="."]
+[node name="TextureRect6" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.254167
@@ -53,7 +71,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect7" type="TextureRect" parent="."]
+[node name="TextureRect7" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.598958
@@ -65,7 +83,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.708854
@@ -77,7 +95,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." groups=["hover"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0114583

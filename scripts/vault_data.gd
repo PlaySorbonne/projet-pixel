@@ -153,12 +153,25 @@ class VaultItem:
 
 const VAULT_FILE_NAME := "user://ascend_vault_data.txt"
 
+var all_items : Dictionary = {}
+var all_items_initialized := false
+
 var vault_data : Dictionary = {
 	"money" : 0,
 	"unlocked_items" : ["CEO_TO_WEEB_ARTWORK"]
 }
 
+func initialize_all_items():
+	if all_items_initialized:
+		return
+	all_items_initialized = true
+	all_items = {}
+	for item : VaultItem in (vault_gamemodes + vault_artwork + vault_levels + 
+	vault_minigames + vault_music):
+		all_items[item.item_name] = item
+
 func load_vault_data():
+	initialize_all_items()
 	if not FileAccess.file_exists(VAULT_FILE_NAME):
 		# no settings file exist on this computer
 		return 
