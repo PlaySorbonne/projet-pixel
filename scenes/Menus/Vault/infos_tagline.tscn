@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(50, 75)
 focus_mode = 2
 script = ExtResource("1_503yt")
+item_type = 2
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(70, 70)

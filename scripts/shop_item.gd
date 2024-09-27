@@ -2,7 +2,7 @@
 extends XYZ_ClickableHBox
 class_name ShopItem
 
-enum ItemTypes {GameMode, Minigame, Level, Art, Music, StatEditor}
+enum ItemTypes {GameMode, Minigame, Level, Art, Music, StatEditor, Character, Lore, Infos}
 
 const ITEM_ICONS : Dictionary = {
 	ItemTypes.GameMode : preload(
@@ -16,7 +16,13 @@ const ITEM_ICONS : Dictionary = {
 	ItemTypes.Music : preload(
 		"res://resources/images/interface/vault_items_icons/musicOn.png"),
 	ItemTypes.StatEditor : preload(
-		"res://resources/images/interface/vault_items_icons/flask_half.png")
+		"res://resources/images/interface/vault_items_icons/flask_half.png"),
+	ItemTypes.Character : preload(
+		"res://resources/images/interface/vault_items_icons/singleplayer.png"),
+	ItemTypes.Lore : preload(
+		"res://resources/images/interface/vault_items_icons/book_open.png"),
+	ItemTypes.Infos : preload(
+		"res://resources/images/interface/vault_items_icons/question.png")
 }
 
 const BROKE_AUDIO := preload("res://resources/audio/voices/poulet/shop_broke.wav")
