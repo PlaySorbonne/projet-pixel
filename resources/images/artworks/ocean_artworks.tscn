@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://x76whljr776v"]
+
+[ext_resource type="Script" path="res://scripts/artwork_ensemble.gd" id="1_pfchl"]
+[ext_resource type="Texture2D" uid="uid://cqsh0i6mdkkox" path="res://resources/images/artworks/artwork_images/artwork_crabs.png" id="2_mgnf5"]
+[ext_resource type="Texture2D" uid="uid://cle014wq5gfi" path="res://resources/images/artworks/artwork_images/artwork_sea.jpg" id="3_svvks"]
+[ext_resource type="Texture2D" uid="uid://j7w3wm6xnh5u" path="res://resources/images/artworks/artwork_images/artwork_sea_1.jpg" id="4_tcm3l"]
+[ext_resource type="Texture2D" uid="uid://rk5a4nhm6765" path="res://resources/images/artworks/artwork_images/artwork_sea_2.jpg" id="5_eoci8"]
+[ext_resource type="Texture2D" uid="uid://cq00bcnm1e2n2" path="res://resources/images/artworks/artwork_images/artwork_sea_3.jpg" id="6_j50y7"]
+[ext_resource type="Texture2D" uid="uid://0q7nvsip1t0h" path="res://resources/images/artworks/artwork_images/artwork_sea_4.png" id="7_yxwo8"]
+[ext_resource type="Texture2D" uid="uid://sfwa3g5mgort" path="res://resources/images/artworks/artwork_images/artwork_sea_initial.jpg" id="8_2k054"]
+[ext_resource type="Texture2D" uid="uid://be21v5ghkixrs" path="res://resources/images/artworks/artwork_images/artwork_squid_2.png" id="9_vhudq"]
+
+[node name="OceanArtworks" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pfchl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 121.0
+offset_right = 469.0
+offset_bottom = 357.0
+texture = ExtResource("2_mgnf5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1268.0
+offset_top = 580.0
+offset_right = 1844.0
+offset_bottom = 987.0
+texture = ExtResource("3_svvks")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 449.0
+offset_right = 837.0
+offset_bottom = 1043.0
+texture = ExtResource("4_tcm3l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 449.0
+offset_right = 429.0
+offset_bottom = 1040.0
+texture = ExtResource("5_eoci8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1423.0
+offset_top = 56.0
+offset_right = 1871.0
+offset_bottom = 525.0
+texture = ExtResource("6_j50y7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 90.0
+offset_right = 1166.0
+offset_bottom = 368.0
+texture = ExtResource("7_yxwo8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 544.0
+offset_right = 1296.0
+offset_bottom = 873.0
+texture = ExtResource("8_2k054")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect8" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 69.0
+offset_right = 1393.0
+offset_bottom = 308.0
+texture = ExtResource("9_vhudq")
+expand_mode = 1
+stretch_mode = 5
