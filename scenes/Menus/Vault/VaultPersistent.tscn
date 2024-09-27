@@ -729,6 +729,7 @@ texture = ExtResource("7_ov4nw")
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_c4et4")
 autoplay = true
 bus = &"music"

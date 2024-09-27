@@ -67,9 +67,12 @@ var can_quit := true
 var current_focus : FocusType = FocusType.Screens
 
 static var vault_canvas_layer : CanvasLayer = null
+static var vault_focused_object : Control = null
+static var music_player : AudioStreamPlayer = null
 
 func _ready():
 	vault_canvas_layer = $CanvasLayer
+	music_player = $AudioStreamPlayer
 	VaultData.load_vault_data()
 	for s : VaultSubScreen in screen_nodes:
 		s.visible = true

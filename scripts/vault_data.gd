@@ -157,7 +157,7 @@ var all_items : Dictionary = {}
 var all_items_initialized := false
 
 var vault_data : Dictionary = {
-	"money" : 0,
+	"money" : 10000,
 	"unlocked_items" : ["CEO_TO_WEEB_ARTWORK"]
 }
 

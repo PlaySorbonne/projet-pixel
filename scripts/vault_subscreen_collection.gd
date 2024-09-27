@@ -17,5 +17,7 @@ func item_pressed(item : InfosTagline):
 	print("item.name = " + item.item_name)
 	print("VaultData.all_items = " + str(VaultData.all_items))
 	var vault_item : VaultData.VaultItem = VaultData.all_items[item.item_name]
-	var obj : Node = load(vault_item.item_path).instantiate()
-	Vault.vault_canvas_layer.add_child(obj)
+	if vault_item.item_path != "":
+		Vault.vault_focused_object = item
+		var obj : Node = load(vault_item.item_path).instantiate()
+		Vault.vault_canvas_layer.add_child(obj)
