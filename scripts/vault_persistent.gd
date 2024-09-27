@@ -114,6 +114,7 @@ func set_screen_infos(index : int, animated_infos := false):
 
 func go_to_screen(new_screen : Screens):
 	if current_stand == new_screen:
+		set_focus_to(FocusType.ScreenOptions)
 		return
 	const TRANS_TIME := 0.6
 	const N_TRANS_TIME := 0.4
