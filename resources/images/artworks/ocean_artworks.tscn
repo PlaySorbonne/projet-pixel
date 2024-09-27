@@ -21,80 +21,88 @@ script = ExtResource("1_pfchl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 121.0
-offset_right = 469.0
-offset_bottom = 357.0
+anchor_left = 0.0286458
+anchor_top = 0.112037
+anchor_right = 0.244271
+anchor_bottom = 0.330556
 texture = ExtResource("2_mgnf5")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1268.0
-offset_top = 580.0
-offset_right = 1844.0
-offset_bottom = 987.0
+anchor_left = 0.660417
+anchor_top = 0.537037
+anchor_right = 0.960417
+anchor_bottom = 0.913889
 texture = ExtResource("3_svvks")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 449.0
-offset_right = 837.0
-offset_bottom = 1043.0
+anchor_left = 0.216667
+anchor_top = 0.415741
+anchor_right = 0.435937
+anchor_bottom = 0.965741
 texture = ExtResource("4_tcm3l")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 60.0
-offset_top = 449.0
-offset_right = 429.0
-offset_bottom = 1040.0
+anchor_left = 0.03125
+anchor_top = 0.415741
+anchor_right = 0.223438
+anchor_bottom = 0.962963
 texture = ExtResource("5_eoci8")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect5" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1423.0
-offset_top = 56.0
-offset_right = 1871.0
-offset_bottom = 525.0
+anchor_left = 0.741146
+anchor_top = 0.0518519
+anchor_right = 0.974479
+anchor_bottom = 0.486111
 texture = ExtResource("6_j50y7")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect6" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 90.0
-offset_right = 1166.0
-offset_bottom = 368.0
+anchor_left = 0.241667
+anchor_top = 0.0833333
+anchor_right = 0.607292
+anchor_bottom = 0.340741
 texture = ExtResource("7_yxwo8")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect7" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 814.0
-offset_top = 544.0
-offset_right = 1296.0
-offset_bottom = 873.0
+anchor_left = 0.423958
+anchor_top = 0.503704
+anchor_right = 0.675
+anchor_bottom = 0.808333
 texture = ExtResource("8_2k054")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect8" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1120.0
-offset_top = 69.0
-offset_right = 1393.0
-offset_bottom = 308.0
+anchor_left = 0.583333
+anchor_top = 0.0638889
+anchor_right = 0.725521
+anchor_bottom = 0.285185
 texture = ExtResource("9_vhudq")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
