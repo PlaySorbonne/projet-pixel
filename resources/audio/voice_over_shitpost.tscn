@@ -1,0 +1,204 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjbp1o28xy6av"]
+
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="1_xibkh"]
+[ext_resource type="Texture2D" uid="uid://k5568jqgbyyv" path="res://resources/images/interface/vault_items_icons/musicOn.png" id="2_bonof"]
+[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="3_mreit"]
+[ext_resource type="AudioStream" uid="uid://dc0xofn2qaws6" path="res://resources/audio/voices/shitpost/ceo_asthma.mp3" id="4_1lxml"]
+[ext_resource type="AudioStream" uid="uid://3bxscsm2ee08" path="res://resources/audio/voices/shitpost/ceo_you_want_to_nan_jtiens_pas.mp3" id="5_0e7gt"]
+[ext_resource type="AudioStream" uid="uid://cd1qsdbwp67" path="res://resources/audio/voices/shitpost/to_senpai_tout_le_monde_meurt.wav" id="5_h1pni"]
+[ext_resource type="AudioStream" uid="uid://b8dnbduylgmvu" path="res://resources/audio/voices/shitpost/employee_envoyez_moi_celui_la.mp3" id="6_qjx1r"]
+[ext_resource type="AudioStream" uid="uid://clestcy5k2w8y" path="res://resources/audio/voices/shitpost/employee_yamete.mp3" id="7_4l18j"]
+[ext_resource type="AudioStream" uid="uid://c0tdo1q0h8w46" path="res://resources/audio/voices/shitpost/manager_crypto.mp3" id="8_jmuye"]
+[ext_resource type="AudioStream" uid="uid://dg5f70ethkuw7" path="res://resources/audio/voices/shitpost/weeb_death.mp3" id="9_ytbby"]
+[ext_resource type="AudioStream" uid="uid://bd55w2214uvo3" path="res://resources/audio/voices/shitpost/poulet_bitch.mp3" id="10_mn4n0"]
+[ext_resource type="AudioStream" uid="uid://c3mx20qj3bygt" path="res://resources/audio/voices/shitpost/weeb_qui_mue.mp3" id="12_mliha"]
+[ext_resource type="AudioStream" uid="uid://60iovg2c3wt3" path="res://resources/audio/voices/shitpost/manager_what_does_the_fox_say.mp3" id="13_tymto"]
+
+[node name="VoiceOverShitpost" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioButton0" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.145833
+anchor_top = 0.132407
+anchor_right = 0.434375
+anchor_bottom = 0.206481
+offset_right = 6.10352e-05
+rotation = -0.0453365
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "CEO asthma"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("4_1lxml")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton7" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.641146
+anchor_top = 0.87963
+anchor_right = 0.929687
+anchor_bottom = 0.953704
+offset_right = 6.10352e-05
+rotation = -0.0453365
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Narrator senpais"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("5_h1pni")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.247917
+anchor_top = 0.24537
+anchor_right = 0.536458
+anchor_bottom = 0.319444
+offset_right = 6.10352e-05
+rotation = 0.0381926
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "CEO voice fucked up"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("5_0e7gt")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0348958
+anchor_top = 0.397222
+anchor_right = 0.323437
+anchor_bottom = 0.471296
+offset_right = 6.10352e-05
+rotation = -0.0283235
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Employee Shitpost"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("6_qjx1r")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.181771
+anchor_top = 0.517593
+anchor_right = 0.470312
+anchor_bottom = 0.591667
+offset_right = 6.10352e-05
+rotation = 0.0411565
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Employee Yamete"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("7_4l18j")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton8" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.471875
+anchor_top = 0.667593
+anchor_right = 0.760417
+anchor_bottom = 0.741667
+offset_right = 6.10352e-05
+rotation = -0.0155777
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Weeb death"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("9_ytbby")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton6" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541667
+anchor_top = 0.502778
+anchor_right = 0.830208
+anchor_bottom = 0.576852
+offset_right = 6.10352e-05
+rotation = 0.0411565
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Poulet Bitch"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("10_mn4n0")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.561979
+anchor_top = 0.146296
+anchor_right = 0.850521
+anchor_bottom = 0.22037
+offset_right = 6.10352e-05
+rotation = -0.0342888
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Manager Crypto"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("8_jmuye")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton9" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.675
+anchor_right = 0.388542
+anchor_bottom = 0.749074
+offset_right = 6.10352e-05
+rotation = -0.0342888
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Weeb Voice crack
+"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("12_mliha")
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioButton5" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.535937
+anchor_top = 0.35463
+anchor_right = 0.896875
+anchor_bottom = 0.428704
+offset_right = 6.10352e-05
+rotation = -0.0342888
+theme = ExtResource("1_xibkh")
+theme_override_font_sizes/font_size = 40
+text = "Manager What does the fox"
+icon = ExtResource("2_bonof")
+expand_icon = true
+script = ExtResource("3_mreit")
+audio = ExtResource("13_tymto")
+metadata/_edit_use_anchors_ = true
