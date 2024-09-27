@@ -37,6 +37,18 @@ var VAULT_GAMEMODES : Array[VaultItem] = [
 
 var VAULT_MINIGAMES : Array[VaultItem] = [
 	VaultItem.new(
+		"Training",
+		"TRAINING_DESC",
+		"",
+		null
+	),
+	VaultItem.new(
+		"Stat Editor",
+		"STAT_EDITOR_DESC",
+		"",
+		null
+	),
+	VaultItem.new(
 		"Wild West Shootout",
 		"WILD_WEST_DESC",
 		"",
