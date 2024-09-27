@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgw7mqnbnqjbh"
-path="res://.godot/imported/artwork_squid.png-7079ff0af27c912988fb95c6fae37f29.ctex"
+uid="uid://bp1j88lbwt7st"
+path="res://.godot/imported/ceo_buff_2.jpg-838015bb9864c99ecc71e63f81e14073.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/artwork_squid.png"
-dest_files=["res://.godot/imported/artwork_squid.png-7079ff0af27c912988fb95c6fae37f29.ctex"]
+source_file="res://resources/images/artworks/artwork_images/ceo_buff_2.jpg"
+dest_files=["res://.godot/imported/ceo_buff_2.jpg-838015bb9864c99ecc71e63f81e14073.ctex"]
 
 [params]
 

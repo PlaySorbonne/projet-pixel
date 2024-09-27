@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://denm81wsbhbir"
-path="res://.godot/imported/ceo_buff.png-53c701261f2c0ec054d03b461c84c834.ctex"
+uid="uid://cswa1cvorck20"
+path="res://.godot/imported/ceo_artwork_3.jpg-abffda4d844e16aab3e2c4f92aee2d92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/ceo_buff.png"
-dest_files=["res://.godot/imported/ceo_buff.png-53c701261f2c0ec054d03b461c84c834.ctex"]
+source_file="res://resources/images/artworks/artwork_images/ceo_artwork_3.jpg"
+dest_files=["res://.godot/imported/ceo_artwork_3.jpg-abffda4d844e16aab3e2c4f92aee2d92.ctex"]
 
 [params]
 

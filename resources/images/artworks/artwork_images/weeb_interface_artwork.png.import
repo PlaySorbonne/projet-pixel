@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vk4gds6h83y"
-path="res://.godot/imported/artwork_initial.jpg-2f484fb4af5d64fd776123e6eb51a4c0.ctex"
+uid="uid://g13rc3ve286p"
+path="res://.godot/imported/weeb_interface_artwork.png-250d90beb37ac637f9e54140831e1756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/artwork_initial.jpg"
-dest_files=["res://.godot/imported/artwork_initial.jpg-2f484fb4af5d64fd776123e6eb51a4c0.ctex"]
+source_file="res://resources/images/artworks/artwork_images/weeb_interface_artwork.png"
+dest_files=["res://.godot/imported/weeb_interface_artwork.png-250d90beb37ac637f9e54140831e1756.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsiyvq0y1hi2c"
-path="res://.godot/imported/weeb_artwork1.jpg-7296f8a3cf7ed473d9cae29bdd6b4bc7.ctex"
+uid="uid://cqsh0i6mdkkox"
+path="res://.godot/imported/artwork_crabs.png-bd27e8d4f22c80001f3cab9653f55d0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/weeb_artwork1.jpg"
-dest_files=["res://.godot/imported/weeb_artwork1.jpg-7296f8a3cf7ed473d9cae29bdd6b4bc7.ctex"]
+source_file="res://resources/images/artworks/artwork_images/artwork_crabs.png"
+dest_files=["res://.godot/imported/artwork_crabs.png-bd27e8d4f22c80001f3cab9653f55d0f.ctex"]
 
 [params]
 

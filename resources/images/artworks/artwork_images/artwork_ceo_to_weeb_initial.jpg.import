@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cswa1cvorck20"
-path="res://.godot/imported/ceo_artwork_3.jpg-44f971f07ad06097affeae0f65f58dc8.ctex"
+uid="uid://c1xpqa7gmovug"
+path="res://.godot/imported/artwork_ceo_to_weeb_initial.jpg-d1a7abaa84c10daa40e9c6715409f7f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/ceo_artwork_3.jpg"
-dest_files=["res://.godot/imported/ceo_artwork_3.jpg-44f971f07ad06097affeae0f65f58dc8.ctex"]
+source_file="res://resources/images/artworks/artwork_images/artwork_ceo_to_weeb_initial.jpg"
+dest_files=["res://.godot/imported/artwork_ceo_to_weeb_initial.jpg-d1a7abaa84c10daa40e9c6715409f7f4.ctex"]
 
 [params]
 

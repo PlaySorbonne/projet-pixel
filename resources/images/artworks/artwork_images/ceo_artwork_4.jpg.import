@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkxbalgi6c3py"
-path="res://.godot/imported/projet_pixel_artwork.jpg-b582ee3e631e417c38fdce9d1569583e.ctex"
+uid="uid://dk8ke67d00lq5"
+path="res://.godot/imported/ceo_artwork_4.jpg-d369f041c6e436fe3704796d2e0580e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork_images/projet_pixel_artwork.jpg"
-dest_files=["res://.godot/imported/projet_pixel_artwork.jpg-b582ee3e631e417c38fdce9d1569583e.ctex"]
+source_file="res://resources/images/artworks/artwork_images/ceo_artwork_4.jpg"
+dest_files=["res://.godot/imported/ceo_artwork_4.jpg-d369f041c6e436fe3704796d2e0580e8.ctex"]
 
 [params]
 
