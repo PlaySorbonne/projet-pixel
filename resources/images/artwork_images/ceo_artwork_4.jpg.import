@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmrr8mpgqxouv"
-path="res://.godot/imported/humans_artwork.jpg-2944a7a4a3f8b482e968739f99f6d415.ctex"
+uid="uid://dk8ke67d00lq5"
+path="res://.godot/imported/ceo_artwork_4.jpg-9006ae10772d4ca650ef3fa1ed737d79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/artwork/humans_artwork.jpg"
-dest_files=["res://.godot/imported/humans_artwork.jpg-2944a7a4a3f8b482e968739f99f6d415.ctex"]
+source_file="res://resources/images/artwork_images/ceo_artwork_4.jpg"
+dest_files=["res://.godot/imported/ceo_artwork_4.jpg-9006ae10772d4ca650ef3fa1ed737d79.ctex"]
 
 [params]
 
