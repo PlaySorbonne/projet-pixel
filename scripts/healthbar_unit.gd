@@ -2,11 +2,15 @@ extends TextureProgressBar
 class_name HealthBarUnit
 
 const VAL_TO_PROGRESS = [0.0, 0.0, 2.02, 2.92, 3.83, 5.0]
-const DEFAULT_TIP_COLOR = Color(0.812, 0.0, 0.0)
 const TIP_POS_COEFF := 20.0
 const PROGRESS_TIP_TEXTURE = preload("res://scenes/Menus/GameUI/texture_progress_tip.tscn")
 
 @export var health : int = 0
+@export_color_no_alpha var default_health_color = Color(0.812, 0.0, 0.0):
+	set(value):
+		default_health_color = value
+		self_modulate = value
+		$TextureProgressTip.modulate = value
 var visible_at_ready := false
 
 func _ready():
