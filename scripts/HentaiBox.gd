@@ -102,7 +102,7 @@ func set_tape_hit_mode():
 	tween_disk_color(Color.RED, 0.1, 90.0, 5.0, 1.75)
 	damaging = true
 	damaging_timer = DAMAGING_TIME_MIN
-	linear_damp = 3.5
+	linear_damp = 3.0
 	angular_damp = 0.5
 
 func set_tape_rest_mode():
