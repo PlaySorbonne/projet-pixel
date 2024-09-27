@@ -19,6 +19,7 @@ config/icon="res://resources/images/game-icon.png"
 
 GameInfos="*res://scripts/GameInfos.gd"
 GlobalVariables="*res://scripts/GlobalVariables.gd"
+VaultData="*res://scripts/vault_data.gd"
 
 [display]
 
