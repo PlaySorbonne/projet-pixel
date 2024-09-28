@@ -17,13 +17,13 @@ var eliminated := false
 
 func _ready():
 	set_process(false)
-	GameInfos.player_portaits[player_number] = self
 
 func _process(delta):
 	$Holder.position += delta * velocity
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
+	GameInfos.player_portaits[player_number] = self
 	$Holder/TextureBackground.modulate = GameInfos.players_data[player_num]["color"]
 	connect_player_object()
 	update_health()

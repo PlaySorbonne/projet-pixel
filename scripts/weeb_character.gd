@@ -26,15 +26,15 @@ func ascend():
 	velocity = Vector2.ZERO
 	emit_signal("weeb_ascended", self)
 	var tween := create_tween()
-	tween.tween_property(self, "scale", ascended_scale, 0.5)
+	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 80)
-	$CharacterPointer.set_healthbars_color(Color.AQUA)
-	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
-	max_hitpoints = ascended_weeb_hitpoints
-	hitpoints = ascended_weeb_hitpoints
 	await tween.finished
 	scale = ascended_scale
+	$CharacterPointer.set_healthbars_color(Color.AQUA)
+	max_hitpoints = ascended_weeb_hitpoints
+	hitpoints = ascended_weeb_hitpoints
+	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
 	ascended = true
 	computing_movement = true
 	eliminate_hit_targets = true
