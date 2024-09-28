@@ -26,6 +26,7 @@ var player_spawns : Dictionary = {}
 var level : Level
 var has_weeb_arrived := false
 var game_ended := false
+var players_left : int = 0
 
 func _ready():
 	GameInfos.game_started = true
@@ -38,6 +39,7 @@ func _ready():
 	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.ScreenTransitionFinished
 	spawn_players()
+	players_left = len(GameInfos.players.keys())
 	if GlobalVariables.skip_fight_intro:
 		activate_players()
 	else:
@@ -47,6 +49,11 @@ func _ready():
 
 func add_level():
 	pass
+
+func player_eliminated():
+	players_left -= 1
+	if players_left <= 1:
+		end_game()
 
 func end_game():
 	if game_ended:
@@ -88,6 +95,7 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
+	body.eliminated.connect(player_eliminated)
 	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)
