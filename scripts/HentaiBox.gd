@@ -158,8 +158,11 @@ func _on_area_2d_body_entered(body : Node2D):
 			$AudioWeebTouched.pitch_scale = 0.25
 			$AudioWeebTouched.play()
 			character_pointer.take_damage(1, 0)
-			weeb_character.ascend()
-			follow_ascended_weeb(weeb_character)
+			if GlobalVariables.ascension_mode:
+				weeb_character.ascend()
+				follow_ascended_weeb(weeb_character)
+			else:
+				emit_signal("game_won")
 		else:
 			GameInfos.freeze_frame.freeze(0.025)
 			GameInfos.camera_utils.flash_saturation(3.0, 0.6)
