@@ -108,6 +108,8 @@ func add_player(device_type : int, device : int):
 	create_player_infos(player_index)
 
 func _unhandled_input(event : InputEvent):
+	if len(player_selectors) == 4:
+		return
 	if event is InputEventKey:
 		if event.device not in keyboards:
 			if event.is_pressed():
