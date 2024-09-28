@@ -26,18 +26,22 @@ position = Vector2(806, 289)
 scale = Vector2(0.430003, 0.430003)
 
 [node name="Wall" parent="." index="6" instance=ExtResource("2_euv16")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(776, 967)
 scale = Vector2(27.24, 5)
 
 [node name="Wall2" parent="." index="7" instance=ExtResource("2_euv16")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(825, -151)
 scale = Vector2(28, 5)
 
 [node name="Wall3" parent="." index="8" instance=ExtResource("2_euv16")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." index="9" instance=ExtResource("2_euv16")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 

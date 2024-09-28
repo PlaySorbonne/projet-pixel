@@ -221,7 +221,7 @@ func _input(event : InputEvent):
 			elif event.is_action_pressed("special"):
 				special()
 		
-		if event.is_action_pressed("debug_button"):
+		if event.is_action_pressed("debug_button") and false:
 			evolve()
 
 func stop_jump():
