@@ -188,12 +188,12 @@ func follow_ascended_weeb(weeb_character : WeebCharacter):
 	following_weeb = true
 	ascended_weeb = weeb_character
 
-func unfollow_ascended_weeb(weeb_character : WeebCharacter, hit_pos : Vector2):
+func unfollow_ascended_weeb(weeb_character : WeebCharacter, impulse : Vector2):
 	$Sprite2D.visible = true
 	$CharacterPointer.visible = true
 	freeze = false
 	following_weeb = false
-	add_impulse(hit_pos, 2.5)
+	apply_impulse(impulse)
 
 func _on_timer_timeout():
 	combo = 1

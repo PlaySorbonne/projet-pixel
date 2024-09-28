@@ -6,6 +6,7 @@ const HEALTH_BAR_POS_INIT := Vector2(-54, -50)
 const HEALTH_PAR_POS_COEFF := Vector2(7, -31)
 const TIMER_TRANSPARENT := 3.5
 const TEXTURE_REF := preload("res://resources/images/characters/character_pointer.png")
+const DEFAULT_HEALTH_COLOR := Color(0.812, 0.0, 0.0)
 
 static var current_z = 0
 
@@ -32,7 +33,7 @@ var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
 var healthbar_anim_in_progress := false
-var default_healthbar_color : Color = Color(0.812, 0.0, 0.0)
+var default_healthbar_color : Color = DEFAULT_HEALTH_COLOR
 
 func set_healthbars_color(new_color : Color):
 	default_healthbar_color = new_color

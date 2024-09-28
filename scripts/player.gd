@@ -63,6 +63,7 @@ var up_pressed := false
 var down_pressed := false
 var compute_hits := true
 var in_stun_time := false
+var eliminate_hit_targets := false
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -337,13 +338,18 @@ func attack():
 	can_attack = false
 	if attack_wind_up > 0:
 		await get_tree().create_timer(attack_wind_up).timeout
-	Hitbox.spawn_hitbox(self, attack_damage, AttackLocation.position, 0.3, true, 
-	attack_intensity, attack_size)
+	var hitbox := Hitbox.spawn_hitbox(self, attack_damage, 
+	AttackLocation.position, 0.3, true, attack_intensity, attack_size)
+	if eliminate_hit_targets:
+		hitbox.set_eliminate(true)
 	attacking = true
 	if attack_recovery > 0:
 		await get_tree().create_timer(attack_duration+attack_recovery).timeout
 	can_attack = true
 	attacking = false
+
+func eliminate(attacker : Node2D, hit_location : Vector2):
+	print("eliminated by " + str(attacker) + " at position " + str(hit_location))
 
 func check_turn(right: bool):
 	if right != facing_right and not attacking:

@@ -13,6 +13,7 @@ var attached_to_char : bool
 var compute_hits := true
 var draw_particles := true
 var particles_finished := false
+var eliminate_targets := false
 
 static func spawn_hitbox(parent : FighterCharacter, hit_damage : int, hitbox_location : Vector2,
 duration : float, attached_to_character := true, hit_intensity := 1.0, size := Vector2.ONE,
@@ -41,6 +42,10 @@ func _ready():
 		$GPUParticles2D.restart()
 		$AudioAttack.play_random_pitch()
 
+func set_eliminate(new_eliminate := true) -> Hitbox:
+	eliminate_targets = new_eliminate
+	return self
+
 func set_audio_pitch_multiplier(val : float):
 	$AudioAttack.pitch_multiplier = val
 
@@ -60,7 +65,12 @@ func end_hitbox():
 func _on_body_entered(body : Node2D):
 	if not compute_hits:
 		return
-	if body.has_method("hit") and body.team != team:
+	if eliminate_targets and body.has_method("eliminate") and body.team != team:
+		if attached_to_char:
+			body.eliminate(attacker, attacker.global_position)
+		else:
+			body.eliminate(attacker, global_position)
+	elif body.has_method("hit") and body.team != team:
 		if attached_to_char:
 			body.hit(damage, attacker, attacker.global_position, intensity)
 			#print("attacker_position : " + str(attacker.global_position) + " // body_position : " + str(body.global_position))
