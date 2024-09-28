@@ -151,7 +151,9 @@ func _on_area_2d_body_entered(body : Node2D):
 	if following_weeb or not body.has_method("hit"):
 		return
 	var player_body : PlayerCharacter = body
-	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
+	if damaging and last_player_hit != null and body != last_player_hit:
+		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
+	elif winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		if weeb_touched >= max_hitpoints - 1:
 			var weeb_character : WeebCharacter = body
 			GameInfos.last_winner = player_body.player_ID
@@ -178,8 +180,6 @@ func _on_area_2d_body_entered(body : Node2D):
 			var player_impulse := Vector2(body.global_position-global_position).normalized()
 			player_body.knockback_velocity += player_impulse * anime_velocity * 2.5
 			increment_weeb_touched()
-	elif damaging and last_player_hit != null and body != last_player_hit:
-		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
 
 func follow_ascended_weeb(weeb_character : WeebCharacter):
 	$Sprite2D.visible = false

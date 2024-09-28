@@ -6,6 +6,7 @@ signal weeb_descended(weeb : WeebCharacter)
 
 const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_materialtres.tres")
+const AUDIO_EXPLOSION := preload("res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav")
 
 @export var ascended_weeb_hitpoints := 15
 @export var ascended_scale := Vector2(1.1, 1.1)
@@ -29,6 +30,7 @@ func ascend():
 	velocity = Vector2.ZERO
 	emit_signal("weeb_ascended", self)
 	rotation = 0.0
+	custom_audio_attacks = AUDIO_EXPLOSION
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
@@ -37,7 +39,7 @@ func ascend():
 	attack_size = ascended_weeb_attack_size
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 50)
-	$CharacterPointer.set_healthbars_color(Color.AQUA)
+	$CharacterPointer.set_healthbars_color(Color.CRIMSON)
 	max_hitpoints = ascended_weeb_hitpoints
 	hitpoints = ascended_weeb_hitpoints
 	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
@@ -51,6 +53,7 @@ func descend():
 	emit_signal("weeb_descended", self)
 	ascended = false
 	scale = default_scale
+	custom_audio_attacks = null
 	$CharacterPointer.set_healthbars_color(CharacterPointer.DEFAULT_HEALTH_COLOR)
 	$CharacterPointer.set_max_hitpoints(1, false)
 	GameInfos.anime_box.unfollow_ascended_weeb(

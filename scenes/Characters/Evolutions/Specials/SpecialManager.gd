@@ -24,12 +24,20 @@ func _ready():
 	await get_tree().create_timer(0.4).timeout
 	player_gun = GUN_RES.instantiate()
 	player.add_child(player_gun)
-	player_gun.position = Vector2(1.0, 0.0) * 50.0
 
 func special():
 	if not can_use_special:
 		return
 	can_use_special = false
+	
+	var mult : float
+	if player.facing_right:
+		mult = 1.0
+		player_gun.get_node("GunSprite").flip_h = false
+	else:
+		mult = -1.0
+		player_gun.get_node("GunSprite").flip_h = true
+	player_gun.position = Vector2(mult, 0.0) * 50.0
 	
 	player_gun.scale = Vector2.ONE * bullet_size * 1.5
 	var dash_direction : float

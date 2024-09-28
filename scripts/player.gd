@@ -17,6 +17,8 @@ const EvolutionCharacters = {
 
 static var player_counter := 0
 
+@export var custom_audio_attacks : AudioStream = null
+
 @export_group("Gameplay Stats")
 @export var current_evolution : Evolutions = Evolutions.CEO
 @export var attack_size := Vector2.ONE
@@ -142,10 +144,11 @@ func _physics_process(delta):
 			knockback_velocity = lerp(knockback_velocity, Vector2.ZERO, knockback_interp_factor)
 			if knockback_velocity.length_squared() < 250:
 				knockback_velocity = Vector2.ZERO
-	if movement_velocity.x > 10.0:
-		check_turn(true)
-	elif movement_velocity.x < -10.0:
-		check_turn(false)
+	if not evolving:
+		if movement_velocity.x > 10.0:
+			check_turn(true)
+		elif movement_velocity.x < -10.0:
+			check_turn(false)
 	move_and_slide()
 	set_animation()
 
@@ -238,6 +241,7 @@ func _on_jump_timer_timeout():
 func spawn(location : Vector2, activate := true, f_right := true):
 	super.spawn(location, activate, f_right)
 	facing_right = f_right
+	$Sprite2D.flip_h = not f_right
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
@@ -267,7 +271,7 @@ func evolve(in_lobby: bool = false):
 	copy_player_data(new_body)
 	get_parent().add_child(new_body)
 	set_player_active(false)
-	await get_tree().create_timer(1.1).timeout
+	await get_tree().create_timer(0.7).timeout
 	new_body.spawn(position, true, facing_right)
 	emit_signal("player_evolved", new_body)
 	GameInfos.tracked_targets.erase(self)
@@ -344,6 +348,8 @@ func attack():
 	AttackLocation.position, 0.3, true, attack_intensity, attack_size)
 	if eliminate_hit_targets:
 		hitbox.set_eliminate(true)
+	if custom_audio_attacks != null:
+		hitbox.set_audio(custom_audio_attacks)
 	attacking = true
 	if attack_recovery > 0:
 		await get_tree().create_timer(attack_duration+attack_recovery).timeout
