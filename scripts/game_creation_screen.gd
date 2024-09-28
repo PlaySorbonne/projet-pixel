@@ -69,16 +69,17 @@ func reload_old_game_infos():
 		else:
 			controllers.append(control_device)
 		GameInfos.players[id] = player
-		create_player_infos(id, delay)
+		create_player_infos(id, delay, false)
 		delay += 0.5
 
-func create_player_infos(index : int, delay := 0.0):
+func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	if delay > 0:
 		await get_tree().create_timer(delay).timeout
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)
 	check_start_button()
+	player_infos.with_voice = with_voice
 	player_infos.player_index = index
 	player_infos.last_winner = (index == GameInfos.last_winner)
 	player_infos.control_type = GameInfos.players_data[index]["control_type"]
