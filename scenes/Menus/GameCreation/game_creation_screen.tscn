@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=24 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -574,12 +574,138 @@ tracks/9/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bn2ik"]
+resource_name = "start_game"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRectConfirm:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.517632, 2.2974),
+"update": 0,
+"values": [Color(0, 0, 0, 0.8), Color(0.15, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ColorRectInfos:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.517632, 2.2974),
+"update": 0,
+"values": [Color(0, 0, 0, 0.8), Color(0.15, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.2),
+"transitions": PackedFloat32Array(0.307786, 0.517633, 2.2974),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.825061, 0, 0.198755, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.482968, 1),
+"update": 0,
+"values": [Vector2(1383, 954), Vector2(1066, 384.002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.217638, 0.517632),
+"update": 0,
+"values": [-0.0174533, 0.698132]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(0.406126, 1.41421),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(150, 150)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Arrows/ArrowRight:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2.14355, 2.14355),
+"update": 0,
+"values": [Color(0.264769, 3.60981e-08, 0.0849114, 1), Color(0.485446, 0, 0.181466, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Arrows/ArrowRight2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2.14355, 2.14355),
+"update": 0,
+"values": [Color(0.264769, 3.60981e-08, 0.0849114, 1), Color(0.485446, 0, 0.181466, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Arrows/ArrowLeft:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2.14355, 2.14355),
+"update": 0,
+"values": [Color(0.264769, 3.60981e-08, 0.0849114, 1), Color(0.485446, 0, 0.181466, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Arrows/ArrowLeft2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(2.14355, 2.14355),
+"update": 0,
+"values": [Color(0.264769, 3.60981e-08, 0.0849114, 1), Color(0.485446, 0, 0.181466, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r72hm"]
 _data = {
 "RESET": SubResource("Animation_a50uk"),
 "idle": SubResource("Animation_521as"),
 "leave": SubResource("Animation_2atab"),
 "start": SubResource("Animation_op7rc"),
+"start_game": SubResource("Animation_bn2ik"),
 "start_leave": SubResource("Animation_johfb")
 }
 
@@ -784,16 +910,17 @@ expand_icon = true
 stream = ExtResource("6_ulrlk")
 
 [node name="ButtonConfirm" type="Button" parent="CanvasLayer/GameCreationScreen"]
+z_index = 20
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.720312
-anchor_top = 0.883333
-anchor_right = 0.965114
-anchor_bottom = 0.988229
-offset_left = 0.000976563
-offset_top = 0.000305176
-offset_right = -2.01904
-offset_bottom = 4.71265
+anchor_left = 0.555209
+anchor_top = 0.355557
+anchor_right = 0.800011
+anchor_bottom = 0.460453
+offset_left = 316.999
+offset_top = 569.998
+offset_right = 314.979
+offset_bottom = 574.711
 rotation = -0.0174533
 pivot_offset = Vector2(234, 59)
 focus_mode = 0

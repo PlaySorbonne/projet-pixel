@@ -189,8 +189,10 @@ func _on_button_confirm_pressed():
 	create_tween().tween_property($AudioStreamPlayer, "volume_db", -80.0, 0.25)
 	$AudioNarratorStart.play()
 	$Shaker.shake(0.4, 20, 40, 1)
-	transition.start_screen_transition()
-	await transition.HalfScreenTransitionFinished
+	$ButtonConfirm/AnimationStart.play("start_game")
+	await $ButtonConfirm/AnimationStart.animation_finished
+	#transition.start_screen_transition()
+	#await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(WORLD_PATH)
 
 func _on_button_back_pressed():
