@@ -39,7 +39,7 @@
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
 script = ExtResource("2_ps5s8")
-ascended_weeb_hitpoints = 15
+ascended_weeb_hitpoints = 3
 ascended_scale = Vector2(1.1, 1.1)
 ascended_weeb_attack_size = Vector2(2, 2)
 current_evolution = 4

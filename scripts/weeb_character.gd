@@ -8,7 +8,7 @@ const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_abe
 const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_materialtres.tres")
 const AUDIO_EXPLOSION : AudioStream = preload("res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav")
 
-@export var ascended_weeb_hitpoints := 15
+@export var ascended_weeb_hitpoints := 3
 @export var ascended_scale := Vector2(1.1, 1.1)
 @export var ascended_weeb_attack_size := Vector2(2.0, 2.0)
 

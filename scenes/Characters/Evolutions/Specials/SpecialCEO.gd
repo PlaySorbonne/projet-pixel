@@ -29,6 +29,8 @@ func special():
 	
 	await get_tree().create_timer(dash_wind_up).timeout
 	if not player.alive:
+		player.attacking = false
+		can_use_special = true
 		return
 	
 	# spawn damage hitbox

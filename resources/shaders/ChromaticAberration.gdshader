@@ -32,10 +32,10 @@ void vertex() {
 
 void fragment() {
 	vec2 chaos_v = vec2(chaos, -chaos) * TEXTURE_PIXEL_SIZE;
-    
+
 	float dist = length((UV - vec2(0.5)) * 2.);
 	float att = clamp(dist / radius, 0., 1.);
-    
+
 	chaos_v *= 1.; // - pow(att, attenuation);
 
 	vec3 new_color = vec3(
@@ -43,7 +43,7 @@ void fragment() {
 		texture(TEXTURE, UV + chaos_v * amount_g).g,
 		texture(TEXTURE, UV + chaos_v * amount_b).b
 	);
-    
+
 	COLOR = vec4(
         new_color.r,
         new_color.g / divider_green,

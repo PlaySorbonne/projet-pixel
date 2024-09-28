@@ -4,8 +4,8 @@
 size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_k4vqh"]
-offsets = PackedFloat32Array(0.01, 1)
-colors = PackedColorArray(0.0400628, 0.290989, 0.398853, 1, 0, 0.178341, 0.210197, 1)
+offsets = PackedFloat32Array(0.112857, 0.682857)
+colors = PackedColorArray(0.172563, 0.634796, 0.842335, 1, 0, 0.178341, 0.210197, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p2ea0"]
 gradient = SubResource("Gradient_k4vqh")
@@ -17,4 +17,5 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_1kgqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
 texture = SubResource("GradientTexture2D_p2ea0")
