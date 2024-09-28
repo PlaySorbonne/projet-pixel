@@ -120,7 +120,7 @@ func weeb_descension(weeb : PlayerCharacter):
 	GameInfos.camera_utils.flash_constrast(1.05, 0.25, false)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("pause_game"):
 		$GameHUD/PauseMenu.enter_pause()
 
 func on_player_death(player : FighterCharacter):

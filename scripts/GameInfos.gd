@@ -60,7 +60,7 @@ const DEFAULT_PLAYER_NAMES : Array[String] = [
 ]
 
 var game_started := false
-var player_portaits : Array[PlayerPortrait] = []
+var player_portaits : Dictionary = {}
 var world : Node2D
 var camera : WorldCamera
 var camera_utils : CameraUtils
@@ -82,7 +82,7 @@ var last_winner := -1
 func reset_game_infos(_deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
-	player_portaits = []
+	player_portaits = {}
 	players = {}
 	anime_box = null
 	CharacterPointer.current_z = 0
