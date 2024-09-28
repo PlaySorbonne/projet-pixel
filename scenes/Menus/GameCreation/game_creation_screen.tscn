@@ -910,7 +910,7 @@ expand_icon = true
 stream = ExtResource("6_ulrlk")
 
 [node name="ButtonConfirm" type="Button" parent="CanvasLayer/GameCreationScreen"]
-z_index = 20
+z_index = 90
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.555209

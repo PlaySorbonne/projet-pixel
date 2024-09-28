@@ -52,6 +52,7 @@ func add_level():
 
 func player_eliminated():
 	players_left -= 1
+	print("heyyyy : " + str(players_left))
 	if players_left <= 1:
 		end_game()
 
@@ -95,7 +96,6 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
-	body.eliminated.connect(player_eliminated)
 	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)

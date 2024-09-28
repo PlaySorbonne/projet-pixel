@@ -351,20 +351,21 @@ func attack():
 	attacking = false
 
 func eliminate(attacker : Node2D, hit_location : Vector2):
-	var vel : Vector2 = hit_location.direction_to(global_position) * 5000.0
+	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
 	compute_hits = false
 	alive = false
 	computing_movement = false
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
-	GameInfos.freeze_frame.freeze(0.095)
-	GameInfos.camera_utils.shake(0.25, 15, 50, 5)
-	await get_tree().create_timer(0.15).timeout
+	GameInfos.freeze_frame.freeze(0.05)
+	GameInfos.camera_utils.shake(0.35, 15, 50, 5)
+	await get_tree().create_timer(0.05).timeout
 	velocity = vel
 	GameInfos.player_portaits[player_ID].eliminate(vel)
 	$Sprite2D.play("hit")
 	emit_signal("eliminated", self)
+	GameInfos.world.player_eliminated()
 	await get_tree().create_timer(1.0).timeout
 	visible = false
 
