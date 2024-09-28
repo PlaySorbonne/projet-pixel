@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cc41sw8ikij7v"]
+
+[ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="1_xaxkj"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_xaxkj")
+shader_parameter/in_hit_effect = false
+shader_parameter/base_color = Color(0.258824, 0.317647, 0.407843, 1)
+shader_parameter/replace_color = Color(0.804333, 0.170805, 0, 1)
+shader_parameter/replace_threshold = 0.153

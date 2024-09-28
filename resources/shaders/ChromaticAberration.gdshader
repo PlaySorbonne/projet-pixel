@@ -2,10 +2,10 @@
 shader_type canvas_item;
 
 uniform float chaos : hint_range(0., 100.) = 1.;
-uniform float radius : hint_range(0., 1.) = 0.5;
-uniform float attenuation : hint_range(0., 10.) = 2.;
-uniform float divider_green = 5.;
-uniform float divider_blue = 1.75;
+uniform float radius : hint_range(0., 1.) = 1.;
+uniform float attenuation : hint_range(0., 10.) = 10.;
+uniform float divider_green = 1.;
+uniform float divider_blue = 1.;
 uniform float time_divider = 2.;
 
 varying vec2 amount_r;

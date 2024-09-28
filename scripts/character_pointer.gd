@@ -32,6 +32,12 @@ var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
 var healthbar_anim_in_progress := false
+var default_healthbar_color : Color = Color(0.812, 0.0, 0.0)
+
+func set_healthbars_color(new_color : Color):
+	default_healthbar_color = new_color
+	for h : HealthBarUnit in healthbars:
+		h.default_health_color = default_healthbar_color
 
 func set_star(new_vis : bool):
 	var tween := create_tween().set_parallel()
@@ -84,6 +90,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
 		$HealthBars.add_child(unit)
+		unit.default_health_color = default_healthbar_color
 	var new_name_pos := Vector2(
 		-160.0 + 7.5 * healthbars.size(),
 		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * healthbars.size() - 20.0

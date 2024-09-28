@@ -34,7 +34,7 @@ func _ready():
 	spawn_locations = level.spawn_points
 	player_camera = level.player_camera
 	GameInfos.world = self
-	var hud_objects = $GameHUD.add_players()
+	var _hud_objects = $GameHUD.add_players()
 	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.ScreenTransitionFinished
 	spawn_players()
@@ -106,7 +106,7 @@ func weeb_arrival(new_weeb : WeebCharacter):
 	GameInfos.camera_utils.shake()
 
 func weeb_ascension(weeb : PlayerCharacter):
-	const PROJECTION_VELOCITY := 7500.0
+	const PROJECTION_VELOCITY := 12000.0
 	GameInfos.camera_utils.shake()
 	GameInfos.camera_utils.flash_constrast(1.15, 0.25, false)
 	GameInfos.freeze_frame.slow_mo(0.1, 0.3)
