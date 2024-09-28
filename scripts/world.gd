@@ -92,16 +92,32 @@ func connect_fighter_to_world(body : PlayerCharacter):
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)
 
-func weeb_arrival(new_weeb : PlayerCharacter):
+func weeb_arrival(new_weeb : WeebCharacter):
 	if not has_weeb_arrived:
 		has_weeb_arrived = true
-		GameInfos.camera_utils.flash_constrast(1.5, 0.25, false)
+		GameInfos.camera_utils.flash_constrast(1.05, 0.25, false)
 	var crosshair := WEEB_EVOLUTION_CROSSHAIR_RES.instantiate()
-	level.set_music_pitch(1.1)
+	level.set_music_pitch(1.05)
+	new_weeb.connect("weeb_ascended", weeb_ascension)
+	new_weeb.connect("weeb_descended", weeb_descension)
 	emit_signal("weeb_arrived")
 	crosshair.followed_actor = new_weeb
 	add_child(crosshair)
 	GameInfos.camera_utils.shake()
+
+func weeb_ascension(weeb : PlayerCharacter):
+	const PROJECTION_VELOCITY := 7500.0
+	GameInfos.camera_utils.shake()
+	GameInfos.camera_utils.flash_constrast(1.15, 0.25, false)
+	GameInfos.freeze_frame.slow_mo(0.1, 0.3)
+	for p : PlayerCharacter in GameInfos.players.values():
+		if p.alive and p != weeb:
+			var dir : Vector2 = weeb.position.direction_to(p.position)
+			p.knockback_velocity = dir * PROJECTION_VELOCITY
+
+func weeb_descension(weeb : PlayerCharacter):
+	GameInfos.camera_utils.shake()
+	GameInfos.camera_utils.flash_constrast(1.05, 0.25, false)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

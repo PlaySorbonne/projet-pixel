@@ -33,6 +33,8 @@ var weeb_touched : int = 0
 var last_valid_pos : Vector2
 var hitpoints_updated := false
 var combo = 1
+var following_weeb := false
+var ascended_weeb : WeebCharacter
 
 func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation():
 	var new_body := OBJECTIVE_BOX_RES.instantiate()
@@ -68,6 +70,8 @@ func _process(delta : float):
 	elif damaging and linear_velocity.length_squared() < LIMIT_SPEED_DAMAGE_DOWN:
 		set_tape_rest_mode()
 		timer_combo.start()
+	if following_weeb:
+		global_position = ascended_weeb.global_position
 
 func _ready():
 	GameInfos.anime_box = self
@@ -126,6 +130,8 @@ func add_impulse(hit_position : Vector2, hit_intensity : float):
 	apply_impulse( (impulse_dir + Vector2(0, -0.075)) * anime_velocity * hit_intensity*combo )
 
 func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity := 1.0):
+	if following_weeb:
+		return
 	if attacker != null:
 		timer_combo.stop()
 		set_tape_hit_mode()
@@ -138,17 +144,22 @@ func hit(damage : int, attacker : Node2D, hit_position : Vector2, hit_intensity 
 	last_player_hit = attacker
 	last_hit_value = damage
 
+func set_game_won():
+	emit_signal("game_won")
+
 func _on_area_2d_body_entered(body : Node2D):
-	if not body.has_method("hit"):
+	if following_weeb or not body.has_method("hit"):
 		return
 	var player_body : PlayerCharacter = body
 	if winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb and not damaging:
 		if weeb_touched >= max_hitpoints - 1:
+			var weeb_character : WeebCharacter = body
 			GameInfos.last_winner = player_body.player_ID
 			$AudioWeebTouched.pitch_scale = 0.25
 			$AudioWeebTouched.play()
 			character_pointer.take_damage(1, 0)
-			emit_signal("game_won")
+			weeb_character.ascend()
+			follow_ascended_weeb(weeb_character)
 		else:
 			GameInfos.freeze_frame.freeze(0.025)
 			GameInfos.camera_utils.flash_saturation(3.0, 0.6)
@@ -167,6 +178,19 @@ func _on_area_2d_body_entered(body : Node2D):
 	elif damaging and last_player_hit != null and body != last_player_hit:
 		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
 
+func follow_ascended_weeb(weeb_character : WeebCharacter):
+	$Sprite2D.visible = false
+	$CharacterPointer.visible = false
+	freeze = true
+	following_weeb = true
+	ascended_weeb = weeb_character
+
+func unfollow_ascended_weeb(weeb_character : WeebCharacter, hit_pos : Vector2):
+	$Sprite2D.visible = true
+	$CharacterPointer.visible = true
+	freeze = false
+	following_weeb = false
+	add_impulse(hit_pos, 2.5)
 
 func _on_timer_timeout():
 	combo = 1

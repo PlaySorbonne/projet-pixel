@@ -1,27 +1,34 @@
-[gd_scene load_steps=31 format=3 uid="uid://besjdva6q0u5y"]
+[gd_scene load_steps=38 format=3 uid="uid://besjdva6q0u5y"]
 
 [ext_resource type="PackedScene" uid="uid://ofdotmbw4jkx" path="res://scenes/Characters/Player.tscn" id="1_benh8"]
 [ext_resource type="Shader" path="res://resources/shaders/PlayerColor.gdshader" id="2_38lak"]
 [ext_resource type="AudioStream" uid="uid://d1y47gsomkpd5" path="res://resources/audio/voices/weeb/evolve_all_according0.wav" id="2_70yyl"]
+[ext_resource type="Script" path="res://scripts/weeb_character.gd" id="2_ps5s8"]
 [ext_resource type="AudioStream" uid="uid://bfmgqi6qshuf5" path="res://resources/audio/voices/weeb/evolve_all_according1.wav" id="3_6c3n1"]
 [ext_resource type="AudioStream" uid="uid://cpehvj2g1hsd3" path="res://resources/audio/sfx/button_clicks/button_accept.wav" id="3_g123h"]
 [ext_resource type="Script" path="res://scripts/audio_pitch_randomizer_xyz.gd" id="4_njtnk"]
 [ext_resource type="AudioStream" uid="uid://cnomyuwi4eoat" path="res://resources/audio/voices/weeb/evolve_kaizoku_oni.wav" id="4_t7ptg"]
 [ext_resource type="AudioStream" uid="uid://csenqmsewuqam" path="res://resources/audio/voices/weeb/evolve_ksashi0.wav" id="5_umh1g"]
+[ext_resource type="AudioStream" uid="uid://lsjk8367mwjx" path="res://resources/audio/voices/weeb/evolve_all_according2.wav" id="5_ywx8y"]
 [ext_resource type="AudioStream" uid="uid://bt15x50cx5yxm" path="res://resources/audio/voices/weeb/evolve_ksashi1.wav" id="6_xlgks"]
 [ext_resource type="AudioStream" uid="uid://d03ck5rwk1uhw" path="res://resources/audio/voices/weeb/evolve_naruhodo0.wav" id="7_b5b6a"]
 [ext_resource type="AudioStream" uid="uid://dig85ej0ffoi3" path="res://resources/audio/voices/weeb/evolve_naruhodo1.wav" id="8_2gyxd"]
+[ext_resource type="AudioStream" uid="uid://x0i65rh7lrmd" path="res://resources/audio/voices/weeb/evolve_ksashi2.wav" id="9_ee8i3"]
 [ext_resource type="AudioStream" uid="uid://dyk7hxa57jgb7" path="res://resources/audio/voices/weeb/evolve_omae_wa0.wav" id="9_m0aab"]
 [ext_resource type="AudioStream" uid="uid://dqcchs1qavoui" path="res://resources/audio/voices/weeb/evolve_omae_wa2.wav" id="10_u0vo8"]
 [ext_resource type="AudioStream" uid="uid://dphf7t7ujlnei" path="res://resources/audio/voices/weeb/evolve_yume0.wav" id="11_skh1a"]
+[ext_resource type="AudioStream" uid="uid://drv4vyahjd8bv" path="res://resources/audio/voices/weeb/evolve_naruhodo2.wav" id="12_5inbg"]
 [ext_resource type="AudioStream" uid="uid://3rtixhb4jjel" path="res://resources/audio/voices/weeb/evolve_yume2.wav" id="12_okmwp"]
 [ext_resource type="AudioStream" uid="uid://b0wxj1u5e5rom" path="res://resources/audio/voices/weeb/death_0.wav" id="13_03t6k"]
 [ext_resource type="AudioStream" uid="uid://cbxkrrcjr4y5d" path="res://resources/audio/voices/weeb/death_1.wav" id="14_ly87v"]
+[ext_resource type="AudioStream" uid="uid://vcjobau7xt0s" path="res://resources/audio/voices/weeb/evolve_omae_wa1.wav" id="14_tsmwd"]
 [ext_resource type="AudioStream" uid="uid://dv8guimxsa8o5" path="res://resources/audio/voices/weeb/death_2.wav" id="15_5nwaf"]
 [ext_resource type="AudioStream" uid="uid://b2e1va7ik5qn" path="res://resources/audio/voices/weeb/death_3.wav" id="16_lfxnf"]
 [ext_resource type="AudioStream" uid="uid://b5l1fcbqpwi2m" path="res://resources/audio/voices/weeb/death_4.wav" id="17_0g2a6"]
+[ext_resource type="AudioStream" uid="uid://g545wys4n0xs" path="res://resources/audio/voices/weeb/evolve_yume1.wav" id="17_586mg"]
 [ext_resource type="AudioStream" uid="uid://du7k7lxin7fwc" path="res://resources/audio/voices/weeb/death_5.wav" id="18_1dpwr"]
 [ext_resource type="AudioStream" uid="uid://cvwqwrmugwloq" path="res://resources/audio/voices/weeb/death_6.wav" id="19_1xo2m"]
+[ext_resource type="AudioStream" uid="uid://b1kibggcuavwm" path="res://resources/audio/voices/weeb/evolve_yume3.wav" id="19_dos32"]
 [ext_resource type="AudioStream" uid="uid://c2s7tbc6tqu2f" path="res://resources/audio/voices/weeb/death_7.wav" id="20_cmw0i"]
 [ext_resource type="AudioStream" uid="uid://bf0th7xh6opif" path="res://resources/audio/voices/weeb/special_0.wav" id="21_e4ll1"]
 [ext_resource type="AudioStream" uid="uid://cd1fis3rm76iq" path="res://resources/audio/voices/weeb/special_1.wav" id="22_17w7n"]
@@ -39,11 +46,14 @@ shader_parameter/replace_color = Color(0.804333, 0.170805, 0, 1)
 shader_parameter/replace_threshold = 0.153
 
 [node name="WeebCharacter" instance=ExtResource("1_benh8")]
+script = ExtResource("2_ps5s8")
+ascended_weeb_hitpoints = 5
 current_evolution = 4
-audio_evolve = Array[AudioStream]([ExtResource("2_70yyl"), ExtResource("3_6c3n1"), ExtResource("4_t7ptg"), ExtResource("5_umh1g"), ExtResource("6_xlgks"), ExtResource("7_b5b6a"), ExtResource("8_2gyxd"), ExtResource("9_m0aab"), ExtResource("10_u0vo8"), ExtResource("11_skh1a"), ExtResource("12_okmwp")])
+audio_evolve = Array[AudioStream]([ExtResource("2_70yyl"), ExtResource("3_6c3n1"), ExtResource("5_ywx8y"), ExtResource("4_t7ptg"), ExtResource("5_umh1g"), ExtResource("6_xlgks"), ExtResource("9_ee8i3"), ExtResource("7_b5b6a"), ExtResource("8_2gyxd"), ExtResource("12_5inbg"), ExtResource("9_m0aab"), ExtResource("14_tsmwd"), ExtResource("10_u0vo8"), ExtResource("11_skh1a"), ExtResource("17_586mg"), ExtResource("12_okmwp"), ExtResource("19_dos32")])
 audio_death = Array[AudioStream]([ExtResource("13_03t6k"), ExtResource("14_ly87v"), ExtResource("15_5nwaf"), ExtResource("16_lfxnf"), ExtResource("17_0g2a6"), ExtResource("18_1dpwr"), ExtResource("19_1xo2m"), ExtResource("20_cmw0i")])
 audio_special = Array[AudioStream]([ExtResource("21_e4ll1"), ExtResource("22_17w7n")])
 audio_hurt = Array[AudioStream]([ExtResource("23_ewnbv"), ExtResource("24_6vq54"), ExtResource("25_ods64")])
+default_scale = Vector2(0.75, 0.75)
 max_hitpoints = 1
 
 [node name="Sprite2D" parent="." index="0"]

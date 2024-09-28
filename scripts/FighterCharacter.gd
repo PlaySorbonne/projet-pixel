@@ -7,6 +7,7 @@ signal fighter_died
 signal player_spawned
 signal changed_max_hitpoints
 
+@export var default_scale := Vector2.ONE
 @export var max_hitpoints := 3:
 	set(val):
 		if val == max_hitpoints:
@@ -45,12 +46,13 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	else:
 		x_scale = -1.0
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(self, "scale", Vector2(x_scale, 1.0), 1.0)
+	tween.tween_property(self, "scale", Vector2(
+		default_scale.x * x_scale, default_scale.y), 1.0)
 	await tween.finished
 	if activate:
 		set_player_active(true)
 	velocity = Vector2.ZERO
-	scale = Vector2(x_scale, 1.0)
+	scale = Vector2(x_scale * default_scale.x, default_scale.y)
 	emit_signal("player_spawned")
 
 func set_player_active(new_activity : bool):
