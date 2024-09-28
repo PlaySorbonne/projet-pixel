@@ -377,7 +377,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	visible = false
 
 func check_turn(right: bool):
-	if right != facing_right and not attacking:
+	if right != facing_right:# and not attacking:
 		facing_right = right
 		var mult : float
 		if right:

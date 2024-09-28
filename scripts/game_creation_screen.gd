@@ -187,9 +187,11 @@ func _on_animation_start_animation_finished(anim_name : String):
 	if anim_name == "start" and not($ButtonConfirm.disabled):
 		$ButtonConfirm/AnimationStart.play("idle")
 
+var start_pressed := false
 func _on_button_confirm_pressed():
-	if len(player_selectors) < 2:
+	if len(player_selectors) < 2 or start_pressed:
 		return
+	start_pressed = true
 	create_tween().tween_property($AudioStreamPlayer, "volume_db", -80.0, 0.25)
 	$AudioNarratorStart.play()
 	$Shaker.shake(0.4, 20, 40, 1)
