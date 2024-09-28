@@ -7,7 +7,7 @@ signal weeb_descended(weeb : WeebCharacter)
 const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_materialtres.tres")
 
-@export var ascended_weeb_hitpoints := 25
+@export var ascended_weeb_hitpoints := 15
 @export var ascended_scale := Vector2(1.1, 1.1)
 
 var ascended := false
