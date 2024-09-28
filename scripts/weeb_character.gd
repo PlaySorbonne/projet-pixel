@@ -36,7 +36,7 @@ func ascend():
 	previous_hitbox_size = attack_size
 	attack_size = ascended_weeb_attack_size
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
-	$Sprite2D.material.set_shader_parameter("chaos", 60)
+	$Sprite2D.material.set_shader_parameter("chaos", 50)
 	$CharacterPointer.set_healthbars_color(Color.AQUA)
 	max_hitpoints = ascended_weeb_hitpoints
 	hitpoints = ascended_weeb_hitpoints

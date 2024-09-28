@@ -371,12 +371,12 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 
 func check_turn(right: bool):
 	if right != facing_right and not attacking:
+		facing_right = right
 		var mult : float
 		if right:
 			mult = 1.0
 		else:
 			mult = -1.0
-		facing_right = right
 		$Sprite2D.flip_h = not right
 		AttackLocation.position = Vector2(
 			attack_loc_pos.x * mult,

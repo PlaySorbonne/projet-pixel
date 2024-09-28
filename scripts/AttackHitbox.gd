@@ -44,14 +44,14 @@ func _ready():
 
 func set_eliminate(new_eliminate := true) -> Hitbox:
 	eliminate_targets = new_eliminate
+	if new_eliminate:
+		$GPUParticles2D.self_modulate = Color.DARK_RED
+	else:
+		$GPUParticles2D.self_modulate = Color.WHITE
 	return self
 
 func set_audio_pitch_multiplier(val : float):
 	$AudioAttack.pitch_multiplier = val
-	if val:
-		$GPUParticles2D.self_modulate = Color.DARK_RED
-	else:
-		$GPUParticles2D.self_modulate = Color.WHITE
 
 func no_particles():
 	particles_finished = true

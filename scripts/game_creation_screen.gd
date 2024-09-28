@@ -41,6 +41,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause_game"):
+		$ButtonConfirm.play_sound()
 		_on_button_confirm_pressed()
 
 func set_game_widgets():
