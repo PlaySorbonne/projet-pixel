@@ -3,6 +3,7 @@ class_name PlayerCharacter
 
 signal has_special(new_special : bool)
 signal player_evolved
+signal eliminated(player : PlayerCharacter)
 
 enum Controls {KEYBOARD, CONTROLLER}
 enum Evolutions {CEO, Manager, Employee, Mascot, Weeb}
@@ -349,7 +350,16 @@ func attack():
 	attacking = false
 
 func eliminate(attacker : Node2D, hit_location : Vector2):
-	print("eliminated by " + str(attacker) + " at position " + str(hit_location))
+	var dir : Vector2 = hit_location.direction_to(global_position)
+	compute_hits = false
+	alive = false
+	computing_movement = false
+	velocity = dir * 1000.0
+	$Sprite2D.play("hit")
+	emit_signal("eliminated", self)
+	GameInfos.freeze_frame.freeze(0.115)
+	await get_tree().create_timer(1.0).timeout
+	visible = false
 
 func check_turn(right: bool):
 	if right != facing_right and not attacking:

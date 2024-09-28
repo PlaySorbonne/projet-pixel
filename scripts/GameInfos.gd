@@ -60,6 +60,7 @@ const DEFAULT_PLAYER_NAMES : Array[String] = [
 ]
 
 var game_started := false
+var player_portaits : Array[PlayerPortrait] = []
 var world : Node2D
 var camera : WorldCamera
 var camera_utils : CameraUtils
@@ -81,11 +82,13 @@ var last_winner := -1
 func reset_game_infos(_deep_reset := false) -> void:
 	game_started = false
 	tracked_targets = []
+	player_portaits = []
 	players = {}
 	anime_box = null
 	CharacterPointer.current_z = 0
 
 func perform_deep_reset():
+	reset_game_infos()
 	players_data = {}
 	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
 	available_player_names.shuffle()

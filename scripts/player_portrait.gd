@@ -12,6 +12,15 @@ const PLAYER_PORTRAITS = [
 var player_number := 0
 var current_evolution := -1
 var init_portrait := false
+var velocity := Vector2.ZERO
+var eliminated := false
+
+func _ready():
+	set_process(false)
+	GameInfos.player_portaits[player_number] = self
+
+func _process(delta):
+	$Holder.position += delta * velocity
 
 func initialize_portrait(player_num : int):
 	player_number = player_num
@@ -21,6 +30,15 @@ func initialize_portrait(player_num : int):
 	update_evolution()
 	var player : PlayerCharacter = GameInfos.players[player_num]
 	$Holder/LabelName.text = GameInfos.players_data[player_num]["name"]
+
+func eliminate(vel : Vector2):
+	if eliminated:
+		return
+	velocity = vel
+	eliminated = true
+	set_process(true)
+	await get_tree().create_timer(1.0).timeout
+	set_process(false)
 
 func connect_player_object():
 	var player = GameInfos.players[player_number]
