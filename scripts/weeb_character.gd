@@ -9,10 +9,12 @@ const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_material
 
 @export var ascended_weeb_hitpoints := 15
 @export var ascended_scale := Vector2(1.1, 1.1)
+@export var ascended_weeb_attack_size := Vector2(2.0, 2.0)
 
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
 var ascended := false
 var previous_trail_color : Color
+var previous_hitbox_size : Vector2
 
 func death(force := false):
 	if ascended:
@@ -31,6 +33,8 @@ func ascend():
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
 	scale = ascended_scale
+	previous_hitbox_size = attack_size
+	attack_size = ascended_weeb_attack_size
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 60)
 	$CharacterPointer.set_healthbars_color(Color.AQUA)
@@ -53,6 +57,7 @@ func descend():
 		self, knockback_velocity.rotated(PI / 2.0))
 	max_hitpoints = 1
 	hitpoints = 1
+	attack_size = previous_hitbox_size
 	$TrailEffect.modulate = previous_trail_color
 	knockback_velocity *= 2.5
 	eliminate_hit_targets = false

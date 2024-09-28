@@ -41,6 +41,7 @@
 script = ExtResource("2_ps5s8")
 ascended_weeb_hitpoints = 15
 ascended_scale = Vector2(1.1, 1.1)
+ascended_weeb_attack_size = Vector2(2, 2)
 current_evolution = 4
 audio_evolve = Array[AudioStream]([ExtResource("2_70yyl"), ExtResource("3_6c3n1"), ExtResource("5_ywx8y"), ExtResource("4_t7ptg"), ExtResource("5_umh1g"), ExtResource("6_xlgks"), ExtResource("9_ee8i3"), ExtResource("7_b5b6a"), ExtResource("8_2gyxd"), ExtResource("12_5inbg"), ExtResource("9_m0aab"), ExtResource("14_tsmwd"), ExtResource("10_u0vo8"), ExtResource("11_skh1a"), ExtResource("17_586mg"), ExtResource("12_okmwp"), ExtResource("19_dos32")])
 audio_death = Array[AudioStream]([ExtResource("13_03t6k"), ExtResource("14_ly87v"), ExtResource("15_5nwaf"), ExtResource("16_lfxnf"), ExtResource("17_0g2a6"), ExtResource("18_1dpwr"), ExtResource("19_1xo2m"), ExtResource("20_cmw0i")])
