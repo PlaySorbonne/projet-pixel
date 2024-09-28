@@ -40,6 +40,13 @@ const DEFAULT_PLAYER_COLORS : Array[Color] = [
 	Color.CORNFLOWER_BLUE
 ]
 const DEFAULT_PLAYER_NAMES : Array[String] = [
+	"Player4",
+	"Player3",
+	"Player2",
+	"Player1"
+]
+
+const name_after_destival = [
 	"Luffi",
 	"Quirito",
 	"Gocou",
@@ -91,7 +98,7 @@ func perform_deep_reset():
 	reset_game_infos()
 	players_data = {}
 	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
-	available_player_names.shuffle()
+	#available_player_names.shuffle()
 	available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
 	selected_music = 0
 	selected_level = 0
