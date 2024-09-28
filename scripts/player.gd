@@ -359,7 +359,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.095)
-	GameInfos.camera_utils.shake(0.25, 20, 45, 5)
+	GameInfos.camera_utils.shake(0.25, 15, 50, 5)
 	await get_tree().create_timer(0.15).timeout
 	velocity = vel
 	GameInfos.player_portaits[player_ID].eliminate(vel)
@@ -371,7 +371,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 func check_turn(right: bool):
 	if right != facing_right and not attacking:
 		var mult : float
-		if facing_right:
+		if right:
 			mult = 1.0
 		else:
 			mult = -1.0
