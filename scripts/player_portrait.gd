@@ -34,7 +34,7 @@ func initialize_portrait(player_num : int):
 func eliminate(vel : Vector2):
 	if eliminated:
 		return
-	velocity = vel
+	velocity = Vector2(vel.x, min(25.0, vel.y))
 	eliminated = true
 	set_process(true)
 	await get_tree().create_timer(1.0).timeout

@@ -93,7 +93,7 @@ func _process(delta : float):
 		if new_button < 0:
 			new_button = len(buttons) - 1
 		select_button(new_button)
-	elif Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("special") or Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("ui_accept"):
 		confirm_button()
 		b.emit_signal("pressed")
 

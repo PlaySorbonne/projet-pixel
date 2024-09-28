@@ -365,6 +365,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	GameInfos.player_portaits[player_ID].eliminate(vel)
 	$Sprite2D.play("hit")
 	emit_signal("eliminated", self)
+	await get_tree().create_timer(0.2).timeout
 	GameInfos.world.player_eliminated()
 	await get_tree().create_timer(1.0).timeout
 	visible = false
