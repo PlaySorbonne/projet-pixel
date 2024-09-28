@@ -6,7 +6,7 @@ signal weeb_descended(weeb : WeebCharacter)
 
 const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_materialtres.tres")
-const AUDIO_EXPLOSION := preload("res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav")
+const AUDIO_EXPLOSION : AudioStream = preload("res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav")
 
 @export var ascended_weeb_hitpoints := 15
 @export var ascended_scale := Vector2(1.1, 1.1)

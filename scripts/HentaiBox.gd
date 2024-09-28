@@ -43,8 +43,8 @@ func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_sim
 	if hitpoints_updated:
 		new_body.set_hitpoints(max_hitpoints-weeb_touched, false)
 	new_body.damaging = damaging
-	new_body.following_weeb = following_weeb
-	new_body.ascended_weeb = ascended_weeb
+	if following_weeb:
+		new_body.follow_ascended_weeb(ascended_weeb)
 	new_body.chaos_value_at_rest = chaos_value_at_rest
 	new_body.blue_div_at_rest = blue_div_at_rest
 	new_body.position = last_valid_pos

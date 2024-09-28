@@ -41,8 +41,6 @@ can_multi_hit := false, delay_between_hits := 0.4) -> Hitbox:
 func _ready():
 	if draw_particles:
 		$GPUParticles2D.restart()
-		if custom_audio != null:
-			$AudioAttack.stream = custom_audio
 		$AudioAttack.play_random_pitch()
 
 func set_eliminate(new_eliminate := true) -> Hitbox:
@@ -55,6 +53,9 @@ func set_eliminate(new_eliminate := true) -> Hitbox:
 
 func set_audio(new_audio : AudioStream):
 	custom_audio = new_audio
+	$AudioAttack.volume_db = 1.5
+	$AudioAttack.stream = custom_audio
+	$AudioAttack.play_random_pitch()
 
 func set_audio_pitch_multiplier(val : float):
 	$AudioAttack.pitch_multiplier = val
