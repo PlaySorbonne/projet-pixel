@@ -8,6 +8,7 @@ const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_abe
 const PLAYER_COLOR_MAT := preload("res://resources/shaders/player_color_materialtres.tres")
 
 @export var ascended_weeb_hitpoints := 25
+@export var ascended_scale := Vector2(1.1, 1.1)
 
 var ascended := false
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
@@ -25,13 +26,15 @@ func ascend():
 	velocity = Vector2.ZERO
 	emit_signal("weeb_ascended", self)
 	var tween := create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.5)
+	tween.tween_property(self, "scale", ascended_scale, 0.5)
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 80)
 	$CharacterPointer.set_healthbars_color(Color.AQUA)
 	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
 	max_hitpoints = ascended_weeb_hitpoints
 	hitpoints = ascended_weeb_hitpoints
+	await tween.finished
+	scale = ascended_scale
 	ascended = true
 	computing_movement = true
 	eliminate_hit_targets = true
