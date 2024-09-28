@@ -39,6 +39,10 @@ func _ready():
 		$ButtonConfirm/AnimationStart.play("leave")
 		$ButtonConfirm.disabled = true
 
+func _process(_delta):
+	if Input.is_action_just_pressed("pause_game"):
+		_on_button_confirm_pressed()
+
 func set_game_widgets():
 	$GameModeSelector.options = GameInfos.GAME_MODE_TITLES
 	$GameModeSelector.selected_option = 0

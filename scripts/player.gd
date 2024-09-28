@@ -45,6 +45,7 @@ static var player_counter := 0
 
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
+@onready var attack_loc_pos : Vector2 = $AttackLocation.position
 var control_device: int = 0
 var control_type: Controls
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -350,7 +351,7 @@ func attack():
 	attacking = false
 
 func eliminate(attacker : Node2D, hit_location : Vector2):
-	var vel : Vector2 = hit_location.direction_to(global_position) * 7500.0
+	var vel : Vector2 = hit_location.direction_to(global_position) * 5000.0
 	compute_hits = false
 	alive = false
 	computing_movement = false
@@ -358,6 +359,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.095)
+	GameInfos.camera_utils.shake(0.25, 20, 45, 5)
 	await get_tree().create_timer(0.15).timeout
 	velocity = vel
 	GameInfos.player_portaits[player_ID].eliminate(vel)
@@ -368,8 +370,17 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 
 func check_turn(right: bool):
 	if right != facing_right and not attacking:
+		var mult : float
+		if facing_right:
+			mult = 1.0
+		else:
+			mult = -1.0
 		facing_right = right
-		scale.x *= -1
+		$Sprite2D.flip_h = not right
+		AttackLocation.position = Vector2(
+			attack_loc_pos.x * mult,
+			attack_loc_pos.y
+		)
 
 func _on_fighter_killed_opponent():
 	await get_tree().create_timer(2.5).timeout
