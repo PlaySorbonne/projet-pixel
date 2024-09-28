@@ -52,7 +52,6 @@ func add_level():
 
 func player_eliminated():
 	players_left -= 1
-	print("heyyyy : " + str(players_left))
 	if players_left <= 1:
 		end_game()
 
