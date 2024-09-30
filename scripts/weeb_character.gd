@@ -59,10 +59,11 @@ func descend():
 	GameInfos.anime_box.unfollow_ascended_weeb(
 		self, knockback_velocity.rotated(PI / 2.0))
 	max_hitpoints = 1
-	hitpoints = 1
+	hitpoints = 0
 	attack_size = previous_hitbox_size
 	$TrailEffect.modulate = previous_trail_color
 	knockback_velocity *= 2.5
 	eliminate_hit_targets = false
 	$Sprite2D.material = PLAYER_COLOR_MAT
 	$Sprite2D.material.set_shader_parameter("base_color", player_shader_base_col)
+	super.death()

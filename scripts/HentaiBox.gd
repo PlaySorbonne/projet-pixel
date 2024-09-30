@@ -155,7 +155,8 @@ func _on_area_2d_body_entered(body : Node2D):
 	var player_body : PlayerCharacter = body
 	if damaging and last_player_hit != null and body != last_player_hit:
 		player_body.hit(last_hit_value * anime_damage_multiplier, self, global_position)
-	elif winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb:
+	elif (winning_by_weeb_touch and player_body.current_evolution == PlayerCharacter.Evolutions.Weeb
+	and player_body.hitpoints > 0):
 		if weeb_touched >= max_hitpoints - 1:
 			var weeb_character : WeebCharacter = body
 			GameInfos.last_winner = player_body.player_ID
