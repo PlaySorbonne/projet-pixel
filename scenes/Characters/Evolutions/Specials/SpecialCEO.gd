@@ -1,5 +1,7 @@
 extends BaseSpecial
 
+const STATIONARY_THRESHOLD := 25.0
+
 @export var dash_wind_up := 0.25
 @export var dash_speed := 1400.0
 @export var wind_up_speed := 200.0
@@ -9,6 +11,47 @@ extends BaseSpecial
 @export var attack_damage := 2
 @export var attack_intensity := 1.0
 @export var attack_size := 3.3
+@export var bonk_power := Vector2(-2500, -1000)
+
+var time_stationnary := 0.0
+var last_player_position := Vector2(-9999, -9999)
+var dash_direction := Vector2.ZERO
+var hitbox : Hitbox = null
+
+func _ready():
+	set_process(false)
+
+func _process(delta):
+	if player.position.distance_squared_to(last_player_position
+	) < STATIONARY_THRESHOLD:
+		time_stationnary += delta
+		if time_stationnary > 0.05:
+			bonk()
+	else:
+		last_player_position = player.position
+		time_stationnary = 0.0
+
+func bonk():
+	set_process(false)
+	player.knockback_velocity = Vector2(
+		dash_direction.x * bonk_power.x,
+		bonk_power.y
+	)
+	player.movement_velocity.y = (player.velocity.y) / 20
+	player.computing_movement = true
+	if hitbox != null:
+		hitbox.end_hitbox()
+		hitbox = null
+	GameInfos.camera_utils.shake()
+	if get_tree():
+		await get_tree().create_timer(dash_recovery).timeout
+	
+	player.attacking = false
+	
+	if get_tree():
+		await get_tree().create_timer(dash_cooldown).timeout
+	
+	can_use_special = true
 
 func special():
 	if not can_use_special:
@@ -17,35 +60,23 @@ func special():
 	player.attacking = true
 	player.computing_movement = false
 	player.velocity = Vector2.ZERO
-	var dash_direction := Vector2.ZERO
+	player.set_animation(true)
+	dash_direction = Vector2(1.0, 0.0)
 	# check dash direction: left or right
-	if Input.is_action_pressed("left"):
+	if player.left_pressed or not player.facing_right:
 		dash_direction.x = -1
-	elif Input.is_action_pressed("right") or player.facing_right:
+	elif player.right_pressed:
 		dash_direction.x = 1
-	else:
-		dash_direction.x = -1
-	player.velocity = -1 * dash_direction.normalized() * wind_up_speed
 	
-	await get_tree().create_timer(dash_wind_up).timeout
 	if not player.alive:
 		player.attacking = false
 		can_use_special = true
 		return
 	
 	# spawn damage hitbox
-	Hitbox.spawn_hitbox(player, attack_damage, Vector2.ZERO, dash_duration, 
-	true, attack_intensity, Vector2(attack_size, attack_size))
+	hitbox = Hitbox.spawn_hitbox(player, attack_damage, Vector2.ZERO, 
+	-1.0, true, attack_intensity, Vector2(attack_size, attack_size))
+	hitbox.no_particles()
 	player.velocity = dash_direction.normalized() * dash_speed
-	await get_tree().create_timer(dash_duration).timeout
 	
-	player.movement_velocity.y = (player.velocity.y) / 20
-	player.computing_movement = true
-	if get_tree():
-		await get_tree().create_timer(dash_recovery).timeout
-	
-	player.attacking = false
-	if get_tree():
-		await get_tree().create_timer(dash_cooldown).timeout
-	
-	can_use_special = true
+	set_process(true)
