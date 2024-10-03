@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="Script" path="res://scripts/level_training.gd" id="2_14xww"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
-[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/OLDTeleporter.tscn" id="3_7geis"]
+[ext_resource type="PackedScene" uid="uid://4h1o1qrpd5ws" path="res://scenes/World/Environment/Teleporter.tscn" id="4_i0lmy"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
 script = ExtResource("2_14xww")
@@ -21,32 +21,26 @@ position = Vector2(1004, 626)
 position = Vector2(1205, 628)
 
 [node name="Wall" parent="." index="6" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(903, 885)
 scale = Vector2(22.6, 5)
 
 [node name="Wall2" parent="." index="7" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(685, -129)
 scale = Vector2(22.76, 5)
 
 [node name="Wall3" parent="." index="8" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." index="9" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="TeleporterRightUp" parent="." index="10" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
-position = Vector2(1519, -152)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../TeleporterLeftDown")
-
-[node name="TeleporterLeftDown" parent="." index="11" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
-position = Vector2(75, 1039)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../TeleporterRightUp")
-
-[node name="LabelHits" type="Label" parent="." index="12"]
+[node name="LabelHits" type="Label" parent="." index="10"]
 offset_left = 1353.0
 offset_top = 495.0
 offset_right = 1477.0
@@ -57,5 +51,11 @@ total : 0"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="AnimeBoxHint" parent="." index="13"]
+[node name="AnimeBoxHint" parent="." index="11"]
 position = Vector2(1478, 651)
+
+[node name="Teleporter" parent="." index="13" instance=ExtResource("4_i0lmy")]
+position = Vector2(78, 1007)
+scale = Vector2(2, 2)
+teleport_offset = Vector2(1450, -1100)
+keep_offset = true

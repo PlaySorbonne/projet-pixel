@@ -52,12 +52,14 @@ position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="Wall13" parent="." index="10" instance=ExtResource("2_bhkty")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(789, -269)
 scale = Vector2(27, 2)
 
 [node name="Wall14" parent="." index="11" instance=ExtResource("2_bhkty")]
-position = Vector2(797, 1244)
-scale = Vector2(27, 0.5)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(789, 1216)
+scale = Vector2(27, 2)
 
 [node name="AnimeBoxHint" parent="." index="12"]
 position = Vector2(800, 300)
@@ -99,7 +101,7 @@ position = Vector2(800, 57)
 rotation = -1.57079
 
 [node name="Teleporter" parent="." index="23" instance=ExtResource("3_ji5jd")]
-position = Vector2(800, 1100)
+position = Vector2(811, 1151)
 scale = Vector2(20, 2)
 teleport_offset = Vector2(0, -1275)
 

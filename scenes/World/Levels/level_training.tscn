@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5whvxmrxionx"]
+[gd_scene load_steps=5 format=3 uid="uid://c5whvxmrxionx"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
 [ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/OLDTeleporter.tscn" id="3_7geis"]
+[ext_resource type="PackedScene" uid="uid://4h1o1qrpd5ws" path="res://scenes/World/Environment/Teleporter.tscn" id="4_hivic"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
 
@@ -33,27 +34,31 @@ scale = Vector2(0.430003, 0.430003)
 position = Vector2(1483, 739)
 
 [node name="Wall" parent="." index="8" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(903, 966)
 scale = Vector2(22.6, 5)
 
 [node name="Wall2" parent="." index="9" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(685, 37)
 scale = Vector2(22.76, 5)
 
 [node name="Wall3" parent="." index="10" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-190, 516)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." index="11" instance=ExtResource("2_ieh35")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 474)
 scale = Vector2(5, 30)
 
-[node name="TeleporterRightUp" parent="." index="12" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
+[node name="TeleporterRightUp" parent="." index="12" instance=ExtResource("3_7geis")]
 position = Vector2(1519, -42)
 scale = Vector2(2, 2)
-otherTeleporter = NodePath("../TeleporterLeftDown")
 
-[node name="TeleporterLeftDown" parent="." index="13" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_7geis")]
-position = Vector2(75, 1120)
+[node name="Teleporter" parent="." index="13" instance=ExtResource("4_hivic")]
+position = Vector2(78, 1007)
 scale = Vector2(2, 2)
-otherTeleporter = NodePath("../TeleporterRightUp")
+teleport_offset = Vector2(1450, -950)
+keep_offset = true

@@ -9,6 +9,18 @@
 [node name="Background" parent="." index="5"]
 self_modulate = Color(1, 0.659359, 0.600691, 1)
 
+[node name="Wall" parent="." index="6"]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Wall2" parent="." index="7"]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Wall3" parent="." index="8"]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Wall4" parent="." index="9"]
+modulate = Color(0, 0, 0, 1)
+
 [node name="AdjustStats" parent="." index="13" instance=ExtResource("2_yiwb5")]
 layer = 10
 

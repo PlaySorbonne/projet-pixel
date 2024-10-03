@@ -10,6 +10,7 @@ size = Vector2(100, 100)
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_8o8b5")
+keep_offset = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mb2xr")
