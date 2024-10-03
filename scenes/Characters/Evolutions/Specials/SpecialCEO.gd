@@ -1,6 +1,6 @@
 extends BaseSpecial
 
-const STATIONARY_THRESHOLD := 25.0
+const STATIONARY_THRESHOLD := 5.0
 
 @export var dash_wind_up := 0.25
 @export var dash_speed := 1400.0
@@ -14,7 +14,7 @@ const STATIONARY_THRESHOLD := 25.0
 @export var bonk_power := Vector2(-2500, -1000)
 
 var time_stationnary := 0.0
-var last_player_position := Vector2(-9999, -9999)
+var last_player_pos_x := -99999.0
 var dash_direction := Vector2.ZERO
 var hitbox : Hitbox = null
 
@@ -22,13 +22,12 @@ func _ready():
 	set_process(false)
 
 func _process(delta):
-	if player.position.distance_squared_to(last_player_position
-	) < STATIONARY_THRESHOLD:
+	if abs(player.position.x - last_player_pos_x) < STATIONARY_THRESHOLD:
 		time_stationnary += delta
 		if time_stationnary > 0.05:
 			bonk()
 	else:
-		last_player_position = player.position
+		last_player_pos_x = player.position.x
 		time_stationnary = 0.0
 
 func bonk():
