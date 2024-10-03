@@ -51,7 +51,7 @@ position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="AnimeBoxHint" parent="." index="10"]
-position = Vector2(800, 482)
+position = Vector2(798, 612)
 
 [node name="Platform2" parent="." index="12" instance=ExtResource("4_81wvx")]
 position = Vector2(1200, 600)
@@ -62,8 +62,21 @@ position = Vector2(400, 600)
 [node name="Platform3" parent="." index="14" instance=ExtResource("4_32sg7")]
 position = Vector2(800, 700)
 
-[node name="Platform" parent="." index="15" instance=ExtResource("5_xoh2q")]
-position = Vector2(1600, 550)
+[node name="Platform6" parent="." index="15" instance=ExtResource("4_32sg7")]
+z_index = -1
+position = Vector2(673, 839)
+rotation = 1.57079
 
-[node name="Platform5" parent="." index="16" instance=ExtResource("5_xoh2q")]
-position = Vector2(0, 550)
+[node name="Platform7" parent="." index="16" instance=ExtResource("4_32sg7")]
+z_index = -1
+position = Vector2(928, 836)
+rotation = 1.57079
+
+[node name="Platform" parent="." index="17" instance=ExtResource("5_xoh2q")]
+position = Vector2(1600, 530)
+
+[node name="Platform5" parent="." index="18" instance=ExtResource("5_xoh2q")]
+position = Vector2(0, 530)
+
+[node name="Platform9" parent="." index="19" instance=ExtResource("5_xoh2q")]
+position = Vector2(800, 450)
