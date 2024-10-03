@@ -104,5 +104,6 @@ rotation = -1.57079
 position = Vector2(811, 1151)
 scale = Vector2(20, 2)
 teleport_offset = Vector2(0, -1275)
+keep_offset = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
