@@ -1,15 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt2epxpa4a4i"]
+[gd_scene load_steps=8 format=3 uid="uid://dt2epxpa4a4i"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_n2j12"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_bhkty"]
 [ext_resource type="Script" path="res://scripts/level_high_ground.gd" id="2_xtrkm"]
-[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_ji5jd"]
-
-[sub_resource type="Curve2D" id="Curve2D_ecp2d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 779, 378, 0, 0, 0, 0, 777, 604)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://4h1o1qrpd5ws" path="res://scenes/World/Environment/Teleporter.tscn" id="3_ji5jd"]
+[ext_resource type="PackedScene" uid="uid://bid88bntxwx0f" path="res://scenes/World/Environment/PlatformSemiSolid.tscn" id="5_p1lxy"]
+[ext_resource type="PackedScene" uid="uid://c0lg8j3dkffaq" path="res://scenes/World/Environment/Platform.tscn" id="6_7o0nc"]
+[ext_resource type="PackedScene" uid="uid://dc5mjgmgp7q14" path="res://scenes/World/Environment/PlatformMovingLarge.tscn" id="6_w0u1l"]
 
 [node name="LevelHighGround" instance=ExtResource("1_n2j12")]
 script = ExtResource("2_xtrkm")
@@ -27,101 +24,84 @@ position = Vector2(154, 189)
 position = Vector2(1440, 185)
 
 [node name="Camera" parent="." index="4"]
-position = Vector2(825, 462)
+position = Vector2(800, 462)
 
 [node name="Background" parent="." index="5"]
 modulate = Color(0.95135, 0.794265, 0.756677, 1)
 self_modulate = Color(0.988235, 0.627451, 0.94902, 1)
-position = Vector2(795, 289)
+position = Vector2(800, 438)
 scale = Vector2(0.430003, 0.430003)
 
 [node name="Wall" parent="." index="6" instance=ExtResource("2_bhkty")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(776, 988)
 scale = Vector2(20.24, 5)
 
 [node name="Wall2" parent="." index="7" instance=ExtResource("2_bhkty")]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
 position = Vector2(792, -173)
 scale = Vector2(20, 5)
 
 [node name="Wall3" parent="." index="8" instance=ExtResource("2_bhkty")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." index="9" instance=ExtResource("2_bhkty")]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="Wall5" parent="." index="10" instance=ExtResource("2_bhkty")]
-position = Vector2(1257, 677)
-scale = Vector2(3.5, 0.5)
-
-[node name="Wall7" parent="." index="11" instance=ExtResource("2_bhkty")]
-position = Vector2(378, 679)
-scale = Vector2(3.5, 0.5)
-
-[node name="Wall9" parent="." index="12" instance=ExtResource("2_bhkty")]
-position = Vector2(157, 317)
-scale = Vector2(6, 0.5)
-
-[node name="Wall13" parent="." index="13" instance=ExtResource("2_bhkty")]
-position = Vector2(778, -355)
+[node name="Wall13" parent="." index="10" instance=ExtResource("2_bhkty")]
+position = Vector2(772, -438)
 scale = Vector2(27, 0.5)
 
-[node name="Wall14" parent="." index="14" instance=ExtResource("2_bhkty")]
+[node name="Wall14" parent="." index="11" instance=ExtResource("2_bhkty")]
 position = Vector2(797, 1244)
 scale = Vector2(27, 0.5)
 
-[node name="Wall10" parent="." index="15" instance=ExtResource("2_bhkty")]
-position = Vector2(1433, 322)
-scale = Vector2(6, 0.5)
+[node name="AnimeBoxHint" parent="." index="12"]
+position = Vector2(800, 300)
 
-[node name="Wall11" parent="." index="16" instance=ExtResource("2_bhkty")]
-position = Vector2(767, 189)
-scale = Vector2(8, 0.5)
-
-[node name="Wall12" parent="." index="17" instance=ExtResource("2_bhkty")]
-position = Vector2(774, 60)
-scale = Vector2(0.5, 4)
-
-[node name="AnimeBoxHint" parent="." index="18"]
-position = Vector2(775, 325)
-
-[node name="Teleporter" parent="." index="20" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
-position = Vector2(71, -160)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../Teleporter2")
-
-[node name="Teleporter2" parent="." index="21" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
-position = Vector2(42, 1087)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../Teleporter")
-
-[node name="Teleporter3" parent="." index="22" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
-position = Vector2(1519, -142)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../Teleporter4")
-
-[node name="Teleporter4" parent="." index="23" node_paths=PackedStringArray("otherTeleporter") instance=ExtResource("3_ji5jd")]
-position = Vector2(1523, 1080)
-scale = Vector2(2, 2)
-otherTeleporter = NodePath("../Teleporter3")
-
-[node name="Path2D" type="Path2D" parent="." index="24"]
-curve = SubResource("Curve2D_ecp2d")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-position = Vector2(779, 378)
-rotation = 1.57965
-rotates = false
-loop = false
-
-[node name="Wall8" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("2_bhkty")]
-position = Vector2(3.01757, 1.97336)
-rotation = -1.57965
-scale = Vector2(8, 0.5)
-
-[node name="Timer" type="Timer" parent="." index="25"]
+[node name="Timer" type="Timer" parent="." index="14"]
 wait_time = 1.294
 one_shot = true
+
+[node name="Platform" parent="." index="15" instance=ExtResource("5_p1lxy")]
+position = Vector2(160, 320)
+scale = Vector2(1.3, 1)
+
+[node name="Platform2" parent="." index="16" instance=ExtResource("5_p1lxy")]
+position = Vector2(1430, 320)
+scale = Vector2(1.3, 1)
+
+[node name="Platform4" parent="." index="17" instance=ExtResource("6_w0u1l")]
+position = Vector2(800, 400)
+
+[node name="Platform5" parent="." index="18" instance=ExtResource("5_p1lxy")]
+position = Vector2(685, 190)
+scale = Vector2(0.9, 1)
+
+[node name="Platform6" parent="." index="19" instance=ExtResource("5_p1lxy")]
+position = Vector2(915, 190)
+scale = Vector2(0.9, 1)
+
+[node name="Platform7" parent="." index="20" instance=ExtResource("5_p1lxy")]
+position = Vector2(1220, 675)
+scale = Vector2(0.9, 1)
+
+[node name="Platform8" parent="." index="21" instance=ExtResource("5_p1lxy")]
+position = Vector2(380, 675)
+scale = Vector2(0.9, 1)
+
+[node name="Platform3" parent="." index="22" instance=ExtResource("6_7o0nc")]
+position = Vector2(800, 57)
+rotation = -1.57079
+
+[node name="Teleporter" parent="." index="23" instance=ExtResource("3_ji5jd")]
+position = Vector2(800, 1100)
+scale = Vector2(20, 1)
+teleport_offset = Vector2(0, -1275)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

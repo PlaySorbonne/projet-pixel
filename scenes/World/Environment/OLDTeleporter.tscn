@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://4h1o1qrpd5ws"]
+[gd_scene load_steps=3 format=3 uid="uid://dyw4x428suhpv"]
 
-[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="1_8o8b5"]
+[ext_resource type="Script" path="res://scripts/Teleporter.gd" id="1_pfdr3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb2xr"]
 resource_local_to_scene = true
@@ -9,14 +9,9 @@ size = Vector2(100, 100)
 [node name="Teleporter" type="Area2D"]
 collision_layer = 0
 collision_mask = 6
-script = ExtResource("1_8o8b5")
+script = ExtResource("1_pfdr3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mb2xr")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-z_index = 60
-position = Vector2(0, -500)
-gizmo_extents = 40.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

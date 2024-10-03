@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_gycqx"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_ieh35"]
-[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/Teleporter.tscn" id="3_7geis"]
+[ext_resource type="PackedScene" uid="uid://dyw4x428suhpv" path="res://scenes/World/Environment/OLDTeleporter.tscn" id="3_7geis"]
 
 [node name="LevelTraining" instance=ExtResource("1_gycqx")]
 
