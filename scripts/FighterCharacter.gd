@@ -82,11 +82,9 @@ func _on_invincibility_timer_timeout():
 func death(force := false):
 	if not alive and not force:
 		return
-	set_animation(true)
+	alive = false
 	set_player_active(false)
-	var tween = create_tween().set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "scale", Vector2.ZERO, 1.0)
-	await tween.finished
+	await get_tree().create_timer(1.0).timeout
 	emit_signal("fighter_died", self)
 	position = Vector2(-9999, -9999)
 	visible = false

@@ -261,6 +261,7 @@ func evolve(in_lobby: bool = false):
 	compute_hits = false
 	computing_movement = false
 	$AnimationPlayer.stop()
+	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
 	var tween := create_tween()
 	tween.tween_property($CharacterPointer, "modulate", Color.TRANSPARENT, 0.5)
@@ -284,11 +285,16 @@ func remove_player():
 
 func death(force := false):
 	alive = false
-	set_animation(true)
+	$AnimationPlayer.stop()
+	$EvolveAnimation.speed_scale = 1.0
+	if knockback_velocity.x > 0.0:
+		$EvolveAnimation.play("death")
+	else:
+		$EvolveAnimation.play("death_left")
 	compute_hits = false
 	movement_velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.075)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	compute_hits = true
 	super.death(true)
 
@@ -297,6 +303,9 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		return
 	var hit_owner : Node2D
 	play_hit_sfx()
+	if attacker != null and damage >= knockback_damage_threshold:
+		knockback_velocity = ((self.global_position - hit_location
+		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
 	if attacker.has_method("get_hit_owner"):
 		hit_owner = attacker.get_hit_owner()
 	else:
@@ -307,9 +316,6 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		super.hit(damage, hit_owner, hit_location)
 	set_stunned()
 	emit_hit_particles()
-	if attacker != null and damage >= knockback_damage_threshold:
-		knockback_velocity = ((self.global_position - hit_location
-		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
 		GameInfos.freeze_frame.freeze(0.015)
