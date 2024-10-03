@@ -1,19 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bid88bntxwx0f"]
 
-[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="1_triah"]
+[ext_resource type="Texture2D" uid="uid://c8ispmxteoul3" path="res://resources/images/environments/semi_solid_platform.png" id="1_j44r8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hql6o"]
-size = Vector2(64, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3sc4"]
+size = Vector2(298, 20)
 
 [node name="Platform" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hql6o")
+shape = SubResource("RectangleShape2D_s3sc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
-texture = ExtResource("1_triah")
-region_enabled = true
+texture = ExtResource("1_j44r8")
 region_rect = Rect2(0, 0, 300, 20)

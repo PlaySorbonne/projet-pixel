@@ -198,10 +198,12 @@ func _input(event : InputEvent):
 			up_pressed = true
 		elif event.is_action_released("up"):
 			up_pressed = false
-		if event.is_action_pressed("down"):
+		if event.is_action_pressed("drop"):
 			down_pressed = true
-		elif event.is_action_released("down"):
+			set_collision_mask_value(4, false)
+		elif event.is_action_released("drop"):
 			down_pressed = false
+			set_collision_mask_value(4, true)
 		if not alive:
 			return
 		
