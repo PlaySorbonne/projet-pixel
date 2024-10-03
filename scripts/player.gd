@@ -357,6 +357,8 @@ func attack():
 	attacking = false
 
 func eliminate(attacker : Node2D, hit_location : Vector2):
+	if in_invincibility_time or not alive:
+		return
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
 	compute_hits = false
 	alive = false
