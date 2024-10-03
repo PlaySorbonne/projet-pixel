@@ -21,7 +21,7 @@ position = Vector2(100, 350)
 position = Vector2(1496, 361)
 
 [node name="Camera" parent="." index="4"]
-position = Vector2(825, 590)
+position = Vector2(800, 590)
 
 [node name="Background" parent="." index="5"]
 self_modulate = Color(0, 0.886027, 0.725083, 1)
@@ -40,28 +40,30 @@ scale = Vector2(28, 5)
 
 [node name="Wall3" parent="." index="8" instance=ExtResource("2_euv16")]
 modulate = Color(0, 0, 0, 1)
+z_index = 1
 position = Vector2(-190, 435)
 scale = Vector2(5, 30)
 
 [node name="Wall4" parent="." index="9" instance=ExtResource("2_euv16")]
 modulate = Color(0, 0, 0, 1)
+z_index = 1
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
 [node name="AnimeBoxHint" parent="." index="10"]
-position = Vector2(842, 482)
+position = Vector2(800, 482)
 
 [node name="Platform2" parent="." index="12" instance=ExtResource("4_81wvx")]
-position = Vector2(1209, 607)
+position = Vector2(1200, 600)
 
 [node name="Platform4" parent="." index="13" instance=ExtResource("4_81wvx")]
-position = Vector2(412, 609)
+position = Vector2(400, 600)
 
 [node name="Platform3" parent="." index="14" instance=ExtResource("4_32sg7")]
-position = Vector2(800, 725)
+position = Vector2(800, 700)
 
 [node name="Platform" parent="." index="15" instance=ExtResource("5_xoh2q")]
-position = Vector2(1609, 557)
+position = Vector2(1600, 550)
 
 [node name="Platform5" parent="." index="16" instance=ExtResource("5_xoh2q")]
-position = Vector2(1, 571)
+position = Vector2(0, 550)

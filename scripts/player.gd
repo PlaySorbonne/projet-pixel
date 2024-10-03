@@ -200,10 +200,8 @@ func _input(event : InputEvent):
 			up_pressed = false
 		if event.is_action_pressed("drop"):
 			down_pressed = true
-			print("drop start")
 			set_collision_mask_value(5, false)
 		elif event.is_action_released("drop"):
-			print("drop stop")
 			down_pressed = false
 			set_collision_mask_value(5, true)
 		if not alive:
