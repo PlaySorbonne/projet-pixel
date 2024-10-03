@@ -86,4 +86,3 @@ func add_unit_no_anim():
 	visible = true
 	visible_at_ready = true
 	set_health_value(health)
-	print("hullo !")

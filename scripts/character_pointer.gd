@@ -66,7 +66,21 @@ func _ready():
 func get_current_unit() -> HealthBarUnit:
 	return null
 
+func set_zero_hitpoints():
+	for h : HealthBarUnit in healthbars:
+		h.queue_free()
+	var unit := HEALTH_BAR_UNIT.instantiate()
+	unit.set_health_value(0)
+	$HealthBars.add_child(unit)
+	unit.position = HEALTH_BAR_POS_INIT
+	unit.default_health_color = default_healthbar_color
+	healthbars = [unit]
+	unit.add_unit_no_anim()
+
 func set_max_hitpoints(hitpoints : int, with_anim := true):
+	if hitpoints == 0:
+		set_zero_hitpoints()
+		return
 	healthbar_anim_in_progress = true
 	for h : HealthBarUnit in healthbars:
 		h.queue_free()
@@ -132,16 +146,12 @@ func take_damage(damage : int, new_hitpoints : int):
 		current_health_bar.damage(unit_dmg, delay)
 		if d > 0:
 			healthbar_counter += 1
-			if healthbar_counter > len(healthbars):
+			if healthbar_counter >= len(healthbars):
 				d = 0
 		delay += unit_dmg
 	current_hitpoints = new_hitpoints
 	$HealthBars.shake(0.2, 15, 20*damage, damage)
 	show_health_bars()
-	healthbar_anim_in_progress = true
-	await current_health_bar.animation_finished
-	emit_signal("healthbars_displayed")
-	healthbar_anim_in_progress = false
 
 func _process(_delta):
 	global_position = parent_character.global_position + default_pos + shake_offset

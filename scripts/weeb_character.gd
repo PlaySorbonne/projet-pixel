@@ -64,7 +64,7 @@ func descend():
 	scale = default_scale
 	custom_audio_attacks = null
 	$CharacterPointer.set_healthbars_color(CharacterPointer.DEFAULT_HEALTH_COLOR)
-	$CharacterPointer.set_max_hitpoints(1, false)
+	$CharacterPointer.set_max_hitpoints(0, false)
 	GameInfos.anime_box.unfollow_ascended_weeb(
 		self, knockback_velocity.rotated(PI / 2.0))
 	max_hitpoints = 1
