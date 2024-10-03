@@ -1,6 +1,8 @@
 extends TextureProgressBar
 class_name HealthBarUnit
 
+signal animation_finished
+
 const VAL_TO_PROGRESS = [0.0, 0.0, 2.02, 2.92, 3.83, 5.0]
 const TIP_POS_COEFF := 20.0
 const PROGRESS_TIP_TEXTURE = preload("res://scenes/Menus/GameUI/texture_progress_tip.tscn")
@@ -34,6 +36,7 @@ func damage(val : int, delay := 0):
 	for s : TextureRect in new_tips:
 		await get_tree().create_timer(0.15).timeout
 		s.queue_free()
+	emit_signal("animation_finished")
 
 func heal_effect(val : int, delay : float):
 	var new_tips : Array[TextureRect] = []

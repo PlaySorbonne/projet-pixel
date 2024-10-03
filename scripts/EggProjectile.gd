@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name EggProjectile
 
 const EGG_PROJECTILE = preload("res://scenes/Characters/Evolutions/Specials/EggProjectile.tscn")
-const SPAWN_OFFSET = Vector2(0.0, 10.0)
+const SPAWN_OFFSET = Vector2(0.0, 18.5)
 const EXPLOSION_RES = preload("res://resources/images/fx/explosion/explosion_anim_sprite.tscn")
 const DEFAULT_EGG_SPRITE_SCALE := Vector2(0.15, 0.15)
 
@@ -17,16 +17,29 @@ var hit_intensity := 1.0
 var parent_player : PlayerCharacter 
 var explosion_triggered := false
 
-static func spawn_egg_projectile(player_char : PlayerCharacter, special : SpecialMascot):
-	var egg : EggProjectile = EGG_PROJECTILE.instantiate()
-	egg.hit_damage = special.egg_hit_damage
-	egg.hit_duration = special.egg_hit_duration
-	egg.egg_speed = special.egg_speed
-	egg.hit_size = special.egg_hit_size
-	egg.hit_intensity = special.egg_hit_intensity
-	egg.position = player_char.global_position + SPAWN_OFFSET
-	egg.parent_player = player_char
-	GameInfos.world.add_child(egg)
+static func spawn_egg_projectile(player_char : PlayerCharacter, 
+special : SpecialMascot, on_floor := false):
+	if on_floor:
+		var hitbox : Hitbox = Hitbox.spawn_hitbox(player_char, 
+		special.egg_hit_damage, player_char.global_position, 
+		special.egg_hit_duration, false, special.egg_hit_intensity, 
+		Vector2(special.egg_hit_size, special.egg_hit_size))
+		hitbox.no_particles()
+		var explosion : AnimatedSprite2D = EXPLOSION_RES.instantiate()
+		explosion.scale *= special.egg_hit_size
+		explosion.global_position = hitbox.global_position
+		GameInfos.world.add_child(explosion)
+	else:
+		var egg_offset : Vector2 = SPAWN_OFFSET
+		var egg : EggProjectile = EGG_PROJECTILE.instantiate()
+		egg.hit_damage = special.egg_hit_damage
+		egg.hit_duration = special.egg_hit_duration
+		egg.egg_speed = special.egg_speed
+		egg.hit_size = special.egg_hit_size
+		egg.hit_intensity = special.egg_hit_intensity
+		egg.position = player_char.global_position + egg_offset
+		egg.parent_player = player_char
+		GameInfos.world.add_child(egg)
 
 func _ready():
 	velocity = Vector2.DOWN * egg_speed

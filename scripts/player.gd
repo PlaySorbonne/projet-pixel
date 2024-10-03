@@ -221,7 +221,7 @@ func _input(event : InputEvent):
 			elif event.is_action_pressed("special"):
 				special()
 		
-		if event.is_action_pressed("debug_button") and false:
+		if event.is_action_pressed("debug_button"):# and false:
 			evolve()
 
 func stop_jump():
@@ -312,7 +312,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
-		GameInfos.freeze_frame.freeze(0.05)
+		GameInfos.freeze_frame.freeze(0.015)
 		$AudioLineHurt.stream = audio_hurt.pick_random()
 	else:
 		$AudioLineHurt.stream = audio_death.pick_random()

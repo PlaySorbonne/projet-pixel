@@ -124,8 +124,9 @@ func take_damage(damage : int, new_hitpoints : int):
 	var d := current_hitpoints - new_hitpoints
 	var delay := 0
 	var healthbar_counter = 1
+	var current_health_bar : HealthBarUnit
 	while d > 0:
-		var current_health_bar := healthbars[healthbars.size() - healthbar_counter]
+		current_health_bar = healthbars[healthbars.size() - healthbar_counter]
 		var unit_dmg : int = min(d, current_health_bar.health)
 		d -= unit_dmg
 		current_health_bar.damage(unit_dmg, delay)
@@ -137,6 +138,10 @@ func take_damage(damage : int, new_hitpoints : int):
 	current_hitpoints = new_hitpoints
 	$HealthBars.shake(0.2, 15, 20*damage, damage)
 	show_health_bars()
+	healthbar_anim_in_progress = true
+	await current_health_bar.animation_finished
+	emit_signal("healthbars_displayed")
+	healthbar_anim_in_progress = false
 
 func _process(_delta):
 	global_position = parent_character.global_position + default_pos + shake_offset
