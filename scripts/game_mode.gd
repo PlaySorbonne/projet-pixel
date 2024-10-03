@@ -2,4 +2,4 @@ extends Node
 class_name GameMode
 
 
-@export var respawn_time := 2.0
+@export var respawn_time := 0.75
