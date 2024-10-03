@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ispmxteoul3" path="res://resources/images/environments/semi_solid_platform.png" id="1_j44r8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3sc4"]
-size = Vector2(298, 20)
+size = Vector2(298, 14)
 
 [node name="Platform" type="StaticBody2D"]
 collision_layer = 16
@@ -11,6 +11,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s3sc4")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2

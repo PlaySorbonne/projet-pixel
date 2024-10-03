@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dfc4twohmopk0" path="res://resources/images/environments/solid_platform.png" id="1_v8m5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41ly0"]
-size = Vector2(298, 58)
+size = Vector2(298, 44)
 
 [node name="Platform" type="StaticBody2D"]
 collision_mask = 0

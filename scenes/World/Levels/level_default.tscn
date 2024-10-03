@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://vyyffuba3t3y"]
+[gd_scene load_steps=6 format=3 uid="uid://vyyffuba3t3y"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_fvn86"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="2_euv16"]
+[ext_resource type="PackedScene" uid="uid://c0lg8j3dkffaq" path="res://scenes/World/Environment/Platform.tscn" id="4_32sg7"]
+[ext_resource type="PackedScene" uid="uid://dotmamvhybomx" path="res://scenes/World/Environment/PlatformSemiSolidSmall.tscn" id="4_81wvx"]
+[ext_resource type="PackedScene" uid="uid://bid88bntxwx0f" path="res://scenes/World/Environment/PlatformSemiSolid.tscn" id="5_xoh2q"]
 
 [node name="LevelDefault" instance=ExtResource("1_fvn86")]
 
@@ -45,25 +48,20 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="Wall5" parent="." index="10" instance=ExtResource("2_euv16")]
-position = Vector2(1207, 593)
-scale = Vector2(2.5, 0.5)
-
-[node name="Wall7" parent="." index="11" instance=ExtResource("2_euv16")]
-position = Vector2(392, 587)
-scale = Vector2(2.5, 0.5)
-
-[node name="Wall9" parent="." index="12" instance=ExtResource("2_euv16")]
-position = Vector2(1570, 515)
-scale = Vector2(3.5, 0.5)
-
-[node name="Wall10" parent="." index="13" instance=ExtResource("2_euv16")]
-position = Vector2(34, 522)
-scale = Vector2(3.5, 0.5)
-
-[node name="Wall8" parent="." index="14" instance=ExtResource("2_euv16")]
-position = Vector2(793, 675)
-scale = Vector2(4, 0.5)
-
-[node name="AnimeBoxHint" parent="." index="15"]
+[node name="AnimeBoxHint" parent="." index="10"]
 position = Vector2(842, 482)
+
+[node name="Platform2" parent="." index="12" instance=ExtResource("4_81wvx")]
+position = Vector2(1209, 607)
+
+[node name="Platform4" parent="." index="13" instance=ExtResource("4_81wvx")]
+position = Vector2(412, 609)
+
+[node name="Platform3" parent="." index="14" instance=ExtResource("4_32sg7")]
+position = Vector2(800, 725)
+
+[node name="Platform" parent="." index="15" instance=ExtResource("5_xoh2q")]
+position = Vector2(1609, 557)
+
+[node name="Platform5" parent="." index="16" instance=ExtResource("5_xoh2q")]
+position = Vector2(1, 571)
