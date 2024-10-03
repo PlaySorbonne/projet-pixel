@@ -100,13 +100,11 @@ func _ready():
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	if not GameInfos.use_special_gameplay_data:
 		load_custom_gameplay_data()
-	var sfx_pitch_modulation : float = 0.6 + float(current_evolution) / 5.0
+	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
-	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
 	if current_evolution != Evolutions.CEO:
 		await get_tree().create_timer(1.2).timeout
-		$AudioEvolve.play()
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
 		$AudioLineEvolve.play()
 
@@ -263,6 +261,9 @@ func evolve(in_lobby: bool = false):
 	$AnimationPlayer.stop()
 	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
+	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
+	$AudioEvolve.pitch_scale = sfx_pitch_modulation
+	$AudioEvolve.play()
 	var tween := create_tween()
 	tween.tween_property($CharacterPointer, "modulate", Color.TRANSPARENT, 0.5)
 	velocity = Vector2.ZERO

@@ -117,10 +117,14 @@ func weeb_ascension(weeb : PlayerCharacter):
 	GameInfos.camera_utils.shake()
 	GameInfos.camera_utils.flash_constrast(1.15, 0.25, false)
 	GameInfos.freeze_frame.slow_mo(0.1, 0.3)
+	var current_zoom : Vector2 = GameInfos.camera.zoom
+	GameInfos.camera_utils.interp_zoom(current_zoom * 1.05, 0.2)
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive and p != weeb:
 			var dir : Vector2 = weeb.position.direction_to(p.position)
 			p.knockback_velocity = dir * PROJECTION_VELOCITY
+	await get_tree().create_timer(0.2).timeout
+	GameInfos.camera_utils.interp_zoom(current_zoom, 0.1)
 
 func weeb_descension(weeb : PlayerCharacter):
 	GameInfos.camera_utils.shake()
