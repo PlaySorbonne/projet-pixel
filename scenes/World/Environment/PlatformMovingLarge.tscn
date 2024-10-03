@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc5mjgmgp7q14"]
+[gd_scene load_steps=4 format=3 uid="uid://dc5mjgmgp7q14"]
 
+[ext_resource type="Script" path="res://scripts/platform_moving_large.gd" id="1_hhn2e"]
 [ext_resource type="Texture2D" uid="uid://cgu3bsc8v3sm7" path="res://resources/images/environments/solid_platform_large.png" id="1_uun5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vaioa"]
@@ -7,6 +8,7 @@ size = Vector2(524, 44)
 
 [node name="Platform" type="StaticBody2D"]
 collision_mask = 0
+script = ExtResource("1_hhn2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vaioa")
@@ -15,3 +17,8 @@ shape = SubResource("RectangleShape2D_vaioa")
 texture_repeat = 2
 texture = ExtResource("1_uun5g")
 region_rect = Rect2(0, 0, 300, 20)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+z_index = 60
+position = Vector2(0, 400)
+gizmo_extents = 50.0

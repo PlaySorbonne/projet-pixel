@@ -8,4 +8,7 @@ class_name Teleporter
 		$Marker2D.position = value
 
 func _on_body_entered(body : Node2D):
-	body.position += teleport_offset.rotated(rotation)
+	if body.has_method("force_position"):
+		body.force_position(body.position + teleport_offset.rotated(rotation))
+	else:
+		body.position += teleport_offset.rotated(rotation)

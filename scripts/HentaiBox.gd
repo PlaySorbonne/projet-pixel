@@ -36,6 +36,13 @@ var combo = 1
 var following_weeb := false
 var ascended_weeb : WeebCharacter
 
+func force_position(new_pos : Vector2):
+	freeze = true
+	await get_tree().process_frame
+	position = new_pos
+	await get_tree().process_frame
+	freeze = false
+
 func shuffle_off_this_mortal_coil_cuz_physics_suck_and_the_world_is_a_broken_simulation():
 	var new_body := OBJECTIVE_BOX_RES.instantiate()
 	new_body.freeze = true
