@@ -146,7 +146,7 @@ func take_damage(damage : int, new_hitpoints : int):
 		current_health_bar.damage(unit_dmg, delay)
 		if d > 0:
 			healthbar_counter += 1
-			if healthbar_counter >= len(healthbars):
+			if healthbar_counter > len(healthbars):
 				d = 0
 		delay += unit_dmg
 	current_hitpoints = new_hitpoints
