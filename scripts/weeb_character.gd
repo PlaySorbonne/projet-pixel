@@ -10,7 +10,7 @@ const AUDIO_EXPLOSION : AudioStream = preload("res://resources/audio/sfx/gamepla
 const EXALTED_PARTICLES := preload("res://scenes/Characters/Evolutions/Animations/exalted_weeb_particles.tscn")
 
 @export var ascended_weeb_hitpoints := 3
-@export var ascended_scale := Vector2(1.1, 1.1)
+@export var ascended_scale := Vector2(1.05, 1.05)
 @export var ascended_weeb_attack_size := Vector2(2.0, 2.0)
 
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
