@@ -102,7 +102,10 @@ func set_focus_to(new_focus : FocusType):
 	if new_focus == FocusType.Screens:
 		current_nav_icon.grab_focus()
 	elif new_focus == FocusType.ScreenOptions:
-		current_screen.grab_control_node.grab_focus()
+		if current_screen.grab_control_node != null:
+			current_screen.grab_control_node.grab_focus()
+		else:
+			current_nav_icon.grab_focus()
 
 func _on_exit_progress_bar_bar_filled():
 	quit_to_menu()
