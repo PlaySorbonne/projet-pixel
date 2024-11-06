@@ -15,6 +15,7 @@ const LEVEL_TITLES : Array[String] = [
 var LEVEL_STAT_EDITOR : int = LEVEL_TITLES.find("STAT_EDITOR")
 const MUSIC_NAMES : Array[String] = [
 	"Secret Knowledge",
+	"Energy",
 	"Menu Theme"
 ]
 const GAME_MODE_TITLES : Array[String] = [
@@ -27,6 +28,7 @@ const GAME_MODE_DESCRIPTIONS : Array[String] = [
 ]
 const MUSICS_PATHS : Array[String] = [
 	"res://resources/audio/music/Secret_Knowledge.wav",
+	"res://resources/audio/music/Energy.mp3",
 	"res://resources/audio/music/Menu_Theme.mp3"
 ]
 const DEFAULT_PLAYER_COLORS : Array[Color] = [
