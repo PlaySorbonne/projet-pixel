@@ -296,7 +296,8 @@ func death(force := false):
 		$EvolveAnimation.play("death_left")
 	compute_hits = false
 	movement_velocity = Vector2.ZERO
-	GameInfos.freeze_frame.freeze(0.075)
+	GameInfos.freeze_frame.freeze(0.05)
+	GameInfos.freeze_frame.slow_mo(0.1, 0.35)
 	await get_tree().create_timer(1.0).timeout
 	compute_hits = true
 	super.death(true)
