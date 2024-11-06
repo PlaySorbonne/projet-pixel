@@ -8,7 +8,7 @@
 
 [node name="ShopItem" type="HBoxContainer"]
 custom_minimum_size = Vector2(50, 75)
-size_flags_vertical = 3
+size_flags_vertical = 0
 focus_mode = 2
 script = ExtResource("1_2ls65")
 
