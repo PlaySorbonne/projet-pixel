@@ -377,6 +377,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.05)
+	GameInfos.freeze_frame.slow_mo(0.1, 0.45)
 	GameInfos.camera_utils.shake(0.35, 15, 50, 5)
 	await get_tree().create_timer(0.05).timeout
 	velocity = vel
