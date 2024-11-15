@@ -12,6 +12,7 @@ const ANIME_IMPOSTOR = preload("res://scenes/World/Objects/anime_box_sprite.tscn
 	$SpawnLocation4
 ]
 @onready var player_camera : Camera2D = $Camera
+@onready var background_parent : Node2D = $Background
 
 func _ready():
 	$AnimeBoxHint.visible = false
@@ -27,6 +28,12 @@ func _ready():
 	anime.rotation = $AnimeBoxHint.rotation
 	add_child(anime)
 	$AnimeBoxHint.queue_free()
+
+func level_background_death_fx():
+	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(background_parent, "modulate", Color.BLACK, 0.05)
+	await get_tree().create_timer(0.85, true, false, true)
+	t.tween_property(background_parent, "modulate", Color.WHITE, 0.4)
 
 func set_music_pitch(new_pitch : float):
 	$Music.pitch_scale = new_pitch
