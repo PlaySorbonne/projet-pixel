@@ -2,21 +2,69 @@ extends Control
 class_name PauseMenu
 
 @onready var pause_menu_buttons := [$ButtonContinue, $ButtonSettings, $ButtonQuit]
+var button_tween : Tween = null
+var focused_button : int = 0
 
 func _ready():
 	visible = false
+	set_process_input(false)
 	modulate = Color.TRANSPARENT
+	for b : Button in pause_menu_buttons:
+		b.modulate = Color.WEB_GRAY
 
 func set_pause_menu_buttons_state(new_state : bool):
 	for b : Button in pause_menu_buttons:
 		b.disabled = not new_state
 
+func focus_button(fb : int):
+	reset_focus()
+	focused_button = fb
+	button_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_loops()
+	pause_menu_buttons[fb].color = Color.WHITE
+	button_tween.tween_property(
+		pause_menu_buttons[fb], "scale", Vector2(1.5, 1.5), 0.5)
+	button_tween.tween_property(
+		pause_menu_buttons[fb], "scale", Vector2(1.1, 1.1), 0.5)
+
+func reset_focus():
+	if button_tween != null:
+		button_tween.kill()
+		button_tween = null
+	var current_button : Button = pause_menu_buttons[focused_button]
+	current_button.scale = Vector2.ONE
+	current_button.modulate = Color.WEB_GRAY
+
+func confirm_button():
+	match focused_button:
+		0:
+			_on_button_continue_pressed()
+		1:
+			_on_button_settings_pressed()
+		2:
+			_on_button_quit_pressed()
+
 func enter_pause():
 	get_tree().paused = true
+	set_process_input(true)
 	set_pause_menu_buttons_state(true)
 	visible = true
 	var tween := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+	focus_button(0)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("down"):
+		var fb : int = focused_button + 1
+		if fb >= len(pause_menu_buttons):
+			fb = 0
+		focus_button(fb)
+	if Input.is_action_just_pressed("up"):
+		var fb : int = focused_button - 1
+		if fb < 0:
+			fb = len(pause_menu_buttons) - 1
+		focus_button(fb)
+	if Input.is_action_just_pressed("jump"):
+		confirm_button()
 
 func screen_transition(new_height : float):
 	var tween := create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
@@ -35,6 +83,7 @@ func _on_button_continue_pressed():
 	await tween.finished
 	visible = false
 	get_tree().paused = false
+	set_process_input(false)
 
 func _on_button_quit_pressed():
 	get_tree().paused = false
