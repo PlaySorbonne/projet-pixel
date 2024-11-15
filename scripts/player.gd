@@ -369,6 +369,7 @@ func attack():
 func eliminate(attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
 		return
+	GameInfos.world.level.level_background_death_fx()
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
 	compute_hits = false
 	alive = false
@@ -377,7 +378,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
 	GameInfos.freeze_frame.freeze(0.05)
-	GameInfos.freeze_frame.slow_mo(0.1, 0.45)
+	GameInfos.freeze_frame.slow_mo(0.1, 0.55)
 	GameInfos.camera_utils.shake(0.35, 15, 50, 5)
 	await get_tree().create_timer(0.05).timeout
 	velocity = vel
