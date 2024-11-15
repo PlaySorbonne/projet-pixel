@@ -20,11 +20,11 @@ func _ready():
 	GameInfos.camera_utils = self
 	$Shaker.object = camera
 
-func quick_zoom(tmp_zoom : Vector2, obj_pos : Vector2, duration : float, interp_duration : float):
+func quick_zoom(zoom_coeff : float, obj_pos : Vector2, duration : float, interp_duration : float):
 	var default_pos : Vector2 = camera.global_position
 	interp_pos(obj_pos, interp_duration)
 	var default_zoom : Vector2 = camera.zoom
-	var tween : Tween = interp_zoom(tmp_zoom, interp_duration)
+	var tween : Tween = interp_zoom(default_zoom * zoom_coeff, interp_duration)
 	await tween.finished
 	await get_tree().create_timer(duration).timeout
 	interp_zoom(default_zoom, interp_duration)

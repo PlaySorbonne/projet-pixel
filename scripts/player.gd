@@ -369,7 +369,8 @@ func attack():
 func eliminate(attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
 		return
-	GameInfos.world.level.level_background_death_fx()
+	var zoom_pos : Vector2 = (attacker.global_position + self.global_position) / 2.0
+	GameInfos.world.level.level_background_death_fx(zoom_pos)
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
 	compute_hits = false
 	alive = false

@@ -29,7 +29,9 @@ func _ready():
 	add_child(anime)
 	$AnimeBoxHint.queue_free()
 
-func level_background_death_fx():
+func level_background_death_fx(zoom_pos : Vector2):
+	const DURATION := 0.85
+	GameInfos.camera_utils.quick_zoom(1.2, zoom_pos, 0.6, 0.1)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	t.tween_property(background_parent, "modulate", Color.BLACK, 0.05)
 	await get_tree().create_timer(0.85, true, false, true)
