@@ -30,12 +30,12 @@ func _ready():
 	$AnimeBoxHint.queue_free()
 
 func level_background_death_fx(zoom_pos : Vector2):
-	const DURATION := 0.85
-	GameInfos.camera_utils.quick_zoom(1.2, zoom_pos, 0.6, 0.1)
+	GameInfos.camera_utils.quick_zoom(1.2, zoom_pos, 0.6, 0.04)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	t.tween_property(background_parent, "modulate", Color.BLACK, 0.05)
-	await get_tree().create_timer(0.85, true, false, true)
-	t.tween_property(background_parent, "modulate", Color.WHITE, 0.4)
+	await get_tree().create_timer(0.85).timeout
+	t = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(background_parent, "modulate", Color.WHITE, 0.6)
 
 func set_music_pitch(new_pitch : float):
 	$Music.pitch_scale = new_pitch
