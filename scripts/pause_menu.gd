@@ -19,12 +19,12 @@ func set_pause_menu_buttons_state(new_state : bool):
 func focus_button(fb : int):
 	reset_focus()
 	focused_button = fb
-	button_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_loops()
-	pause_menu_buttons[fb].color = Color.WHITE
+	button_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_loops()
+	pause_menu_buttons[fb].modulate = Color.WHITE
 	button_tween.tween_property(
-		pause_menu_buttons[fb], "scale", Vector2(1.5, 1.5), 0.5)
+		pause_menu_buttons[fb], "scale", Vector2(1.3, 1.3), 0.4)
 	button_tween.tween_property(
-		pause_menu_buttons[fb], "scale", Vector2(1.1, 1.1), 0.5)
+		pause_menu_buttons[fb], "scale", Vector2(1.15, 1.15), 0.3)
 
 func reset_focus():
 	if button_tween != null:
