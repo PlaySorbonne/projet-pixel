@@ -61,22 +61,26 @@ func _input(event : InputEvent):
 		
 	elif event.is_action_released("right"):
 		right_pressed = false
+		$Control/Icon/AnimationEmote.play("right")
 	if event.is_action_pressed("left") and not left_pressed:
+		$Control/Icon/AnimationEmote.play("left")
 		left_pressed = true
 	elif event.is_action_released("left"):
 		left_pressed = false
 	if event.is_action_pressed("up") and not up_pressed:
+		$Control/Icon/AnimationEmote.play("up")
 		up_pressed = true
 	elif event.is_action_released("up"):
 		up_pressed = false
 	if event.is_action_pressed("down") and not down_pressed:
+		$Control/Icon/AnimationEmote.play("down")
 		down_pressed = true
 	elif event.is_action_released("down"):
 		down_pressed = false
 
 	if event.is_action_pressed("attack") or event.is_action_pressed(
 					"special") or event.is_action_pressed("jump"):
-		$AudioStreamPlayerBoop.play()
+		$Control/Icon/AnimationEmote.play("big")
 		var tween := create_tween()
 		tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.1)
 		tween.tween_property(self, "scale", Vector2.ONE, 0.1)
