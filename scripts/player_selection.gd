@@ -9,6 +9,12 @@ const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
 
 @export var CEO_lines : Array[AudioStream] = []
 
+
+var right_pressed := false
+var left_pressed := false
+var up_pressed := false
+var down_pressed := false
+
 var with_voice := true
 var control_index : int = -1
 @export var control_type: bool:
@@ -40,6 +46,43 @@ func _ready():
 	if with_voice:
 		$AudioCEOVoice.stream = CEO_lines.pick_random()
 		$AudioCEOVoice.play()
+
+func _input(event : InputEvent):
+	var is_correct_control_type = false
+	if control_type == false:
+		is_correct_control_type = event is InputEventKey
+	elif control_type == true:
+		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
+		
+	if not (is_correct_control_type && event.device == control_index):
+		return
+	if event.is_action_pressed("right") and not right_pressed:
+		right_pressed = true
+		
+	elif event.is_action_released("right"):
+		right_pressed = false
+	if event.is_action_pressed("left") and not left_pressed:
+		left_pressed = true
+	elif event.is_action_released("left"):
+		left_pressed = false
+	if event.is_action_pressed("up") and not up_pressed:
+		up_pressed = true
+	elif event.is_action_released("up"):
+		up_pressed = false
+	if event.is_action_pressed("down") and not down_pressed:
+		down_pressed = true
+	elif event.is_action_released("down"):
+		down_pressed = false
+
+	if event.is_action_pressed("attack") or event.is_action_pressed(
+					"special") or event.is_action_pressed("jump"):
+		$AudioStreamPlayerBoop.play()
+		var tween := create_tween()
+		tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.1)
+		tween.tween_property(self, "scale", Vector2.ONE, 0.1)
+
+func tween_bump(direction : Vector2) -> void:
+	pass
 
 func check_winner():
 	$Control/LastWinner.visible = last_winner

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=43 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="AudioStream" uid="uid://dl32c66a8b8hv" path="res://resources/audio/voices/ceo/evolve_crunch_the_numbers.wav" id="2_85r2c"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="13_k5sox"]
 [ext_resource type="AudioStream" uid="uid://bm15da333kmj5" path="res://resources/audio/sfx/gameplay_sfx/_hitHurt0.wav" id="15_awc0i"]
 [ext_resource type="PackedScene" uid="uid://c8oyt5ebxrqbf" path="res://scenes/Menus/player_menu_cursor.tscn" id="16_i3sdb"]
+[ext_resource type="AudioStream" uid="uid://dd018wynokvu3" path="res://resources/audio/sfx/button_clicks/button_move.wav" id="23_dvwja"]
 
 [sub_resource type="Gradient" id="Gradient_ykewt"]
 colors = PackedColorArray(1, 0.627451, 0.917647, 1, 1, 1, 1, 1)
@@ -33,6 +34,242 @@ gradient = SubResource("Gradient_ykewt")
 resource_local_to_scene = true
 shader = ExtResource("4_dq808")
 shader_parameter/color = Color(0.819608, 0, 0.819608, 1)
+
+[sub_resource type="Animation" id="Animation_biwbh"]
+resource_name = "big"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.353553, 0.5, 0.353553),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249.858, -41.749)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.406126, 0.406126, 0.406126),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1.6, 1.6), Vector2(1.2, 1.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_62mnx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249.858, -41.749)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ffpgi"]
+resource_name = "left"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.353553, 2, 0.353553),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(249.858, -41.749), Vector2(325, -41.749), Vector2(249.858, -41.749)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
+"update": 0,
+"values": [0.0, 0.785398, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.406126, 2, 0.406126),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1.35, 1.35), Vector2(1.2, 1.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rorww"]
+_data = {
+"RESET": SubResource("Animation_62mnx"),
+"big": SubResource("Animation_biwbh"),
+"left": SubResource("Animation_ffpgi")
+}
 
 [sub_resource type="Animation" id="Animation_jy6dd"]
 resource_name = "jump"
@@ -498,13 +735,15 @@ max_length = 11
 flat = true
 
 [node name="Icon" type="TextureRect" parent="Control"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
-offset_left = 253.0
-offset_top = -38.0301
-offset_right = 353.0
-offset_bottom = 61.9699
+offset_left = 249.858
+offset_top = -41.749
+offset_right = 349.858
+offset_bottom = 58.251
 scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(50, 50)
 theme = ExtResource("2_v14l6")
 texture = ExtResource("3_xy52h")
 expand_mode = 1
@@ -521,6 +760,12 @@ pivot_offset = Vector2(50, 50)
 theme = ExtResource("2_v14l6")
 texture = ExtResource("3_xy52h")
 expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Icon"]
+libraries = {
+"": SubResource("AnimationLibrary_rorww")
+}
+playback_default_blend_time = 0.01
 
 [node name="LastWinner" type="Control" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -616,6 +861,7 @@ autoplay = true
 bus = &"sfx"
 
 [node name="PlayerMenuCursor" parent="." instance=ExtResource("16_i3sdb")]
+visible = false
 offset_left = 910.0
 offset_top = 43.0
 offset_right = 910.0
@@ -623,6 +869,9 @@ offset_bottom = 43.0
 
 [node name="AudioCEOVoice" type="AudioStreamPlayer" parent="."]
 bus = &"voices"
+
+[node name="AudioStreamPlayerBoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_dvwja")
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
