@@ -57,13 +57,12 @@ func _input(event : InputEvent):
 	if not (is_correct_control_type && event.device == control_index):
 		return
 	if event.is_action_pressed("right") and not right_pressed:
+		$Control/Icon/AnimationEmote.play("left")
 		right_pressed = true
-		
 	elif event.is_action_released("right"):
 		right_pressed = false
-		$Control/Icon/AnimationEmote.play("right")
 	if event.is_action_pressed("left") and not left_pressed:
-		$Control/Icon/AnimationEmote.play("left")
+		$Control/Icon/AnimationEmote.play("right")
 		left_pressed = true
 	elif event.is_action_released("left"):
 		left_pressed = false
@@ -82,7 +81,7 @@ func _input(event : InputEvent):
 					"special") or event.is_action_pressed("jump"):
 		$Control/Icon/AnimationEmote.play("big")
 		var tween := create_tween()
-		tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.1)
+		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.1)
 		tween.tween_property(self, "scale", Vector2.ONE, 0.1)
 
 func tween_bump(direction : Vector2) -> void:
