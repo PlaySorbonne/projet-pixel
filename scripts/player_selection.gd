@@ -80,9 +80,9 @@ func _input(event : InputEvent):
 	if event.is_action_pressed("attack") or event.is_action_pressed(
 					"special") or event.is_action_pressed("jump"):
 		$Control/Icon/AnimationEmote.play("big")
-		var tween := create_tween()
-		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.1)
-		tween.tween_property(self, "scale", Vector2.ONE, 0.1)
+		var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
+		tween.tween_property(self, "scale", Vector2.ONE, 0.15)
 
 func tween_bump(direction : Vector2) -> void:
 	pass

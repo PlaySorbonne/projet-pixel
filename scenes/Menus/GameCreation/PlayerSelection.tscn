@@ -111,6 +111,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 6.28319]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
+}
 
 [sub_resource type="Animation" id="Animation_62mnx"]
 length = 0.001
@@ -185,6 +197,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ffpgi"]
@@ -263,6 +287,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 0.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
+}
 
 [sub_resource type="Animation" id="Animation_t528i"]
 resource_name = "right"
@@ -339,6 +375,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
 }
 
 [sub_resource type="Animation" id="Animation_wjs77"]
@@ -417,6 +465,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 0.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
+}
 
 [sub_resource type="Animation" id="Animation_oembu"]
 resource_name = "down"
@@ -493,6 +553,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rorww"]
@@ -932,8 +1004,9 @@ _data = {
 [node name="PlayerSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 722.0
+offset_bottom = 70.0
+pivot_offset = Vector2(361, 35)
 script = ExtResource("1_i7nk8")
 CEO_lines = Array[AudioStream]([ExtResource("2_85r2c"), ExtResource("3_ubec0"), ExtResource("4_b4h4l"), ExtResource("5_jiuuj"), ExtResource("6_tp1gi"), ExtResource("7_i8urp")])
 
@@ -999,6 +1072,7 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_rorww")
 }
+playback_default_blend_time = 0.1
 
 [node name="LastWinner" type="Control" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -1049,6 +1123,7 @@ offset_left = 183.0
 offset_top = -20.0301
 offset_right = 230.0
 offset_bottom = 26.9699
+focus_mode = 0
 theme = ExtResource("5_036eb")
 script = ExtResource("8_07ko8")
 sound_array = Array[AudioStream]([ExtResource("9_5oqci"), ExtResource("10_fpwmj"), ExtResource("11_erfdq"), ExtResource("12_ldtoc"), ExtResource("13_k5sox")])
