@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
 		current_end_step += 1
 		execute_current_step()
+		
 	elif Input.is_action_just_pressed("attack"):
 		current_end_step = max(0, current_end_step-1)
 		execute_current_step()

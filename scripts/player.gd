@@ -321,7 +321,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		hit_owner = attacker
 	# track the player damages
 	if hit_owner.has_signal("damage_given"):
-		hit_owner.emit_signal("damage_given", self, damage)
+		hit_owner.emit_signal("damage_given", hit_owner, damage)
 	#
 	if god_mode:
 		super.hit(0, hit_owner, hit_location)
