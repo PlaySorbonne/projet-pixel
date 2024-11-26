@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=23 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -22,6 +22,24 @@
 [sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
 font = ExtResource("14_2pjlm")
 font_size = 45
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_73oqs"]
+font = ExtResource("14_2pjlm")
+font_size = 60
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6vqi"]
+font = ExtResource("14_2pjlm")
+font_size = 65
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -81,16 +99,47 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelMoneyText" type="Label" parent="CanvasLayer/EndScreen"]
-layout_mode = 0
-anchor_left = 0.514583
-anchor_top = 0.848148
-anchor_right = 0.734896
-anchor_bottom = 0.890741
-offset_right = -40.0
-offset_bottom = -3.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.517187
+anchor_top = 0.843518
+anchor_right = 0.737
+anchor_bottom = 0.886
+offset_right = 0.959961
+offset_bottom = 0.119934
 pivot_offset = Vector2(211.5, 23)
 text = "MONEY_COLLECTED:"
 label_settings = SubResource("LabelSettings_whqpp")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelVictoryText" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0515625
+anchor_top = 0.159259
+anchor_right = 0.222938
+anchor_bottom = 0.21563
+offset_right = 0.959961
+offset_bottom = 0.119934
+pivot_offset = Vector2(165, 30.5)
+text = "VICTORY:"
+label_settings = SubResource("LabelSettings_73oqs")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelVictoryPlayer" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243229
+anchor_top = 0.152778
+anchor_right = 0.437521
+anchor_bottom = 0.213778
+offset_right = 0.959961
+offset_bottom = 0.119934
+pivot_offset = Vector2(165, 33)
+text = "player"
+label_settings = SubResource("LabelSettings_o6vqi")
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelMoney" type="Label" parent="CanvasLayer/EndScreen"]
@@ -103,6 +152,14 @@ pivot_offset = Vector2(80.5, 25.5)
 text = "99999"
 label_settings = SubResource("LabelSettings_tdb17")
 horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerStats" type="GridContainer" parent="CanvasLayer/EndScreen"]
+layout_mode = 0
+anchor_left = 0.140625
+anchor_top = 0.253704
+anchor_right = 0.868229
+anchor_bottom = 0.783333
 metadata/_edit_use_anchors_ = true
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
