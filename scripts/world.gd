@@ -160,7 +160,6 @@ func get_p_stats(player : PlayerCharacter) -> PlayerStats:
 	return players_stats[player.player_ID]
 
 func on_player_taken_damage(player : PlayerCharacter, damage : int) -> void:
-	print(str(player) + " has taken " + str(damage) + " damage")
 	get_p_stats(player).damage_received += damage
 
 func on_player_given_damage(player : PlayerCharacter, damage : int) -> void:

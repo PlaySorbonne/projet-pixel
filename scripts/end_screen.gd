@@ -6,12 +6,14 @@ signal end_game_finished
 const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
 
 var is_end_game := false
-var current_end_step := 1
+var current_end_step := 0
 var end_finished := false
 
 @onready var player_stats_node : GridContainer = $PlayerStats
 
 func _ready() -> void:
+	set_process(false)
+	visible = false
 	print("WORLD -> CANVASLAYER -> END_SCREEN: REMEMBER TO HIDE END_SCREEN")
 	print("AND SHOW SCREEN_TRANSITION")
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
@@ -41,13 +43,18 @@ func _process(delta: float) -> void:
 		
 	elif Input.is_action_just_pressed("attack"):
 		current_end_step = max(0, current_end_step-1)
-		execute_current_step()
+		execute_current_step(false)
 
-func execute_current_step():
+func execute_current_step(forward := true):
 	match current_end_step:
 		0:
 			$AnimationEndSteps.play_backwards("end_enter")
 		1:
-			$AnimationEndSteps.play("end_enter", -1, 1.0, false)
+			if forward:
+				$AnimationEndSteps.play("end_enter", -1, 1.0, false)
+			else:
+				$AnimationEndSteps.play_backwards("end_stats")
 		2:
+			$AnimationEndSteps.play("end_stats", -1, 1.0, false)
+		3:
 			emit_signal("end_game_finished")
