@@ -91,6 +91,7 @@ func activate_players():
 		var p_stats : PlayerStats = PlayerStats.new()
 		players_stats[player.player_ID] = p_stats
 		p_stats.player_id = player.player_ID
+		p_stats.player_name = GameInfos.players_data[player.player_ID]["name"]
 		p_stats.current_evolution = player.current_evolution
 
 func spawn_players():
