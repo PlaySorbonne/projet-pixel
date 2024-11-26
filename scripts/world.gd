@@ -75,10 +75,10 @@ func end_game():
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
 	await get_tree().create_timer(3.5, true, false, true).timeout
-	#get_tree().paused = true
-	#
-	#
-	#get_tree().paused = false
+	get_tree().paused = true
+	
+	
+	get_tree().paused = false
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(LOBBY_PATH)

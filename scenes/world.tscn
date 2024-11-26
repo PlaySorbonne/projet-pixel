@@ -374,7 +374,6 @@ layer = 5
 
 [node name="EndScreen" type="Control" parent="CanvasLayer"]
 process_mode = 4
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -502,6 +501,7 @@ libraries = {
 }
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
+visible = false
 default_duration = 1.0
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
