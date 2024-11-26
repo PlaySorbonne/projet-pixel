@@ -5,8 +5,8 @@ signal has_special(new_special : bool)
 signal player_evolved
 signal eliminated(player : PlayerCharacter)
 
-signal damage_taken(amount : int)
-signal damage_given(amount : int)
+signal damage_taken(player : PlayerCharacter, amount : int)
+signal damage_given(player : PlayerCharacter, amount : int)
 signal player_kill
 
 enum Controls {KEYBOARD, CONTROLLER}
@@ -311,7 +311,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		return
 	var hit_owner : Node2D
 	play_hit_sfx()
-	emit_signal("damage_taken", damage)
+	emit_signal("damage_taken", self, damage)
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
@@ -321,7 +321,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		hit_owner = attacker
 	# track the player damages
 	if hit_owner.has_signal("damage_given"):
-		hit_owner.emit_signal("damage_given", damage)
+		hit_owner.emit_signal("damage_given", self, damage)
 	#
 	if god_mode:
 		super.hit(0, hit_owner, hit_location)
