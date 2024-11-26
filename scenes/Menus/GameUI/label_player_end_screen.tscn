@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ipgx6oa6nd6p"]
+
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="1_l3p4d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3phba"]
+font = ExtResource("1_l3p4d")
+font_size = 30
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[node name="LabelPlayerEndScreen" type="Label"]
+text = "PLAYER"
+label_settings = SubResource("LabelSettings_3phba")
+metadata/_edit_use_anchors_ = true
