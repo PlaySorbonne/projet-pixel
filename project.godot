@@ -26,6 +26,7 @@ VaultData="*res://scripts/vault_data.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://resources/images/interface/hand_point.png"
 
 [input]
 
