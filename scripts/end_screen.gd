@@ -4,9 +4,10 @@ class_name EndScreen
 signal end_game_finished
 
 const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
+const TROPHY_RES := preload("res://scenes/Menus/GameCreation/last_winner.tscn")
 
 var is_end_game := false
-var current_end_step := 0
+var current_end_step := 1
 var end_finished := false
 
 @onready var player_stats_node : GridContainer = $PlayerStats
@@ -21,6 +22,7 @@ func _ready() -> void:
 func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 	is_end_game = true
 	set_process(true)
+	var is_first_winner_node := true
 	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
@@ -31,6 +33,12 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 			var l : Label = LABEL_END_SCREEN_RES.instantiate()
 			l.text = s
 			player_stats_node.add_child(l)
+			if is_first_winner_node:
+				is_first_winner_node = false
+				var trophy : Control = TROPHY_RES.instantiate()
+				l.add_child(trophy)
+				trophy.position = Vector2(-150, -50)
+				trophy.declare_winner()
 	$AnimationEndSteps.play("end_enter")
 	visible = true
 
