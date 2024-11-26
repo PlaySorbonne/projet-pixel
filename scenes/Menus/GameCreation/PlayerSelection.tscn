@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=39 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="AudioStream" uid="uid://dl32c66a8b8hv" path="res://resources/audio/voices/ceo/evolve_crunch_the_numbers.wav" id="2_85r2c"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
 [ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
 [ext_resource type="AudioStream" uid="uid://jo0sssk2ypuo" path="res://resources/audio/voices/ceo/evolve_mwahahahah.wav" id="5_jiuuj"]
-[ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="6_mw5do"]
 [ext_resource type="AudioStream" uid="uid://njayaiydgx6w" path="res://resources/audio/voices/ceo/evolve_the_anime.wav" id="6_tp1gi"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
 [ext_resource type="AudioStream" uid="uid://8w07yredhnia" path="res://resources/audio/voices/ceo/evolve_time_to_fire_nerds.wav" id="7_i8urp"]
@@ -18,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bs0dgu6akfaop" path="res://resources/audio/sfx/button_clicks/click0.wav" id="9_5oqci"]
 [ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="10_fpwmj"]
 [ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="11_erfdq"]
+[ext_resource type="PackedScene" uid="uid://ctlvv0tyiy3p7" path="res://scenes/Menus/GameCreation/last_winner.tscn" id="11_gin5s"]
 [ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="12_ldtoc"]
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="13_k5sox"]
 [ext_resource type="AudioStream" uid="uid://bm15da333kmj5" path="res://resources/audio/sfx/gameplay_sfx/_hitHurt0.wav" id="15_awc0i"]
@@ -577,262 +577,6 @@ _data = {
 "up": SubResource("Animation_wjs77")
 }
 
-[sub_resource type="Animation" id="Animation_jy6dd"]
-resource_name = "jump"
-length = 4.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.2, 3),
-"transitions": PackedFloat32Array(0.378929, 0.535887, 0.392292, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, -6.28319, -6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.2, 3),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 1.7411, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -150), Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_aeng1"]
-resource_name = "rotate"
-length = 3.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.7, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.517632, 0.392292, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, -6.28319, -6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.7, 3, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6vf5u"]
-resource_name = "squash"
-length = 7.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.5, 2.1, 3.2, 4.2, 4.7, 5.9),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(0.35, 1.5), Vector2(1, 1), Vector2(0.2, 2.6), Vector2(0.2, 2.6), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.3, 4.5, 4.7),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 2.21914, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_u0ac5"]
-resource_name = "swell"
-length = 5.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 3.9, 4.3),
-"transitions": PackedFloat32Array(0.554785, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [-12.5664, -12.5664, 0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.2, 3, 3.9, 4.3),
-"transitions": PackedFloat32Array(0.378929, 0.406126, 0.378929, 0.406126, 0.406126),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0), Vector2(-6, 6), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_putn4"]
-resource_name = "swing"
-length = 5.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1, 2, 2.3, 4),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.535887, 0.535887, 0.378929, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, 3.14159, 3.14159, 6.28319, 6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.1, 1.5),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(0.5, 1.2), Vector2(1.3, 0.4), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.9, 1.4, 2.2, 2.8, 4),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.297302, 1.7411, 0.31864, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-50, 0), Vector2(200, 0), Vector2(200, 0), Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_u17hy"]
-resource_name = "tilt"
-length = 5.7
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7, 1.1, 1.7, 2.1, 2.7, 3.1, 3.5),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.535887, 0.378929),
-"update": 0,
-"values": [0.0, 0.0, 0.523599, 0.523599, -0.523599, -0.523599, 0.523599, 0.523599, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.378929),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.4, 3.9, 4.5),
-"transitions": PackedFloat32Array(0.378929, 1, 0.392292, 0.378929, 0.378929),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoar"]
-_data = {
-"jump": SubResource("Animation_jy6dd"),
-"rotate": SubResource("Animation_aeng1"),
-"squash": SubResource("Animation_6vf5u"),
-"swell": SubResource("Animation_u0ac5"),
-"swing": SubResource("Animation_putn4"),
-"tilt": SubResource("Animation_u17hy")
-}
-
 [sub_resource type="Animation" id="Animation_vuycv"]
 length = 0.001
 tracks/0/type = "value"
@@ -1074,32 +818,7 @@ libraries = {
 }
 playback_default_blend_time = 0.1
 
-[node name="LastWinner" type="Control" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 0
-offset_left = 391.0
-offset_top = -60.0
-offset_right = 391.0
-offset_bottom = -60.0
-scale = Vector2(1.5, 1.5)
-
-[node name="texture" type="TextureRect" parent="Control/LastWinner"]
-modulate = Color(0.901961, 0.792157, 0, 1)
-z_index = 10
-layout_mode = 1
-anchors_preset = -1
-offset_right = 75.0
-offset_bottom = 75.0
-pivot_offset = Vector2(37.5, 37.5)
-mouse_filter = 2
-theme = ExtResource("2_v14l6")
-texture = ExtResource("6_mw5do")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/LastWinner/texture"]
-libraries = {
-"": SubResource("AnimationLibrary_cpoar")
-}
+[node name="LastWinner" parent="Control" instance=ExtResource("11_gin5s")]
 
 [node name="ControlType" type="TextureRect" parent="Control"]
 modulate = Color(0, 0, 0, 1)
@@ -1183,7 +902,6 @@ stream = ExtResource("23_dvwja")
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
-[connection signal="animation_finished" from="Control/LastWinner/texture/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Control/ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="color_changed" from="Control/ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="Control/ButtonCancel" to="." method="_on_button_cancel_pressed"]

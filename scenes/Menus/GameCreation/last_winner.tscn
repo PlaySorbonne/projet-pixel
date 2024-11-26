@@ -1,0 +1,290 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctlvv0tyiy3p7"]
+
+[ext_resource type="Script" path="res://scripts/last_winner.gd" id="1_iv7om"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_wecpf"]
+[ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="3_mqd0e"]
+
+[sub_resource type="Animation" id="Animation_jy6dd"]
+resource_name = "jump"
+length = 4.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.2, 3),
+"transitions": PackedFloat32Array(0.378929, 0.535887, 0.392292, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, -6.28319, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.2, 3),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 1.7411, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -150), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aeng1"]
+resource_name = "rotate"
+length = 3.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.517632, 0.392292, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, -6.28319, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6vf5u"]
+resource_name = "squash"
+length = 7.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.5, 2.1, 3.2, 4.2, 4.7, 5.9),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(1, 1), Vector2(0.35, 1.5), Vector2(1, 1), Vector2(0.2, 2.6), Vector2(0.2, 2.6), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.3, 4.5, 4.7),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 2.21914, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u0ac5"]
+resource_name = "swell"
+length = 5.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.9, 4.3),
+"transitions": PackedFloat32Array(0.554785, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [-12.5664, -12.5664, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.2, 3, 3.9, 4.3),
+"transitions": PackedFloat32Array(0.378929, 0.406126, 0.378929, 0.406126, 0.406126),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0), Vector2(-6, 6), Vector2(0, 0), Vector2(5, -10), Vector2(2, 7), Vector2(7, -4), Vector2(-6, 6), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_putn4"]
+resource_name = "swing"
+length = 5.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1, 2, 2.3, 4),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.535887, 0.535887, 0.378929, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, 3.14159, 3.14159, 6.28319, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.1, 1.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1.2), Vector2(0.5, 1.2), Vector2(1.3, 0.4), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1.4, 2.2, 2.8, 4),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.297302, 1.7411, 0.31864, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-50, 0), Vector2(200, 0), Vector2(200, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u17hy"]
+resource_name = "tilt"
+length = 5.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1.1, 1.7, 2.1, 2.7, 3.1, 3.5),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.378929, 0.535887, 0.378929),
+"update": 0,
+"values": [0.0, 0.0, 0.523599, 0.523599, -0.523599, -0.523599, 0.523599, 0.523599, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.378929),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.4, 3.9, 4.5),
+"transitions": PackedFloat32Array(0.378929, 1, 0.392292, 0.378929, 0.378929),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 20), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cpoar"]
+_data = {
+"jump": SubResource("Animation_jy6dd"),
+"rotate": SubResource("Animation_aeng1"),
+"squash": SubResource("Animation_6vf5u"),
+"swell": SubResource("Animation_u0ac5"),
+"swing": SubResource("Animation_putn4"),
+"tilt": SubResource("Animation_u17hy")
+}
+
+[node name="LastWinner" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 391.0
+offset_top = -60.0
+offset_right = 391.0
+offset_bottom = -60.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_iv7om")
+
+[node name="texture" type="TextureRect" parent="."]
+modulate = Color(0.901961, 0.792157, 0, 1)
+z_index = 10
+layout_mode = 1
+anchors_preset = -1
+offset_right = 75.0
+offset_bottom = 75.0
+pivot_offset = Vector2(37.5, 37.5)
+mouse_filter = 2
+theme = ExtResource("2_wecpf")
+texture = ExtResource("3_mqd0e")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="texture"]
+libraries = {
+"": SubResource("AnimationLibrary_cpoar")
+}
