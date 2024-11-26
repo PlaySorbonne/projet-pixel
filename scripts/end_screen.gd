@@ -24,18 +24,9 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 			arr_stats.append(p_stats)
 	for p_stats : PlayerStats in arr_stats:
 		for s : String in p_stats.get_stats_as_array():
-		var l : Label = LABEL_END_SCREEN_RES.instantiate()
-		l.text = p_stats.player_name
-		player_stats_node.add_child(l)
-		l = LABEL_END_SCREEN_RES.instantiate()
-		l.text = str(p_stats.damage_given)
-		player_stats_node.add_child(l)
-		l = LABEL_END_SCREEN_RES.instantiate()
-		l.text = str(p_stats.damage_received)
-		player_stats_node.add_child(l)
-		l = LABEL_END_SCREEN_RES.instantiate()
-		l.text = str(p_stats.kills)
-		player_stats_node.add_child(l)
+			var l : Label = LABEL_END_SCREEN_RES.instantiate()
+			l.text = p_stats.s
+			player_stats_node.add_child(l)
 		
 
 func _process(delta: float) -> void:
