@@ -59,6 +59,7 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
+	$GameHUD/PauseMenu.can_pause_game = false
 	$AudioWeebVictory.stream = weeb_victory_audios.pick_random()
 	$AudioWeebVictory.play()
 	GameInfos.freeze_frame.slow_mo(0.1, 1.0)

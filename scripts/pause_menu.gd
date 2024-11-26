@@ -5,6 +5,8 @@ class_name PauseMenu
 var button_tween : Tween = null
 var focused_button : int = 0
 
+var can_pause_game := true
+
 func _ready():
 	visible = false
 	set_process_input(false)
@@ -44,6 +46,8 @@ func confirm_button():
 			_on_button_quit_pressed()
 
 func enter_pause():
+	if not can_pause_game:
+		return
 	get_tree().paused = true
 	set_process_input(true)
 	set_pause_menu_buttons_state(true)
