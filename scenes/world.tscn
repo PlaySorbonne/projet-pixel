@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=28 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -50,15 +50,6 @@ shadow_offset = Vector2(4, 5)
 [sub_resource type="LabelSettings" id="LabelSettings_o6vqi"]
 font = ExtResource("14_2pjlm")
 font_size = 65
-outline_size = 14
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(4, 5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_sih52"]
-font = ExtResource("14_2pjlm")
-font_size = 34
 outline_size = 14
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -383,7 +374,6 @@ layer = 5
 
 [node name="EndScreen" type="Control" parent="CanvasLayer"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -490,7 +480,7 @@ text = "player"
 label_settings = SubResource("LabelSettings_o6vqi")
 metadata/_edit_use_anchors_ = true
 
-[node name="PlayerStats" type="GridContainer" parent="CanvasLayer/EndScreen"]
+[node name="PlayerStats" type="HBoxContainer" parent="CanvasLayer/EndScreen"]
 layout_mode = 0
 anchor_left = 0.140625
 anchor_top = 0.253704
@@ -499,58 +489,6 @@ anchor_bottom = 0.783333
 offset_top = -0.000335693
 offset_right = 160.0
 offset_bottom = -0.000366211
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 70
-columns = 6
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsPlayer" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "PLAYER"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsDamageGiven" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "DAMAGE_G
-"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsDamageReceived" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "DAMAGE_R"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsDamageKills" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "KILLS"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsDamageDeaths" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "DEATHS"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsDamageEvolution" type="Label" parent="CanvasLayer/EndScreen/PlayerStats"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-text = "EVOLUTION"
-label_settings = SubResource("LabelSettings_sih52")
-horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationEndSteps" type="AnimationPlayer" parent="CanvasLayer/EndScreen"]
@@ -559,6 +497,7 @@ libraries = {
 }
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
+visible = false
 default_duration = 1.0
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]

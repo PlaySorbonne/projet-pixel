@@ -1,0 +1,193 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1f8a6o8u211p"]
+
+[ext_resource type="Script" path="res://scripts/player_victory_stats.gd" id="1_0o4ni"]
+[ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="2_34f7c"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="3_suex5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_07qwx"]
+font = ExtResource("3_suex5")
+font_size = 28
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t4py5"]
+font = ExtResource("3_suex5")
+font_size = 20
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_48c2w"]
+font = ExtResource("3_suex5")
+font_size = 20
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w56mw"]
+font = ExtResource("3_suex5")
+font_size = 30
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[node name="PlayerVictoryStats" type="Control"]
+custom_minimum_size = Vector2(300, 500)
+layout_mode = 3
+anchor_right = 0.15625
+anchor_bottom = 0.462963
+script = ExtResource("1_0o4ni")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+anchor_top = 0.02
+anchor_right = 0.426804
+anchor_bottom = 0.209002
+offset_right = -13.0411
+offset_bottom = 15.4988
+rotation = -0.127368
+texture = ExtResource("2_34f7c")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelName" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.15
+anchor_top = 0.204
+anchor_right = 1.00333
+anchor_bottom = 0.266
+text = "PLAYER_NAME"
+label_settings = SubResource("LabelSettings_07qwx")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelEvolution" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.05
+anchor_top = 0.28
+anchor_right = 0.95
+anchor_bottom = 0.342
+text = "LAST_EVOLUTION"
+label_settings = SubResource("LabelSettings_t4py5")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDeaths" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.05
+anchor_top = 0.36
+anchor_right = 0.946667
+anchor_bottom = 0.422
+text = "DEATHS:"
+label_settings = SubResource("LabelSettings_t4py5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LabelDeaths"]
+layout_mode = 0
+anchor_left = 0.446097
+anchor_right = 1.08178
+anchor_bottom = 0.774194
+text = "99"
+label_settings = SubResource("LabelSettings_48c2w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelKills" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.0833333
+anchor_top = 0.42
+anchor_right = 0.98
+anchor_bottom = 0.482
+text = "KILLS:"
+label_settings = SubResource("LabelSettings_t4py5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LabelKills"]
+layout_mode = 0
+anchor_left = 0.446097
+anchor_right = 1.08178
+anchor_bottom = 0.774194
+text = "99"
+label_settings = SubResource("LabelSettings_48c2w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDamageTaken" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.116667
+anchor_top = 0.48
+anchor_right = 1.01333
+anchor_bottom = 0.542
+text = "DAMAGE_TAKEN:"
+label_settings = SubResource("LabelSettings_t4py5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LabelDamageTaken"]
+layout_mode = 0
+anchor_left = 0.446097
+anchor_right = 1.08178
+anchor_bottom = 0.774194
+text = "99"
+label_settings = SubResource("LabelSettings_48c2w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDamageGiven" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.15
+anchor_top = 0.54
+anchor_right = 1.04667
+anchor_bottom = 0.602
+text = "DAMAGE_GIVEN:"
+label_settings = SubResource("LabelSettings_t4py5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LabelDamageGiven"]
+layout_mode = 0
+anchor_left = 0.446097
+anchor_right = 1.08178
+anchor_bottom = 0.774194
+text = "99"
+label_settings = SubResource("LabelSettings_48c2w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelTitles" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.05
+anchor_top = 0.64
+anchor_right = 0.946667
+anchor_bottom = 0.702
+text = "TITLES:"
+label_settings = SubResource("LabelSettings_w56mw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LabelTitles"]
+layout_mode = 0
+anchor_left = 0.0557621
+anchor_top = 1.29032
+anchor_right = 0.929368
+anchor_bottom = 5.0
+text = "N/A"
+label_settings = SubResource("LabelSettings_t4py5")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
