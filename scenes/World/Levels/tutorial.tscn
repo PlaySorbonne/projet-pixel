@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcq313ac7mpup"]
+
+[ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_nfic4"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="2_icsol"]
+
+[node name="Tutorial" instance=ExtResource("1_nfic4")]
+script = ExtResource("2_icsol")
+
+[node name="TutorialText" type="Label" parent="." index="8"]
+offset_right = 40.0
+offset_bottom = 23.0

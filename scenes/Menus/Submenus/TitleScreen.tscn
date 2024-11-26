@@ -119,6 +119,27 @@ alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
 
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1396.0
+offset_top = 909.291
+offset_right = -90.0001
+offset_bottom = -12.7085
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -0.0675432
+theme = ExtResource("2_y6t6y")
+theme_override_colors/font_outline_color = Color(0.341176, 0.0941176, 0.415686, 1)
+theme_override_font_sizes/font_size = 80
+text = "TUTORIAL"
+flat = true
+alignment = 0
+script = ExtResource("3_20l1y")
+sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+
 [node name="Pointer0" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -179,6 +200,22 @@ texture = ExtResource("3_53g2f")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="Pointer4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1303.0
+offset_top = 934.292
+offset_right = -535.0
+offset_bottom = -46.7085
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0130077
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
+
 [node name="AudioArrowUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_evnhp")
 pitch_scale = 1.1
@@ -195,3 +232,4 @@ bus = &"narrator"
 [connection signal="pressed" from="Vault" to="." method="_on_vault_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]

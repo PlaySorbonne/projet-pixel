@@ -4,36 +4,41 @@ signal ButtonStartPressed
 signal ButtonVaultPressed
 signal ButtonSettingsPressed
 signal ButtonCreditsPressed
+signal ButtonTutorialPressed
 signal ButtonSelected
 
 const position_x_normal := 250.0
 const position_x_selected := 300.0
-const button_colors := [Color.RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE]
+const button_colors := [Color.RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE, Color.BLUE_VIOLET]
 
 @export var buttons_sfx : Array[AudioStream] = [
 	preload("res://resources/audio/voices/narrator/play.wav"),
 	preload("res://resources/audio/voices/narrator/vault.wav"),
 	preload("res://resources/audio/voices/narrator/settings.wav"),
-	preload("res://resources/audio/voices/narrator/credits.wav")
+	preload("res://resources/audio/voices/narrator/credits.wav"),
+	preload("res://resources/audio/voices/narrator/play.wav") # TODO: change sound
 ]
 
 var signals := [
 	"ButtonStartPressed",
 	"ButtonVaultPressed",
 	"ButtonSettingsPressed",
-	"ButtonCreditsPressed"
+	"ButtonCreditsPressed",
+	"ButtonTutorialPressed"
 ]
 @onready var pointers := [
 	$Pointer0,
 	$Pointer1,
 	$Pointer2,
-	$Pointer3
+	$Pointer3,
+	$Pointer4
 ]
 @onready var buttons := [
 	$StartButton,
 	$Vault,
 	$Settings,
-	$Credits
+	$Credits,
+	$Tutorial
 ]
 var selected_button := 1
 var can_input := false
@@ -67,11 +72,16 @@ func _on_credits_pressed():
 	select_button(3)
 	confirm_with_delay()
 	set_narrator_sound(buttons_sfx[3])
+	
+func _on_tutorial_pressed() -> void:
+	select_button(4)
+	confirm_with_delay()
+	set_narrator_sound(buttons_sfx[4])
 
 func confirm_with_delay():
 	await get_tree().create_timer(0.2).timeout
 	confirm_button()
-
+	
 func reset_state():
 	can_input = true
 
