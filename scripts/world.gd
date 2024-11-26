@@ -114,8 +114,8 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
-	body.damage_given.connect(on_player_given_damage.bind(body))
-	body.damage_taken.connect(on_player_taken_damage.bind(body))
+	body.damage_given.connect(on_player_given_damage)
+	body.damage_taken.connect(on_player_taken_damage)
 	body.player_kill.connect(on_player_kill.bind(body))
 	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
@@ -160,6 +160,7 @@ func get_p_stats(player : PlayerCharacter) -> PlayerStats:
 	return players_stats[player.player_ID]
 
 func on_player_taken_damage(player : PlayerCharacter, damage : int) -> void:
+	print(str(player) + " has taken " + str(damage) + " damage")
 	get_p_stats(player).damage_received += damage
 
 func on_player_given_damage(player : PlayerCharacter, damage : int) -> void:

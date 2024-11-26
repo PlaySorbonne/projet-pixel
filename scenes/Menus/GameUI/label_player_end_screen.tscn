@@ -14,4 +14,5 @@ shadow_offset = Vector2(4, 5)
 [node name="LabelPlayerEndScreen" type="Label"]
 text = "PLAYER"
 label_settings = SubResource("LabelSettings_3phba")
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
