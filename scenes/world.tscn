@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=27 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -29,6 +29,15 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tdb17"]
+font = ExtResource("14_2pjlm")
+font_size = 50
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_73oqs"]
 font = ExtResource("14_2pjlm")
 font_size = 60
@@ -47,14 +56,163 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 5)
 
-[sub_resource type="LabelSettings" id="LabelSettings_tdb17"]
-font = ExtResource("14_2pjlm")
-font_size = 50
-outline_size = 14
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(4, 5)
+[sub_resource type="Animation" id="Animation_5v8nr"]
+resource_name = "end_enter"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.35, 2),
+"update": 0,
+"values": [Vector2(-3000, -1500), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelMoneyText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4, 2),
+"update": 0,
+"values": [Vector2(9999, 9999), Vector2(9999, 9999), Vector2(2500, 1200), Vector2(992.999, 910.999)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.35, 2),
+"update": 0,
+"values": [-0.610865, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelMoneyText:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 2),
+"update": 0,
+"values": [1.0472, 1.0472, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelVictoryText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 2),
+"update": 0,
+"values": [Vector2(-700, -200), Vector2(-700, -200), Vector2(99, 172)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LabelVictoryText:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 2),
+"update": 0,
+"values": [-0.872665, -0.872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_b7gmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelMoneyText:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(992.999, 910.999)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelMoneyText:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelVictoryText:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(99, 172)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LabelVictoryText:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5jf1"]
+_data = {
+"RESET": SubResource("Animation_b7gmt"),
+"end_enter": SubResource("Animation_5v8nr")
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -65,7 +223,6 @@ weeb_victory_audios = Array[AudioStream]([ExtResource("2_8xaln"), ExtResource("3
 layer = 5
 
 [node name="EndScreen" type="Control" parent="CanvasLayer"]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,10 +266,22 @@ anchor_top = 0.843518
 anchor_right = 0.737
 anchor_bottom = 0.886
 offset_right = 0.959961
-offset_bottom = 0.119934
+offset_bottom = 0.119446
 pivot_offset = Vector2(211.5, 23)
 text = "MONEY_COLLECTED:"
 label_settings = SubResource("LabelSettings_whqpp")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelMoney" type="Label" parent="CanvasLayer/EndScreen/LabelMoneyText"]
+layout_mode = 0
+anchor_left = 1.03073
+anchor_top = 0.0217402
+anchor_right = 1.37825
+anchor_bottom = 1.13042
+pivot_offset = Vector2(80.5, 25.5)
+text = "99999"
+label_settings = SubResource("LabelSettings_tdb17")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
@@ -131,30 +300,16 @@ label_settings = SubResource("LabelSettings_73oqs")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="LabelVictoryPlayer" type="Label" parent="CanvasLayer/EndScreen"]
+[node name="LabelVictoryPlayer" type="Label" parent="CanvasLayer/EndScreen/LabelVictoryText"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.243229
-anchor_top = 0.152778
-anchor_right = 0.437521
-anchor_bottom = 0.213778
-offset_right = 0.959961
-offset_bottom = 0.119934
+anchor_left = 1.11515
+anchor_top = -0.114744
+anchor_right = 1.82121
+anchor_bottom = 0.967212
 pivot_offset = Vector2(165, 33)
 text = "player"
 label_settings = SubResource("LabelSettings_o6vqi")
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelMoney" type="Label" parent="CanvasLayer/EndScreen"]
-layout_mode = 0
-anchor_left = 0.744271
-anchor_top = 0.844444
-anchor_right = 0.828125
-anchor_bottom = 0.891667
-pivot_offset = Vector2(80.5, 25.5)
-text = "99999"
-label_settings = SubResource("LabelSettings_tdb17")
-horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerStats" type="GridContainer" parent="CanvasLayer/EndScreen"]
@@ -164,6 +319,11 @@ anchor_top = 0.253704
 anchor_right = 0.868229
 anchor_bottom = 0.783333
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationEndSteps" type="AnimationPlayer" parent="CanvasLayer/EndScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_w5jf1")
+}
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 visible = false
