@@ -27,6 +27,7 @@ var level : Level
 var has_weeb_arrived := false
 var game_ended := false
 var players_left : int = 0
+var players_stats : Array[PlayerStats] = []
 
 func _ready():
 	GameInfos.game_started = true
@@ -84,8 +85,13 @@ func end_game():
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
+	players_stats = []
 	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
+		var p_stats : PlayerStats = PlayerStats.new()
+		players_stats.append(p_stats)
+		p_stats.player_id = player.player_ID
+		p_stats.current_evolution = player.current_evolution
 
 func spawn_players():
 	var player_number = 0
@@ -100,6 +106,7 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
+	
 	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)

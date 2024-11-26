@@ -1,6 +1,8 @@
 extends Control
 class_name EndScreen
 
+const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
+
 var is_end_game := false
 var current_end_step := 0
 
@@ -13,6 +15,8 @@ func _ready() -> void:
 func init_end_screen() -> void:
 	is_end_game = true
 	set_process(true)
+	
+	var l : Label = LABEL_END_SCREEN_RES.instantiate()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):

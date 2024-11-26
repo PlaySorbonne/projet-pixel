@@ -5,6 +5,11 @@ signal has_special(new_special : bool)
 signal player_evolved
 signal eliminated(player : PlayerCharacter)
 
+signal damage_taken(amount : int)
+signal damage_given(amount : int)
+signal player_death
+signal player_kill
+
 enum Controls {KEYBOARD, CONTROLLER}
 enum Evolutions {CEO, Manager, Employee, Mascot, Weeb}
 const EvolutionCharacters = {
@@ -307,6 +312,7 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		return
 	var hit_owner : Node2D
 	play_hit_sfx()
+	emit_signal("damage_taken", damage)
 	if attacker != null and damage >= knockback_damage_threshold:
 		knockback_velocity = ((self.global_position - hit_location
 		).normalized() + Vector2(0, -0.2)) * knockback_multiplier * hit_power * 750.0 * damage
@@ -314,6 +320,10 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		hit_owner = attacker.get_hit_owner()
 	else:
 		hit_owner = attacker
+	# track the player damages
+	if hit_owner.has_signal("damage_given"):
+		hit_owner.emit_signal("damage_given", damage)
+	#
 	if god_mode:
 		super.hit(0, hit_owner, hit_location)
 	else:
@@ -325,6 +335,10 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		GameInfos.freeze_frame.freeze(0.015)
 		$AudioLineHurt.stream = audio_hurt.pick_random()
 	else:
+		# track the player kills
+		if hit_owner.has_signal("player_kill"):
+			hit_owner.emit_signal("player_kill")
+			
 		$AudioLineHurt.stream = audio_death.pick_random()
 	$AudioLineHurt.play()
 
@@ -375,6 +389,15 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	compute_hits = false
 	alive = false
 	computing_movement = false
+	# track the player kills
+	var hit_owner : Node
+	if attacker.has_method("get_hit_owner"):
+		hit_owner = attacker.get_hit_owner()
+	else:
+		hit_owner = attacker
+	if hit_owner.has_signal("player_kill"):
+		hit_owner.emit_signal("player_kill")
+	# 
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(5, false)
 	velocity = Vector2.ZERO
