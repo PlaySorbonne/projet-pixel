@@ -7,7 +7,6 @@ signal eliminated(player : PlayerCharacter)
 
 signal damage_taken(amount : int)
 signal damage_given(amount : int)
-signal player_death
 signal player_kill
 
 enum Controls {KEYBOARD, CONTROLLER}

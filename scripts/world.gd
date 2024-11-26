@@ -27,7 +27,7 @@ var level : Level
 var has_weeb_arrived := false
 var game_ended := false
 var players_left : int = 0
-var players_stats : Array[PlayerStats] = []
+var players_stats : Dictionary = {}
 
 func _ready():
 	GameInfos.game_started = true
@@ -85,11 +85,11 @@ func end_game():
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
-	players_stats = []
+	players_stats = {}
 	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
 		var p_stats : PlayerStats = PlayerStats.new()
-		players_stats.append(p_stats)
+		players_stats[player.player_ID] = p_stats
 		p_stats.player_id = player.player_ID
 		p_stats.current_evolution = player.current_evolution
 
@@ -106,7 +106,9 @@ func spawn_players():
 func connect_fighter_to_world(body : PlayerCharacter):
 	body.fighter_died.connect(on_player_death)
 	body.player_evolved.connect(connect_fighter_to_world)
-	
+	body.damage_given.connect(on_player_given_damage.bind(body))
+	body.damage_taken.connect(on_player_taken_damage.bind(body))
+	body.player_kill.connect(on_player_kill.bind(body))
 	GameInfos.camera.add_target(body)
 	if body.current_evolution == PlayerCharacter.Evolutions.Weeb:
 		weeb_arrival(body)
@@ -138,14 +140,27 @@ func weeb_ascension(weeb : PlayerCharacter):
 	await get_tree().create_timer(0.2).timeout
 	GameInfos.camera_utils.interp_zoom(current_zoom, 0.1)
 
-func weeb_descension(weeb : PlayerCharacter):
+func weeb_descension(weeb : PlayerCharacter) -> void:
 	GameInfos.camera_utils.shake()
 	GameInfos.camera_utils.flash_constrast(1.05, 0.25, false)
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed("pause_game"):
 		$GameHUD/PauseMenu.enter_pause()
 
-func on_player_death(player : FighterCharacter):
+func get_p_stats(player : PlayerCharacter) -> PlayerStats:
+	return players_stats[player.player_ID]
+
+func on_player_taken_damage(player : PlayerCharacter, damage : int) -> void:
+	get_p_stats(player).damage_received += damage
+
+func on_player_given_damage(player : PlayerCharacter, damage : int) -> void:
+	get_p_stats(player).damage_given += damage
+
+func on_player_kill(player : PlayerCharacter) -> void:
+	get_p_stats(player).kills += 1
+
+func on_player_death(player : PlayerCharacter) -> void:
+	get_p_stats(player).deaths += 1
 	await get_tree().create_timer(game_mode.respawn_time).timeout
 	player.spawn(player_spawns[player.player_ID])
