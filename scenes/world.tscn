@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=21 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -16,6 +16,26 @@
 [ext_resource type="AudioStream" uid="uid://bha73k1i14apw" path="res://resources/audio/voices/weeb/victory_7.wav" id="9_f5ckb"]
 [ext_resource type="PackedScene" uid="uid://4cf0hnddgr1l" path="res://scenes/Menus/GameUI/game_hud.tscn" id="10_kpnks"]
 [ext_resource type="PackedScene" uid="uid://b8swqp82uj8tl" path="res://scenes/Menus/GameUI/start_game_screen.tscn" id="10_y5qku"]
+[ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="13_a2fhi"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="14_2pjlm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
+font = ExtResource("14_2pjlm")
+font_size = 45
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tdb17"]
+font = ExtResource("14_2pjlm")
+font_size = 50
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_105og")
@@ -25,7 +45,68 @@ weeb_victory_audios = Array[AudioStream]([ExtResource("2_8xaln"), ExtResource("3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
+[node name="EndScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorBackground" type="ColorRect" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -73.0
+offset_right = 223.0
+offset_bottom = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.118334
+color = Color(0.356345, 0.264081, 1.44392e-07, 0.6)
+
+[node name="TextureCoin" type="TextureRect" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.839583
+anchor_top = 0.82963
+anchor_right = 0.88125
+anchor_bottom = 0.9
+pivot_offset = Vector2(40, 38)
+texture = ExtResource("13_a2fhi")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelMoneyText" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 0
+anchor_left = 0.514583
+anchor_top = 0.848148
+anchor_right = 0.734896
+anchor_bottom = 0.890741
+offset_right = -40.0
+offset_bottom = -3.0
+pivot_offset = Vector2(211.5, 23)
+text = "MONEY_COLLECTED:"
+label_settings = SubResource("LabelSettings_whqpp")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelMoney" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 0
+anchor_left = 0.744271
+anchor_top = 0.844444
+anchor_right = 0.828125
+anchor_bottom = 0.891667
+pivot_offset = Vector2(80.5, 25.5)
+text = "99999"
+label_settings = SubResource("LabelSettings_tdb17")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
+visible = false
 default_duration = 1.0
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
