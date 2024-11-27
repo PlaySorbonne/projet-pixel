@@ -136,13 +136,18 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:
 			arr_stats.append(p_stats)
+	# create and add nodes to display player stats and titles
 	for p_stats : PlayerStats in arr_stats:
 		for s : String in p_stats.get_stats_as_array():
 			var l : PlayerVictoryStats = LABEL_END_SCREEN_RES.instantiate()
 			l.text = s
 			player_stats_node.add_child(l)
-			var common_titles : Array[String] 
-			#l.set_player_titles()
+			# transfer titles data to node
+			var common_titles : Array[String] = given_titles[p_stats.player_id]["common"]
+			var rare_titles : Array[String] = given_titles[p_stats.player_id]["rare"]
+			var legendary_titles : Array[String] = given_titles[p_stats.player_id]["legendary"]
+			l.set_player_titles(common_titles, rare_titles, legendary_titles)
+			# display trophy is current player won
 			if is_first_winner_node:
 				is_first_winner_node = false
 				var trophy : Control = TROPHY_RES.instantiate()
@@ -150,6 +155,7 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 				trophy.position = Vector2(-150, -50)
 				trophy.declare_winner()
 	$AnimationEndSteps.play("end_enter")
+	await get_tree().process_frame
 	visible = true
 
 func _process(delta: float) -> void:

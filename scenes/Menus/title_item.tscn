@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1wmkpj4f8wlu"]
+
+[ext_resource type="Script" path="res://scripts/title_item.gd" id="1_5h142"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="1_wk7r5"]
+
+[sub_resource type="FontVariation" id="FontVariation_j4xvw"]
+base_font = ExtResource("1_wk7r5")
+variation_embolden = -0.25
+spacing_space = 3
+spacing_top = 5
+
+[node name="TitleItem" type="Control"]
+custom_minimum_size = Vector2(304, 19)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5h142")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(330, 26)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -2.0
+offset_right = 11.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(152, 9.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.489)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/normal_font = SubResource("FontVariation_j4xvw")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center][rainbow freq=0.8 sat=0.5 val=0.9][shake rate=20.0 level=5 connected=1][tornado radius=3.0 freq=6.0 connected=1]The Strongest Man In the World[/tornado][/shake][/rainbow][/center]"
+fit_content = true
