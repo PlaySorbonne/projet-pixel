@@ -6,6 +6,70 @@ signal end_game_finished
 const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
 const TROPHY_RES := preload("res://scenes/Menus/GameCreation/last_winner.tscn")
 
+
+const COMMON_TITLES : Array[String] = [
+	"No.1 Weeb",
+	"The Chosen One",
+	"I'll be back",
+	"Super Sayen",
+	"Luigi Numbah 2",
+	"Waluigi time",
+	"Zero",
+	"Hokage",
+	"Fullmetal Weeb",
+	"Hero Killer",
+	"Professor Layton",
+	"Hero of Time",
+	"Procrastinator",
+	"Darth Weeb",
+	"Pirate King",
+	"Weebborn",
+	"Dom Slayer",
+	"Chocoboss",
+	"Overcaffeinated CEO",
+	"Respawn Lord",
+	"Yeeted",
+	"Red Shell",
+	"Electric Fox",
+	"Shonen Spirit",
+	"Kung Fu Buffalo",
+	"AFK King",
+	"Beta Tester",
+	"Button Masher",
+	"Joystick Rider",
+	"Critical Failer",
+	"Energy Drinker",
+	"4chan user",
+	"Cosplayer",
+]
+
+const RARE_TITLES : Array[String] = [
+	"Over 9000",
+	"Dora la Exploradora",
+	"King of Kongs",
+	"The Tarnished",
+	"Biggest Chocobo",
+	"The Chicken Whisperer",
+	"Grass-Cutting Champion",
+	"Pokemon Master",
+	"Min-Maxer",
+	"Linux Overlord",
+	"Taco Master",
+	"Hero of Rhyme",
+	"Memelord",
+	"Scary Shiny Glasses",
+	"Hentai Anthropologist",
+	"The Strongest Man in the World",
+]
+
+const LEGENDARY_TITLES : Array[String] = [
+	"World Champion",
+	"Anilinkz Completionist",
+	"Supreme Commander",
+	"Decorporater",
+	"Ascended", 
+]
+
 var is_end_game := false
 var current_end_step := 1
 var end_finished := false
@@ -18,6 +82,11 @@ func _ready() -> void:
 	print("WORLD -> CANVASLAYER -> END_SCREEN: REMEMBER TO HIDE END_SCREEN")
 	print("AND SHOW SCREEN_TRANSITION")
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
+
+func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
+	var player_titles : Dictionary
+	
+	return player_titles
 
 func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 	is_end_game = true
