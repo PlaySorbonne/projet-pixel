@@ -4,6 +4,7 @@ class_name TitleItem
 enum Rarities {Common, Rare, Legendary}
 
 var item_rarity := Rarities.Common
+var player_stats_parent : PlayerVictoryStats
 
 func set_title(title : String, rarity : Rarities) -> void:
 	const RARE_COLORS := ["purple", "red", "cadet_blue", "violet", "teal", "slate_blue",
@@ -41,8 +42,10 @@ func set_title(title : String, rarity : Rarities) -> void:
 func anim_intro() -> void:
 	match item_rarity:
 		Rarities.Common:
-			pass
+			$AnimationPlayer.play("intro_common")
 		Rarities.Rare:
-			pass
+			$AnimationPlayer.play("intro_rare")
 		Rarities.Legendary:
-			pass
+			$AnimationPlayer.play("intro_legendary")
+			await $AnimationPlayer.animation_finished
+			player_stats_parent.shake_node()
