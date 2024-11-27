@@ -1,46 +1,68 @@
 extends VBoxContainer
 class_name PlayerVictoryStats
 
+const COMMON_TITLES : Array[String] = [
+	"No.1 Weeb",
+	"The Chosen One",
+	"I'll be back",
+	"Super Sayen",
+	"Luigi Numbah 2",
+	"Waluigi time",
+	"Zero",
+	"Hokage",
+	"Fullmetal Weeb",
+	"Hero Killer",
+	"Professor Layton",
+	"Hero of Time",
+	"Procrastinator",
+	"Darth Weeb",
+	"Pirate King",
+	"Weebborn",
+	"Dom Slayer",
+	"Chocoboss",
+	"Overcaffeinated CEO",
+	"Respawn Lord",
+	"Yeeted",
+	"Red Shell",
+	"Electric Fox",
+	"Shonen Spirit",
+	"Kung Fu Buffalo",
+	"AFK King",
+	"Beta Tester",
+	"Button Masher",
+	"Joystick Rider",
+	"Critical Failer",
+	"Energy Drinker",
+	"4chan user",
+	"Cosplayer",
+]
 
+const RARE_TITLES : Array[String] = [
+	"Over 9000",
+	"Dora la Exploradora",
+	"King of Kongs",
+	"The Tarnished",
+	"Biggest Chocobo",
+	"The Chicken Whisperer",
+	"Grass-Cutting Champion",
+	"Pokemon Master",
+	"Min-Maxer",
+	"Linux Overlord",
+	"Taco Master",
+	"Hero of Rhyme",
+	"Memelord",
+	"Scary Shiny Glasses",
+	"Hentai Anthropologist",
+]
 
-"""
-Specific titles:
-	victory:
-		The No.1 Hero
-		Avatar
-		I'll be back
-		Super Sayen
-	
-	0 dmg given, 0 kills:
-		Luigi
-		Zero
-	
-	most damage inflicted:
-		Hokage
-	
-	never died:
-		FullMeta	l
-	
-	most kills:
-		Hero Killer
-		Shinigami
-
-Unique titles:
-	over 9000 dmg:
-		Over 9000
-	no dmg received, no death, over 10 kills & 100 dmg & victory:
-		The Strongest Man in the World
-
-Random titles:
-	Professor Layton
-	Pac-Man
-	Hero of Time
-	Procrastinator
-	Darth Weeb
-	Dora la Exploradora
-	Pirate King
-	King of Kongs
-"""
+const LEGENDARY_TITLES : Array[String] = [
+	"The Strongest Man in the World",
+	"World Champion",
+	"Anilinkz Completionist",
+	"Supreme Commander",
+	"Decorporater",
+	"Ascended",
+]
 
 func set_player_evolution(current_ev : int):
 	str(PlayerCharacter.Evolutions.keys()[current_ev])
