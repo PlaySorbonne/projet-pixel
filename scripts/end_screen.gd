@@ -106,7 +106,6 @@ func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
 				player_titles[player_ids.pick_random()][t] = i
-		
 	# returns a dictionary of :
 	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
