@@ -4,6 +4,7 @@ class_name TitleItem
 enum Rarities {Common, Rare, Legendary}
 
 var item_rarity := Rarities.Common
+
 var player_stats_parent : PlayerVictoryStats
 
 func set_title(title : String, rarity : Rarities) -> void:
