@@ -11,7 +11,7 @@ const COMMON_TITLES : Array[String] = [
 	"No.1 Weeb",
 	"The Chosen One",
 	"I'll be back",
-	"Super Sayen",
+	"Super Saiyan",
 	"Luigi Numbah 2",
 	"Waluigi time",
 	"Zero",
@@ -84,12 +84,10 @@ func _ready() -> void:
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
 
 func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
-	const TITLES := [COMMON_TITLES, RARE_TITLES, LEGENDARY_TITLES]
-	const TITLES_TOTAL_TRIES := [24, 12, 1]
-	const TITLES_CHANCE := [0.75, 0.4, 0.4]
-	const TITLES_EFFECTS := [
-		
-	]
+	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
+	const TITLES_TOTAL_TRIES := [1, 12, 24]
+	const TITLES_CHANCE := [0.4, 0.4, 0.75]
+	const MAX_TITLES_PER_PLAYER := 5
 	var player_titles : Dictionary = {}
 	var nb_players : int = len(player_ids)
 	for id : int in player_ids:
@@ -105,7 +103,10 @@ func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
 			player_titles[winner_id][selected_titles[0]] = i
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
-				player_titles[player_ids.pick_random()][t] = i
+				var current_id : int = player_ids.pick_random()
+				player_titles[current_id][t] = i
+				if len(player_titles[current_id]) >= MAX_TITLES_PER_PLAYER:
+					player_ids.erase(current_id)
 	# returns a dictionary of :
 	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
