@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcq313ac7mpup"]
+[gd_scene load_steps=7 format=3 uid="uid://bflrd0s034ydy"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_nfic4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="2_icsol"]
 [ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="3_6o5ey"]
 [ext_resource type="Texture2D" uid="uid://cq70tdval5880" path="res://resources/images/environments/sky.png" id="3_rkwri"]
-[ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="4_t0vy8"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_gkeak"]
 [ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="4_xlnq8"]
 
 [node name="Tutorial" instance=ExtResource("1_nfic4")]
@@ -21,13 +21,16 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1641.0
-offset_bottom = 320.0
+offset_left = 36.0
+offset_top = 16.0
+offset_right = 1591.0
+offset_bottom = 329.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_t0vy8")
-text = "bkuhgbyigyiu"
-fit_content = true
+theme = ExtResource("4_gkeak")
+theme_override_constants/outline_size = 7
+bbcode_enabled = true
+text = "press [img]res://resources/images/interface/Xbox Series/Default/xbox_button_a_outline.png[/img] for a little trolling"
 
 [node name="Wall" parent="." index="9" instance=ExtResource("3_6o5ey")]
 modulate = Color(0, 0, 0, 1)

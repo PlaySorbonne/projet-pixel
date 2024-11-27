@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bweblmvgtqiir"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bweblmvgtqiir"]
 
 [ext_resource type="FontFile" uid="uid://cnxxja6tq45tu" path="res://resources/fonts/files/Unispace Bd.otf" id="1_4wkce"]
+[ext_resource type="FontFile" uid="uid://hlbfprlqp4w4" path="res://resources/fonts/files/Blue Ridge.otf" id="2_h1mfu"]
 
 [sub_resource type="FontVariation" id="FontVariation_qgvlf"]
 base_font = ExtResource("1_4wkce")
@@ -12,3 +13,8 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/font_sizes/font_size = 47
 Label/fonts/font = SubResource("FontVariation_qgvlf")
+RichTextLabel/constants/outline_size = 25
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/font_sizes/font_size = 47
+RichTextLabel/fonts/font = ExtResource("2_h1mfu")
