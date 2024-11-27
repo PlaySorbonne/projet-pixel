@@ -38,5 +38,5 @@ theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/normal_font = SubResource("FontVariation_j4xvw")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center][rainbow freq=0.8 sat=0.5 val=0.9][shake rate=20.0 level=5 connected=1][tornado radius=3.0 freq=6.0 connected=1]The Strongest Man In the World[/tornado][/shake][/rainbow][/center]"
+text = "[center][color=dark_green]The Strongest Man In the World"
 fit_content = true
