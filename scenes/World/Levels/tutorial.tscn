@@ -55,4 +55,10 @@ position = Vector2(1835, 458)
 scale = Vector2(5, 30)
 
 [node name="AnimeBox" parent="." index="13" instance=ExtResource("4_xlnq8")]
-position = Vector2(1328, 461)
+position = Vector2(852, 554)
+
+[node name="AnimeSpawnLocation" type="Node2D" parent="." index="14"]
+position = Vector2(846, 659)
+
+[node name="EnnemySpawnLocation" type="Node2D" parent="." index="15"]
+position = Vector2(1270, 526)

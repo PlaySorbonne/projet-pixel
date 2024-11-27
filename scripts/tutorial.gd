@@ -14,6 +14,18 @@ var STEPS_TEXTS = [
 ]
 
 var current_step: int = 0
+	
+func init_step_1():
+	pass
+	
+func init_step_2():
+	pass
+
+func init_step_3():
+	pass
+	
+func init_step_4():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
