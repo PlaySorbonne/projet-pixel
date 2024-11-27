@@ -84,8 +84,31 @@ func _ready() -> void:
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
 
 func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
-	var player_titles : Dictionary
-	
+	const TITLES := [COMMON_TITLES, RARE_TITLES, LEGENDARY_TITLES]
+	const TITLES_TOTAL_TRIES := [24, 12, 1]
+	const TITLES_CHANCE := [0.75, 0.4, 0.4]
+	const TITLES_EFFECTS := [
+		
+	]
+	var player_titles : Dictionary = {}
+	var nb_players : int = len(player_ids)
+	for id : int in player_ids:
+		player_titles[id] = {}
+	for i : int in range(TITLES.size()):
+		var current_titles : Array[String] = TITLES[i]
+		current_titles.shuffle()
+		var selected_titles : Array[String] = []
+		for _j : int in range(max(1, TITLES_TOTAL_TRIES[i]/4)):
+			if randf() < TITLES_CHANCE[i]:
+				selected_titles.append(current_titles.pop_back())
+		if len(selected_titles) == 1:
+			player_titles[winner_id][selected_titles[0]] = i
+		elif len(selected_titles) > 1:
+			for t : String in selected_titles:
+				player_titles[player_ids.pick_random()][t] = i
+		
+	# returns a dictionary of :
+	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
 
 func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
@@ -93,6 +116,8 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 	set_process(true)
 	var is_first_winner_node := true
 	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
+	# random titles we give to each player
+	var given_titles : Dictionary = init_player_titles(GameInfos.players.keys(), winner_id)
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:
