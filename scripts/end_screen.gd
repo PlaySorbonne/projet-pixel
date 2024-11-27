@@ -87,27 +87,41 @@ func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
 	const TITLES_TOTAL_TRIES := [1, 12, 24]
 	const TITLES_CHANCE := [0.4, 0.4, 0.75]
+	const RARITIES := ["common", "rare", "legendary"]
 	const MAX_TITLES_PER_PLAYER := 5
+	# initialize stuff
 	var player_titles : Dictionary = {}
 	var nb_players : int = len(player_ids)
+	var players_nb_titles : Dictionary = {}
 	for id : int in player_ids:
-		player_titles[id] = {}
+		player_titles[id] = {
+			RARITIES[0] : [],
+			RARITIES[1] : [],
+			RARITIES[2] : []
+		}
+		players_nb_titles[id] = 0
+	# generate and distribute titles
 	for i : int in range(TITLES.size()):
 		var current_titles : Array[String] = TITLES[i]
 		current_titles.shuffle()
+		# select titles to distribute
 		var selected_titles : Array[String] = []
 		for _j : int in range(max(1, TITLES_TOTAL_TRIES[i]/4)):
 			if randf() < TITLES_CHANCE[i]:
 				selected_titles.append(current_titles.pop_back())
-		if len(selected_titles) == 1:
-			player_titles[winner_id][selected_titles[0]] = i
+		# give legendary title to winner
+		if i == 0 and len(selected_titles) == 1:
+			player_titles[winner_id][RARITIES[0]].append(selected_titles[0])
+			players_nb_titles[winner_id] += 1
+		# distribute common and rare titles
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
 				var current_id : int = player_ids.pick_random()
-				player_titles[current_id][t] = i
-				if len(player_titles[current_id]) >= MAX_TITLES_PER_PLAYER:
+				player_titles[winner_id][RARITIES[i]].append(t)
+				players_nb_titles[current_id] += 1
+				if players_nb_titles[current_id] >= MAX_TITLES_PER_PLAYER:
 					player_ids.erase(current_id)
-	# returns a dictionary of :
+	# returns a dictionary of the titles given to each player:
 	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
 
@@ -124,9 +138,11 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 			arr_stats.append(p_stats)
 	for p_stats : PlayerStats in arr_stats:
 		for s : String in p_stats.get_stats_as_array():
-			var l : Label = LABEL_END_SCREEN_RES.instantiate()
+			var l : PlayerVictoryStats = LABEL_END_SCREEN_RES.instantiate()
 			l.text = s
 			player_stats_node.add_child(l)
+			var common_titles : Array[String] 
+			#l.set_player_titles()
 			if is_first_winner_node:
 				is_first_winner_node = false
 				var trophy : Control = TROPHY_RES.instantiate()
