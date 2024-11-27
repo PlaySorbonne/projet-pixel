@@ -124,10 +124,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1396.0
-offset_top = 909.291
-offset_right = -90.0001
-offset_bottom = -12.7085
+offset_left = 1250.0
+offset_top = 925.0
+offset_right = -236.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = -0.0675432
@@ -139,6 +139,21 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+
+[node name="Pointer4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1139.0
+offset_top = 929.0
+offset_right = -699.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53g2f")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Pointer0" type="TextureRect" parent="."]
 layout_mode = 1
@@ -196,22 +211,6 @@ offset_right = -1733.0
 offset_bottom = -266.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_53g2f")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Pointer4" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1303.0
-offset_top = 934.292
-offset_right = -535.0
-offset_bottom = -46.7085
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.0130077
 texture = ExtResource("3_53g2f")
 expand_mode = 3
 stretch_mode = 5

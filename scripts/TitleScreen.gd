@@ -11,6 +11,14 @@ const position_x_normal := 250.0
 const position_x_selected := 300.0
 const button_colors := [Color.RED, Color.GOLD, Color.DARK_CYAN, Color.ROYAL_BLUE, Color.BLUE_VIOLET]
 
+@onready var positions_x_normal : Array[int] = [
+	250,
+	250,
+	250,
+	250,
+	1250
+]
+
 @export var buttons_sfx : Array[AudioStream] = [
 	preload("res://resources/audio/voices/narrator/play.wav"),
 	preload("res://resources/audio/voices/narrator/vault.wav"),
@@ -108,6 +116,8 @@ func _process(delta : float):
 		b.emit_signal("pressed")
 
 func select_button(button_number : int):
+	
+	# Bouton  déja séléctionné
 	if selected_button == button_number:
 		get_tree().create_timer(0.1).timeout
 		emit_signal("ButtonSelected")
@@ -118,25 +128,40 @@ func select_button(button_number : int):
 	var new_pointer : TextureRect = pointers[button_number]
 	old_button.anchor_left = 0.0
 	selected_button = button_number
-	new_pointer.position.x = 45.0
+	new_pointer.position.x = positions_x_normal[button_number] - 100
 	
+	# Mise en avant nouveau bouton
 	var t2 : Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
-	t2.tween_property(new_button, "position", Vector2(position_x_selected, new_button.position.y), 0.15)
+	t2.tween_property(new_button, "position", Vector2(positions_x_normal[button_number] + 50, new_button.position.y), 0.15)
 	t2.set_parallel()
 	t2.tween_property(new_button, "scale", Vector2(1.2, 1.2), 0.15)
 	t2.tween_property(new_button, "modulate", button_colors[button_number], 0.15)
+	
+	# Retrait ancien pointeur
 	t2.tween_property(old_pointer, "modulate", Color.TRANSPARENT, 0.15)
-	t2.tween_property(old_pointer, "position", Vector2(45, old_pointer.position.y), 0.25)
+	if button_number < 4:
+		t2.tween_property(old_pointer, "position", Vector2(positions_x_normal[button_number] - 100, old_pointer.position.y), 0.25)
+	else:
+		t2.tween_property(old_pointer, "position", Vector2(positions_x_normal[button_number - 1] - 100, old_pointer.position.y), 0.25)
 
 	await get_tree().create_timer(0.05).timeout
 
+	# Retrait ancien bouton
 	var t1 : Tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
-	t1.tween_property(old_button, "position", Vector2(position_x_normal, old_button.position.y), 0.2)
+	if old_button == $Tutorial:
+		t1.tween_property(old_button, "position", Vector2(positions_x_normal[4], old_button.position.y), 0.2)
+	else:
+		if button_number == 4:
+			t1.tween_property(old_button, "position", Vector2(positions_x_normal[button_number - 1], old_button.position.y), 0.2)
+		else:
+			t1.tween_property(old_button, "position", Vector2(positions_x_normal[button_number], old_button.position.y), 0.2)
 	t1.set_parallel()
 	t1.tween_property(old_button, "scale", Vector2.ONE, 0.2)
 	t1.tween_property(old_button, "modulate", Color.WHITE, 0.2)
+	
+	# Retrait ancien pointeur
 	t1.tween_property(new_pointer, "modulate", button_colors[button_number], 0.2)
-	t1.tween_property(new_pointer, "position", Vector2(105, new_pointer.position.y), 0.2)
+	t1.tween_property(new_pointer, "position", Vector2(positions_x_normal[button_number] - 100, new_pointer.position.y), 0.2)
 	
 	get_tree().create_timer(0.2).timeout
 	emit_signal("ButtonSelected")
