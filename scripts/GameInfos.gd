@@ -4,7 +4,8 @@ const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
 	"res://scenes/World/Levels/level_high_ground.tscn",
 	"res://scenes/World/Levels/level_training.tscn",
-	"res://scenes/World/Levels/level_stat_editor.tscn"
+	"res://scenes/World/Levels/level_stat_editor.tscn",
+	"res://scenes/World/Levels/tutorial.tscn"
 ]
 const LEVEL_TITLES : Array[String] = [
 	"DEFAULT",

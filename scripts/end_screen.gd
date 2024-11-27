@@ -10,7 +10,7 @@ var is_end_game := false
 var current_end_step := 1
 var end_finished := false
 
-@onready var player_stats_node : GridContainer = $PlayerStats
+@onready var player_stats_node : HBoxContainer = $PlayerStats
 
 func _ready() -> void:
 	set_process(false)

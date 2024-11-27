@@ -1,11 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcq313ac7mpup"]
+[gd_scene load_steps=7 format=3 uid="uid://bcq313ac7mpup"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_nfic4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="2_icsol"]
+[ext_resource type="PackedScene" uid="uid://bb8cmasgxp6l4" path="res://scenes/World/Environment/StaticWall.tscn" id="3_6o5ey"]
+[ext_resource type="Texture2D" uid="uid://cq70tdval5880" path="res://resources/images/environments/sky.png" id="3_rkwri"]
+[ext_resource type="Theme" uid="uid://bweblmvgtqiir" path="res://resources/fonts/vault.tres" id="4_t0vy8"]
+[ext_resource type="PackedScene" uid="uid://cv1w5v10663nr" path="res://scenes/World/Objects/ObjectiveBox.tscn" id="4_xlnq8"]
 
 [node name="Tutorial" instance=ExtResource("1_nfic4")]
 script = ExtResource("2_icsol")
 
-[node name="TutorialText" type="Label" parent="." index="8"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Background" parent="." index="5"]
+position = Vector2(818, 234)
+texture = ExtResource("3_rkwri")
+
+[node name="AnimeBoxHint" parent="." index="6"]
+visible = false
+
+[node name="TutorialText" type="RichTextLabel" parent="." index="8"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1641.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_t0vy8")
+text = "bkuhgbyigyiu"
+fit_content = true
+
+[node name="Wall" parent="." index="9" instance=ExtResource("3_6o5ey")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(847, 860)
+scale = Vector2(33.08, 5)
+
+[node name="Wall2" parent="." index="10" instance=ExtResource("3_6o5ey")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(822, -170)
+scale = Vector2(33.08, 5)
+
+[node name="Wall3" parent="." index="11" instance=ExtResource("3_6o5ey")]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(-190, 435)
+scale = Vector2(5, 30)
+
+[node name="Wall4" parent="." index="12" instance=ExtResource("3_6o5ey")]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+position = Vector2(1835, 458)
+scale = Vector2(5, 30)
+
+[node name="AnimeBox" parent="." index="13" instance=ExtResource("4_xlnq8")]
+position = Vector2(1328, 461)

@@ -4,6 +4,8 @@ class_name Persistent
 
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VAULT_PATH =  "res://scenes/Menus/Vault/VaultPersistent.tscn" 
+const WORLD_PATH = "res://scenes/world.tscn"
+const TUTORIAL_PATH = "res://scenes/World/Levels/tutorial.tscn"
 # previous vault path:  "res://scenes/world.tscn"
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 
@@ -83,6 +85,17 @@ func _on_title_screen_button_settings_pressed():
 
 func _on_title_screen_button_credits_pressed():
 	go_to_screen(Screens.Credits)
+	
+func _on_title_screen_button_tutorial_pressed():
+	GameInfos.perform_deep_reset()
+	if not can_change_scene:
+		return
+	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	var player_index := player.player_ID
+	GameInfos.add_player(player)
+	GameInfos.selected_level = 4
+	GlobalVariables.skip_fight_intro = true
+	smooth_change_to_scene(WORLD_PATH)
 
 func _on_settings_screen_button_back_pressed():
 	back_to_title_screen()
