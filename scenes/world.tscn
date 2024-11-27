@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=29 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="13_a2fhi"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="13_bfsq2"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="14_2pjlm"]
+[ext_resource type="PackedScene" uid="uid://b1f8a6o8u211p" path="res://scenes/Menus/player_victory_stats.tscn" id="16_rgt6v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
 font = ExtResource("14_2pjlm")
@@ -489,7 +490,21 @@ anchor_bottom = 0.783333
 offset_top = -0.000335693
 offset_right = 160.0
 offset_bottom = -0.000366211
+theme_override_constants/separation = 25
+alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerVictoryStats" parent="CanvasLayer/EndScreen/PlayerStats" instance=ExtResource("16_rgt6v")]
+layout_mode = 2
+
+[node name="PlayerVictoryStats2" parent="CanvasLayer/EndScreen/PlayerStats" instance=ExtResource("16_rgt6v")]
+layout_mode = 2
+
+[node name="PlayerVictoryStats3" parent="CanvasLayer/EndScreen/PlayerStats" instance=ExtResource("16_rgt6v")]
+layout_mode = 2
+
+[node name="PlayerVictoryStats4" parent="CanvasLayer/EndScreen/PlayerStats" instance=ExtResource("16_rgt6v")]
+layout_mode = 2
 
 [node name="AnimationEndSteps" type="AnimationPlayer" parent="CanvasLayer/EndScreen"]
 libraries = {
