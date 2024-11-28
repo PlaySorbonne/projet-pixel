@@ -21,6 +21,7 @@ var is_winner := false
 ]
 
 func _ready() -> void:
+	$Main/ColorRect.position.x = -6000.0
 	$Main/TexturePortrait.scale = Vector2.ZERO
 	for l : Label in stats_labels + subnodes:
 		l.modulate = Color.TRANSPARENT
@@ -67,9 +68,9 @@ func intro_tween_label(l : Label) -> void:
 
 func set_label_int_value(label : Label, value : int) -> void:
 	for _i : int in range(30):
-		label.text = str(randi_range(0, value)).pad_zeros(4)
+		label.text = str(randi_range(0, 999)).pad_zeros(3)
 		await get_tree().create_timer(0.075).timeout
-	label.text = str(value)
+	label.text = str(value).pad_zeros(3)
 
 func shake_node(strong_shake := true) -> void:
 	if strong_shake:

@@ -133,7 +133,6 @@ var player_stats_nodes : Array[PlayerVictoryStats] = []
 func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 	is_end_game = true
 	set_process(true)
-	var is_first_winner_node := true
 	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
 	# random titles we give to each player
 	var given_titles : Dictionary = init_player_titles(players_stats.keys(), winner_id)
@@ -152,9 +151,8 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 		var legendary_titles : Array = given_titles[p_stats.player_id]["legendary"]
 		l.set_player_titles(common_titles, rare_titles, legendary_titles)
 		# display trophy is current player won
-		if is_first_winner_node:
+		if p_stats.player_id == winner_id:
 			l.declare_winner()
-			is_first_winner_node = false
 		player_stats_nodes.append(l)
 	$AnimationEndSteps.play("end_enter")
 	await get_tree().process_frame
