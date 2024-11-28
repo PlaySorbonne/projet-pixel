@@ -27,10 +27,14 @@ func init_step_3():
 func init_step_4():
 	pass
 
+func show_step_text(step: int):
+	var tutorial_text := $TutorialText
+	var tween := create_tween()
+	tween.tween_property(tutorial_text, "visible_ratio", 1.0, 2.0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	show_step_text(current_step)

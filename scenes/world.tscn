@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="13_a2fhi"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="13_bfsq2"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="14_2pjlm"]
-[ext_resource type="PackedScene" path="res://scenes/Menus/player_victory_stats.tscn" id="16_rgt6v"]
+[ext_resource type="PackedScene" uid="uid://b1f8a6o8u211p" path="res://scenes/Menus/player_victory_stats.tscn" id="16_rgt6v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
 font = ExtResource("14_2pjlm")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bflrd0s034ydy"]
+[gd_scene load_steps=7 format=3 uid="uid://bcq313ac7mpup"]
 
 [ext_resource type="PackedScene" uid="uid://cw0mhp762lxcu" path="res://scenes/level_template.tscn" id="1_nfic4"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="2_icsol"]
@@ -30,7 +30,9 @@ grow_vertical = 2
 theme = ExtResource("4_gkeak")
 theme_override_constants/outline_size = 7
 bbcode_enabled = true
-text = "press [img]res://resources/images/interface/Xbox Series/Default/xbox_button_a_outline.png[/img] for a little trolling"
+text = "press [img]res://resources/images/interface/Xbox Series/Default/xbox_button_a_outline.png[/img] to start"
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="Wall" parent="." index="9" instance=ExtResource("3_6o5ey")]
 modulate = Color(0, 0, 0, 1)
