@@ -50,8 +50,8 @@ func intro_animation() -> void:
 
 func intro_tween_label(l : Label) -> void:
 	var t := create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
-	t.modulate = Color.TRANSPARENT
-	t.scale = Vector2(2.0, 2.0)
+	l.modulate = Color.TRANSPARENT
+	l.scale = Vector2(2.0, 2.0)
 	t.tween_property(l, "modulate", Color.WHITE, 0.3)
 	t.tween_property(l, "scale", Vector2.ONE, 0.3)
 
@@ -71,8 +71,8 @@ func set_player_evolution(current_ev : int) -> void:
 	$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
 	$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
 
-func set_player_titles(common_titles : Array[String], rare_titles : Array[String], 
-			legendary_titles : Array[String]) -> void:
+func set_player_titles(common_titles : Array, rare_titles : Array, 
+			legendary_titles : Array) -> void:
 	# load data in custom dictionary
 	var all_titles : Dictionary = {}
 	for title : String in common_titles:
@@ -82,7 +82,7 @@ func set_player_titles(common_titles : Array[String], rare_titles : Array[String
 	for title : String in legendary_titles:
 		all_titles[title] = 2
 	# create title nodes and initialize them
-	var all_titles_array : Array[String] = all_titles.keys()
+	var all_titles_array : Array = all_titles.keys()
 	all_titles_array.shuffle()
 	for title : String in all_titles_array:
 		var t_item := TITLE_ITEM.instantiate()
