@@ -6,6 +6,7 @@ signal end_game_finished
 const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/player_victory_stats.tscn")
 # preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
 const TROPHY_RES := preload("res://scenes/Menus/GameCreation/last_winner.tscn")
+const MONEY_ADDER := preload("res://scenes/Menus/GameUI/label_additional_money.tscn")
 
 
 const COMMON_TITLES : Array[String] = [
@@ -158,6 +159,17 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	$AnimationEndSteps.play("end_enter")
 	await get_tree().process_frame
 	visible = true
+
+func add_money(money : int) -> void:
+	const POSSIBLE_VALS := [-100.0, -70.0, -50.0, -25.0, 25.0, 50.0, 75.0, 100.0]
+	var adder : Label = MONEY_ADDER.instantiate()
+	adder.text = "+" + str(money)
+	var m_offset := Vector2(
+		POSSIBLE_VALS.pick_random(),
+		POSSIBLE_VALS.pick_random()
+	)
+	add_child(adder)
+	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
 
 func _process(delta: float) -> void:
 	if not is_end_game:
