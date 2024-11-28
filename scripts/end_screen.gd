@@ -11,6 +11,7 @@ const MONEY_ADDER := preload("res://scenes/Menus/GameUI/label_additional_money.t
 
 const COMMON_TITLES : Array[String] = [
 	"No.1 Weeb",
+	"Piss Consumer",
 	"The Chosen One",
 	"I'll be back",
 	"Super Saiyan",
@@ -41,8 +42,19 @@ const COMMON_TITLES : Array[String] = [
 	"Joystick Rider",
 	"Critical Failer",
 	"Energy Drinker",
-	"4chan user",
+	"4Chan user",
 	"Cosplayer",
+	"Redditor 1000",
+	"DoomScroller",
+	"AI Artist",
+	"Edge Lord",
+	"Cryptobro",
+	"Baby doggo",
+	"Baby kitten",
+	"Birb",
+	"Keyboard Smasher",
+	"Discord Gremlin",
+	"Loot Box Addict",
 ]
 
 const RARE_TITLES : Array[String] = [
@@ -56,12 +68,16 @@ const RARE_TITLES : Array[String] = [
 	"Pokemon Master",
 	"Min-Maxer",
 	"Linux Overlord",
-	"Taco Master",
+	"Pocket Taco",
 	"Hero of Rhyme",
 	"Memelord",
+	"Definitely on Tumblr",
 	"Scary Shiny Glasses",
 	"Hentai Anthropologist",
 	"The Strongest Man in the World",
+	"Isekai Protagonist",
+	'"10x Developer"',
+	"Power Bottom",
 ]
 
 const LEGENDARY_TITLES : Array[String] = [
@@ -70,6 +86,7 @@ const LEGENDARY_TITLES : Array[String] = [
 	"Supreme Commander",
 	"Decorporater",
 	"Ascended", 
+	"One Man Furry Convention",
 ]
 
 var is_end_game := false
