@@ -7,6 +7,9 @@ var item_rarity := Rarities.Common
 
 var player_stats_parent : PlayerVictoryStats
 
+func _ready() -> void:
+	$Label.modulate = Color.TRANSPARENT
+
 func set_title(title : String, rarity : Rarities) -> void:
 	const RARE_COLORS := ["purple", "red", "cadet_blue", "violet", "teal", "slate_blue",
 			"peru", "blue", "green", "dark_green"]
@@ -46,7 +49,9 @@ func anim_intro() -> void:
 			$AnimationPlayer.play("intro_common")
 		Rarities.Rare:
 			$AnimationPlayer.play("intro_rare")
+			await $AnimationPlayer.animation_finished
+			player_stats_parent.shake_node(false)
 		Rarities.Legendary:
 			$AnimationPlayer.play("intro_legendary")
 			await $AnimationPlayer.animation_finished
-			player_stats_parent.shake_node()
+			player_stats_parent.shake_node(true)
