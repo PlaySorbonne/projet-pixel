@@ -6,9 +6,9 @@ signal input_pressed
 var can_press_input := false
 
 func _ready():
-	
 	$AnimationPlayer.play("end_anim")
 	await $AnimationPlayer.animation_finished
+	$AnimationPlayer.play("idle")
 	can_press_input = true
 
 func _process(delta: float) -> void:
