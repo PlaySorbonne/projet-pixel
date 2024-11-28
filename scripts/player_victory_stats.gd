@@ -31,10 +31,10 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	$Main/LabelName.text = p_stats.player_name
 	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
 	set_player_evolution(int(pc.current_evolution))
-	$Main/LabelOutcome.text = "WINNER"
 
 func declare_winner() -> void:
 	is_winner = true
+	$Main/LabelOutcome.text = "WINNER"
 	$Main/LabelOutcome/LastWinner.declare_winner()
 	$Main/LabelEvolution.text = "ASCENDED_WEEB"
 
