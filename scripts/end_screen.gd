@@ -125,6 +125,7 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 					player_ids.erase(current_id)
 	# returns a dictionary of the titles given to each player:
 	#	{key=player_id : value={key=title : value=rarity}}
+	print("PLAYER_TITLES = ", player_titles)
 	return player_titles
 
 var player_stats_nodes : Array[PlayerVictoryStats] = []
