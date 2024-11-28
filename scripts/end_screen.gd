@@ -84,15 +84,18 @@ var target_money : int
 
 func _ready() -> void:
 	set_process(false)
-	$LabelMoneyText/LabelMoney.text = str(VaultData.vault_data["money"]).pad_zeros(5)
+	current_money = VaultData.vault_data["money"]
+	target_money = current_money
+	$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(6)
 	visible = false
+	GameInfos.end_screen = self
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
-	const TITLES_TOTAL_TRIES := [1, 10, 21]
-	const TITLES_CHANCE := [0.5, 0.4, 0.5]
+	const TITLES_TOTAL_TRIES := [1, 10, 22]
+	const TITLES_CHANCE := [1.0, 0.5, 0.5]
 	const RARITIES := ["legendary", "rare", "common"]
-	const MAX_TITLES_PER_PLAYER := 5
+	const MAX_TITLES_PER_PLAYER := 6
 	# initialize stuff
 	var player_titles : Dictionary = {}
 	var nb_players : int = len(player_ids)
@@ -162,8 +165,11 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	$AnimationEndSteps.play("end_enter")
 	await get_tree().process_frame
 	visible = true
+	await $AnimationEndSteps.animation_finished
+	print("yello")
+	add_money(randi_range(1234, 2000), true)
 
-func add_money(money : int) -> void:
+func add_money(money : int, slow := false) -> void:
 	const POSSIBLE_VALS := [-100.0, -70.0, -50.0, -25.0, 25.0, 50.0, 75.0, 100.0]
 	var adder : Label = MONEY_ADDER.instantiate()
 	adder.text = "+" + str(money)
@@ -173,26 +179,28 @@ func add_money(money : int) -> void:
 	)
 	add_child(adder)
 	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
+	if slow:
+		adder.set_slow()
 	VaultData.vault_data["money"] += money
 	target_money += money
 
 var getting_money := false
-
 func _process(delta: float) -> void:
-	if not is_end_game:
-		return
+	# handle money
 	if getting_money:
 		if current_money >= target_money:
 			getting_money = false
 			$LabelMoneyText/LabelMoney/AnimationMoney.play("idle")
 		else:
-			current_money = min(target_money, current_money + int(delta * 100))
-			$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(5)
+			current_money = min(target_money, current_money + int(delta * 400))
+			$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(6)
 	elif current_money < target_money:
 		getting_money = true
 		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
 	
-	
+	# handle inputs
+	if not is_end_game:
+		return
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
 		current_end_step += 1
 		execute_current_step()

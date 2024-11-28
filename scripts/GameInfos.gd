@@ -80,6 +80,7 @@ var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
 var anime_box : AnimeBox = null
 var menu_music_time := 0.0
+var end_screen : EndScreen = null
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []
@@ -90,6 +91,7 @@ var players_data : Dictionary = {}
 var last_winner := -1
 
 func reset_game_infos(_deep_reset := false) -> void:
+	end_screen = null
 	game_started = false
 	tracked_targets = []
 	player_portaits = {}

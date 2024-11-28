@@ -2,6 +2,11 @@ extends Control
 class_name TitleItem
 
 enum Rarities {Common, Rare, Legendary}
+const MONEY_AMOUNT := {
+	Rarities.Common: 100,
+	Rarities.Rare : 400,
+	Rarities.Legendary : 1500
+}
 
 var item_rarity := Rarities.Common
 
@@ -39,11 +44,15 @@ func anim_intro() -> void:
 	match item_rarity:
 		Rarities.Common:
 			$AnimationPlayer.play("intro_common")
+			await $AnimationPlayer.animation_finished
+			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Common])
 		Rarities.Rare:
 			$AnimationPlayer.play("intro_rare")
 			await $AnimationPlayer.animation_finished
+			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Rare])
 			player_stats_parent.shake_node(false)
 		Rarities.Legendary:
 			$AnimationPlayer.play("intro_legendary")
 			await $AnimationPlayer.animation_finished
+			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Legendary])
 			player_stats_parent.shake_node(true)
