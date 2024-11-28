@@ -31,10 +31,12 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	$Main/LabelName.text = p_stats.player_name
 	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
 	set_player_evolution(int(pc.current_evolution))
+	$Main/LabelOutcome.text = "WINNER"
 
 func declare_winner() -> void:
 	is_winner = true
 	$Main/LabelOutcome/LastWinner.declare_winner()
+	$Main/LabelEvolution.text = "ASCENDED_WEEB"
 
 func intro_animation() -> void:
 	$Main/AnimationPlayer.play("intro")
@@ -79,7 +81,8 @@ func shake_node(strong_shake := true) -> void:
 		$Shaker.shake(0.1, 15, 25)
 
 func set_player_evolution(current_ev : int) -> void:
-	$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
+	if not is_winner:
+		$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
 	$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
 
 func set_player_titles(common_titles : Array, rare_titles : Array, 

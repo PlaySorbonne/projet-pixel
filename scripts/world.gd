@@ -60,6 +60,8 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
+	$CanvasLayer/EndScreen/LabelVictoryText/LabelVictoryPlayer.text = (
+		GameInfos.players_data[GameInfos.last_winner]["name"])
 	$GameHUD/PauseMenu.can_pause_game = false
 	$AudioWeebVictory.stream = weeb_victory_audios.pick_random()
 	$AudioWeebVictory.play()
@@ -87,12 +89,10 @@ func end_game():
 	$CanvasLayer/EndScreen.init_end_screen(players_stats)
 	await $CanvasLayer/EndScreen.end_game_finished
 	
-	print("finishing game")
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
-	print("back to lobby")
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
