@@ -7,6 +7,17 @@ var player_stats : PlayerStats = null
 var player_title_objects : Array[TitleItem] = []
 var is_winner := false
 
+@onready var stats_labels := [
+	$Main/LabelDeaths,
+	$Main/LabelKills,
+	$Main/LabelDamageTaken,
+	$Main/LabelDamageGiven
+]
+
+func _ready() -> void:
+	for l : Label in stats_labels:
+		l.modulate = Color.TRANSPARENT
+
 func set_player_stats(p_stats : PlayerStats) -> void:
 	player_stats = p_stats
 	$Main/LabelName.text = p_stats.player_name
@@ -16,6 +27,10 @@ func declare_winner() -> void:
 	$Main/LabelOutcome/LastWinner.declare_winner()
 
 func intro_animation() -> void:
+	$Main/AnimationPlayer.play("intro")
+	await $Main/AnimationPlayer.animation_finished
+	$Main/AnimationPlayer.play("intro_subnodes")
+	await $Main/AnimationPlayer.animation_finished
 	# initialize stats
 	set_label_int_value($Main/LabelDeaths/Label, player_stats.deaths)
 	await get_tree().create_timer(0.1).timeout
@@ -24,13 +39,24 @@ func intro_animation() -> void:
 	set_label_int_value($Main/LabelDamageTaken/Label, player_stats.damage_received)
 	await get_tree().create_timer(0.1).timeout
 	set_label_int_value($Main/LabelDamageGiven/Label, player_stats.damage_given)
+	for l : Label in stats_labels:
+		intro_tween_label(l)
+		await get_tree().create_timer(0.25).timeout
 	# initialize titles
+	await get_tree().create_timer(0.4).timeout
 	for t_item : TitleItem in player_title_objects:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.15).timeout
 		t_item.anim_intro()
 
+func intro_tween_label(l : Label) -> void:
+	var t := create_tween().set_parallel().set_trans(Tween.TRANS_CUBIC)
+	t.modulate = Color.TRANSPARENT
+	t.scale = Vector2(2.0, 2.0)
+	t.tween_property(l, "modulate", Color.WHITE, 0.3)
+	t.tween_property(l, "scale", Vector2.ONE, 0.3)
+
 func set_label_int_value(label : Label, value : int) -> void:
-	for _i : int in range(25):
+	for _i : int in range(30):
 		label.text = str(randi_range(0, value)).pad_zeros(4)
 		await get_tree().create_timer(0.075).timeout
 	label.text = str(value)
