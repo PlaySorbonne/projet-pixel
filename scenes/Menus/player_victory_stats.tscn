@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1f8a6o8u211p"]
+[gd_scene load_steps=16 format=3 uid="uid://b1f8a6o8u211p"]
 
 [ext_resource type="Script" path="res://scripts/player_victory_stats.gd" id="1_0o4ni"]
 [ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="2_34f7c"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="3_suex5"]
+[ext_resource type="PackedScene" uid="uid://ctlvv0tyiy3p7" path="res://scenes/Menus/GameCreation/last_winner.tscn" id="4_3or26"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_sk84m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_07qwx"]
@@ -13,6 +14,15 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7kekk"]
+font = ExtResource("3_suex5")
+font_size = 55
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.546)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_t4py5"]
 font = ExtResource("3_suex5")
@@ -50,6 +60,328 @@ shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.521)
 shadow_offset = Vector2(4, 3)
 
+[sub_resource type="Animation" id="Animation_6prug"]
+resource_name = "intro"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.574349, 1),
+"update": 0,
+"values": [Vector2(-3000, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [-0.436332, -0.436332, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexturePortrait:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [-0.127368, -0.127368]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TexturePortrait:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelOutcome:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LabelOutcome:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TexturePortrait:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ixmkc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexturePortrait:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.127368]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TexturePortrait:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelOutcome:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TexturePortrait:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LabelOutcome:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LabelName:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LabelName:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0dhl6"]
+resource_name = "intro_subnodes"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.574349, 1),
+"update": 0,
+"values": [Vector2(-3000, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TexturePortrait:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [-6.98132, -6.98132, -0.127368]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TexturePortrait:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelOutcome:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2.69087, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LabelOutcome:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"shake_node"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LabelName:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LabelName:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3slwr"]
+_data = {
+"RESET": SubResource("Animation_ixmkc"),
+"intro": SubResource("Animation_6prug"),
+"intro_subnodes": SubResource("Animation_0dhl6")
+}
+
 [node name="PlayerVictoryStats" type="Control"]
 process_mode = 3
 custom_minimum_size = Vector2(300, 500)
@@ -76,28 +408,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0366768
+color = Color(1, 1, 1, 0.6)
 
 [node name="TexturePortrait" type="TextureRect" parent="Main"]
 layout_mode = 2
-anchor_top = 0.02
-anchor_right = 0.426804
-anchor_bottom = 0.209002
-offset_right = -13.0411
-offset_bottom = 15.4988
+anchor_left = -0.0760282
+anchor_top = 0.0211066
+anchor_right = 0.449361
+anchor_bottom = 0.246893
+offset_left = 7.80845
+offset_top = -9.55332
+offset_right = -7.80844
+offset_bottom = 9.55332
 rotation = -0.127368
-pivot_offset = Vector2(57.5, 55)
+pivot_offset = Vector2(71, 66)
 texture = ExtResource("2_34f7c")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="LabelName" type="Label" parent="Main"]
-layout_mode = 0
-anchor_left = 0.15
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0133333
 anchor_top = 0.204
 anchor_right = 1.00333
 anchor_bottom = 0.266
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(152.5, 15.5)
 text = "PLAYER_NAME"
 label_settings = SubResource("LabelSettings_07qwx")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelOutcome" type="Label" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0179366
+anchor_top = -0.0784416
+anchor_right = 0.82127
+anchor_bottom = 0.132442
+offset_left = -6.61903
+offset_top = 22.2208
+offset_right = 6.61905
+offset_bottom = -22.2208
+rotation = 0.158738
+pivot_offset = Vector2(132.5, 30.5)
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_7kekk")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LastWinner" parent="Main/LabelOutcome" instance=ExtResource("4_3or26")]
+offset_left = 251.536
+offset_top = -12.6996
+offset_right = 331.536
+offset_bottom = 67.3004
+pivot_offset = Vector2(40, 40)
 
 [node name="LabelEvolution" type="Label" parent="Main"]
 layout_mode = 0
@@ -115,6 +483,7 @@ anchor_left = 0.05
 anchor_top = 0.36
 anchor_right = 0.946667
 anchor_bottom = 0.422
+pivot_offset = Vector2(134.5, 15.5)
 text = "DEATHS:"
 label_settings = SubResource("LabelSettings_t4py5")
 
@@ -132,6 +501,7 @@ anchor_left = 0.0833333
 anchor_top = 0.42
 anchor_right = 0.98
 anchor_bottom = 0.482
+pivot_offset = Vector2(134.5, 15.5)
 text = "KILLS:"
 label_settings = SubResource("LabelSettings_t4py5")
 
@@ -149,6 +519,7 @@ anchor_left = 0.116667
 anchor_top = 0.48
 anchor_right = 1.01333
 anchor_bottom = 0.542
+pivot_offset = Vector2(134.5, 15.5)
 text = "DAMAGE_TAKEN:"
 label_settings = SubResource("LabelSettings_t4py5")
 
@@ -166,6 +537,7 @@ anchor_left = 0.15
 anchor_top = 0.54
 anchor_right = 1.04667
 anchor_bottom = 0.602
+pivot_offset = Vector2(134.5, 15.5)
 text = "DAMAGE_GIVEN:"
 label_settings = SubResource("LabelSettings_t4py5")
 
@@ -183,6 +555,7 @@ anchor_left = 0.05
 anchor_top = 0.64
 anchor_right = 0.946667
 anchor_bottom = 0.702
+pivot_offset = Vector2(134.5, 15.5)
 text = "TITLES:"
 label_settings = SubResource("LabelSettings_w56mw")
 
@@ -212,6 +585,11 @@ anchor_left = -0.0408922
 anchor_top = 1.06452
 anchor_right = 1.08922
 anchor_bottom = 5.19354
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
+libraries = {
+"": SubResource("AnimationLibrary_3slwr")
+}
 
 [node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("object")]
 process_mode = 3

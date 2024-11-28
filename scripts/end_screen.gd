@@ -149,11 +149,10 @@ func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
 			l.set_player_titles(common_titles, rare_titles, legendary_titles)
 			# display trophy is current player won
 			if is_first_winner_node:
+				l.declare_winner()
 				is_first_winner_node = false
-				var trophy : Control = TROPHY_RES.instantiate()
-				l.add_child(trophy)
-				trophy.position = Vector2(-150, -50)
-				trophy.declare_winner()
+			await get_tree().create_timer(0.5).timeout
+			l.intro_animation()
 	$AnimationEndSteps.play("end_enter")
 	await get_tree().process_frame
 	visible = true

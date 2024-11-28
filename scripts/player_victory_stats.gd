@@ -5,10 +5,15 @@ const TITLE_ITEM := preload("res://scenes/Menus/title_item.tscn")
 
 var player_stats : PlayerStats = null
 var player_title_objects : Array[TitleItem] = []
+var is_winner := false
 
 func set_player_stats(p_stats : PlayerStats) -> void:
 	player_stats = p_stats
 	$Main/LabelName.text = p_stats.player_name
+
+func declare_winner() -> void:
+	is_winner = true
+	$Main/LabelOutcome/LastWinner.declare_winner()
 
 func intro_animation() -> void:
 	# initialize stats
