@@ -105,9 +105,9 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 		players_nb_titles[id] = 0
 	# generate and distribute titles
 	for i : int in range(TITLES.size()):
-		print("\tTITLES i = ", i)
-		var current_titles : Array[String] = TITLES[i]
+		var current_titles : Array[String] = TITLES[i].duplicate()
 		current_titles.shuffle()
+		print("\tTITLES i = " + str(i) + " -> current_titles = ", current_titles)
 		# select titles to distribute
 		var selected_titles : Array[String] = []
 		for _j : int in range(TITLES_TOTAL_TRIES[i]):
@@ -115,7 +115,9 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 			print("\t\trand_val = ", rand_val)
 			print("\t\tTITLES_CHANCE[i] = ", TITLES_CHANCE[i])
 			if rand_val < TITLES_CHANCE[i]:
-				selected_titles.append(current_titles.pop_back())
+				var new_title : String = current_titles.pop_back()
+				print("adding title : ", new_title)
+				selected_titles.append(new_title)
 		print("\tselected_titles = ", selected_titles)
 		# give legendary title to winner
 		if i == 0 and len(selected_titles) == 1:
