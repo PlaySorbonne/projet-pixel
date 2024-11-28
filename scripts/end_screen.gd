@@ -92,8 +92,8 @@ func _ready() -> void:
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
-	const TITLES_TOTAL_TRIES := [1, 10, 22]
-	const TITLES_CHANCE := [1.0, 0.5, 0.5]
+	const TITLES_TOTAL_TRIES := [1, 10, 32]
+	const TITLES_CHANCE := [1.0, 0.4, 0.5]
 	const RARITIES := ["legendary", "rare", "common"]
 	const MAX_TITLES_PER_PLAYER := 6
 	# initialize stuff
