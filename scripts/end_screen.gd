@@ -140,7 +140,6 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	# random titles we give to each player
 	var given_titles : Dictionary = init_player_titles(
 					players_stats.keys().duplicate(), winner_id)
-	print("given_titles = ", given_titles)
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:
@@ -187,7 +186,6 @@ func execute_current_step(forward := true):
 			$AnimationEndSteps.play("end_stats", -1, 1.0, false)
 			if not are_stats_initialized:
 				are_stats_initialized = true
-				print("initializing STATS:")
 				await $AnimationEndSteps.animation_finished
 				for l : PlayerVictoryStats in player_stats_nodes:
 					l.intro_animation()
