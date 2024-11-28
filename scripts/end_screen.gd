@@ -178,15 +178,16 @@ func execute_current_step(forward := true):
 		1:
 			if forward:
 				$AnimationEndSteps.play("end_enter", -1, 1.0, false)
-				if not are_stats_initialized:
-					are_stats_initialized = true
-					await $AnimationEndSteps.animation_finished
-					for l : PlayerVictoryStats in player_stats_nodes:
-						l.intro_animation()
-						await get_tree().create_timer(0.5).timeout
 			else:
 				$AnimationEndSteps.play_backwards("end_stats")
 		2:
 			$AnimationEndSteps.play("end_stats", -1, 1.0, false)
+			if not are_stats_initialized:
+				are_stats_initialized = true
+				print("initializing STATS:")
+				await $AnimationEndSteps.animation_finished
+				for l : PlayerVictoryStats in player_stats_nodes:
+					l.intro_animation()
+					await get_tree().create_timer(0.5).timeout
 		3:
 			emit_signal("end_game_finished")

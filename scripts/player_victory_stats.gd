@@ -13,20 +13,30 @@ var is_winner := false
 	$Main/LabelDamageTaken,
 	$Main/LabelDamageGiven
 ]
+@onready var subnodes := [
+	$Main/LabelOutcome,
+	$Main/LabelName,
+	$Main/LabelEvolution,
+	$Main/LabelTitles
+]
 
 func _ready() -> void:
-	for l : Label in stats_labels:
+	$Main/TexturePortrait.scale = Vector2.ZERO
+	for l : Label in stats_labels + subnodes:
 		l.modulate = Color.TRANSPARENT
 
 func set_player_stats(p_stats : PlayerStats) -> void:
 	player_stats = p_stats
 	$Main/LabelName.text = p_stats.player_name
+	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
+	set_player_evolution(int(pc.current_evolution))
 
 func declare_winner() -> void:
 	is_winner = true
 	$Main/LabelOutcome/LastWinner.declare_winner()
 
 func intro_animation() -> void:
+	print("\tintro animation - " + str(self))
 	$Main/AnimationPlayer.play("intro")
 	await $Main/AnimationPlayer.animation_finished
 	$Main/AnimationPlayer.play("intro_subnodes")
