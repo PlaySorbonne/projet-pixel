@@ -500,6 +500,7 @@ libraries = {
 }
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
+z_index = 199
 default_duration = 1.0
 
 [node name="StartGameScreen" parent="." instance=ExtResource("10_y5qku")]
