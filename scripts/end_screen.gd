@@ -77,11 +77,14 @@ var current_end_step := 1
 var end_finished := false
 var are_stats_initialized := false
 var player_stats_nodes : Array[PlayerVictoryStats] = []
+var current_money : int
+var target_money : int
 
 @onready var player_stats_node : HBoxContainer = $PlayerStats
 
 func _ready() -> void:
 	set_process(false)
+	$LabelMoneyText/LabelMoney.text = str(VaultData.vault_data["money"]).pad_zeros(5)
 	visible = false
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
@@ -170,10 +173,26 @@ func add_money(money : int) -> void:
 	)
 	add_child(adder)
 	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
+	VaultData.vault_data["money"] += money
+	target_money += money
+
+var getting_money := false
 
 func _process(delta: float) -> void:
 	if not is_end_game:
 		return
+	if getting_money:
+		if current_money >= target_money:
+			getting_money = false
+			$LabelMoneyText/LabelMoney/AnimationMoney.play("idle")
+		else:
+			current_money = min(target_money, current_money + int(delta * 100))
+			$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(5)
+	elif current_money < target_money:
+		getting_money = true
+		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
+	
+	
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
 		current_end_step += 1
 		execute_current_step()

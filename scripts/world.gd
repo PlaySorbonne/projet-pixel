@@ -89,6 +89,7 @@ func end_game():
 	$CanvasLayer/EndScreen.init_end_screen(players_stats)
 	await $CanvasLayer/EndScreen.end_game_finished
 	
+	VaultData.save_vault_data()
 	get_tree().paused = false
 	Engine.time_scale = 1.0
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
