@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=32 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="13_a2fhi"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="13_bfsq2"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="14_2pjlm"]
-[ext_resource type="PackedScene" uid="uid://ctbcwbdaxk0mm" path="res://scenes/Menus/GameUI/label_additional_money.tscn" id="15_8y21n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
 font = ExtResource("14_2pjlm")
@@ -41,6 +40,8 @@ shadow_offset = Vector2(4, 5)
 
 [sub_resource type="Animation" id="Animation_idfrp"]
 resource_name = "money"
+length = 0.6
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,10 +49,10 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(0.517632, 0.517632, 0.517632, 0.517632, 0.517632, 0.517632, 0.517632),
 "update": 0,
-"values": []
+"values": [0.0, 0.0872665, -0.0872665, 0.0872665, -0.0872665, 0.0872665, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,14 +61,145 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(0.517632, 3.24901, 0.517632),
 "update": 0,
-"values": []
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureCoin:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureCoin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.466516, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_u8cfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureCoin:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureCoin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pelt1"]
+resource_name = "idle"
+length = 2.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(0.517632, 0.517632),
+"update": 0,
+"values": [0.0523599, -0.0523599]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.517632),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureCoin:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureCoin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.466516),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dx6aw"]
 _data = {
+"RESET": SubResource("Animation_u8cfu"),
+"idle": SubResource("Animation_pelt1"),
 "money": SubResource("Animation_idfrp")
 }
 
@@ -405,17 +537,6 @@ grow_vertical = 2
 rotation = 0.118334
 color = Color(0.538987, 0, 0.105572, 0.6)
 
-[node name="LabelAdditionalMoney" parent="CanvasLayer/EndScreen" instance=ExtResource("15_8y21n")]
-layout_mode = 2
-anchor_left = 0.00208219
-anchor_top = 0.0666676
-anchor_right = 0.00208219
-anchor_bottom = 0.0666676
-offset_left = 1552.0
-offset_top = 835.999
-offset_right = 1707.0
-offset_bottom = 886.999
-
 [node name="LabelMoneyText" type="Label" parent="CanvasLayer/EndScreen"]
 layout_mode = 1
 anchors_preset = -1
@@ -449,6 +570,8 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_dx6aw")
 }
+playback_default_blend_time = 0.1
+speed_scale = 1.5
 
 [node name="TextureCoin" type="TextureRect" parent="CanvasLayer/EndScreen/LabelMoneyText"]
 layout_mode = 1
@@ -457,7 +580,9 @@ anchor_left = 1.34871
 anchor_top = -0.45651
 anchor_right = 1.53074
 anchor_bottom = 1.39132
-pivot_offset = Vector2(40, 38)
+offset_right = 1.33954
+offset_bottom = -0.000175476
+pivot_offset = Vector2(50, 42.5)
 texture = ExtResource("13_a2fhi")
 expand_mode = 1
 stretch_mode = 5
