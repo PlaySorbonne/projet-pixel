@@ -48,7 +48,7 @@ const RARE_TITLES : Array[String] = [
 	"Over 9000",
 	"Dora la Exploradora",
 	"King of Kongs",
-	"The Tarnished",
+	"Maidenless",
 	"Biggest Chocobo",
 	"The Chicken Whisperer",
 	"Grass-Cutting Champion",
@@ -82,9 +82,6 @@ var player_stats_nodes : Array[PlayerVictoryStats] = []
 func _ready() -> void:
 	set_process(false)
 	visible = false
-	print("WORLD -> CANVASLAYER -> END_SCREEN: REMEMBER TO HIDE END_SCREEN")
-	print("AND SHOW SCREEN_TRANSITION")
-	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
@@ -170,23 +167,19 @@ func _process(delta: float) -> void:
 		execute_current_step()
 		
 	elif Input.is_action_just_pressed("attack"):
-		current_end_step = max(0, current_end_step-1)
+		current_end_step = max(1, current_end_step-1)
 		execute_current_step(false)
 
 func execute_current_step(forward := true):
 	match current_end_step:
-		0:
-			$AnimationEndSteps.play_backwards("end_enter")
 		1:
 			if forward:
 				$AnimationEndSteps.play("end_enter", -1, 1.0, false)
 			else:
-				$AnimationEndSteps.play_backwards("end_stats")
+				$AnimationEndSteps.play_backwards("end_enter")
 		2:
-			$AnimationEndSteps.play("end_stats", -1, 1.0, false)
 			if not are_stats_initialized:
 				are_stats_initialized = true
-				await $AnimationEndSteps.animation_finished
 				for l : PlayerVictoryStats in player_stats_nodes:
 					l.intro_animation()
 					await get_tree().create_timer(0.5).timeout

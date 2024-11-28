@@ -76,20 +76,23 @@ func end_game():
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
-	$GameHUD.remove_portraits()
 	await get_tree().create_timer(0.9, true, false, true).timeout
 	get_tree().paused = true
 	
 	await victory_message.input_pressed
+	$GameHUD.remove_portraits()
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive:
 			break
 	$CanvasLayer/EndScreen.init_end_screen(players_stats)
 	await $CanvasLayer/EndScreen.end_game_finished
 	
+	print("finishing game")
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
+	print("back to lobby")
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
