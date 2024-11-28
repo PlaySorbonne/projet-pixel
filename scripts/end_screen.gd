@@ -86,9 +86,8 @@ func _ready() -> void:
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
-	print("INIT_PLAYER_TITLES")
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
-	const TITLES_TOTAL_TRIES := [1, 12, 24]
+	const TITLES_TOTAL_TRIES := [1, 7, 13]
 	const TITLES_CHANCE := [0.4, 0.4, 0.75]
 	const RARITIES := ["common", "rare", "legendary"]
 	const MAX_TITLES_PER_PLAYER := 5
@@ -107,26 +106,22 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	for i : int in range(TITLES.size()):
 		var current_titles : Array[String] = TITLES[i].duplicate()
 		current_titles.shuffle()
-		print("\tTITLES i = " + str(i) + " -> current_titles = ", current_titles)
 		# select titles to distribute
 		var selected_titles : Array[String] = []
-		for _j : int in range(TITLES_TOTAL_TRIES[i]):
+		for _j : int in range(max(1, int((TITLES_TOTAL_TRIES[i]/4.0)*len(player_ids)) )):
 			var rand_val := randf()
-			print("\t\trand_val = ", rand_val)
-			print("\t\tTITLES_CHANCE[i] = ", TITLES_CHANCE[i])
 			if rand_val < TITLES_CHANCE[i]:
 				var new_title : String = current_titles.pop_back()
-				print("adding title : ", new_title)
 				selected_titles.append(new_title)
-		print("\tselected_titles = ", selected_titles)
 		# give legendary title to winner
 		if i == 0 and len(selected_titles) == 1:
-			print("\t add legendary title")
 			player_titles[winner_id][RARITIES[0]].append(selected_titles[0])
 			players_nb_titles[winner_id] += 1
 		# distribute common and rare titles
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
+				if len(player_ids) == 0:
+					break
 				var current_id : int = player_ids.pick_random()
 				player_titles[current_id][RARITIES[i]].append(t)
 				players_nb_titles[current_id] += 1
@@ -134,7 +129,6 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 					player_ids.erase(current_id)
 	# returns a dictionary of the titles given to each player:
 	#	{key=player_id : value={key=title : value=rarity}}
-	print("PLAYER_TITLES = ", player_titles)
 	return player_titles
 
 var player_stats_nodes : Array[PlayerVictoryStats] = []
@@ -145,7 +139,8 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	set_process(true)
 	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
 	# random titles we give to each player
-	var given_titles : Dictionary = init_player_titles(players_stats.keys(), winner_id)
+	var given_titles : Dictionary = init_player_titles(
+					players_stats.keys().duplicate(), winner_id)
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:
