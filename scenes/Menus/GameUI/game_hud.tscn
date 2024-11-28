@@ -26,6 +26,7 @@ pressed = true
 events = [SubResource("InputEventKey_vixc7"), SubResource("InputEventJoypadButton_6son4")]
 
 [node name="GameHUD" type="CanvasLayer"]
+process_mode = 3
 layer = 6
 script = ExtResource("1_er2h7")
 

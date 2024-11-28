@@ -12,9 +12,9 @@ func _ready() -> void:
 
 func set_title(title : String, rarity : Rarities) -> void:
 	const RARE_COLORS := ["red", "cadet_blue", "violet", "teal", "hot_pink", "khaki",
-			"peru", "sky_blue", "green", "lime_green", "orange"]
-	const COMMON_COLORS := ["gray", "dark_gray", "slate_gray", "light_gray", "light_blue", 
-			"salmon", "cyan", "aquamarine", "blanched_almond", "burlywood", "white", "white"]
+			"peru", "sky_blue", "green", "lime_green", "orange", "salmon"]
+	const COMMON_COLORS := ["gray", "gray", "slate_gray", "light_gray", "light_yellow",
+			"blanched_almond", "burlywood", "white", "white"]
 	var effects_intro : String = "[center]"
 	item_rarity = rarity
 	# add text effects depending on rarity and chance

@@ -256,7 +256,7 @@ theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/normal_font = SubResource("FontVariation_j4xvw")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center][color=khaki]The Strongest Man In the World"
+text = "[center][color=light_yellow]The Strongest Man In the World"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

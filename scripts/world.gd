@@ -76,6 +76,7 @@ func end_game():
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
+	$GameHUD.remove_portraits()
 	await get_tree().create_timer(0.9, true, false, true).timeout
 	get_tree().paused = true
 	
