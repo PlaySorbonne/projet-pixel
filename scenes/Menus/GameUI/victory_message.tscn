@@ -138,6 +138,7 @@ _data = {
 }
 
 [node name="victory_message" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_oycss")
 
 [node name="Label" type="Label" parent="."]

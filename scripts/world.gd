@@ -67,7 +67,8 @@ func end_game():
 	var music_node : AudioStreamPlayer = level.get_node("Music")
 	create_tween().tween_property(music_node, "volume_db", -80.0, 1.5)
 	await get_tree().create_timer(1.0, true, false, true).timeout
-	add_child(VICTORY_MESSAGE.instantiate())
+	var victory_message := VICTORY_MESSAGE.instantiate()
+	add_child(victory_message)
 	for p : PlayerCharacter in GameInfos.players.values():
 		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
@@ -75,9 +76,10 @@ func end_game():
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
-	await get_tree().create_timer(3.5, true, false, true).timeout
+	await get_tree().create_timer(0.9, true, false, true).timeout
 	get_tree().paused = true
 	
+	await victory_message.input_pressed
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive:
 			break

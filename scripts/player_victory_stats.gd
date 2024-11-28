@@ -44,11 +44,11 @@ func intro_animation() -> void:
 	$Main/AnimationPlayer.play("idle")
 	# initialize stats
 	set_label_int_value($Main/LabelDeaths/Label, player_stats.deaths)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.25).timeout
 	set_label_int_value($Main/LabelKills/Label, player_stats.kills)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.25).timeout
 	set_label_int_value($Main/LabelDamageTaken/Label, player_stats.damage_received)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.25).timeout
 	set_label_int_value($Main/LabelDamageGiven/Label, player_stats.damage_given)
 	for l : Label in stats_labels:
 		intro_tween_label(l)
