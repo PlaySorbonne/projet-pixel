@@ -63,6 +63,7 @@ const RARE_TITLES : Array[String] = [
 	"King of Kongs",
 	"Maidenless",
 	"Biggest Chocobo",
+	"Weeberman",
 	"The Chicken Whisperer",
 	"Grass-Cutting Champion",
 	"Pokemon Master",
@@ -78,6 +79,7 @@ const RARE_TITLES : Array[String] = [
 	"Isekai Protagonist",
 	'"10x Developer"',
 	"Power Bottom",
+	"Mommy Issues",
 ]
 
 const LEGENDARY_TITLES : Array[String] = [
