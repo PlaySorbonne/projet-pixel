@@ -78,12 +78,10 @@ func end_game():
 	await get_tree().create_timer(3.5, true, false, true).timeout
 	get_tree().paused = true
 	
-	var winner : int = 0
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive:
-			winner = p.player_ID
 			break
-	$CanvasLayer/EndScreen.init_end_screen(winner, players_stats)
+	$CanvasLayer/EndScreen.init_end_screen(players_stats)
 	await $CanvasLayer/EndScreen.end_game_finished
 	
 	get_tree().paused = false

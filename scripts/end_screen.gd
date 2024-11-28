@@ -86,6 +86,7 @@ func _ready() -> void:
 	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
+	print("INIT_PLAYER_TITLES")
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
 	const TITLES_TOTAL_TRIES := [1, 12, 24]
 	const TITLES_CHANCE := [0.4, 0.4, 0.75]
@@ -104,22 +105,28 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 		players_nb_titles[id] = 0
 	# generate and distribute titles
 	for i : int in range(TITLES.size()):
+		print("\tTITLES i = ", i)
 		var current_titles : Array[String] = TITLES[i]
 		current_titles.shuffle()
 		# select titles to distribute
 		var selected_titles : Array[String] = []
-		for _j : int in range(max(1, TITLES_TOTAL_TRIES[i]/4)):
-			if randf() < TITLES_CHANCE[i]:
+		for _j : int in range(TITLES_TOTAL_TRIES[i]):
+			var rand_val := randf()
+			print("\t\trand_val = ", rand_val)
+			print("\t\tTITLES_CHANCE[i] = ", TITLES_CHANCE[i])
+			if rand_val < TITLES_CHANCE[i]:
 				selected_titles.append(current_titles.pop_back())
+		print("\tselected_titles = ", selected_titles)
 		# give legendary title to winner
 		if i == 0 and len(selected_titles) == 1:
+			print("\t add legendary title")
 			player_titles[winner_id][RARITIES[0]].append(selected_titles[0])
 			players_nb_titles[winner_id] += 1
 		# distribute common and rare titles
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
 				var current_id : int = player_ids.pick_random()
-				player_titles[winner_id][RARITIES[i]].append(t)
+				player_titles[current_id][RARITIES[i]].append(t)
 				players_nb_titles[current_id] += 1
 				if players_nb_titles[current_id] >= MAX_TITLES_PER_PLAYER:
 					player_ids.erase(current_id)
@@ -130,7 +137,8 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 
 var player_stats_nodes : Array[PlayerVictoryStats] = []
 
-func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
+func init_end_screen(players_stats : Dictionary) -> void:
+	var winner_id := GameInfos.last_winner
 	is_end_game = true
 	set_process(true)
 	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]

@@ -21,7 +21,7 @@ var is_winner := false
 ]
 
 func _ready() -> void:
-	$Main/ColorRect.position.x = -6000.0
+	$Main.position.x = -6000.0
 	$Main/TexturePortrait.scale = Vector2.ZERO
 	for l : Label in stats_labels + subnodes:
 		l.modulate = Color.TRANSPARENT
