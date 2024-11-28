@@ -37,11 +37,11 @@ func declare_winner() -> void:
 	$Main/LabelOutcome/LastWinner.declare_winner()
 
 func intro_animation() -> void:
-	print("\tintro animation - " + str(self))
 	$Main/AnimationPlayer.play("intro")
 	await $Main/AnimationPlayer.animation_finished
 	$Main/AnimationPlayer.play("intro_subnodes")
 	await $Main/AnimationPlayer.animation_finished
+	$Main/AnimationPlayer.play("idle")
 	# initialize stats
 	set_label_int_value($Main/LabelDeaths/Label, player_stats.deaths)
 	await get_tree().create_timer(0.1).timeout

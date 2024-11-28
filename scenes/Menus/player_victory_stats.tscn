@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1f8a6o8u211p"]
+[gd_scene load_steps=16 format=3 uid="uid://b1f8a6o8u211p"]
 
 [ext_resource type="Script" path="res://scripts/player_victory_stats.gd" id="1_0o4ni"]
 [ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="2_34f7c"]
@@ -226,6 +226,18 @@ tracks/11/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0dhl6"]
 resource_name = "intro_subnodes"
@@ -390,9 +402,52 @@ tracks/12/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_jl581"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [0.0, 0.0349066]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.4, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.025)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3slwr"]
 _data = {
 "RESET": SubResource("Animation_ixmkc"),
+"idle": SubResource("Animation_jl581"),
 "intro": SubResource("Animation_6prug"),
 "intro_subnodes": SubResource("Animation_0dhl6")
 }
@@ -411,8 +466,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3000.0
-offset_right = -3000.0
 grow_horizontal = 2
 grow_vertical = 2
 

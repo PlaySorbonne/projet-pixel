@@ -75,6 +75,7 @@ var is_end_game := false
 var current_end_step := 1
 var end_finished := false
 var are_stats_initialized := false
+var player_stats_nodes : Array[PlayerVictoryStats] = []
 
 @onready var player_stats_node : HBoxContainer = $PlayerStats
 
@@ -87,9 +88,9 @@ func _ready() -> void:
 
 func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
-	const TITLES_TOTAL_TRIES := [1, 7, 13]
-	const TITLES_CHANCE := [0.4, 0.4, 0.75]
-	const RARITIES := ["common", "rare", "legendary"]
+	const TITLES_TOTAL_TRIES := [0.5, 10, 21]
+	const TITLES_CHANCE := [1.0, 0.4, 0.5]
+	const RARITIES := ["legendary", "rare", "common"]
 	const MAX_TITLES_PER_PLAYER := 5
 	# initialize stuff
 	var player_titles : Dictionary = {}
@@ -131,8 +132,6 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
 
-var player_stats_nodes : Array[PlayerVictoryStats] = []
-
 func init_end_screen(players_stats : Dictionary) -> void:
 	var winner_id := GameInfos.last_winner
 	is_end_game = true
@@ -141,6 +140,7 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	# random titles we give to each player
 	var given_titles : Dictionary = init_player_titles(
 					players_stats.keys().duplicate(), winner_id)
+	print("given_titles = ", given_titles)
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:

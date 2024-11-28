@@ -34,7 +34,7 @@ func set_title(title : String, rarity : Rarities) -> void:
 			else:
 				var text_color : String = RARE_COLORS.pick_random() + "ff]"
 				effects_intro = effects_intro + "[color=" + text_color
-			if randi()%2 == 0:
+			if randi()%2 == 0 or true:
 				effects_intro = effects_intro + "[shake rate=20.0 level=5 connected=1]"
 			else:
 				effects_intro = effects_intro + "[tornado radius=2.5 freq=5.0 connected=1]"
