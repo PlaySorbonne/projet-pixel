@@ -77,7 +77,7 @@ const RARE_TITLES : Array[String] = [
 	"Hentai Anthropologist",
 	"The Strongest Man in the World",
 	"Isekai Protagonist",
-	'"10x Developer"',
+	"Assembly Developer",
 	"Power Bottom",
 	"Mommy Issues",
 ]
@@ -105,7 +105,7 @@ func _ready() -> void:
 	set_process(false)
 	current_money = VaultData.vault_data["money"]
 	target_money = current_money
-	$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(6)
+	$LabelMoneyText/LabelMoney.text = GameInfos.format_money_string(current_money)
 	visible = false
 	GameInfos.end_screen = self
 
@@ -212,7 +212,8 @@ func _process(delta: float) -> void:
 			$LabelMoneyText/LabelMoney/AnimationMoney.play("idle")
 		else:
 			current_money = min(target_money, current_money + int(delta * 400))
-			$LabelMoneyText/LabelMoney.text = str(current_money).pad_zeros(6)
+			$LabelMoneyText/LabelMoney.text = GameInfos.format_money_string(current_money)
+			
 	elif current_money < target_money:
 		getting_money = true
 		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
