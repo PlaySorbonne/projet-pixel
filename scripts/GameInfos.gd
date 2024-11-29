@@ -90,6 +90,14 @@ var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winner := -1
 
+func format_money_string(val : int) -> String:
+	var strval : String = str(val).pad_zeros(7)
+	var current_char : int = strval.length() - 3
+	while current_char >= 0:
+		strval = strval.insert(current_char, " ")
+		current_char -= 3
+	return strval
+
 func reset_game_infos(_deep_reset := false) -> void:
 	end_screen = null
 	game_started = false

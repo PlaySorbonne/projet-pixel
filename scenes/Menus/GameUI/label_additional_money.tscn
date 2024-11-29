@@ -76,6 +76,7 @@ _data = {
 
 [node name="LabelAdditionalMoney" type="Label"]
 self_modulate = Color(1, 0.888, 0.404, 0.7)
+z_index = 2
 offset_left = -58.0
 offset_top = -25.5
 offset_right = 58.0
@@ -91,3 +92,4 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_d88ef")
 }
+speed_scale = 0.6

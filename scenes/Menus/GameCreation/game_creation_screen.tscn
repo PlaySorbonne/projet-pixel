@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=30 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://cpyqmgbdcpwul" path="res://resources/audio/sfx/gameplay_sfx/shooting.wav" id="13_2pb0v"]
 [ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="13_kt80l"]
 [ext_resource type="AudioStream" uid="uid://dt3xmcippucnr" path="res://resources/audio/voices/narrator/start.wav" id="14_ye286"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="15_43tp7"]
+[ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="16_sqpn5"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -709,6 +711,78 @@ _data = {
 "start_leave": SubResource("Animation_johfb")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_it8nc"]
+font = ExtResource("15_43tp7")
+font_size = 50
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="Animation" id="Animation_j0nyk"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureCoin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.482968, 0.482968),
+"update": 0,
+"values": [0.0349066, -0.0349066]
+}
+
+[sub_resource type="Animation" id="Animation_fhcmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureCoin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_isbir"]
+_data = {
+"RESET": SubResource("Animation_fhcmf"),
+"idle": SubResource("Animation_j0nyk")
+}
+
 [node name="GameCreationScreen" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -824,10 +898,10 @@ metadata/_edit_use_anchors_ = true
 [node name="LabelGameModeName" type="Label" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.70642
-anchor_top = 0.0388889
-anchor_right = 0.873087
-anchor_bottom = 0.101852
+anchor_left = 0.703816
+anchor_top = 0.0675926
+anchor_right = 0.870483
+anchor_bottom = 0.130556
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 50
@@ -837,10 +911,10 @@ metadata/_edit_use_anchors_ = true
 [node name="LabelGameModeDescription" type="Label" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.713712
-anchor_top = 0.116667
-anchor_right = 0.93767
-anchor_bottom = 0.331481
+anchor_left = 0.711108
+anchor_top = 0.145371
+anchor_right = 0.935066
+anchor_bottom = 0.360185
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 32
@@ -1057,6 +1131,48 @@ property = "position"
 [node name="AudioNarratorStart" type="AudioStreamPlayer" parent="CanvasLayer/GameCreationScreen"]
 stream = ExtResource("14_ye286")
 bus = &"narrator"
+
+[node name="LabelMoney" type="Label" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 0
+anchor_left = 0.84375
+anchor_top = 0.00925926
+anchor_right = 0.960417
+anchor_bottom = 0.0611111
+pivot_offset = Vector2(112, 28)
+text = "9 999 999"
+label_settings = SubResource("LabelSettings_it8nc")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureCoin" type="TextureRect" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.05357
+anchor_top = -0.107133
+anchor_right = 1.28866
+anchor_bottom = 1.01787
+offset_left = 0.000427246
+offset_top = -4.00054
+offset_right = 1.33997
+offset_bottom = -4.00072
+pivot_offset = Vector2(27, 31.5)
+texture = ExtResource("16_sqpn5")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = 55.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+libraries = {
+"": SubResource("AnimationLibrary_isbir")
+}
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false

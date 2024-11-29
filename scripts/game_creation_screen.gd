@@ -27,6 +27,8 @@ func _ready():
 	GameInfos.menu_music_time = 0.0
 	GameInfos.reset_game_infos()
 	set_game_widgets()
+	$LabelMoney/AnimationPlayer.play("idle")
+	$LabelMoney.text = GameInfos.format_money_string(VaultData.vault_data["money"])
 	transition.end_screen_transition()
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
