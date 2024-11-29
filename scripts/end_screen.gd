@@ -185,7 +185,6 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	await get_tree().process_frame
 	visible = true
 	await $AnimationEndSteps.animation_finished
-	print("yello")
 	add_money(randi_range(1234, 2000), true)
 
 func add_money(money : int, slow := false) -> void:
