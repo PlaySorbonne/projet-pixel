@@ -24,6 +24,7 @@ func special():
 		else:
 			dash_direction.x = -1.0
 	can_use_special = false
+	player.controller_vibration(0.5, 0.4)
 	dash_audio.play_random_pitch()
 	player.attacking = true
 	player.computing_movement = false

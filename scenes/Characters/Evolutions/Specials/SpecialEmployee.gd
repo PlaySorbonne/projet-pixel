@@ -46,6 +46,7 @@ func special():
 
 func special_end():
 	fall_hitbox.queue_free()
+	player.controller_vibration()
 	fall_hitbox = null
 	Hitbox.spawn_hitbox(player, damage, player.AttackLocation.position, hit_duration, 
 		true, attack_intensity, 

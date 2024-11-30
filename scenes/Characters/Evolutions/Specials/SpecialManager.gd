@@ -54,6 +54,7 @@ func special():
 	player_gun.play_shoot()
 	# Spawn bullet
 	Bullet.spawn_bullet(player, self)
+	player.controller_vibration()
 	
 	await get_tree().create_timer(0.05).timeout
 	player.knockback_velocity = Vector2(dash_direction, -0.25) * dash_speed

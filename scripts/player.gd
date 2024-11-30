@@ -267,6 +267,7 @@ func evolve(in_lobby: bool = false):
 	$AnimationPlayer.stop()
 	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
+	controller_vibration(1.0, 0.8)
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.play()
@@ -331,15 +332,21 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	emit_hit_particles()
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
+		controller_vibration()
 		GameInfos.freeze_frame.freeze(0.015)
 		$AudioLineHurt.stream = audio_hurt.pick_random()
 	else:
 		# track the player kills
+		controller_vibration(1.0, 1.1)
 		if hit_owner.has_signal("player_kill"):
 			hit_owner.emit_signal("player_kill")
 			
 		$AudioLineHurt.stream = audio_death.pick_random()
 	$AudioLineHurt.play()
+
+func controller_vibration(strength : float = 0.75, duration : float = 0.3) -> void:
+	if control_type == Controls.CONTROLLER:
+		Input.start_joy_vibration(control_device, strength, strength, duration)
 
 func play_hit_sfx():
 	await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
@@ -367,10 +374,15 @@ func attack():
 	can_attack = false
 	if attack_wind_up > 0:
 		await get_tree().create_timer(attack_wind_up).timeout
+	if not alive:
+		return
 	var hitbox := Hitbox.spawn_hitbox(self, attack_damage, 
 	AttackLocation.position, 0.3, true, attack_intensity, attack_size)
 	if eliminate_hit_targets:
 		hitbox.set_eliminate(true)
+		controller_vibration(1.0, 0.5)
+	else:
+		controller_vibration(0.5, 0.2)
 	if custom_audio_attacks != null:
 		hitbox.set_audio(custom_audio_attacks)
 	attacking = true

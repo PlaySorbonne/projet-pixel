@@ -33,6 +33,7 @@ func ascend():
 	emit_signal("weeb_ascended", self)
 	rotation = 0.0
 	custom_audio_attacks = AUDIO_EXPLOSION
+	controller_vibration(1.0, 0.5)
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
