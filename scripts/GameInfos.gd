@@ -150,8 +150,5 @@ func remove_player(id : int) -> void:
 func players_number():
 	return len(players)
 
-# add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
-# accuracy, evolution...)
-
 
 # add battle type (team, brawl, etc)

@@ -34,6 +34,11 @@ var control_index : int = -1
 		last_winner = value
 		check_winner()
 
+func set_player_icon(evolution : int) -> void:
+	var new_texture : Texture = PlayerPortrait.PLAYER_PORTRAITS[evolution]
+	$Control/Icon.texture = new_texture
+	$Control/Icon/Icon2.texture = new_texture
+
 func _ready():
 	$Control.scale = Vector2.ZERO
 	await get_tree().process_frame

@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dahanasq017hk" path="res://resources/audio/voices/ceo/evolve_hmmmyes.wav" id="4_b4h4l"]
 [ext_resource type="Shader" path="res://resources/shaders/ReplaceColors.gdshader" id="4_dq808"]
 [ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
-[ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
+[ext_resource type="Theme" uid="uid://dkxky3ljmxkmq" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
 [ext_resource type="AudioStream" uid="uid://jo0sssk2ypuo" path="res://resources/audio/voices/ceo/evolve_mwahahahah.wav" id="5_jiuuj"]
 [ext_resource type="AudioStream" uid="uid://njayaiydgx6w" path="res://resources/audio/voices/ceo/evolve_the_anime.wav" id="6_tp1gi"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
