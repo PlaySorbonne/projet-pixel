@@ -5,3 +5,4 @@
 
 [node name="GM_OtakuOutbreak" instance=ExtResource("1_udkff")]
 script = ExtResource("2_04pl8")
+intial_evolution = 4
