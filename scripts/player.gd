@@ -21,6 +21,7 @@ const EvolutionCharacters = {
 
 static var player_counter := 0
 
+@export var is_player_controlled := true
 @export var custom_audio_attacks : AudioStream = null
 
 @export_group("Gameplay Stats")

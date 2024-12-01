@@ -132,7 +132,8 @@ func add_player(player: PlayerCharacter) -> void:
 		"original_color" : p_color,
 		"last_winner" : false,
 		"control_type" : player.control_type,
-		"control_device" : player.control_device
+		"control_device" : player.control_device,
+		"player_controlled" : player.is_player_controlled
 	}
 
 func remove_player(id : int) -> void:
