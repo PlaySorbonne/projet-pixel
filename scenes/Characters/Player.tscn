@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ofdotmbw4jkx"]
+[gd_scene load_steps=20 format=3 uid="uid://ofdotmbw4jkx"]
 
 [ext_resource type="PackedScene" uid="uid://dlo5qcfkkb5ti" path="res://scenes/Characters/Fighter.tscn" id="1_cukm7"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_7jbn1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="10_jt582"]
 [ext_resource type="AudioStream" uid="uid://bw4su582aeprb" path="res://resources/audio/sfx/gameplay_sfx/evolve.wav" id="11_5xxhp"]
 [ext_resource type="AudioStream" uid="uid://0cw6aiuro3pc" path="res://resources/audio/sfx/gameplay_sfx/hitHurt_heavy2.wav" id="11_ss068"]
+[ext_resource type="PackedScene" uid="uid://bboyt7idv5ii" path="res://scenes/Characters/inputs/ai_inputs_ceo.tscn" id="13_tr612"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72mm4"]
 resource_local_to_scene = true
@@ -353,6 +354,8 @@ bus = &"voices"
 
 [node name="AudioLineSpecial" type="AudioStreamPlayer" parent="." index="17"]
 bus = &"voices"
+
+[node name="AI_Inputs_CEO" parent="." index="18" instance=ExtResource("13_tr612")]
 
 [connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
