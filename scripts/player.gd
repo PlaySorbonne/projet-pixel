@@ -92,6 +92,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.control_device = control_device
 	new_body.control_type = control_type
 	new_body.player_ID = player_ID
+	new_body.is_player_controlled = is_player_controlled
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
 
 func _init():
@@ -108,6 +109,11 @@ func _ready():
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
 	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
+	if is_player_controlled:
+		const PLAYER_INPUTS_RES := preload("res://scenes/Characters/inputs/player_inputs.tscn")
+		self.add_child(PLAYER_INPUTS_RES.instantiate())
+	else:
+		pass
 	if current_evolution != Evolutions.CEO:
 		await get_tree().create_timer(1.2).timeout
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
