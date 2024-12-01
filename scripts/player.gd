@@ -181,52 +181,7 @@ func set_animation(force := false):
 		$AnimationPlayer.play("jump")
 		#$Sprite2D.play("jump")
 
-func _input(event : InputEvent):
-	var is_correct_control_type = false
-	if control_type == 0:
-		is_correct_control_type = event is InputEventKey
-	elif control_type == 1:
-		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
-		
-	if is_correct_control_type && event.device == control_device:
-		# Handle movement
-		if event.is_action_pressed("right"):
-			right_pressed = true
-		elif event.is_action_released("right"):
-			right_pressed = false
-		if event.is_action_pressed("left"):
-			left_pressed = true
-		elif event.is_action_released("left"):
-			left_pressed = false
-		if event.is_action_pressed("up"):
-			up_pressed = true
-		elif event.is_action_released("up"):
-			up_pressed = false
-		if event.is_action_pressed("drop"):
-			down_pressed = true
-			set_collision_mask_value(5, false)
-		elif event.is_action_released("drop"):
-			down_pressed = false
-			set_collision_mask_value(5, true)
-		if not alive:
-			return
-		
-		var on_floor := is_on_floor()
-		# Handle jump.
-		if event.is_action_pressed("jump") and on_floor:
-			jump()
-		elif event.is_action_released("jump") and velocity.y < -50.0:
-			stop_jump()
-		if not attacking:
-			# Handle normal attack
-			if event.is_action_pressed("attack"):
-				attack()
-			# Handle special 
-			elif event.is_action_pressed("special"):
-				special()
-		
-		if event.is_action_pressed("debug_button"):# and false:
-			evolve()
+
 
 func stop_jump():
 	if velocity.y < -50.0:
