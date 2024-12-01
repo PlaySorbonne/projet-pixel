@@ -68,18 +68,19 @@ const RARE_TITLES : Array[String] = [
 	"Grass-Cutting Champion",
 	"Pokemon Master",
 	"Min-Maxer",
-	"Linux Overlord",
+	"Linux Lord",
 	"Pocket Taco",
 	"Hero of Rhyme",
 	"Memelord",
 	"Definitely on Tumblr",
 	"Scary Shiny Glasses",
 	"Hentai Anthropologist",
-	"The Strongest Man in the World",
 	"Isekai Protagonist",
 	"Assembly Developer",
 	"Power Bottom",
 	"Mommy Issues",
+	"Power of God and Anime Kid",
+	"Cassette Overlord",
 ]
 
 const LEGENDARY_TITLES : Array[String] = [
@@ -89,6 +90,9 @@ const LEGENDARY_TITLES : Array[String] = [
 	"Decorporater",
 	"Ascended", 
 	"One Man Furry Convention",
+	'Splatoon "Fanfic" Author',
+	"The Strongest Man in the World",
+	"Ultimate Bad Dragon Collector",
 ]
 
 var is_end_game := false
