@@ -2,23 +2,25 @@ extends Node
 class_name AI_Inputs
 
 enum Directions {Left, Right, Down, Up}
+enum Difficulty {Easy, Medium, Hard}
 
 const UPDATE_TIME_LIMIT := 0.35
-const MIN_TIME_BETWEEN_SPECIALS := 3.5
-const MIN_TIME_BETWEEN_ATTACKS := 0.1
-const MIN_TIME_BETWEEN_JUMPS := 1.8
-const MIN_TIME_CHOSEN_ENEMY := 4.0
 
-var time_between_specials := MIN_TIME_BETWEEN_SPECIALS
-var time_between_attacks := MIN_TIME_BETWEEN_ATTACKS
-var time_between_jumps := MIN_TIME_BETWEEN_JUMPS
+
+var min_time_between_specials := 3.5
+var min_time_between_attacks := 0.1
+var min_time_between_jumps := 1.8
+var min_time_chosen_enemy := 4.0
+var reaction_time := 0.0
+
+var time_between_specials := min_time_between_specials
+var time_between_attacks := min_time_between_attacks
+var time_between_jumps := min_time_between_jumps
 
 var time_since_special := 0.0
 var time_since_attack := 0.0
 var time_since_jump := 0.0
 var update_time := 0.0
-
-var reaction_time := 0.1
 
 var enemy_ids : Array[int] = []
 var enemies : Array[PlayerCharacter] = []
@@ -40,20 +42,41 @@ func _ready() -> void:
 			enemy_ids.append(p_id)
 	_on_timer_chosen_enemy_timeout()
 
+func set_difficulty(difficulty : Difficulty) -> void:
+	match difficulty:
+		Difficulty.Easy:
+			reaction_time = 0.8
+			min_time_between_specials = 6.0
+			min_time_between_attacks = 1.1
+			min_time_between_jumps = 3.2
+			min_time_chosen_enemy = 5.0
+		Difficulty.Medium:
+			reaction_time = 0.3
+			min_time_between_specials = 3.5
+			min_time_between_attacks = 0.15
+			min_time_between_jumps = 1.8
+			min_time_chosen_enemy = 4.0
+		Difficulty.Hard:
+			reaction_time = 0.0
+			min_time_between_specials = 2.6
+			min_time_between_attacks = 0.1
+			min_time_between_jumps = 0.9
+			min_time_chosen_enemy = 3.0
+
 func player_special() -> void:
 	player.special()
 	time_since_special = 0.0
-	time_between_specials = randf_range(MIN_TIME_BETWEEN_SPECIALS, MIN_TIME_BETWEEN_SPECIALS*3)
+	time_between_specials = randf_range(min_time_between_specials, min_time_between_specials*3)
 
 func player_attack() -> void:
 	player.attack()
 	time_since_attack = 0.0
-	time_between_attacks = randf_range(MIN_TIME_BETWEEN_ATTACKS, MIN_TIME_BETWEEN_ATTACKS*2)
+	time_between_attacks = randf_range(min_time_between_attacks, min_time_between_attacks*2)
 
 func player_jump() -> void:
 	player.jump()
 	time_since_jump = 0.0
-	time_between_jumps = randf_range(MIN_TIME_BETWEEN_JUMPS, MIN_TIME_BETWEEN_JUMPS*3)
+	time_between_jumps = randf_range(min_time_between_jumps, min_time_between_jumps*3)
 
 func random_t() -> float:
 	return randf_range(0.1, 0.5)
@@ -135,7 +158,7 @@ func update_enemies(delta : float, force_update := false) -> void:
 	if time_since_jump > time_between_jumps:
 		time_since_jump = 0.0
 		player_jump()
-		time_between_jumps = randf_range(MIN_TIME_BETWEEN_JUMPS, MIN_TIME_BETWEEN_JUMPS * 3.0)
+		time_between_jumps = randf_range(min_time_between_jumps, min_time_between_jumps * 3.0)
 	
 	# update enemies
 	if update_time > 0.0 and not force_update:
@@ -186,7 +209,7 @@ func _on_timer_chosen_enemy_timeout() -> void:
 		if fail_counter > 4:
 			chosen_enemy = 0
 			break
-	$TimerChosenEnemy.start(randf_range(MIN_TIME_CHOSEN_ENEMY, MIN_TIME_CHOSEN_ENEMY*3))
+	$TimerChosenEnemy.start(randf_range(min_time_chosen_enemy, min_time_chosen_enemy*3))
 
 func _process(_delta: float) -> void:
 	pass
