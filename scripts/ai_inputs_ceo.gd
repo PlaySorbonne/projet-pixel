@@ -37,8 +37,9 @@ func _process(delta: float) -> void:
 			return
 	else:
 		if enemy_position_differences[closest_enemy].x > 0.0:
-			pass
-			
+			player_press_direction(Directions.Left)
+		elif enemy_position_differences[closest_enemy].x < 0.0:
+			player_press_direction(Directions.Right)
 
 
 
