@@ -21,9 +21,9 @@ const EvolutionCharacters = {
 const EVOLUTIONS_AIS := {
 	Evolutions.CEO : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
 	Evolutions.Manager : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
-	Evolutions.Employee : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
-	Evolutions.Mascot : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
-	Evolutions.Weeb : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn")
+	Evolutions.Employee : preload("res://scenes/Characters/inputs/ai_inputs_employee.tscn"),
+	Evolutions.Mascot : preload("res://scenes/Characters/inputs/ai_inputs_employee.tscn"),
+	Evolutions.Weeb : preload("res://scenes/Characters/inputs/ai_inputs_weeb.tscn")
 }
 
 static var player_counter := 0
