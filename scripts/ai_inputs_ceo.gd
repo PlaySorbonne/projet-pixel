@@ -6,9 +6,6 @@ const ATTACK_RADIUS := 85.0*85.0
 
 
 func _process(delta: float) -> void:
-	player_special()
-	
-	return
 	update_enemies(delta, false)
 	
 	if time_since_jump > time_between_jumps:
