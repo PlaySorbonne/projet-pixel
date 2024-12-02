@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bboyt7idv5ii"]
+[gd_scene load_steps=3 format=3 uid="uid://cyenrtsqp1qpo"]
 
+[ext_resource type="PackedScene" uid="uid://p7etj6ib7h28" path="res://scenes/Characters/inputs/ai_inputs.tscn" id="1_8rx4x"]
 [ext_resource type="Script" path="res://scripts/ai_inputs_ceo.gd" id="1_rfhcr"]
 
-[node name="AI_Inputs_CEO" type="Node"]
+[node name="AiInputsCEO" instance=ExtResource("1_8rx4x")]
 script = ExtResource("1_rfhcr")

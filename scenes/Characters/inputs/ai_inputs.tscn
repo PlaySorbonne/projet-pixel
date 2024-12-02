@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://p7etj6ib7h28"]
+
+[ext_resource type="Script" path="res://scripts/ai_inputs.gd" id="1_5uovb"]
+
+[node name="AiInputs" type="Node"]
+script = ExtResource("1_5uovb")
+
+[node name="TimerLeft" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="TimerRight" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="TimerDown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TimerLeft" to="." method="_on_timer_left_timeout"]
+[connection signal="timeout" from="TimerRight" to="." method="_on_timer_right_timeout"]
+[connection signal="timeout" from="TimerDown" to="." method="_on_timer_down_timeout"]

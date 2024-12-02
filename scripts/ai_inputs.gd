@@ -2,11 +2,15 @@ extends Node
 class_name AI_Inputs
 
 enum Behaviors {PutDistance, AttackNearest, AttackLowestHealth}
+enum Directions {Left, Right, Down}
 
 const UPDATE_TIME_LIMIT := 0.7
 const MIN_TIME_BETWEEN_BEHAVIORS := 3.0
 const MIN_TIME_BETWEEN_SPECIALS := 2.0
 const MIN_TIME_BETWEEN_ATTACKS := 0.5
+
+var time_between_specials := MIN_TIME_BETWEEN_SPECIALS
+var time_between_attacks := MIN_TIME_BETWEEN_ATTACKS
 
 var time_since_behavior_change := 0.0
 var time_since_special := 0.0
@@ -33,10 +37,24 @@ func _ready() -> void:
 func player_special() -> void:
 	player.special()
 	time_since_special = 0.0
+	time_between_specials = randf_range(MIN_TIME_BETWEEN_SPECIALS, MIN_TIME_BETWEEN_SPECIALS*3)
 
 func player_attack() -> void:
 	player.attack()
 	time_since_attack = 0.0
+	time_between_attacks = randf_range(MIN_TIME_BETWEEN_ATTACKS, MIN_TIME_BETWEEN_ATTACKS*2)
+
+func player_press_direction(dir : Directions) -> void:
+	match dir:
+		Directions.Left:
+			player.left_pressed = true
+			$TimerLeft.start(0.5)
+		Directions.Right:
+			player.right_pressed = true
+			$TimerRight.start(0.5)
+		Directions.Down:
+			player.down_pressed = true
+			$TimerDown.start(0.5)
 
 func set_behavior() -> void:
 	time_since_behavior_change = 0.0
@@ -66,6 +84,15 @@ func update_enemies(delta : float, force_update := false) -> void:
 		enemy_directions.append(location.direction_to(enemy_location))
 		enemy_hitpoints.append(current_enemy.hitpoints)
 		enemy_position_differences.append(location - enemy_location)
+
+func _on_timer_left_timeout() -> void:
+	player.left_pressed = false
+
+func _on_timer_right_timeout() -> void:
+	player.right_pressed = false
+
+func _on_timer_down_timeout() -> void:
+	player.down_pressed = false
 
 func _process(_delta: float) -> void:
 	pass
