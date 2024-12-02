@@ -204,6 +204,8 @@ func stop_jump():
 		$JumpTimer.stop()
 
 func jump():
+	if not alive:
+		return
 	movement_velocity.y = -jump_velocity
 	is_jumping = true
 	$JumpTimer.start(jump_max_duration)
@@ -213,8 +215,8 @@ func _on_jump_timer_timeout():
 
 func spawn(location : Vector2, activate := true, f_right := true):
 	super.spawn(location, activate, f_right)
-	facing_right = f_right
-	$Sprite2D.flip_h = not f_right
+	#facing_right = f_right
+	check_turn(f_right)
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
@@ -331,14 +333,14 @@ func emit_hit_particles():
 	$HitParticles.restart()
 
 func special():
-	if in_stun_time or not specialObj.can_use_special:
+	if alive and in_stun_time or not specialObj.can_use_special:
 		return
 	specialObj.special()
 	$AudioLineSpecial.stream = audio_special.pick_random()
 	$AudioLineSpecial.play()
 
 func attack():
-	if not can_attack or in_stun_time:
+	if alive and not can_attack or in_stun_time:
 		return
 	can_attack = false
 	if attack_wind_up > 0:

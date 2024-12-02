@@ -1,12 +1,10 @@
 extends Node
 class_name AI_Inputs
 
-enum Behaviors {PutDistance, AttackNearest, AttackLowestHealth}
 enum Directions {Left, Right, Down}
 
 const UPDATE_TIME_LIMIT := 0.7
-const MIN_TIME_BETWEEN_BEHAVIORS := 3.0
-const MIN_TIME_BETWEEN_SPECIALS := 2.0
+const MIN_TIME_BETWEEN_SPECIALS := 3.5
 const MIN_TIME_BETWEEN_ATTACKS := 0.5
 const MIN_TIME_BETWEEN_JUMPS := 0.8
 
@@ -14,11 +12,11 @@ var time_between_specials := MIN_TIME_BETWEEN_SPECIALS
 var time_between_attacks := MIN_TIME_BETWEEN_ATTACKS
 var time_between_jumps := MIN_TIME_BETWEEN_JUMPS
 
-var time_since_behavior_change := 0.0
 var time_since_special := 0.0
 var time_since_attack := 0.0
 var time_since_jump := 0.0
 var update_time := 0.0
+
 var reaction_time := 0.1
 
 var enemy_ids : Array[int] = []
@@ -27,8 +25,6 @@ var enemy_distances : Array[float] = []
 var enemy_directions : Array[Vector2] = []
 var enemy_hitpoints : Array[int] = []
 var enemy_position_differences : Array[Vector2] = []
-#var enemy_velocities : Array[Vector2] = []
-var current_behavior : Behaviors = Behaviors.AttackNearest
 
 @onready var player : PlayerCharacter = self.get_parent()
 
@@ -69,6 +65,7 @@ func player_press_direction(dir : Directions) -> void:
 			$TimerDown.start(random_t())
 
 func attack_closest_enemy(enemy_pos_diff : Vector2) -> void:
+	# attacks
 	if time_since_attack > time_between_attacks:
 		if player.facing_right:
 			if enemy_pos_diff.x > 0.0:
@@ -77,23 +74,20 @@ func attack_closest_enemy(enemy_pos_diff : Vector2) -> void:
 		elif enemy_pos_diff.x < 0.0:
 			player_attack()
 			return
-	else:
-		if enemy_pos_diff.x > 0.0:
-			player_press_direction(Directions.Left)
-		elif enemy_pos_diff.x < 0.0:
-			player_press_direction(Directions.Right)
-
-func set_behavior() -> void:
-	time_since_behavior_change = 0.0
-	current_behavior = Behaviors.values().pick_random()
+	# movement
+	if enemy_pos_diff.x > 0.0:
+		player_press_direction(Directions.Left)
+	elif enemy_pos_diff.x < 0.0:
+		player_press_direction(Directions.Right)
 
 func update_enemies(delta : float, force_update := false) -> void:
+	# update various timers
 	update_time -= delta
-	time_since_behavior_change += delta
 	time_since_attack += delta
 	time_since_special += delta
-	if time_since_behavior_change >= MIN_TIME_BETWEEN_BEHAVIORS:
-		set_behavior()
+	time_since_jump += delta
+	
+	# update enemies
 	if update_time > 0.0 and not force_update:
 		return
 	update_time = UPDATE_TIME_LIMIT
