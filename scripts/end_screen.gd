@@ -90,7 +90,7 @@ const LEGENDARY_TITLES : Array[String] = [
 	"Decorporater",
 	"Ascended", 
 	"One Man Furry Convention",
-	'Splatoon "Fanfic" Author',
+	"Splatoon Fanfic Author",
 	"The Strongest Man in the World",
 	"Ultimate Bad Dragon Collector",
 ]
@@ -222,7 +222,7 @@ func _process(delta: float) -> void:
 		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
 	
 	# handle inputs
-	if not is_end_game or not can_move_forwerd:
+	if (not is_end_game) or (not can_move_forward):
 		return
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
 		current_end_step += 1
@@ -232,7 +232,7 @@ func _process(delta: float) -> void:
 		current_end_step = max(1, current_end_step-1)
 		execute_current_step(false)
 
-var can_move_forwerd := true
+var can_move_forward := true
 func execute_current_step(forward := true):
 	match current_end_step:
 		1:
@@ -243,11 +243,11 @@ func execute_current_step(forward := true):
 		2:
 			if not are_stats_initialized:
 				are_stats_initialized = true
-				can_move_forwerd = false
+				can_move_forward = false
 				for l : PlayerVictoryStats in player_stats_nodes:
 					l.intro_animation()
 					await get_tree().create_timer(0.5).timeout
-				await get_tree().create_timer(1.0).timeout
-				can_move_forwerd = true
+				await get_tree().create_timer(1.2).timeout
+				can_move_forward = true
 		3:
 			emit_signal("end_game_finished")
