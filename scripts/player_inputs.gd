@@ -33,9 +33,8 @@ func _input(event : InputEvent):
 		if not player.alive:
 			return
 		
-		var on_floor := player.is_on_floor()
 		# Handle jump.
-		if event.is_action_pressed("jump") and on_floor:
+		if event.is_action_pressed("jump"):
 			player.jump()
 		elif event.is_action_released("jump") and player.velocity.y < -50.0:
 			player.stop_jump()
