@@ -175,13 +175,11 @@ func _on_timer_down_spacing_timeout() -> void:
 
 func _on_timer_chosen_enemy_timeout() -> void:
 	chosen_enemy = randi_range(0, len(enemies)-1)
-	print("choose enemy:", chosen_enemy)
 	var chosen_enemy_obj : PlayerCharacter = GameInfos.players[enemy_ids[chosen_enemy]]
 	var fail_counter := 0
 	while not chosen_enemy_obj.alive:
 		chosen_enemy += 1
 		fail_counter += 1
-		print("\tinvalid enemy, try instead:", chosen_enemy)
 		if chosen_enemy >= enemies.size():
 			chosen_enemy = 0
 		chosen_enemy_obj = GameInfos.players[enemy_ids[chosen_enemy]]
