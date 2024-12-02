@@ -17,8 +17,10 @@ func _process(delta: float) -> void:
 				if player.facing_right:
 					if pos_diff.x < 0.0:
 						player_special()
+						return
 				elif pos_diff.x > 0.0:
 					player_special()
+					return
 		
 	
 

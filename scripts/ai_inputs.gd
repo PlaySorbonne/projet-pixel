@@ -45,6 +45,8 @@ func set_behavior() -> void:
 func update_enemies(delta : float, force_update := false) -> void:
 	update_time -= delta
 	time_since_behavior_change += delta
+	time_since_attack += delta
+	time_since_special += delta
 	if time_since_behavior_change >= MIN_TIME_BETWEEN_BEHAVIORS:
 		set_behavior()
 	if update_time > 0.0 and not force_update:

@@ -120,7 +120,7 @@ func _ready():
 		const PLAYER_INPUTS_RES := preload("res://scenes/Characters/inputs/player_inputs.tscn")
 		self.add_child(PLAYER_INPUTS_RES.instantiate())
 	else:
-		pass
+		self.add_child(EVOLUTIONS_AIS[current_evolution].instantiate())
 	if current_evolution != Evolutions.CEO:
 		await get_tree().create_timer(1.2).timeout
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
