@@ -3,6 +3,8 @@ class_name AI_InputsCEO
 
 func _process(_delta: float) -> void:
 	pass
+	
+	
 	# actions:
 		# move (left/right/drop down)
 		# jump/stop_jump
