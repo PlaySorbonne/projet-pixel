@@ -5,10 +5,15 @@ enum Behaviors {PutDistance, AttackNearest, AttackLowestHealth}
 
 const UPDATE_TIME_LIMIT := 0.7
 const MIN_TIME_BETWEEN_BEHAVIORS := 3.0
+const MIN_TIME_BETWEEN_SPECIALS := 2.0
+const MIN_TIME_BETWEEN_ATTACKS := 0.5
 
 var time_since_behavior_change := 0.0
+var time_since_special := 0.0
+var time_since_attack := 0.0
 var update_time := 0.0
 var reaction_time := 0.1
+
 var enemy_ids : Array[int] = []
 var enemies : Array[PlayerCharacter] = []
 var enemy_distances : Array[float] = []
@@ -24,6 +29,14 @@ func _ready() -> void:
 	for p_id : int in GameInfos.players.keys():
 		if p_id != player.player_ID:
 			enemy_ids.append(p_id)
+
+func player_special() -> void:
+	player.special()
+	time_since_special = 0.0
+
+func player_attack() -> void:
+	player.attack()
+	time_since_attack = 0.0
 
 func set_behavior() -> void:
 	time_since_behavior_change = 0.0
