@@ -3,9 +3,9 @@ class_name AI_Inputs
 
 enum Directions {Left, Right, Down}
 
-const UPDATE_TIME_LIMIT := 0.7
+const UPDATE_TIME_LIMIT := 0.35
 const MIN_TIME_BETWEEN_SPECIALS := 3.5
-const MIN_TIME_BETWEEN_ATTACKS := 0.5
+const MIN_TIME_BETWEEN_ATTACKS := 0.1
 const MIN_TIME_BETWEEN_JUMPS := 0.8
 
 var time_between_specials := MIN_TIME_BETWEEN_SPECIALS

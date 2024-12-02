@@ -2,7 +2,7 @@ extends AI_Inputs
 class_name AI_InputsCEO
 
 const CHARGE_MAX_Y_OFFSET := 20.0
-const ATTACK_RADIUS := 35.0*35.0
+const ATTACK_RADIUS := 85.0*85.0
 
 
 func _process(delta: float) -> void:
