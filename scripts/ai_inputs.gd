@@ -111,10 +111,10 @@ func attack_enemy(use_chosen_enemy := true) -> void:
 			player_attack()
 			return
 	# movement
-	if enemy_pos_diff.x > max_attack_radius:
+	if enemy_pos_diff.x > min_attack_radius:
 		#print("\tgoing left")
 		player_press_direction(Directions.Left)
-	elif enemy_pos_diff.x < -max_attack_radius:
+	elif enemy_pos_diff.x < -min_attack_radius:
 		#print("\tgoing right")
 		player_press_direction(Directions.Right)
 	if enemy_pos_diff.y < -50.0:
@@ -130,6 +130,12 @@ func update_enemies(delta : float, force_update := false) -> void:
 	time_since_attack += delta
 	time_since_special += delta
 	time_since_jump += delta
+	
+	# random jumps
+	if time_since_jump > time_between_jumps:
+		time_since_jump = 0.0
+		player_jump()
+		time_between_jumps = randf_range(MIN_TIME_BETWEEN_JUMPS, MIN_TIME_BETWEEN_JUMPS * 3.0)
 	
 	# update enemies
 	if update_time > 0.0 and not force_update:
