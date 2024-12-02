@@ -1207,4 +1207,6 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/LevelSelector" to="CanvasLayer/GameCreationScreen" method="_on_level_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/MusicSelector" to="CanvasLayer/GameCreationScreen" method="_on_music_selector_option_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_pressed"]

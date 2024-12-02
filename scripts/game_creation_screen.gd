@@ -210,9 +210,11 @@ func _on_button_back_pressed():
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
+var can_add_ai := true
 func _on_button_add_ai_pressed() -> void:
-	if len(player_selectors) == 4:
+	if len(player_selectors) == 4 or not can_add_ai:
 		return
+	can_add_ai = false
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 	player.is_player_controlled = false
 	var player_index := player.player_ID
@@ -220,4 +222,19 @@ func _on_button_add_ai_pressed() -> void:
 	player.control_type = -1
 	GameInfos.add_player(player)
 	create_player_infos(player_index)
-	
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	$ButtonAddAI.rotation = 0.0
+	t.tween_property($ButtonAddAI, "scale", Vector2(1.5, 1.5), 0.2)
+	t.tween_property($ButtonAddAI, "rotation", 2*PI, 0.5)
+	await get_tree().create_timer(0.2).timeout
+	var t2 := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t2.tween_property($ButtonAddAI, "scale", Vector2.ONE, 0.3)
+	can_add_ai = true
+
+func _on_button_add_ai_mouse_entered() -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ButtonAddAI, "modulate", Color.RED, 0.5)
+
+func _on_button_add_ai_mouse_exited() -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ButtonAddAI, "modulate", Color.WHITE, 0.5)
