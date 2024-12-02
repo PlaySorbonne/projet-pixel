@@ -1,5 +1,5 @@
 extends AI_Inputs
-class_name AI_InputsCEO
+class_name AI_InputsWeeb
 
 const CHARGE_MAX_Y_OFFSET := 70.0
 
