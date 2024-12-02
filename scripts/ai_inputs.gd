@@ -6,7 +6,8 @@ enum Directions {Left, Right, Down}
 const UPDATE_TIME_LIMIT := 0.35
 const MIN_TIME_BETWEEN_SPECIALS := 3.5
 const MIN_TIME_BETWEEN_ATTACKS := 0.1
-const MIN_TIME_BETWEEN_JUMPS := 0.8
+const MIN_TIME_BETWEEN_JUMPS := 1.8
+const MIN_TIME_CHOSEN_ENEMY := 4.0
 
 var time_between_specials := MIN_TIME_BETWEEN_SPECIALS
 var time_between_attacks := MIN_TIME_BETWEEN_ATTACKS
@@ -25,6 +26,7 @@ var enemy_distances : Array[float] = []
 var enemy_directions : Array[Vector2] = []
 var enemy_hitpoints : Array[int] = []
 var enemy_position_differences : Array[Vector2] = []
+var chosen_enemy : int
 
 @onready var player : PlayerCharacter = self.get_parent()
 
@@ -32,6 +34,7 @@ func _ready() -> void:
 	for p_id : int in GameInfos.players.keys():
 		if p_id != player.player_ID:
 			enemy_ids.append(p_id)
+	_on_timer_chosen_enemy_timeout()
 
 func player_special() -> void:
 	player.special()
@@ -49,7 +52,7 @@ func player_jump() -> void:
 	time_between_jumps = randf_range(MIN_TIME_BETWEEN_JUMPS, MIN_TIME_BETWEEN_JUMPS*3)
 
 func random_t() -> float:
-	return randf_range(0.25, 1.25)
+	return randf_range(0.1, 0.5)
 
 func player_press_direction(dir : Directions) -> void:
 	match dir:
@@ -60,11 +63,11 @@ func player_press_direction(dir : Directions) -> void:
 			player.right_pressed = true
 			$TimerRight.start(random_t())
 		Directions.Down:
-			
 			player.down_pressed = true
 			$TimerDown.start(random_t())
 
-func attack_closest_enemy(enemy_pos_diff : Vector2) -> void:
+func attack_enemy() -> void:
+	var enemy_pos_diff : Vector2 = enemy_position_differences[chosen_enemy]
 	# attacks
 	if time_since_attack > time_between_attacks:
 		if player.facing_right:
@@ -122,6 +125,11 @@ func _on_timer_down_timeout() -> void:
 func _on_timer_down_spacing_timeout() -> void:
 	player_press_direction(Directions.Down)
 	$TimerDownSpacing.start(random_t() * 4)
+
+func _on_timer_chosen_enemy_timeout() -> void:
+	chosen_enemy = randi_range(0, len(enemies)-1)
+	$TimerChosenEnemy.start(randf_range(MIN_TIME_CHOSEN_ENEMY, MIN_TIME_CHOSEN_ENEMY*3))
+
 
 func _process(_delta: float) -> void:
 	pass

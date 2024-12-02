@@ -22,7 +22,10 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="TimerChosenEnemy" type="Timer" parent="."]
+
 [connection signal="timeout" from="TimerLeft" to="." method="_on_timer_left_timeout"]
 [connection signal="timeout" from="TimerRight" to="." method="_on_timer_right_timeout"]
 [connection signal="timeout" from="TimerDown" to="." method="_on_timer_down_timeout"]
 [connection signal="timeout" from="TimerDownSpacing" to="." method="_on_timer_down_spacing_timeout"]
+[connection signal="timeout" from="TimerChosenEnemy" to="." method="_on_timer_chosen_enemy_timeout"]

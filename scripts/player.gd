@@ -207,7 +207,7 @@ func stop_jump():
 		$JumpTimer.stop()
 
 func jump():
-	if not alive:
+	if not alive or not is_on_floor():
 		return
 	movement_velocity.y = -jump_velocity
 	is_jumping = true
@@ -336,14 +336,15 @@ func emit_hit_particles():
 	$HitParticles.restart()
 
 func special():
-	if alive and in_stun_time or not specialObj.can_use_special:
+	if (not alive) or (not computing_movement) or (in_stun_time) or (
+										not specialObj.can_use_special):
 		return
 	specialObj.special()
 	$AudioLineSpecial.stream = audio_special.pick_random()
 	$AudioLineSpecial.play()
 
 func attack():
-	if alive and not can_attack or in_stun_time:
+	if (not alive) or (not can_attack) or (in_stun_time):
 		return
 	can_attack = false
 	if attack_wind_up > 0:

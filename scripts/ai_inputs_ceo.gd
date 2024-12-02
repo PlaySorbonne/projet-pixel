@@ -1,19 +1,21 @@
 extends AI_Inputs
 class_name AI_InputsCEO
 
-const CHARGE_MAX_Y_OFFSET := 20.0
+const CHARGE_MAX_Y_OFFSET := 70.0
 const ATTACK_RADIUS := 85.0*85.0
 
 
 func _process(delta: float) -> void:
+	player_special()
+	
+	return
 	update_enemies(delta, false)
 	
 	if time_since_jump > time_between_jumps:
 		player_jump()
 	var closest_enemy : int = 0
-	var smallest_dist : float = enemy_distances[0]
+	# check if enemies are aligned for a special
 	for i in range(enemies.size()):
-		# check if enemies are aligned for a special
 		if time_since_special > time_between_specials:
 			var pos_diff : Vector2 = enemy_position_differences[i]
 			if abs(pos_diff.y) < CHARGE_MAX_Y_OFFSET:
@@ -24,12 +26,8 @@ func _process(delta: float) -> void:
 				elif pos_diff.x > 0.0:
 					player_special()
 					return
-		# compute smallest_dist
-		if enemy_distances[i] < smallest_dist:
-			closest_enemy = i
-			smallest_dist = enemy_distances[i]
-	# attack closest enemy
-	attack_closest_enemy(enemy_position_differences[closest_enemy])
+	# attack chosen enemy
+	attack_enemy()
 
 
 	# actions:
