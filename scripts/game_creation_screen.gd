@@ -84,8 +84,10 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	player_infos.with_voice = with_voice
 	player_infos.player_index = index
 	player_infos.last_winner = (index == GameInfos.last_winner)
-	player_infos.control_type = GameInfos.players_data[index]["control_type"]
-	player_infos.control_index = GameInfos.players_data[index]["control_device"]
+	var player : PlayerCharacter = GameInfos.players[index]
+	if player.is_player_controlled:
+		player_infos.control_type = GameInfos.players_data[index]["control_type"]
+		player_infos.control_index = GameInfos.players_data[index]["control_device"]
 	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
 		player_selectors.size()-1)
 	player_infos.connect("player_removed", remove_player)
@@ -207,3 +209,15 @@ func _on_button_back_pressed():
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
+
+func _on_button_add_ai_pressed() -> void:
+	if len(player_selectors) == 4:
+		return
+	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	player.is_player_controlled = false
+	var player_index := player.player_ID
+	player.control_device = -1
+	player.control_type = -1
+	GameInfos.add_player(player)
+	create_player_infos(player_index)
+	

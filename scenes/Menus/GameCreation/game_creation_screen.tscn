@@ -1174,6 +1174,22 @@ libraries = {
 "": SubResource("AnimationLibrary_isbir")
 }
 
+[node name="ButtonAddAI" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.61875
+anchor_top = 0.363889
+anchor_right = 0.660937
+anchor_bottom = 0.460185
+pivot_offset = Vector2(40.5, 52)
+focus_mode = 0
+theme = ExtResource("2_gimcs")
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 60
+text = "+"
+flat = true
+metadata/_edit_use_anchors_ = true
+
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false
 z_index = 20
@@ -1191,3 +1207,4 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/LevelSelector" to="CanvasLayer/GameCreationScreen" method="_on_level_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/MusicSelector" to="CanvasLayer/GameCreationScreen" method="_on_music_selector_option_changed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_pressed"]
