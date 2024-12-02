@@ -51,6 +51,8 @@ func _ready():
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
 	check_winner()
+	current_ai_difficulty = GameInfos.players_data[player_index]["ai_difficulty"]
+	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
 	if with_voice:
 		$AudioCEOVoice.stream = CEO_lines.pick_random()
 		$AudioCEOVoice.play()

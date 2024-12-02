@@ -225,12 +225,12 @@ func _process(delta: float) -> void:
 	if (not is_end_game) or (not can_move_forward):
 		return
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
-		current_end_step += 1
+		current_end_step = min(3, current_end_step+1)
 		execute_current_step()
 		
-	elif Input.is_action_just_pressed("attack"):
-		current_end_step = max(1, current_end_step-1)
-		execute_current_step(false)
+	#elif Input.is_action_just_pressed("attack"):
+		#current_end_step = max(1, current_end_step-1)
+		#execute_current_step(false)
 
 var can_move_forward := true
 func execute_current_step(forward := true):

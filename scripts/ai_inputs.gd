@@ -38,11 +38,11 @@ var special_enemy : Node2D = null
 @onready var player : PlayerCharacter = self.get_parent()
 
 func _ready() -> void:
-	set_difficulty(player.ai_difficulty)
 	for p_id : int in GameInfos.players.keys():
 		if p_id != player.player_ID:
 			enemy_ids.append(p_id)
 	_on_timer_chosen_enemy_timeout()
+	set_difficulty(player.ai_difficulty)
 
 func set_difficulty(difficulty : Difficulty) -> void:
 	match difficulty:
@@ -60,7 +60,7 @@ func set_difficulty(difficulty : Difficulty) -> void:
 			min_time_chosen_enemy = 4.0
 		Difficulty.Hard:
 			reaction_time = 0.0
-			min_time_between_specials = 2.6
+			min_time_between_specials = 2.3
 			min_time_between_attacks = 0.1
 			min_time_between_jumps = 0.9
 			min_time_chosen_enemy = 3.0
@@ -117,12 +117,20 @@ func attack_cassette() -> void:
 	special_enemy = GameInfos.anime_box
 	attack_enemy(false)
 
+func check_chosen_enemy() -> bool:
+	if is_instance_valid(enemies[chosen_enemy]) and enemies[chosen_enemy].alive:
+		return true
+	else:
+		return false
+
 func attack_enemy(use_chosen_enemy := true) -> void:
 	if reacting_time < reaction_time:
 		return
 	reacting_time = 0.0
 	var enemy_pos_diff : Vector2
 	if use_chosen_enemy:
+		if not check_chosen_enemy():
+			_on_timer_chosen_enemy_timeout()
 		enemy_pos_diff = enemy_position_differences[chosen_enemy]
 	else:
 		enemy_pos_diff = player.global_position - special_enemy.global_position
