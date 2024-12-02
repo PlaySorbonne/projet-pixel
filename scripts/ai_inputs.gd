@@ -26,7 +26,10 @@ var enemy_distances : Array[float] = []
 var enemy_directions : Array[Vector2] = []
 var enemy_hitpoints : Array[int] = []
 var enemy_position_differences : Array[Vector2] = []
+
 var chosen_enemy : int
+var max_attack_radius : float = 250.0
+var min_attack_radius : float = 25.0
 
 @onready var player : PlayerCharacter = self.get_parent()
 
@@ -66,25 +69,44 @@ func player_press_direction(dir : Directions) -> void:
 			player.down_pressed = true
 			$TimerDown.start(random_t())
 
+func player_tap_direction(dir : Directions) -> void:
+	match dir:
+		Directions.Left:
+			player.left_pressed = true
+			$TimerLeft.start(0.05)
+		Directions.Right:
+			player.right_pressed = true
+			$TimerRight.start(0.05)
+		Directions.Down:
+			player.down_pressed = true
+			$TimerDown.start(0.05)
+
 func attack_enemy() -> void:
 	var enemy_pos_diff : Vector2 = enemy_position_differences[chosen_enemy]
+	#print("enemy_pos_diff =", enemy_pos_diff)
 	# attacks
 	if time_since_attack > time_between_attacks:
 		if player.facing_right:
-			if enemy_pos_diff.x > 0.0:
+			if enemy_pos_diff.x > -max_attack_radius:
+				#print("\tattacking right")
 				player_attack()
 				return
-		elif enemy_pos_diff.x < 0.0:
+		elif enemy_pos_diff.x < max_attack_radius:
+			#print("\tattacking left")
 			player_attack()
 			return
 	# movement
-	if enemy_pos_diff.x > 0.0:
+	if enemy_pos_diff.x > max_attack_radius:
+		#print("\tgoing left")
 		player_press_direction(Directions.Left)
-	elif enemy_pos_diff.x < 0.0:
+	elif enemy_pos_diff.x < -max_attack_radius:
+		#print("\tgoing right")
 		player_press_direction(Directions.Right)
 	if enemy_pos_diff.y < -50.0:
+		#print("\tEnemy beside me")
 		player_press_direction(Directions.Down)
 	elif enemy_pos_diff.y > 50.0:
+		#print("\tEnemy above me")
 		player_jump()
 
 func update_enemies(delta : float, force_update := false) -> void:

@@ -26,10 +26,8 @@ func _input(event : InputEvent):
 			player.up_pressed = false
 		if event.is_action_pressed("drop"):
 			player.down_pressed = true
-			player.set_collision_mask_value(5, false)
 		elif event.is_action_released("drop"):
 			player.down_pressed = false
-			player.set_collision_mask_value(5, true)
 		if not player.alive:
 			return
 		

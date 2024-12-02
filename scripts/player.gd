@@ -76,7 +76,10 @@ var evolving := false
 var left_pressed := false
 var right_pressed := false
 var up_pressed := false
-var down_pressed := false
+var down_pressed := false:
+	set(value):
+		down_pressed = value
+		set_collision_mask_value(5, not value)
 var compute_hits := true
 var in_stun_time := false
 var eliminate_hit_targets := false

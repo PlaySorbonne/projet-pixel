@@ -2,14 +2,9 @@ extends AI_Inputs
 class_name AI_InputsCEO
 
 const CHARGE_MAX_Y_OFFSET := 70.0
-const ATTACK_RADIUS := 85.0*85.0
-
 
 func _process(delta: float) -> void:
 	update_enemies(delta, false)
-	
-	if time_since_jump > time_between_jumps:
-		player_jump()
 	var closest_enemy : int = 0
 	# check if enemies are aligned for a special
 	for i in range(enemies.size()):
