@@ -821,7 +821,7 @@ playback_default_blend_time = 0.1
 [node name="LastWinner" parent="Control" instance=ExtResource("11_gin5s")]
 
 [node name="ControlType" type="TextureRect" parent="Control"]
-modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 offset_left = 86.0
@@ -832,6 +832,22 @@ rotation = -0.106465
 theme = ExtResource("2_v14l6")
 texture = ExtResource("12_1nth3")
 expand_mode = 1
+
+[node name="ButtonAiDiffculty" type="Button" parent="Control/ControlType"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0753382
+anchor_top = -0.0478756
+anchor_right = 1.03131
+anchor_bottom = 1.26641
+theme = ExtResource("2_v14l6")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "
+Mid"
+flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -902,6 +918,7 @@ stream = ExtResource("23_dvwja")
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
+[connection signal="pressed" from="Control/ControlType/ButtonAiDiffculty" to="." method="_on_button_ai_diffculty_pressed"]
 [connection signal="pressed" from="Control/ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="color_changed" from="Control/ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="Control/ButtonCancel" to="." method="_on_button_cancel_pressed"]

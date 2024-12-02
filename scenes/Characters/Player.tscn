@@ -265,6 +265,7 @@ _data = {
 collision_mask = 17
 script = ExtResource("2_7jbn1")
 is_player_controlled = true
+ai_difficulty = 1
 custom_audio_attacks = null
 current_evolution = 0
 attack_size = Vector2(1, 1)

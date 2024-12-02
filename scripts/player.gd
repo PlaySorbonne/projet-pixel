@@ -29,6 +29,7 @@ const EVOLUTIONS_AIS := {
 static var player_counter := 0
 
 @export var is_player_controlled := true
+@export var ai_difficulty := AI_Inputs.Difficulty.Mid
 @export var custom_audio_attacks : AudioStream = null
 
 @export_group("Gameplay Stats")
@@ -106,6 +107,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.control_type = control_type
 	new_body.player_ID = player_ID
 	new_body.is_player_controlled = is_player_controlled
+	new_body.ai_difficulty = ai_difficulty
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
 
 func _init():

@@ -2,7 +2,7 @@ extends Node
 class_name AI_Inputs
 
 enum Directions {Left, Right, Down, Up}
-enum Difficulty {Easy, Medium, Hard}
+enum Difficulty {Easy, Mid, Hard}
 
 const UPDATE_TIME_LIMIT := 0.35
 
@@ -38,6 +38,7 @@ var special_enemy : Node2D = null
 @onready var player : PlayerCharacter = self.get_parent()
 
 func _ready() -> void:
+	set_difficulty(player.ai_difficulty)
 	for p_id : int in GameInfos.players.keys():
 		if p_id != player.player_ID:
 			enemy_ids.append(p_id)
@@ -51,7 +52,7 @@ func set_difficulty(difficulty : Difficulty) -> void:
 			min_time_between_attacks = 1.1
 			min_time_between_jumps = 3.2
 			min_time_chosen_enemy = 5.0
-		Difficulty.Medium:
+		Difficulty.Mid:
 			reaction_time = 0.5
 			min_time_between_specials = 3.5
 			min_time_between_attacks = 0.15
