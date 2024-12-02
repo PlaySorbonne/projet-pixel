@@ -13,6 +13,10 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="TimerUp" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="TimerDown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -26,6 +30,7 @@ autostart = true
 
 [connection signal="timeout" from="TimerLeft" to="." method="_on_timer_left_timeout"]
 [connection signal="timeout" from="TimerRight" to="." method="_on_timer_right_timeout"]
+[connection signal="timeout" from="TimerUp" to="." method="_on_timer_up_timeout"]
 [connection signal="timeout" from="TimerDown" to="." method="_on_timer_down_timeout"]
 [connection signal="timeout" from="TimerDownSpacing" to="." method="_on_timer_down_spacing_timeout"]
 [connection signal="timeout" from="TimerChosenEnemy" to="." method="_on_timer_chosen_enemy_timeout"]

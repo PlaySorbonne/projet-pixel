@@ -1,7 +1,7 @@
 extends Node
 class_name AI_Inputs
 
-enum Directions {Left, Right, Down}
+enum Directions {Left, Right, Down, Up}
 
 const UPDATE_TIME_LIMIT := 0.35
 const MIN_TIME_BETWEEN_SPECIALS := 3.5
@@ -69,6 +69,9 @@ func player_press_direction(dir : Directions) -> void:
 		Directions.Down:
 			player.down_pressed = true
 			$TimerDown.start(random_t())
+		Directions.Up:
+			player.down_pressed = true
+			$TimerDown.start(random_t())
 
 func player_tap_direction(dir : Directions) -> void:
 	match dir:
@@ -81,6 +84,9 @@ func player_tap_direction(dir : Directions) -> void:
 		Directions.Down:
 			player.down_pressed = true
 			$TimerDown.start(0.05)
+		Directions.Up:
+			player.up_pressed = true
+			$TimerUp.start(0.05)
 
 func attack_cassette() -> void:
 	special_enemy = GameInfos.anime_box
@@ -149,6 +155,10 @@ func _on_timer_left_timeout() -> void:
 
 func _on_timer_right_timeout() -> void:
 	player.right_pressed = false
+
+func _on_timer_up_timeout() -> void:
+	player.up_pressed = false
+	
 
 func _on_timer_down_timeout() -> void:
 	player.down_pressed = false
