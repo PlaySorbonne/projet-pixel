@@ -8,6 +8,8 @@ const ATTACK_RADIUS := 35.0*35.0
 func _process(delta: float) -> void:
 	update_enemies(delta, false)
 	
+	if time_since_jump > time_between_jumps:
+		player_jump()
 	var closest_enemy : int = 0
 	var smallest_dist : float = enemy_distances[0]
 	for i in range(enemies.size()):
@@ -27,20 +29,7 @@ func _process(delta: float) -> void:
 			closest_enemy = i
 			smallest_dist = enemy_distances[i]
 	# attack closest enemy
-	if time_since_attack > time_between_attacks:
-		if player.facing_right:
-			if enemy_position_differences[closest_enemy].x > 0.0:
-				player_attack()
-				return
-		elif enemy_position_differences[closest_enemy].x < 0.0:
-			player_attack()
-			return
-	else:
-		if enemy_position_differences[closest_enemy].x > 0.0:
-			player_press_direction(Directions.Left)
-		elif enemy_position_differences[closest_enemy].x < 0.0:
-			player_press_direction(Directions.Right)
-
+	attack_closest_enemy(enemy_position_differences[closest_enemy])
 
 
 	# actions:

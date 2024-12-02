@@ -8,13 +8,16 @@ const UPDATE_TIME_LIMIT := 0.7
 const MIN_TIME_BETWEEN_BEHAVIORS := 3.0
 const MIN_TIME_BETWEEN_SPECIALS := 2.0
 const MIN_TIME_BETWEEN_ATTACKS := 0.5
+const MIN_TIME_BETWEEN_JUMPS := 0.8
 
 var time_between_specials := MIN_TIME_BETWEEN_SPECIALS
 var time_between_attacks := MIN_TIME_BETWEEN_ATTACKS
+var time_between_jumps := MIN_TIME_BETWEEN_JUMPS
 
 var time_since_behavior_change := 0.0
 var time_since_special := 0.0
 var time_since_attack := 0.0
+var time_since_jump := 0.0
 var update_time := 0.0
 var reaction_time := 0.1
 
@@ -44,17 +47,41 @@ func player_attack() -> void:
 	time_since_attack = 0.0
 	time_between_attacks = randf_range(MIN_TIME_BETWEEN_ATTACKS, MIN_TIME_BETWEEN_ATTACKS*2)
 
+func player_jump() -> void:
+	player.jump()
+	time_since_jump = 0.0
+	time_between_jumps = randf_range(MIN_TIME_BETWEEN_JUMPS, MIN_TIME_BETWEEN_JUMPS*3)
+
+func random_t() -> float:
+	return randf_range(0.25, 1.25)
+
 func player_press_direction(dir : Directions) -> void:
 	match dir:
 		Directions.Left:
 			player.left_pressed = true
-			$TimerLeft.start(0.5)
+			$TimerLeft.start(random_t())
 		Directions.Right:
 			player.right_pressed = true
-			$TimerRight.start(0.5)
+			$TimerRight.start(random_t())
 		Directions.Down:
+			
 			player.down_pressed = true
-			$TimerDown.start(0.5)
+			$TimerDown.start(random_t())
+
+func attack_closest_enemy(enemy_pos_diff : Vector2) -> void:
+	if time_since_attack > time_between_attacks:
+		if player.facing_right:
+			if enemy_pos_diff.x > 0.0:
+				player_attack()
+				return
+		elif enemy_pos_diff.x < 0.0:
+			player_attack()
+			return
+	else:
+		if enemy_pos_diff.x > 0.0:
+			player_press_direction(Directions.Left)
+		elif enemy_pos_diff.x < 0.0:
+			player_press_direction(Directions.Right)
 
 func set_behavior() -> void:
 	time_since_behavior_change = 0.0
@@ -93,6 +120,10 @@ func _on_timer_right_timeout() -> void:
 
 func _on_timer_down_timeout() -> void:
 	player.down_pressed = false
+
+func _on_timer_down_spacing_timeout() -> void:
+	player_press_direction(Directions.Down)
+	$TimerDownSpacing.start(random_t() * 4)
 
 func _process(_delta: float) -> void:
 	pass
