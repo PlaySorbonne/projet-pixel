@@ -30,6 +30,7 @@ var enemy_position_differences : Array[Vector2] = []
 var chosen_enemy : int
 var max_attack_radius : float = 250.0
 var min_attack_radius : float = 25.0
+var special_enemy : Node2D = null
 
 @onready var player : PlayerCharacter = self.get_parent()
 
@@ -81,8 +82,16 @@ func player_tap_direction(dir : Directions) -> void:
 			player.down_pressed = true
 			$TimerDown.start(0.05)
 
-func attack_enemy() -> void:
-	var enemy_pos_diff : Vector2 = enemy_position_differences[chosen_enemy]
+func attack_cassette() -> void:
+	special_enemy = GameInfos.anime_box
+	attack_enemy(false)
+
+func attack_enemy(use_chosen_enemy := true) -> void:
+	var enemy_pos_diff : Vector2
+	if use_chosen_enemy:
+		enemy_pos_diff = enemy_position_differences[chosen_enemy]
+	else:
+		enemy_pos_diff = player.global_position - special_enemy.global_position
 	#print("enemy_pos_diff =", enemy_pos_diff)
 	# attacks
 	if time_since_attack > time_between_attacks:
