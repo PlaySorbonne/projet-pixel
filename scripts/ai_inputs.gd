@@ -79,6 +79,10 @@ func attack_closest_enemy(enemy_pos_diff : Vector2) -> void:
 		player_press_direction(Directions.Left)
 	elif enemy_pos_diff.x < 0.0:
 		player_press_direction(Directions.Right)
+	if enemy_pos_diff.y < -50.0:
+		player_press_direction(Directions.Down)
+	elif enemy_pos_diff.y > 50.0:
+		player_jump()
 
 func update_enemies(delta : float, force_update := false) -> void:
 	# update various timers
@@ -96,7 +100,7 @@ func update_enemies(delta : float, force_update := false) -> void:
 	enemy_directions = []
 	enemy_hitpoints = []
 	enemy_position_differences = []
-	var location := player.global_position
+	var location := player.get_attack_location()
 	for id : int in enemy_ids:
 		var current_enemy : PlayerCharacter = GameInfos.players[id]
 		var enemy_location : Vector2 = current_enemy.global_position

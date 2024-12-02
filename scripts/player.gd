@@ -91,7 +91,10 @@ func load_custom_gameplay_data():
 	if air_speed <= 1.0:
 		air_speed = speed
 
-func get_special_attack():
+func get_attack_location() -> Vector2:
+	return $AttackLocation.global_position
+
+func get_special_attack() -> Node:
 	return $SpecialAttack
 
 func copy_player_data(new_body : PlayerCharacter):
