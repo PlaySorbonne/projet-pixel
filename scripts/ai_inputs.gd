@@ -21,6 +21,7 @@ var time_since_special := 0.0
 var time_since_attack := 0.0
 var time_since_jump := 0.0
 var update_time := 0.0
+var reacting_time := 0.0
 
 var enemy_ids : Array[int] = []
 var enemies : Array[PlayerCharacter] = []
@@ -45,13 +46,13 @@ func _ready() -> void:
 func set_difficulty(difficulty : Difficulty) -> void:
 	match difficulty:
 		Difficulty.Easy:
-			reaction_time = 0.8
+			reaction_time = 1.2
 			min_time_between_specials = 6.0
 			min_time_between_attacks = 1.1
 			min_time_between_jumps = 3.2
 			min_time_chosen_enemy = 5.0
 		Difficulty.Medium:
-			reaction_time = 0.3
+			reaction_time = 0.5
 			min_time_between_specials = 3.5
 			min_time_between_attacks = 0.15
 			min_time_between_jumps = 1.8
@@ -116,6 +117,9 @@ func attack_cassette() -> void:
 	attack_enemy(false)
 
 func attack_enemy(use_chosen_enemy := true) -> void:
+	if reacting_time < reaction_time:
+		return
+	reacting_time = 0.0
 	var enemy_pos_diff : Vector2
 	if use_chosen_enemy:
 		enemy_pos_diff = enemy_position_differences[chosen_enemy]
@@ -150,6 +154,7 @@ func attack_enemy(use_chosen_enemy := true) -> void:
 func update_enemies(delta : float, force_update := false) -> void:
 	# update various timers
 	update_time -= delta
+	reacting_time += delta
 	time_since_attack += delta
 	time_since_special += delta
 	time_since_jump += delta
