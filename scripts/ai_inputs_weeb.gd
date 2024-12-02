@@ -1,21 +1,30 @@
 extends AI_Inputs
 class_name AI_InputsWeeb
 
-const CHARGE_MAX_Y_OFFSET := 70.0
+var cassette : AnimeBox 
+
+@onready var weeb_player : WeebCharacter = get_parent()
+
+func _ready() -> void:
+	super._ready()
+	await get_tree().create_timer(0.1).timeout
+	$TimerChosenEnemy.stop()
 
 func _process(delta: float) -> void:
+	cassette = GameInfos.anime_box
 	update_enemies(delta, false)
-	# check if enemies are aligned for a special
-	for i in range(enemies.size()):
-		if time_since_special > time_between_specials:
-			var pos_diff : Vector2 = enemy_position_differences[i]
-			if abs(pos_diff.y) < CHARGE_MAX_Y_OFFSET:
-				if player.facing_right:
-					if pos_diff.x < 0.0:
-						player_special()
-						return
-				elif pos_diff.x > 0.0:
-					player_special()
-					return
+	
+	if weeb_player.ascended:
+		pass
+	else:
+		pass
 	# attack chosen enemy
 	attack_enemy()
+
+func _on_timer_check_ascended_timeout() -> void:
+	if not weeb_player.ascended:
+		for i : int in enemy_ids:
+			var e : PlayerCharacter = GameInfos.players[i]
+			if e.has("ascended") and e.ascended:
+				chosen_enemy = i
+				break

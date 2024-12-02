@@ -5,3 +5,9 @@
 
 [node name="AiInputsWeeb" instance=ExtResource("1_mu5ae")]
 script = ExtResource("2_kthve")
+
+[node name="TimerCheckAscended" type="Timer" parent="." index="5"]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="TimerCheckAscended" to="." method="_on_timer_check_ascended_timeout"]
