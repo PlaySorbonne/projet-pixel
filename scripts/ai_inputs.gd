@@ -49,7 +49,6 @@ func _ready() -> void:
 	set_difficulty(player.ai_difficulty)
 
 func set_difficulty(difficulty : Difficulty) -> void:
-	print("ai set difficulty " + str(AI_Inputs.Difficulty.keys()[difficulty]) ) 
 	match difficulty:
 		Difficulty.Easy:
 			reaction_time = 0.8
