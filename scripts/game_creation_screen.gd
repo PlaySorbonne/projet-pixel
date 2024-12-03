@@ -73,6 +73,8 @@ func reload_old_game_infos():
 				keyboards.append(control_device)
 			else:
 				controllers.append(control_device)
+		else:
+			player.ai_difficulty = GameInfos.players_data[id]["ai_difficulty"]
 		GameInfos.players[id] = player
 		create_player_infos(id, delay, false)
 		delay += 0.5
