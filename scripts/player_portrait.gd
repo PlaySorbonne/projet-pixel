@@ -24,12 +24,16 @@ func _process(delta):
 func initialize_portrait(player_num : int):
 	player_number = player_num
 	GameInfos.player_portaits[player_number] = self
-	$Holder/TextureBackground.modulate = GameInfos.players_data[player_num]["color"]
+	var player_color : Color = GameInfos.players_data[player_num]["color"]
+	$Holder/TextureBackground.modulate = player_color
 	connect_player_object()
 	update_health()
 	update_evolution()
 	var player : PlayerCharacter = GameInfos.players[player_num]
 	$Holder/LabelName.text = GameInfos.players_data[player_num]["name"]
+	if not player.is_player_controlled:
+		$Holder/TextureRobot.visible = true
+		$Holder/TextureRobot.modulate = player_color
 
 func eliminate(vel : Vector2):
 	if eliminated:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=10 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
 [ext_resource type="LabelSettings" uid="uid://iu6ob7xdc80l" path="res://resources/fonts/player_portraitLabel.tres" id="3_hssq3"]
+[ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="4_ffoe4"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_oscts"]
 
 [sub_resource type="Animation" id="Animation_eyalj"]
@@ -439,6 +440,28 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(75, 70)
 texture = ExtResource("2_o1d5x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRobot" type="TextureRect" parent="Holder"]
+visible = false
+modulate = Color(0.233925, 0.233925, 0.233925, 1)
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -121.0
+offset_top = 36.0
+offset_right = -19.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.271112
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(75, 70)
+texture = ExtResource("4_ffoe4")
 expand_mode = 1
 stretch_mode = 5
 
