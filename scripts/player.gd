@@ -84,6 +84,7 @@ var down_pressed := false:
 var compute_hits := true
 var in_stun_time := false
 var eliminate_hit_targets := false
+var player_color : Color
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -135,6 +136,7 @@ func _ready():
 		$AudioLineEvolve.play()
 
 func set_player_color(new_color : Color):
+	player_color = new_color
 	$TrailEffect.modulate = new_color
 	$CharacterPointer.self_modulate = new_color
 	$Sprite2D.material.set_shader_parameter("replace_color", new_color)

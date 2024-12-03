@@ -30,6 +30,7 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	player_stats = p_stats
 	$Main/LabelName.text = p_stats.player_name
 	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
+	$Main/TexturePortrait/TexturePortraitBG.self_modulate = pc.player_color
 	set_player_evolution(int(pc.current_evolution))
 
 func declare_winner() -> void:
