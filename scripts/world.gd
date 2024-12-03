@@ -75,10 +75,9 @@ func end_game():
 		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
-	await get_tree().create_timer(1.0, true, false, true).timeout
+	await get_tree().create_timer(0.8, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
-	await get_tree().create_timer(0.9, true, false, true).timeout
 	get_tree().paused = true
 	
 	await victory_message.input_pressed
