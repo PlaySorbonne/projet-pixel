@@ -129,6 +129,7 @@ func attack_enemy(use_chosen_enemy := true) -> void:
 	if reacting_time < reaction_time:
 		return
 	reacting_time = 0.0
+	print("ai attack_enemy -> chosen enemy:", chosen_enemy)
 	var enemy_pos_diff : Vector2
 	if use_chosen_enemy:
 		if not check_chosen_enemy():
@@ -139,27 +140,38 @@ func attack_enemy(use_chosen_enemy := true) -> void:
 	#print("enemy_pos_diff =", enemy_pos_diff)
 	# attacks
 	if time_since_attack > time_between_attacks:
-		if player.facing_right:
+		if enemy_pos_diff.x < 0.0: # enemy to the right
 			if enemy_pos_diff.x > -max_attack_radius:
-				#print("\tattacking right")
+				if player.facing_right:
+					print("\tattacking enemy to the right: "+ str(enemy_pos_diff.x) + " > -" + str(max_attack_radius))
+					player_attack()
+					return
+				else:
+					player_tap_direction(Directions.Right)
+			else:
+				print("\tenemy to the right, but too far"+str(enemy_pos_diff.x) + " <= -" + str(max_attack_radius))
+		elif enemy_pos_diff.x < max_attack_radius:
+			if not player.facing_right:
+				print("\tattacking enemy to the left: "+ str(enemy_pos_diff.x) + " < " + str(max_attack_radius))
 				player_attack()
 				return
-		elif enemy_pos_diff.x < max_attack_radius:
-			#print("\tattacking left")
-			player_attack()
-			return
+			else:
+				player_tap_direction(Directions.Left)
+		else:
+			print("\tenemy to the left, but too far"+ str(enemy_pos_diff.x) + " >= " + str(max_attack_radius))
+	
 	# movement
 	if enemy_pos_diff.x > min_attack_radius:
-		#print("\tgoing left")
+		print("\tgoing left"+str(enemy_pos_diff.x) + " > " + str(min_attack_radius))
 		player_press_direction(Directions.Left)
 	elif enemy_pos_diff.x < -min_attack_radius:
-		#print("\tgoing right")
+		print("\tgoing right"+str(enemy_pos_diff.x) + " < -" + str(min_attack_radius))
 		player_press_direction(Directions.Right)
 	if enemy_pos_diff.y < -50.0:
-		#print("\tEnemy beside me")
+		print("\tEnemy beside me"+str(enemy_pos_diff.y) + " < -50.0")
 		player_press_direction(Directions.Down)
 	elif enemy_pos_diff.y > 50.0:
-		#print("\tEnemy above me")
+		print("\tEnemy above me"+str(enemy_pos_diff.y) + " > 50.0")
 		player_jump()
 
 func update_enemies(delta : float, force_update := false) -> void:
