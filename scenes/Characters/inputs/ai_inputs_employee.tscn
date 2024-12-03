@@ -5,3 +5,4 @@
 
 [node name="AiInputsEmployee" instance=ExtResource("1_ybmfa")]
 script = ExtResource("2_vbvqi")
+max_attack_radius = 115.0

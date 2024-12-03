@@ -5,3 +5,4 @@
 
 [node name="AiInputsWeeb" instance=ExtResource("1_mu5ae")]
 script = ExtResource("2_kthve")
+max_attack_radius = 75.0

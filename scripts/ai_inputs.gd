@@ -7,11 +7,14 @@ enum Difficulty {Easy, Mid, Hard}
 const UPDATE_TIME_LIMIT := 0.35
 
 
+@export var max_attack_radius : float = 250.0
+@export var min_attack_radius : float = 25.0
+
 var min_time_between_specials := 3.5
-var min_time_between_attacks := 0.1
-var min_time_between_jumps := 1.8
+var min_time_between_attacks := 0.15
+var min_time_between_jumps := 1.4
 var min_time_chosen_enemy := 4.0
-var reaction_time := 0.0
+var reaction_time := 0.3
 
 var time_between_specials := min_time_between_specials
 var time_between_attacks := min_time_between_attacks
@@ -31,8 +34,6 @@ var enemy_hitpoints : Array[int] = []
 var enemy_position_differences : Array[Vector2] = []
 
 var chosen_enemy : int
-var max_attack_radius : float = 250.0
-var min_attack_radius : float = 25.0
 var special_enemy : Node2D = null
 
 @onready var player : PlayerCharacter = self.get_parent()
@@ -45,24 +46,25 @@ func _ready() -> void:
 	set_difficulty(player.ai_difficulty)
 
 func set_difficulty(difficulty : Difficulty) -> void:
+	print("ai set difficulty " + str(AI_Inputs.Difficulty.keys()[difficulty]) ) 
 	match difficulty:
 		Difficulty.Easy:
 			reaction_time = 0.8
 			min_time_between_specials = 6.0
 			min_time_between_attacks = 1.1
-			min_time_between_jumps = 3.2
+			min_time_between_jumps = 2.8
 			min_time_chosen_enemy = 5.0
 		Difficulty.Mid:
 			reaction_time = 0.3
 			min_time_between_specials = 3.5
 			min_time_between_attacks = 0.15
-			min_time_between_jumps = 1.8
+			min_time_between_jumps = 1.4
 			min_time_chosen_enemy = 4.0
 		Difficulty.Hard:
 			reaction_time = 0.0
 			min_time_between_specials = 2.3
 			min_time_between_attacks = 0.1
-			min_time_between_jumps = 0.9
+			min_time_between_jumps = 0.6
 			min_time_chosen_enemy = 3.0
 
 func player_special() -> void:
