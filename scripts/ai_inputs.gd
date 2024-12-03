@@ -47,13 +47,13 @@ func _ready() -> void:
 func set_difficulty(difficulty : Difficulty) -> void:
 	match difficulty:
 		Difficulty.Easy:
-			reaction_time = 1.2
+			reaction_time = 0.8
 			min_time_between_specials = 6.0
 			min_time_between_attacks = 1.1
 			min_time_between_jumps = 3.2
 			min_time_chosen_enemy = 5.0
 		Difficulty.Mid:
-			reaction_time = 0.5
+			reaction_time = 0.3
 			min_time_between_specials = 3.5
 			min_time_between_attacks = 0.15
 			min_time_between_jumps = 1.8
