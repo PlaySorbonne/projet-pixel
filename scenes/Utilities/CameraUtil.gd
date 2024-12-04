@@ -5,6 +5,8 @@ enum PARAMS {brightness, contrast, saturation, redVal, greenVal, blueVal, tint_c
 
 @onready var camera : Camera2D = get_parent()
 @onready var color_manipulator := $CanvasLayer/ColorManipulator
+@onready var default_pos : Vector2 = camera.global_position
+@onready var default_zoom : Vector2 = camera.zoom
 var default_param_values := {
 	"brightness" : 0.0,
 	"contrast" : 1.0,
@@ -21,9 +23,7 @@ func _ready():
 	$Shaker.object = camera
 
 func quick_zoom(zoom_coeff : float, obj_pos : Vector2, duration : float, interp_duration : float):
-	var default_pos : Vector2 = camera.global_position
 	interp_pos(obj_pos, interp_duration)
-	var default_zoom : Vector2 = camera.zoom
 	var tween : Tween = interp_zoom(default_zoom * zoom_coeff, interp_duration)
 	await tween.finished
 	await get_tree().create_timer(duration).timeout
