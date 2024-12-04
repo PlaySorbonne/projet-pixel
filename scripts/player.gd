@@ -379,6 +379,10 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	var zoom_pos : Vector2 = (attacker.global_position + self.global_position) / 2.0
 	GameInfos.world.level.level_background_death_fx(zoom_pos)
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
+	if attacker.has("facing_right"):
+		if (attacker.facing_right and vel.x < 0.0) or (
+						not attacker.facing_right and vel.x > 0.0):
+			vel.x *= -1.0
 	compute_hits = false
 	alive = false
 	computing_movement = false

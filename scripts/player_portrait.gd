@@ -41,7 +41,7 @@ func eliminate(vel : Vector2):
 	velocity = Vector2(vel.x, max(-25.0, vel.y))
 	eliminated = true
 	set_process(true)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	set_process(false)
 
 func connect_player_object():
