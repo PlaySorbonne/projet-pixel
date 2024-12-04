@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wmkpj4f8wlu"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wmkpj4f8wlu"]
 
 [ext_resource type="Script" path="res://scripts/title_item.gd" id="1_5h142"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="1_wk7r5"]
+[ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="3_3hvti"]
 
 [sub_resource type="FontVariation" id="FontVariation_j4xvw"]
 base_font = ExtResource("1_wk7r5")
@@ -263,3 +264,6 @@ fit_content = true
 libraries = {
 "": SubResource("AnimationLibrary_uvo2x")
 }
+
+[node name="AudioBoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3hvti")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://drfk3gw4af7i0"]
+[gd_scene load_steps=12 format=3 uid="uid://drfk3gw4af7i0"]
 
 [ext_resource type="Script" path="res://scripts/victory_message.gd" id="1_oycss"]
 [ext_resource type="LabelSettings" uid="uid://42uill6wcnlo" path="res://resources/fonts/gameMessageLabel.tres" id="1_v06bv"]
 [ext_resource type="Shader" path="res://scenes/Menus/GameUI/gameMessageShader.gdshader" id="1_yfc7k"]
 [ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="4_pvesi"]
+[ext_resource type="AudioStream" uid="uid://cwvrtso1ef2lh" path="res://resources/audio/sfx/ui_sfx/ui_transition.wav" id="5_kce8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_el8f3"]
 shader = ExtResource("1_yfc7k")
@@ -149,35 +150,6 @@ tracks/6/keys = {
 "values": [Color(0.8, 0, 0, 0), Color(0.8, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_w28tq"]
-resource_name = "remove"
-length = 0.3
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.406126, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-2000, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Continue:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.8, 0, 0, 1), Color(0.8, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_8rm0a"]
 resource_name = "idle"
 loop_mode = 1
@@ -207,6 +179,35 @@ tracks/1/keys = {
 "values": [Color(0.8, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_w28tq"]
+resource_name = "remove"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2000, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Continue:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.8, 0, 0, 1), Color(0.8, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jynla"]
 _data = {
 "RESET": SubResource("Animation_fa55e"),
@@ -220,13 +221,15 @@ process_mode = 3
 script = ExtResource("1_oycss")
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_el8f3")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1263.04
+offset_right = -1263.04
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.4, 1.4)
 pivot_offset = Vector2(960, 540)
 text = "Game
 Set!"
@@ -247,10 +250,10 @@ anchor_left = 0.719818
 anchor_top = 0.707685
 anchor_right = 0.767161
 anchor_bottom = 0.779352
-offset_left = -5.05005
-offset_top = -4.29999
-offset_right = 5.04993
-offset_bottom = 4.29999
+offset_left = -5.05054
+offset_top = -4.2998
+offset_right = 5.04944
+offset_bottom = 4.30017
 scale = Vector2(0.9, 0.9)
 pivot_offset = Vector2(50.5, 43)
 texture = ExtResource("4_pvesi")
@@ -260,9 +263,14 @@ metadata/_edit_use_anchors_ = true
 [node name="ContinueBG" type="TextureRect" parent="Continue"]
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -11.0
 offset_top = -8.77777
 offset_right = 112.0
 offset_bottom = 99.2222
 texture = ExtResource("4_pvesi")
 expand_mode = 1
+
+[node name="AudioTrans" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kce8p")
+bus = &"sfx"

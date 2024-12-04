@@ -19,6 +19,8 @@ func _process(delta: float) -> void:
 
 func remove():
 	$AnimationPlayer.play("remove")
+	$AudioTrans.play()
 	await $AnimationPlayer.animation_finished
 	emit_signal("input_pressed")
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
