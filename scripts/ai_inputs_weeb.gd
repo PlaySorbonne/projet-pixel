@@ -1,8 +1,8 @@
 extends AI_Inputs
 class_name AI_InputsWeeb
 
-const MIN_DIST_SPECIAL := pow(400.0, 2.0)
-const MIN_DIST_DIRECTIONAL := 250.0
+const MIN_DIST_SPECIAL := pow(25.0, 2.0)
+const MIN_DIST_DIRECTIONAL := 25.0
 
 var cassette : AnimeBox 
 

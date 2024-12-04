@@ -34,6 +34,5 @@ func special():
 	player.computing_movement = true
 	player.attacking = false
 	
-	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_use_special = true
