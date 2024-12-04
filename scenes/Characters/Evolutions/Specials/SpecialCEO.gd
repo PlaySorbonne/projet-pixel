@@ -32,7 +32,7 @@ func _process(delta):
 
 func bonk():
 	set_process(false)
-	player.controller_vibration(1.0, 0.75)
+	player.controller_vibration(1.0, 0.7)
 	player.knockback_velocity = Vector2(
 		dash_direction.x * bonk_power.x,
 		bonk_power.y

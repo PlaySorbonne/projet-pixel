@@ -248,7 +248,7 @@ func evolve(in_lobby: bool = false):
 	$AnimationPlayer.stop()
 	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
-	controller_vibration(1.0, 0.8)
+	controller_vibration(1.0, 0.4)
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.play()
@@ -318,10 +318,9 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 		$AudioLineHurt.stream = audio_hurt.pick_random()
 	else:
 		# track the player kills
-		controller_vibration(1.0, 1.1)
 		if hit_owner.has_signal("player_kill"):
 			hit_owner.emit_signal("player_kill")
-			
+		controller_vibration(1.0, 0.4)
 		$AudioLineHurt.stream = audio_death.pick_random()
 	$AudioLineHurt.play()
 
@@ -362,9 +361,7 @@ func attack():
 	AttackLocation.position, 0.3, true, attack_intensity, attack_size)
 	if eliminate_hit_targets:
 		hitbox.set_eliminate(true)
-		controller_vibration(1.0, 0.5)
-	else:
-		controller_vibration(0.5, 0.2)
+	controller_vibration(0.5, 0.2)
 	if custom_audio_attacks != null:
 		hitbox.set_audio(custom_audio_attacks)
 	attacking = true

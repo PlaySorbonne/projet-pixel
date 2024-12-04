@@ -27,7 +27,7 @@ func special():
 			-jump_power
 		)
 		EggProjectile.spawn_egg_projectile(player, self, false)
-	player.controller_vibration(0.8, 0.2)
+	player.controller_vibration(0.6, 0.2)
 	
 	await get_tree().create_timer(can_attack_cooldown).timeout
 	player.attacking = false
