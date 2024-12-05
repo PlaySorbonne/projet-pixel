@@ -201,7 +201,7 @@ func add_money(money : int, slow := false) -> void:
 	)
 	add_child(adder)
 	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
-	$AudioMoneyKaching.volume_db = randf_range(0.85, 1.0)
+	$AudioMoneyKaching.pitch_scale = randf_range(0.85, 1.0)
 	$AudioMoneyKaching.play(0.0)
 	if slow:
 		adder.set_slow()
@@ -256,5 +256,5 @@ func execute_current_step(forward := true):
 
 func _on_audio_money_cling_finished() -> void:
 	if getting_money:
-		$AudioMoneyCling.volume_db = randf_range(0.85, 1.15)
+		$AudioMoneyCling.pitch_scale = randf_range(0.75, 1.25)
 		$AudioMoneyCling.play(0.0)

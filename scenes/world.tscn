@@ -645,7 +645,7 @@ libraries = {
 [node name="AudioMoneyCling" type="AudioStreamPlayer" parent="CanvasLayer/EndScreen"]
 process_mode = 3
 stream = ExtResource("20_n1l0e")
-volume_db = 5.0
+volume_db = -10.0
 pitch_scale = 0.85
 bus = &"narrator"
 

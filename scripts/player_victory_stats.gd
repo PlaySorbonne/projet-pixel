@@ -69,7 +69,6 @@ func intro_tween_label(l : Label) -> void:
 	t.tween_property(l, "modulate", Color.WHITE, 0.3)
 	t.tween_property(l, "scale", Vector2.ONE, 0.3)
 	await t.finished
-	$AudioBoop.play(0.0)
 
 func set_label_int_value(label : Label, value : int) -> void:
 	for _i : int in range(30):
