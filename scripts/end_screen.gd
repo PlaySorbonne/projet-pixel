@@ -201,6 +201,8 @@ func add_money(money : int, slow := false) -> void:
 	)
 	add_child(adder)
 	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
+	$AudioMoneyKaching.volume_db = randf_range(0.85, 1.0)
+	$AudioMoneyKaching.play(0.0)
 	if slow:
 		adder.set_slow()
 	VaultData.vault_data["money"] += money
@@ -216,9 +218,9 @@ func _process(delta: float) -> void:
 		else:
 			current_money = min(target_money, current_money + int(delta * 400))
 			$LabelMoneyText/LabelMoney.text = GameInfos.format_money_string(current_money)
-			
 	elif current_money < target_money:
 		getting_money = true
+		$AudioMoneyCling.play(0.0)
 		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
 	
 	# handle inputs
@@ -251,3 +253,8 @@ func execute_current_step(forward := true):
 				can_move_forward = true
 		3:
 			emit_signal("end_game_finished")
+
+func _on_audio_money_cling_finished() -> void:
+	if getting_money:
+		$AudioMoneyCling.volume_db = randf_range(0.85, 1.15)
+		$AudioMoneyCling.play(0.0)

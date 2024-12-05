@@ -62,3 +62,4 @@ func anim_intro() -> void:
 			await $AnimationPlayer.animation_finished
 			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Legendary])
 			player_stats_parent.shake_node(true)
+	$AudioBoom.play()

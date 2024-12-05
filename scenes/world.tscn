@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxfrc0btquk6a"]
+[gd_scene load_steps=34 format=3 uid="uid://bxfrc0btquk6a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_105og"]
 [ext_resource type="AudioStream" uid="uid://opwqqglkr1fb" path="res://resources/audio/voices/weeb/victory_0.wav" id="2_8xaln"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="13_a2fhi"]
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="13_bfsq2"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="14_2pjlm"]
+[ext_resource type="AudioStream" uid="uid://b5qi162ijxftj" path="res://resources/audio/sfx/ui_sfx/kaching.wav" id="20_n1l0e"]
+[ext_resource type="AudioStream" uid="uid://dwfh15pfgvhcc" path="res://resources/audio/sfx/ui_sfx/pickupCoin.wav" id="21_aq2pj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_whqpp"]
 font = ExtResource("14_2pjlm")
@@ -640,6 +642,18 @@ libraries = {
 "": SubResource("AnimationLibrary_w5jf1")
 }
 
+[node name="AudioMoneyCling" type="AudioStreamPlayer" parent="CanvasLayer/EndScreen"]
+process_mode = 3
+stream = ExtResource("20_n1l0e")
+volume_db = 5.0
+pitch_scale = 0.85
+bus = &"narrator"
+
+[node name="AudioMoneyKaching" type="AudioStreamPlayer" parent="CanvasLayer/EndScreen"]
+process_mode = 3
+stream = ExtResource("21_aq2pj")
+bus = &"narrator"
+
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
 visible = false
 z_index = 199
@@ -661,3 +675,5 @@ bus = &"narrator"
 stream = ExtResource("5_clfqq")
 volume_db = 5.0
 bus = &"voices"
+
+[connection signal="finished" from="CanvasLayer/EndScreen/AudioMoneyCling" to="CanvasLayer/EndScreen" method="_on_audio_money_cling_finished"]
