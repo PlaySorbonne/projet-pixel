@@ -646,12 +646,13 @@ libraries = {
 process_mode = 3
 stream = ExtResource("20_n1l0e")
 volume_db = -10.0
-pitch_scale = 0.85
+pitch_scale = 0.95
 bus = &"narrator"
 
 [node name="AudioMoneyKaching" type="AudioStreamPlayer" parent="CanvasLayer/EndScreen"]
 process_mode = 3
 stream = ExtResource("21_aq2pj")
+pitch_scale = 1.05
 bus = &"narrator"
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("2_r5t17")]
