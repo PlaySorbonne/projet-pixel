@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=31 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dt3xmcippucnr" path="res://resources/audio/voices/narrator/start.wav" id="14_ye286"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="15_43tp7"]
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="16_sqpn5"]
+[ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="17_rxid8"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -1177,17 +1178,19 @@ libraries = {
 [node name="ButtonAddAI" type="Button" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.61875
-anchor_top = 0.363889
-anchor_right = 0.660937
-anchor_bottom = 0.460185
-pivot_offset = Vector2(40.5, 52)
+anchor_left = 0.640104
+anchor_top = 0.387963
+anchor_right = 0.698438
+anchor_bottom = 0.52037
+rotation = 0.203378
+pivot_offset = Vector2(56, 71.5)
 focus_mode = 0
 theme = ExtResource("2_gimcs")
 theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 60
-text = "+"
+icon = ExtResource("17_rxid8")
 flat = true
+expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
