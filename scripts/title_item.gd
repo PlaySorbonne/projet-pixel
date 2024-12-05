@@ -3,7 +3,7 @@ class_name TitleItem
 
 enum Rarities {Common, Rare, Legendary}
 
-const BIG_EXPLOSION_SFX := preload("res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav")
+const BIG_EXPLOSION_SFX := preload("res://resources/audio/sfx/ui_sfx/explosion.wav")
 const MID_EXPLOSION_SFX := preload("res://resources/audio/sfx/ui_sfx/explosion_mid.wav")
 const MONEY_AMOUNT := {
 	Rarities.Common: 100,
@@ -42,7 +42,6 @@ func set_title(title : String, rarity : Rarities) -> void:
 			effects_intro = effects_intro + "[shake rate=20.0 level=5 connected=1]"
 		Rarities.Legendary:
 			$AudioBoom.stream = BIG_EXPLOSION_SFX
-			$AudioBoom.volume_db = 5.0
 			effects_intro = effects_intro + "[tornado radius=3.5 freq=8.0 connected=1]"
 			effects_intro = effects_intro + "[rainbow freq=0.8 sat=0.5 val=0.9]"
 	$Label.text = effects_intro + title
