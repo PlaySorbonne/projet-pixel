@@ -36,6 +36,15 @@ var combo = 1
 var following_weeb := false
 var ascended_weeb : WeebCharacter
 
+func toggle_cassette(is_enabled : bool) -> void:
+	visible = is_enabled
+	set_process(is_enabled)
+	$TrailEffect.visible = is_enabled
+	$TrailEffect.set_process(is_enabled)
+	freeze = not is_enabled
+	$CollisionShape2D.disabled = not is_enabled
+	$Area2D/CollisionShape2D.disabled = not is_enabled
+
 func force_position(new_pos : Vector2):
 	freeze = true
 	await get_tree().process_frame

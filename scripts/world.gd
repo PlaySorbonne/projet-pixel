@@ -5,6 +5,7 @@ const WEEB_EVOLUTION_CROSSHAIR_RES := preload("res://scenes/Utilities/WeebEvolut
 const LOBBY_PATH = "res://scenes/Menus/GameCreation/game_creation_screen.tscn"
 const VICTORY_MESSAGE = preload("res://scenes/Menus/GameUI/victory_message.tscn")
 
+signal game_finished
 signal weeb_arrived
 
 @export var victory_audios : Array[AudioStream] = [
@@ -129,6 +130,7 @@ func end_game():
 	await get_tree().create_timer(0.8, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
+	emit_signal("game_finished")
 	if not GameInfos.display_end_screen:
 		return
 	
