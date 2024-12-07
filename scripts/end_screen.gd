@@ -167,10 +167,9 @@ func init_end_screen(players_stats : Dictionary) -> void:
 	var arr_stats : Array[PlayerStats] = players_stats.values().duplicate()
 	# random titles we give to each player
 	var given_titles : Dictionary = init_player_titles(players_stats.keys().duplicate())
+	# update number of player deaths
 	for p_stats : PlayerStats in players_stats.values():
-		p_stats.set_death_based_on_winner(winner_id)
-		if p_stats.player_id != winner_id:
-			arr_stats.append(p_stats)
+		p_stats.set_deaths_based_on_winners()
 	# create and add nodes to display player stats and titles
 	for p_stats : PlayerStats in arr_stats:
 		var l : PlayerVictoryStats = LABEL_END_SCREEN_RES.instantiate()
@@ -182,7 +181,7 @@ func init_end_screen(players_stats : Dictionary) -> void:
 		var legendary_titles : Array = given_titles[p_stats.player_id]["legendary"]
 		l.set_player_titles(common_titles, rare_titles, legendary_titles)
 		# display trophy is current player won
-		if p_stats.player_id == winner_id:
+		if p_stats.player_id in GameInfos.last_winners:
 			l.declare_winner()
 		player_stats_nodes.append(l)
 	$AnimationEndSteps.play("end_enter")

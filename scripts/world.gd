@@ -56,7 +56,7 @@ func timeout_end_game() -> void:
 	
 	end_game()
 
-func choose_winner() -> Array[int]:
+func choose_winners() -> void:
 	var winners : Array[int] = []
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
@@ -96,7 +96,7 @@ func choose_winner() -> Array[int]:
 					normal_players_ids.append(p_stats.player_id)
 			if not boss_has_won:
 				winners = normal_players_ids.duplicate()
-	return winners
+	GameInfos.last_winners = winners.duplicate()
 
 func player_eliminated():
 	players_left -= 1

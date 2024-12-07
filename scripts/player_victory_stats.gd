@@ -31,13 +31,17 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	$Main/LabelName.text = p_stats.player_name
 	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
 	$Main/TexturePortrait/TexturePortraitBG.self_modulate = pc.player_color
-	set_player_evolution(int(pc.current_evolution))
+	if pc.current_evolution == PlayerCharacter.Evolutions.Weeb and pc.ascended:
+		$Main/LabelEvolution.text = "ASCENDED_WEEB"
+	else:
+		var current_ev := int(pc.current_evolution)
+		$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
+		$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
 
 func declare_winner() -> void:
 	is_winner = true
 	$Main/LabelOutcome.text = "WINNER"
 	$Main/LabelOutcome/LastWinner.declare_winner()
-	$Main/LabelEvolution.text = "ASCENDED_WEEB"
 
 func intro_animation() -> void:
 	$Main/AnimationPlayer.play("intro")
@@ -81,11 +85,6 @@ func shake_node(strong_shake := true) -> void:
 		$Shaker.shake(0.2, 15, 45)
 	else:
 		$Shaker.shake(0.1, 15, 25)
-
-func set_player_evolution(current_ev : int) -> void:
-	if not is_winner:
-		$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
-	$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
 
 func set_player_titles(common_titles : Array, rare_titles : Array, 
 			legendary_titles : Array) -> void:

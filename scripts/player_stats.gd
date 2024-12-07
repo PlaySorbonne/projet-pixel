@@ -10,8 +10,8 @@ var damage_given := 0
 var damage_received := 0
 var current_evolution := -1
 
-func set_death_based_on_winner(winner_id : int) -> void:
-	if not winner_id == player_id:
+func set_deaths_based_on_winners() -> void:
+	if not GameInfos.players[player_id].alive:
 		deaths += 1
 
 func get_stats_as_array() -> Array[String]:
