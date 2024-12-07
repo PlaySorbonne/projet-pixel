@@ -55,13 +55,10 @@ func connect_player_object():
 	player.fighter_hit.connect(update_health)
 	player.player_spawned.connect(update_health)
 	player.player_evolved.connect(update_evolution)
-	print("GameInfos.lives_limit = ", GameInfos.lives_limit)
 	if GameInfos.lives_limit > 0:
 		player.fighter_died.connect(update_lives)
-		print("connexion ok")
 
 func update_lives(_player : PlayerCharacter) -> void:
-	print("called fuuntuonczsc")
 	current_lives -= 1
 	$Holder/LabelLives.text = str(current_lives)
 	$AnimationPlayer.play("anim_death")
