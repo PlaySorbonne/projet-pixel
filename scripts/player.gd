@@ -63,6 +63,7 @@ static var player_counter := 0
 @onready var attack_loc_pos : Vector2 = $AttackLocation.position
 var control_device: int = 0
 var control_type: Controls
+var is_eliminated := false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right := true
 var can_attack := true
@@ -373,6 +374,7 @@ func attack():
 func eliminate(attacker : Node2D, hit_location : Vector2):
 	if in_invincibility_time or not alive:
 		return
+	is_eliminated = true
 	var zoom_pos : Vector2 = (attacker.global_position + self.global_position) / 2.0
 	GameInfos.world.level.level_background_death_fx(zoom_pos)
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0

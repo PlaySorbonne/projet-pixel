@@ -1,5 +1,7 @@
 extends Node
 
+enum VictoryConditions {Elimination, Kills, CassetteTime, KillBoss}
+
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
 	"res://scenes/World/Levels/level_high_ground.tscn",
@@ -90,6 +92,8 @@ var selected_level : int = 0
 var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winner := -1
+
+var victory_condition : VictoryConditions = VictoryConditions.Elimination
 
 func format_money_string(val : int) -> String:
 	var strval : String = str(val).pad_zeros(7)
