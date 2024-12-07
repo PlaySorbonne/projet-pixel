@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=36 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/time_button.gd" id="18_u4imo"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="20_5ob5p"]
 [ext_resource type="Script" path="res://scripts/lives_button.gd" id="21_1ovq5"]
+[ext_resource type="Script" path="res://scripts/evolutions_button.gd" id="22_iqtfn"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -1351,7 +1352,7 @@ offset_left = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 33
-text = "Default"
+text = "TODO"
 vertical_alignment = 1
 
 [node name="EvolutionsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
@@ -1366,6 +1367,7 @@ theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 33
 text = "Evolutions:"
 alignment = 0
+script = ExtResource("22_iqtfn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/EvolutionsButton"]

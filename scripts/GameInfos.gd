@@ -1,6 +1,7 @@
 extends Node
 
 enum VictoryConditions {Elimination, Kills, CassetteTime, KillBoss}
+enum EvolvingMode {Linear, Random, Fixed}
 
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
@@ -97,6 +98,8 @@ var player_portraits : Dictionary = {}
 var time_limit := -1
 var lives_limit := -1
 var victory_condition : VictoryConditions = VictoryConditions.Elimination
+var evolving_mode : EvolvingMode = EvolvingMode.Linear
+
 
 func format_money_string(val : int) -> String:
 	var strval : String = str(val).pad_zeros(7)
@@ -122,6 +125,7 @@ func perform_deep_reset():
 	victory_condition = VictoryConditions.Elimination
 	lives_limit = -1
 	time_limit = -1.0
+	evolving_mode = EvolvingMode.Linear
 	# player stuff
 	players_data = {}
 	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
