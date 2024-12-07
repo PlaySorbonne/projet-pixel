@@ -435,7 +435,9 @@ func _on_fighter_killed_opponent(quickie := false) -> void:
 				return
 			next_evolution = current_evolution + 1
 		GameInfos.EvolvingMode.Random:
-			next_evolution = Evolutions.values().pick_random()
+			var possible_evolutions := Evolutions.values().duplicate()
+			possible_evolutions.erase(current_evolution)
+			next_evolution = possible_evolutions.pick_random()
 		GameInfos.EvolvingMode.Fixed:
 			return
 	if not quickie:
