@@ -5,7 +5,7 @@ func _ready() -> void:
 	display_evolve_mode()
 
 func display_evolve_mode() -> void:
-	$Label.text = str(GameInfos.EvolvingMode.values()[GameInfos.evolving_mode])
+	$Label.text = str(GameInfos.EvolvingMode.keys()[GameInfos.evolving_mode])
 
 func _on_pressed() -> void:
 	match GameInfos.evolving_mode:
