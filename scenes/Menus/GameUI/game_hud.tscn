@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4cf0hnddgr1l"]
+[gd_scene load_steps=19 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="8_8pik0"]
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="9_2olwk"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="11_x21uq"]
+[ext_resource type="Theme" uid="uid://dkxky3ljmxkmq" path="res://resources/fonts/PlayerSelectionTheme.tres" id="14_pmc0j"]
+[ext_resource type="Script" path="res://scripts/label_timer.gd" id="15_rctr8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_vixc7"]
 device = -1
@@ -41,6 +43,7 @@ alignment = 1
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +126,31 @@ process_mode = 3
 layout_mode = 1
 offset_top = 1300.0
 offset_bottom = 1300.0
+
+[node name="LabelTimer" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 37.0
+offset_right = -1727.0
+offset_bottom = -977.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_pmc0j")
+text = "9:59"
+horizontal_alignment = 2
+script = ExtResource("15_rctr8")
+
+[node name="Label" type="Label" parent="LabelTimer"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 195.0
+offset_right = 281.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 35
+text = ".99"
+vertical_alignment = 2
+visible_characters = 3
 
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonSettings" to="PauseMenu" method="_on_button_settings_pressed"]
