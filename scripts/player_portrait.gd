@@ -17,6 +17,8 @@ var eliminated := false
 
 func _ready():
 	set_process(false)
+	if GameInfos.lives_limit > 0:
+		$Holder/LabelLives.text = str(GameInfos.lives_limit)
 
 func _process(delta):
 	$Holder.position += delta * velocity

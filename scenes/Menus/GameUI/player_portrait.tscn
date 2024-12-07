@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=12 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
@@ -6,6 +6,16 @@
 [ext_resource type="LabelSettings" uid="uid://iu6ob7xdc80l" path="res://resources/fonts/player_portraitLabel.tres" id="3_hssq3"]
 [ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="4_ffoe4"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_oscts"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="6_sudqb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3j20a"]
+font = ExtResource("6_sudqb")
+font_size = 35
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(1, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
 
 [sub_resource type="Animation" id="Animation_eyalj"]
 length = 0.001
@@ -47,7 +57,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("Holder/LabelName:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -131,7 +141,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/path = NodePath("Holder/LabelHealth:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
@@ -153,10 +163,35 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Holder/LabelLives:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.119688]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Holder/LabelLives:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3h0w0"]
 resource_name = "evolve"
 length = 0.7
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -243,7 +278,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/path = NodePath("Holder/LabelName:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
@@ -327,7 +362,7 @@ tracks/13/keys = {
 }
 tracks/14/type = "value"
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/path = NodePath("Holder/LabelHealth:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
@@ -360,6 +395,30 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(0.450625, 0.450625, 0.450625),
 "update": 0,
 "values": [0.0, 0.0, 6.28319]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Holder/LabelLives:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.554785, 1),
+"update": 0,
+"values": [-0.119688, -0.119688, -6.40361]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Holder/LabelLives:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(0.420448, 1.36604, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1x3la"]
@@ -466,11 +525,12 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="Holder"]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 155.0
+offset_left = 49.0
+offset_top = 158.0
 offset_right = 153.0
-offset_bottom = 178.0
+offset_bottom = 181.0
 pivot_offset = Vector2(50, 10)
+text = "namename"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelEvolution" type="Label" parent="Holder"]
@@ -480,17 +540,32 @@ offset_top = 123.0
 offset_right = 232.0
 offset_bottom = 146.0
 pivot_offset = Vector2(53, 10)
+text = "evolution"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelHealth" type="Label" parent="Holder"]
 layout_mode = 0
-offset_left = 148.0
+offset_left = 168.0
 offset_top = 151.0
-offset_right = 218.0
+offset_right = 238.0
 offset_bottom = 174.0
 rotation = 6.28319
 pivot_offset = Vector2(35, 10)
+text = "99/99"
 label_settings = ExtResource("3_hssq3")
+horizontal_alignment = 1
+
+[node name="LabelLives" type="Label" parent="Holder"]
+visible = false
+layout_mode = 0
+offset_left = 48.0
+offset_top = 112.0
+offset_right = 91.0
+offset_bottom = 148.0
+rotation = -0.119688
+pivot_offset = Vector2(21.5, 18)
+text = "9"
+label_settings = SubResource("LabelSettings_3j20a")
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

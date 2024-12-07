@@ -86,6 +86,7 @@ var compute_hits := true
 var in_stun_time := false
 var eliminate_hit_targets := false
 var player_color : Color
+var player_stats : PlayerStats = null
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -111,6 +112,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.is_player_controlled = is_player_controlled
 	new_body.ai_difficulty = ai_difficulty
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
+	new_body.player_stats = player_stats
 
 func _init():
 	if not GameInfos.game_started:
@@ -291,6 +293,10 @@ func death(force := false):
 
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
 	if in_invincibility_time or not compute_hits:
+		return
+	if GameInfos.lives_limit > 0 and player_stats.deaths > GameInfos.lives_limit and (
+											hitpoints <= damage):
+		self.eliminate(attacker, hit_location)
 		return
 	var hit_owner : Node2D
 	play_hit_sfx()

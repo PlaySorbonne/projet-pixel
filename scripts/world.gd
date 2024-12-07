@@ -52,8 +52,6 @@ func _ready():
 		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
 
 func timeout_end_game() -> void:
-	# declare winner based on victory conditions
-	
 	end_game()
 
 func choose_winners() -> void:
@@ -158,6 +156,7 @@ func activate_players():
 		p_stats.player_id = player.player_ID
 		p_stats.player_name = GameInfos.players_data[player.player_ID]["name"]
 		p_stats.current_evolution = player.current_evolution
+		player.player_stats = p_stats
 
 func spawn_players():
 	var player_number = 0
