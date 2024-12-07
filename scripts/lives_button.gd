@@ -8,7 +8,7 @@ func _ready() -> void:
 		display_lives()
 
 func display_lives() -> void:
-	text = str(GameInfos.lives_limit)
+	$Label.text = str(GameInfos.lives_limit)
 
 func _on_pressed() -> void:
 	if GameInfos.lives_limit < 0:
@@ -33,4 +33,4 @@ func _on_spin_combo_click_up() -> void:
 func _on_button_cancel_pressed() -> void:
 	$ButtonCancel.visible = false
 	GameInfos.lives_limit = -1
-	text = "No_limit"
+	$Label.text = "No_limit"

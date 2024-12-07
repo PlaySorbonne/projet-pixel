@@ -294,8 +294,8 @@ func death(force := false):
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
 	if in_invincibility_time or not compute_hits:
 		return
-	if GameInfos.lives_limit > 0 and player_stats.deaths > GameInfos.lives_limit and (
-											hitpoints <= damage):
+	if GameInfos.lives_limit > 0 and (player_stats.deaths+1) >= GameInfos.lives_limit and (
+															hitpoints <= damage):
 		self.eliminate(attacker, hit_location)
 		return
 	var hit_owner : Node2D
