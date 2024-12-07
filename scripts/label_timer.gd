@@ -14,8 +14,8 @@ func _ready() -> void:
 		display_time_as_text()
 	set_process(false)
 
-func start_timer(new_time : float) -> void:
-	current_time = new_time
+func start_timer() -> void:
+	current_time = GameInfos.time_limit
 	set_process(true)
 
 func _process(delta: float) -> void:

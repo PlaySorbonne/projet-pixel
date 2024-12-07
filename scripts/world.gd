@@ -149,6 +149,7 @@ func end_game():
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
+	GameInfos.gameplay_timer.start_timer()
 	players_stats = {}
 	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
