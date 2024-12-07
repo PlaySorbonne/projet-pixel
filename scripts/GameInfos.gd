@@ -93,6 +93,8 @@ var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winners : Array[int] = []
 
+var time_limit := -1
+var lives_limit := -1
 var victory_condition : VictoryConditions = VictoryConditions.Elimination
 
 func format_money_string(val : int) -> String:
@@ -114,6 +116,11 @@ func reset_game_infos(_deep_reset := false) -> void:
 
 func perform_deep_reset():
 	reset_game_infos()
+	# game mode stuff
+	victory_condition = VictoryConditions.Elimination
+	lives_limit = -1
+	time_limit = -1.0
+	# player stuff
 	players_data = {}
 	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
 	available_player_names.shuffle()
