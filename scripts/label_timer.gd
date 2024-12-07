@@ -3,11 +3,12 @@ class_name GameplayTimer
 
 signal timeout
 
-var current_time : float = 15
+var current_time : float = 0
 
 func _ready() -> void:
 	GameInfos.gameplay_timer = self
 	if GameInfos.time_limit < 0:
+		current_time = GameInfos.time_limit
 		text = ""
 		$Label.text = ""
 	else:
@@ -15,7 +16,6 @@ func _ready() -> void:
 	set_process(false)
 
 func start_timer() -> void:
-	current_time = GameInfos.time_limit
 	set_process(true)
 
 func _process(delta: float) -> void:
