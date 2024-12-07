@@ -134,21 +134,23 @@ func init_player_titles(player_ids : Array) -> Dictionary:
 	for i : int in range(TITLES.size()):
 		var current_titles : Array[String] = TITLES[i].duplicate()
 		current_titles.shuffle()
-		# select titles to distribute
 		var selected_titles : Array[String] = []
-		for _j : int in range(max(1, int((TITLES_TOTAL_TRIES[i]/4.0)*len(player_ids)) )):
-			var rand_val := randf()
-			if rand_val < TITLES_CHANCE[i]:
-				var new_title : String = current_titles.pop_back()
-				selected_titles.append(new_title)
 		# give legendary title(s) to winner(s)
 		if i == 0:
+			selected_titles = LEGENDARY_TITLES.duplicate()
+			selected_titles.shuffle()
 			for lw : int in range(GameInfos.last_winners.size()):
 				var win_id : int = GameInfos.last_winners[lw]
 				player_titles[win_id][RARITIES[0]].append(selected_titles[lw])
 				players_nb_titles[win_id] += 1
 		# distribute common and rare titles
 		elif len(selected_titles) > 1:
+			# select titles to distribute
+			for _j : int in range(max(1, int((TITLES_TOTAL_TRIES[i]/4.0)*len(player_ids)) )):
+				var rand_val := randf()
+				if rand_val < TITLES_CHANCE[i]:
+					var new_title : String = current_titles.pop_back()
+					selected_titles.append(new_title)
 			for t : String in selected_titles:
 				if len(player_ids) == 0:
 					break
