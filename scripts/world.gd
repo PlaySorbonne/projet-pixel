@@ -107,6 +107,7 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
+	choose_winners()
 	var victory_label : Label = $CanvasLayer/EndScreen/LabelVictoryText/LabelVictoryPlayer
 	var win_text := ""
 	victory_label.text = ""

@@ -164,7 +164,7 @@ func init_player_titles(player_ids : Array) -> Dictionary:
 func init_end_screen(players_stats : Dictionary) -> void:
 	is_end_game = true
 	set_process(true)
-	var arr_stats : Array[PlayerStats] = players_stats.values().duplicate()
+	var arr_stats : Array = players_stats.values().duplicate()
 	# random titles we give to each player
 	var given_titles : Dictionary = init_player_titles(players_stats.keys().duplicate())
 	# update number of player deaths
