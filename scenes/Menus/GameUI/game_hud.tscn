@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4cf0hnddgr1l"]
+[gd_scene load_steps=20 format=3 uid="uid://4cf0hnddgr1l"]
 
 [ext_resource type="Script" path="res://scripts/game_hud.gd" id="1_er2h7"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_fplfe"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="9_2olwk"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="11_x21uq"]
 [ext_resource type="Theme" uid="uid://dkxky3ljmxkmq" path="res://resources/fonts/PlayerSelectionTheme.tres" id="14_pmc0j"]
+[ext_resource type="FontVariation" uid="uid://jtpmf3hbewq8" path="res://resources/fonts/timerFont.tres" id="15_iescl"]
 [ext_resource type="Script" path="res://scripts/label_timer.gd" id="15_rctr8"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_vixc7"]
@@ -128,6 +129,7 @@ offset_top = 1300.0
 offset_bottom = 1300.0
 
 [node name="LabelTimer" type="Label" parent="."]
+process_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -137,6 +139,10 @@ offset_bottom = -977.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("14_pmc0j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("15_iescl")
+theme_override_font_sizes/font_size = 50
 text = "9:59"
 horizontal_alignment = 2
 script = ExtResource("15_rctr8")
@@ -145,8 +151,11 @@ script = ExtResource("15_rctr8")
 show_behind_parent = true
 layout_mode = 0
 offset_left = 195.0
+offset_top = -2.0
 offset_right = 281.0
-offset_bottom = 61.0
+offset_bottom = 55.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("15_iescl")
 theme_override_font_sizes/font_size = 35
 text = ".99"
 vertical_alignment = 2

@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://jtpmf3hbewq8"]
+
+[ext_resource type="FontFile" uid="uid://cyuu5uaymvbe2" path="res://resources/fonts/Ubuntu-B.ttf" id="1_gvt6v"]
+
+[resource]
+base_font = ExtResource("1_gvt6v")
