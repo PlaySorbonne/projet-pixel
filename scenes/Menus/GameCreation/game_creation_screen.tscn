@@ -1410,3 +1410,4 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="click_down" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_down"]
 [connection signal="click_up" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_up"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/LivesButton/ButtonCancel" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/EvolutionsButton" to="CanvasLayer/GameCreationScreen/EvolutionsButton" method="_on_pressed"]
