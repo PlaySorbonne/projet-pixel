@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=35 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bos37w8o15w1g" path="res://scenes/Menus/Submenus/spin_combo.tscn" id="18_ibb1q"]
 [ext_resource type="Script" path="res://scripts/time_button.gd" id="18_u4imo"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="20_5ob5p"]
+[ext_resource type="Script" path="res://scripts/lives_button.gd" id="21_1ovq5"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -1288,6 +1289,7 @@ theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 33
 text = "Lives:"
 alignment = 0
+script = ExtResource("21_1ovq5")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/LivesButton"]
@@ -1393,6 +1395,11 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="mouse_entered" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/TimeButton" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_pressed"]
 [connection signal="click_down" from="CanvasLayer/GameCreationScreen/TimeButton/SpinCombo" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_spin_combo_click_down"]
 [connection signal="click_up" from="CanvasLayer/GameCreationScreen/TimeButton/SpinCombo" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_spin_combo_click_up"]
 [connection signal="pressed" from="CanvasLayer/GameCreationScreen/TimeButton/ButtonCancel" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/LivesButton" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_pressed"]
+[connection signal="click_down" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_down"]
+[connection signal="click_up" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_up"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/LivesButton/ButtonCancel" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_button_cancel_pressed"]

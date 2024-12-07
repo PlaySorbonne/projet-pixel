@@ -5,6 +5,13 @@ extends Button
 func _ready() -> void:
 	if GameInfos.time_limit > 0:
 		display_time_as_text()
+		$ButtonCancel.visible = true
+
+func _on_pressed() -> void:
+	if GameInfos.time_limit < 0:
+		_on_spin_combo_click_up()
+	else:
+		_on_button_cancel_pressed()
 
 func display_time_as_text() -> void:
 	var minutes := int(GameInfos.time_limit/60)
@@ -13,6 +20,7 @@ func display_time_as_text() -> void:
 func _on_spin_combo_click_down() -> void:
 	if GameInfos.time_limit < 0:
 		GameInfos.time_limit = 90
+		$ButtonCancel.visible = true
 	else:
 		GameInfos.time_limit = max(30, GameInfos.time_limit-30)
 	display_time_as_text()
@@ -20,6 +28,7 @@ func _on_spin_combo_click_down() -> void:
 func _on_spin_combo_click_up() -> void:
 	if GameInfos.time_limit < 0:
 		GameInfos.time_limit = 120
+		$ButtonCancel.visible = true
 	else:
 		GameInfos.time_limit = min(600, GameInfos.time_limit+30)
 	display_time_as_text()
