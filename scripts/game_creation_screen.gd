@@ -30,6 +30,10 @@ func _ready():
 	$LabelMoney/AnimationPlayer.play("idle")
 	$LabelMoney.text = GameInfos.format_money_string(VaultData.vault_data["money"])
 	transition.end_screen_transition()
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_loops()
+	var def_pos : Vector2 = $ButtonAddAI.position
+	t.tween_property($ButtonAddAI, "position", def_pos + Vector2(0.0, -15.0), 0.3)
+	t.tween_property($ButtonAddAI, "position", def_pos, 0.5)
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
 		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_INTENSE
@@ -215,6 +219,7 @@ func _on_button_back_pressed():
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
 
+@onready var default_ai_button_rot = $ButtonAddAI.rotation
 var can_add_ai := true
 func _on_button_add_ai_pressed() -> void:
 	if len(player_selectors) == 4 or not can_add_ai:
@@ -228,9 +233,9 @@ func _on_button_add_ai_pressed() -> void:
 	GameInfos.add_player(player)
 	create_player_infos(player_index)
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	$ButtonAddAI.rotation = 0.0
+	$ButtonAddAI.rotation = default_ai_button_rot
 	t.tween_property($ButtonAddAI, "scale", Vector2(1.5, 1.5), 0.2)
-	t.tween_property($ButtonAddAI, "rotation", 2*PI, 0.5)
+	t.tween_property($ButtonAddAI, "rotation", default_ai_button_rot+2*PI, 0.5)
 	await get_tree().create_timer(0.2).timeout
 	var t2 := create_tween().set_trans(Tween.TRANS_CUBIC)
 	t2.tween_property($ButtonAddAI, "scale", Vector2.ONE, 0.3)

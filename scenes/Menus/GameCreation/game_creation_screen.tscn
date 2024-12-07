@@ -1178,20 +1178,36 @@ libraries = {
 [node name="ButtonAddAI" type="Button" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.640104
-anchor_top = 0.387963
+anchor_left = 0.620313
+anchor_top = 0.380556
 anchor_right = 0.698438
-anchor_bottom = 0.52037
+anchor_bottom = 0.512963
 rotation = 0.203378
-pivot_offset = Vector2(56, 71.5)
+pivot_offset = Vector2(75, 71.5)
 focus_mode = 0
 theme = ExtResource("2_gimcs")
 theme_override_constants/outline_size = 50
 theme_override_font_sizes/font_size = 60
+text = "+"
 icon = ExtResource("17_rxid8")
 flat = true
+alignment = 0
+icon_alignment = 2
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameCreationScreen/ButtonAddAI"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 24.5847
+offset_top = -16.4678
+offset_right = 188.585
+offset_bottom = 147.532
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(82, 82)
+texture = ExtResource("17_rxid8")
+expand_mode = 1
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false

@@ -33,7 +33,7 @@ func initialize_portrait(player_num : int):
 	$Holder/LabelName.text = GameInfos.players_data[player_num]["name"]
 	if not player.is_player_controlled:
 		$Holder/TextureRobot.visible = true
-		$Holder/TextureRobot.modulate = player_color
+		#$Holder/TextureRobot.modulate = player_color
 
 func eliminate(vel : Vector2):
 	if eliminated:

@@ -445,7 +445,6 @@ stretch_mode = 5
 
 [node name="TextureRobot" type="TextureRect" parent="Holder"]
 visible = false
-modulate = Color(0.233925, 0.233925, 0.233925, 1)
 z_index = 2
 layout_mode = 1
 anchors_preset = -1

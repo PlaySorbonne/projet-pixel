@@ -300,7 +300,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("PlayerStats:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -626,13 +626,10 @@ metadata/_edit_use_anchors_ = true
 [node name="PlayerStats" type="HBoxContainer" parent="CanvasLayer/EndScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.140625
+anchor_left = 0.0677083
 anchor_top = 0.253704
-anchor_right = 0.868229
+anchor_right = 0.930208
 anchor_bottom = 0.783333
-offset_top = -0.000335693
-offset_right = 160.0
-offset_bottom = -0.000366211
 theme_override_constants/separation = 25
 alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -652,6 +649,7 @@ bus = &"narrator"
 [node name="AudioMoneyKaching" type="AudioStreamPlayer" parent="CanvasLayer/EndScreen"]
 process_mode = 3
 stream = ExtResource("21_aq2pj")
+volume_db = -5.0
 pitch_scale = 1.05
 bus = &"narrator"
 
