@@ -5,19 +5,32 @@ extends Button
 func _ready() -> void:
 	if GameInfos.lives_limit > 0:
 		$ButtonCancel.visible = true
-		text = str(GameInfos.lives_limit)
+		display_lives()
+
+func display_lives() -> void:
+	text = str(GameInfos.lives_limit)
 
 func _on_pressed() -> void:
 	if GameInfos.lives_limit < 0:
-		pass
+		_on_spin_combo_click_up()
 	else:
-		pass
+		_on_button_cancel_pressed()
 
 func _on_spin_combo_click_down() -> void:
-	pass # Replace with function body.
+	if GameInfos.lives_limit < 0:
+		GameInfos.lives_limit = 9
+	else:
+		GameInfos.lives_limit = max(GameInfos.lives_limit-1, 1)
+	display_lives()
 
 func _on_spin_combo_click_up() -> void:
-	pass # Replace with function body.
+	if GameInfos.lives_limit < 0:
+		GameInfos.lives_limit = 5
+	else:
+		GameInfos.lives_limit = min(GameInfos.lives_limit+1, 99)
+	display_lives()
 
 func _on_button_cancel_pressed() -> void:
-	pass # Replace with function body.
+	$ButtonCancel.visible = false
+	GameInfos.lives_limit = -1
+	text = "No_limit"
