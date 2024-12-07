@@ -166,7 +166,6 @@ func _on_area_2d_body_entered(body : Node2D):
 	and player_body.hitpoints > 0):
 		if weeb_touched >= max_hitpoints - 1:
 			var weeb_character : WeebCharacter = body
-			GameInfos.last_winner = player_body.player_ID
 			$AudioWeebTouched.pitch_scale = 0.25
 			$AudioWeebTouched.play()
 			character_pointer.take_damage(1, 0)

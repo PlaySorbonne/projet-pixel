@@ -113,7 +113,7 @@ func _ready() -> void:
 	visible = false
 	GameInfos.end_screen = self
 
-func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
+func init_player_titles(player_ids : Array) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
 	const TITLES_TOTAL_TRIES := [1, 10, 26]
 	const TITLES_CHANCE := [1.0, 0.5, 0.5]
@@ -141,10 +141,11 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 			if rand_val < TITLES_CHANCE[i]:
 				var new_title : String = current_titles.pop_back()
 				selected_titles.append(new_title)
-		# give legendary title to winner
-		if i == 0 and len(selected_titles) == 1:
-			player_titles[winner_id][RARITIES[0]].append(selected_titles[0])
-			players_nb_titles[winner_id] += 1
+		# give legendary title(s) to winner(s)
+		if i == 0:
+			for win_id in GameInfos.last_winners:
+				player_titles[win_id][RARITIES[0]].append(selected_titles[0])
+				players_nb_titles[win_id] += 1
 		# distribute common and rare titles
 		elif len(selected_titles) > 1:
 			for t : String in selected_titles:
@@ -160,13 +161,11 @@ func init_player_titles(player_ids : Array, winner_id : int) -> Dictionary:
 	return player_titles
 
 func init_end_screen(players_stats : Dictionary) -> void:
-	var winner_id := GameInfos.last_winner
 	is_end_game = true
 	set_process(true)
-	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
+	var arr_stats : Array[PlayerStats] = players_stats.values().duplicate()
 	# random titles we give to each player
-	var given_titles : Dictionary = init_player_titles(
-					players_stats.keys().duplicate(), winner_id)
+	var given_titles : Dictionary = init_player_titles(players_stats.keys().duplicate())
 	for p_stats : PlayerStats in players_stats.values():
 		p_stats.set_death_based_on_winner(winner_id)
 		if p_stats.player_id != winner_id:

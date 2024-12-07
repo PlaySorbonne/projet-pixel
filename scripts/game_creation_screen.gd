@@ -92,7 +92,7 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	check_start_button()
 	player_infos.with_voice = with_voice
 	player_infos.player_index = index
-	player_infos.last_winner = (index == GameInfos.last_winner)
+	player_infos.last_winner = (GameInfos.last_winners.has(index))
 	var player : PlayerCharacter = GameInfos.players[index]
 	if player.is_player_controlled:
 		player_infos.control_type = GameInfos.players_data[index]["control_type"]

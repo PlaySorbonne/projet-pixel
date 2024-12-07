@@ -91,7 +91,7 @@ var selected_gamemode : int = 0
 var selected_level : int = 0
 var selected_music : int = 0
 var players_data : Dictionary = {}
-var last_winner := -1
+var last_winners : Array[int] = []
 
 var victory_condition : VictoryConditions = VictoryConditions.Elimination
 
@@ -121,7 +121,7 @@ func perform_deep_reset():
 	selected_music = 0
 	selected_level = 0
 	selected_gamemode = 0
-	last_winner = -1
+	last_winners = []
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
@@ -148,8 +148,8 @@ func remove_player(id : int) -> void:
 	available_player_names.append(players_data[id]["original_name"])
 	players.erase(id)
 	players_data.erase(id)
-	if last_winner == id:
-		last_winner = -1
+	if last_winners.has(id):
+		last_winners.erase(id)
 	if player != null:
 		player.queue_free()
 

@@ -107,8 +107,13 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
-	$CanvasLayer/EndScreen/LabelVictoryText/LabelVictoryPlayer.text = (
-		GameInfos.players_data[GameInfos.last_winner]["name"])
+	var victory_label : Label = $CanvasLayer/EndScreen/LabelVictoryText/LabelVictoryPlayer
+	var win_text := ""
+	victory_label.text = ""
+	for win_id : int in GameInfos.last_winners:
+		if victory_label.text.length() > 0:
+			victory_label.text += ", "
+		victory_label.text += GameInfos.players_data[win_id]["name"]
 	$GameHUD/PauseMenu.can_pause_game = false
 	$AudioWeebVictory.stream = weeb_victory_audios.pick_random()
 	$AudioWeebVictory.play()
