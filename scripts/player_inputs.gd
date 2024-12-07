@@ -44,5 +44,6 @@ func _input(event : InputEvent):
 			elif event.is_action_pressed("special"):
 				player.special()
 		
-		if event.is_action_pressed("debug_button"):# and false:
-			player.evolve()
+		if event.is_action_pressed("debug_button") and (
+					player.current_evolution != PlayerCharacter.Evolutions.Weeb):
+			player.evolve(player.current_evolution + 1)

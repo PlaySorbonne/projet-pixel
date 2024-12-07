@@ -237,14 +237,11 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	computing_movement = true
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
-func evolve(in_lobby: bool = false):
+func evolve(next_evolution : Evolutions):
 	if evolving:
 		return
-	if current_evolution == Evolutions.Weeb:
-		if in_lobby:
-			current_evolution = -1
-		else:
-			return
+	if next_evolution == null:
+		next_evolution = current_evolution + 1
 	evolving = true
 	compute_hits = false
 	computing_movement = false
@@ -252,14 +249,14 @@ func evolve(in_lobby: bool = false):
 	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
 	controller_vibration(1.0, 0.4)
-	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
+	var sfx_pitch_modulation : float = 0.6 + float(next_evolution) / 5.0
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.play()
 	var tween := create_tween()
 	tween.tween_property($CharacterPointer, "modulate", Color.TRANSPARENT, 0.5)
 	velocity = Vector2.ZERO
 	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
-	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
+	var new_body : PlayerCharacter = EvolutionCharacters[next_evolution].instantiate()
 	GameInfos.players[player_ID] = new_body
 	copy_player_data(new_body)
 	get_parent().add_child(new_body)
@@ -377,7 +374,7 @@ func attack():
 	can_attack = true
 	attacking = false
 
-func eliminate(attacker : Node2D, hit_location : Vector2):
+func eliminate(attacker : Node2D, hit_location : Vector2) -> void:
 	if in_invincibility_time or not alive:
 		return
 	is_eliminated = true
@@ -416,7 +413,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	await get_tree().create_timer(1.0).timeout
 	visible = false
 
-func check_turn(right: bool):
+func check_turn(right: bool) -> void:
 	if right != facing_right:# and not attacking:
 		facing_right = right
 		var mult : float
@@ -430,10 +427,20 @@ func check_turn(right: bool):
 			attack_loc_pos.y
 		)
 
-func _on_fighter_killed_opponent():
+func _on_fighter_killed_opponent() -> void:
+	var next_evolution : Evolutions
+	match GameInfos.evolving_mode:
+		GameInfos.EvolvingMode.Linear:
+			if current_evolution == Evolutions.Weeb:
+				return
+			next_evolution = current_evolution + 1
+		GameInfos.EvolvingMode.Random:
+			next_evolution = Evolutions.values().pick_random()
+		GameInfos.EvolvingMode.Fixed:
+			return
 	await get_tree().create_timer(2.5).timeout
 	if alive:
-		evolve()
+		evolve(next_evolution)
 
-func _on_stun_timer_timeout():
+func _on_stun_timer_timeout() -> void:
 	in_stun_time = false
