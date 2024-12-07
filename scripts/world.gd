@@ -129,9 +129,12 @@ func end_game():
 	await get_tree().create_timer(0.8, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
-	get_tree().paused = true
+	if not GameInfos.display_end_screen:
+		return
 	
+	get_tree().paused = true
 	await victory_message.input_pressed
+	
 	$GameHUD.remove_portraits()
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive:
