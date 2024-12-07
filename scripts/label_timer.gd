@@ -8,10 +8,10 @@ var current_time : float = 0
 func _ready() -> void:
 	GameInfos.gameplay_timer = self
 	if GameInfos.time_limit < 0:
-		current_time = GameInfos.time_limit
 		text = ""
 		$Label.text = ""
 	else:
+		current_time = GameInfos.time_limit
 		display_time_as_text()
 	set_process(false)
 

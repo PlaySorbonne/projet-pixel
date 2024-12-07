@@ -18,14 +18,16 @@ func _on_pressed() -> void:
 
 func _on_spin_combo_click_down() -> void:
 	if GameInfos.lives_limit < 0:
-		GameInfos.lives_limit = 9
+		GameInfos.lives_limit = 5
+		$ButtonCancel.visible = true
 	else:
 		GameInfos.lives_limit = max(GameInfos.lives_limit-1, 1)
 	display_lives()
 
 func _on_spin_combo_click_up() -> void:
 	if GameInfos.lives_limit < 0:
-		GameInfos.lives_limit = 5
+		GameInfos.lives_limit = 9
+		$ButtonCancel.visible = true
 	else:
 		GameInfos.lives_limit = min(GameInfos.lives_limit+1, 99)
 	display_lives()
