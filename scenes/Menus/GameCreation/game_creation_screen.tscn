@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=34 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="16_sqpn5"]
 [ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="17_rxid8"]
 [ext_resource type="PackedScene" uid="uid://bos37w8o15w1g" path="res://scenes/Menus/Submenus/spin_combo.tscn" id="18_ibb1q"]
+[ext_resource type="Script" path="res://scripts/time_button.gd" id="18_u4imo"]
+[ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="20_5ob5p"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -1236,32 +1238,44 @@ anchor_top = 0.315741
 anchor_right = 0.938021
 anchor_bottom = 0.367593
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 33
 text = "Time:"
 alignment = 0
+script = ExtResource("18_u4imo")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/TimeButton"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.388889
 anchor_right = 0.833333
 anchor_bottom = 1.0
+offset_left = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "No limit"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 33
+text = "No_limit"
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="SpinCombo" parent="CanvasLayer/GameCreationScreen/TimeButton" instance=ExtResource("18_ibb1q")]
 z_index = 1
 layout_mode = 1
-offset_left = 390.0
-offset_top = 30.0
-offset_right = 390.0
-offset_bottom = 30.0
+offset_left = 385.0
+offset_top = 33.0
+offset_right = 385.0
+offset_bottom = 33.0
 scale = Vector2(0.4, 0.4)
+
+[node name="ButtonCancel" type="Button" parent="CanvasLayer/GameCreationScreen/TimeButton"]
+visible = false
+self_modulate = Color(0.8, 0, 0, 1)
+offset_left = 435.0
+offset_top = -1.0
+offset_right = 488.0
+offset_bottom = 58.0
+icon = ExtResource("20_5ob5p")
+flat = true
+expand_icon = true
 
 [node name="LivesButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
@@ -1271,23 +1285,43 @@ anchor_top = 0.371296
 anchor_right = 0.911979
 anchor_bottom = 0.423148
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 33
 text = "Lives:"
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/LivesButton"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.466667
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "No limit"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 33
+text = "No_limit"
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+
+[node name="SpinCombo" parent="CanvasLayer/GameCreationScreen/LivesButton" instance=ExtResource("18_ibb1q")]
+z_index = 1
+offset_left = 385.0
+offset_top = 33.0
+offset_right = 385.0
+offset_bottom = 33.0
+scale = Vector2(0.4, 0.4)
+
+[node name="ButtonCancel" type="Button" parent="CanvasLayer/GameCreationScreen/LivesButton"]
+visible = false
+self_modulate = Color(0.8, 0, 0, 1)
+layout_mode = 0
+offset_left = 435.0
+offset_top = -1.0
+offset_right = 488.0
+offset_bottom = 58.0
+icon = ExtResource("20_5ob5p")
+flat = true
+expand_icon = true
 
 [node name="StatsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
@@ -1297,21 +1331,21 @@ anchor_top = 0.426852
 anchor_right = 0.925
 anchor_bottom = 0.478704
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 33
 text = "Stats:"
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/StatsButton"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.296
 anchor_bottom = 1.0
+offset_left = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "No limit"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 33
+text = "Default"
 vertical_alignment = 1
 
 [node name="EvolutionsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
@@ -1322,8 +1356,8 @@ anchor_top = 0.482407
 anchor_right = 0.938021
 anchor_bottom = 0.534259
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 35
-text = "Evolution:"
+theme_override_font_sizes/font_size = 33
+text = "Evolutions:"
 alignment = 0
 metadata/_edit_use_anchors_ = true
 
@@ -1332,11 +1366,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "No limit"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 33
+text = "Default"
 vertical_alignment = 1
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]

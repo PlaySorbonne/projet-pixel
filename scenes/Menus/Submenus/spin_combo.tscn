@@ -24,8 +24,9 @@ stretch_mode = 0
 [node name="ButtonDown" type="TextureButton" parent="."]
 layout_mode = 1
 offset_left = 100.0
+offset_top = -23.0
 offset_right = 200.0
-offset_bottom = 100.0
+offset_bottom = 77.0
 rotation = 1.5708
 texture_normal = ExtResource("1_2sg2b")
 texture_pressed = ExtResource("2_ulya4")
