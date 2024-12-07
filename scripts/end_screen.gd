@@ -143,8 +143,9 @@ func init_player_titles(player_ids : Array) -> Dictionary:
 				selected_titles.append(new_title)
 		# give legendary title(s) to winner(s)
 		if i == 0:
-			for win_id in GameInfos.last_winners:
-				player_titles[win_id][RARITIES[0]].append(selected_titles[0])
+			for lw : int in range(GameInfos.last_winners.size()):
+				var win_id : int = GameInfos.last_winners[lw]
+				player_titles[win_id][RARITIES[0]].append(selected_titles[lw])
 				players_nb_titles[win_id] += 1
 		# distribute common and rare titles
 		elif len(selected_titles) > 1:
