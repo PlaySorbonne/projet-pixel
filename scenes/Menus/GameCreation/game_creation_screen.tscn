@@ -897,29 +897,43 @@ text = "GAMEMODE:"
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelGameModeName" type="Label" parent="CanvasLayer/GameCreationScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.703816
-anchor_top = 0.0675926
+anchor_top = 0.0601852
 anchor_right = 0.870483
-anchor_bottom = 0.130556
+anchor_bottom = 0.123149
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 50
 text = "game_name"
 metadata/_edit_use_anchors_ = true
 
+[node name="LabelRules" type="Label" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702253
+anchor_top = 0.0462963
+anchor_right = 0.86892
+anchor_bottom = 0.10926
+rotation = 0.0489428
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 50
+text = "Rules:"
+metadata/_edit_use_anchors_ = true
+
 [node name="LabelGameModeDescription" type="Label" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.711108
-anchor_top = 0.145371
-anchor_right = 0.935066
-anchor_bottom = 0.360185
+anchor_left = 0.709375
+anchor_top = 0.124074
+anchor_right = 0.933333
+anchor_bottom = 0.297222
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 32
-text = "destroy everyone and become the ultimate weeb of your dreams, best anime protagonist, real OC do not steal."
+theme_override_font_sizes/font_size = 29
+text = "Become the ultimate weeb of your dreams, best anime protagonist, real OC do not steal."
 autowrap_mode = 3
 clip_text = true
 metadata/_edit_use_anchors_ = true
@@ -971,6 +985,10 @@ anchor_left = 0.708333
 anchor_top = 0.680556
 anchor_right = 0.969792
 anchor_bottom = 0.780556
+offset_left = 10.9999
+offset_top = 84.0
+offset_right = 10.9999
+offset_bottom = 84.0
 rotation = 0.0182909
 focus_mode = 0
 theme = ExtResource("2_ganm3")
@@ -1105,10 +1123,10 @@ options = Array[String](["Secret Knowledge"])
 [node name="TextureLevel" type="SubViewportContainer" parent="CanvasLayer/GameCreationScreen"]
 z_index = 12
 layout_mode = 0
-offset_left = 1409.0
-offset_top = 465.0
-offset_right = 1779.0
-offset_bottom = 665.0
+offset_left = 1420.0
+offset_top = 602.0
+offset_right = 1790.0
+offset_bottom = 802.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/GameCreationScreen/TextureLevel"]
 handle_input_locally = false
@@ -1208,6 +1226,108 @@ scale = Vector2(0.9, 0.9)
 pivot_offset = Vector2(82, 82)
 texture = ExtResource("17_rxid8")
 expand_mode = 1
+
+[node name="TimeButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.703646
+anchor_top = 0.315741
+anchor_right = 0.938021
+anchor_bottom = 0.367593
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 35
+text = "Time:"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/TimeButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.833333
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "No limit"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LivesButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.716667
+anchor_top = 0.371296
+anchor_right = 0.911979
+anchor_bottom = 0.423148
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 35
+text = "Lives:"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/LivesButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "No limit"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StatsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729688
+anchor_top = 0.426852
+anchor_right = 0.925
+anchor_bottom = 0.478704
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 35
+text = "Stats:"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/StatsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "No limit"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EvolutionsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.742708
+anchor_top = 0.482407
+anchor_right = 0.938021
+anchor_bottom = 0.534259
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 35
+text = "Evolution:"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/EvolutionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "No limit"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false
