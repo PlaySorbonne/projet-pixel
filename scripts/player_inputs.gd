@@ -44,6 +44,5 @@ func _input(event : InputEvent):
 			elif event.is_action_pressed("special"):
 				player.special()
 		
-		if event.is_action_pressed("debug_button") and (
-					player.current_evolution != PlayerCharacter.Evolutions.Weeb):
-			player.evolve(player.current_evolution + 1)
+		if event.is_action_pressed("debug_button"):
+			player._on_fighter_killed_opponent(true)

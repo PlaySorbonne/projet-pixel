@@ -427,7 +427,7 @@ func check_turn(right: bool) -> void:
 			attack_loc_pos.y
 		)
 
-func _on_fighter_killed_opponent() -> void:
+func _on_fighter_killed_opponent(quickie := false) -> void:
 	var next_evolution : Evolutions
 	match GameInfos.evolving_mode:
 		GameInfos.EvolvingMode.Linear:
@@ -438,7 +438,8 @@ func _on_fighter_killed_opponent() -> void:
 			next_evolution = Evolutions.values().pick_random()
 		GameInfos.EvolvingMode.Fixed:
 			return
-	await get_tree().create_timer(2.5).timeout
+	if not quickie:
+		await get_tree().create_timer(2.5).timeout
 	if alive:
 		evolve(next_evolution)
 
