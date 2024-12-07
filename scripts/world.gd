@@ -47,9 +47,14 @@ func _ready():
 		$StartGameScreen.countdown()
 		await $StartGameScreen.countdown_finished
 		activate_players()
+	# connect eventual timer to end game func
+	if GameInfos.gameplay_timer != null and is_instance_valid(GameInfos.gameplay_timer):
+		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
 
-func add_level():
-	pass
+func timeout_end_game() -> void:
+	# declare winner based on victory conditions
+	
+	end_game()
 
 func player_eliminated():
 	players_left -= 1

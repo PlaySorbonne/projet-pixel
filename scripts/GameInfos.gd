@@ -73,6 +73,7 @@ var game_started := false
 var player_portaits : Dictionary = {}
 var world : Node2D
 var camera : WorldCamera
+var gameplay_timer : GameplayTimer
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Dictionary = {}

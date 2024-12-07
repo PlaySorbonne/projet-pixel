@@ -6,6 +6,7 @@ signal timeout
 var current_time : float = 15
 
 func _ready() -> void:
+	GameInfos.gameplay_timer = self
 	text = ""
 	$Label.text = ""
 	set_process(false)
