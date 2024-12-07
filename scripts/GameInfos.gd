@@ -92,6 +92,7 @@ var selected_level : int = 0
 var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winners : Array[int] = []
+var player_portraits : Dictionary = {}
 
 var time_limit := -1
 var lives_limit := -1
@@ -112,6 +113,7 @@ func reset_game_infos(_deep_reset := false) -> void:
 	player_portaits = {}
 	players = {}
 	anime_box = null
+	player_portraits = {}
 	CharacterPointer.current_z = 0
 
 func perform_deep_reset():

@@ -14,11 +14,15 @@ var current_evolution := -1
 var init_portrait := false
 var velocity := Vector2.ZERO
 var eliminated := false
+var current_lives := -1
 
 func _ready():
 	set_process(false)
+	GameInfos.player_portraits[player_number] = self
 	if GameInfos.lives_limit > 0:
-		$Holder/LabelLives.text = str(GameInfos.lives_limit)
+		current_lives = GameInfos.lives_limit
+		$Holder/LabelLives.text = str(current_lives)
+		$Holder/LabelLives.visible = true
 
 func _process(delta):
 	$Holder.position += delta * velocity
@@ -47,10 +51,17 @@ func eliminate(vel : Vector2):
 	set_process(false)
 
 func connect_player_object():
-	var player = GameInfos.players[player_number]
+	var player : PlayerCharacter = GameInfos.players[player_number]
 	player.fighter_hit.connect(update_health)
 	player.player_spawned.connect(update_health)
 	player.player_evolved.connect(update_evolution)
+	if GameInfos.lives_limit > 0:
+		player.fighter_died.connect(update_lives)
+
+func update_lives() -> void:
+	current_lives -= 1
+	$Holder/LabelLives.text = str(current_lives)
+	$AnimationPlayer.play("anim_death")
 
 func update_health(_damage := 0, _hitpoints := 0):
 	var player : PlayerCharacter = GameInfos.players[player_number]

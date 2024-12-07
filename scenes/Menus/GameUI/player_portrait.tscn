@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=13 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
@@ -57,7 +57,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Holder/LabelName:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(53, 155)]
+"values": [Vector2(49, 158)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -141,7 +141,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Holder/LabelHealth:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
@@ -149,7 +149,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(148, 151)]
+"values": [Vector2(168, 151)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -182,6 +182,54 @@ tracks/13/path = NodePath("Holder/LabelLives:scale")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Holder/TexturePortrait:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, -44)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Holder/TexturePortrait:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Holder/TexturePortrait:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Holder/TexturePortraitBackground:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -421,9 +469,110 @@ tracks/18/keys = {
 "values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_mxhyi"]
+resource_name = "anim_death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Holder/TexturePortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.353553, 0.5, 0.517633),
+"update": 0,
+"values": [Vector2(50, -44), Vector2(68, -14), Vector2(68, -14), Vector2(50, -44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Holder/TexturePortrait:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.353553, 0.5, 0.517633),
+"update": 0,
+"values": [0.0, 0.275818, 0.275818, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Holder/TexturePortrait:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 0.517633),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Holder/TexturePortraitBackground:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(32, -47.5), Vector2(48, -22), Vector2(48, -22), Vector2(32, -47.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Holder/TexturePortraitBackground:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, 0.269611, 0.269611, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Holder/LabelLives:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(0.554785, 1, 2.46229, 0.554785),
+"update": 0,
+"values": [-0.119688, 0.0, 0.0, -0.119688]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Holder/LabelLives:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(0.420448, 1.36604, 1.36604, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Holder/TexturePortraitBackground:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1x3la"]
 _data = {
 "RESET": SubResource("Animation_eyalj"),
+"anim_death": SubResource("Animation_mxhyi"),
 "evolve": SubResource("Animation_3h0w0")
 }
 
@@ -480,6 +629,7 @@ offset_right = 93.0
 offset_bottom = -11.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(93, 93)
 texture = ExtResource("2_o1d5x")
 expand_mode = 1
 stretch_mode = 5
@@ -549,7 +699,6 @@ offset_left = 168.0
 offset_top = 151.0
 offset_right = 238.0
 offset_bottom = 174.0
-rotation = 6.28319
 pivot_offset = Vector2(35, 10)
 text = "99/99"
 label_settings = ExtResource("3_hssq3")
