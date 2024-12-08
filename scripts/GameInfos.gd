@@ -86,6 +86,7 @@ var anime_box : AnimeBox = null
 var menu_music_time := 0.0
 var end_screen : EndScreen = null
 var display_end_screen := true
+var auto_spawn_players := true
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []
@@ -119,6 +120,7 @@ func reset_game_infos(_deep_reset := false) -> void:
 	anime_box = null
 	player_portraits = {}
 	display_end_screen = true
+	auto_spawn_players = true
 	CharacterPointer.current_z = 0
 
 func perform_deep_reset():

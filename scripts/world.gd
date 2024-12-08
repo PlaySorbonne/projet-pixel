@@ -170,7 +170,8 @@ func spawn_players():
 		add_child(player)
 		connect_fighter_to_world(player)
 		player_spawns[player.player_ID] = spawn_locations[player_number].position
-		player.spawn(player_spawns[player.player_ID], false)
+		if GameInfos.auto_spawn_players:
+			player.spawn(player_spawns[player.player_ID], false)
 		player_number += 1
 		GameInfos.tracked_targets.append(player)
 

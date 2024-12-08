@@ -208,8 +208,6 @@ func set_animation(force := false):
 		$AnimationPlayer.play("jump")
 		#$Sprite2D.play("jump")
 
-
-
 func stop_jump():
 	if velocity.y < -50.0:
 		movement_velocity.y = -50.0
