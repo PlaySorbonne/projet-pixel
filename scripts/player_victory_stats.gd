@@ -63,7 +63,8 @@ func intro_animation() -> void:
 	# initialize titles
 	await get_tree().create_timer(0.4).timeout
 	for t_item : TitleItem in player_title_objects:
-		await get_tree().create_timer(0.15).timeout
+		$TimerTitles.start(0.15)
+		await $TimerTitles.timeout
 		t_item.anim_intro()
 
 func intro_tween_label(l : Label) -> void:
