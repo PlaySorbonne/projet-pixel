@@ -167,11 +167,11 @@ func activate_players():
 func spawn_players():
 	var player_number = 0
 	for player : PlayerCharacter in GameInfos.players.values():
-		add_child(player)
+		if GameInfos.auto_spawn_players:
+			add_child(player)
+			player.spawn(player_spawns[player.player_ID], false)
 		connect_fighter_to_world(player)
 		player_spawns[player.player_ID] = spawn_locations[player_number].position
-		if GameInfos.auto_spawn_players:
-			player.spawn(player_spawns[player.player_ID], false)
 		player_number += 1
 		GameInfos.tracked_targets.append(player)
 

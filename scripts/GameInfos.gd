@@ -119,8 +119,8 @@ func reset_game_infos(_deep_reset := false) -> void:
 	players = {}
 	anime_box = null
 	player_portraits = {}
-	display_end_screen = true
-	auto_spawn_players = true
+	display_end_screen = false
+	auto_spawn_players = false
 	CharacterPointer.current_z = 0
 
 func perform_deep_reset():
