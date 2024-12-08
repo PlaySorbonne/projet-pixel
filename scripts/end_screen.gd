@@ -3,12 +3,15 @@ class_name EndScreen
 
 signal end_game_finished
 
-const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
+const LABEL_END_SCREEN_RES := preload("res://scenes/Menus/player_victory_stats.tscn")
+# preload("res://scenes/Menus/GameUI/label_player_end_screen.tscn")
 const TROPHY_RES := preload("res://scenes/Menus/GameCreation/last_winner.tscn")
+const MONEY_ADDER := preload("res://scenes/Menus/GameUI/label_additional_money.tscn")
 
 
 const COMMON_TITLES : Array[String] = [
 	"No.1 Weeb",
+	"Piss Consumer",
 	"The Chosen One",
 	"I'll be back",
 	"Super Saiyan",
@@ -39,27 +42,45 @@ const COMMON_TITLES : Array[String] = [
 	"Joystick Rider",
 	"Critical Failer",
 	"Energy Drinker",
-	"4chan user",
+	"4Chan user",
 	"Cosplayer",
+	"Redditor 1000",
+	"DoomScroller",
+	"AI Artist",
+	"Edge Lord",
+	"Cryptobro",
+	"Baby doggo",
+	"Baby kitten",
+	"Birb",
+	"Keyboard Smasher",
+	"Discord Gremlin",
+	"Loot Box Addict",
 ]
 
 const RARE_TITLES : Array[String] = [
 	"Over 9000",
 	"Dora la Exploradora",
 	"King of Kongs",
-	"The Tarnished",
+	"Maidenless",
 	"Biggest Chocobo",
+	"Weeberman",
 	"The Chicken Whisperer",
 	"Grass-Cutting Champion",
 	"Pokemon Master",
 	"Min-Maxer",
-	"Linux Overlord",
-	"Taco Master",
+	"Linux Lord",
+	"Pocket Taco",
 	"Hero of Rhyme",
 	"Memelord",
+	"Definitely on Tumblr",
 	"Scary Shiny Glasses",
 	"Hentai Anthropologist",
-	"The Strongest Man in the World",
+	"Isekai Protagonist",
+	"Assembly Developer",
+	"Power Bottom",
+	"Mommy Issues",
+	"Power of God and Anime Kid",
+	"Cassette Overlord",
 ]
 
 const LEGENDARY_TITLES : Array[String] = [
@@ -68,27 +89,36 @@ const LEGENDARY_TITLES : Array[String] = [
 	"Supreme Commander",
 	"Decorporater",
 	"Ascended", 
+	"One Man Furry Convention",
+	"Splatoon Fanfic Author",
+	"The Strongest Man in the World",
+	"Ultimate Bad Dragon Collector",
 ]
 
 var is_end_game := false
 var current_end_step := 1
 var end_finished := false
+var are_stats_initialized := false
+var player_stats_nodes : Array[PlayerVictoryStats] = []
+var current_money : int
+var target_money : int
 
 @onready var player_stats_node : HBoxContainer = $PlayerStats
 
 func _ready() -> void:
 	set_process(false)
+	current_money = VaultData.vault_data["money"]
+	target_money = current_money
+	$LabelMoneyText/LabelMoney.text = GameInfos.format_money_string(current_money)
 	visible = false
-	print("WORLD -> CANVASLAYER -> END_SCREEN: REMEMBER TO HIDE END_SCREEN")
-	print("AND SHOW SCREEN_TRANSITION")
-	print("AND SET END_SCREEN PROCESS TO WHEN_PAUSED")
+	GameInfos.end_screen = self
 
-func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
+func init_player_titles(player_ids : Array) -> Dictionary:
 	const TITLES := [LEGENDARY_TITLES, RARE_TITLES, COMMON_TITLES]
-	const TITLES_TOTAL_TRIES := [1, 12, 24]
-	const TITLES_CHANCE := [0.4, 0.4, 0.75]
-	const RARITIES := ["common", "rare", "legendary"]
-	const MAX_TITLES_PER_PLAYER := 5
+	const TITLES_TOTAL_TRIES := [1, 10, 26]
+	const TITLES_CHANCE := [1.0, 0.5, 0.5]
+	const RARITIES := ["legendary", "rare", "common"]
+	const MAX_TITLES_PER_PLAYER := 6
 	# initialize stuff
 	var player_titles : Dictionary = {}
 	var nb_players : int = len(player_ids)
@@ -102,22 +132,35 @@ func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
 		players_nb_titles[id] = 0
 	# generate and distribute titles
 	for i : int in range(TITLES.size()):
-		var current_titles : Array[String] = TITLES[i]
+		var current_titles : Array[String] = TITLES[i].duplicate()
 		current_titles.shuffle()
-		# select titles to distribute
 		var selected_titles : Array[String] = []
-		for _j : int in range(max(1, TITLES_TOTAL_TRIES[i]/4)):
-			if randf() < TITLES_CHANCE[i]:
-				selected_titles.append(current_titles.pop_back())
-		# give legendary title to winner
-		if i == 0 and len(selected_titles) == 1:
-			player_titles[winner_id][RARITIES[0]].append(selected_titles[0])
-			players_nb_titles[winner_id] += 1
+		# give legendary title(s) to winner(s)
+		if i == 0:
+			# LEGENDARY titles
+			selected_titles = LEGENDARY_TITLES.duplicate()
+			selected_titles.shuffle()
+			for lw : int in range(GameInfos.last_winners.size()):
+				var win_id : int = GameInfos.last_winners[lw]
+				player_titles[win_id][RARITIES[0]].append(selected_titles[lw])
+				players_nb_titles[win_id] += 1
 		# distribute common and rare titles
-		elif len(selected_titles) > 1:
+		else: 
+			# RARE and COMMON titles
+			# select titles to distribute
+			for _j : int in range(max(1, int((TITLES_TOTAL_TRIES[i]/4.0)*len(player_ids)) )):
+				var rand_val := randf()
+				if rand_val < TITLES_CHANCE[i]:
+					var new_title : String = current_titles.pop_back()
+					selected_titles.append(new_title)
+			if not(len(selected_titles) > 1):
+				continue
+			# distribute titles
 			for t : String in selected_titles:
+				if len(player_ids) == 0:
+					break
 				var current_id : int = player_ids.pick_random()
-				player_titles[winner_id][RARITIES[i]].append(t)
+				player_titles[current_id][RARITIES[i]].append(t)
 				players_nb_titles[current_id] += 1
 				if players_nb_titles[current_id] >= MAX_TITLES_PER_PLAYER:
 					player_ids.erase(current_id)
@@ -125,60 +168,99 @@ func init_player_titles(player_ids : Array[int], winner_id : int) -> Dictionary:
 	#	{key=player_id : value={key=title : value=rarity}}
 	return player_titles
 
-func init_end_screen(winner_id : int, players_stats : Dictionary) -> void:
+func init_end_screen(players_stats : Dictionary) -> void:
 	is_end_game = true
 	set_process(true)
-	var is_first_winner_node := true
-	var arr_stats : Array[PlayerStats] = [players_stats[winner_id]]
+	var arr_stats : Array = players_stats.values().duplicate()
 	# random titles we give to each player
-	var given_titles : Dictionary = init_player_titles(GameInfos.players.keys(), winner_id)
+	var given_titles : Dictionary = init_player_titles(players_stats.keys().duplicate())
+	# update number of player deaths
 	for p_stats : PlayerStats in players_stats.values():
-		p_stats.set_death_based_on_winner(winner_id)
-		if p_stats.player_id != winner_id:
-			arr_stats.append(p_stats)
+		p_stats.set_deaths_based_on_winners()
 	# create and add nodes to display player stats and titles
 	for p_stats : PlayerStats in arr_stats:
-		for s : String in p_stats.get_stats_as_array():
-			var l : PlayerVictoryStats = LABEL_END_SCREEN_RES.instantiate()
-			l.text = s
-			player_stats_node.add_child(l)
-			# transfer titles data to node
-			var common_titles : Array[String] = given_titles[p_stats.player_id]["common"]
-			var rare_titles : Array[String] = given_titles[p_stats.player_id]["rare"]
-			var legendary_titles : Array[String] = given_titles[p_stats.player_id]["legendary"]
-			l.set_player_titles(common_titles, rare_titles, legendary_titles)
-			# display trophy is current player won
-			if is_first_winner_node:
-				is_first_winner_node = false
-				var trophy : Control = TROPHY_RES.instantiate()
-				l.add_child(trophy)
-				trophy.position = Vector2(-150, -50)
-				trophy.declare_winner()
+		var l : PlayerVictoryStats = LABEL_END_SCREEN_RES.instantiate()
+		player_stats_node.add_child(l)
+		l.set_player_stats(p_stats)
+		# transfer titles data to node
+		var common_titles : Array = given_titles[p_stats.player_id]["common"]
+		var rare_titles : Array = given_titles[p_stats.player_id]["rare"]
+		var legendary_titles : Array = given_titles[p_stats.player_id]["legendary"]
+		l.set_player_titles(common_titles, rare_titles, legendary_titles)
+		# display trophy is current player won
+		if p_stats.player_id in GameInfos.last_winners:
+			l.declare_winner()
+		player_stats_nodes.append(l)
 	$AnimationEndSteps.play("end_enter")
 	await get_tree().process_frame
 	visible = true
+	await $AnimationEndSteps.animation_finished
+	add_money(randi_range(1234, 2000), true)
 
+func add_money(money : int, slow := false) -> void:
+	const POSSIBLE_VALS := [-100.0, -70.0, -50.0, -25.0, 25.0, 50.0, 75.0, 100.0]
+	var adder : Label = MONEY_ADDER.instantiate()
+	adder.text = "+" + str(money)
+	var m_offset := Vector2(
+		POSSIBLE_VALS.pick_random(),
+		POSSIBLE_VALS.pick_random()
+	)
+	add_child(adder)
+	adder.global_position = $LabelMoneyText/LabelMoney.global_position + m_offset
+	$AudioMoneyKaching.pitch_scale = randf_range(0.95, 1.05)
+	$AudioMoneyKaching.play(0.0)
+	if slow:
+		adder.set_slow()
+	VaultData.vault_data["money"] += money
+	target_money += money
+
+var getting_money := false
 func _process(delta: float) -> void:
-	if not is_end_game:
+	# handle money
+	if getting_money:
+		if current_money >= target_money:
+			getting_money = false
+			$LabelMoneyText/LabelMoney/AnimationMoney.play("idle")
+		else:
+			current_money = min(target_money, current_money + int(delta * 400))
+			$LabelMoneyText/LabelMoney.text = GameInfos.format_money_string(current_money)
+	elif current_money < target_money:
+		getting_money = true
+		$AudioMoneyCling.play(0.0)
+		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
+	
+	# handle inputs
+	if (not is_end_game) or (not can_move_forward):
 		return
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
-		current_end_step += 1
+		current_end_step = min(3, current_end_step+1)
 		execute_current_step()
 		
-	elif Input.is_action_just_pressed("attack"):
-		current_end_step = max(0, current_end_step-1)
-		execute_current_step(false)
+	#elif Input.is_action_just_pressed("attack"):
+		#current_end_step = max(1, current_end_step-1)
+		#execute_current_step(false)
 
+var can_move_forward := true
 func execute_current_step(forward := true):
 	match current_end_step:
-		0:
-			$AnimationEndSteps.play_backwards("end_enter")
 		1:
 			if forward:
 				$AnimationEndSteps.play("end_enter", -1, 1.0, false)
 			else:
-				$AnimationEndSteps.play_backwards("end_stats")
+				$AnimationEndSteps.play_backwards("end_enter")
 		2:
-			$AnimationEndSteps.play("end_stats", -1, 1.0, false)
+			if not are_stats_initialized:
+				are_stats_initialized = true
+				can_move_forward = false
+				for l : PlayerVictoryStats in player_stats_nodes:
+					l.intro_animation()
+					await get_tree().create_timer(0.5).timeout
+				await get_tree().create_timer(1.2).timeout
+				can_move_forward = true
 		3:
 			emit_signal("end_game_finished")
+
+func _on_audio_money_cling_finished() -> void:
+	if getting_money:
+		$AudioMoneyCling.pitch_scale = randf_range(0.75, 1.25)
+		$AudioMoneyCling.play(0.0)

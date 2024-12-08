@@ -18,6 +18,7 @@ var ascended := false
 var previous_trail_color : Color
 var previous_hitbox_size : Vector2
 var exalted_particles : Node2D
+var time_ascended := 0.0
 
 func death(force := false):
 	if ascended:
@@ -25,7 +26,15 @@ func death(force := false):
 	else:
 		super.death(force)
 
+func get_time_ascended() -> float:
+	return time_ascended
+
+func _process(delta: float) -> void:
+	if ascended:
+		time_ascended += delta
+
 func ascend():
+	compute_hits = false
 	computing_movement = false
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
@@ -33,6 +42,7 @@ func ascend():
 	emit_signal("weeb_ascended", self)
 	rotation = 0.0
 	custom_audio_attacks = AUDIO_EXPLOSION
+	controller_vibration(1.0, 0.5)
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
@@ -57,6 +67,7 @@ func ascend():
 	ascended = true
 	computing_movement = true
 	eliminate_hit_targets = true
+	compute_hits = true
 
 func descend():
 	emit_signal("weeb_descended", self)

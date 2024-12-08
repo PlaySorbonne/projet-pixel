@@ -1,66 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wmkpj4f8wlu"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wmkpj4f8wlu"]
 
 [ext_resource type="Script" path="res://scripts/title_item.gd" id="1_5h142"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="1_wk7r5"]
+[ext_resource type="AudioStream" uid="uid://cvvxdrdu7ewdb" path="res://resources/audio/sfx/ui_sfx/explosion_min.wav" id="3_bxtrv"]
 
 [sub_resource type="FontVariation" id="FontVariation_j4xvw"]
 base_font = ExtResource("1_wk7r5")
 variation_embolden = -0.25
 spacing_space = 3
 spacing_top = 5
-
-[sub_resource type="Animation" id="Animation_18xy6"]
-resource_name = "intro_common"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.4, 1),
-"update": 0,
-"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.4, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Label:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.4),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Label:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.4),
-"update": 0,
-"values": [Vector2(-13, -3.5)]
-}
 
 [sub_resource type="Animation" id="Animation_a6rec"]
 length = 0.001
@@ -113,9 +61,9 @@ tracks/3/keys = {
 "values": [Vector2(-13, -3.5)]
 }
 
-[sub_resource type="Animation" id="Animation_0gjtg"]
-resource_name = "intro_rare"
-length = 0.7
+[sub_resource type="Animation" id="Animation_18xy6"]
+resource_name = "intro_common"
+length = 0.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -124,10 +72,10 @@ tracks/0/path = NodePath("Label:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -136,7 +84,7 @@ tracks/1/path = NodePath("Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.4, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -148,10 +96,10 @@ tracks/2/path = NodePath("Label:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.4, 0.4),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
 "update": 0,
-"values": [0.261799, 0.0]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -160,10 +108,10 @@ tracks/3/path = NodePath("Label:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(0.4, 0.4),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.4),
 "update": 0,
-"values": [Vector2(50, -3.5), Vector2(-13, -3.5)]
+"values": [Vector2(-13, -3.5)]
 }
 
 [sub_resource type="Animation" id="Animation_il4na"]
@@ -219,6 +167,59 @@ tracks/3/keys = {
 "values": [Vector2(-13, 30), Vector2(-13, -35), Vector2(-13, -35), Vector2(-13, -3.5)]
 }
 
+[sub_resource type="Animation" id="Animation_0gjtg"]
+resource_name = "intro_rare"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.0393, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(2.0393, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.0393, 0.4),
+"update": 0,
+"values": [0.261799, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.0393, 0.4),
+"update": 0,
+"values": [Vector2(50, -3.5), Vector2(-13, -3.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvo2x"]
 _data = {
 "RESET": SubResource("Animation_a6rec"),
@@ -256,10 +257,13 @@ theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/normal_font = SubResource("FontVariation_j4xvw")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center][color=dark_green]The Strongest Man In the World"
+text = "[center][color=light_yellow]The Strongest Man In the World"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uvo2x")
 }
+
+[node name="AudioBoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bxtrv")

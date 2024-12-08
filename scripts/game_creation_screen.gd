@@ -27,7 +27,13 @@ func _ready():
 	GameInfos.menu_music_time = 0.0
 	GameInfos.reset_game_infos()
 	set_game_widgets()
+	$LabelMoney/AnimationPlayer.play("idle")
+	$LabelMoney.text = GameInfos.format_money_string(VaultData.vault_data["money"])
 	transition.end_screen_transition()
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_loops()
+	var def_pos : Vector2 = $ButtonAddAI.position
+	t.tween_property($ButtonAddAI, "position", def_pos + Vector2(0.0, -15.0), 0.3)
+	t.tween_property($ButtonAddAI, "position", def_pos, 0.5)
 	if GameInfos.players_data.keys().size() != 0:
 		reload_old_game_infos()
 		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_INTENSE
@@ -60,14 +66,19 @@ func reload_old_game_infos():
 	for id: int in GameInfos.players_data.keys():
 		var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 		player.player_ID = id
-		var control_device : int = GameInfos.players_data[id]["control_device"]
-		var control_type : int = GameInfos.players_data[id]["control_type"]
-		player.control_device = control_device
-		player.control_type = control_type
-		if control_type == 0:
-			keyboards.append(control_device)
+		var p_controlled : bool = GameInfos.players_data[id]["player_controlled"]
+		player.is_player_controlled = p_controlled
+		if p_controlled:
+			var control_device : int = GameInfos.players_data[id]["control_device"]
+			var control_type : int = GameInfos.players_data[id]["control_type"]
+			player.control_device = control_device
+			player.control_type = control_type
+			if control_type == 0:
+				keyboards.append(control_device)
+			else:
+				controllers.append(control_device)
 		else:
-			controllers.append(control_device)
+			player.ai_difficulty = GameInfos.players_data[id]["ai_difficulty"]
 		GameInfos.players[id] = player
 		create_player_infos(id, delay, false)
 		delay += 0.5
@@ -81,9 +92,11 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	check_start_button()
 	player_infos.with_voice = with_voice
 	player_infos.player_index = index
-	player_infos.last_winner = (index == GameInfos.last_winner)
-	player_infos.control_type = GameInfos.players_data[index]["control_type"]
-	player_infos.control_index = GameInfos.players_data[index]["control_device"]
+	player_infos.last_winner = (GameInfos.last_winners.has(index))
+	var player : PlayerCharacter = GameInfos.players[index]
+	if player.is_player_controlled:
+		player_infos.control_type = GameInfos.players_data[index]["control_type"]
+		player_infos.control_index = GameInfos.players_data[index]["control_device"]
 	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
 		player_selectors.size()-1)
 	player_infos.connect("player_removed", remove_player)
@@ -205,3 +218,33 @@ func _on_button_back_pressed():
 	transition.start_screen_transition()
 	await transition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file("res://scenes/Menus/MenuPersistent.tscn")
+
+@onready var default_ai_button_rot = $ButtonAddAI.rotation
+var can_add_ai := true
+func _on_button_add_ai_pressed() -> void:
+	if len(player_selectors) == 4 or not can_add_ai:
+		return
+	can_add_ai = false
+	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	player.is_player_controlled = false
+	var player_index := player.player_ID
+	player.control_device = -1
+	player.control_type = -1
+	GameInfos.add_player(player)
+	create_player_infos(player_index)
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	$ButtonAddAI.rotation = default_ai_button_rot
+	t.tween_property($ButtonAddAI, "scale", Vector2(1.5, 1.5), 0.2)
+	t.tween_property($ButtonAddAI, "rotation", default_ai_button_rot+2*PI, 0.5)
+	await get_tree().create_timer(0.2).timeout
+	var t2 := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t2.tween_property($ButtonAddAI, "scale", Vector2.ONE, 0.3)
+	can_add_ai = true
+
+func _on_button_add_ai_mouse_entered() -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ButtonAddAI, "modulate", Color.RED, 0.5)
+
+func _on_button_add_ai_mouse_exited() -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ButtonAddAI, "modulate", Color.WHITE, 0.5)

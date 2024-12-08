@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6cra0cjl6u56" path="res://resources/images/characters/CEO/CEO_portrait.png" id="3_xy52h"]
 [ext_resource type="AudioStream" uid="uid://dahanasq017hk" path="res://resources/audio/voices/ceo/evolve_hmmmyes.wav" id="4_b4h4l"]
 [ext_resource type="Shader" path="res://resources/shaders/ReplaceColors.gdshader" id="4_dq808"]
-[ext_resource type="Texture2D" uid="uid://co3ivt2ay4svu" path="res://resources/images/icons/gamepad.png" id="4_wqdiw"]
-[ext_resource type="Theme" uid="uid://boptk2jvqab43" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
+[ext_resource type="Theme" uid="uid://dkxky3ljmxkmq" path="res://resources/fonts/PlayerSelectionTheme.tres" id="5_036eb"]
 [ext_resource type="AudioStream" uid="uid://jo0sssk2ypuo" path="res://resources/audio/voices/ceo/evolve_mwahahahah.wav" id="5_jiuuj"]
 [ext_resource type="AudioStream" uid="uid://njayaiydgx6w" path="res://resources/audio/voices/ceo/evolve_the_anime.wav" id="6_tp1gi"]
 [ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="7_f00w3"]
@@ -18,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cn4nsffbeac5g" path="res://resources/audio/sfx/button_clicks/click1.wav" id="10_fpwmj"]
 [ext_resource type="AudioStream" uid="uid://bugwjv5rm3qr6" path="res://resources/audio/sfx/button_clicks/click2.wav" id="11_erfdq"]
 [ext_resource type="PackedScene" uid="uid://ctlvv0tyiy3p7" path="res://scenes/Menus/GameCreation/last_winner.tscn" id="11_gin5s"]
+[ext_resource type="Texture2D" uid="uid://bajom280n556" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas.png" id="12_1nth3"]
 [ext_resource type="AudioStream" uid="uid://8vpy1s8i40jl" path="res://resources/audio/sfx/button_clicks/click3.wav" id="12_ldtoc"]
 [ext_resource type="AudioStream" uid="uid://cb6w5exktahr6" path="res://resources/audio/sfx/button_clicks/click4.wav" id="13_k5sox"]
 [ext_resource type="AudioStream" uid="uid://bm15da333kmj5" path="res://resources/audio/sfx/gameplay_sfx/_hitHurt0.wav" id="15_awc0i"]
@@ -821,7 +821,7 @@ playback_default_blend_time = 0.1
 [node name="LastWinner" parent="Control" instance=ExtResource("11_gin5s")]
 
 [node name="ControlType" type="TextureRect" parent="Control"]
-modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 offset_left = 86.0
@@ -830,8 +830,25 @@ offset_right = 161.001
 offset_bottom = 43.9699
 rotation = -0.106465
 theme = ExtResource("2_v14l6")
-texture = ExtResource("4_wqdiw")
+texture = ExtResource("12_1nth3")
 expand_mode = 1
+
+[node name="ButtonAiDiffculty" type="Button" parent="Control/ControlType"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0753382
+anchor_top = -0.0478756
+anchor_right = 1.03131
+anchor_bottom = 1.26641
+focus_mode = 0
+theme = ExtResource("2_v14l6")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 30
+text = "
+Mid"
+flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorButton" type="Button" parent="Control"]
 layout_mode = 1
@@ -902,6 +919,7 @@ stream = ExtResource("23_dvwja")
 
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
+[connection signal="pressed" from="Control/ControlType/ButtonAiDiffculty" to="." method="_on_button_ai_diffculty_pressed"]
 [connection signal="pressed" from="Control/ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="color_changed" from="Control/ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="Control/ButtonCancel" to="." method="_on_button_cancel_pressed"]

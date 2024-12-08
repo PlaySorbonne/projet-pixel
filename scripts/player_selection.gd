@@ -8,7 +8,7 @@ const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
 
 @export var CEO_lines : Array[AudioStream] = []
 
-
+var current_ai_difficulty := AI_Inputs.Difficulty.Mid
 var right_pressed := false
 var left_pressed := false
 var up_pressed := false
@@ -19,6 +19,8 @@ var control_index : int = -1
 @export var control_type: bool:
 	set(value):
 		control_type = value
+		ai_difficulty_button.disabled = true
+		ai_difficulty_button.visible = false
 		if value:
 			$Control/ControlType.texture = GAMEPAD_TEXTURE
 		else:
@@ -34,6 +36,13 @@ var control_index : int = -1
 		last_winner = value
 		check_winner()
 
+@onready var ai_difficulty_button := $Control/ControlType/ButtonAiDiffculty
+
+func set_player_icon(evolution : int) -> void:
+	var new_texture : Texture = PlayerPortrait.PLAYER_PORTRAITS[evolution]
+	$Control/Icon.texture = new_texture
+	$Control/Icon/Icon2.texture = new_texture
+
 func _ready():
 	$Control.scale = Vector2.ZERO
 	await get_tree().process_frame
@@ -42,6 +51,8 @@ func _ready():
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
 	check_winner()
+	current_ai_difficulty = GameInfos.players_data[player_index]["ai_difficulty"]
+	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
 	if with_voice:
 		$AudioCEOVoice.stream = CEO_lines.pick_random()
 		$AudioCEOVoice.play()
@@ -127,3 +138,15 @@ func _on_button_cancel_pressed():
 
 func _on_label_text_submitted(_new_text : String):
 	$Control/Label.release_focus()
+
+func _on_button_ai_diffculty_pressed() -> void:
+	match current_ai_difficulty:
+		AI_Inputs.Difficulty.Easy:
+			current_ai_difficulty = AI_Inputs.Difficulty.Mid
+		AI_Inputs.Difficulty.Mid:
+			current_ai_difficulty = AI_Inputs.Difficulty.Hard
+		AI_Inputs.Difficulty.Hard:
+			current_ai_difficulty = AI_Inputs.Difficulty.Easy
+	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
+	GameInfos.players_data[player_index]["ai_difficulty"] = current_ai_difficulty
+	GameInfos.players[player_index].ai_difficulty = current_ai_difficulty

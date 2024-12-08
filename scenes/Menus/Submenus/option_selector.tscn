@@ -49,7 +49,7 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="NextButton" type="TextureButton" parent="."]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(50, 66)
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("2_arf1l")

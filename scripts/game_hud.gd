@@ -3,6 +3,9 @@ class_name GameHud
 
 const PLAYER_PORTRAIT = preload("res://scenes/Menus/GameUI/player_portrait.tscn")
 
+func remove_portraits() -> void:
+	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($HBox, "position", Vector2(0.0, 1300), 1.0)
 
 func add_players():
 	var hud_objects : Array = []

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ut1s5vvr3gfl"]
+
+[ext_resource type="PackedScene" uid="uid://b3aqqhgrewv2u" path="res://scenes/GameModes/base_game_mode.tscn" id="1_u284h"]
+
+[node name="GM_WeebBattleUltimate" instance=ExtResource("1_u284h")]

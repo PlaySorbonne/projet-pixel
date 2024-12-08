@@ -18,9 +18,18 @@ const EvolutionCharacters = {
 	Evolutions.Mascot : preload("res://scenes/Characters/Evolutions/mascot_character.tscn"),
 	Evolutions.Weeb : preload("res://scenes/Characters/Evolutions/weeb_character.tscn")
 }
+const EVOLUTIONS_AIS := {
+	Evolutions.CEO : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
+	Evolutions.Manager : preload("res://scenes/Characters/inputs/ai_inputs_ceo.tscn"),
+	Evolutions.Employee : preload("res://scenes/Characters/inputs/ai_inputs_employee.tscn"),
+	Evolutions.Mascot : preload("res://scenes/Characters/inputs/ai_inputs_employee.tscn"),
+	Evolutions.Weeb : preload("res://scenes/Characters/inputs/ai_inputs_weeb.tscn")
+}
 
 static var player_counter := 0
 
+@export var is_player_controlled := true
+@export var ai_difficulty := AI_Inputs.Difficulty.Mid
 @export var custom_audio_attacks : AudioStream = null
 
 @export_group("Gameplay Stats")
@@ -54,6 +63,7 @@ static var player_counter := 0
 @onready var attack_loc_pos : Vector2 = $AttackLocation.position
 var control_device: int = 0
 var control_type: Controls
+var is_eliminated := false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right := true
 var can_attack := true
@@ -68,10 +78,15 @@ var evolving := false
 var left_pressed := false
 var right_pressed := false
 var up_pressed := false
-var down_pressed := false
+var down_pressed := false:
+	set(value):
+		down_pressed = value
+		set_collision_mask_value(5, not value)
 var compute_hits := true
 var in_stun_time := false
 var eliminate_hit_targets := false
+var player_color : Color
+var player_stats : PlayerStats = null
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)
@@ -83,7 +98,10 @@ func load_custom_gameplay_data():
 	if air_speed <= 1.0:
 		air_speed = speed
 
-func get_special_attack():
+func get_attack_location() -> Vector2:
+	return $AttackLocation.global_position
+
+func get_special_attack() -> Node:
 	return $SpecialAttack
 
 func copy_player_data(new_body : PlayerCharacter):
@@ -91,7 +109,10 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.control_device = control_device
 	new_body.control_type = control_type
 	new_body.player_ID = player_ID
+	new_body.is_player_controlled = is_player_controlled
+	new_body.ai_difficulty = ai_difficulty
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
+	new_body.player_stats = player_stats
 
 func _init():
 	if not GameInfos.game_started:
@@ -107,12 +128,18 @@ func _ready():
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
 	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
+	if is_player_controlled:
+		const PLAYER_INPUTS_RES := preload("res://scenes/Characters/inputs/player_inputs.tscn")
+		self.add_child(PLAYER_INPUTS_RES.instantiate())
+	else:
+		self.add_child(EVOLUTIONS_AIS[current_evolution].instantiate())
 	if current_evolution != Evolutions.CEO:
 		await get_tree().create_timer(1.2).timeout
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
 		$AudioLineEvolve.play()
 
 func set_player_color(new_color : Color):
+	player_color = new_color
 	$TrailEffect.modulate = new_color
 	$CharacterPointer.self_modulate = new_color
 	$Sprite2D.material.set_shader_parameter("replace_color", new_color)
@@ -181,52 +208,7 @@ func set_animation(force := false):
 		$AnimationPlayer.play("jump")
 		#$Sprite2D.play("jump")
 
-func _input(event : InputEvent):
-	var is_correct_control_type = false
-	if control_type == 0:
-		is_correct_control_type = event is InputEventKey
-	elif control_type == 1:
-		is_correct_control_type = (event is InputEventJoypadButton) or (event is InputEventJoypadMotion)
-		
-	if is_correct_control_type && event.device == control_device:
-		# Handle movement
-		if event.is_action_pressed("right"):
-			right_pressed = true
-		elif event.is_action_released("right"):
-			right_pressed = false
-		if event.is_action_pressed("left"):
-			left_pressed = true
-		elif event.is_action_released("left"):
-			left_pressed = false
-		if event.is_action_pressed("up"):
-			up_pressed = true
-		elif event.is_action_released("up"):
-			up_pressed = false
-		if event.is_action_pressed("drop"):
-			down_pressed = true
-			set_collision_mask_value(5, false)
-		elif event.is_action_released("drop"):
-			down_pressed = false
-			set_collision_mask_value(5, true)
-		if not alive:
-			return
-		
-		var on_floor := is_on_floor()
-		# Handle jump.
-		if event.is_action_pressed("jump") and on_floor:
-			jump()
-		elif event.is_action_released("jump") and velocity.y < -50.0:
-			stop_jump()
-		if not attacking:
-			# Handle normal attack
-			if event.is_action_pressed("attack"):
-				attack()
-			# Handle special 
-			elif event.is_action_pressed("special"):
-				special()
-		
-		if event.is_action_pressed("debug_button"):# and false:
-			evolve()
+
 
 func stop_jump():
 	if velocity.y < -50.0:
@@ -235,6 +217,8 @@ func stop_jump():
 		$JumpTimer.stop()
 
 func jump():
+	if not alive or not is_on_floor():
+		return
 	movement_velocity.y = -jump_velocity
 	is_jumping = true
 	$JumpTimer.start(jump_max_duration)
@@ -244,8 +228,8 @@ func _on_jump_timer_timeout():
 
 func spawn(location : Vector2, activate := true, f_right := true):
 	super.spawn(location, activate, f_right)
-	facing_right = f_right
-	$Sprite2D.flip_h = not f_right
+	#facing_right = f_right
+	check_turn(f_right)
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	GameInfos.tracked_targets.append(self)
@@ -253,28 +237,26 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	computing_movement = true
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
-func evolve(in_lobby: bool = false):
+func evolve(next_evolution : Evolutions):
 	if evolving:
 		return
-	if current_evolution == Evolutions.Weeb:
-		if in_lobby:
-			current_evolution = -1
-		else:
-			return
+	if next_evolution == null:
+		next_evolution = current_evolution + 1
 	evolving = true
 	compute_hits = false
 	computing_movement = false
 	$AnimationPlayer.stop()
 	$EvolveAnimation.speed_scale = 1.5
 	$EvolveAnimation.play("evolve")
-	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
+	controller_vibration(1.0, 0.4)
+	var sfx_pitch_modulation : float = 0.6 + float(next_evolution) / 5.0
 	$AudioEvolve.pitch_scale = sfx_pitch_modulation
 	$AudioEvolve.play()
 	var tween := create_tween()
 	tween.tween_property($CharacterPointer, "modulate", Color.TRANSPARENT, 0.5)
 	velocity = Vector2.ZERO
 	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
-	var new_body : PlayerCharacter = EvolutionCharacters[current_evolution+1].instantiate()
+	var new_body : PlayerCharacter = EvolutionCharacters[next_evolution].instantiate()
 	GameInfos.players[player_ID] = new_body
 	copy_player_data(new_body)
 	get_parent().add_child(new_body)
@@ -309,6 +291,10 @@ func death(force := false):
 func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1.0):
 	if in_invincibility_time or not compute_hits:
 		return
+	if GameInfos.lives_limit > 0 and (player_stats.deaths+1) >= GameInfos.lives_limit and (
+															hitpoints <= damage):
+		self.eliminate(attacker, hit_location)
+		return
 	var hit_owner : Node2D
 	play_hit_sfx()
 	emit_signal("damage_taken", self, damage)
@@ -331,15 +317,20 @@ func hit(damage : int, attacker : Node2D, hit_location : Vector2, hit_power := 1
 	emit_hit_particles()
 	GameInfos.camera_utils.shake()
 	if hitpoints > 0:
+		controller_vibration()
 		GameInfos.freeze_frame.freeze(0.015)
 		$AudioLineHurt.stream = audio_hurt.pick_random()
 	else:
 		# track the player kills
 		if hit_owner.has_signal("player_kill"):
 			hit_owner.emit_signal("player_kill")
-			
+		controller_vibration(1.0, 0.4)
 		$AudioLineHurt.stream = audio_death.pick_random()
 	$AudioLineHurt.play()
+
+func controller_vibration(strength : float = 0.75, duration : float = 0.3) -> void:
+	if control_type == Controls.CONTROLLER:
+		Input.start_joy_vibration(control_device, strength, strength, duration)
 
 func play_hit_sfx():
 	await get_tree().create_timer(randf_range(0.05, 0.15)).timeout
@@ -355,22 +346,26 @@ func emit_hit_particles():
 	$HitParticles.restart()
 
 func special():
-	if in_stun_time or not specialObj.can_use_special:
+	if (not alive) or (not computing_movement) or (in_stun_time) or (
+										not specialObj.can_use_special):
 		return
 	specialObj.special()
 	$AudioLineSpecial.stream = audio_special.pick_random()
 	$AudioLineSpecial.play()
 
 func attack():
-	if not can_attack or in_stun_time:
+	if (not alive) or (not can_attack) or (in_stun_time):
 		return
 	can_attack = false
 	if attack_wind_up > 0:
 		await get_tree().create_timer(attack_wind_up).timeout
+	if not alive:
+		return
 	var hitbox := Hitbox.spawn_hitbox(self, attack_damage, 
 	AttackLocation.position, 0.3, true, attack_intensity, attack_size)
 	if eliminate_hit_targets:
 		hitbox.set_eliminate(true)
+	controller_vibration(0.5, 0.2)
 	if custom_audio_attacks != null:
 		hitbox.set_audio(custom_audio_attacks)
 	attacking = true
@@ -379,12 +374,17 @@ func attack():
 	can_attack = true
 	attacking = false
 
-func eliminate(attacker : Node2D, hit_location : Vector2):
+func eliminate(attacker : Node2D, hit_location : Vector2) -> void:
 	if in_invincibility_time or not alive:
 		return
+	is_eliminated = true
 	var zoom_pos : Vector2 = (attacker.global_position + self.global_position) / 2.0
 	GameInfos.world.level.level_background_death_fx(zoom_pos)
 	var vel : Vector2 = hit_location.direction_to(global_position) * 6500.0
+	if attacker is PlayerCharacter:
+		if (attacker.facing_right and vel.x < 0.0) or (
+						not attacker.facing_right and vel.x > 0.0):
+			vel.x *= -1.0
 	compute_hits = false
 	alive = false
 	computing_movement = false
@@ -413,7 +413,7 @@ func eliminate(attacker : Node2D, hit_location : Vector2):
 	await get_tree().create_timer(1.0).timeout
 	visible = false
 
-func check_turn(right: bool):
+func check_turn(right: bool) -> void:
 	if right != facing_right:# and not attacking:
 		facing_right = right
 		var mult : float
@@ -427,10 +427,23 @@ func check_turn(right: bool):
 			attack_loc_pos.y
 		)
 
-func _on_fighter_killed_opponent():
-	await get_tree().create_timer(2.5).timeout
+func _on_fighter_killed_opponent(quickie := false) -> void:
+	var next_evolution : Evolutions
+	match GameInfos.evolving_mode:
+		GameInfos.EvolvingMode.Linear:
+			if current_evolution == Evolutions.Weeb:
+				return
+			next_evolution = current_evolution + 1
+		GameInfos.EvolvingMode.Random:
+			var possible_evolutions := Evolutions.values().duplicate()
+			possible_evolutions.erase(current_evolution)
+			next_evolution = possible_evolutions.pick_random()
+		GameInfos.EvolvingMode.Fixed:
+			return
+	if not quickie:
+		await get_tree().create_timer(2.5).timeout
 	if alive:
-		evolve()
+		evolve(next_evolution)
 
-func _on_stun_timer_timeout():
+func _on_stun_timer_timeout() -> void:
 	in_stun_time = false

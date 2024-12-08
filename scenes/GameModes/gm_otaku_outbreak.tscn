@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpcca4hfxs55r"]
+
+[ext_resource type="PackedScene" uid="uid://b3aqqhgrewv2u" path="res://scenes/GameModes/base_game_mode.tscn" id="1_udkff"]
+[ext_resource type="Script" path="res://scripts/gamemodes/gm_otaku_outbreak.gd" id="2_04pl8"]
+
+[node name="GM_OtakuOutbreak" instance=ExtResource("1_udkff")]
+script = ExtResource("2_04pl8")
+intial_evolution = 4

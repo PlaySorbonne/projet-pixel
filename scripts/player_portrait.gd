@@ -14,9 +14,15 @@ var current_evolution := -1
 var init_portrait := false
 var velocity := Vector2.ZERO
 var eliminated := false
+var current_lives := -1
 
 func _ready():
 	set_process(false)
+	GameInfos.player_portraits[player_number] = self
+	if GameInfos.lives_limit > 0:
+		current_lives = GameInfos.lives_limit
+		$Holder/LabelLives.text = str(current_lives)
+		$Holder/LabelLives.visible = true
 
 func _process(delta):
 	$Holder.position += delta * velocity
@@ -24,12 +30,16 @@ func _process(delta):
 func initialize_portrait(player_num : int):
 	player_number = player_num
 	GameInfos.player_portaits[player_number] = self
-	$Holder/TextureBackground.modulate = GameInfos.players_data[player_num]["color"]
+	var player_color : Color = GameInfos.players_data[player_num]["color"]
+	$Holder/TextureBackground.modulate = player_color
 	connect_player_object()
 	update_health()
 	update_evolution()
 	var player : PlayerCharacter = GameInfos.players[player_num]
 	$Holder/LabelName.text = GameInfos.players_data[player_num]["name"]
+	if not player.is_player_controlled:
+		$Holder/TextureRobot.visible = true
+		#$Holder/TextureRobot.modulate = player_color
 
 func eliminate(vel : Vector2):
 	if eliminated:
@@ -37,14 +47,21 @@ func eliminate(vel : Vector2):
 	velocity = Vector2(vel.x, max(-25.0, vel.y))
 	eliminated = true
 	set_process(true)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	set_process(false)
 
 func connect_player_object():
-	var player = GameInfos.players[player_number]
+	var player : PlayerCharacter = GameInfos.players[player_number]
 	player.fighter_hit.connect(update_health)
 	player.player_spawned.connect(update_health)
 	player.player_evolved.connect(update_evolution)
+	if GameInfos.lives_limit > 0:
+		player.fighter_died.connect(update_lives)
+
+func update_lives(_player : PlayerCharacter) -> void:
+	current_lives -= 1
+	$Holder/LabelLives.text = str(current_lives)
+	$AnimationPlayer.play("anim_death")
 
 func update_health(_damage := 0, _hitpoints := 0):
 	var player : PlayerCharacter = GameInfos.players[player_number]

@@ -1,10 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=13 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
 [ext_resource type="Texture2D" uid="uid://ck71giufrydwy" path="res://resources/images/champgrumpf.png" id="2_o1d5x"]
 [ext_resource type="LabelSettings" uid="uid://iu6ob7xdc80l" path="res://resources/fonts/player_portraitLabel.tres" id="3_hssq3"]
+[ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="4_ffoe4"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_oscts"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="6_sudqb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3j20a"]
+font = ExtResource("6_sudqb")
+font_size = 35
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(1, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
 
 [sub_resource type="Animation" id="Animation_eyalj"]
 length = 0.001
@@ -54,7 +65,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(53, 155)]
+"values": [Vector2(49, 158)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -82,7 +93,7 @@ tracks/5/keys = {
 }
 tracks/6/type = "value"
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/path = NodePath("Holder/LabelEvolution:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
@@ -130,7 +141,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/path = NodePath("Holder/LabelHealth:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
@@ -138,7 +149,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(148, 151)]
+"values": [Vector2(168, 151)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -152,10 +163,83 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Holder/LabelLives:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.119688]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Holder/LabelLives:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Holder/TexturePortrait:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, -44)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Holder/TexturePortrait:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Holder/TexturePortrait:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Holder/TexturePortraitBackground:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3h0w0"]
 resource_name = "evolve"
 length = 0.7
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -242,7 +326,7 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/path = NodePath("Holder/LabelName:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
@@ -278,7 +362,7 @@ tracks/9/keys = {
 }
 tracks/10/type = "value"
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/path = NodePath("Holder/LabelEvolution:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
@@ -326,7 +410,7 @@ tracks/13/keys = {
 }
 tracks/14/type = "value"
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/path = NodePath("Holder/LabelHealth:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
@@ -360,10 +444,135 @@ tracks/16/keys = {
 "update": 0,
 "values": [0.0, 0.0, 6.28319]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Holder/LabelLives:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.554785, 1),
+"update": 0,
+"values": [-0.119688, -0.119688, -6.40361]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Holder/LabelLives:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(0.420448, 1.36604, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mxhyi"]
+resource_name = "anim_death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Holder/TexturePortrait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.353553, 0.5, 0.517633),
+"update": 0,
+"values": [Vector2(50, -44), Vector2(68, -14), Vector2(68, -14), Vector2(50, -44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Holder/TexturePortrait:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.353553, 0.5, 0.517633),
+"update": 0,
+"values": [0.0, 0.275818, 0.275818, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Holder/TexturePortrait:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 0.517633),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Holder/TexturePortraitBackground:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(32, -47.5), Vector2(48, -22), Vector2(48, -22), Vector2(32, -47.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Holder/TexturePortraitBackground:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, 0.269611, 0.269611, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Holder/LabelLives:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(0.554785, 1, 2.46229, 0.554785),
+"update": 0,
+"values": [-0.119688, 0.0, 0.0, -0.119688]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Holder/LabelLives:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(0.420448, 1.36604, 1.36604, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3), Vector2(3, 3), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Holder/TexturePortraitBackground:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1x3la"]
 _data = {
 "RESET": SubResource("Animation_eyalj"),
+"anim_death": SubResource("Animation_mxhyi"),
 "evolve": SubResource("Animation_3h0w0")
 }
 
@@ -420,6 +629,7 @@ offset_right = 93.0
 offset_bottom = -11.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(93, 93)
 texture = ExtResource("2_o1d5x")
 expand_mode = 1
 stretch_mode = 5
@@ -442,33 +652,71 @@ texture = ExtResource("2_o1d5x")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="TextureRobot" type="TextureRect" parent="Holder"]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -121.0
+offset_top = 13.0
+offset_right = -19.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.271112
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(75, 70)
+texture = ExtResource("4_ffoe4")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="LabelName" type="Label" parent="Holder"]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 155.0
+offset_left = 49.0
+offset_top = 158.0
 offset_right = 153.0
-offset_bottom = 178.0
+offset_bottom = 181.0
 pivot_offset = Vector2(50, 10)
+text = "namename"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelEvolution" type="Label" parent="Holder"]
 layout_mode = 0
-offset_left = 125.0
-offset_top = 123.0
-offset_right = 232.0
-offset_bottom = 146.0
+offset_left = 119.0
+offset_top = 110.0
+offset_right = 226.0
+offset_bottom = 133.0
 pivot_offset = Vector2(53, 10)
+text = "evolution"
 label_settings = ExtResource("3_hssq3")
 
 [node name="LabelHealth" type="Label" parent="Holder"]
 layout_mode = 0
-offset_left = 148.0
-offset_top = 151.0
-offset_right = 218.0
-offset_bottom = 174.0
+offset_left = 158.0
+offset_top = 137.0
+offset_right = 228.0
+offset_bottom = 160.0
 rotation = 6.28319
 pivot_offset = Vector2(35, 10)
+text = "99/99"
 label_settings = ExtResource("3_hssq3")
+horizontal_alignment = 1
+
+[node name="LabelLives" type="Label" parent="Holder"]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 48.0
+offset_top = 112.0
+offset_right = 91.0
+offset_bottom = 148.0
+rotation = -0.119688
+pivot_offset = Vector2(21.5, 18)
+text = "9"
+label_settings = SubResource("LabelSettings_3j20a")
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

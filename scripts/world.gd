@@ -47,9 +47,54 @@ func _ready():
 		$StartGameScreen.countdown()
 		await $StartGameScreen.countdown_finished
 		activate_players()
+	# connect eventual timer to end game func
+	if GameInfos.gameplay_timer != null and is_instance_valid(GameInfos.gameplay_timer):
+		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
 
-func add_level():
-	pass
+func timeout_end_game() -> void:
+	end_game()
+
+func choose_winners() -> void:
+	var winners : Array[int] = []
+	match GameInfos.victory_condition:
+		GameInfos.VictoryConditions.Elimination:
+			# winner are last standing players
+			for p : PlayerCharacter in GameInfos.players.values():
+				if not p.is_eliminated:
+					winners.append(p.player_ID)
+		GameInfos.VictoryConditions.Kills:
+			# winner(s) is(are) player(s) with the most killsé
+			var max_kills := 0
+			for p_stats : PlayerStats in players_stats:
+				max_kills = max(max_kills, p_stats.kills)
+			for p_stats : PlayerStats in players_stats:
+				if p_stats.kills == max_kills:
+					winners.append(p_stats.player_id)
+		GameInfos.VictoryConditions.CassetteTime:
+			var max_time := 0.0
+			var win_id : int = -1
+			for p_stats : PlayerStats in players_stats:
+				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
+				if p.has_method("get_time_ascended") and p.get_time_ascended() > max_time:
+					max_time = p.get_time_ascended()
+					win_id = p.player_ID
+			if win_id != -1:
+				winners.append(win_id)
+		GameInfos.VictoryConditions.KillBoss:
+			var boss_has_won := false
+			var normal_players_ids : Array[int] = []
+			for p_stats : PlayerStats in players_stats:
+				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
+				if p.has_method("get_time_ascended") and p.is_ascended:
+					if p.alive:
+						boss_has_won = true
+						winners.append(p_stats.player_id)
+						break
+				else:
+					normal_players_ids.append(p_stats.player_id)
+			if not boss_has_won:
+				winners = normal_players_ids.duplicate()
+	GameInfos.last_winners = winners.duplicate()
 
 func player_eliminated():
 	players_left -= 1
@@ -60,6 +105,14 @@ func end_game():
 	if game_ended:
 		return
 	game_ended = true
+	choose_winners()
+	var victory_label : Label = $CanvasLayer/EndScreen/LabelVictoryText/LabelVictoryPlayer
+	var win_text := ""
+	victory_label.text = ""
+	for win_id : int in GameInfos.last_winners:
+		if victory_label.text.length() > 0:
+			victory_label.text += ", "
+		victory_label.text += GameInfos.players_data[win_id]["name"]
 	$GameHUD/PauseMenu.can_pause_game = false
 	$AudioWeebVictory.stream = weeb_victory_audios.pick_random()
 	$AudioWeebVictory.play()
@@ -67,31 +120,35 @@ func end_game():
 	var music_node : AudioStreamPlayer = level.get_node("Music")
 	create_tween().tween_property(music_node, "volume_db", -80.0, 1.5)
 	await get_tree().create_timer(1.0, true, false, true).timeout
-	add_child(VICTORY_MESSAGE.instantiate())
+	var victory_message := VICTORY_MESSAGE.instantiate()
+	add_child(victory_message)
 	for p : PlayerCharacter in GameInfos.players.values():
 		p.set_player_active(false)
 	GameInfos.camera_utils.shake(0.5, 15, 50, 2)
 	GameInfos.camera_utils.interp_zoom(player_camera.zoom + Vector2(0.1, 0.1), 0.15)
-	await get_tree().create_timer(1.0, true, false, true).timeout
+	await get_tree().create_timer(0.8, true, false, true).timeout
 	$AudioVictory.stream = victory_audios.pick_random()
 	$AudioVictory.play()
-	await get_tree().create_timer(3.5, true, false, true).timeout
 	get_tree().paused = true
 	
-	var winner : int = 0
+	await victory_message.input_pressed
+	$GameHUD.remove_portraits()
 	for p : PlayerCharacter in GameInfos.players.values():
 		if p.alive:
-			winner = p.player_ID
 			break
-	$CanvasLayer/EndScreen.init_end_screen(winner, players_stats)
+	$CanvasLayer/EndScreen.init_end_screen(players_stats)
 	await $CanvasLayer/EndScreen.end_game_finished
 	
+	VaultData.save_vault_data()
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 	$CanvasLayer/ScreenTransition.start_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.HalfScreenTransitionFinished
 	get_tree().change_scene_to_file(LOBBY_PATH)
 
 func activate_players():
+	if GameInfos.time_limit > 0:
+		GameInfos.gameplay_timer.start_timer()
 	players_stats = {}
 	for player : PlayerCharacter in GameInfos.players.values():
 		player.set_player_active(true)
@@ -100,6 +157,7 @@ func activate_players():
 		p_stats.player_id = player.player_ID
 		p_stats.player_name = GameInfos.players_data[player.player_ID]["name"]
 		p_stats.current_evolution = player.current_evolution
+		player.player_stats = p_stats
 
 func spawn_players():
 	var player_number = 0

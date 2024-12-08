@@ -289,3 +289,5 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_cpoar")
 }
+
+[connection signal="animation_finished" from="texture/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -24,6 +24,7 @@ func special():
 		else:
 			dash_direction.x = -1.0
 	can_use_special = false
+	player.controller_vibration(0.5, 0.15)
 	dash_audio.play_random_pitch()
 	player.attacking = true
 	player.computing_movement = false
@@ -32,7 +33,6 @@ func special():
 	player.movement_velocity.y = (player.velocity.y) / 20
 	player.computing_movement = true
 	player.attacking = false
-	
 	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_use_special = true

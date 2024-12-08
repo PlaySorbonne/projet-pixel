@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lpmug028akoj"]
+[gd_scene load_steps=36 format=3 uid="uid://lpmug028akoj"]
 
 [ext_resource type="Script" path="res://scripts/game_creation_screen.gd" id="1_rxodn"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_ganm3"]
@@ -16,6 +16,14 @@
 [ext_resource type="AudioStream" uid="uid://cpyqmgbdcpwul" path="res://resources/audio/sfx/gameplay_sfx/shooting.wav" id="13_2pb0v"]
 [ext_resource type="AudioStream" uid="uid://bhfsqxd2klllx" path="res://resources/audio/sfx/gameplay_sfx/explosion_egg.wav" id="13_kt80l"]
 [ext_resource type="AudioStream" uid="uid://dt3xmcippucnr" path="res://resources/audio/voices/narrator/start.wav" id="14_ye286"]
+[ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="15_43tp7"]
+[ext_resource type="Texture2D" uid="uid://dbyqxrfhania" path="res://resources/images/objects/coin.png" id="16_sqpn5"]
+[ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="17_rxid8"]
+[ext_resource type="PackedScene" uid="uid://bos37w8o15w1g" path="res://scenes/Menus/Submenus/spin_combo.tscn" id="18_ibb1q"]
+[ext_resource type="Script" path="res://scripts/time_button.gd" id="18_u4imo"]
+[ext_resource type="Texture2D" uid="uid://fn0nrcd5r5pl" path="res://resources/images/interface/cross.png" id="20_5ob5p"]
+[ext_resource type="Script" path="res://scripts/lives_button.gd" id="21_1ovq5"]
+[ext_resource type="Script" path="res://scripts/evolutions_button.gd" id="22_iqtfn"]
 
 [sub_resource type="Animation" id="Animation_a50uk"]
 length = 0.001
@@ -709,6 +717,78 @@ _data = {
 "start_leave": SubResource("Animation_johfb")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_it8nc"]
+font = ExtResource("15_43tp7")
+font_size = 50
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="Animation" id="Animation_fhcmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureCoin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j0nyk"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureCoin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.482968, 0.482968),
+"update": 0,
+"values": [0.0349066, -0.0349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_isbir"]
+_data = {
+"RESET": SubResource("Animation_fhcmf"),
+"idle": SubResource("Animation_j0nyk")
+}
+
 [node name="GameCreationScreen" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -822,29 +902,43 @@ text = "GAMEMODE:"
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelGameModeName" type="Label" parent="CanvasLayer/GameCreationScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.70642
-anchor_top = 0.0388889
-anchor_right = 0.873087
-anchor_bottom = 0.101852
+anchor_left = 0.703816
+anchor_top = 0.0601852
+anchor_right = 0.870483
+anchor_bottom = 0.123149
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
 theme_override_font_sizes/font_size = 50
 text = "game_name"
 metadata/_edit_use_anchors_ = true
 
+[node name="LabelRules" type="Label" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702253
+anchor_top = 0.0462963
+anchor_right = 0.86892
+anchor_bottom = 0.10926
+rotation = 0.0489428
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 50
+text = "Rules:"
+metadata/_edit_use_anchors_ = true
+
 [node name="LabelGameModeDescription" type="Label" parent="CanvasLayer/GameCreationScreen"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.713712
-anchor_top = 0.116667
-anchor_right = 0.93767
-anchor_bottom = 0.331481
+anchor_left = 0.709375
+anchor_top = 0.124074
+anchor_right = 0.933333
+anchor_bottom = 0.297222
 rotation = 0.0489428
 theme = ExtResource("2_ganm3")
-theme_override_font_sizes/font_size = 32
-text = "destroy everyone and become the ultimate weeb of your dreams, best anime protagonist, real OC do not steal."
+theme_override_font_sizes/font_size = 29
+text = "Become the ultimate weeb of your dreams, best anime protagonist, real OC do not steal."
 autowrap_mode = 3
 clip_text = true
 metadata/_edit_use_anchors_ = true
@@ -896,6 +990,10 @@ anchor_left = 0.708333
 anchor_top = 0.680556
 anchor_right = 0.969792
 anchor_bottom = 0.780556
+offset_left = 10.9999
+offset_top = 84.0
+offset_right = 10.9999
+offset_bottom = 84.0
 rotation = 0.0182909
 focus_mode = 0
 theme = ExtResource("2_ganm3")
@@ -1030,10 +1128,10 @@ options = Array[String](["Secret Knowledge"])
 [node name="TextureLevel" type="SubViewportContainer" parent="CanvasLayer/GameCreationScreen"]
 z_index = 12
 layout_mode = 0
-offset_left = 1409.0
-offset_top = 465.0
-offset_right = 1779.0
-offset_bottom = 665.0
+offset_left = 1420.0
+offset_top = 602.0
+offset_right = 1790.0
+offset_bottom = 802.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/GameCreationScreen/TextureLevel"]
 handle_input_locally = false
@@ -1058,6 +1156,232 @@ property = "position"
 stream = ExtResource("14_ye286")
 bus = &"narrator"
 
+[node name="LabelMoney" type="Label" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 0
+anchor_left = 0.84375
+anchor_top = 0.00925926
+anchor_right = 0.960417
+anchor_bottom = 0.0611111
+pivot_offset = Vector2(112, 28)
+text = "9 999 999"
+label_settings = SubResource("LabelSettings_it8nc")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureCoin" type="TextureRect" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.05357
+anchor_top = -0.107133
+anchor_right = 1.28866
+anchor_bottom = 1.01787
+offset_left = 0.000427246
+offset_top = -4.00054
+offset_right = 1.33997
+offset_bottom = -4.00072
+pivot_offset = Vector2(27, 31.5)
+texture = ExtResource("16_sqpn5")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 300.0
+offset_bottom = 55.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameCreationScreen/LabelMoney"]
+libraries = {
+"": SubResource("AnimationLibrary_isbir")
+}
+
+[node name="ButtonAddAI" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.620313
+anchor_top = 0.380556
+anchor_right = 0.698438
+anchor_bottom = 0.512963
+rotation = 0.203378
+pivot_offset = Vector2(75, 71.5)
+focus_mode = 0
+theme = ExtResource("2_gimcs")
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 60
+text = "+"
+icon = ExtResource("17_rxid8")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameCreationScreen/ButtonAddAI"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 24.5847
+offset_top = -16.4678
+offset_right = 188.585
+offset_bottom = 147.532
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(82, 82)
+texture = ExtResource("17_rxid8")
+expand_mode = 1
+
+[node name="TimeButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.703646
+anchor_top = 0.315741
+anchor_right = 0.938021
+anchor_bottom = 0.367593
+focus_mode = 0
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 33
+text = "Time:"
+alignment = 0
+script = ExtResource("18_u4imo")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/TimeButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388889
+anchor_right = 0.833333
+anchor_bottom = 1.0
+offset_left = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "No_limit"
+vertical_alignment = 1
+
+[node name="SpinCombo" parent="CanvasLayer/GameCreationScreen/TimeButton" instance=ExtResource("18_ibb1q")]
+z_index = 1
+layout_mode = 1
+offset_left = 385.0
+offset_top = 33.0
+offset_right = 385.0
+offset_bottom = 33.0
+scale = Vector2(0.4, 0.4)
+
+[node name="ButtonCancel" type="Button" parent="CanvasLayer/GameCreationScreen/TimeButton"]
+visible = false
+self_modulate = Color(0.8, 0, 0, 1)
+layout_mode = 0
+offset_left = 435.0
+offset_top = -1.0
+offset_right = 488.0
+offset_bottom = 58.0
+icon = ExtResource("20_5ob5p")
+flat = true
+expand_icon = true
+
+[node name="LivesButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.716667
+anchor_top = 0.371296
+anchor_right = 0.911979
+anchor_bottom = 0.423148
+focus_mode = 0
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 33
+text = "Lives:"
+alignment = 0
+script = ExtResource("21_1ovq5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/LivesButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.466667
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "No_limit"
+vertical_alignment = 1
+
+[node name="SpinCombo" parent="CanvasLayer/GameCreationScreen/LivesButton" instance=ExtResource("18_ibb1q")]
+z_index = 1
+offset_left = 385.0
+offset_top = 33.0
+offset_right = 385.0
+offset_bottom = 33.0
+scale = Vector2(0.4, 0.4)
+
+[node name="ButtonCancel" type="Button" parent="CanvasLayer/GameCreationScreen/LivesButton"]
+visible = false
+self_modulate = Color(0.8, 0, 0, 1)
+layout_mode = 0
+offset_left = 435.0
+offset_top = -1.0
+offset_right = 488.0
+offset_bottom = 58.0
+icon = ExtResource("20_5ob5p")
+flat = true
+expand_icon = true
+
+[node name="StatsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.729688
+anchor_top = 0.426852
+anchor_right = 0.925
+anchor_bottom = 0.478704
+focus_mode = 0
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 33
+text = "Stats:"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/StatsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.296
+anchor_bottom = 1.0
+offset_left = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "TODO"
+vertical_alignment = 1
+
+[node name="EvolutionsButton" type="Button" parent="CanvasLayer/GameCreationScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.742708
+anchor_top = 0.482407
+anchor_right = 0.938021
+anchor_bottom = 0.534259
+focus_mode = 0
+theme = ExtResource("2_ganm3")
+theme_override_font_sizes/font_size = 33
+text = "Evolutions:"
+alignment = 0
+script = ExtResource("22_iqtfn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GameCreationScreen/EvolutionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 33
+text = "Default"
+vertical_alignment = 1
+
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("10_t55k5")]
 visible = false
 z_index = 20
@@ -1075,3 +1399,15 @@ background_modulate = Color(0.710084, 0.000316604, 0.692779, 1)
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/GameModeSelector" to="CanvasLayer/GameCreationScreen" method="_on_game_mode_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/LevelSelector" to="CanvasLayer/GameCreationScreen" method="_on_level_selector_option_changed"]
 [connection signal="option_changed" from="CanvasLayer/GameCreationScreen/MusicSelector" to="CanvasLayer/GameCreationScreen" method="_on_music_selector_option_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/ButtonAddAI" to="CanvasLayer/GameCreationScreen" method="_on_button_add_ai_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/TimeButton" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_pressed"]
+[connection signal="click_down" from="CanvasLayer/GameCreationScreen/TimeButton/SpinCombo" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_spin_combo_click_down"]
+[connection signal="click_up" from="CanvasLayer/GameCreationScreen/TimeButton/SpinCombo" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_spin_combo_click_up"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/TimeButton/ButtonCancel" to="CanvasLayer/GameCreationScreen/TimeButton" method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/LivesButton" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_pressed"]
+[connection signal="click_down" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_down"]
+[connection signal="click_up" from="CanvasLayer/GameCreationScreen/LivesButton/SpinCombo" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_spin_combo_click_up"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/LivesButton/ButtonCancel" to="CanvasLayer/GameCreationScreen/LivesButton" method="_on_button_cancel_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameCreationScreen/EvolutionsButton" to="CanvasLayer/GameCreationScreen/EvolutionsButton" method="_on_pressed"]

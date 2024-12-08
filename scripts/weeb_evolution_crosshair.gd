@@ -9,4 +9,7 @@ func _ready():
 	queue_free()
 
 func _process(_delta):
-	global_position = followed_actor.global_position
+	if is_instance_valid(followed_actor):
+		global_position = followed_actor.global_position
+	else:
+		queue_free()

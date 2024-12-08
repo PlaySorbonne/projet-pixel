@@ -1,5 +1,8 @@
 extends Node
 
+enum VictoryConditions {Elimination, Kills, CassetteTime, KillBoss}
+enum EvolvingMode {Linear, Random, Fixed}
+
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
 	"res://scenes/World/Levels/level_high_ground.tscn",
@@ -43,13 +46,6 @@ const DEFAULT_PLAYER_COLORS : Array[Color] = [
 	Color.CORNFLOWER_BLUE
 ]
 const DEFAULT_PLAYER_NAMES : Array[String] = [
-	"Player4",
-	"Player3",
-	"Player2",
-	"Player1"
-]
-
-const name_after_destival = [
 	"Luffi",
 	"Quirito",
 	"Gocou",
@@ -69,10 +65,18 @@ const name_after_destival = [
 	"Ach"
 ]
 
+#[
+	#"Player4",
+	#"Player3",
+	#"Player2",
+	#"Player1"
+#]
+
 var game_started := false
 var player_portaits : Dictionary = {}
 var world : Node2D
 var camera : WorldCamera
+var gameplay_timer : GameplayTimer
 var camera_utils : CameraUtils
 var freeze_frame : FreezeFrame
 var players : Dictionary = {}
@@ -80,6 +84,7 @@ var use_special_gameplay_data := false
 var tracked_targets : Array[Node2D] = []
 var anime_box : AnimeBox = null
 var menu_music_time := 0.0
+var end_screen : EndScreen = null
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []
@@ -87,26 +92,49 @@ var selected_gamemode : int = 0
 var selected_level : int = 0
 var selected_music : int = 0
 var players_data : Dictionary = {}
-var last_winner := -1
+var last_winners : Array[int] = []
+var player_portraits : Dictionary = {}
+
+var time_limit := -1
+var lives_limit := -1
+var victory_condition : VictoryConditions = VictoryConditions.Elimination
+var evolving_mode : EvolvingMode = EvolvingMode.Linear
+
+
+func format_money_string(val : int) -> String:
+	var strval : String = str(val).pad_zeros(7)
+	var current_char : int = strval.length() - 3
+	while current_char >= 0:
+		strval = strval.insert(current_char, " ")
+		current_char -= 3
+	return strval
 
 func reset_game_infos(_deep_reset := false) -> void:
+	end_screen = null
 	game_started = false
 	tracked_targets = []
 	player_portaits = {}
 	players = {}
 	anime_box = null
+	player_portraits = {}
 	CharacterPointer.current_z = 0
 
 func perform_deep_reset():
 	reset_game_infos()
+	# game mode stuff
+	victory_condition = VictoryConditions.Elimination
+	lives_limit = -1
+	time_limit = -1.0
+	evolving_mode = EvolvingMode.Linear
+	# player stuff
 	players_data = {}
 	available_player_names = DEFAULT_PLAYER_NAMES.duplicate()
-	#available_player_names.shuffle()
+	available_player_names.shuffle()
 	available_player_colors = DEFAULT_PLAYER_COLORS.duplicate()
 	selected_music = 0
 	selected_level = 0
 	selected_gamemode = 0
-	last_winner = -1
+	last_winners = []
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
@@ -122,7 +150,9 @@ func add_player(player: PlayerCharacter) -> void:
 		"original_color" : p_color,
 		"last_winner" : false,
 		"control_type" : player.control_type,
-		"control_device" : player.control_device
+		"control_device" : player.control_device,
+		"player_controlled" : player.is_player_controlled,
+		"ai_difficulty" : player.ai_difficulty
 	}
 
 func remove_player(id : int) -> void:
@@ -131,17 +161,14 @@ func remove_player(id : int) -> void:
 	available_player_names.append(players_data[id]["original_name"])
 	players.erase(id)
 	players_data.erase(id)
-	if last_winner == id:
-		last_winner = -1
+	if last_winners.has(id):
+		last_winners.erase(id)
 	if player != null:
 		player.queue_free()
 
 
 func players_number():
 	return len(players)
-
-# add stats (damage, kills, deaths, time in the air, time on the ground, distance, 
-# accuracy, evolution...)
 
 
 # add battle type (team, brawl, etc)

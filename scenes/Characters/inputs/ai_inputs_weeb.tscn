@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg2koh5880tcj"]
+
+[ext_resource type="PackedScene" uid="uid://p7etj6ib7h28" path="res://scenes/Characters/inputs/ai_inputs.tscn" id="1_mu5ae"]
+[ext_resource type="Script" path="res://scripts/ai_inputs_weeb.gd" id="2_kthve"]
+
+[node name="AiInputsWeeb" instance=ExtResource("1_mu5ae")]
+script = ExtResource("2_kthve")
+max_attack_radius = 75.0
