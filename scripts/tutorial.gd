@@ -29,6 +29,7 @@ var actions_done = {
 }
 	
 func init_step_2():
+	# Ne marche pas pour l'instant, TODO: fix
 	GameInfos.players[ennemy_id].visible = true
 
 func init_step_3():
@@ -61,8 +62,11 @@ func _process(delta: float) -> void:
 		init_step_2()
 		current_step = 2
 		show_step_text(current_step)
-	if GameInfos.players[player_id] == PlayerCharacter.Evolutions.Weeb and current_step == 2:
+	if GameInfos.players[player_id].current_evolution == PlayerCharacter.Evolutions.Weeb and current_step == 2:
 		current_step = 3
+		show_step_text(current_step)
+	if GameInfos.players[player_id] is WeebCharacter and GameInfos.players[player_id].ascended and current_step == 3:
+		current_step = 4
 		show_step_text(current_step)
 	if actions_done["win"] and current_step == 4:
 		print("end")
