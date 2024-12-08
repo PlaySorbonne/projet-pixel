@@ -10,6 +10,12 @@
 [node name="Tutorial" instance=ExtResource("1_nfic4")]
 script = ExtResource("2_icsol")
 
+[node name="SpawnLocation1" parent="." index="0"]
+position = Vector2(245, 531)
+
+[node name="SpawnLocation2" parent="." index="1"]
+position = Vector2(1265, 522)
+
 [node name="Background" parent="." index="5"]
 position = Vector2(818, 234)
 texture = ExtResource("3_rkwri")

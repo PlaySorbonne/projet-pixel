@@ -14,12 +14,22 @@ var STEPS_TEXTS = [
 ]
 
 var current_step: int = 0
-	
-func init_step_1():
-	pass
+var player_id: int = 0
+var ennemy_id: int = 0
+
+
+var actions_done = {
+	"jump": false,
+	"move": false,
+	"attack": false,
+	"special_attack": false,
+	"weeb": false,
+	"ultimate_weeb": false,
+	"win": false
+}
 	
 func init_step_2():
-	pass
+	GameInfos.players[ennemy_id].visible = true
 
 func init_step_3():
 	pass
@@ -29,12 +39,41 @@ func init_step_4():
 
 func show_step_text(step: int):
 	var tutorial_text := $TutorialText
+	tutorial_text.text = STEPS_TEXTS[step]
+	tutorial_text.visible_ratio = 0.0
 	var tween := create_tween()
-	tween.tween_property(tutorial_text, "visible_ratio", 1.0, 2.0)
+	tween.tween_property(tutorial_text, "visible_ratio", 1.1, 2.0) # 1.1 instead of 1.0 to get the last character (idk why)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	for p: PlayerCharacter in GameInfos.players.values():
+		if p.current_evolution == PlayerCharacter.Evolutions.CEO:
+			player_id = p.player_ID
+		elif p.current_evolution == PlayerCharacter.Evolutions.Mascot:
+			ennemy_id = p.player_ID
+	show_step_text(current_step)
 	
 func _process(delta: float) -> void:
-	show_step_text(current_step)
+	
+	if actions_done["jump"] and actions_done["move"] and current_step == 0:
+		current_step = 1
+		show_step_text(current_step)
+	if actions_done["attack"] and actions_done["special_attack"] and current_step == 1:
+		init_step_2()
+		current_step = 2
+		show_step_text(current_step)
+	if GameInfos.players[player_id] == PlayerCharacter.Evolutions.Weeb and current_step == 2:
+		current_step = 3
+		show_step_text(current_step)
+	if actions_done["win"] and current_step == 4:
+		print("end")
+		
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and not actions_done["jump"]:
+		actions_done["jump"] = true
+	if (event.is_action_pressed("right") or event.is_action_pressed("left")):
+		actions_done["move"] = true
+	if event.is_action_pressed("attack") and (not actions_done["attack"]) and current_step == 1:
+		actions_done["attack"] = true
+	if event.is_action_pressed("special") and (not actions_done["special_attack"]) and current_step == 1:
+		actions_done["special_attack"] = true

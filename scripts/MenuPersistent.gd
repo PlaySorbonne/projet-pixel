@@ -8,6 +8,7 @@ const WORLD_PATH = "res://scenes/world.tscn"
 const TUTORIAL_PATH = "res://scenes/World/Levels/tutorial.tscn"
 # previous vault path:  "res://scenes/world.tscn"
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
+const TUTORIAL_ENNEMY := preload("res://scenes/Characters/Evolutions/mascot_character.tscn")
 
 enum Screens {Title, Settings, Credits}
 
@@ -93,6 +94,11 @@ func _on_title_screen_button_tutorial_pressed():
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 	var player_index := player.player_ID
 	GameInfos.add_player(player)
+	
+	var ennemy: PlayerCharacter = TUTORIAL_ENNEMY.instantiate()
+	GameInfos.add_player(ennemy)
+	ennemy.control_device = -1
+	
 	GameInfos.selected_level = 4
 	GlobalVariables.skip_fight_intro = true
 	smooth_change_to_scene(WORLD_PATH)
