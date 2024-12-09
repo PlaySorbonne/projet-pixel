@@ -145,6 +145,7 @@ func perform_deep_reset():
 	selected_level = 0
 	selected_gamemode = 0
 	last_winners = []
+	default_evolution = PlayerCharacter.Evolutions.CEO
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
