@@ -29,11 +29,11 @@ var actions_done = {
 }
 	
 func init_step_2():
-	# Ne marche pas pour l'instant, TODO: fix
-	GameInfos.players[ennemy_id].visible = true
+	GameInfos.players[ennemy_id].spawn($EnnemySpawnLocation.position)
 
 func init_step_3():
-	pass
+	GameInfos.anime_box.toggle_cassette(true)
+	GameInfos.anime_box.force_position($AnimeSpawnLocation.position)
 	
 func init_step_4():
 	pass
@@ -46,15 +46,24 @@ func show_step_text(step: int):
 	tween.tween_property(tutorial_text, "visible_ratio", 1.1, 2.0) # 1.1 instead of 1.0 to get the last character (idk why)
 
 func _ready() -> void:
+	GameInfos.anime_box.toggle_cassette(false)
 	for p: PlayerCharacter in GameInfos.players.values():
 		if p.current_evolution == PlayerCharacter.Evolutions.CEO:
 			player_id = p.player_ID
 		elif p.current_evolution == PlayerCharacter.Evolutions.Mascot:
 			ennemy_id = p.player_ID
 	show_step_text(current_step)
+	await get_tree().process_frame
+	connect_players()
+
+func connect_players():
+	GameInfos.world.add_child(GameInfos.players[ennemy_id])
+	GameInfos.world.add_child(GameInfos.players[player_id])
+	
+	GameInfos.players[player_id].spawn($SpawnLocation1.position)
+	GameInfos.world.connect("game_finished", _on_game_finished)
 	
 func _process(delta: float) -> void:
-	
 	if actions_done["jump"] and actions_done["move"] and current_step == 0:
 		current_step = 1
 		show_step_text(current_step)
@@ -63,15 +72,14 @@ func _process(delta: float) -> void:
 		current_step = 2
 		show_step_text(current_step)
 	if GameInfos.players[player_id].current_evolution == PlayerCharacter.Evolutions.Weeb and current_step == 2:
+		init_step_3()
 		current_step = 3
 		show_step_text(current_step)
 	if GameInfos.players[player_id] is WeebCharacter and GameInfos.players[player_id].ascended and current_step == 3:
 		current_step = 4
 		show_step_text(current_step)
-	if actions_done["win"] and current_step == 4:
-		print("end")
+
 		
-	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and not actions_done["jump"]:
 		actions_done["jump"] = true
@@ -81,3 +89,6 @@ func _input(event: InputEvent) -> void:
 		actions_done["attack"] = true
 	if event.is_action_pressed("special") and (not actions_done["special_attack"]) and current_step == 1:
 		actions_done["special_attack"] = true
+		
+func _on_game_finished() -> void:
+	pass

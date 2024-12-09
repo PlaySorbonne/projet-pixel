@@ -91,6 +91,10 @@ func _on_title_screen_button_tutorial_pressed():
 	GameInfos.perform_deep_reset()
 	if not can_change_scene:
 		return
+		
+	GameInfos.display_end_screen = false
+	GameInfos.auto_spawn_players = false
+	
 	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
 	var player_index := player.player_ID
 	GameInfos.add_player(player)
@@ -98,6 +102,9 @@ func _on_title_screen_button_tutorial_pressed():
 	var ennemy: PlayerCharacter = TUTORIAL_ENNEMY.instantiate()
 	GameInfos.add_player(ennemy)
 	ennemy.control_device = -1
+	
+	GameInfos.players_data[ennemy.player_ID]["name"] = "ENNEMY"
+	GameInfos.players_data[player.player_ID]["name"] = "PLAYER"
 	
 	GameInfos.selected_level = 4
 	GlobalVariables.skip_fight_intro = true
