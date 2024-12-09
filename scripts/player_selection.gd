@@ -48,13 +48,13 @@ func _ready():
 	$Control.scale = Vector2.ZERO
 	await get_tree().process_frame
 	visible = true
+	set_player_evolution(GameInfos.default_evolution, true, true)
 	$AnimationPlayer.play("pop_in")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
 	check_winner()
 	current_ai_difficulty = GameInfos.players_data[player_index]["ai_difficulty"]
 	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
-	set_player_evolution(GameInfos.default_evolution, true)
 
 var can_select_evolution := false
 func set_can_select_evolution(can_select : bool) -> void:
