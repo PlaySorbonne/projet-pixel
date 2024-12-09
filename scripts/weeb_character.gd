@@ -20,13 +20,55 @@ var previous_trail_color : Color
 var previous_hitbox_size : Vector2
 var exalted_particles : Node2D
 var time_ascended := 0.0
+var dash_speed := 2000.0
+var dash_duration := 0.125
+var dash_cooldown := 0.25
 
+const GAMEPLAY_PROPERTIES : Dictionary = {
+	"max_hitpoints" : 3,
+	"speed" : 1.5,
+	"attack_size" : 2.0,
+	"scale" : 1.4,
+	"jump_velocity" : 1.5,
+	"attack_damage" : 3,
+	"attack_intensity" : 3.0,
+	"knockback_multiplier" : 0.5,
+	"attack_recovery" : 0.75,
+	"dash_speed" : 1.25,
+	"dash_duration" : 1.25,
+	"dash_cooldown" : 0.3,
+}
+const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
+	"max_hitpoints" : 10,
+	"speed" : 0.9,
+	"attack_size" : 3.0,
+	"scale" : 2.5,
+	"jump_velocity" : 1.5,
+	"attack_damage" : 3,
+	"attack_intensity" : 3.0,
+	"knockback_multiplier" : 0.5,
+	"attack_recovery" : 0.75,
+	"dash_speed" : 1.5,
+	"dash_duration" : 1.5,
+	"dash_cooldown" : 0.2,
+}
 var default_stats : Dictionary = {}
 var ascended_stats : Dictionary = {}
 
-func set_ascended_stats() -> void:
+func _ready() -> void:
+	super._ready()
+	await get_tree().process_frame
+	set_ascended_stats(GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss)
+
+func set_ascended_stats(is_boss_weeb := false) -> void:
 	default_stats = {}
-	
+	ascended_stats = {}
+	for s : String in GAMEPLAY_PROPERTIES.keys():
+		default_stats[s] = self.get(s)
+		if is_boss_weeb:
+			ascended_stats[s] = self.get(s) * BOSS_GAMEPLAY_PROPERTIES[s]
+		else:
+			ascended_stats[s] = self.get(s) * GAMEPLAY_PROPERTIES[s]
 
 func death(force := false):
 	if ascended:
@@ -56,9 +98,12 @@ func ascend():
 	await tween.finished
 	exalted_particles = EXALTED_PARTICLES.instantiate()
 	$Sprite2D.add_child(exalted_particles)
+	
+	
 	scale = ascended_scale
 	previous_hitbox_size = attack_size
 	attack_size = ascended_weeb_attack_size
+	
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 60)
 	tween = create_tween()
@@ -67,8 +112,10 @@ func ascend():
 	tween.tween_property($Sprite2D, "material:shader_parameter/divider_blue", 
 		1.25, 0.2)
 	$CharacterPointer.set_healthbars_color(Color.CRIMSON)
+	
 	max_hitpoints = ascended_weeb_hitpoints
 	hitpoints = ascended_weeb_hitpoints
+	
 	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
 	previous_trail_color = $TrailEffect.modulate
 	$TrailEffect.modulate = Color.BLACK
