@@ -10,7 +10,7 @@ MUSICVOL:,Music volume:,Volume de la musique :
 SFXVOL:,SFX volume:,Volume des SFX :
 LANGUAGE:,Language:,Langue :
 HOLDTOJOIN,Hold any key to join the game,Appuyez longuement sur un bouton pour rejoindre la partie
-STATS:,Gameplay File:,Fichier Gameplay :
+STATS_FILE:,Gameplay File:,Fichier Gameplay :
 CONTINUE,Continue,Continuer
 QUIT,Quit,Quitter
 PLAYERS:,Players:,Joueurs :
@@ -41,3 +41,7 @@ DAMAGE_TAKEN:,Damage taken:,Dégâts reçus :
 DAMAGE_GIVEN:,Damage inflicted:,Dégâts infligés :
 TITLES:,Titles:,Titres :
 MONEY_COLLECTED:,Money collected:,Argent collecté :
+TIME:,Time:,Temps :
+LIVES:,Lives:,Vies :
+STATS:,Stats:,Stats :
+EVOLUTION:,Evolution:,Évolution :
