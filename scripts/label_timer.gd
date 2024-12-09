@@ -14,9 +14,14 @@ func _ready() -> void:
 		current_time = GameInfos.time_limit
 		display_time_as_text()
 	set_process(false)
+	await get_tree().process_frame
+	GameInfos.world.connect("game_finished", stop_timer)
 
 func start_timer() -> void:
 	set_process(true)
+
+func stop_timer() -> void:
+	set_process(false)
 
 func _process(delta: float) -> void:
 	current_time -= delta
