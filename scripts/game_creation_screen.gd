@@ -176,7 +176,8 @@ func set_gamemode(gamemode : int):
 	
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
-			$EvolutionsButton.set_can_change_evolving_mode(true)
+			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Linear)
+			$EvolutionsButton.set_can_change_evolving_mode(false)
 			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Linear)
 			$TimeButton.set_forced_time(false)
 			
