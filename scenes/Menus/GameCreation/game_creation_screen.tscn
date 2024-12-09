@@ -1099,7 +1099,7 @@ anchor_bottom = 0.653705
 offset_right = 0.0
 offset_bottom = 0.0
 minimum_label_width = 500.0
-options = Array[String](["Brawl"])
+options = Array[String](["Decorporate", "Brawl", "Otaku Outbreak", "Otaku Overdrive"])
 
 [node name="LevelSelector" parent="CanvasLayer/GameCreationScreen" instance=ExtResource("5_0ypjy")]
 layout_mode = 1
