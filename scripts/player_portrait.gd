@@ -74,7 +74,6 @@ func update_evolution(_evolution = null):
 	if new_evolution == current_evolution:
 		return
 	if init_portrait:
-		
 		$Shaker.shake(0.35, 25, 20)
 		$AnimationPlayer.play("evolve")
 		tween_labels_color()

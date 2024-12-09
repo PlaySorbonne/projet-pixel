@@ -57,6 +57,9 @@ func _ready():
 		$AudioCEOVoice.stream = CEO_lines.pick_random()
 		$AudioCEOVoice.play()
 
+func set_can_select_evolution(can_select : bool) -> void:
+	$Control/EvolutionSelector.visible = can_select
+
 func _input(event : InputEvent):
 	var is_correct_control_type = false
 	if control_type == false:
@@ -93,6 +96,16 @@ func _input(event : InputEvent):
 		var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
 		tween.tween_property(self, "scale", Vector2.ONE, 0.15)
+
+func set_player_evolution(new_evolution : PlayerCharacter.Evolutions) -> void:
+	var p : PlayerCharacter = GameInfos.players[player_index]
+	p.evolve(new_evolution)
+	var new_texture = PlayerPortrait.PLAYER_PORTRAITS[new_evolution]
+	$Control/Icon.texture = new_texture
+	$Control/Icon/Icon2.texture = new_texture
+	await get_tree().process_frame
+	$AudioCEOVoice.stream = GameInfos.players[player_index].audio_evolve.pick_random()
+	$AudioCEOVoice.play()
 
 func tween_bump(direction : Vector2) -> void:
 	pass
@@ -152,4 +165,5 @@ func _on_button_ai_diffculty_pressed() -> void:
 	GameInfos.players[player_index].ai_difficulty = current_ai_difficulty
 
 func _on_evolution_selector_option_changed(option: int) -> void:
-	pass # Replace with function body.
+	set_player_evolution(option)
+	$Control/Icon/AnimationEmote.play("big")
