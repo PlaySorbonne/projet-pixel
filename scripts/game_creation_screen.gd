@@ -5,7 +5,6 @@ const LEVEL_OBJ_POS := Vector2(3000.0, 0.0)
 const PLAYER_INFOS_RES := preload("res://scenes/Menus/GameCreation/PlayerSelection.tscn")
 const PLAYER_INFOS_POS_OFFSET := Vector2(35.0, 75.0)
 const PLAYER_INFOS_POS_INIT := Vector2(50.0, 100.0)
-const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 const WORLD_PATH := "res://scenes/world.tscn"
 const AUDIO_PITCH_DEFAULT := 1.0
 const AUDIO_PITCH_INTENSE := 1.0
@@ -64,7 +63,8 @@ func set_game_widgets():
 func reload_old_game_infos():
 	var delay := 0.0
 	for id: int in GameInfos.players_data.keys():
-		var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+		var player : PlayerCharacter = PlayerCharacter.EvolutionCharacters[
+									GameInfos.default_evolution].instantiate()
 		player.player_ID = id
 		var p_controlled : bool = GameInfos.players_data[id]["player_controlled"]
 		player.is_player_controlled = p_controlled
@@ -116,7 +116,8 @@ func check_start_button():
 		$AudioStreamPlayer.pitch_scale = AUDIO_PITCH_DEFAULT
 
 func add_player(device_type : int, device : int):
-	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	var player : PlayerCharacter = PlayerCharacter.EvolutionCharacters[
+							GameInfos.default_evolution].instantiate()
 	var player_index := player.player_ID
 	player.control_device = device
 	player.control_type = device_type
@@ -232,11 +233,10 @@ func remove_player(selector : PlayerSelection, _index : int):
 	player_selectors.remove_at(pos_in_array)
 	check_start_button()
 
-var default_evolution := PlayerCharacter.Evolutions.CEO
 func force_player_evolution(ev : PlayerCharacter.Evolutions) -> void:
-	default_evolution = ev
+	GameInfos.default_evolution = ev
 	for ps : PlayerSelection in player_selectors:
-		ps.set_player_evolution(default_evolution)
+		ps.set_player_evolution(GameInfos.default_evolution)
 
 func set_selectable_evolutions(ev_selectable : bool) -> void:
 	are_evolutions_selectable = ev_selectable
@@ -283,7 +283,8 @@ func _on_button_add_ai_pressed() -> void:
 	if len(player_selectors) == 4 or not can_add_ai:
 		return
 	can_add_ai = false
-	var player : PlayerCharacter = DEFAULT_PLAYER.instantiate()
+	var player : PlayerCharacter = PlayerCharacter.EvolutionCharacters[
+							GameInfos.default_evolution].instantiate()
 	player.is_player_controlled = false
 	var player_index := player.player_ID
 	player.control_device = -1

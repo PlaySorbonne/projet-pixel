@@ -53,9 +53,7 @@ func _ready():
 	check_winner()
 	current_ai_difficulty = GameInfos.players_data[player_index]["ai_difficulty"]
 	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
-	if with_voice:
-		$AudioCEOVoice.stream = CEO_lines.pick_random()
-		$AudioCEOVoice.play()
+	set_player_evolution(GameInfos.default_evolution, true)
 
 var can_select_evolution := false
 func set_can_select_evolution(can_select : bool) -> void:
@@ -111,9 +109,12 @@ func _input(event : InputEvent):
 			tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
 			tween.tween_property(self, "scale", Vector2.ONE, 0.15)
 
-func set_player_evolution(new_evolution : PlayerCharacter.Evolutions) -> void:
-	var p : PlayerCharacter = GameInfos.players[player_index]
-	p.evolve(new_evolution, true)
+func set_player_evolution(new_evolution : PlayerCharacter.Evolutions, 
+											skip_evol := false) -> void:
+	if not skip_evol:
+		var p : PlayerCharacter = GameInfos.players[player_index]
+		p.evolve(new_evolution, true)
+		$Control/Icon/AnimationEmote.play("big")
 	var new_texture = PlayerPortrait.PLAYER_PORTRAITS[new_evolution]
 	$Control/Icon.texture = new_texture
 	$Control/Icon/Icon2.texture = new_texture
@@ -185,4 +186,3 @@ func _on_button_ev_pressed() -> void:
 	if button_option > EV_MAX_VAL:
 		button_option = PlayerCharacter.Evolutions.CEO
 	set_player_evolution(button_option)
-	$Control/Icon/AnimationEmote.play("big")
