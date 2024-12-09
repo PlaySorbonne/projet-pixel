@@ -178,14 +178,18 @@ func set_gamemode(gamemode : int):
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
+			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Linear)
 		GameInfos.VictoryConditions.Kills:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
 		GameInfos.VictoryConditions.CassetteTime:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
 			$EvolutionsButton.set_can_change_evolving_mode(false)
+			force_player_evolution(PlayerCharacter.Evolutions.Weeb)
+			set_selectable_evolutions(false)
 		GameInfos.VictoryConditions.KillBoss:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
 			$EvolutionsButton.set_can_change_evolving_mode(false)
+			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Balanced)
 			is_first_player_exalted = true
 			if len(player_selectors) > 0:
 				player_selectors[0].set_exalted(true)
@@ -220,6 +224,12 @@ func remove_player(selector : PlayerSelection, _index : int):
 		duration += 0.2
 	player_selectors.remove_at(pos_in_array)
 	check_start_button()
+
+var default_evolution := PlayerCharacter.Evolutions.CEO
+func force_player_evolution(ev : PlayerCharacter.Evolutions) -> void:
+	default_evolution = ev
+	for ps : PlayerSelection in player_selectors:
+		ps.set_player_evolution(default_evolution)
 
 func set_selectable_evolutions(ev_selectable : bool) -> void:
 	are_evolutions_selectable = ev_selectable

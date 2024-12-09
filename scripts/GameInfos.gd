@@ -2,6 +2,7 @@ extends Node
 
 enum VictoryConditions {Elimination, Kills, CassetteTime, KillBoss}
 enum EvolvingMode {Linear, Random, Fixed}
+enum StatsFiles {Linear, Balanced, Shonen, Custom}
 
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
@@ -103,7 +104,7 @@ var time_limit := -1
 var lives_limit := -1
 var victory_condition : VictoryConditions = VictoryConditions.Elimination
 var evolving_mode : EvolvingMode = EvolvingMode.Linear
-
+var stats_file : StatsFiles = StatsFiles.Linear
 
 func format_money_string(val : int) -> String:
 	var strval : String = str(val).pad_zeros(7)

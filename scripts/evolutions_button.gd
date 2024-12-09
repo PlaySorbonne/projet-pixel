@@ -19,7 +19,11 @@ func set_can_change_evolving_mode(can_change : bool) -> void:
 
 func set_evolving_mode(ev_mode : GameInfos.EvolvingMode) -> void:
 	GameInfos.evolving_mode = ev_mode
-	game_creation_screen.set_selectable_evolutions(ev_mode != GameInfos.EvolvingMode.Fixed)
+	if ev_mode == GameInfos.EvolvingMode.Linear:
+		game_creation_screen.force_player_evolution(PlayerCharacter.Evolutions.CEO)
+		game_creation_screen.set_selectable_evolutions(false)
+	else:
+		game_creation_screen.set_selectable_evolutions(true)
 	display_evolve_mode()
 
 func _on_pressed() -> void:
