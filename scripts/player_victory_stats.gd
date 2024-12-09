@@ -57,6 +57,12 @@ func intro_animation() -> void:
 	set_label_int_value($Main/LabelDamageTaken/Label, player_stats.damage_received)
 	await get_tree().create_timer(0.25).timeout
 	set_label_int_value($Main/LabelDamageGiven/Label, player_stats.damage_given)
+	await get_tree().create_timer(0.25).timeout
+	var time_ascended := 0.0
+	var p : PlayerCharacter = GameInfos.players[player_stats.player_id]
+	if p.has_method("get_time_ascended"):
+		time_ascended = p.get_time_ascended()
+	set_label_int_value($Main/LabelTime/Label, int(time_ascended), time_ascended)
 	for l : Label in stats_labels:
 		intro_tween_label(l)
 		await get_tree().create_timer(0.25).timeout
@@ -75,11 +81,15 @@ func intro_tween_label(l : Label) -> void:
 	t.tween_property(l, "scale", Vector2.ONE, 0.3)
 	await t.finished
 
-func set_label_int_value(label : Label, value : int) -> void:
+func set_label_int_value(label : Label, value : int, float_val := -1.0) -> void:
 	for _i : int in range(30):
 		label.text = str(randi_range(0, 999)).pad_zeros(3)
 		await get_tree().create_timer(0.075).timeout
-	label.text = str(value).pad_zeros(3)
+	if float_val >= 0.0:
+		label.text = str(value).pad_zeros(3) + "." + str(
+								int((float_val-value)*10)).pad_zeros(1)
+	else:
+		label.text = str(value).pad_zeros(3)
 
 func shake_node(strong_shake := true) -> void:
 	if strong_shake:
