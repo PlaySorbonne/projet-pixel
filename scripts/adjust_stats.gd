@@ -5,7 +5,8 @@ const EvolutionSpecials = {
 	"Manager" : preload("res://scenes/Menus/Submenus/AbilityEditor/director_ability.tscn"),
 	"Employee" : preload("res://scenes/Menus/Submenus/AbilityEditor/employee_ability.tscn"),
 	"Mascot" : preload("res://scenes/Menus/Submenus/AbilityEditor/mascot_ability.tscn"),
-	"Weeb" : preload("res://scenes/Menus/Submenus/AbilityEditor/weeb_ability.tscn")
+	"Weeb" : preload("res://scenes/Menus/Submenus/AbilityEditor/weeb_ability.tscn"),
+	"Ascended" : preload("res://scenes/Menus/Submenus/AbilityEditor/weeb_ability.tscn")
 }
 
 var last_open_file_path : String = ""
@@ -25,13 +26,18 @@ func _ready():
 	for c in $Adjuster/VBoxContainer.get_children():
 		if c.has_method("_on_description_changed"):
 			variable_adjusters.append(c)
-	var data_keys : Array = PlayerCharacter.Evolutions.keys()
+	var data_keys : Array[String] = PlayerCharacter.Evolutions.keys().duplicate()
+	data_keys.append("Ascended")
 	variables_data = SettingsScreen.gameplay_data.duplicate()
 	
 	for ev : String in data_keys:
 		# get character data
 		char_selector.add_item(ev)
-		var curr_ev = PlayerCharacter.Evolutions[ev]
+		var curr_ev
+		if ev == "Ascended":
+			curr_ev = PlayerCharacter.Evolutions.Weeb
+		else:
+			curr_ev = PlayerCharacter.Evolutions[ev]
 		var p : PlayerCharacter = PlayerCharacter.EvolutionCharacters[curr_ev].instantiate()
 		for adj : VariableAdjuster in variable_adjusters:
 			if ev == "CEO" and variables_data[ev].has(adj.variable_name):
@@ -68,6 +74,8 @@ func actualize_characters(do_update_data := true):
 func actualize_specials(do_update_data := true):
 	for player : PlayerCharacter in GameInfos.players.values():
 		var ev : String = PlayerCharacter.Evolutions.find_key(player.current_evolution)
+		if player.ascended:
+			ev = "Ascended"
 		var ev_spe := ev+"_special"
 		for k : String in variables_data[ev_spe].keys():
 			player.get_special_attack().set(k, variables_data[ev_spe][k])
