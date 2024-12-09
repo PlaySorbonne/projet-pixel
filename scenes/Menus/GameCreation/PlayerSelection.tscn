@@ -757,9 +757,9 @@ CEO_lines = Array[AudioStream]([ExtResource("2_85r2c"), ExtResource("3_ubec0"), 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 343.0
+offset_left = 344.387
 offset_top = 32.0
-offset_right = 343.0
+offset_right = 344.387
 offset_bottom = 32.0
 
 [node name="ColorRect" type="TextureRect" parent="Control"]
@@ -813,6 +813,7 @@ texture = ExtResource("3_xy52h")
 expand_mode = 1
 
 [node name="ButtonEv" type="Button" parent="Control/Icon/Icon2"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -821,6 +822,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.785397
 pivot_offset = Vector2(50, 50)
+focus_mode = 0
 
 [node name="AnimationEmote" type="AnimationPlayer" parent="Control/Icon"]
 libraries = {

@@ -14,10 +14,10 @@ func _on_pressed() -> void:
 	match GameInfos.evolving_mode:
 		GameInfos.EvolvingMode.Linear:
 			GameInfos.evolving_mode = GameInfos.EvolvingMode.Random
-			game_creation_screen.set_selectable_evolutions(true, true)
+			game_creation_screen.set_selectable_evolutions(true)
 		GameInfos.EvolvingMode.Random:
 			GameInfos.evolving_mode = GameInfos.EvolvingMode.Fixed
-			game_creation_screen.set_selectable_evolutions(true, true)
+			game_creation_screen.set_selectable_evolutions(true)
 		GameInfos.EvolvingMode.Fixed:
 			GameInfos.evolving_mode = GameInfos.EvolvingMode.Linear
 			game_creation_screen.set_selectable_evolutions(false)

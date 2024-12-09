@@ -57,8 +57,10 @@ func _ready():
 		$AudioCEOVoice.stream = CEO_lines.pick_random()
 		$AudioCEOVoice.play()
 
+var can_select_evolution := false
 func set_can_select_evolution(can_select : bool) -> void:
-	$Control/EvolutionSelector.visible = can_select
+	can_select_evolution = can_select
+	$Control/Icon/Icon2/ButtonEv.visible = can_select
 
 func _input(event : InputEvent):
 	var is_correct_control_type = false
@@ -89,13 +91,16 @@ func _input(event : InputEvent):
 		down_pressed = true
 	elif event.is_action_released("down"):
 		down_pressed = false
-
+	
 	if event.is_action_pressed("attack") or event.is_action_pressed(
-					"special") or event.is_action_pressed("jump"):
-		$Control/Icon/AnimationEmote.play("big")
-		var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
-		tween.tween_property(self, "scale", Vector2.ONE, 0.15)
+							"special") or event.is_action_pressed("jump"):
+		if can_select_evolution:
+			_on_button_ev_pressed()
+		else:
+			$Control/Icon/AnimationEmote.play("big")
+			var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
+			tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
+			tween.tween_property(self, "scale", Vector2.ONE, 0.15)
 
 func set_player_evolution(new_evolution : PlayerCharacter.Evolutions) -> void:
 	var p : PlayerCharacter = GameInfos.players[player_index]
