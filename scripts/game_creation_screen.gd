@@ -52,8 +52,7 @@ func _process(_delta):
 		_on_button_confirm_pressed()
 
 func set_game_widgets():
-	$GameModeSelector.options = GameInfos.GAME_MODE_TITLES
-	$GameModeSelector.selected_option = 0
+	$GameModeSelector.selected_option = GameInfos.victory_condition
 	$LevelSelector.options = GameInfos.LEVEL_TITLES
 	$LevelSelector.selected_option = 0
 	$MusicSelector.options = GameInfos.MUSIC_NAMES
@@ -167,7 +166,7 @@ func _on_game_mode_selector_option_changed(new_option : int):
 
 var is_first_player_exalted := false
 func set_gamemode(gamemode : int):
-	$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
+	#$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
 	$LabelGameModeDescription.text = GameInfos.GAME_MODE_DESCRIPTIONS[gamemode]
 	GameInfos.victory_condition = gamemode
 	if GameInfos.victory_condition != GameInfos.VictoryConditions.KillBoss:

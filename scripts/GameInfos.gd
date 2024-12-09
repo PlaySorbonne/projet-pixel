@@ -24,8 +24,10 @@ const MUSIC_NAMES : Array[String] = [
 	"Menu Theme"
 ]
 const GAME_MODE_TITLES : Array[String] = [
+	"DECORPORATE",
 	"BRAWL",
-	"example gamemode"
+	"OTAKU_OUTBREAK",
+	"OTAKU_OVERDRIVE",
 ]
 const GAME_MODE_DESCRIPTIONS : Array[String] = [
 	"DECORPORATE_DESCRIPTION",
