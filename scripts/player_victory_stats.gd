@@ -11,7 +11,8 @@ var is_winner := false
 	$Main/LabelDeaths,
 	$Main/LabelKills,
 	$Main/LabelDamageTaken,
-	$Main/LabelDamageGiven
+	$Main/LabelDamageGiven,
+	$Main/LabelTime
 ]
 @onready var subnodes := [
 	$Main/LabelOutcome,
