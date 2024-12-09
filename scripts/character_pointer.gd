@@ -32,7 +32,8 @@ signal healthbars_displayed
 var player_id := -1:
 	set(value):
 		player_id = value
-		$TimerCheckWinner.start()
+		if player_id >= 0:
+			$TimerCheckWinner.start()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
