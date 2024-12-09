@@ -21,6 +21,13 @@ var previous_hitbox_size : Vector2
 var exalted_particles : Node2D
 var time_ascended := 0.0
 
+var default_stats : Dictionary = {}
+var ascended_stats : Dictionary = {}
+
+func set_ascended_stats() -> void:
+	default_stats = {}
+	
+
 func death(force := false):
 	if ascended:
 		descend()
