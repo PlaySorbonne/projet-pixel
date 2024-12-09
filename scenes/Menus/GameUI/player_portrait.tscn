@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4b8krq7nd1vw"]
+[gd_scene load_steps=14 format=3 uid="uid://b4b8krq7nd1vw"]
 
 [ext_resource type="Script" path="res://scripts/player_portrait.gd" id="1_c3oa0"]
 [ext_resource type="Texture2D" uid="uid://dixjlamr3sc4k" path="res://resources/images/interface/characterPortraitPlaceholder.png" id="2_lyqqt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://rmf31sc6pffp" path="res://resources/images/interface/Keyboard & Mouse/Default/robot-antennas_black_and_white.png" id="4_ffoe4"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="5_oscts"]
 [ext_resource type="FontFile" uid="uid://dcfym0h2r1yu5" path="res://resources/fonts/files/Uni Sans Heavy Italic.otf" id="6_sudqb"]
+[ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="7_co5fi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3j20a"]
 font = ExtResource("6_sudqb")
@@ -719,6 +720,19 @@ text = "9"
 label_settings = SubResource("LabelSettings_3j20a")
 horizontal_alignment = 1
 
+[node name="TextureTrophy" type="TextureRect" parent="Holder"]
+modulate = Color(0.901961, 0.792157, 0, 1)
+offset_left = 175.0
+offset_top = 27.0
+offset_right = 245.0
+offset_bottom = 87.0
+rotation = 0.269828
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(35, 30)
+texture = ExtResource("7_co5fi")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1x3la")
@@ -729,3 +743,9 @@ script = ExtResource("5_oscts")
 object = NodePath("../Holder")
 property = "position"
 reset_to_zero = false
+
+[node name="TimerCheckWinner" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="TimerCheckWinner" to="." method="_on_timer_timeout"]

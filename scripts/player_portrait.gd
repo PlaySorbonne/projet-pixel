@@ -15,6 +15,7 @@ var init_portrait := false
 var velocity := Vector2.ZERO
 var eliminated := false
 var current_lives := -1
+var is_winner := false
 
 func _ready():
 	set_process(false)
@@ -99,3 +100,18 @@ func tween_labels_color():
 		await get_tree().create_timer(0.1+anim_time).timeout
 		new_color = Color.WHITE
 		anim_time = 0.5
+
+func set_winner(new_winner : bool) -> void:
+	if new_winner == is_winner:
+		return
+	is_winner = new_winner
+	var f_val : Vector2
+	if is_winner:
+		f_val = Vector2(2.0, 2.0)
+	else:
+		f_val = Vector2.ZERO
+	var t := create_tween().set_trans(Tween.TRANS_ELASTIC)
+	t.tween_property($Holder/TextureTrophy, "scale", f_val, 1.25)
+
+func _on_timer_timeout() -> void:
+	set_winner(player_number in GameInfos.tmp_winners)

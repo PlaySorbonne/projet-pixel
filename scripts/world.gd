@@ -120,19 +120,15 @@ func choose_winners() -> void:
 					max_time = p.get_time_ascended()
 					winners = [p.player_ID]
 		GameInfos.VictoryConditions.KillBoss:
-			var boss_has_won := false
 			var normal_players_ids : Array[int] = []
 			for p_stats : PlayerStats in players_stats.values():
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
 				if p.is_super_weeb:
 					if p.alive:
-						boss_has_won = true
 						winners = [p_stats.player_id]
 						break
 				else:
-					normal_players_ids.append(p_stats.player_id)
-			if not boss_has_won:
-				winners = normal_players_ids.duplicate()
+					winners.append(p_stats.player_id)
 	GameInfos.last_winners = winners.duplicate()
 
 func player_eliminated():
