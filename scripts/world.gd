@@ -74,6 +74,7 @@ func choose_winners() -> void:
 		GameInfos.VictoryConditions.CassetteTime:
 			var max_time := 0.0
 			var win_id : int = -1
+			print("players_stats =", players_stats)
 			for p_stats : PlayerStats in players_stats:
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
 				if p.has_method("get_time_ascended") and p.get_time_ascended() > max_time:
