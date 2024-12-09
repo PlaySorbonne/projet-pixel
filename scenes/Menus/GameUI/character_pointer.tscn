@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqjyjdg2uma5y"]
+[gd_scene load_steps=7 format=3 uid="uid://bqjyjdg2uma5y"]
 
 [ext_resource type="Texture2D" uid="uid://bh8dj5nr1exh5" path="res://resources/images/characters/character_pointer.png" id="1_d6fp3"]
 [ext_resource type="Script" path="res://scripts/character_pointer.gd" id="2_fab0g"]
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="3_0k4en"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="4_kil8r"]
 [ext_resource type="Texture2D" uid="uid://ddty1alocf58g" path="res://resources/images/particles/star5p.png" id="4_mkpwd"]
+[ext_resource type="Texture2D" uid="uid://se5rjnvnqhfw" path="res://resources/images/interface/trophy.png" id="6_bfus6"]
 
 [node name="CharacterPointer" type="Sprite2D"]
 top_level = true
@@ -54,6 +55,18 @@ theme_override_font_sizes/font_size = 25
 text = "character name"
 horizontal_alignment = 1
 clip_text = true
+
+[node name="TextureTrophy" type="TextureRect" parent="HealthBars"]
+modulate = Color(0.901961, 0.792157, 0, 1)
+layout_mode = 1
+offset_left = 95.0
+offset_top = -134.0
+offset_right = 165.0
+offset_bottom = -74.0
+pivot_offset = Vector2(35, 30)
+texture = ExtResource("6_bfus6")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
