@@ -14,6 +14,8 @@ const EXALTED_PARTICLES := preload("res://scenes/Characters/Evolutions/Animation
 @export var ascended_weeb_attack_size := Vector2(2.0, 2.0)
 
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
+@onready var ascended_eliminate_on_hit : bool = (
+				GameInfos.victory_condition == GameInfos.VictoryConditions.Elimination)
 var ascended := false
 var previous_trail_color : Color
 var previous_hitbox_size : Vector2
@@ -66,7 +68,7 @@ func ascend():
 	$TrailEffect.modulate = Color.BLACK
 	ascended = true
 	computing_movement = true
-	eliminate_hit_targets = true
+	eliminate_hit_targets = ascended_eliminate_on_hit
 	compute_hits = true
 
 func descend():
