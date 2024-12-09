@@ -89,6 +89,7 @@ var in_stun_time := false
 var eliminate_hit_targets := false
 var player_color : Color
 var player_stats : PlayerStats = null
+var is_super_weeb := false
 
 func load_custom_gameplay_data():
 	var ev : String = Evolutions.find_key(current_evolution)

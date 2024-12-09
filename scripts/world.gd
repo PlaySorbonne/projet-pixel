@@ -105,29 +105,29 @@ func choose_winners() -> void:
 			# winner(s) is(are) player(s) with the most killsé
 			var max_kills := 0
 			for p_stats : PlayerStats in players_stats.values():
-				max_kills = max(max_kills, p_stats.kills)
-			for p_stats : PlayerStats in players_stats.values():
-				if p_stats.kills == max_kills:
-					winners.append(p_stats.player_id)
+				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
+				if not p.is_eliminated:
+					if p_stats.kills > max_kills:
+						winners = [p_stats.player_id]
+					elif p_stats.kills == max_kills:
+						winners.append(p_stats.player_id)
 		GameInfos.VictoryConditions.CassetteTime:
 			var max_time := 0.0
-			var win_id : int = -1
 			for p_stats : PlayerStats in players_stats.values():
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
-				if p.has_method("get_time_ascended") and p.get_time_ascended() > max_time:
+				if not p.is_eliminated and (p.has_method("get_time_ascended")
+								) and p.get_time_ascended() > max_time:
 					max_time = p.get_time_ascended()
-					win_id = p.player_ID
-			if win_id != -1:
-				winners.append(win_id)
+					winners = [p.player_ID]
 		GameInfos.VictoryConditions.KillBoss:
 			var boss_has_won := false
 			var normal_players_ids : Array[int] = []
 			for p_stats : PlayerStats in players_stats.values():
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
-				if p.has_method("get_time_ascended") and p.is_ascended:
+				if p.is_super_weeb:
 					if p.alive:
 						boss_has_won = true
-						winners.append(p_stats.player_id)
+						winners = [p_stats.player_id]
 						break
 				else:
 					normal_players_ids.append(p_stats.player_id)
