@@ -22,7 +22,6 @@ var player_selectors : Array[PlayerSelection] = []
 var current_level : Level = null
 var level_selected := -1
 var are_evolutions_selectable := false
-var can_first_player_select_evolution := false
 
 func _ready():
 	$AudioStreamPlayer.play(GameInfos.menu_music_time)
@@ -91,7 +90,8 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)
-	if can_first_player_select_evolution or len(player_selectors) > 1:
+	if GameInfos.victory_condition != GameInfos.VictoryConditions.KillBoss or (
+														len(player_selectors) > 1):
 		player_infos.set_can_select_evolution(are_evolutions_selectable)
 	check_start_button()
 	player_infos.with_voice = with_voice
@@ -168,6 +168,16 @@ func _on_game_mode_selector_option_changed(new_option : int):
 func set_gamemode(gamemode : int):
 	$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
 	$LabelGameModeDescription.text = GameInfos.GAME_MODE_DESCRIPTIONS[gamemode]
+	GameInfos.victory_condition = gamemode
+	match GameInfos.victory_condition:
+		GameInfos.VictoryConditions.Elimination:
+			pass
+		GameInfos.VictoryConditions.Kills:
+			pass
+		GameInfos.VictoryConditions.CassetteTime:
+			pass
+		GameInfos.VictoryConditions.KillBoss:
+			pass
 
 func _on_level_selector_option_changed(new_option : int):
 	GameInfos.selected_level = new_option
@@ -200,13 +210,12 @@ func remove_player(selector : PlayerSelection, _index : int):
 	player_selectors.remove_at(pos_in_array)
 	check_start_button()
 
-func set_selectable_evolutions(ev_selectable : bool, except_first_player := false) -> void:
+func set_selectable_evolutions(ev_selectable : bool) -> void:
 	are_evolutions_selectable = ev_selectable
-	can_first_player_select_evolution = ev_selectable and except_first_player
 	if len(player_selectors) == 0:
 		return
 	var i : int = 0
-	if except_first_player: 
+	if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss: 
 		i = 1
 	while i < player_selectors.size():
 		player_selectors[i].set_can_select_evolution(ev_selectable)
