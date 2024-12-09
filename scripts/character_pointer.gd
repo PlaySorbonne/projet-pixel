@@ -29,6 +29,10 @@ signal healthbars_displayed
 
 @onready var default_pos = position
 @onready var parent_character : Node2D = get_parent()
+var player_id := -1:
+	set(value):
+		player_id = value
+		$TimerCheckWinner.start()
 var total_hitpoints : int = 0
 var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
@@ -172,3 +176,6 @@ func _on_timer_timeout():
 func tween_color(new_color : Color):
 	var tween := create_tween()
 	tween.tween_property($HealthBars, "modulate", new_color, 0.25)
+
+func _on_timer_check_winner_timeout() -> void:
+	set_winner(player_id in GameInfos.tmp_winners)

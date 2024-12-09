@@ -102,6 +102,7 @@ var selected_music : int = 0
 var players_data : Dictionary = {}
 var last_winners : Array[int] = []
 var player_portraits : Dictionary = {}
+var tmp_winners : Array[int] = []
 
 var time_limit := -1
 var lives_limit := -1
@@ -128,6 +129,7 @@ func reset_game_infos(_deep_reset := false) -> void:
 	display_end_screen = true
 	auto_spawn_players = true
 	CharacterPointer.current_z = 0
+	tmp_winners = []
 
 func perform_deep_reset():
 	reset_game_infos()

@@ -73,4 +73,8 @@ stretch_mode = 5
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="TimerCheckWinner" type="Timer" parent="."]
+wait_time = 0.3
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerCheckWinner" to="." method="_on_timer_check_winner_timeout"]
