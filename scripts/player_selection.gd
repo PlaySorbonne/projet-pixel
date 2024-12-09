@@ -59,8 +59,17 @@ func _ready():
 
 var can_select_evolution := false
 func set_can_select_evolution(can_select : bool) -> void:
-	can_select_evolution = can_select
-	$Control/Icon/Icon2/ButtonEv.visible = can_select
+	can_select_evolution = can_select and not exalted_weeb
+	$Control/Icon/Icon2/ButtonEv.visible = can_select and not exalted_weeb
+
+var exalted_weeb := false
+func set_exalted(is_exalted : bool) -> void:
+	exalted_weeb = is_exalted
+	if is_exalted:
+		$Control/Icon.self_modulate = Color(1.5, 1.5, 0.0)
+		set_player_evolution(PlayerCharacter.Evolutions.Weeb)
+	else:
+		$Control/Icon.self_modulate = Color.WHITE
 
 func _input(event : InputEvent):
 	var is_correct_control_type = false
