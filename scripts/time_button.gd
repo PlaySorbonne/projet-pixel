@@ -23,7 +23,8 @@ func display_time_as_text() -> void:
 func _on_spin_combo_click_down() -> void:
 	if GameInfos.time_limit < 0:
 		GameInfos.time_limit = 60
-		$ButtonCancel.visible = true
+		if not is_time_forced:
+			$ButtonCancel.visible = true
 	else:
 		GameInfos.time_limit = max(30, GameInfos.time_limit-30)
 	display_time_as_text()

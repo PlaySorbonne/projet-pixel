@@ -184,7 +184,8 @@ func set_gamemode(gamemode : int):
 			
 		GameInfos.VictoryConditions.Kills:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
-			$TimeButton.set_forced_time(false)
+			$TimeButton.set_forced_time(true)
+			$LivesButton.set_forced_lives(true)
 			
 		GameInfos.VictoryConditions.CassetteTime:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
