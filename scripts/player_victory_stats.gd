@@ -31,12 +31,12 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	$Main/LabelName.text = p_stats.player_name
 	var pc : PlayerCharacter = GameInfos.players[p_stats.player_id]
 	$Main/TexturePortrait/TexturePortraitBG.self_modulate = pc.player_color
+	var current_ev := int(pc.current_evolution)
 	if pc.current_evolution == PlayerCharacter.Evolutions.Weeb and pc.ascended:
 		$Main/LabelEvolution.text = "ASCENDED_WEEB"
 	else:
-		var current_ev := int(pc.current_evolution)
 		$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
-		$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
+	$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]
 
 func declare_winner() -> void:
 	is_winner = true
