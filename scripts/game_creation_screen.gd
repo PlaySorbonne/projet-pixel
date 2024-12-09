@@ -178,17 +178,24 @@ func set_gamemode(gamemode : int):
 		GameInfos.VictoryConditions.Elimination:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
 			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Linear)
+			$TimeButton.set_forced_time(false)
+			
 		GameInfos.VictoryConditions.Kills:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
+			$TimeButton.set_forced_time(false)
+			
 		GameInfos.VictoryConditions.CassetteTime:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
 			$EvolutionsButton.set_can_change_evolving_mode(false)
 			force_player_evolution(PlayerCharacter.Evolutions.Weeb)
 			set_selectable_evolutions(false)
+			$TimeButton.set_forced_time(true)
+			
 		GameInfos.VictoryConditions.KillBoss:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
 			$EvolutionsButton.set_can_change_evolving_mode(false)
 			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Balanced)
+			$TimeButton.set_forced_time(false)
 			is_first_player_exalted = true
 			if len(player_selectors) > 0:
 				player_selectors[0].set_exalted(true)
