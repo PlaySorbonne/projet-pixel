@@ -21,6 +21,8 @@ var controllers: Array[int] = []
 var player_selectors : Array[PlayerSelection] = []
 var current_level : Level = null
 var level_selected := -1
+var are_evolutions_selectable := false
+var can_first_player_select_evolution := false
 
 func _ready():
 	$AudioStreamPlayer.play(GameInfos.menu_music_time)
@@ -89,6 +91,8 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	var player_infos : PlayerSelection = PLAYER_INFOS_RES.instantiate()
 	$PlayersContainer.add_child(player_infos)
 	player_selectors.append(player_infos)
+	if can_first_player_select_evolution or len(player_selectors) > 1:
+		player_infos.set_can_select_evolution(are_evolutions_selectable)
 	check_start_button()
 	player_infos.with_voice = with_voice
 	player_infos.player_index = index
@@ -195,6 +199,23 @@ func remove_player(selector : PlayerSelection, _index : int):
 		duration += 0.2
 	player_selectors.remove_at(pos_in_array)
 	check_start_button()
+
+func set_selectable_evolutions(ev_selectable : bool, except_first_player := false) -> void:
+	are_evolutions_selectable = ev_selectable
+	can_first_player_select_evolution = ev_selectable and except_first_player
+	if len(player_selectors) == 0:
+		return
+	var i : int = 0
+	if except_first_player: 
+		i = 1
+	while i < player_selectors.size():
+		player_selectors[i].set_can_select_evolution(ev_selectable)
+		i += 1
+
+func set_first_player_weeb() -> void:
+	if len(player_selectors) == 0:
+		return
+	player_selectors[0].set_player_evolution(PlayerCharacter.Evolutions.Weeb)
 
 func _on_animation_start_animation_finished(anim_name : String):
 	if anim_name == "start" and not($ButtonConfirm.disabled):

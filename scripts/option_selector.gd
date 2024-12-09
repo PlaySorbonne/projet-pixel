@@ -21,7 +21,8 @@ signal option_changed(option : int)
 		else:
 			selected_option = value
 		$Label.text = options[selected_option]
-		emit_signal("option_changed", selected_option)
+		if not Engine.is_editor_hint():
+			emit_signal("option_changed", selected_option)
 
 func _ready():
 	if options.size() > 0:

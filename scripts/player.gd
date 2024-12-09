@@ -237,7 +237,7 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	computing_movement = true
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
-func evolve(next_evolution : Evolutions):
+func evolve(next_evolution : Evolutions, in_lobby := false):
 	if evolving:
 		return
 	if next_evolution == null:
@@ -259,13 +259,16 @@ func evolve(next_evolution : Evolutions):
 	var new_body : PlayerCharacter = EvolutionCharacters[next_evolution].instantiate()
 	GameInfos.players[player_ID] = new_body
 	copy_player_data(new_body)
-	get_parent().add_child(new_body)
-	set_player_active(false)
-	await get_tree().create_timer(0.7).timeout
-	new_body.spawn(position, true, facing_right)
-	emit_signal("player_evolved", new_body)
-	GameInfos.tracked_targets.erase(self)
-	await get_tree().create_timer(0.5).timeout
+	if not in_lobby:
+		get_parent().add_child(new_body)
+		set_player_active(false)
+		await get_tree().create_timer(0.7).timeout
+		new_body.spawn(position, true, facing_right)
+		emit_signal("player_evolved", new_body)
+		GameInfos.tracked_targets.erase(self)
+		await get_tree().create_timer(0.5).timeout
+	else:
+		await get_tree().create_timer(0.1).timeout
 	queue_free()
 
 func remove_player():

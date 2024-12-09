@@ -99,7 +99,7 @@ func _input(event : InputEvent):
 
 func set_player_evolution(new_evolution : PlayerCharacter.Evolutions) -> void:
 	var p : PlayerCharacter = GameInfos.players[player_index]
-	p.evolve(new_evolution)
+	p.evolve(new_evolution, true)
 	var new_texture = PlayerPortrait.PLAYER_PORTRAITS[new_evolution]
 	$Control/Icon.texture = new_texture
 	$Control/Icon/Icon2.texture = new_texture
