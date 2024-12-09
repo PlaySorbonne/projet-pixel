@@ -1,10 +1,13 @@
 extends "res://scripts/level_template.gd"
 
+const MENU_PATH = "res://scenes/Menus/MenuPersistent.tscn"
+
 const XBOX_STICK_L = "[img]res://resources/images/interface/Xbox Series/Default/xbox_stick_l.png[/img]"
 const XBOX_A = "[img]res://resources/images/interface/Xbox Series/Default/xbox_button_a_outline.png[/img]"
 const XBOX_B = "[img]res://resources/images/interface/Xbox Series/Default/xbox_button_b_outline.png[/img]"
 const XBOX_X = "[img]res://resources/images/interface/Xbox Series/Default/xbox_button_x_outline.png[/img]"
 
+# TODO: localize text
 var STEPS_TEXTS = [
 	"Bienvenue dans Decorporate ! Vous pouvez vous déplacer avec %s et sauter avec %s." % [XBOX_STICK_L, XBOX_A],
 	"Vous pouvez utiliser votre attaque normale avec %s, et votre attaque spéciale avec %s." % [XBOX_X, XBOX_B],
@@ -91,4 +94,5 @@ func _input(event: InputEvent) -> void:
 		actions_done["special_attack"] = true
 		
 func _on_game_finished() -> void:
-	pass
+	if get_tree() != null:
+		get_tree().change_scene_to_file(MENU_PATH)
