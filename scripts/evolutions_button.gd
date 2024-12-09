@@ -10,15 +10,23 @@ func _ready() -> void:
 func display_evolve_mode() -> void:
 	$Label.text = str(GameInfos.EvolvingMode.keys()[GameInfos.evolving_mode])
 
+func set_can_change_evolving_mode(can_change : bool) -> void:
+	disabled = not can_change
+	if can_change:
+		$Label.modulate = Color.WHITE
+	else:
+		$Label.modulate = Color.GRAY
+
+func set_evolving_mode(ev_mode : GameInfos.EvolvingMode) -> void:
+	GameInfos.evolving_mode = ev_mode
+	game_creation_screen.set_selectable_evolutions(ev_mode != GameInfos.EvolvingMode.Fixed)
+	display_evolve_mode()
+
 func _on_pressed() -> void:
 	match GameInfos.evolving_mode:
 		GameInfos.EvolvingMode.Linear:
-			GameInfos.evolving_mode = GameInfos.EvolvingMode.Random
-			game_creation_screen.set_selectable_evolutions(true)
+			set_evolving_mode(GameInfos.EvolvingMode.Random)
 		GameInfos.EvolvingMode.Random:
-			GameInfos.evolving_mode = GameInfos.EvolvingMode.Fixed
-			game_creation_screen.set_selectable_evolutions(true)
+			set_evolving_mode(GameInfos.EvolvingMode.Fixed)
 		GameInfos.EvolvingMode.Fixed:
-			GameInfos.evolving_mode = GameInfos.EvolvingMode.Linear
-			game_creation_screen.set_selectable_evolutions(false)
-	display_evolve_mode()
+			set_evolving_mode(GameInfos.EvolvingMode.Linear)

@@ -165,19 +165,27 @@ func _on_game_mode_selector_option_changed(new_option : int):
 	GameInfos.selected_gamemode = new_option
 	set_gamemode(new_option)
 
+var is_first_player_exalted := false
 func set_gamemode(gamemode : int):
 	$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
 	$LabelGameModeDescription.text = GameInfos.GAME_MODE_DESCRIPTIONS[gamemode]
 	GameInfos.victory_condition = gamemode
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
-			pass
+			$EvolutionsButton.set_can_change_evolving_mode(true)
+			is_first_player_exalted = false
 		GameInfos.VictoryConditions.Kills:
-			pass
+			$EvolutionsButton.set_can_change_evolving_mode(true)
+			is_first_player_exalted = false
 		GameInfos.VictoryConditions.CassetteTime:
-			pass
+			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
+			$EvolutionsButton.set_can_change_evolving_mode(false)
+			is_first_player_exalted = false
 		GameInfos.VictoryConditions.KillBoss:
-			pass
+			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
+			$EvolutionsButton.set_can_change_evolving_mode(false)
+			is_first_player_exalted = true
+			
 
 func _on_level_selector_option_changed(new_option : int):
 	GameInfos.selected_level = new_option
