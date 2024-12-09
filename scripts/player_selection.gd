@@ -164,6 +164,11 @@ func _on_button_ai_diffculty_pressed() -> void:
 	GameInfos.players_data[player_index]["ai_difficulty"] = current_ai_difficulty
 	GameInfos.players[player_index].ai_difficulty = current_ai_difficulty
 
-func _on_evolution_selector_option_changed(option: int) -> void:
-	set_player_evolution(option)
+var button_option : int = PlayerCharacter.Evolutions.CEO
+const EV_MAX_VAL := PlayerCharacter.Evolutions.Weeb
+func _on_button_ev_pressed() -> void:
+	button_option += 1
+	if button_option > EV_MAX_VAL:
+		button_option = PlayerCharacter.Evolutions.CEO
+	set_player_evolution(button_option)
 	$Control/Icon/AnimationEmote.play("big")

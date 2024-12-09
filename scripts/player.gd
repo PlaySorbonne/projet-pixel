@@ -267,8 +267,6 @@ func evolve(next_evolution : Evolutions, in_lobby := false):
 		emit_signal("player_evolved", new_body)
 		GameInfos.tracked_targets.erase(self)
 		await get_tree().create_timer(0.5).timeout
-	else:
-		await get_tree().create_timer(0.1).timeout
 	queue_free()
 
 func remove_player():
