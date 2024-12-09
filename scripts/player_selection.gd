@@ -150,3 +150,6 @@ func _on_button_ai_diffculty_pressed() -> void:
 	ai_difficulty_button.text = "\n" + str(AI_Inputs.Difficulty.keys()[current_ai_difficulty])
 	GameInfos.players_data[player_index]["ai_difficulty"] = current_ai_difficulty
 	GameInfos.players[player_index].ai_difficulty = current_ai_difficulty
+
+func _on_evolution_selector_option_changed(option: int) -> void:
+	pass # Replace with function body.

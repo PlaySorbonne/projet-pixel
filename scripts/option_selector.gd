@@ -2,7 +2,7 @@
 extends HBoxContainer
 class_name OptionSelector
 
-signal option_changed
+signal option_changed(option : int)
 
 @export var minimum_label_width := 100.0:
 	set(value):

@@ -61,6 +61,7 @@ static var player_counter := 0
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
 @onready var attack_loc_pos : Vector2 = $AttackLocation.position
+var is_first_evolution := true
 var control_device: int = 0
 var control_type: Controls
 var is_eliminated := false
@@ -113,6 +114,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.ai_difficulty = ai_difficulty
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
 	new_body.player_stats = player_stats
+	new_body.is_first_evolution = false
 
 func _init():
 	if not GameInfos.game_started:
@@ -133,7 +135,7 @@ func _ready():
 		self.add_child(PLAYER_INPUTS_RES.instantiate())
 	else:
 		self.add_child(EVOLUTIONS_AIS[current_evolution].instantiate())
-	if current_evolution != Evolutions.CEO:
+	if not is_first_evolution:
 		await get_tree().create_timer(1.2).timeout
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
 		$AudioLineEvolve.play()
