@@ -58,13 +58,13 @@ horizontal_alignment = 1
 text_overrun_behavior = 1
 
 [node name="TextureTrophy" type="TextureRect" parent="HealthBars"]
-visible = false
 modulate = Color(0.901961, 0.792157, 0, 1)
 layout_mode = 1
 offset_left = -35.0
-offset_top = -165.0
+offset_top = -170.0
 offset_right = 35.0
-offset_bottom = -105.0
+offset_bottom = -110.0
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(35, 30)
 texture = ExtResource("6_bfus6")
 expand_mode = 1

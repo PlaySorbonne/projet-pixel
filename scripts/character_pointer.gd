@@ -82,8 +82,18 @@ func set_zero_hitpoints():
 	healthbars = [unit]
 	unit.add_unit_no_anim()
 
-func set_winner(is_winner : bool) -> void:
-	$HealthBars/TextureTrophy.visible = is_winner
+var is_winner := false
+func set_winner(new_winner : bool) -> void:
+	if is_winner == new_winner:
+		return
+	is_winner = new_winner
+	var f_val : Vector2
+	if is_winner:
+		f_val = Vector2(1.5, 1.5)
+	else:
+		f_val = Vector2.ZERO
+	var t := create_tween().set_trans(Tween.TRANS_ELASTIC)
+	t.tween_property($HealthBars/TextureTrophy, "scale", f_val, 0.75)
 
 func set_max_hitpoints(hitpoints : int, with_anim := true):
 	if hitpoints == 0:
@@ -120,7 +130,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 	)
 	$HealthBars/LabelName.position = new_name_pos
 	$HealthBars/TextureTrophy.position = new_name_pos + Vector2(
-										126, -54)
+										126, -60)
 	$StarRect.position = Vector2(
 		-95.0,
 		new_name_pos.y / 2.0 - 5.0
@@ -172,7 +182,8 @@ func show_health_bars():
 		$Timer.start(TIMER_TRANSPARENT)
 
 func _on_timer_timeout():
-	tween_color(Color(1.0, 1.0, 1.0, 0.4))
+	pass
+	#tween_color(Color(1.0, 1.0, 1.0, 0.4))
 
 func tween_color(new_color : Color):
 	var tween := create_tween()

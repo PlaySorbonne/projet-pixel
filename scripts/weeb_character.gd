@@ -16,7 +16,6 @@ const EXALTED_PARTICLES := preload("res://scenes/Characters/Evolutions/Animation
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
 @onready var ascended_eliminate_on_hit : bool = (
 				GameInfos.victory_condition == GameInfos.VictoryConditions.Elimination)
-var ascended := false
 var previous_trail_color : Color
 var previous_hitbox_size : Vector2
 var exalted_particles : Node2D

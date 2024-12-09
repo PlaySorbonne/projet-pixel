@@ -55,6 +55,44 @@ func _ready():
 func timeout_end_game() -> void:
 	end_game()
 
+func choose_tmp_winners() -> void:
+	var winners : Array[int] = []
+	match GameInfos.victory_condition:
+		GameInfos.VictoryConditions.Elimination:
+			# tmp winner is most advanced evolution
+			var best_evol := PlayerCharacter.Evolutions.CEO
+			for p : PlayerCharacter in GameInfos.players.values():
+				if p.ascended:
+					winners = [p.player_ID]
+					break
+				elif p.current_evolution > best_evol:
+					best_evol = p.current_evolution
+					winners = [p.player_ID]
+				elif p.current_evolution == best_evol:
+					winners = []
+		GameInfos.VictoryConditions.Kills:
+			# winner(s) is(are) player(s) with the most killsé
+			var max_kills := 0
+			for p_stats : PlayerStats in players_stats.values():
+				if p_stats.kills > max_kills:
+					winners = [p_stats.player_id]
+					max_kills = p_stats.kills
+				elif p_stats.kills == max_kills and max_kills>0:
+					winners.append(p_stats.player_id)
+		GameInfos.VictoryConditions.CassetteTime:
+			var max_time := 0.0
+			for p_stats : PlayerStats in players_stats.values():
+				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
+				if p.has_method("get_time_ascended") and p.get_time_ascended() > max_time:
+					winners = [p_stats.player_id]
+					max_time = p.get_time_ascended()
+		GameInfos.VictoryConditions.KillBoss:
+			for p_stats : PlayerStats in players_stats.values():
+				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
+				if p.is_ascended:
+					winners = [p_stats.player_id]
+	GameInfos.tmp_winners = winners
+
 func choose_winners() -> void:
 	var winners : Array[int] = []
 	match GameInfos.victory_condition:
@@ -74,7 +112,6 @@ func choose_winners() -> void:
 		GameInfos.VictoryConditions.CassetteTime:
 			var max_time := 0.0
 			var win_id : int = -1
-			print("players_stats =", players_stats)
 			for p_stats : PlayerStats in players_stats.values():
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
 				if p.has_method("get_time_ascended") and p.get_time_ascended() > max_time:
@@ -237,3 +274,6 @@ func on_player_death(player : PlayerCharacter) -> void:
 	get_p_stats(player).deaths += 1
 	await get_tree().create_timer(game_mode.respawn_time).timeout
 	player.spawn(player_spawns[player.player_ID])
+
+func _on_timer_check_winners_timeout() -> void:
+	choose_tmp_winners()

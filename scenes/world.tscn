@@ -676,4 +676,9 @@ stream = ExtResource("5_clfqq")
 volume_db = 5.0
 bus = &"voices"
 
+[node name="TimerCheckWinners" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
 [connection signal="finished" from="CanvasLayer/EndScreen/AudioMoneyCling" to="CanvasLayer/EndScreen" method="_on_audio_money_cling_finished"]
+[connection signal="timeout" from="TimerCheckWinners" to="." method="_on_timer_check_winners_timeout"]

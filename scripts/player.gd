@@ -61,6 +61,7 @@ static var player_counter := 0
 @onready var specialObj : BaseSpecial = $SpecialAttack
 @onready var AttackLocation = $AttackLocation
 @onready var attack_loc_pos : Vector2 = $AttackLocation.position
+var ascended := false
 var is_first_evolution := true
 var control_device: int = 0
 var control_type: Controls
@@ -105,7 +106,7 @@ func get_attack_location() -> Vector2:
 func get_special_attack() -> Node:
 	return $SpecialAttack
 
-func copy_player_data(new_body : PlayerCharacter):
+func copy_player_data(new_body : PlayerCharacter, in_lobby := false):
 	new_body.team = team
 	new_body.control_device = control_device
 	new_body.control_type = control_type
@@ -114,7 +115,7 @@ func copy_player_data(new_body : PlayerCharacter):
 	new_body.ai_difficulty = ai_difficulty
 	new_body.set_player_color(GameInfos.players_data[player_ID]["color"])
 	new_body.player_stats = player_stats
-	new_body.is_first_evolution = false
+	new_body.is_first_evolution = in_lobby
 
 func _init():
 	if not GameInfos.game_started:
@@ -139,6 +140,7 @@ func _ready():
 		await get_tree().create_timer(1.2).timeout
 		$AudioLineEvolve.stream = audio_evolve.pick_random()
 		$AudioLineEvolve.play()
+	$CharacterPointer.player_id = player_ID
 
 func set_player_color(new_color : Color):
 	player_color = new_color
@@ -258,7 +260,7 @@ func evolve(next_evolution : Evolutions, in_lobby := false):
 	# GameInfos.camera_utils.quick_zoom(GameInfos.camera.zoom*1.1, self.global_position, 0.75, 0.2)
 	var new_body : PlayerCharacter = EvolutionCharacters[next_evolution].instantiate()
 	GameInfos.players[player_ID] = new_body
-	copy_player_data(new_body)
+	copy_player_data(new_body, in_lobby)
 	if not in_lobby:
 		get_parent().add_child(new_body)
 		set_player_active(false)
