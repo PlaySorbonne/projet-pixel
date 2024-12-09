@@ -77,6 +77,9 @@ func set_zero_hitpoints():
 	healthbars = [unit]
 	unit.add_unit_no_anim()
 
+func set_winner(is_winner : bool) -> void:
+	$HealthBars/TextureTrophy.visible = is_winner
+
 func set_max_hitpoints(hitpoints : int, with_anim := true):
 	if hitpoints == 0:
 		set_zero_hitpoints()
@@ -111,6 +114,8 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * healthbars.size() - 20.0
 	)
 	$HealthBars/LabelName.position = new_name_pos
+	$HealthBars/TextureTrophy.position = new_name_pos + Vector2(
+										126, -54)
 	$StarRect.position = Vector2(
 		-95.0,
 		new_name_pos.y / 2.0 - 5.0
