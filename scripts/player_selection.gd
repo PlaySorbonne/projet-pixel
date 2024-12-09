@@ -13,9 +13,10 @@ var right_pressed := false
 var left_pressed := false
 var up_pressed := false
 var down_pressed := false
-
+var current_evolution := PlayerCharacter.Evolutions.CEO
 var with_voice := true
 var control_index : int = -1
+
 @export var control_type: bool:
 	set(value):
 		control_type = value
@@ -65,7 +66,7 @@ func set_exalted(is_exalted : bool) -> void:
 	exalted_weeb = is_exalted
 	if is_exalted:
 		$Control/Icon.self_modulate = Color(1.5, 1.5, 0.0)
-		set_player_evolution(PlayerCharacter.Evolutions.Weeb)
+		set_player_evolution(PlayerCharacter.Evolutions.Weeb, false, true)
 	else:
 		$Control/Icon.self_modulate = Color.WHITE
 
@@ -110,7 +111,10 @@ func _input(event : InputEvent):
 			tween.tween_property(self, "scale", Vector2.ONE, 0.15)
 
 func set_player_evolution(new_evolution : PlayerCharacter.Evolutions, 
-											skip_evol := false) -> void:
+									skip_evol := false, force := false) -> void:
+	if current_evolution == new_evolution and not force:
+		return
+	current_evolution = new_evolution
 	if not skip_evol:
 		var p : PlayerCharacter = GameInfos.players[player_index]
 		p.evolve(new_evolution, true)
