@@ -101,6 +101,8 @@ static func update_stats_data(save_game : FileAccess):
 		var key : String = PlayerCharacter.Evolutions.find_key(i)
 		ordered_keys[i] = key
 		ordered_keys[i + number_of_evolutions] = key + "_special"
+	ordered_keys[PlayerCharacter.Evolutions.Weeb*2+1] = "Ascended"
+	ordered_keys[PlayerCharacter.Evolutions.Weeb*2+2] = "Ascended_special"
 	var line = 0
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
