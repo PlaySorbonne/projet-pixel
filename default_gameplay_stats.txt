@@ -8,5 +8,3 @@
 {"attack_intensity":2,"damage":3,"delay_between_jump_and_fall":0.349999999976717,"fall_recovery":0.800000000046566,"fall_speed":2000,"hit_duration":0.25,"hitbox_size":2,"jump_power":3000}
 {"ability_cooldown":1,"can_attack_cooldown":0.25,"egg_hit_damage":1,"egg_hit_duration":0.5,"egg_hit_intensity":1,"egg_hit_size":1,"egg_speed":1000,"jump_power":1700}
 {"dash_cooldown":0.800000000046566,"dash_duration":0.125,"dash_speed":2000}
-{"attack_damage":3,"attack_duration":0.125,"attack_intensity":3,"attack_recovery":1,"attack_wind_up":0,"fall_speed_multiplier":2.5,"initial_fall_speed":125,"invincibility_time":0.4,"jump_max_duration":0.4,"jump_velocity":750,"knockback_damage_threshold":1,"knockback_interp_factor":0.075,"knockback_multiplier":2,"max_fall_speed":2000,"max_hitpoints":3,"speed":1000}
-{"dash_cooldown":0.4,"dash_duration":0.25,"dash_speed":2000}
