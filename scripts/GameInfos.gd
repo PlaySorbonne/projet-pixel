@@ -27,8 +27,10 @@ const GAME_MODE_TITLES : Array[String] = [
 	"example gamemode"
 ]
 const GAME_MODE_DESCRIPTIONS : Array[String] = [
+	"DECORPORATE_DESCRIPTION",
 	"BRAWL_DESCRIPTION",
-	"example description\nhey\nexample description"
+	"OTAKU_OUTBREAK_DESCRIPTION",
+	"OTAKU_OVERDRIVE_DESCRIPTION"
 ]
 const MUSICS_PATHS : Array[String] = [
 	"res://resources/audio/music/Secret_Knowledge.wav",
