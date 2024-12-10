@@ -5,7 +5,7 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_hdmi3")
-shader_parameter/chaos = 0.0
+shader_parameter/chaos = 30.0
 shader_parameter/radius = 1.0
 shader_parameter/attenuation = 10.0
 shader_parameter/divider_green = 1.0

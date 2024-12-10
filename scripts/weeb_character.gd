@@ -50,7 +50,7 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"attack_intensity" : 1.75,
 	"knockback_multiplier" : 0.2,
 	"attack_recovery" : 0.25,
-	"dash_speed" : 1.2,
+	"dash_speed" : 1.6,
 	"dash_duration" : 1.1,
 	"dash_cooldown" : 0.3,
 	"air_speed" : 0.8,
@@ -74,7 +74,7 @@ func set_ascended_stats(is_boss_weeb := false) -> void:
 		else:
 			ascended_stats[s] = self.get(s) * GAMEPLAY_PROPERTIES[s]
 	if is_boss_weeb:
-		ascended_stats["max_hitpoints"] = 20 * int( (5 * GameInfos.lives_limit) / 9 )
+		ascended_stats["max_hitpoints"] = 20 * int( (4 * GameInfos.lives_limit) / 9 )
 		#ascended_stats["attack_damage"] = 5
 
 func death(force := false):
