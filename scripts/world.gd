@@ -48,7 +48,6 @@ func _ready():
 	if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss:
 		await get_tree().process_frame
 		initialize_boss_weeb()
-		 GameInfos.camera.global_position
 	players_left = len(GameInfos.players.keys())
 	if GlobalVariables.skip_fight_intro:
 		activate_players()
@@ -61,7 +60,13 @@ func _ready():
 		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
 
 func initialize_boss_weeb() -> void:
-	pass
+	var boss_weeb : WeebCharacter = GameInfos.players[GameInfos.boss_weeb_id]
+	boss_weeb.is_super_weeb = true
+	boss_weeb.set_ascended_stats(true)
+	boss_weeb.global_position = GameInfos.camera.global_position + Vector2(0, -250.0)
+	GameInfos.anime_box.follow_ascended_weeb(boss_weeb)
+	await get_tree().create_timer(3.0)
+	boss_weeb.ascend()
 
 func timeout_end_game() -> void:
 	end_game()
@@ -98,10 +103,7 @@ func choose_tmp_winners() -> void:
 					winners = [p_stats.player_id]
 					max_time = p.get_time_ascended()
 		GameInfos.VictoryConditions.KillBoss:
-			for p_stats : PlayerStats in players_stats.values():
-				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
-				if p.is_ascended:
-					winners = [p_stats.player_id]
+			winners = [GameInfos.boss_weeb_id]
 	GameInfos.tmp_winners = winners
 
 func choose_winners() -> void:
@@ -134,13 +136,13 @@ func choose_winners() -> void:
 			var normal_players_ids : Array[int] = []
 			for p_stats : PlayerStats in players_stats.values():
 				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
-				if p.is_super_weeb:
+				if p.player_ID == GameInfos.boss_weeb_id:
 					if p.alive:
 						winners = [p_stats.player_id]
 						break
 				else:
 					winners.append(p_stats.player_id)
-	GameInfos.last_winners = winners.duplicate()
+	GameInfos.last_winners = winners
 
 func player_eliminated():
 	players_left -= 1
