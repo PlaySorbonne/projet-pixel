@@ -78,7 +78,7 @@ func timeout_end_game() -> void:
 	end_game()
 
 func choose_tmp_winners() -> void:
-	var winners : Array = []
+	var winners : Array[int] = []
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
 			# tmp winner is most advanced evolution
@@ -110,14 +110,15 @@ func choose_tmp_winners() -> void:
 					max_time = p.get_time_ascended()
 		GameInfos.VictoryConditions.KillBoss:
 			if is_boss_weeb_killed:
-				winners = GameInfos.players.keys().duplicate()
-				winners.erase(GameInfos.boss_weeb_id)
+				for i : int in GameInfos.players.keys():
+					if i != GameInfos.boss_weeb_id:
+						winners.append(i)
 			else:
 				winners = [GameInfos.boss_weeb_id]
 	GameInfos.tmp_winners = winners
 
 func choose_winners() -> void:
-	var winners : Array = []
+	var winners : Array[int] = []
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
 			# winner are last standing players
@@ -144,11 +145,11 @@ func choose_winners() -> void:
 					winners = [p.player_ID]
 		GameInfos.VictoryConditions.KillBoss:
 			if is_boss_weeb_killed:
-				if is_boss_weeb_killed:
-					winners = GameInfos.players.keys().duplicate()
-					winners.erase(GameInfos.boss_weeb_id)
-				else:
-					winners = [GameInfos.boss_weeb_id]
+				for i : int in GameInfos.players.keys():
+					if i != GameInfos.boss_weeb_id:
+						winners.append(i)
+			else:
+				winners = [GameInfos.boss_weeb_id]
 	GameInfos.last_winners = winners
 
 func player_eliminated():
