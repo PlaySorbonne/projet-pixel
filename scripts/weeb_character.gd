@@ -10,7 +10,7 @@ const AUDIO_EXPLOSION : AudioStream = preload("res://resources/audio/sfx/gamepla
 const EXALTED_PARTICLES := preload("res://scenes/Characters/Evolutions/Animations/exalted_weeb_particles.tscn")
 
 @export var ascended_weeb_hitpoints := 3
-@export var ascended_scale := Vector2(1.05, 1.05)
+@export var ascended_scale := Vector2(0.75, 0.75)    #Vector2(1.05, 1.05)
 @export var ascended_weeb_attack_size := Vector2(2.0, 2.0)
 
 @onready var player_shader_base_col : Color = $Sprite2D.material.get_shader_parameter("base_color")
@@ -37,10 +37,11 @@ const GAMEPLAY_PROPERTIES : Dictionary = {
 	"dash_speed" : 1.25,
 	"dash_duration" : 1.25,
 	"dash_cooldown" : 0.3,
+	"air_speed" : 1.0,
 }
 const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 10,
-	"speed" : 0.9,
+	"speed" : 1.5,
 	"attack_size" : 3.0,
 	"ascended_scale" : 2.5,
 	"jump_velocity" : 1.5,
@@ -51,6 +52,7 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"dash_speed" : 1.5,
 	"dash_duration" : 1.5,
 	"dash_cooldown" : 0.2,
+	"air_speed" : 1.5,
 }
 var default_stats : Dictionary = {}
 var ascended_stats : Dictionary = {}

@@ -38,9 +38,17 @@ func _ready():
 	player_camera = level.player_camera
 	GameInfos.world = self
 	var _hud_objects = $GameHUD.add_players()
+	# hide cassette if necessary
+	if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss:
+		await get_tree().process_frame
+		GameInfos.anime_box.toggle_cassette(false)
 	$CanvasLayer/ScreenTransition.end_screen_transition(2.0)
 	await $CanvasLayer/ScreenTransition.ScreenTransitionFinished
 	spawn_players()
+	if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss:
+		await get_tree().process_frame
+		initialize_boss_weeb()
+		 GameInfos.camera.global_position
 	players_left = len(GameInfos.players.keys())
 	if GlobalVariables.skip_fight_intro:
 		activate_players()
@@ -51,6 +59,9 @@ func _ready():
 	# connect eventual timer to end game func
 	if GameInfos.gameplay_timer != null and is_instance_valid(GameInfos.gameplay_timer):
 		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
+
+func initialize_boss_weeb() -> void:
+	pass
 
 func timeout_end_game() -> void:
 	end_game()

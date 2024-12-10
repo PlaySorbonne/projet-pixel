@@ -93,6 +93,7 @@ var end_screen : EndScreen = null
 var display_end_screen := true
 var auto_spawn_players := true
 var default_evolution := PlayerCharacter.Evolutions.CEO
+var boss_weeb_id := -1
 
 var available_player_names : Array[String] = []
 var available_player_colors : Array[Color] = []

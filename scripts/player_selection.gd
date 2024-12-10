@@ -67,6 +67,7 @@ var exalted_weeb := false
 func set_exalted(is_exalted : bool) -> void:
 	exalted_weeb = is_exalted
 	if is_exalted:
+		GameInfos.boss_weeb_id = player_index
 		set_player_evolution(PlayerCharacter.Evolutions.Weeb, false, true)
 		$Control/Icon.material = CHROMATIC_ABERRATION_MAT
 		$Control/Icon.material.set_shader_parameter("chaos", 100)
