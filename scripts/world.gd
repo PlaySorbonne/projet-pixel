@@ -78,7 +78,7 @@ func timeout_end_game() -> void:
 	end_game()
 
 func choose_tmp_winners() -> void:
-	var winners : Array[int] = []
+	var winners : Array = []
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
 			# tmp winner is most advanced evolution
@@ -117,7 +117,7 @@ func choose_tmp_winners() -> void:
 	GameInfos.tmp_winners = winners
 
 func choose_winners() -> void:
-	var winners : Array[int] = []
+	var winners : Array = []
 	match GameInfos.victory_condition:
 		GameInfos.VictoryConditions.Elimination:
 			# winner are last standing players
