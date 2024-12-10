@@ -31,7 +31,7 @@ const GAMEPLAY_PROPERTIES : Dictionary = {
 	"ascended_scale" : 1.4,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
-	"attack_intensity" : 3.0,
+	"attack_intensity" : 1.5,
 	"knockback_multiplier" : 0.5,
 	"attack_recovery" : 0.75,
 	"dash_speed" : 1.25,
@@ -46,7 +46,7 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"ascended_scale" : 2.5,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
-	"attack_intensity" : 3.0,
+	"attack_intensity" :1.5,
 	"knockback_multiplier" : 0.5,
 	"attack_recovery" : 0.75,
 	"dash_speed" : 1.5,
@@ -71,6 +71,8 @@ func set_ascended_stats(is_boss_weeb := false) -> void:
 			ascended_stats[s] = self.get(s) * BOSS_GAMEPLAY_PROPERTIES[s]
 		else:
 			ascended_stats[s] = self.get(s) * GAMEPLAY_PROPERTIES[s]
+	if is_boss_weeb:
+		ascended_stats["max_hitpoints"] = 40
 
 func death(force := false):
 	if ascended:
