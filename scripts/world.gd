@@ -29,6 +29,7 @@ var has_weeb_arrived := false
 var game_ended := false
 var players_left : int = 0
 var players_stats : Dictionary = {}
+var is_boss_weeb_killed := false
 
 func _ready():
 	GameInfos.game_started = true
@@ -70,6 +71,7 @@ func initialize_boss_weeb() -> void:
 	boss_weeb.weeb_descended.connect(boss_weeb_killed)
 
 func boss_weeb_killed(_boss_weeb : WeebCharacter) -> void:
+	is_boss_weeb_killed = true
 	end_game()
 
 func timeout_end_game() -> void:
@@ -107,7 +109,11 @@ func choose_tmp_winners() -> void:
 					winners = [p_stats.player_id]
 					max_time = p.get_time_ascended()
 		GameInfos.VictoryConditions.KillBoss:
-			winners = [GameInfos.boss_weeb_id]
+			if is_boss_weeb_killed:
+				winners = GameInfos.players.keys().duplicate()
+				winners.erase(GameInfos.boss_weeb_id)
+			else:
+				winners = [GameInfos.boss_weeb_id]
 	GameInfos.tmp_winners = winners
 
 func choose_winners() -> void:
@@ -137,15 +143,12 @@ func choose_winners() -> void:
 					max_time = p.get_time_ascended()
 					winners = [p.player_ID]
 		GameInfos.VictoryConditions.KillBoss:
-			var normal_players_ids : Array[int] = []
-			for p_stats : PlayerStats in players_stats.values():
-				var p : PlayerCharacter = GameInfos.players[p_stats.player_id]
-				if p.player_ID == GameInfos.boss_weeb_id:
-					if p.alive:
-						winners = [p_stats.player_id]
-						break
+			if is_boss_weeb_killed:
+				if is_boss_weeb_killed:
+					winners = GameInfos.players.keys().duplicate()
+					winners.erase(GameInfos.boss_weeb_id)
 				else:
-					winners.append(p_stats.player_id)
+					winners = [GameInfos.boss_weeb_id]
 	GameInfos.last_winners = winners
 
 func player_eliminated():

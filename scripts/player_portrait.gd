@@ -23,7 +23,10 @@ func _ready():
 	if GameInfos.lives_limit > 0:
 		current_lives = GameInfos.lives_limit
 		$Holder/LabelLives.text = str(current_lives)
-		$Holder/LabelLives.visible = true
+		if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss:
+			$Holder/LabelLives.visible = (player_number != GameInfos.boss_weeb_id)
+		else:
+			$Holder/LabelLives.visible = true
 
 func _process(delta):
 	$Holder.position += delta * velocity
@@ -31,6 +34,9 @@ func _process(delta):
 func initialize_portrait(player_num : int):
 	player_number = player_num
 	GameInfos.player_portaits[player_number] = self
+	if GameInfos.lives_limit > 0:
+		if GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss:
+			$Holder/LabelLives.visible = (player_number != GameInfos.boss_weeb_id)
 	var player_color : Color = GameInfos.players_data[player_num]["color"]
 	$Holder/TextureBackground.modulate = player_color
 	connect_player_object()
