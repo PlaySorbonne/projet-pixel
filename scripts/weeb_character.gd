@@ -28,7 +28,7 @@ const GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 3,
 	"speed" : 1.5,
 	"attack_size" : 2.0,
-	"scale" : 1.4,
+	"ascended_scale" : 1.4,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
 	"attack_intensity" : 3.0,
@@ -42,7 +42,7 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 10,
 	"speed" : 0.9,
 	"attack_size" : 3.0,
-	"scale" : 2.5,
+	"ascended_scale" : 2.5,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
 	"attack_intensity" : 3.0,
@@ -93,17 +93,16 @@ func ascend():
 	rotation = 0.0
 	custom_audio_attacks = AUDIO_EXPLOSION
 	controller_vibration(1.0, 0.5)
+	
+	for s : String in GAMEPLAY_PROPERTIES.keys():
+		self.set(s, ascended_stats[s])
+	hitpoints = max_hitpoints
+	
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
 	exalted_particles = EXALTED_PARTICLES.instantiate()
 	$Sprite2D.add_child(exalted_particles)
-	
-	
-	scale = ascended_scale
-	previous_hitbox_size = attack_size
-	attack_size = ascended_weeb_attack_size
-	
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
 	$Sprite2D.material.set_shader_parameter("chaos", 60)
 	tween = create_tween()
@@ -112,11 +111,7 @@ func ascend():
 	tween.tween_property($Sprite2D, "material:shader_parameter/divider_blue", 
 		1.25, 0.2)
 	$CharacterPointer.set_healthbars_color(Color.CRIMSON)
-	
-	max_hitpoints = ascended_weeb_hitpoints
-	hitpoints = ascended_weeb_hitpoints
-	
-	$CharacterPointer.set_max_hitpoints(ascended_weeb_hitpoints)
+	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 	previous_trail_color = $TrailEffect.modulate
 	$TrailEffect.modulate = Color.BLACK
 	ascended = true
@@ -127,18 +122,20 @@ func ascend():
 func descend():
 	emit_signal("weeb_descended", self)
 	ascended = false
+	
+	for s : String in GAMEPLAY_PROPERTIES.keys():
+		self.set(s, default_stats[s])
+	
 	scale = default_scale
 	custom_audio_attacks = null
 	$CharacterPointer.set_healthbars_color(CharacterPointer.DEFAULT_HEALTH_COLOR)
 	$CharacterPointer.set_max_hitpoints(0, false)
 	GameInfos.anime_box.unfollow_ascended_weeb(
 		self, knockback_velocity.rotated(PI / 2.0))
-	max_hitpoints = 1
 	hitpoints = 0
 	if exalted_particles != null:
 		exalted_particles.queue_free()
 		exalted_particles = null
-	attack_size = previous_hitbox_size
 	$TrailEffect.modulate = previous_trail_color
 	knockback_velocity *= 2.5
 	eliminate_hit_targets = false
