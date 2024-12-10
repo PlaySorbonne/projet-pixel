@@ -26,33 +26,33 @@ var dash_cooldown := 0.25
 
 const GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 3,
-	"speed" : 1.15,
+	"speed" : 1.1,
 	"attack_size" : 1.5,
 	"ascended_scale" : 1.4,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
-	"attack_intensity" : 1.5,
+	"attack_intensity" : 1.25,
 	"knockback_multiplier" : 0.5,
 	"attack_recovery" : 0.75,
 	"dash_speed" : 1.25,
 	"dash_duration" : 1.25,
 	"dash_cooldown" : 0.3,
-	"air_speed" : 1.0,
+	"air_speed" : 1.1,
 }
 const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 25,
-	"speed" : 0.9,
+	"speed" : 0.8,
 	"attack_size" : 1.75,
 	"ascended_scale" : 2.5,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
-	"attack_intensity" :1.5,
+	"attack_intensity" :1.4,
 	"knockback_multiplier" : 0.5,
 	"attack_recovery" : 0.75,
 	"dash_speed" : 1.5,
 	"dash_duration" : 1.5,
 	"dash_cooldown" : 0.2,
-	"air_speed" : 0.9,
+	"air_speed" : 0.8,
 }
 var default_stats : Dictionary = {}
 var ascended_stats : Dictionary = {}
@@ -72,7 +72,7 @@ func set_ascended_stats(is_boss_weeb := false) -> void:
 		else:
 			ascended_stats[s] = self.get(s) * GAMEPLAY_PROPERTIES[s]
 	if is_boss_weeb:
-		ascended_stats["max_hitpoints"] = 40
+		ascended_stats["max_hitpoints"] = 10 * int(4 * GameInfos.lives_limit / 9)
 
 func death(force := false):
 	if ascended:
