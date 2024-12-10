@@ -134,7 +134,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		anim_time_multiplier = 2.0
 	else:
 		health_par_pos_coeff = DEFAULT_HEALTH_BAR_COEFF / 6.0
-		anim_time_multiplier = 30.0
+		anim_time_multiplier = 7.5
 	
 	var last_unit_health := hitpoints % 5
 	if last_unit_health > 0:
