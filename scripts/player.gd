@@ -127,8 +127,7 @@ func _ready():
 	super._ready()
 	team = player_ID
 	set_player_color(GameInfos.players_data[player_ID]["color"])
-	if not GameInfos.use_special_gameplay_data:
-		load_custom_gameplay_data()
+	load_custom_gameplay_data()
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
 	$AudioHit.pitch_scale = sfx_pitch_modulation
 	$CharacterPointer.set_character_name(GameInfos.players_data[player_ID]["name"])
