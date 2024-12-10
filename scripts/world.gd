@@ -67,7 +67,10 @@ func initialize_boss_weeb() -> void:
 	GameInfos.anime_box.follow_ascended_weeb(boss_weeb)
 	await get_tree().create_timer(3.0).timeout
 	boss_weeb.ascend()
-	boss_weeb.fighter_died.connect(end_game)
+	boss_weeb.weeb_descended.connect(boss_weeb_killed)
+
+func boss_weeb_killed(_boss_weeb : WeebCharacter) -> void:
+	end_game()
 
 func timeout_end_game() -> void:
 	end_game()
