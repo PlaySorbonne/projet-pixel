@@ -25,7 +25,9 @@ func _ready():
 	for c in $Adjuster/VBoxContainer.get_children():
 		if c.has_method("_on_description_changed"):
 			variable_adjusters.append(c)
-	var data_keys : Array[String] = PlayerCharacter.Evolutions.keys().duplicate()
+	var data_keys : Array[String] = []
+	for k : String in PlayerCharacter.Evolutions.keys():
+		data_keys.append(k)
 	variables_data = SettingsScreen.gameplay_data.duplicate()
 	
 	for ev : String in data_keys:
