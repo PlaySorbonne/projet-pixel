@@ -65,8 +65,10 @@ func initialize_boss_weeb() -> void:
 	boss_weeb.is_super_weeb = true
 	boss_weeb.set_ascended_stats(true)
 	boss_weeb.global_position = GameInfos.camera.global_position + Vector2(0, -250.0)
-	GameInfos.anime_box.follow_ascended_weeb(boss_weeb)
 	await get_tree().create_timer(3.0).timeout
+	GameInfos.anime_box.toggle_cassette(true)
+	await get_tree().process_frame
+	GameInfos.anime_box.follow_ascended_weeb(boss_weeb)
 	boss_weeb.ascend()
 	boss_weeb.weeb_descended.connect(boss_weeb_killed)
 	for p : PlayerCharacter in GameInfos.players.values():
