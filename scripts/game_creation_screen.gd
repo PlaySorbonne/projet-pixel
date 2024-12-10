@@ -64,7 +64,7 @@ func reload_old_game_infos():
 	var delay := 0.0
 	for id: int in GameInfos.players_data.keys():
 		var player : PlayerCharacter = PlayerCharacter.EvolutionCharacters[
-									GameInfos.default_evolution].instantiate()
+									GameInfos.previous_evolutions[id]].instantiate()
 		player.player_ID = id
 		var p_controlled : bool = GameInfos.players_data[id]["player_controlled"]
 		player.is_player_controlled = p_controlled

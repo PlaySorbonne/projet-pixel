@@ -50,7 +50,7 @@ func _ready():
 	$Control.scale = Vector2.ZERO
 	await get_tree().process_frame
 	visible = true
-	set_player_evolution(GameInfos.default_evolution, true, true)
+	set_player_evolution(GameInfos.previous_evolutions[player_index], true, true)
 	$AnimationPlayer.play("pop_in")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
@@ -121,6 +121,7 @@ func set_player_evolution(new_evolution : PlayerCharacter.Evolutions,
 	if current_evolution == new_evolution and not force:
 		return
 	current_evolution = new_evolution
+	GameInfos.previous_evolutions[player_index] = new_evolution
 	if not skip_evol:
 		var p : PlayerCharacter = GameInfos.players[player_index]
 		p.evolve(new_evolution, true)

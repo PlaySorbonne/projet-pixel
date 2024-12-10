@@ -104,6 +104,7 @@ var players_data : Dictionary = {}
 var last_winners : Array[int] = []
 var player_portraits : Dictionary = {}
 var tmp_winners : Array[int] = []
+var previous_evolutions : Dictionary = {}
 
 var time_limit := -1
 var lives_limit := -1
@@ -149,6 +150,7 @@ func perform_deep_reset():
 	selected_gamemode = 0
 	last_winners = []
 	default_evolution = PlayerCharacter.Evolutions.CEO
+	previous_evolutions = {}
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
