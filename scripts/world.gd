@@ -57,7 +57,7 @@ func _ready():
 		activate_players()
 	# connect eventual timer to end game func
 	if GameInfos.gameplay_timer != null and is_instance_valid(GameInfos.gameplay_timer):
-		GameInfos.gameplay_timer.connect("timeout", timeout_end_game)
+		GameInfos.gameplay_timer.timeout.connect(timeout_end_game)
 
 func initialize_boss_weeb() -> void:
 	var boss_weeb : WeebCharacter = GameInfos.players[GameInfos.boss_weeb_id]
@@ -65,8 +65,9 @@ func initialize_boss_weeb() -> void:
 	boss_weeb.set_ascended_stats(true)
 	boss_weeb.global_position = GameInfos.camera.global_position + Vector2(0, -250.0)
 	GameInfos.anime_box.follow_ascended_weeb(boss_weeb)
-	await get_tree().create_timer(3.0)
+	await get_tree().create_timer(3.0).timeout
 	boss_weeb.ascend()
+	boss_weeb.fighter_died.connect(end_game)
 
 func timeout_end_game() -> void:
 	end_game()

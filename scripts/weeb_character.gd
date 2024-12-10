@@ -26,8 +26,8 @@ var dash_cooldown := 0.25
 
 const GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 3,
-	"speed" : 1.5,
-	"attack_size" : 2.0,
+	"speed" : 1.15,
+	"attack_size" : 1.5,
 	"ascended_scale" : 1.4,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
@@ -41,8 +41,8 @@ const GAMEPLAY_PROPERTIES : Dictionary = {
 }
 const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"max_hitpoints" : 10,
-	"speed" : 1.5,
-	"attack_size" : 3.0,
+	"speed" : 0.9,
+	"attack_size" : 1.75,
 	"ascended_scale" : 2.5,
 	"jump_velocity" : 1.5,
 	"attack_damage" : 3,
@@ -52,7 +52,7 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 	"dash_speed" : 1.5,
 	"dash_duration" : 1.5,
 	"dash_cooldown" : 0.2,
-	"air_speed" : 1.5,
+	"air_speed" : 0.9,
 }
 var default_stats : Dictionary = {}
 var ascended_stats : Dictionary = {}
@@ -106,6 +106,8 @@ func ascend():
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
 	await tween.finished
+	scale = ascended_scale
+	
 	exalted_particles = EXALTED_PARTICLES.instantiate()
 	$Sprite2D.add_child(exalted_particles)
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
