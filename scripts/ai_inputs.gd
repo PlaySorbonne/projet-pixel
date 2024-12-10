@@ -226,7 +226,6 @@ func update_enemies(delta : float, force_update := false) -> void:
 		enemy_directions.append(location.direction_to(enemy_location))
 		enemy_hitpoints.append(current_enemy.hitpoints)
 		enemy_position_differences.append(location - enemy_location)
-	print("player [" + str(player.player_ID) + "] -> other players = " + str(enemy_ids) + " ; enemies = " + str(enemies) )
 
 func _on_timer_left_timeout() -> void:
 	player.left_pressed = false
