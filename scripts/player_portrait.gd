@@ -8,6 +8,7 @@ const PLAYER_PORTRAITS = [
 	preload("res://resources/images/characters/chicken/chicken_portrait.png"),
 	preload("res://resources/images/characters/weeb/weeb_portrait.png")
 ]
+const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 
 var player_number := 0
 var current_evolution := -1
@@ -62,8 +63,21 @@ func connect_player_object():
 	player.fighter_hit.connect(update_health)
 	player.player_spawned.connect(update_health)
 	player.player_evolved.connect(update_evolution)
+	if player is WeebCharacter:
+		var weeb : WeebCharacter = player
+		weeb.weeb_ascended.connect(ascend_portrait)
+		weeb.weeb_descended.connect(descend_portrait)
 	if GameInfos.lives_limit > 0:
 		player.fighter_died.connect(update_lives)
+
+func descend_portrait(_weeb : WeebCharacter) -> void:
+	$Holder/TexturePortrait.material = null
+
+func ascend_portrait(_weeb : WeebCharacter) -> void:
+	$Holder/TexturePortrait.material = PlayerSelection.CHROMATIC_ABERRATION_MAT
+	$Holder/TexturePortrait.material.set_shader_parameter("chaos", 100)
+	$Holder/TexturePortrait.material.set_shader_parameter("divider_green", 2.0)
+	$Holder/TexturePortrait.material.set_shader_parameter("divider_blue",  1.25)
 
 func update_lives(_player : PlayerCharacter) -> void:
 	current_lives -= 1

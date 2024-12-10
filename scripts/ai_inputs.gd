@@ -123,13 +123,15 @@ func attack_cassette() -> void:
 	attack_enemy(false)
 
 func check_chosen_enemy() -> bool:
+	if len(enemies) == 0:
+		return false
 	if is_instance_valid(enemies[chosen_enemy]) and enemies[chosen_enemy].alive:
 		return true
 	else:
 		return false
 
 func attack_enemy(use_chosen_enemy := true) -> void:
-	if reacting_time < reaction_time:
+	if reacting_time < reaction_time or len(enemies) == 0:
 		return
 	reacting_time = 0.0
 	#print("ai attack_enemy -> chosen enemy:", chosen_enemy)
@@ -224,6 +226,7 @@ func update_enemies(delta : float, force_update := false) -> void:
 		enemy_directions.append(location.direction_to(enemy_location))
 		enemy_hitpoints.append(current_enemy.hitpoints)
 		enemy_position_differences.append(location - enemy_location)
+	print("player [" + str(player.player_ID) + "] -> other players = " + str(enemy_ids) + " ; enemies = " + str(enemies) )
 
 func _on_timer_left_timeout() -> void:
 	player.left_pressed = false
