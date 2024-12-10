@@ -106,6 +106,9 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 	player_infos.position = PLAYER_INFOS_POS_INIT + PLAYER_INFOS_POS_OFFSET*(
 		player_selectors.size()-1)
 	player_infos.connect("player_removed", remove_player)
+	if len(player_selectors) == 1 and is_first_player_exalted:
+		await get_tree().process_frame
+		player_infos.set_exalted(true)
 
 func check_start_button():
 	var not_active = $ButtonConfirm.disabled
