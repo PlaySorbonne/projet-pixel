@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://resources/shaders/ChromaticAberration.gdshader" id="1_hdmi3"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_hdmi3")
 shader_parameter/chaos = 0.0
 shader_parameter/radius = 1.0
