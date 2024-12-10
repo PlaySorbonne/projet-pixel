@@ -40,7 +40,7 @@ const GAMEPLAY_PROPERTIES : Dictionary = {
 	"air_speed" : 1.0,
 }
 const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
-	"max_hitpoints" : 10,
+	"max_hitpoints" : 25,
 	"speed" : 0.9,
 	"attack_size" : 1.75,
 	"ascended_scale" : 2.5,
