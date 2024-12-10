@@ -72,7 +72,7 @@ func set_ascended_stats(is_boss_weeb := false) -> void:
 		else:
 			ascended_stats[s] = self.get(s) * GAMEPLAY_PROPERTIES[s]
 	if is_boss_weeb:
-		ascended_stats["max_hitpoints"] = 10 * int(4 * GameInfos.lives_limit / 9)
+		ascended_stats["max_hitpoints"] = 20 * int( (5 * GameInfos.lives_limit) / 9 )
 
 func death(force := false):
 	if ascended:

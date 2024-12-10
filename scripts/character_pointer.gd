@@ -5,11 +5,11 @@ signal healthbars_displayed
 
 const HEALTH_BAR_UNIT := preload(("res://scenes/Menus/GameUI/healthbar_unit.tscn"))
 const HEALTH_BAR_POS_INIT := Vector2(-54, -50)
-const HEALTH_PAR_POS_COEFF := Vector2(7, -31) / 2.0
 const TIMER_TRANSPARENT := 3.5
 const TEXTURE_REF := preload("res://resources/images/characters/character_pointer.png")
 const DEFAULT_HEALTH_COLOR := Color(0.812, 0.0, 0.0)
 const DELAY_BETWEEN_HP_CHANGE := 0.2
+const DEFAULT_HELALTH_BAR_COEFF := Vector2(7, -31)
 
 static var current_z = 0
 
@@ -41,6 +41,7 @@ var current_hitpoints : int = 0
 var healthbars : Array[HealthBarUnit] = []
 var healthbar_anim_in_progress := false
 var default_healthbar_color : Color = DEFAULT_HEALTH_COLOR
+var health_par_pos_coeff := DEFAULT_HELALTH_BAR_COEFF
 
 func _ready() -> void:
 	$HealthBars.z_index = current_z * 5
@@ -64,8 +65,8 @@ func _process(delta : float) -> void:
 			current_hitpoints -= 1
 			if current_health_bar.damage(1, 0):
 				healthbars.pop_back()
-		else:
-			print("huh. well that shouldn't be here. helthbars = " + str(healthbars))
+		#else:
+			#print("huh. well that shouldn't be here. helthbars = " + str(healthbars))
 
 func set_healthbars_color(new_color : Color):
 	default_healthbar_color = new_color
@@ -124,6 +125,13 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 	target_hitpoints = hitpoints
 	current_hitpoints = hitpoints
 	var num_health_bars := hitpoints / 5
+	if num_health_bars <= 3:
+		health_par_pos_coeff = DEFAULT_HELALTH_BAR_COEFF
+	elif num_health_bars <= 10:
+		health_par_pos_coeff = DEFAULT_HELALTH_BAR_COEFF / 4.0
+	else:
+		health_par_pos_coeff = DEFAULT_HELALTH_BAR_COEFF / 8.0
+	
 	var last_unit_health := hitpoints % 5
 	if last_unit_health > 0:
 		num_health_bars += 1
@@ -140,7 +148,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		unit.set_health_value(unit_health)
 		healthbars.append(unit)
 		var array_pos := healthbars.size()-1
-		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
+		unit.position = HEALTH_BAR_POS_INIT + health_par_pos_coeff * array_pos
 		unit.z_index = healthbars.size() * 2
 		$HealthBars.add_child(unit)
 		unit.default_health_color = default_healthbar_color
@@ -162,7 +170,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 func update_nodes_position() -> void:
 	var new_name_pos := Vector2(
 		-160.0 + 7.5 * (healthbars.size() + 1),
-		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * (healthbars.size() + 1) - 20.0
+		HEALTH_BAR_POS_INIT.y + health_par_pos_coeff.y * (healthbars.size() + 1) - 20.0
 	)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
 	t.tween_property($HealthBars/LabelName, "position", new_name_pos, 0.1)
