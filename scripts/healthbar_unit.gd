@@ -81,7 +81,7 @@ func remove_unit():
 	emit_signal("unit_removed")
 	queue_free()
 
-func add_unit(delay := 0):
+func add_unit(delay := 0, time_mult : float = 1.0):
 	var h := health
 	set_health_value(0)
 	scale = Vector2(1.0, 0.0)
@@ -89,7 +89,7 @@ func add_unit(delay := 0):
 	var tween := create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)
 	await get_tree().create_timer(0.1).timeout
-	heal_effect(h,  0.1 * delay)
+	heal_effect(h,  0.1 * delay / time_mult)
 
 func add_unit_no_anim():
 	scale = Vector2.ONE

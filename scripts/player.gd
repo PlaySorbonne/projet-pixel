@@ -341,8 +341,9 @@ func play_hit_sfx():
 	$AudioHit.play(0.0)
 
 func set_stunned():
-	$StunTimer.start(stun_time)
-	in_stun_time = true
+	if stun_time > 0:
+		$StunTimer.start(stun_time)
+		in_stun_time = true
 
 func emit_hit_particles():
 	$HitParticles.amount = randi_range(8, 12)
