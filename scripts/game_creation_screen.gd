@@ -201,6 +201,7 @@ func set_gamemode(gamemode : int):
 			$EvolutionsButton.set_can_change_evolving_mode(true)
 			$TimeButton.set_forced_time(true)
 			$LivesButton.set_forced_lives(true)
+			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Balanced)
 			set_teams_active(false)
 			
 		GameInfos.VictoryConditions.CassetteTime:
@@ -211,6 +212,7 @@ func set_gamemode(gamemode : int):
 			$TimeButton.set_forced_time(true)
 			$LivesButton.set_forced_lives(false)
 			set_teams_active(false)
+			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Linear)
 			
 		GameInfos.VictoryConditions.KillBoss:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)

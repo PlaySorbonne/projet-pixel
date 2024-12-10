@@ -7,13 +7,19 @@ enum Languages {English, Francais}
 
 const DEFAULT_STATS_TXT = "DEFAULT"
 const DEFAULT_GAMEPLAY_FILE = "res://default_gameplay_stats.txt"
+const DEFAULT_BALANCED_STATS_FILE = "res://stats_balanced.txt"
 const GAMEPLAY_FILE_NAME = "Gameplay_stats.txt"
 const SETTINGS_FILE_NAME = "user://ascend_settings.txt"
 const LANGUAGE_KEYS = [
 	"en",
 	"fr"
 ]
+const GAMEPLAY_FILES := {
+	GameInfos.StatsFiles.Linear : DEFAULT_GAMEPLAY_FILE,
+	GameInfos.StatsFiles.Balanced : DEFAULT_BALANCED_STATS_FILE
+}
 
+static var current_gameplay_file_type := GameInfos.StatsFiles.Linear
 static var default_gameplay_file := OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/" + GAMEPLAY_FILE_NAME
 static var gameplay_data : Dictionary = {}
 static var user_settings : Dictionary = {
@@ -77,12 +83,21 @@ static func update_audio():
 static func update_language():
 	TranslationServer.set_locale(LANGUAGE_KEYS[user_settings["language"]])
 
-static func update_stats_file():
+static func update_stats_file(file_choice := GameInfos.StatsFiles.Linear):
+	current_gameplay_file_type = file_choice
+	var user_gameplay_file : String 
+	match file_choice:
+		GameInfos.StatsFiles.Linear:
+			user_gameplay_file = DEFAULT_GAMEPLAY_FILE
+		GameInfos.StatsFiles.Balanced:
+			user_gameplay_file = DEFAULT_BALANCED_STATS_FILE
+		GameInfos.StatsFiles.Custom:
+			user_gameplay_file = user_settings['stats']
 	if user_settings.has("stats"):
 		user_settings['stats']
 	else:
 		user_settings['stats'] = default_gameplay_file
-	var user_gameplay_file : String = user_settings['stats']
+	
 	if not FileAccess.file_exists(user_gameplay_file):
 		# write default stats file cuz there isn't one duh
 		var default_stats_file := FileAccess.open(DEFAULT_GAMEPLAY_FILE, FileAccess.READ)

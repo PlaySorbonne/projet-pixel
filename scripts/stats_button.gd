@@ -20,14 +20,13 @@ func set_can_change_stats_file(can_change : bool) -> void:
 func set_stats_mode(stats : GameInfos.StatsFiles) -> void:
 	GameInfos.stats_file = stats
 	display_stats()
+	SettingsScreen.update_stats_file(stats)
 
 func _on_pressed() -> void:
 	match GameInfos.stats_file:
 		GameInfos.StatsFiles.Linear:
 			set_stats_mode(GameInfos.StatsFiles.Balanced)
 		GameInfos.StatsFiles.Balanced:
-			set_stats_mode(GameInfos.StatsFiles.Shonen)
-		GameInfos.StatsFiles.Shonen:
 			set_stats_mode(GameInfos.StatsFiles.Custom)
 		GameInfos.StatsFiles.Custom:
 			set_stats_mode(GameInfos.StatsFiles.Linear)

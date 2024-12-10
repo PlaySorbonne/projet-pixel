@@ -2,7 +2,7 @@ extends Node
 
 enum VictoryConditions {Elimination, Kills, CassetteTime, KillBoss}
 enum EvolvingMode {Linear, Random, Fixed}
-enum StatsFiles {Linear, Balanced, Shonen, Custom}
+enum StatsFiles {Linear, Balanced, Custom}
 
 const LEVEL_PATHS : Array[String] = [
 	"res://scenes/World/Levels/level_default.tscn",
