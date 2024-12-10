@@ -110,6 +110,14 @@ func create_player_infos(index : int, delay := 0.0, with_voice := true):
 		await get_tree().process_frame
 		player_infos.set_exalted(true)
 
+func set_teams_active(new_active : bool) -> void:
+	if new_active == GameInfos.teams_active:
+		return
+	GameInfos.teams_active = new_active
+	if not new_active:
+		for p : PlayerCharacter in GameInfos.players.values():
+			p.team = p.player_ID
+
 func check_start_button():
 	var not_active = $ButtonConfirm.disabled
 	if not_active and len(player_selectors) >= 2:
@@ -187,11 +195,13 @@ func set_gamemode(gamemode : int):
 			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Linear)
 			$TimeButton.set_forced_time(false)
 			$LivesButton.set_forced_lives(false)
+			set_teams_active(false)
 			
 		GameInfos.VictoryConditions.Kills:
 			$EvolutionsButton.set_can_change_evolving_mode(true)
 			$TimeButton.set_forced_time(true)
 			$LivesButton.set_forced_lives(true)
+			set_teams_active(false)
 			
 		GameInfos.VictoryConditions.CassetteTime:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
@@ -200,6 +210,7 @@ func set_gamemode(gamemode : int):
 			set_selectable_evolutions(false)
 			$TimeButton.set_forced_time(true)
 			$LivesButton.set_forced_lives(false)
+			set_teams_active(false)
 			
 		GameInfos.VictoryConditions.KillBoss:
 			$EvolutionsButton.set_evolving_mode(GameInfos.EvolvingMode.Fixed)
@@ -207,6 +218,7 @@ func set_gamemode(gamemode : int):
 			$StatsButton.set_stats_mode(GameInfos.StatsFiles.Balanced)
 			$TimeButton.set_forced_time(true)
 			$LivesButton.set_forced_lives(true)
+			set_teams_active(true)
 			is_first_player_exalted = true
 			if len(player_selectors) > 0:
 				player_selectors[0].set_exalted(true)

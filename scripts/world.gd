@@ -69,6 +69,11 @@ func initialize_boss_weeb() -> void:
 	await get_tree().create_timer(3.0).timeout
 	boss_weeb.ascend()
 	boss_weeb.weeb_descended.connect(boss_weeb_killed)
+	for p : PlayerCharacter in GameInfos.players.values():
+		if p == boss_weeb:
+			p.team = 1
+		else:
+			p.team = 0
 
 func boss_weeb_killed(_boss_weeb : WeebCharacter) -> void:
 	is_boss_weeb_killed = true

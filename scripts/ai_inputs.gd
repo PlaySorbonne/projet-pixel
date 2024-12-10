@@ -217,6 +217,8 @@ func update_enemies(delta : float, force_update := false) -> void:
 	for id : int in enemy_ids:
 		var current_enemy : PlayerCharacter = GameInfos.players[id]
 		var enemy_location : Vector2 = current_enemy.global_position
+		if current_enemy.team == player.team:
+			continue
 		enemies.append(GameInfos.players[id])
 		enemy_distances.append(location.distance_squared_to(enemy_location))
 		enemy_directions.append(location.direction_to(enemy_location))
@@ -248,7 +250,7 @@ func _on_timer_chosen_enemy_timeout() -> void:
 	chosen_enemy = randi_range(0, len(enemies)-1)
 	var chosen_enemy_obj : PlayerCharacter = GameInfos.players[enemy_ids[chosen_enemy]]
 	var fail_counter := 0
-	while not chosen_enemy_obj.alive:
+	while (not chosen_enemy_obj.alive) or (chosen_enemy_obj.team == player.team):
 		chosen_enemy += 1
 		fail_counter += 1
 		if chosen_enemy >= enemies.size():

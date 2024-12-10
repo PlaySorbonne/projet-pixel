@@ -105,6 +105,7 @@ var last_winners : Array[int] = []
 var player_portraits : Dictionary = {}
 var tmp_winners : Array[int] = []
 var previous_evolutions : Dictionary = {}
+var teams_active := false
 
 var time_limit := -1
 var lives_limit := -1
@@ -151,6 +152,7 @@ func perform_deep_reset():
 	last_winners = []
 	default_evolution = PlayerCharacter.Evolutions.CEO
 	previous_evolutions = {}
+	teams_active = false
 
 func load_game_level() -> Level:
 	return load(LEVEL_PATHS[selected_level]).instantiate()
@@ -185,6 +187,3 @@ func remove_player(id : int) -> void:
 
 func players_number():
 	return len(players)
-
-
-# add battle type (team, brawl, etc)

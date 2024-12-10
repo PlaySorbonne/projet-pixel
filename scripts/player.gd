@@ -125,7 +125,8 @@ func _init():
 
 func _ready():
 	super._ready()
-	team = player_ID
+	if not GameInfos.teams_active:
+		team = player_ID
 	set_player_color(GameInfos.players_data[player_ID]["color"])
 	load_custom_gameplay_data()
 	var sfx_pitch_modulation : float = 0.6 + float(current_evolution+1) / 5.0
