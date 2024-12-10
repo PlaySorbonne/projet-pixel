@@ -97,6 +97,9 @@ func ascend():
 	for s : String in GAMEPLAY_PROPERTIES.keys():
 		self.set(s, ascended_stats[s])
 	hitpoints = max_hitpoints
+	$SpecialAttack.dash_speed    = dash_speed
+	$SpecialAttack.dash_duration = dash_duration
+	$SpecialAttack.dash_cooldown = dash_cooldown
 	
 	var tween := create_tween()
 	tween.tween_property(self, "scale", ascended_scale, 0.25)
@@ -125,6 +128,9 @@ func descend():
 	
 	for s : String in GAMEPLAY_PROPERTIES.keys():
 		self.set(s, default_stats[s])
+	$SpecialAttack.dash_speed    = dash_speed
+	$SpecialAttack.dash_duration = dash_duration
+	$SpecialAttack.dash_cooldown = dash_cooldown
 	
 	scale = default_scale
 	custom_audio_attacks = null
