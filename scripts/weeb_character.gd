@@ -96,6 +96,7 @@ func ascend():
 	movement_velocity = Vector2.ZERO
 	knockback_velocity = Vector2.ZERO
 	velocity = Vector2.ZERO
+	var is_boss_weeb := GameInfos.victory_condition == GameInfos.VictoryConditions.KillBoss
 	emit_signal("weeb_ascended", self)
 	rotation = 0.0
 	custom_audio_attacks = AUDIO_EXPLOSION
@@ -116,7 +117,10 @@ func ascend():
 	exalted_particles = EXALTED_PARTICLES.instantiate()
 	$Sprite2D.add_child(exalted_particles)
 	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
-	$Sprite2D.material.set_shader_parameter("chaos", 60)
+	var shader_chaos := 60
+	if is_boss_weeb:
+		shader_chaos = 30
+	$Sprite2D.material.set_shader_parameter("chaos", shader_chaos)
 	tween = create_tween()
 	tween.tween_property($Sprite2D, "material:shader_parameter/divider_green", 
 		3.5, 0.2)

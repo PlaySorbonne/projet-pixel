@@ -47,7 +47,7 @@ func check_remove() -> bool:
 		return true
 	return false
 
-func heal_effect(val : int, delay : float) -> void:
+func heal_effect(val : int, delay : float, time_coeff : float) -> void:
 	var new_tips : Array[TextureRect] = []
 	var new_health : int = min(health+val, 5)
 	for h in range(health, new_health):
@@ -58,10 +58,10 @@ func heal_effect(val : int, delay : float) -> void:
 		new_tips.append(health_slot)
 	health = new_health
 	_update_healthbar()
-	await get_tree().create_timer(delay).timeout
+	await get_tree().create_timer(delay, false).timeout
 	var tween := create_tween()
 	for s : TextureRect in new_tips:
-		tween.tween_property(s, "modulate", Color.TRANSPARENT, 0.1)
+		tween.tween_property(s, "modulate", Color.TRANSPARENT, (0.1 / time_coeff))
 	await tween.finished
 	for s : TextureRect in new_tips:
 		s.queue_free()
@@ -89,7 +89,7 @@ func add_unit(delay := 0, time_mult : float = 1.0):
 	var tween := create_tween().set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(scale.x, 1.0), 0.3)
 	await get_tree().create_timer(0.1).timeout
-	heal_effect(h,  0.1 * delay / time_mult)
+	heal_effect(h,  0.1 * (delay / time_mult), time_mult)
 
 func add_unit_no_anim():
 	scale = Vector2.ONE

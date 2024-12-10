@@ -134,7 +134,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		anim_time_multiplier = 2.0
 	else:
 		health_par_pos_coeff = DEFAULT_HEALTH_BAR_COEFF / 6.0
-		anim_time_multiplier = 5.0
+		anim_time_multiplier = 30.0
 	
 	var last_unit_health := hitpoints % 5
 	if last_unit_health > 0:
@@ -173,7 +173,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 
 func update_nodes_position() -> void:
 	var new_name_pos := Vector2(
-		-160.0 + 7.5 * (healthbars.size() + 1),
+		-160.0 + (health_par_pos_coeff.x * 1.07143) * (healthbars.size() + 1),
 		HEALTH_BAR_POS_INIT.y + health_par_pos_coeff.y * (healthbars.size() + 1) - 20.0
 	)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
