@@ -14,6 +14,8 @@ const AUDIO_PITCH_INTENSE := 1.0
 
 @onready var music_tester := $ButtonTestMusic/AudioTestMusic
 @onready var music_background := $AudioStreamPlayer
+@onready var is_first_player_exalted := GameInfos.victory_condition == (
+										GameInfos.VictoryConditions.KillBoss)
 var music_tester_music := -1
 var keyboards: Array[int] = []
 var controllers: Array[int] = []
@@ -21,6 +23,7 @@ var player_selectors : Array[PlayerSelection] = []
 var current_level : Level = null
 var level_selected := -1
 var are_evolutions_selectable := false
+var start_pressed := false
 
 func _ready():
 	$AudioStreamPlayer.play(GameInfos.menu_music_time)
@@ -165,7 +168,6 @@ func _on_game_mode_selector_option_changed(new_option : int):
 	GameInfos.selected_gamemode = new_option
 	set_gamemode(new_option)
 
-var is_first_player_exalted := false
 func set_gamemode(gamemode : int):
 	#$LabelGameModeName.text = GameInfos.GAME_MODE_TITLES[gamemode]
 	$LabelGameModeDescription.text = GameInfos.GAME_MODE_DESCRIPTIONS[gamemode]
@@ -262,7 +264,6 @@ func _on_animation_start_animation_finished(anim_name : String):
 	if anim_name == "start" and not($ButtonConfirm.disabled):
 		$ButtonConfirm/AnimationStart.play("idle")
 
-var start_pressed := false
 func _on_button_confirm_pressed():
 	if len(player_selectors) < 2 or start_pressed:
 		return
