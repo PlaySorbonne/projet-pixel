@@ -722,6 +722,7 @@ horizontal_alignment = 1
 
 [node name="TextureTrophy" type="TextureRect" parent="Holder"]
 modulate = Color(0.901961, 0.792157, 0, 1)
+layout_mode = 0
 offset_left = 175.0
 offset_top = 27.0
 offset_right = 245.0
