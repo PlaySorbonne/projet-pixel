@@ -5,6 +5,8 @@ signal player_removed
 
 const MOUSE_TEXTURE = preload("res://resources/images/icons/mouse.png")
 const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
+const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
+
 
 @export var CEO_lines : Array[AudioStream] = []
 
@@ -65,10 +67,13 @@ var exalted_weeb := false
 func set_exalted(is_exalted : bool) -> void:
 	exalted_weeb = is_exalted
 	if is_exalted:
-		$Control/Icon.self_modulate = Color(1.5, 1.5, 0.0)
 		set_player_evolution(PlayerCharacter.Evolutions.Weeb, false, true)
+		$Control/Icon.material = CHROMATIC_ABERRATION_MAT
+		$Control/Icon.material.set_shader_parameter("chaos", 100)
+		$Control/Icon.material.set_shader_parameter("divider_green", 2.0)
+		$Control/Icon.material.set_shader_parameter("divider_blue",  1.25)
 	else:
-		$Control/Icon.self_modulate = Color.WHITE
+		$Control/Icon.material = null
 
 func _input(event : InputEvent):
 	var is_correct_control_type = false
