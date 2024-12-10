@@ -5,7 +5,7 @@ signal healthbars_displayed
 
 const HEALTH_BAR_UNIT := preload(("res://scenes/Menus/GameUI/healthbar_unit.tscn"))
 const HEALTH_BAR_POS_INIT := Vector2(-54, -50)
-const HEALTH_PAR_POS_COEFF := Vector2(7, -31)
+const HEALTH_PAR_POS_COEFF := Vector2(7, -31) / 2.0
 const TIMER_TRANSPARENT := 3.5
 const TEXTURE_REF := preload("res://resources/images/characters/character_pointer.png")
 const DEFAULT_HEALTH_COLOR := Color(0.812, 0.0, 0.0)
@@ -141,6 +141,7 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 		healthbars.append(unit)
 		var array_pos := healthbars.size()-1
 		unit.position = HEALTH_BAR_POS_INIT + HEALTH_PAR_POS_COEFF * array_pos
+		unit.z_index = healthbars.size() * 2
 		$HealthBars.add_child(unit)
 		unit.default_health_color = default_healthbar_color
 	update_nodes_position()
@@ -160,8 +161,8 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 
 func update_nodes_position() -> void:
 	var new_name_pos := Vector2(
-		-160.0 + 7.5 * healthbars.size(),
-		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * healthbars.size() - 20.0
+		-160.0 + 7.5 * (healthbars.size() + 1),
+		HEALTH_BAR_POS_INIT.y + HEALTH_PAR_POS_COEFF.y * (healthbars.size() + 1) - 20.0
 	)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
 	t.tween_property($HealthBars/LabelName, "position", new_name_pos, 0.1)
