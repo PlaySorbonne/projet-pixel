@@ -1,7 +1,7 @@
 extends AI_Inputs
 class_name AI_InputsEmployee
 
-const SPECIAL_MAX_X_OFFSET := 50.0
+const SPECIAL_MAX_X_OFFSET := 70.0
 
 func _process(delta: float) -> void:
 	update_enemies(delta, false)
