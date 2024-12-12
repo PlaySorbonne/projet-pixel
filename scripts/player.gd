@@ -241,7 +241,7 @@ func spawn(location : Vector2, activate := true, f_right := true):
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 
 func evolve(next_evolution : Evolutions, in_lobby := false):
-	if evolving:
+	if evolving or ascended:
 		return
 	if next_evolution == null:
 		next_evolution = current_evolution + 1
