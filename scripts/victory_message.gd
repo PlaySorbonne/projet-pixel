@@ -9,7 +9,7 @@ func _ready():
 	$AnimationPlayer.play("end_anim")
 	await $AnimationPlayer.animation_finished
 	$AnimationPlayer.play("idle")
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.9).timeout
 	can_press_input = true
 
 func _process(delta: float) -> void:

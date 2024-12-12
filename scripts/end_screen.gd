@@ -255,7 +255,7 @@ func execute_current_step(forward := true):
 				for l : PlayerVictoryStats in player_stats_nodes:
 					l.intro_animation()
 					await get_tree().create_timer(0.5).timeout
-				await get_tree().create_timer(1.2).timeout
+				await get_tree().create_timer(2.5).timeout
 				can_move_forward = true
 		3:
 			emit_signal("end_game_finished")
