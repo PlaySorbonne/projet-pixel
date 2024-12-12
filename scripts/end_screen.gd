@@ -230,7 +230,7 @@ func _process(delta: float) -> void:
 		$LabelMoneyText/LabelMoney/AnimationMoney.play("money")
 	
 	# handle inputs
-	if (not is_end_game) or (not can_move_forward):
+	if (not can_move_forward):
 		return
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("special"):
 		current_end_step = min(3, current_end_step+1)

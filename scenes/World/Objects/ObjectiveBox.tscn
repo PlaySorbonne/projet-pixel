@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cv1w5v10663nr"]
+[gd_scene load_steps=12 format=3 uid="uid://cv1w5v10663nr"]
 
 [ext_resource type="Script" path="res://scripts/HentaiBox.gd" id="1_6c0xd"]
 [ext_resource type="PackedScene" uid="uid://qbg5sibnym20" path="res://scenes/World/Objects/anime_box_sprite.tscn" id="2_f2ger"]
 [ext_resource type="PackedScene" uid="uid://uslvtp64xdd7" path="res://scenes/Utilities/TrailEffect.tscn" id="3_387u6"]
-[ext_resource type="Material" uid="uid://chnyunkal5tlx" path="res://resources/shaders/chromatic_aberration_material.tres" id="3_him1l"]
 [ext_resource type="Texture2D" uid="uid://busp52ycm5cjf" path="res://resources/images/objects/anime/anime_one_champsu.png" id="3_hvl42"]
+[ext_resource type="Shader" path="res://resources/shaders/ChromaticAberration.gdshader" id="3_po5cm"]
 [ext_resource type="AudioStream" uid="uid://du65tsacslg1i" path="res://resources/audio/sfx/gameplay_sfx/_explosion0.wav" id="4_x0imi"]
 [ext_resource type="PackedScene" uid="uid://bqjyjdg2uma5y" path="res://scenes/Menus/GameUI/character_pointer.tscn" id="5_1a4qb"]
 
@@ -15,6 +15,16 @@ bounce = 0.8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3lgd"]
 size = Vector2(94.4, 102.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmraf"]
+resource_local_to_scene = true
+shader = ExtResource("3_po5cm")
+shader_parameter/chaos = 30.0
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 10.0
+shader_parameter/divider_green = 1.0
+shader_parameter/divider_blue = 1.0
+shader_parameter/time_divider = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83oal"]
 radius = 35.24
@@ -36,7 +46,7 @@ visible = false
 shape = SubResource("RectangleShape2D_x3lgd")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_f2ger")]
-material = ExtResource("3_him1l")
+material = SubResource("ShaderMaterial_hmraf")
 texture = ExtResource("3_hvl42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

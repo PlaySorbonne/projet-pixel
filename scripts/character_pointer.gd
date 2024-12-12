@@ -196,6 +196,10 @@ func take_damage(damage : int, new_hitpoints : int):
 	var current_health_bar : HealthBarUnit
 	var healthbar_counter = 1
 	var tmp_dmg := damage
+	if healthbars.size() == 0:
+		print("problem with healthbars")
+		return
+		
 	while tmp_dmg > 0:
 		current_health_bar = healthbars[healthbars.size() - healthbar_counter]
 		var unit_dmg : int = min(tmp_dmg, current_health_bar.health)

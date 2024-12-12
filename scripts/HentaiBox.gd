@@ -89,7 +89,8 @@ func _process(delta : float):
 		set_tape_rest_mode()
 		timer_combo.start()
 	if following_weeb:
-		global_position = ascended_weeb.global_position
+		if is_instance_valid(ascended_weeb):
+			global_position = ascended_weeb.global_position
 
 func _ready():
 	GameInfos.anime_box = self
