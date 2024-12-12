@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://d15v6bgp5y5fe"]
+
+[ext_resource type="Script" path="res://scripts/wrap_around.gd" id="1_20g43"]
+[ext_resource type="Texture2D" uid="uid://dxlji7oy1y5hf" path="res://icon.svg" id="2_fomag"]
+
+[node name="WrapAround" type="Node"]
+script = ExtResource("1_20g43")
+
+[node name="SpriteDown" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1, 172)
+scale = Vector2(5, 0.025)
+texture = ExtResource("2_fomag")
+
+[node name="SpriteUp" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(6, -82)
+scale = Vector2(5, 0.025)
+texture = ExtResource("2_fomag")
+
+[node name="SpriteLeft" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-314, 37)
+scale = Vector2(0.025, 5)
+texture = ExtResource("2_fomag")
+
+[node name="SpriteRight" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(325, 23)
+scale = Vector2(0.025, 5)
+texture = ExtResource("2_fomag")
