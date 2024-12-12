@@ -8,24 +8,24 @@ script = ExtResource("1_20g43")
 
 [node name="SpriteDown" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(1, 172)
-scale = Vector2(5, 0.025)
+position = Vector2(0, 500)
+scale = Vector2(20, 0.025)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteUp" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(6, -82)
-scale = Vector2(5, 0.025)
+position = Vector2(0, -500)
+scale = Vector2(20, 0.025)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteLeft" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-314, 37)
-scale = Vector2(0.025, 5)
+position = Vector2(-500, 0)
+scale = Vector2(0.025, 20)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteRight" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(325, 23)
-scale = Vector2(0.025, 5)
+position = Vector2(500, 0)
+scale = Vector2(0.025, 20)
 texture = ExtResource("2_fomag")
