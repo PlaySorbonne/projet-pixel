@@ -47,8 +47,10 @@ func _ready() -> void:
 		c.queue_free()
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	update_time += delta
-	if update_time <= MAX_UPDATE_TIME or not is_instance_valid(GameInfos.anime_box):
+	if update_time <= MAX_UPDATE_TIME or not GameInfos.game_started:
 		return
 	update_time = 0.0
 	for p : PlayerCharacter in GameInfos.players.values():
