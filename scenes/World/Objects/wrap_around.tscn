@@ -9,47 +9,47 @@ script = ExtResource("1_20g43")
 [node name="SpriteDown" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 500)
-scale = Vector2(40, 0.05)
+scale = Vector2(40, 0.1)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteDownOffset" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
 position = Vector2(0, 450)
-scale = Vector2(40, 0.05)
+scale = Vector2(40, 0.1)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteUp" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -500)
-scale = Vector2(40, 0.05)
+scale = Vector2(40, 0.1)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteUpOffset" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
 position = Vector2(0, -450)
-scale = Vector2(40, 0.05)
+scale = Vector2(40, 0.1)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteLeft" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-500, 0)
-scale = Vector2(0.05, 40)
+scale = Vector2(0.1, 40)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteLeftOffset" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
 position = Vector2(-450, 0)
-scale = Vector2(0.05, 40)
+scale = Vector2(0.1, 40)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteRight" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(500, 0)
-scale = Vector2(0.05, 40)
+scale = Vector2(0.1, 40)
 texture = ExtResource("2_fomag")
 
 [node name="SpriteRightOffset" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 100, 1)
 position = Vector2(450, 0)
-scale = Vector2(0.05, 40)
+scale = Vector2(0.1, 40)
 texture = ExtResource("2_fomag")
