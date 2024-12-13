@@ -1,4 +1,3 @@
-@tool
 extends Node
 class_name WrapAround
 
@@ -9,23 +8,29 @@ const MAX_UPDATE_TIME := 0.5
 	set(value):
 		top_limit = value
 		$SpriteUp.position = Vector2(0, top_limit)
-		$SpriteUpOffset.position = $SpriteUp.position + teleporter_offset
+		$SpriteUpOffset.position = $SpriteUp.position + Vector2(0, teleporter_offset)
 @export var bottom_limit :=  500.0:
 	set(value):
 		bottom_limit = value
 		$SpriteDown.position = Vector2(0, bottom_limit)
-		$SpriteDownOffset.position = $SpriteDown.position - teleporter_offset
+		$SpriteDownOffset.position = $SpriteDown.position - Vector2(0, teleporter_offset)
 @export var left_limit   := -500.0:
 	set(value):
 		left_limit = value
 		$SpriteLeft.position = Vector2(left_limit, 0)
-		$SpriteLeftOffset.position = $SpriteLeft.position + teleporter_offset
+		$SpriteLeftOffset.position = $SpriteLeft.position + Vector2(teleporter_offset, 0)
 @export var right_limit  :=  500.0:
 	set(value):
 		right_limit = value
 		$SpriteRight.position = Vector2(right_limit, 0)
-		$SpriteRightOffset.position = $SpriteRight.position - teleporter_offset
-@export var teleporter_offset := 50.0
+		$SpriteRightOffset.position = $SpriteRight.position - Vector2(teleporter_offset, 0)
+@export var teleporter_offset := 50.0:
+	set(value):
+		teleporter_offset = value
+		top_limit = top_limit
+		bottom_limit = bottom_limit
+		right_limit = right_limit
+		left_limit = left_limit
 
 var update_time := 0.0
  
