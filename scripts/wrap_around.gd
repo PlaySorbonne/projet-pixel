@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name WrapAround
 
@@ -33,6 +34,10 @@ const MAX_UPDATE_TIME := 0.5
 		left_limit = left_limit
 
 var update_time := 0.0
+@onready var top_tp_target    := Vector2(0, top_limit + teleporter_offset)
+@onready var bottom_tp_target := Vector2(0, bottom_limit - teleporter_offset)
+@onready var left_tp_target   := Vector2(left_limit + teleporter_offset, 0)
+@onready var right_tp_target  := Vector2(right_limit - teleporter_offset, 0)
  
 
 func _ready() -> void:
@@ -45,24 +50,26 @@ func _process(delta: float) -> void:
 	update_time += delta
 	if update_time <= MAX_UPDATE_TIME:
 		return
+	update_time = 0.0
 	for p : PlayerCharacter in GameInfos.players.values():
-		pass
-	
-	
+		check_obj_position(p, false)
+	if not GameInfos.anime_box.following_weeb:
+		check_obj_position(GameInfos.anime_box, true)
 
 func check_obj_position(obj : Node2D, force_pos := false) -> void:
 	var obj_pos := obj.global_position
 	if   obj_pos.x > right_limit:
-		set_pos(obj, Vector2(left_limit + teleporter_offset, obj_pos.y), force_pos)
+		set_pos(obj, left_tp_target, force_pos)
 	elif obj_pos.x < left_limit:
-		pass
+		set_pos(obj, right_tp_target, force_pos)
 	if   obj_pos.y > bottom_limit:
-		pass
+		set_pos(obj, top_tp_target, force_pos)
 	elif obj_pos.y < top_limit:
-		pass
+		set_pos(obj, bottom_tp_target, force_pos)
 
-func set_pos(obj : Node2D, new_pos : Vector2, force_pos := false) -> void:
+func set_pos(obj : Node2D, pos_offset : Vector2, force_pos := false) -> void:
+	var true_pos := obj.global_position + pos_offset
 	if force_pos:
-		obj.force_position(new_pos)
+		obj.force_position(true_pos)
 	else:
-		obj.global_position = new_pos
+		obj.global_position = true_pos

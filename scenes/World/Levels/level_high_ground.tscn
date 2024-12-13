@@ -96,5 +96,10 @@ position = Vector2(800, 57)
 rotation = -1.57079
 
 [node name="WrapAround" parent="." index="22" instance=ExtResource("6_43o1b")]
+top_limit = -250.0
+bottom_limit = 1050.0
+left_limit = -400.0
+right_limit = 2000.0
+teleporter_offset = 100.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
