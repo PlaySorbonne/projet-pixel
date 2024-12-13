@@ -51,51 +51,46 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(1785, 393)
 scale = Vector2(5, 30)
 
-[node name="Wall14" parent="." index="10" instance=ExtResource("2_bhkty")]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(789, 1216)
-scale = Vector2(27, 2)
-
-[node name="AnimeBoxHint" parent="." index="11"]
+[node name="AnimeBoxHint" parent="." index="10"]
 position = Vector2(800, 300)
 
-[node name="Timer" type="Timer" parent="." index="13"]
+[node name="Timer" type="Timer" parent="." index="12"]
 wait_time = 1.294
 one_shot = true
 
-[node name="Platform" parent="." index="14" instance=ExtResource("5_p1lxy")]
+[node name="Platform" parent="." index="13" instance=ExtResource("5_p1lxy")]
 position = Vector2(160, 320)
 scale = Vector2(1.3, 1)
 
-[node name="Platform2" parent="." index="15" instance=ExtResource("5_p1lxy")]
+[node name="Platform2" parent="." index="14" instance=ExtResource("5_p1lxy")]
 position = Vector2(1430, 320)
 scale = Vector2(1.3, 1)
 
-[node name="Platform4" parent="." index="16" instance=ExtResource("6_w0u1l")]
+[node name="Platform4" parent="." index="15" instance=ExtResource("6_w0u1l")]
 position = Vector2(800, 450)
 constant_linear_velocity = Vector2(93.5078, 0)
 
-[node name="Platform5" parent="." index="17" instance=ExtResource("5_p1lxy")]
+[node name="Platform5" parent="." index="16" instance=ExtResource("5_p1lxy")]
 position = Vector2(685, 190)
 scale = Vector2(0.9, 1)
 
-[node name="Platform6" parent="." index="18" instance=ExtResource("5_p1lxy")]
+[node name="Platform6" parent="." index="17" instance=ExtResource("5_p1lxy")]
 position = Vector2(915, 190)
 scale = Vector2(0.9, 1)
 
-[node name="Platform7" parent="." index="19" instance=ExtResource("5_p1lxy")]
+[node name="Platform7" parent="." index="18" instance=ExtResource("5_p1lxy")]
 position = Vector2(1220, 675)
 scale = Vector2(0.9, 1)
 
-[node name="Platform8" parent="." index="20" instance=ExtResource("5_p1lxy")]
+[node name="Platform8" parent="." index="19" instance=ExtResource("5_p1lxy")]
 position = Vector2(380, 675)
 scale = Vector2(0.9, 1)
 
-[node name="Platform3" parent="." index="21" instance=ExtResource("6_7o0nc")]
+[node name="Platform3" parent="." index="20" instance=ExtResource("6_7o0nc")]
 position = Vector2(800, 57)
 rotation = -1.57079
 
-[node name="WrapAround" parent="." index="22" instance=ExtResource("6_43o1b")]
+[node name="WrapAround" parent="." index="21" instance=ExtResource("6_43o1b")]
 top_limit = -250.0
 bottom_limit = 1050.0
 left_limit = -400.0

@@ -3,7 +3,7 @@ extends Node
 class_name WrapAround
 
 
-const MAX_UPDATE_TIME := 0.5
+const MAX_UPDATE_TIME := 0.25
 
 @export var top_limit    := -500.0:
 	set(value):
