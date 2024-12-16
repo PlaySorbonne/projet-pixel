@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dhvjymumdal80"]
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dhvjymumdal80"]
 
 [ext_resource type="Texture2D" uid="uid://c4gci6l84nu4k" path="res://resources/images/characters/weeb/weeb_idle.png" id="1_ou4sw"]
+[ext_resource type="Texture2D" uid="uid://dom4llv3hwm3a" path="res://resources/images/characters/weeb/weebOuille.png" id="2_yb4n6"]
 
 [resource]
 animations = [{
@@ -14,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ou4sw")
+"texture": ExtResource("2_yb4n6")
 }],
 "loop": true,
 "name": &"death",
@@ -30,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ou4sw")
+"texture": ExtResource("2_yb4n6")
 }],
 "loop": true,
 "name": &"hit",

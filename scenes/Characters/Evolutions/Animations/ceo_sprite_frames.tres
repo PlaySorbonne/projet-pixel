@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://3ipk3i6kyf8i"]
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://3ipk3i6kyf8i"]
 
 [ext_resource type="Texture2D" uid="uid://htlruf3sd4ws" path="res://resources/images/characters/CEO/IMG_5862.png" id="1_b6otk"]
+[ext_resource type="Texture2D" uid="uid://fhdplp5t47kk" path="res://resources/images/characters/CEO/CEOuille.png" id="2_v87do"]
 
 [resource]
 animations = [{
@@ -14,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_b6otk")
+"texture": ExtResource("2_v87do")
 }],
 "loop": true,
 "name": &"death",
@@ -30,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_b6otk")
+"texture": ExtResource("2_v87do")
 }],
 "loop": true,
 "name": &"hit",
