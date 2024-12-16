@@ -355,8 +355,13 @@ bus = &"voices"
 [node name="AudioLineSpecial" type="AudioStreamPlayer" parent="." index="17"]
 bus = &"voices"
 
+[node name="HurtAnimTimer" type="Timer" parent="." index="18"]
+wait_time = 0.9
+one_shot = true
+
 [connection signal="fighter_hit" from="." to="CharacterPointer" method="take_damage"]
 [connection signal="fighter_killed_opponent" from="." to="." method="_on_fighter_killed_opponent"]
 [connection signal="has_special" from="." to="CharacterPointer" method="set_star"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="HurtAnimTimer" to="." method="_on_hurt_anim_timer_timeout"]

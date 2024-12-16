@@ -190,14 +190,18 @@ func reset_animation():
 	#$Sprite2D.play("evolve")
 	$AnimationPlayer.play("evolve")
 
+var is_hurt_anim := false
 func set_animation(force := false):
 	if not computing_movement and not force:
 		return
 	if not alive:
 		#$Sprite2D.play("death")
 		$AnimationPlayer.play("death")
-	elif in_invincibility_time:
+	elif in_invincibility_time or is_hurt_anim:
 		#$Sprite2D.play("hit")
+		if not is_hurt_anim:
+			is_hurt_anim = true
+			$HurtAnimTimer.start(0.9)
 		$AnimationPlayer.play("hit")
 	elif attacking:
 		#$Sprite2D.play("attack")
@@ -452,3 +456,6 @@ func _on_fighter_killed_opponent(quickie := false) -> void:
 
 func _on_stun_timer_timeout() -> void:
 	in_stun_time = false
+
+func _on_hurt_anim_timer_timeout() -> void:
+	is_hurt_anim = false
