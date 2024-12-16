@@ -5,7 +5,6 @@ signal player_removed
 
 const MOUSE_TEXTURE = preload("res://resources/images/icons/mouse.png")
 const GAMEPAD_TEXTURE = preload("res://resources/images/icons/gamepad.png")
-const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 
 
 @export var CEO_lines : Array[AudioStream] = []
@@ -74,10 +73,11 @@ func set_exalted(is_exalted : bool) -> void:
 	if is_exalted:
 		GameInfos.boss_weeb_id = player_index
 		set_player_evolution(PlayerCharacter.Evolutions.Weeb, false, true)
-		$Control/Icon.material = CHROMATIC_ABERRATION_MAT
-		$Control/Icon.material.set_shader_parameter("chaos", 100)
-		$Control/Icon.material.set_shader_parameter("divider_green", 2.0)
-		$Control/Icon.material.set_shader_parameter("divider_blue",  1.25)
+		WeebCharacter.apply_exalted_material($Control/Icon, 100.0)
+		#$Control/Icon.material = CHROMATIC_ABERRATION_MAT
+		#$Control/Icon.material.set_shader_parameter("chaos", 100)
+		#$Control/Icon.material.set_shader_parameter("divider_green", 2.0)
+		#$Control/Icon.material.set_shader_parameter("divider_blue",  1.25)
 	else:
 		$Control/Icon.material = null
 

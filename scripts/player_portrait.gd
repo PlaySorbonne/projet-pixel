@@ -74,10 +74,11 @@ func descend_portrait(_weeb : WeebCharacter) -> void:
 	$Holder/TexturePortrait.material = null
 
 func ascend_portrait(_weeb : WeebCharacter) -> void:
-	$Holder/TexturePortrait.material = PlayerSelection.CHROMATIC_ABERRATION_MAT
-	$Holder/TexturePortrait.material.set_shader_parameter("chaos", 100)
-	$Holder/TexturePortrait.material.set_shader_parameter("divider_green", 2.0)
-	$Holder/TexturePortrait.material.set_shader_parameter("divider_blue",  1.25)
+	WeebCharacter.apply_exalted_material($Holder/TexturePortrait, 100.0)
+	#$Holder/TexturePortrait.material = PlayerSelection.CHROMATIC_ABERRATION_MAT
+	#$Holder/TexturePortrait.material.set_shader_parameter("chaos", 100)
+	#$Holder/TexturePortrait.material.set_shader_parameter("divider_green", 2.0)
+	#$Holder/TexturePortrait.material.set_shader_parameter("divider_blue",  1.25)
 
 func update_lives(_player : PlayerCharacter) -> void:
 	current_lives -= 1

@@ -2,7 +2,6 @@ extends Control
 class_name PlayerVictoryStats
 
 const TITLE_ITEM := preload("res://scenes/Menus/title_item.tscn")
-const CHROMATIC_ABERRATION_MAT := preload("res://resources/shaders/chromatic_aberration_material.tres")
 
 var player_stats : PlayerStats = null
 var player_title_objects : Array[TitleItem] = []
@@ -36,10 +35,11 @@ func set_player_stats(p_stats : PlayerStats) -> void:
 	var current_ev := int(pc.current_evolution)
 	if pc.current_evolution == PlayerCharacter.Evolutions.Weeb and pc.ascended:
 		$Main/LabelEvolution.text = "ASCENDED_WEEB"
-		$Main/TexturePortrait.material = CHROMATIC_ABERRATION_MAT
-		$Main/TexturePortrait.material.set_shader_parameter("chaos", 100)
-		$Main/TexturePortrait.material.set_shader_parameter("divider_green", 2.0)
-		$Main/TexturePortrait.material.set_shader_parameter("divider_blue",  1.25)
+		WeebCharacter.apply_exalted_material($Main/TexturePortrait, 100.0)
+		#$Main/TexturePortrait.material = CHROMATIC_ABERRATION_MAT
+		#$Main/TexturePortrait.material.set_shader_parameter("chaos", 100)
+		#$Main/TexturePortrait.material.set_shader_parameter("divider_green", 2.0)
+		#$Main/TexturePortrait.material.set_shader_parameter("divider_blue",  1.25)
 	else:
 		$Main/LabelEvolution.text = str(PlayerCharacter.Evolutions.keys()[current_ev])
 	$Main/TexturePortrait.texture = PlayerPortrait.PLAYER_PORTRAITS[current_ev]

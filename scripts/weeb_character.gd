@@ -59,6 +59,12 @@ const BOSS_GAMEPLAY_PROPERTIES : Dictionary = {
 var default_stats : Dictionary = {}
 var ascended_stats : Dictionary = {}
 
+static func apply_exalted_material(obj : Node, chaos := 30.0) -> void:
+	obj.material = CHROMATIC_ABERRATION_MAT
+	obj.material.set_shader_parameter("chaos", chaos)
+	obj.material.set_shader_parameter("divider_green", 1.0) # 3.5
+	obj.material.set_shader_parameter("divider_blue", 1.0)  # 1.25
+
 func _ready() -> void:
 	super._ready()
 	await get_tree().process_frame
@@ -116,16 +122,12 @@ func ascend():
 	
 	exalted_particles = EXALTED_PARTICLES.instantiate()
 	$Sprite2D.add_child(exalted_particles)
-	$Sprite2D.material = CHROMATIC_ABERRATION_MAT
+	
 	var shader_chaos := 60
 	if is_boss_weeb:
 		shader_chaos = 30
-	$Sprite2D.material.set_shader_parameter("chaos", shader_chaos)
-	tween = create_tween()
-	tween.tween_property($Sprite2D, "material:shader_parameter/divider_green", 
-		3.5, 0.2)
-	tween.tween_property($Sprite2D, "material:shader_parameter/divider_blue", 
-		1.25, 0.2)
+	apply_exalted_material($Sprite2D, shader_chaos)
+	
 	$CharacterPointer.set_healthbars_color(Color.CRIMSON)
 	$CharacterPointer.set_max_hitpoints(max_hitpoints)
 	previous_trail_color = $TrailEffect.modulate
