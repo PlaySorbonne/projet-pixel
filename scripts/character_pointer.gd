@@ -172,9 +172,13 @@ func set_max_hitpoints(hitpoints : int, with_anim := true):
 	emit_signal("healthbars_displayed")
 
 func update_nodes_position() -> void:
+	var num_healthbars := healthbars.size()
+	var name_offset := 10.0
+	if num_healthbars > 3:
+		name_offset = -20.0
 	var new_name_pos := Vector2(
-		-160.0 + (health_par_pos_coeff.x * 1.07143) * (healthbars.size() + 1),
-		HEALTH_BAR_POS_INIT.y + health_par_pos_coeff.y * (healthbars.size() + 1) - 20.0
+		-160.0 + (health_par_pos_coeff.x * 1.07143) * (num_healthbars + 1),
+		HEALTH_BAR_POS_INIT.y + health_par_pos_coeff.y * (num_healthbars + 1) + name_offset
 	)
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
 	t.tween_property($HealthBars/LabelName, "position", new_name_pos, 0.1)

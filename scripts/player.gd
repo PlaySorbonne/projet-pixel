@@ -201,7 +201,7 @@ func set_animation(force := false):
 		#$Sprite2D.play("hit")
 		if not is_hurt_anim:
 			is_hurt_anim = true
-			$HurtAnimTimer.start(0.9)
+			$HurtAnimTimer.start(0.6)
 		$AnimationPlayer.play("hit")
 	elif attacking:
 		#$Sprite2D.play("attack")
