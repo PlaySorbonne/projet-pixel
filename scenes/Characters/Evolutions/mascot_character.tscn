@@ -59,7 +59,7 @@ audio_evolve = Array[AudioStream]([ExtResource("2_q02yw"), ExtResource("3_xs52l"
 audio_death = Array[AudioStream]([ExtResource("21_icftj"), ExtResource("22_a6u5x"), ExtResource("23_quwra"), ExtResource("24_rgwu6"), ExtResource("25_vtwks"), ExtResource("26_0dlqd"), ExtResource("27_iwfyy"), ExtResource("28_slpom")])
 audio_special = Array[AudioStream]([ExtResource("29_2rx4l"), ExtResource("30_ujaxw"), ExtResource("31_hgq86"), ExtResource("32_l5vfr")])
 audio_hurt = Array[AudioStream]([ExtResource("33_83kar"), ExtResource("34_khypb"), ExtResource("35_ct8yn"), ExtResource("36_w1pwp")])
-default_scale = Vector2(0.75, 0.75)
+default_scale = Vector2(1.15, 1.15)
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_g55ga")
