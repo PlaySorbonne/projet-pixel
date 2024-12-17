@@ -56,6 +56,15 @@ alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
 
+[node name="ColorRect" type="ColorRect" parent="StartButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 57.0
+offset_right = 254.0
+offset_bottom = 125.0
+color = Color(0.196078, 0, 0.0156863, 1)
+
 [node name="Vault" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -76,6 +85,14 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+
+[node name="ColorRect" type="ColorRect" parent="Vault"]
+show_behind_parent = true
+offset_left = 42.9027
+offset_top = 39.4127
+offset_right = 271.903
+offset_bottom = 107.413
+color = Color(0.196078, 0, 0.0156863, 1)
 
 [node name="Settings" type="Button" parent="."]
 layout_mode = 1
@@ -139,6 +156,14 @@ flat = true
 alignment = 0
 script = ExtResource("3_20l1y")
 sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj"), ExtResource("6_ijqgv"), ExtResource("7_u8fj7"), ExtResource("8_f6xvk")])
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+show_behind_parent = true
+offset_left = 95.7664
+offset_top = 21.5125
+offset_right = 324.766
+offset_bottom = 89.5125
+color = Color(0.341176, 0.0941176, 0.415686, 1)
 
 [node name="Pointer4" type="TextureRect" parent="."]
 layout_mode = 1
