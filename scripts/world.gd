@@ -196,8 +196,9 @@ func end_game():
 	if not GameInfos.display_end_screen:
 		return
 	
+	
 	get_tree().paused = true
-	await victory_message.input_pressed
+	await get_tree().create_timer(0.5).timeout
 	
 	$GameHUD.remove_portraits()
 	for p : PlayerCharacter in GameInfos.players.values():

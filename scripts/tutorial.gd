@@ -1,4 +1,4 @@
-extends "res://scripts/level_template.gd"
+extends Level
 
 const MENU_PATH = "res://scenes/Menus/MenuPersistent.tscn"
 
@@ -84,6 +84,11 @@ func _process(delta: float) -> void:
 
 		
 func _input(event: InputEvent) -> void:
+	GameInfos.players[player_id].control_device = event.device
+	if event is InputEventKey:
+		GameInfos.players[player_id].control_type = 0
+	elif (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
+		GameInfos.players[player_id].control_type = 1
 	if event.is_action_pressed("jump") and not actions_done["jump"]:
 		actions_done["jump"] = true
 	if (event.is_action_pressed("right") or event.is_action_pressed("left")):
