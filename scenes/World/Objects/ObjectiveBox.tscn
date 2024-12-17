@@ -16,7 +16,7 @@ bounce = 0.8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3lgd"]
 size = Vector2(94.4, 102.4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4alq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8tqc"]
 resource_local_to_scene = true
 shader = ExtResource("3_po5cm")
 shader_parameter/chaos = 30.0
@@ -46,7 +46,7 @@ visible = false
 shape = SubResource("RectangleShape2D_x3lgd")
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_f2ger")]
-material = SubResource("ShaderMaterial_c4alq")
+material = SubResource("ShaderMaterial_j8tqc")
 texture = ExtResource("3_hvl42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

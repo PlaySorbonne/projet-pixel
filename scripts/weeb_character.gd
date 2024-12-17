@@ -125,7 +125,7 @@ func ascend():
 	
 	var shader_chaos := 60
 	if is_boss_weeb:
-		shader_chaos = 30
+		shader_chaos = 25
 	apply_exalted_material($Sprite2D, shader_chaos)
 	
 	$CharacterPointer.set_healthbars_color(Color.CRIMSON)
