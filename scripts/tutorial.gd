@@ -119,5 +119,5 @@ func _input(event: InputEvent) -> void:
 		
 func _on_game_finished() -> void:
 	if get_tree() != null:
-		await get_tree().create_timer(1.0).tiemout
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file(MENU_PATH)
