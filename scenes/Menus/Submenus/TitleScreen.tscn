@@ -88,6 +88,7 @@ sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj")
 
 [node name="ColorRect" type="ColorRect" parent="Vault"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 42.9027
 offset_top = 39.4127
 offset_right = 271.903
@@ -159,6 +160,7 @@ sound_array = Array[AudioStream]([ExtResource("4_os7m5"), ExtResource("5_lvqtj")
 
 [node name="ColorRect" type="ColorRect" parent="Tutorial"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 95.7664
 offset_top = 21.5125
 offset_right = 324.766

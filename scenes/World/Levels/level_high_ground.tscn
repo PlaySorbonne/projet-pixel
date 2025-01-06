@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bid88bntxwx0f" path="res://scenes/World/Environment/PlatformSemiSolid.tscn" id="5_p1lxy"]
 [ext_resource type="PackedScene" uid="uid://c0lg8j3dkffaq" path="res://scenes/World/Environment/Platform.tscn" id="6_7o0nc"]
 [ext_resource type="PackedScene" uid="uid://d15v6bgp5y5fe" path="res://scenes/World/Objects/wrap_around.tscn" id="6_43o1b"]
-[ext_resource type="PackedScene" uid="uid://dc5mjgmgp7q14" path="res://scenes/World/Environment/PlatformMovingLarge.tscn" id="6_w0u1l"]
+[ext_resource type="PackedScene" path="res://scenes/World/Environment/PlatformMovingLarge.tscn" id="6_w0u1l"]
 
 [node name="LevelHighGround" instance=ExtResource("1_n2j12")]
 
