@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://qb3miekn7s7v"]
+[gd_scene load_steps=7 format=3 uid="uid://c3y5ifh86gk7b"]
 
-[ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="1_g840b"]
-[ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_rpv6i"]
-[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="2_2hoir"]
-[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="4_dvdpb"]
-[ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="5_2m1dx"]
+[ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_smlk3"]
+[ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_llkss"]
+[ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="3_dqhtf"]
+[ext_resource type="Script" path="res://scripts/button_xyz.gd" id="4_8483h"]
+[ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="5_wchq4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njpbr"]
 font_size = 32
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rpv6i")
+script = ExtResource("1_smlk3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -32,7 +32,7 @@ offset_top = 298.76
 offset_right = 35.1598
 offset_bottom = 160.4
 rotation = -0.217997
-color = Color(1.26343e-07, 0.264364, 0.182592, 0.423529)
+color = Color(0.424577, 0, 0.161241, 0.423529)
 
 [node name="Options" type="Control" parent="."]
 layout_mode = 1
@@ -50,7 +50,7 @@ offset_top = 214.419
 offset_right = 948.196
 offset_bottom = 337.419
 rotation = 0.0642744
-theme = ExtResource("1_g840b")
+theme = ExtResource("2_llkss")
 text = "CREDITS"
 
 [node name="LabelText" type="Label" parent="Options"]
@@ -60,7 +60,7 @@ anchor_top = 0.388889
 anchor_right = 0.816666
 anchor_bottom = 0.875
 offset_bottom = -8.0
-theme = ExtResource("2_2hoir")
+theme = ExtResource("3_dqhtf")
 text = "Maxence Maire
 Pablo Hardouin
 Athénaïs
@@ -84,10 +84,10 @@ anchor_left = 0.05
 anchor_top = 0.87963
 anchor_right = 0.148438
 anchor_bottom = 0.948148
-theme = ExtResource("2_2hoir")
+theme = ExtResource("3_dqhtf")
 text = "BACK"
 flat = true
-script = ExtResource("4_dvdpb")
-audio = ExtResource("5_2m1dx")
+script = ExtResource("4_8483h")
+audio = ExtResource("5_wchq4")
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
