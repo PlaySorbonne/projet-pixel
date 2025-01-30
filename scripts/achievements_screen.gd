@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_spawn_title_timeout() -> void:
+	if remaining_titles.size() == 0:
+		return
 	var title_str : String = remaining_titles.pop_back()
 	var val : TitleItem.Rarities
 	if title_str in EndScreen.LEGENDARY_TITLES:
@@ -28,6 +30,7 @@ func _on_timer_spawn_title_timeout() -> void:
 	title_obj.set_title(title_str, val)
 	$Titles.add_child(title_obj)
 	title_obj.anim_intro(false)
+	title_obj.scale = Vector2.ONE * 1.5
 	title_obj.position = Vector2(
 		randf_range($Titles/TopLeft.position.x, $Titles/DownRight.position.x),
 		randf_range($Titles/TopLeft.position.y, $Titles/DownRight.position.y)
@@ -35,6 +38,9 @@ func _on_timer_spawn_title_timeout() -> void:
 	if remaining_titles.size() == 0:
 		return
 	$TimerSpawnTitle.start(randf_range(0.1, 0.3))
+
+func shake_screen() -> void:
+	$Shaker.shake(0.2, 20, 40)
 
 func _on_button_back_pressed() -> void:
 	$ButtonBack.release_focus()

@@ -228,7 +228,7 @@ _data = {
 "intro_rare": SubResource("Animation_0gjtg")
 }
 
-[node name="TitleItem" type="Control"]
+[node name="TitleItem" type="Control" groups=["title_items"]]
 custom_minimum_size = Vector2(304, 19)
 layout_mode = 3
 anchors_preset = 0

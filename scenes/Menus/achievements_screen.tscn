@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3y5ifh86gk7b"]
+[gd_scene load_steps=8 format=3 uid="uid://c3y5ifh86gk7b"]
 
 [ext_resource type="Script" path="res://scripts/achievements_screen.gd" id="1_v57ux"]
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_llkss"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="3_dqhtf"]
 [ext_resource type="Script" path="res://scripts/button_xyz.gd" id="4_8483h"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="5_wchq4"]
+[ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="6_sgicy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ae6yc"]
 font_size = 42
@@ -70,17 +71,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TopLeft" type="Control" parent="Titles"]
 anchors_preset = 0
-offset_left = 42.6986
-offset_top = 492.578
-offset_right = 82.6986
-offset_bottom = 532.578
+offset_left = 19.7245
+offset_top = 491.488
+offset_right = 59.7245
+offset_bottom = 531.488
 
 [node name="DownRight" type="Control" parent="Titles"]
 anchors_preset = 0
-offset_left = 1824.28
-offset_top = 944.537
-offset_right = 1864.28
-offset_bottom = 984.537
+offset_left = 1728.39
+offset_top = 939.986
+offset_right = 1768.39
+offset_bottom = 979.986
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
@@ -97,6 +98,11 @@ audio = ExtResource("5_wchq4")
 
 [node name="TimerSpawnTitle" type="Timer" parent="."]
 one_shot = true
+
+[node name="Shaker" type="Node" parent="." node_paths=PackedStringArray("object")]
+script = ExtResource("6_sgicy")
+object = NodePath("..")
+property = "position"
 
 [connection signal="screen_focused" from="." to="." method="_on_screen_focused"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

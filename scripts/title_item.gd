@@ -54,15 +54,19 @@ func anim_intro(in_end_screen := true) -> void:
 				await $AnimationPlayer.animation_finished
 				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Common])
 		Rarities.Rare:
+			$AnimationPlayer.play("intro_rare")
+			await $AnimationPlayer.animation_finished
 			if in_end_screen:
-				$AnimationPlayer.play("intro_rare")
-				await $AnimationPlayer.animation_finished
 				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Rare])
 				player_stats_parent.shake_node(false)
+			else:
+				get_parent().get_parent().shake_screen()
 		Rarities.Legendary:
 			$AnimationPlayer.play("intro_legendary")
+			await $AnimationPlayer.animation_finished
 			if in_end_screen:
-				await $AnimationPlayer.animation_finished
 				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Legendary])
 				player_stats_parent.shake_node(true)
+			else:
+				get_parent().get_parent().shake_screen()
 	$AudioBoom.play()
