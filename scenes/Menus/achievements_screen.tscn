@@ -11,7 +11,7 @@ font_size = 32
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[node name="CreditsScreen" type="Control"]
+[node name="AchievementScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,14 +51,14 @@ offset_right = 948.196
 offset_bottom = 337.419
 rotation = 0.0642744
 theme = ExtResource("2_llkss")
-text = "CREDITS"
+text = "VAULT"
 
 [node name="LabelText" type="Label" parent="Options"]
 layout_mode = 2
 anchor_left = 0.201562
 anchor_top = 0.388889
 anchor_right = 0.816666
-anchor_bottom = 0.875
+anchor_bottom = 0.677778
 offset_bottom = -8.0
 theme = ExtResource("3_dqhtf")
 text = "Maxence Maire

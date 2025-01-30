@@ -61,16 +61,7 @@ anchor_right = 0.816666
 anchor_bottom = 0.875
 offset_bottom = -8.0
 theme = ExtResource("2_2hoir")
-text = "Maxence Maire
-Pablo Hardouin
-Athénaïs
-Nathan
-Octave Donatella 
-Loona Macabre
-Camille
-Thomas
-Adrien
-"
+text = "CREDITS_TEXT"
 label_settings = SubResource("LabelSettings_njpbr")
 autowrap_mode = 1
 clip_text = true
