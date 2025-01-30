@@ -47,5 +47,5 @@ func _on_button_back_pressed() -> void:
 	emit_signal("ButtonBackPressed")
 
 func _on_screen_focused() -> void:
-	is_currently_focused = true
 	$TimerSpawnTitle.start(1.75)
+	is_currently_focused = true
