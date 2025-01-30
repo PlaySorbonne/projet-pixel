@@ -47,4 +47,4 @@ func _on_button_back_pressed() -> void:
 	emit_signal("ButtonBackPressed")
 
 func _on_screen_focused() -> void:
-	$TimerSpawnTitle.start(randf_range(0.5, 0.75))
+	$TimerSpawnTitle.start(1.75)

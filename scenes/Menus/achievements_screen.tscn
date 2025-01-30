@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/Utilities/shaker.gd" id="6_sgicy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ae6yc"]
-font_size = 42
+font_size = 53
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -56,10 +56,10 @@ text = "VAULT"
 
 [node name="LabelText" type="Label" parent="Titles"]
 layout_mode = 2
-anchor_left = 0.0669712
-anchor_top = 0.362533
-anchor_right = 0.282596
-anchor_bottom = 0.431977
+anchor_left = 0.0671875
+anchor_top = 0.362963
+anchor_right = 0.390625
+anchor_bottom = 0.464815
 offset_bottom = -8.0
 theme = ExtResource("3_dqhtf")
 text = "Unlocked Titles:"
@@ -73,20 +73,20 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchor_right = 0.961
 anchor_bottom = 1.076
-offset_left = 19.7245
-offset_top = 491.488
-offset_right = -1785.4
-offset_bottom = -630.593
+offset_left = -75.1687
+offset_top = 486.984
+offset_right = -1880.29
+offset_bottom = -635.096
 
 [node name="DownRight" type="Control" parent="Titles"]
 layout_mode = 1
 anchor_left = -0.012
 anchor_right = 0.97
 anchor_bottom = 1.068
-offset_left = 1751.43
-offset_top = 939.986
-offset_right = -94.0146
-offset_bottom = -173.454
+offset_left = 1455.12
+offset_top = 936.763
+offset_right = -390.323
+offset_bottom = -176.677
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
