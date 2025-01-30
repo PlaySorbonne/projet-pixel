@@ -10,7 +10,7 @@ const TUTORIAL_PATH = "res://scenes/World/Levels/tutorial.tscn"
 const DEFAULT_PLAYER := preload("res://scenes/Characters/Evolutions/ceo_character.tscn")
 const TUTORIAL_ENNEMY := preload("res://scenes/Characters/Evolutions/mascot_character.tscn")
 
-enum Screens {Title, Settings, Credits}
+enum Screens {Title, Settings, Credits, Vault}
 
 @onready var title_screen := $CanvasLayer/TitleScreen
 # @onready var game_session_creator = $CanvasLayer/GameSessionCreator
@@ -53,24 +53,34 @@ func go_to_screen(new_screen : int):
 	var title_final_pos : Vector2
 	var settings_final_pos : Vector2
 	var credits_final_pos : Vector2
+	var vault_final_pos : Vector2
 	var trans_time := 1.8
 	if new_screen == Screens.Title:
 		title_final_pos = Vector2.ZERO
 		settings_final_pos = Vector2(0.0, 1400.0)
 		credits_final_pos = Vector2(0.0, -1400.0)
+		vault_final_pos = Vector2(2200, 0.0)
 	elif new_screen == Screens.Credits:
 		credits_final_pos = Vector2.ZERO
 		title_final_pos = Vector2(0.0, 1400.0)
 		settings_final_pos = Vector2(0.0, 1400.0)
+		vault_final_pos = Vector2(2200, 0.0)
+	elif new_screen == Screens.Vault:
+		title_final_pos = Vector2(-2200, 0.0)
+		settings_final_pos = Vector2(0.0, 1400.0)
+		credits_final_pos = Vector2(0, -1400)
+		vault_final_pos = Vector2.ZERO
 	else: # Settings
 		title_final_pos = Vector2(0.0, -1400.0)
 		credits_final_pos = Vector2(0.0, -1400.0)
 		settings_final_pos = Vector2.ZERO
+		vault_final_pos = Vector2(2200, 0.0)
 	var t : Tween = get_tree().create_tween().set_trans(Tween.TRANS_ELASTIC)
 	t.tween_property($CanvasLayer/TitleScreen, "position", title_final_pos, trans_time)
 	t.set_parallel()
 	t.tween_property($CanvasLayer/SettingsScreen, "position", settings_final_pos, trans_time)
 	t.tween_property($CanvasLayer/CreditsScreen, "position", credits_final_pos, trans_time)
+	t.tween_property($CanvasLayer/AchievementScreen, "position", vault_final_pos, trans_time)
 	delay_change_scene(trans_time+0.2)
 
 func _on_title_screen_button_start_pressed():
