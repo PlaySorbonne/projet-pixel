@@ -37,7 +37,7 @@ func _on_timer_spawn_title_timeout() -> void:
 	)
 	if remaining_titles.size() == 0:
 		return
-	$TimerSpawnTitle.start(randf_range(0.1, 0.3))
+	$TimerSpawnTitle.start(randf_range(0.025, 0.15))
 
 func shake_screen() -> void:
 	$Shaker.shake(0.2, 20, 40)

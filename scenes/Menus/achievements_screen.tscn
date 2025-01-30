@@ -70,18 +70,23 @@ text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="TopLeft" type="Control" parent="Titles"]
-anchors_preset = 0
+layout_mode = 1
+anchor_right = 0.961
+anchor_bottom = 1.076
 offset_left = 19.7245
 offset_top = 491.488
-offset_right = 59.7245
-offset_bottom = 531.488
+offset_right = -1785.4
+offset_bottom = -630.593
 
 [node name="DownRight" type="Control" parent="Titles"]
-anchors_preset = 0
-offset_left = 1728.39
+layout_mode = 1
+anchor_left = -0.012
+anchor_right = 0.97
+anchor_bottom = 1.068
+offset_left = 1751.43
 offset_top = 939.986
-offset_right = 1768.39
-offset_bottom = 979.986
+offset_right = -94.0146
+offset_bottom = -173.454
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
