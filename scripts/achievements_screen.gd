@@ -1,6 +1,8 @@
 extends Control
 
 
+signal ButtonBackPressed
+
 var TITLE_ITEM = PlayerVictoryStats.TITLE_ITEM
 var remaining_titles : Array[String] = []
 
@@ -35,4 +37,8 @@ func _on_timer_spawn_title_timeout() -> void:
 	if remaining_titles.size() == 0:
 		return
 	$TimerSpawnTitle.start(randf_range(0.1, 0.3))
-	
+
+
+func _on_button_back_pressed() -> void:
+	$ButtonBack.release_focus()
+	emit_signal("ButtonBackPressed")

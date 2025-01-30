@@ -121,15 +121,18 @@ func _on_title_screen_button_tutorial_pressed():
 	GlobalVariables.skip_fight_intro = true
 	smooth_change_to_scene(WORLD_PATH)
 
-func _on_settings_screen_button_back_pressed():
+func _on_settings_screen_button_back_pressed() -> void:
 	back_to_title_screen()
 
-func _on_credits_screen_button_back_pressed():
+func _on_credits_screen_button_back_pressed() -> void:
 	back_to_title_screen()
 
-func back_to_title_screen():
+func _on_achievement_screen_button_back_pressed() -> void:
+	back_to_title_screen()
+
+func back_to_title_screen() -> void:
 	go_to_screen(Screens.Title)
 	$CanvasLayer/TitleScreen.reset_state()
 
-func _on_exit_progress_bar_bar_filled():
+func _on_exit_progress_bar_bar_filled() -> void:
 	get_tree().quit()

@@ -60,4 +60,5 @@ parameters/looping = true
 [connection signal="ButtonVaultPressed" from="CanvasLayer/TitleScreen" to="." method="_on_title_screen_button_vault_pressed"]
 [connection signal="ButtonBackPressed" from="CanvasLayer/SettingsScreen" to="." method="_on_settings_screen_button_back_pressed"]
 [connection signal="ButtonBackPressed" from="CanvasLayer/CreditsScreen" to="." method="_on_credits_screen_button_back_pressed"]
+[connection signal="ButtonBackPressed" from="CanvasLayer/AchievementScreen" to="." method="_on_achievement_screen_button_back_pressed"]
 [connection signal="bar_filled" from="CanvasLayer/ExitProgressBar" to="." method="_on_exit_progress_bar_bar_filled"]
