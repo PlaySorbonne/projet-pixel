@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4qhtb4ydvax6"]
+[gd_scene load_steps=15 format=3 uid="uid://4qhtb4ydvax6"]
 
 [ext_resource type="Script" path="res://scripts/title_screen_decor.gd" id="1_hah17"]
 [ext_resource type="Texture2D" uid="uid://jur3hpnikdc6" path="res://resources/images/environments/decorPlaceholder.png" id="1_rqti6"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://drjf5m66m1a2" path="res://resources/images/characters/Sheep/moutonBam.png" id="3_ma0b5"]
 [ext_resource type="Texture2D" uid="uid://c4xo86p4oj20a" path="res://sprites/champsu_only.svg" id="4_i2rcw"]
 [ext_resource type="Texture2D" uid="uid://nvjp0ysw4p5r" path="res://resources/images/objects/anime/godotAnime.png" id="5_b0xxe"]
+[ext_resource type="Texture2D" uid="uid://htlruf3sd4ws" path="res://resources/images/characters/CEO/IMG_5862.png" id="7_winim"]
+[ext_resource type="Texture2D" uid="uid://chdal21eqxaq6" path="res://resources/images/characters/fox/DoggoRun.PNG" id="8_um4v3"]
+[ext_resource type="Texture2D" uid="uid://budyfwg1vhlq8" path="res://resources/images/characters/fox/revolver.png" id="9_migwy"]
+[ext_resource type="Texture2D" uid="uid://dom4llv3hwm3a" path="res://resources/images/characters/weeb/weebOuille.png" id="10_wgply"]
 
 [sub_resource type="Curve2D" id="Curve2D_qf64y"]
 _data = {
@@ -289,8 +293,30 @@ position = Vector2(1976, -663)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_b0xxe")
 
+[node name="Img5862" type="Sprite2D" parent="Characters"]
+position = Vector2(-1472, 284)
+rotation = -0.585925
+texture = ExtResource("7_winim")
+
+[node name="DoggoRun" type="Sprite2D" parent="Characters"]
+position = Vector2(-1338, -719)
+rotation = 0.515119
+scale = Vector2(1, 1)
+texture = ExtResource("8_um4v3")
+
+[node name="Revolver" type="Sprite2D" parent="Characters"]
+position = Vector2(-1020, -109)
+rotation = 0.818177
+texture = ExtResource("9_migwy")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_5q65t")
 }
+
+[node name="WeebOuille" type="Sprite2D" parent="."]
+position = Vector2(-64, 846)
+rotation = -0.280486
+scale = Vector2(0.484581, 0.484582)
+texture = ExtResource("10_wgply")
