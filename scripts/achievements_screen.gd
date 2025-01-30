@@ -4,7 +4,7 @@ extends Control
 signal ButtonBackPressed
 
 var TITLE_ITEM = PlayerVictoryStats.TITLE_ITEM
-var remaining_titles : Array[String] = []
+var remaining_titles : Array = []
 
 func _ready() -> void:
 	if "unlocked_titles" in VaultData.vault_data.keys():
@@ -30,9 +30,10 @@ func _on_timer_spawn_title_timeout() -> void:
 	var title_obj : TitleItem = TITLE_ITEM.instantiate()
 	title_obj.set_title(title_str, val)
 	$Titles.add_child(title_obj)
+	title_obj.anim_intro()
 	title_obj.position = Vector2(
-		randf_range($Titles/TopLeft.x, $Titles/DownRight.x),
-		randf_range($Titles/TopLeft.y, $Titles/DownRight.y)
+		randf_range($Titles/TopLeft.position.x, $Titles/DownRight.position.x),
+		randf_range($Titles/TopLeft.position.y, $Titles/DownRight.position.y)
 	)
 	if remaining_titles.size() == 0:
 		return
