@@ -36,6 +36,7 @@ static func apply_settings():
 	update_stats_file()
 
 func _ready():
+	super._ready()
 	$Options/ButtonFullscreen.button_pressed = user_settings["fullscreen"]
 	$Options/LanguageButton.selected = user_settings["language"]
 	update_stats_buttons()

@@ -3,16 +3,13 @@ extends SubScreen
 
 var TITLE_ITEM = PlayerVictoryStats.TITLE_ITEM
 var remaining_titles : Array = []
+var is_currently_focused := false
 
 func _ready() -> void:
+	super._ready()
 	if "unlocked_titles" in VaultData.vault_data.keys():
 		remaining_titles = VaultData.vault_data["unlocked_titles"].duplicate()
 		remaining_titles.shuffle()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_timer_spawn_title_timeout() -> void:
@@ -40,11 +37,15 @@ func _on_timer_spawn_title_timeout() -> void:
 	$TimerSpawnTitle.start(randf_range(0.025, 0.15))
 
 func shake_screen() -> void:
+	if not is_currently_focused:
+		return
 	$Shaker.shake(0.2, 20, 40)
 
 func _on_button_back_pressed() -> void:
 	$ButtonBack.release_focus()
+	is_currently_focused = false
 	emit_signal("ButtonBackPressed")
 
 func _on_screen_focused() -> void:
+	is_currently_focused = true
 	$TimerSpawnTitle.start(1.75)
