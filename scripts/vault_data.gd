@@ -158,7 +158,8 @@ var all_items_initialized := false
 
 var vault_data : Dictionary = {
 	"money" : 10000,
-	"unlocked_items" : ["CEO_TO_WEEB_ARTWORK"]
+	"unlocked_items" : ["CEO_TO_WEEB_ARTWORK"],
+	"unlocked_titles" : []
 }
 
 func initialize_all_items():
