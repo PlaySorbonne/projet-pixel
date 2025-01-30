@@ -98,5 +98,6 @@ audio = ExtResource("5_wchq4")
 [node name="TimerSpawnTitle" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="screen_focused" from="." to="." method="_on_screen_focused"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="timeout" from="TimerSpawnTitle" to="." method="_on_timer_spawn_title_timeout"]

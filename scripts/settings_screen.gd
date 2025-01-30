@@ -1,7 +1,6 @@
-extends Control
+extends SubScreen
 class_name SettingsScreen
 
-signal ButtonBackPressed
 
 enum Languages {English, Francais}
 

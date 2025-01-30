@@ -61,16 +61,19 @@ func go_to_screen(new_screen : int):
 		credits_final_pos = Vector2(0.0, -1400.0)
 		vault_final_pos = Vector2(2200, 0.0)
 	elif new_screen == Screens.Credits:
+		$CanvasLayer/CreditsScreen.emit_signal("screen_focused")
 		credits_final_pos = Vector2.ZERO
 		title_final_pos = Vector2(0.0, 1400.0)
 		settings_final_pos = Vector2(0.0, 1400.0)
 		vault_final_pos = Vector2(2200, 0.0)
 	elif new_screen == Screens.Vault:
+		$CanvasLayer/AchievementScreen.emit_signal("screen_focused")
 		title_final_pos = Vector2(-2200, 0.0)
 		settings_final_pos = Vector2(0.0, 1400.0)
 		credits_final_pos = Vector2(0, -1400)
 		vault_final_pos = Vector2.ZERO
 	else: # Settings
+		$CanvasLayer/SettingsScreen.emit_signal("screen_focused")
 		title_final_pos = Vector2(0.0, -1400.0)
 		credits_final_pos = Vector2(0.0, -1400.0)
 		settings_final_pos = Vector2.ZERO

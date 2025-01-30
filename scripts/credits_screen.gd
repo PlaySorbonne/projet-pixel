@@ -1,7 +1,5 @@
-extends Control
+extends SubScreen
 class_name CreditsScreen
-
-signal ButtonBackPressed
 
 
 func _on_button_back_pressed():

@@ -46,20 +46,23 @@ func set_title(title : String, rarity : Rarities) -> void:
 			effects_intro = effects_intro + "[rainbow freq=0.8 sat=0.5 val=0.9]"
 	$Label.text = effects_intro + title
 
-func anim_intro() -> void:
+func anim_intro(in_end_screen := true) -> void:
 	match item_rarity:
 		Rarities.Common:
 			$AnimationPlayer.play("intro_common")
-			await $AnimationPlayer.animation_finished
-			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Common])
+			if in_end_screen:
+				await $AnimationPlayer.animation_finished
+				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Common])
 		Rarities.Rare:
-			$AnimationPlayer.play("intro_rare")
-			await $AnimationPlayer.animation_finished
-			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Rare])
-			player_stats_parent.shake_node(false)
+			if in_end_screen:
+				$AnimationPlayer.play("intro_rare")
+				await $AnimationPlayer.animation_finished
+				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Rare])
+				player_stats_parent.shake_node(false)
 		Rarities.Legendary:
 			$AnimationPlayer.play("intro_legendary")
-			await $AnimationPlayer.animation_finished
-			GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Legendary])
-			player_stats_parent.shake_node(true)
+			if in_end_screen:
+				await $AnimationPlayer.animation_finished
+				GameInfos.end_screen.add_money(MONEY_AMOUNT[Rarities.Legendary])
+				player_stats_parent.shake_node(true)
 	$AudioBoom.play()
