@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d00vbqc5d7u4o"]
+[gd_scene load_steps=40 format=3 uid="uid://d00vbqc5d7u4o"]
 
 [ext_resource type="Script" path="res://scripts/player_selection.gd" id="1_i7nk8"]
 [ext_resource type="AudioStream" uid="uid://dl32c66a8b8hv" path="res://resources/audio/voices/ceo/evolve_crunch_the_numbers.wav" id="2_85r2c"]
@@ -567,11 +567,100 @@ tracks/6/keys = {
 "values": [0, 100, 100, 0]
 }
 
+[sub_resource type="Animation" id="Animation_888yl"]
+resource_name = "erase"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.353553, 0.5),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249.858, -41.749)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(0.406126, 0.406126, 0.406126),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 100, 100, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rorww"]
 _data = {
 "RESET": SubResource("Animation_62mnx"),
 "big": SubResource("Animation_biwbh"),
 "down": SubResource("Animation_oembu"),
+"erase": SubResource("Animation_888yl"),
 "left": SubResource("Animation_ffpgi"),
 "right": SubResource("Animation_t528i"),
 "up": SubResource("Animation_wjs77")
@@ -757,9 +846,9 @@ CEO_lines = Array[AudioStream]([ExtResource("2_85r2c"), ExtResource("3_ubec0"), 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 344.387
+offset_left = 343.0
 offset_top = 32.0
-offset_right = 344.387
+offset_right = 343.0
 offset_bottom = 32.0
 
 [node name="ColorRect" type="TextureRect" parent="Control"]
@@ -932,6 +1021,7 @@ stream = ExtResource("23_dvwja")
 [connection signal="text_changed" from="Control/Label" to="." method="_on_label_text_changed"]
 [connection signal="text_submitted" from="Control/Label" to="." method="_on_label_text_submitted"]
 [connection signal="pressed" from="Control/Icon/Icon2/ButtonEv" to="." method="_on_button_ev_pressed"]
+[connection signal="animation_finished" from="Control/Icon/AnimationEmote" to="." method="_on_animation_emote_animation_finished"]
 [connection signal="pressed" from="Control/ControlType/ButtonAiDiffculty" to="." method="_on_button_ai_diffculty_pressed"]
 [connection signal="pressed" from="Control/ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="color_changed" from="Control/ColorPicker" to="." method="_on_color_picker_color_changed"]

@@ -81,6 +81,7 @@ func set_exalted(is_exalted : bool) -> void:
 	else:
 		$Control/Icon.material = null
 
+var is_erasing_char := false
 func _input(event : InputEvent):
 	var is_correct_control_type = false
 	if control_type == false:
@@ -111,8 +112,7 @@ func _input(event : InputEvent):
 	elif event.is_action_released("down"):
 		down_pressed = false
 	
-	if event.is_action_pressed("attack") or event.is_action_pressed(
-							"special") or event.is_action_pressed("jump"):
+	if event.is_action_pressed("attack") or event.is_action_pressed("jump"):
 		if can_select_evolution:
 			_on_button_ev_pressed()
 		else:
@@ -120,6 +120,13 @@ func _input(event : InputEvent):
 			var tween := create_tween().set_trans(Tween.TRANS_CUBIC)
 			tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.25)
 			tween.tween_property(self, "scale", Vector2.ONE, 0.15)
+	if event.is_action_pressed("special"):
+		is_erasing_char = true
+		$Control/Icon/AnimationEmote.play("erase")
+	elif event.is_action_released("special"):
+		if is_erasing_char:
+			is_erasing_char = false
+			$Control/Icon/AnimationEmote.play("RESET")
 
 func set_player_evolution(new_evolution : PlayerCharacter.Evolutions, 
 									skip_evol := false, force := false) -> void:
@@ -202,3 +209,7 @@ func _on_button_ev_pressed() -> void:
 	if button_option > EV_MAX_VAL:
 		button_option = PlayerCharacter.Evolutions.CEO
 	set_player_evolution(button_option)
+
+func _on_animation_emote_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "erase" and is_erasing_char:
+		_on_button_cancel_pressed()
