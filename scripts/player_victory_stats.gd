@@ -117,6 +117,9 @@ func set_player_titles(common_titles : Array, rare_titles : Array,
 	var all_titles_array : Array = all_titles.keys()
 	all_titles_array.shuffle()
 	for title : String in all_titles_array:
+		if not VaultData.vault_data.has("unlocked_titles"):
+			VaultData.vault_data["unlocked_titles"] = []
+		VaultData.vault_data["unlocked_titles"].append(title)
 		var t_item := TITLE_ITEM.instantiate()
 		t_item.player_stats_parent = self
 		match all_titles[title]:

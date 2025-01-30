@@ -89,7 +89,8 @@ func _on_title_screen_button_start_pressed():
 func _on_title_screen_button_vault_pressed():
 	if not can_change_scene:
 		return
-	smooth_change_to_scene(VAULT_PATH)
+	#smooth_change_to_scene(VAULT_PATH)
+	go_to_screen(Screens.Vault)
 
 func _on_title_screen_button_settings_pressed():
 	go_to_screen(Screens.Settings)

@@ -5,9 +5,10 @@ var TITLE_ITEM = PlayerVictoryStats.TITLE_ITEM
 var remaining_titles : Array[String] = []
 
 func _ready() -> void:
-	remaining_titles = VaultData.vault_data["unlocked_titles"].duplicate()
-	remaining_titles.shuffle()
-	$TimerSpawnTitle.start(randf_range(0.5, 0.75))
+	if "unlocked_titles" in VaultData.vault_data.keys():
+		remaining_titles = VaultData.vault_data["unlocked_titles"].duplicate()
+		remaining_titles.shuffle()
+		$TimerSpawnTitle.start(randf_range(0.5, 0.75))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +28,10 @@ func _on_timer_spawn_title_timeout() -> void:
 	var title_obj : TitleItem = TITLE_ITEM.instantiate()
 	title_obj.set_title(title_str, val)
 	$Titles.add_child(title_obj)
+	title_obj.position = Vector2(
+		randf_range($Titles/TopLeft.x, $Titles/DownRight.x),
+		randf_range($Titles/TopLeft.y, $Titles/DownRight.y)
+	)
 	if remaining_titles.size() == 0:
 		return
 	$TimerSpawnTitle.start(randf_range(0.1, 0.3))
