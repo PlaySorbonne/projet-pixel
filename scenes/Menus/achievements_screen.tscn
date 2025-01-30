@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3y5ifh86gk7b"]
 
-[ext_resource type="Script" path="res://scripts/credits_screen.gd" id="1_smlk3"]
+[ext_resource type="Script" path="res://scripts/achievements_screen.gd" id="1_v57ux"]
 [ext_resource type="Theme" uid="uid://dfugohqtoildj" path="res://resources/fonts/TitleScreenTheme.tres" id="2_llkss"]
 [ext_resource type="Theme" uid="uid://ci4c6g7i1sumn" path="res://resources/fonts/SettingsTheme.tres" id="3_dqhtf"]
 [ext_resource type="Script" path="res://scripts/button_xyz.gd" id="4_8483h"]
 [ext_resource type="AudioStream" uid="uid://bucirynd6cvf5" path="res://resources/audio/sfx/button_clicks/button_cancel.wav" id="5_wchq4"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_njpbr"]
-font_size = 32
+[sub_resource type="LabelSettings" id="LabelSettings_ae6yc"]
+font_size = 42
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_smlk3")
+script = ExtResource("1_v57ux")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -34,7 +34,7 @@ offset_bottom = 160.4
 rotation = -0.217997
 color = Color(0.424577, 0, 0.161241, 0.423529)
 
-[node name="Options" type="Control" parent="."]
+[node name="Titles" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0474202
 
-[node name="LabelCredits" type="Label" parent="Options"]
+[node name="LabelCredits" type="Label" parent="Titles"]
 layout_mode = 2
 offset_left = 320.196
 offset_top = 214.419
@@ -53,29 +53,34 @@ rotation = 0.0642744
 theme = ExtResource("2_llkss")
 text = "VAULT"
 
-[node name="LabelText" type="Label" parent="Options"]
+[node name="LabelText" type="Label" parent="Titles"]
 layout_mode = 2
-anchor_left = 0.201562
-anchor_top = 0.388889
-anchor_right = 0.816666
-anchor_bottom = 0.677778
+anchor_left = 0.0669712
+anchor_top = 0.362533
+anchor_right = 0.282596
+anchor_bottom = 0.431977
 offset_bottom = -8.0
 theme = ExtResource("3_dqhtf")
-text = "Maxence Maire
-Pablo Hardouin
-Athénaïs
-Nathan
-Octave Donatella 
-Loona Macabre
-Camille
-Thomas
-Adrien
-"
-label_settings = SubResource("LabelSettings_njpbr")
+text = "Unlocked Titles:"
+label_settings = SubResource("LabelSettings_ae6yc")
 autowrap_mode = 1
 clip_text = true
 text_overrun_behavior = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Titles"]
+anchors_preset = 0
+offset_left = 42.6986
+offset_top = 492.578
+offset_right = 82.6986
+offset_bottom = 532.578
+
+[node name="Control2" type="Control" parent="Titles"]
+anchors_preset = 0
+offset_left = 1824.28
+offset_top = 944.537
+offset_right = 1864.28
+offset_bottom = 984.537
 
 [node name="ButtonBack" type="Button" parent="."]
 layout_mode = 1
@@ -90,4 +95,8 @@ flat = true
 script = ExtResource("4_8483h")
 audio = ExtResource("5_wchq4")
 
+[node name="TimerSpawnTitle" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="timeout" from="TimerSpawnTitle" to="." method="_on_timer_spawn_title_timeout"]

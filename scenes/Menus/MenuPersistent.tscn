@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvkf6l5jtinbx"]
+[gd_scene load_steps=10 format=3 uid="uid://cvkf6l5jtinbx"]
 
 [ext_resource type="PackedScene" uid="uid://6ro5mql3evsd" path="res://scenes/Menus/Submenus/ScreenTransition.tscn" id="1_donq7"]
 [ext_resource type="Script" path="res://scripts/MenuPersistent.gd" id="1_jtr7k"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qb3miekn7s7v" path="res://scenes/Menus/credits_screen.tscn" id="5_18jb2"]
 [ext_resource type="Script" path="res://scripts/exit_progress_bar.gd" id="6_5nd8i"]
 [ext_resource type="PackedScene" uid="uid://4qhtb4ydvax6" path="res://scenes/Menus/title_screen_decor.tscn" id="6_7sa4o"]
+[ext_resource type="PackedScene" uid="uid://c3y5ifh86gk7b" path="res://scenes/Menus/achievements_screen.tscn" id="6_xxy3t"]
 [ext_resource type="AudioStream" uid="uid://bhckvrtn316gh" path="res://resources/audio/music/Menu_Theme.mp3" id="11_4sc2c"]
 
 [node name="MenuPersistent" type="Node2D"]
@@ -26,6 +27,10 @@ offset_bottom = -1400.0
 
 [node name="ScreenTransition" parent="CanvasLayer" instance=ExtResource("1_donq7")]
 default_duration = 1.0
+
+[node name="AchievementScreen" parent="CanvasLayer" instance=ExtResource("6_xxy3t")]
+offset_left = 2200.0
+offset_right = 2200.0
 
 [node name="ExitProgressBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = -1
